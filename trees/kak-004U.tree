@@ -1,0 +1,10 @@
+\date{2025-02-03}
+\title{Linear convergence for strong convexity}
+\taxon{theorem}
+\p{
+Let #{f:\mathbb{R}^{n}\mapsto\mathbb{R}} be smooth and [#{\mu}-strongly convex](kak-0036), and suppose its gradient #{\nabla f(\mathbf{x})} is [#{L}-Lipschitz](kak-003J). Choose a fixed step size #{\tau_{k}\equiv\tau=\frac{2}{\mu+L}}, then
+
+##{\left||\mathbf{x}_{k}-\mathbf{x}_{\star}\right||_{2}\ \leq\ \left(\frac{\kappa-1}{\kappa+1}\right)^{k}\left||\mathbf{x}_{0}-\mathbf{x}_{\star}\right||_{2},}
+
+where #{\kappa=\frac{L}{\mu}} is the condition number, and #{\mathbf{x}_{\star}} is the minimizer.
+}

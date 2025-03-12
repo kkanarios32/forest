@@ -1,0 +1,13 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex]
+Dynkin's $\pi-\lambda$ Theorem. If $\mathcal{P}$ is a $\pi$-system and $\mathcal{L}$ is a $\lambda$-system, then?
+[/latex]
+%Front
+%Back
+[latex]
+$\mathcal{P}\subset\mathcal{L}$ implies $\sigma(\mathcal{P})\subset\mathcal{L}$.
+[/latex]
+%Back

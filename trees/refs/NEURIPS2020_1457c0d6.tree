@@ -1,0 +1,17 @@
+% ["references"]
+\title{Language models are few-shot learners}
+\date{2020}
+\author{Tom Brown}\author{Benjamin Mann}\author{Nick Ryder}\author{Melanie Subbiah}\author{Jared D Kaplan}\author{Prafulla Dhariwal}\author{Arvind Neelakantan}\author{Pranav Shyam}\author{Girish Sastry}\author{Amanda Askell}\author{Sandhini Agarwal}\author{Ariel Herbert-Voss}\author{Gretchen Krueger}\author{Tom Henighan}\author{Rewon Child}\author{Aditya Ramesh}\author{Daniel Ziegler}\author{Jeffrey Wu}\author{Clemens Winter}\author{Chris Hesse}\author{Mark Chen}\author{Eric Sigler}\author{Mateusz Litwin}\author{Scott Gray}\author{Benjamin Chess}\author{Jack Clark}\author{Christopher Berner}\author{Sam McCandlish}\author{Alec Radford}\author{Ilya Sutskever}\author{Dario Amodei}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@inproceedings{NEURIPS2020_1457c0d6,
+ title = {Language Models Are Few-Shot Learners},
+ author = {Brown, Tom and Mann, Benjamin and Ryder, Nick and Subbiah, Melanie and Kaplan, Jared D and Dhariwal, Prafulla and Neelakantan, Arvind and Shyam, Pranav and Sastry, Girish and Askell, Amanda and Agarwal, Sandhini and {Herbert-Voss}, Ariel and Krueger, Gretchen and Henighan, Tom and Child, Rewon and Ramesh, Aditya and Ziegler, Daniel and Wu, Jeffrey and Winter, Clemens and Hesse, Chris and Chen, Mark and Sigler, Eric and Litwin, Mateusz and Gray, Scott and Chess, Benjamin and Clark, Jack and Berner, Christopher and McCandlish, Sam and Radford, Alec and Sutskever, Ilya and Amodei, Dario},
+ year = {2020},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {Larochelle, H. and Ranzato, M. and Hadsell, R. and Balcan, M.F. and Lin, H.},
+ volume = {33},
+ pages = {1877--1901},
+ publisher = {Curran Associates, Inc.}
+}
+\stopverb}

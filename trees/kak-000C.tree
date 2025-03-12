@@ -1,0 +1,17 @@
+\date{2024-11-04}
+\title{Maximize Mutual info}
+\taxon{theorem}
+\import{base-macros}
+
+\p{#{\mathcal{L}_N} from [[vandenOord2018]] maximizes a lower bound on the [[kak-000V]] between #{x_{t + k}} and #{c_t}.}
+\proof{All we must do is plug #{\frac{p(x \mid c)}{p(x)}} back into the objective.
+  ##{\begin{align*}
+    \mathcal{L}_{\mathbb{N}}^{\text{opt}}&=-\,\mathbb{E}\log\left[\frac{\frac{p(x_{t+k}|c_{t})}{p(x_{t+k})}}{\frac{p(x_{t+k}|c_{t})}{p(x_{t+k})}+\sum_{x_{j}\in X_{\text{neg}}}\frac{p(x_{j}|c_{t})}{p(x_{j})}}\right] \\
+    &=\mathbb{E}\log\left[1+\frac{p(x_{t+k})}{p(x_{t+k}|c_{t})}\sum_{x_{j}\in X_{\text{neg}}}\frac{p(x_{j}|c_{t})}{p(x_{j})}\right] \\
+    &\approx\mathbb{E}\log\left[1+\frac{p(x_{t+k})}{p(x_{t+k}|c_{t})}(N-1)\,\mathbb{E}\,\frac{p(x_{j}|c_{t})}{p(x_{j})}\right] \\
+    &=\mathbb{E}\log\left[1+\frac{p(x_{t+k})}{p(x_{t+k} \mid c_t)}N\right] \\
+    &\geq \mathbb{E} \log \left[\frac{p(x_{t + k})}{p(x_{t + k} \mid c_t)}N \right] \\
+    &= - I(x_{t + k}, c_t) + \log N
+ \end{align*}
+  }
+}

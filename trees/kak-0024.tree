@@ -1,0 +1,3 @@
+\date{2024-12-28}
+\taxon{theorem}
+\p{Let #{\{\mu_n\}} be a sequence of probability measures on the class of all subsets of the line, each having finite support. There exists some probability space #{(\Omega, \mathscr{F}, P)} an independent sequence #{\{X_n\}} of [[kak-001W]]'s such that #{X_n} has distribution #{\mu_n}.}

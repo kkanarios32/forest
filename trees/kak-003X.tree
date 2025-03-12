@@ -1,0 +1,24 @@
+\date{2025-01-30}
+\title{Group Relative Policy Optimization}
+\import{base-macros}
+\tag{rl}
+\tag{llms}
+
+\p{Traditional actor critic RL algorithms, require training both an actor and a critic (as the name implies). Typically, these components are both of equal size. In the field of RL, this is non-problematic because models are typically rather small (at least in comparison to LLMs).
+In [[shao2024deepseekmathpushinglimitsmathematical]]}
+
+\section{Math}{
+  ##{
+    \begin{align*}
+    {\mathcal{J}}_{\mathrm{GRPO}}(\theta)&= \mathbb{E}[q\sim P(Q),\{o_{i}\}_{i=1}^{G}\sim\pi_{\theta_{o l d}}(O|q)] \\
+    &= \frac{1}{G}\sum_{i=1}^{G}\left(\operatorname*{min}\left(\frac{\pi_{\theta}(o_{i}|q)}{\pi_{\theta_{o d}}(o_{i}|q)}A_{i},\operatorname*{clip}\left(\frac{\pi_{\theta}(o_{i}|q)}{\pi_{\theta_{o d d}}(o_{i}|q)},1-\varepsilon,1+\varepsilon\right)A_{i}\right)-\beta\mathbb{D}_{K L}\left(\pi_{\theta}||\pi_{r e f}\right)\right)
+    \end{align*}
+  }
+  where
+  ##{
+        \mathbb{D}_{\mathrm{K L}}\left(\pi_{\theta}||\pi_{\mathrm{ref}}\right)=\frac{\pi_{\mathrm{ref}}(o_{i}|q)}{\pi_{\theta}(o_{i}|q)}-\log\frac{\pi_{\mathrm{ref}}(o_{i}|q)}{\pi_{\theta}(o_{i}|q)}-1
+    }
+    The astute RL reader will notice this is essentially [PPO](schulman2017proximalpolicyoptimizationalgorithms).
+    The key distinction here is that the advantage #{A_i} is not computed using a critic model. Instead, 
+##{A_{i}=\frac{r_{i}-\mathrm{mean}(\{r_{1},r_{2},\cdots,r_{G}\})}{\mathrm{std}(\{r_{1},r_{2},\cdots,r_{G}\})}.}
+}

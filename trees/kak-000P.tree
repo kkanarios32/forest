@@ -1,0 +1,13 @@
+\date{2024-11-20}
+\taxon{definition}
+\title{Probability Measure}
+\p{
+A set function is a real-valued function defined on some class of subsets of #{\Omega}. A set function #{P} on a field #{\mathscr{F}} is a probability measure if it satisfies these conditions:
+
+\ol{
+  \li{#{0\leq P(A)\leq1} for #{A\in\mathscr{F}};}
+  \li{#{P(\varnothing)=0}, #{P(\Omega)=1};}
+  \li{if #{A_{1},A_{2},\ldots} is a disjoint sequence of #{\mathscr{F}} sets and if #{\bigcup_{k=1}^{\infty}A_{k}\in\mathscr{F}}, then ##{P\Big(\bigcup_{k=1}^{\infty}A_{k}\Big)=\sum_{k=1}^{\infty}P(A_{k}).}
+  }
+}
+}

@@ -1,0 +1,4 @@
+\date{2025-01-30}
+\taxon{theorem}
+\p{ The #{m}th step transition probability #{\mathbb{P}(X_{n + m} = y \mid X_{n} = x)} is the #{m}th power of transition matrix #{p}, computed at #{(x,y)}.
+}

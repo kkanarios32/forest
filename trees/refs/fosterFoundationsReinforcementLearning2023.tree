@@ -1,0 +1,27 @@
+% ["references"]
+\title{Foundations of Reinforcement Learning and Interactive Decision Making}
+\date{2023-12}
+\author{Dylan J. Foster}\author{Alexander Rakhlin}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2312.16730}
+\meta{external}{https://arxiv.org/abs/2312.16730}
+
+\meta{bibtex}{\startverb
+@misc{fosterFoundationsReinforcementLearning2023,
+ title = {Foundations of {{Reinforcement Learning}} and {{Interactive Decision Making}}},
+ author = {Foster, Dylan J. and Rakhlin, Alexander},
+ year = {2023},
+ doi = {10.48550/arXiv.2312.16730},
+ urldate = {2025-01-23},
+ number = {arXiv:2312.16730},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/YCJRGLTL/Foster and Rakhlin - 2023 - Foundations of Reinforcement Learning and Interactive Decision Making.pdf},
+ keywords = {Computer Science - Machine Learning,Mathematics - Optimization and Control,Mathematics - Statistics Theory,Statistics - Machine Learning,Statistics - Statistics Theory},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {These lecture notes give a statistical perspective on the foundations of reinforcement learning and interactive decision making. We present a unifying framework for addressing the exploration-exploitation dilemma using frequentist and Bayesian approaches, with connections and parallels between supervised learning/estimation and decision making as an overarching theme. Special attention is paid to function approximation and flexible model classes such as neural networks. Topics covered include multi-armed and contextual bandits, structured bandits, and reinforcement learning with high-dimensional feedback.},
+ primaryclass = {cs},
+ eprint = {2312.16730},
+ month = {December}
+}
+\stopverb}

@@ -1,0 +1,17 @@
+\date{2024-11-20}
+\taxon{theorem}
+\p{
+Let #{P} be a probability measure on a field #{\mathscr{F}}.
+
+\ol{
+\li{\em{Continuity from below}: If #{A_{n}} and #{A} lie in #{\mathscr{F}} and #{\mathscr{A}_{n}\uparrow A}, then #{P(A_{n})\uparrow P(A)}.}
+
+\li{
+ \em{Continuity from above}: If #{A_{n}} and #{A} lie in #{\mathscr{F}} and #{A_{n}\downarrow A}, then #{P(A_{n})\downarrow P(A)}.}
+\li{
+  \em{Countable subadditivity}: If #{A_{1},A_{2},\ldots} and #{\bigcup_{k=1}^{\infty}A_{k}} lie in #{\mathscr{F}} (the #{A_{k}} need not be disjoint), then
+
+##{P\left(\bigcup_{k=1}^{\infty}A_{k}\right)\leq\sum_{k=1}^{\infty}P(A_{k})}
+  }
+  }
+}

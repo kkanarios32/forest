@@ -1,0 +1,7 @@
+\date{2024-11-21}
+\title{Kullback-Liebler Divergence}
+\taxon{definition}
+
+\p{The \em{KL-divergence} between two probability distributions is defined as 
+##{\mathrm{KL}(p || q) = \mathbb{E}_{x \sim p}\left[\log \frac{p(x)}{q(x)}\right] = \sum_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}}
+}

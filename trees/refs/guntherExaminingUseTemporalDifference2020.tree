@@ -1,0 +1,22 @@
+% ["references"]
+\title{Examining the Use of Temporal-Difference Incremental Delta-Bar-Delta for Real-World Predictive Knowledge Architectures}
+\date{2020-03}
+\author{Johannes Günther}\author{Nadia M. Ady}\author{Alex Kearney}\author{Michael R. Dawson}\author{Patrick M. Pilarski}
+\taxon{reference}
+\meta{doi}{10.3389/frobt.2020.00034}
+\meta{bibtex}{\startverb
+@article{guntherExaminingUseTemporalDifference2020,
+ title = {Examining the {{Use}} of {{Temporal-Difference Incremental Delta-Bar-Delta}} for {{Real-World Predictive Knowledge Architectures}}},
+ author = {G{\"u}nther, Johannes and Ady, Nadia M. and Kearney, Alex and Dawson, Michael R. and Pilarski, Patrick M.},
+ year = {2020},
+ doi = {10.3389/frobt.2020.00034},
+ urldate = {2024-10-29},
+ journal = {Frontiers in Robotics and AI},
+ volume = {7},
+ pages = {34},
+ file = {/home/kellen/Zotero/storage/3N55F4WQ/Günther et al. - 2020 - Examining the Use of Temporal-Difference Incremental Delta-Bar-Delta for Real-World Predictive Knowl.pdf},
+ langid = {english},
+ issn = {2296-9144},
+ month = {March}
+}
+\stopverb}

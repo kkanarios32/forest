@@ -1,0 +1,9 @@
+\date{2024-12-27}
+\title{Tail #{\sigma}-field}
+\taxon{definition}
+\p{For a sequence #{A_1, A_2, \ldots} of events in a probability space #{(\Omega,
+\mathscr{F}, P)} consider the #{\sigma}-fields #{\sigma(A_n, A_{n+1}, \ldots)}
+then their intersection
+##{\mathscr{T} = \bigcap_{n = 1}^{\infty} \sigma(A_n, A_{n+1}, \ldots)}
+is the \em{tail #{\sigma}-field} associated with the sequence #{\{A_n\}}.
+}

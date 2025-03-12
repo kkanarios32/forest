@@ -1,0 +1,12 @@
+\title{Probability and Measure}
+\taxon{reference}
+\tag{selfstudy}
+\meta{bibtex}\verb<<<|
+@Book{Bill86,
+  Title                    = {Probability and Measure},
+  Author                   = {Patrick Billingsley},
+  Publisher                = {John Wiley and Sons},
+  Year                     = {1986},
+  Edition                  = {Second}
+}
+<<<

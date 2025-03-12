@@ -1,0 +1,11 @@
+\date{2024-11-26}
+\title{Monotone Class}
+\taxon{definition}
+\p{
+A class #{\mathscr{M}} of subsets of #{\Omega} is monotone if it is closed under the formation of monotone unions and intersections:
+
+\ol{
+\li{#{A_{1},A_{2},\ldots\in\mathscr{M}} and #{A_{n}\uparrow A} imply #{A\in\mathscr{M}};}
+\li{#{A_{1},A_{2},\ \ldots\in\mathscr{M}} and #{A_{n}\downarrow A} imply #{A\in\mathscr{M}}.}
+}
+  }

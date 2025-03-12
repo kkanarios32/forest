@@ -1,0 +1,5 @@
+\date{2024-12-28}
+\title{Convergence in Probability}
+\p{A [[kak-001W]] converges \em{in probability} if for every #{\epsilon}
+##{\lim_{n \to \infty} P(|X_n - X| > \epsilon) = 0}
+}

@@ -1,0 +1,12 @@
+% ["references"]
+\title{Reinforcement Learning: Theory and Algorithms}
+\author{Alekh Agarwal}\author{Nan Jiang}\author{Sham M Kakade}\author{Wen Sun}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@article{agarwalReinforcementLearningTheory,
+ title = {Reinforcement {{Learning}}: {{Theory}} and {{Algorithms}}},
+ author = {Agarwal, Alekh and Jiang, Nan and Kakade, Sham M and Sun, Wen},
+ file = {/home/kellen/Zotero/storage/Z3QU86C2/Agarwal et al. - Reinforcement Learning Theory and Algorithms.pdf},
+ langid = {english}
+}
+\stopverb}

@@ -1,0 +1,25 @@
+% ["references"]
+\title{An analysis of temporal-difference learning with function approximation}
+\date{1997-05}
+\author{J. N. Tsitsiklis}\author{B. Van Roy}
+\taxon{reference}
+\meta{doi}{10.1109/9.580874}
+\meta{bibtex}{\startverb
+@article{tsitsiklisAnalysisTemporaldifferenceLearning1997,
+ title = {An Analysis of Temporal-Difference Learning with Function Approximation},
+ author = {Tsitsiklis, J.N. and Van Roy, B.},
+ year = {1997},
+ doi = {10.1109/9.580874},
+ urldate = {2025-01-16},
+ journal = {IEEE Transactions on Automatic Control},
+ volume = {42},
+ number = {5},
+ pages = {674--690},
+ file = {/home/kellen/Zotero/storage/58WIJRVR/Tsitsiklis and Van Roy - 1997 - An analysis of temporal-difference learning with function approximation.pdf},
+ langid = {english},
+ copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html},
+ abstract = {We discuss the temporal-difference learning algorithm, as applied to approximating the cost-to-go function of an infinite-horizon discounted Markov chain. The algorithm we analyze updates parameters of a linear function approximator online during a single endless trajectory of an irreducible aperiodic Markov chain with a finite or infinite state space. We present a proof of convergence (with probability one), a characterization of the limit of convergence, and a bound on the resulting approximation error. Furthermore, our analysis is based on a new line of reasoning that provides new intuition about the dynamics of temporal-difference learning.},
+ issn = {00189286},
+ month = {May}
+}
+\stopverb}

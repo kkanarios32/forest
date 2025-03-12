@@ -1,0 +1,21 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex]
+A class $\mathscr{L}$ is a $\lambda$-system if [/latex]
+
+%Front
+%Back
+[latex]
+
+\begin{enumerate}
+  \item [$(\lambda_{1})$] $\Omega\in\mathscr{L}$;
+
+  \item [$(\lambda_{2})$] $A\in\mathscr{L}$ implies $A^{c}\in\mathscr{L}$;
+
+  \item[$(\lambda_{3})$] $A_{1},A_{2},\ldots,\in\mathscr{L}$ and $A_{n}\cap A_{m}=\varnothing$ for $m\neq n$ imply $\bigcup_{n}A_{n}\in\mathscr{L}$.
+
+\end{enumerate}
+[/latex]
+%Back

@@ -1,0 +1,6 @@
+\date{2025-02-10}
+\title{Decomposition Theorem}
+\taxon{theorem}
+\p{
+If the state space #{S} is finite, then #{S} can be written as a disjoint union #{T\cup R_{1}\cup\cdots\cup R_{k}}, where #{T} is a set of transient states and the #{R_{i},\ 1\leq i\leq k}, are closed irreducible sets of recurrent states.
+}

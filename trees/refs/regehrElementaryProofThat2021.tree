@@ -1,0 +1,27 @@
+% ["references"]
+\title{An Elementary Proof that Q-learning Converges Almost Surely}
+\date{2021-08}
+\author{Matthew T. Regehr}\author{Alex Ayoub}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2108.02827}
+\meta{external}{https://arxiv.org/abs/2108.02827}
+
+\meta{bibtex}{\startverb
+@misc{regehrElementaryProofThat2021,
+ title = {An {{Elementary Proof}} That {{Q-learning Converges Almost Surely}}},
+ author = {Regehr, Matthew T. and Ayoub, Alex},
+ year = {2021},
+ doi = {10.48550/arXiv.2108.02827},
+ urldate = {2025-01-23},
+ number = {arXiv:2108.02827},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/FLMMCTDT/Regehr and Ayoub - 2021 - An Elementary Proof that Q-learning Converges Almost Surely.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Watkins' and Dayan's Q-learning is a model-free reinforcement learning algorithm that iteratively refines an estimate for the optimal action-value function of an MDP by stochastically "visiting" many state-ation pairs [Watkins and Dayan, 1992]. Variants of the algorithm lie at the heart of numerous recent state-of-the-art achievements in reinforcement learning, including the superhuman Atari-playing deep Q-network [Mnih et al., 2015]. The goal of this paper is to reproduce a precise and (nearly) self-contained proof that Q-learning converges. Much of the available literature leverages powerful theory to obtain highly generalizable results in this vein. However, this approach requires the reader to be familiar with and make many deep connections to different research areas. A student seeking to deepen their understand of Q-learning risks becoming caught in a vicious cycle of "RL-learning Hell". For this reason, we give a complete proof from start to finish using only one external result from the field of stochastic approximation, despite the fact that this minimal dependence on other results comes at the expense of some "shininess".},
+ primaryclass = {cs},
+ eprint = {2108.02827},
+ month = {August}
+}
+\stopverb}

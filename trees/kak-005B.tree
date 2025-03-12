@@ -1,0 +1,7 @@
+\date{2025-02-11}
+\title{Minimum rate of source coding}
+\taxon{definition}
+\p{
+The \em{minimum rate of source coding} #{R_s} is the infimum over all #{R} such that #{R} is [achievable](kak-005A) i.e.  
+##{R_s \coloneqq \inf \{R \mid R \text{ is achievable}\}}
+  }

@@ -1,0 +1,19 @@
+% ["references"]
+\title{Probability and measure}
+\date{1995}
+\author{Patrick Billingsley}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@book{billingsleyProbabilityMeasure1995,
+ title = {Probability and Measure},
+ author = {Billingsley, Patrick},
+ year = {1995},
+ isbn = {978-0-471-00710-4},
+ edition = {3. ed},
+ series = {Wiley Series in Probability and Mathematical Statistics},
+ publisher = {Wiley},
+ address = {New York, NY},
+ file = {/home/kellen/Zotero/storage/JSCDN2UH/Billingsley - 1995 - Probability and measure.pdf},
+ langid = {english}
+}
+\stopverb}

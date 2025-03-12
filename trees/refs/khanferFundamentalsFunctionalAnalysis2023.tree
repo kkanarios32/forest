@@ -1,0 +1,21 @@
+% ["references"]
+\title{Fundamentals of Functional Analysis}
+\date{2023}
+\author{Ammar Khanfer}
+\taxon{reference}
+\meta{doi}{10.1007/978-981-99-3029-6}
+\meta{bibtex}{\startverb
+@book{khanferFundamentalsFunctionalAnalysis2023,
+ title = {Fundamentals of {{Functional Analysis}}},
+ author = {Khanfer, Ammar},
+ year = {2023},
+ isbn = {978-981-99-3028-9 978-981-99-3029-6},
+ doi = {10.1007/978-981-99-3029-6},
+ urldate = {2024-10-18},
+ publisher = {Springer Nature Singapore},
+ address = {Singapore},
+ file = {/home/kellen/Zotero/storage/Z2NQSGWL/Khanfer - 2023 - Fundamentals of Functional Analysis.pdf},
+ langid = {english},
+ copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining}
+}
+\stopverb}

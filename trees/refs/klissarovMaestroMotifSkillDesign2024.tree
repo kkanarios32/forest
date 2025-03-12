@@ -1,0 +1,28 @@
+% ["references"]
+\title{MaestroMotif: Skill Design from Artificial Intelligence Feedback}
+\date{2024-12}
+\author{Martin Klissarov}\author{Mikael Henaff}\author{Roberta Raileanu}\author{Shagun Sodhani}\author{Pascal Vincent}\author{Amy Zhang}\author{Pierre-Luc Bacon}\author{Doina Precup}\author{Marlos C. Machado}\author{Pierluca D’Oro}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2412.08542}
+\meta{external}{https://arxiv.org/abs/2412.08542}
+
+\meta{bibtex}{\startverb
+@misc{klissarovMaestroMotifSkillDesign2024,
+ title = {{{MaestroMotif}}: {{Skill Design}} from {{Artificial Intelligence Feedback}}},
+ author = {Klissarov, Martin and Henaff, Mikael and Raileanu, Roberta and Sodhani, Shagun and Vincent, Pascal and Zhang, Amy and Bacon, Pierre-Luc and Precup, Doina and Machado, Marlos C. and D'Oro, Pierluca},
+ year = {2024},
+ doi = {10.48550/arXiv.2412.08542},
+ urldate = {2025-01-02},
+ number = {arXiv:2412.08542},
+ publisher = {arXiv},
+ file = {/home/kellenkanarios/Downloads/Papers/Hierarchical RL/Klissarov et al_2024_MaestroMotif.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Describing skills in natural language has the potential to provide an accessible way to inject human knowledge about decision-making into an AI system. We present MaestroMotif, a method for AI-assisted skill design, which yields highperforming and adaptable agents. MaestroMotif leverages the capabilities of Large Language Models (LLMs) to effectively create and reuse skills. It first uses an LLM's feedback to automatically design rewards corresponding to each skill, starting from their natural language description. Then, it employs an LLM's code generation abilities, together with reinforcement learning, for training the skills and combining them to implement complex behaviors specified in language. We evaluate MaestroMotif using a suite of complex tasks in the NetHack Learning Environment (NLE), demonstrating that it surpasses existing approaches in both performance and usability.},
+ primaryclass = {cs},
+ eprint = {2412.08542},
+ month = {December},
+ shorttitle = {{{MaestroMotif}}}
+}
+\stopverb}

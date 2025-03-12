@@ -1,0 +1,9 @@
+\date{2024-11-22}
+\title{Action Value Function}
+\taxon{definition}
+
+\p{
+For a fixed policy and a starting state #{s_{0}=s}, we define the action value function #{Q_{M}^{s}:S \times A \to\mathbb{R}} as the discounted sum of future rewards after taking action #{A}.
+
+##{Q_{M}^{s}(s, a)=\mathbb{E}\Big[\sum_{t=0}^{\infty}\gamma^{t}r(s_{t},a_{t})\mid\pi, s_{0}=s, a_{0} = a\Big]}
+}

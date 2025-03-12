@@ -1,0 +1,23 @@
+% ["references"]
+\title{Graph Theory}
+\date{2017}
+\author{Reinhard Diestel}
+\taxon{reference}
+\meta{doi}{10.1007/978-3-662-53622-3}
+\meta{bibtex}{\startverb
+@book{diestelGraphTheory2017,
+ title = {Graph {{Theory}}},
+ author = {Diestel, Reinhard},
+ year = {2017},
+ isbn = {978-3-662-53621-6 978-3-662-53622-3},
+ doi = {10.1007/978-3-662-53622-3},
+ urldate = {2024-10-18},
+ series = {Graduate {{Texts}} in {{Mathematics}}},
+ volume = {173},
+ publisher = {Springer Berlin Heidelberg},
+ address = {Berlin, Heidelberg},
+ file = {/home/kellen/Zotero/storage/I3MHRRZZ/Diestel - 2017 - Graph Theory.pdf},
+ langid = {english},
+ copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining}
+}
+\stopverb}

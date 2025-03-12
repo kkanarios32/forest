@@ -1,0 +1,63 @@
+% ["deepseek"]
+\title{DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning}
+\date{2025}
+\author{}\author{Daya Guo}\author{Dejian Yang}\author{Haowei Zhang}\author{Junxiao Song}\author{Ruoyu Zhang}\author{Runxin Xu}\author{Qihao Zhu}\author{Shirong Ma}\author{Peiyi Wang}\author{Xiao Bi}\author{Xiaokang Zhang}\author{Xingkai Yu}\author{Yu Wu}\author{Z. F. Wu}\author{Zhibin Gou}\author{Zhihong Shao}\author{Zhuoshu Li}\author{Ziyi Gao}\author{Aixin Liu}\author{Bing Xue}\author{Bingxuan Wang}\author{Bochao Wu}\author{Bei Feng}\author{Chengda Lu}\author{Chenggang Zhao}\author{Chengqi Deng}\author{Chenyu Zhang}\author{Chong Ruan}\author{Damai Dai}\author{Deli Chen}\author{Dongjie Ji}\author{Erhang Li}\author{Fangyun Lin}\author{Fucong Dai}\author{Fuli Luo}\author{Guangbo Hao}\author{Guanting Chen}\author{Guowei Li}\author{H. Zhang}\author{Han Bao}\author{Hanwei Xu}\author{Haocheng Wang}\author{Honghui Ding}\author{Huajian Xin}\author{Huazuo Gao}\author{Hui Qu}\author{Hui Li}\author{Jianzhong Guo}\author{Jiashi Li}\author{Jiawei Wang}\author{Jingchang Chen}\author{Jingyang Yuan}\author{Junjie Qiu}\author{Junlong Li}\author{J. L. Cai}\author{Jiaqi Ni}\author{Jian Liang}\author{Jin Chen}\author{Kai Dong}\author{Kai Hu}\author{Kaige Gao}\author{Kang Guan}\author{Kexin Huang}\author{Kuai Yu}\author{Lean Wang}\author{Lecong Zhang}\author{Liang Zhao}\author{Litong Wang}\author{Liyue Zhang}\author{Lei Xu}\author{Leyi Xia}\author{Mingchuan Zhang}\author{Minghua Zhang}\author{Minghui Tang}\author{Meng Li}\author{Miaojun Wang}\author{Mingming Li}\author{Ning Tian}\author{Panpan Huang}\author{Peng Zhang}\author{Qiancheng Wang}\author{Qinyu Chen}\author{Qiushi Du}\author{Ruiqi Ge}\author{Ruisong Zhang}\author{Ruizhe Pan}\author{Runji Wang}\author{R. J. Chen}\author{R. L. Jin}\author{Ruyi Chen}\author{Shanghao Lu}\author{Shangyan Zhou}\author{Shanhuang Chen}\author{Shengfeng Ye}\author{Shiyu Wang}\author{Shuiping Yu}\author{Shunfeng Zhou}\author{Shuting Pan}\author{S. S. Li}\author{Shuang Zhou}\author{Shaoqing Wu}\author{Shengfeng Ye}\author{Tao Yun}\author{Tian Pei}\author{Tianyu Sun}\author{T. Wang}\author{Wangding Zeng}\author{Wanjia Zhao}\author{Wen Liu}\author{Wenfeng Liang}\author{Wenjun Gao}\author{Wenqin Yu}\author{Wentao Zhang}\author{W. L. Xiao}\author{Wei An}\author{Xiaodong Liu}\author{Xiaohan Wang}\author{Xiaokang Chen}\author{Xiaotao Nie}\author{Xin Cheng}\author{Xin Liu}\author{Xin Xie}\author{Xingchao Liu}\author{Xinyu Yang}\author{Xinyuan Li}\author{Xuecheng Su}\author{Xuheng Lin}\author{X. Q. Li}\author{Xiangyue Jin}\author{Xiaojin Shen}\author{Xiaosha Chen}\author{Xiaowen Sun}\author{Xiaoxiang Wang}\author{Xinnan Song}\author{Xinyi Zhou}\author{Xianzu Wang}\author{Xinxia Shan}\author{Y. K. Li}\author{Y. Q. Wang}\author{Y. X. Wei}\author{Yang Zhang}\author{Yanhong Xu}\author{Yao Li}\author{Yao Zhao}\author{Yaofeng Sun}\author{Yaohui Wang}\author{Yi Yu}\author{Yichao Zhang}\author{Yifan Shi}\author{Yiliang Xiong}\author{Ying He}\author{Yishi Piao}\author{Yisong Wang}\author{Yixuan Tan}\author{Yiyang Ma}\author{Yiyuan Liu}\author{Yongqiang Guo}\author{Yuan Ou}\author{Yuduan Wang}\author{Yue Gong}\author{Yuheng Zou}\author{Yujia He}\author{Yunfan Xiong}\author{Yuxiang Luo}\author{Yuxiang You}\author{Yuxuan Liu}\author{Yuyang Zhou}\author{Y. X. Zhu}\author{Yanhong Xu}\author{Yanping Huang}\author{Yaohui Li}\author{Yi Zheng}\author{Yuchen Zhu}\author{Yunxian Ma}\author{Ying Tang}\author{Yukun Zha}\author{Yuting Yan}\author{Z. Z. Ren}\author{Zehui Ren}\author{Zhangli Sha}\author{Zhe Fu}\author{Zhean Xu}\author{Zhenda Xie}\author{Zhengyan Zhang}\author{Zhewen Hao}\author{Zhicheng Ma}\author{Zhigang Yan}\author{Zhiyu Wu}\author{Zihui Gu}\author{Zijia Zhu}\author{Zijun Liu}\author{Zilin Li}\author{Ziwei Xie}\author{Ziyang Song}\author{Zizheng Pan}\author{Zhen Huang}\author{Zhipeng Xu}\author{Zhongyu Zhang}\author{Zhen Zhang}
+\taxon{reference}
+\meta{external}{https://arxiv.org/abs/2501.12948}
+
+\meta{bibtex}{\startverb
+@misc{deepseekai2025deepseekr1incentivizingreasoningcapability,
+ title = {DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via
+Reinforcement Learning},
+ author = {DeepSeek-AI and Daya Guo and Dejian Yang and Haowei Zhang and
+Junxiao Song and Ruoyu Zhang and Runxin Xu and Qihao Zhu and Shirong
+Ma and Peiyi Wang and Xiao Bi and Xiaokang Zhang and Xingkai Yu and
+Yu Wu and Z. F. Wu and Zhibin Gou and Zhihong Shao and Zhuoshu Li and
+Ziyi Gao and Aixin Liu and Bing Xue and Bingxuan Wang and Bochao Wu
+and Bei Feng and Chengda Lu and Chenggang Zhao and Chengqi Deng and
+Chenyu Zhang and Chong Ruan and Damai Dai and Deli Chen and Dongjie
+Ji and Erhang Li and Fangyun Lin and Fucong Dai and Fuli Luo and
+Guangbo Hao and Guanting Chen and Guowei Li and H. Zhang and Han Bao
+and Hanwei Xu and Haocheng Wang and Honghui Ding and Huajian Xin and
+Huazuo Gao and Hui Qu and Hui Li and Jianzhong Guo and Jiashi Li and
+Jiawei Wang and Jingchang Chen and Jingyang Yuan and Junjie Qiu and
+Junlong Li and J. L. Cai and Jiaqi Ni and Jian Liang and Jin Chen and
+Kai Dong and Kai Hu and Kaige Gao and Kang Guan and Kexin Huang and
+Kuai Yu and Lean Wang and Lecong Zhang and Liang Zhao and Litong Wang
+and Liyue Zhang and Lei Xu and Leyi Xia and Mingchuan Zhang and
+Minghua Zhang and Minghui Tang and Meng Li and Miaojun Wang and
+Mingming Li and Ning Tian and Panpan Huang and Peng Zhang and
+Qiancheng Wang and Qinyu Chen and Qiushi Du and Ruiqi Ge and Ruisong
+Zhang and Ruizhe Pan and Runji Wang and R. J. Chen and R. L. Jin and
+Ruyi Chen and Shanghao Lu and Shangyan Zhou and Shanhuang Chen and
+Shengfeng Ye and Shiyu Wang and Shuiping Yu and Shunfeng Zhou and
+Shuting Pan and S. S. Li and Shuang Zhou and Shaoqing Wu and
+Shengfeng Ye and Tao Yun and Tian Pei and Tianyu Sun and T. Wang and
+Wangding Zeng and Wanjia Zhao and Wen Liu and Wenfeng Liang and
+Wenjun Gao and Wenqin Yu and Wentao Zhang and W. L. Xiao and Wei An
+and Xiaodong Liu and Xiaohan Wang and Xiaokang Chen and Xiaotao Nie
+and Xin Cheng and Xin Liu and Xin Xie and Xingchao Liu and Xinyu Yang
+and Xinyuan Li and Xuecheng Su and Xuheng Lin and X. Q. Li and
+Xiangyue Jin and Xiaojin Shen and Xiaosha Chen and Xiaowen Sun and
+Xiaoxiang Wang and Xinnan Song and Xinyi Zhou and Xianzu Wang and
+Xinxia Shan and Y. K. Li and Y. Q. Wang and Y. X. Wei and Yang Zhang
+and Yanhong Xu and Yao Li and Yao Zhao and Yaofeng Sun and Yaohui
+Wang and Yi Yu and Yichao Zhang and Yifan Shi and Yiliang Xiong and
+Ying He and Yishi Piao and Yisong Wang and Yixuan Tan and Yiyang Ma
+and Yiyuan Liu and Yongqiang Guo and Yuan Ou and Yuduan Wang and Yue
+Gong and Yuheng Zou and Yujia He and Yunfan Xiong and Yuxiang Luo and
+Yuxiang You and Yuxuan Liu and Yuyang Zhou and Y. X. Zhu and Yanhong
+Xu and Yanping Huang and Yaohui Li and Yi Zheng and Yuchen Zhu and
+Yunxian Ma and Ying Tang and Yukun Zha and Yuting Yan and Z. Z. Ren
+and Zehui Ren and Zhangli Sha and Zhe Fu and Zhean Xu and Zhenda Xie
+and Zhengyan Zhang and Zhewen Hao and Zhicheng Ma and Zhigang Yan and
+Zhiyu Wu and Zihui Gu and Zijia Zhu and Zijun Liu and Zilin Li and
+Ziwei Xie and Ziyang Song and Zizheng Pan and Zhen Huang and Zhipeng
+Xu and Zhongyu Zhang and Zhen Zhang},
+ year = {2025},
+ url = {https://arxiv.org/abs/2501.12948},
+ primaryclass = {cs.CL},
+ archiveprefix = {arXiv},
+ eprint = {2501.12948}
+}
+\stopverb}

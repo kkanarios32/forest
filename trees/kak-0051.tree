@@ -1,0 +1,25 @@
+\date{2025-02-10}
+\import{base-macros}
+\title{Weak Law of Large Numbers}
+\taxon{theorem}
+\p{
+#{\{X_{n}:n\geq1\}}: a sequence of i.i.d. r.v.s. with mean #{\mu}, variance #{\sigma^{2}}. Then,
+
+##{\frac{1}{n}\sum_{i=1}^{n}X_{i}\stackrel{{p}}{{\rightarrow}}\mu}
+}
+\proof{
+    By [[kak-002F]],
+    ##{
+    \begin{align*}
+      \mathbb{P}(|\hat{X} - \mu| > a) \leq -\frac{\sigma^2}{a^2}
+    \end{align*}
+    }
+    Since #{X_i}'s are independent, 
+##{\mathrm{Var}[\hat{X}] = \frac{1}{n^2} \sum_{i = 1}^{n} \mathrm{Var}[X_i]}
+    Therefore,
+##{
+    \begin{align*}
+      \lim_{n \to \infty} \mathbb{P}(|\hat{X} - \mu| > a) \leq \lim_{n \to \infty}-\frac{\sigma^2}{n a^2} \to 0
+    \end{align*}
+}
+  }

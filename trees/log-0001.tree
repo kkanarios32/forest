@@ -1,0 +1,22 @@
+\title{11/4/2024}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{}
+\tag{daily}
+
+\p{Hello world! This is my first instantiation of this daily logging thing. Here I will attempt to jot down any questions that come up in my research along with planning my daily activities of the next day. To hold my self accountable, I will log my daily accomplishments and questions.}
+
+\p{\strong{Daily Summary:} Today, I focused most of my efforts on the [[kak-0005]] blog. I was not able to finish it, but significant progress was made. I think while writing this blog I am finally starting to see how everything comes together. Ultimately, this was more of a logistical day. Since I just instatiated my more structure daily plan, hopefully we can adhere to it tomorrow.}
+
+\p{\strong{Tomorrow Todo's:} With the instantiation of the new plan I will allocate my next day's activities a day in advance.}
+
+\ul{
+  \li{We will be starting a self-study following [[richardsutton]]'s [CMPUT 609](https://drive.google.com/drive/folders/0B3w765rOKuKANmxNbXdwaE1YU1k?resourcekey=0-JZz-noRuJgogNsg1ljgV8w) course. For tomorrow, I will go over the review questions and then start with the function approximation section of his textbook.}
+  \li{For research, it is long overdue that I contribute to my weak-to-strong generalization project. There are two outstanding objectives:}
+  \ul{
+    \li{Finite sample analysis,}
+    \li{Experiment implementation.}
+  }
+  I will choose / switch between these.
+  \li{Paper of the week will still be [[gcrl]]. I will also use this and my extra time to work on the blog post.}
+}

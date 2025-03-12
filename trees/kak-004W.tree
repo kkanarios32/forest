@@ -1,0 +1,10 @@
+\date{2025-02-03}
+\import{base-macros}
+\title{Quasi-Newton's Method}
+\p{Get around computing and inverting hessian by using a surrogate i.e. 
+##{\mathbf{d}_{k}^{QN}=-\underbrace{\mathbf{H}_k}_{\text{surrogate for } \left(\nabla^{2}f(\mathbf{x}_{k})\right)^{-1}} \nabla f(\mathbf{x}_{k}).}
+Want
+##{{\mathbf{H}}_{k+1}^{-1}\cdot\underbrace{({\mathbf{x}}_{k+1}-{\mathbf{x}}_{k})}_{{\mathbf{s}}_{k}}\;=\;\underbrace{\nabla f({\mathbf{x}}_{k+1})-\nabla f({\mathbf{x}}_{k})}_{{\mathbf{y}}_{k}}}
+BFGS rank-2 update:
+##{{\mathbf{H}}_{k+1}\ =\ {\mathbf{H}}_{k}+{\frac{\left({\mathbf{s}}_{k}^{\top}{\mathbf{y}}_{k}+{\mathbf{y}}_{k}^{\top}{\mathbf{H}}_{k}{\mathbf{y}}_{k}\right){\mathbf{s}}_{k}{\mathbf{s}}_{k}^{\top}}{\left({\mathbf{s}}_{k}^{\top}{\mathbf{y}}_{k}\right)^{2}}}-{\frac{{\mathbf{H}}_{k}{\mathbf{y}}_{k}{\mathbf{s}}_{k}^{\top}+{\mathbf{s}}_{k}{\mathbf{y}}_{k}^{\top}{\mathbf{H}}_{k}}{{\mathbf{s}}_{k}^{\top}{\mathbf{y}}_{k}}}}
+}

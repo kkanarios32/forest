@@ -1,0 +1,12 @@
+\date{2024-12-27}
+\title{Borel-Cantelli One}
+\taxon{theorem}
+\import{base-macros}
+\p{If #{\sum_{n}P(A_n)} converges, then #{P(\lim\sup_n A_n) = 0}.}
+\proof{
+    Recall that #{\lim\sup_n A_n \subset \bigcup_{k = n}^{\infty} A_k}.
+    Therefore,
+      ##{P(\lim\sup_n A_n) \leq P\left(\bigcup_{k = n}^{\infty} A_k\right) \leq
+      \sum_{k = n}^{\infty} P(A_k)}
+      Taking #{n \to \infty} yields the desired result.
+  }

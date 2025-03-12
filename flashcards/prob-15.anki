@@ -1,0 +1,13 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex]
+An element $\omega$ is in $\lim\inf A_n$ if and only if 
+[/latex]
+%Front
+%Back
+[latex]
+$\omega$ is in all but finitely many $A_n$.
+[/latex]
+%Back

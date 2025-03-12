@@ -1,0 +1,45 @@
+\date{2025-02-03}
+\import{base-macros}
+\title{Sublinear convergence of GD}
+\taxon{theorem}
+\p{
+Suppose #{f:\mathbb{R}^{n}\mapsto\mathbb{R}} is convex and smooth with its gradient #{L}-Lipschitz. If we run GD for #{k} iterations with a fixed step size #{\tau=1/L}, it will yield a sequence #{\left\{\mathbf{x}_{k}\right\}_{k\geq1}} such that
+
+##{f(\mathbf{x}_{k})-f(\mathbf{x}_{\star})\ \leq\ \frac{L}{2k}\left||\mathbf{x}_{0}-\mathbf{x}_{\star}\right||_{2}^{2}\ =\ O(\frac{1}{k}),}
+
+Moreover, as #{k\to+\infty}, then #{\mathbf{x}_{k}\to\mathbf{x}_{\star}}.
+
+  }
+
+\proof{
+Given #{f} is convex and smooth, and #{\mathbf{x}_*} is an optimal solution, then
+##{f(\mathbf{x}_{\star})\geq f(\mathbf{x})+\nabla f(\mathbf{x})^{\top}(\mathbf{x}_{\star}-\mathbf{x})}
+Flipping the inequality yields
+##{f(\mathbf{x})\leq f(\mathbf{x}_{\star})+\nabla f(\mathbf{x})^{\top}(\mathbf{x}-\mathbf{x}_{\star})}
+By [previous lemma](kak-004L), taking #{\mathbf{x}' = \mathbf{x} - \frac{1}{L} \nabla f( \mathbf{x})} yields
+##{f(\mathbf{x}^{\prime})\leq f(\mathbf{x})-{\frac{1}{2L}}\left||\nabla f(\mathbf{x})\right||_{2}^{2}}
+such that
+##{f(\mathbf{x}^{\prime})\leq f(\mathbf{x}_{\star})+\nabla f(\mathbf{x})^{\top}(\mathbf{x}-\mathbf{x}_{\star})-{\frac{1}{2L}}\left||\nabla f(\mathbf{x})\right||_{2}^{2}}
+Equivalently,
+##{f(\mathbf{x}^{\prime})-f(\mathbf{x}_{\star})\leq{\frac{L}{2}}\left[{\frac{2}{L}}\nabla f(\mathbf{x})^{\top}(\mathbf{x}-\mathbf{x}_{\star})-{\frac{1}{L^{2}}}\left||\nabla f(\mathbf{x})\right||_{2}^{2}\right]}
+Completing the square,
+##{
+\begin{align*}
+ f(\mathbf{x}^{\prime})-f(\mathbf{x}_{\star})&\leq\frac{L}{2}\left[\frac{2}{L}\nabla f(\mathbf{x})^{\top}(\mathbf{x}-\mathbf{x}_{\star})-\frac{1}{L^{2}}\left||\nabla f(\mathbf{x})\right||_{2}^{2}\right] \\ 
+ &=\frac{L}{2}\left[\left||\mathbf{x}-\mathbf{x}_{\star}\right||_{2}^{2}-\left||\mathbf{x}-\frac{1}{L}\nabla f(\mathbf{x})-\mathbf{x}_{\star}\right||_{2}^{2}\right] \\ 
+ &=\frac{L}{2}\left[\left||\mathbf{x}-\mathbf{x}_{\star}\right||_{2}^{2}-\left||\mathbf{x}^{\prime}-\mathbf{x}_{\star}\right||_{2}^{2}\right]
+\end{align*}
+}
+Let #{\mathbf{x}_{k}=\mathbf{x}_{k-1}-\frac{1}{L}\nabla f(\mathbf{x}_{k-1})}, then we have
+
+##{
+\begin{align*}
+ \sum_{i=1}^{k}\left(f(\mathbf{x}_{i})-f(\mathbf{x}_{\star})\right) &\leq \frac{L}{2}\sum_{i=1}^{k}\left[\left||\mathbf{x}_{i-1}-\mathbf{x}_{\star}\right||_{2}^{2}-\left||\mathbf{x}_{i}-\mathbf{x}_{\star}\right||_{2}^{2}\right]
+ \\ &=\frac{L}{2}\left[\left||\mathbf{x}_{0}-\mathbf{x}_{\star}\right||_{2}^{2}-\left||\mathbf{x}_{k}-\mathbf{x}_{0}\right||_{2}^{2}\right] \\ 
+ &\leq\frac{L}{2}\left||\mathbf{x}_{0}-\mathbf{x}_{\star}\right||_{2}^{2} 
+\end{align*}
+}
+Therefore, given #{f(\mathbf{x}_{k})-f(\mathbf{x}_{\star})\leq f(\mathbf{x}_{i})-f(\mathbf{x}_{*}) \text{ for } \forall i\leq k\,,}
+
+##{k\left(f(\mathbf{x}_{k})-f(\mathbf{x}_{\star})\right)\leq\sum_{i=1}^{k}\left(f(\mathbf{x}_{i})-f(\mathbf{x}_{\star})\right)\leq\frac{L}{2}\left||\mathbf{x}_{0}-\mathbf{x}_{\star}\right||_{2}^{2}}
+}

@@ -1,0 +1,25 @@
+% ["references"]
+\title{Direct Language Model Alignment from Online AI Feedback}
+\date{2024-02}
+\author{Shangmin Guo}\author{Biao Zhang}\author{Tianlin Liu}\author{Tianqi Liu}\author{Misha Khalman}\author{Felipe Llinares}\author{Alexandre Rame}\author{Thomas Mesnard}\author{Yao Zhao}\author{Bilal Piot}\author{Johan Ferret}\author{Mathieu Blondel}
+\taxon{reference}
+\meta{external}{https://arxiv.org/abs/2402.04792}
+
+\meta{bibtex}{\startverb
+@misc{guoDirectLanguageModel2024,
+ title = {Direct {{Language Model Alignment}} from {{Online AI Feedback}}},
+ author = {Guo, Shangmin and Zhang, Biao and Liu, Tianlin and Liu, Tianqi and Khalman, Misha and Llinares, Felipe and Rame, Alexandre and Mesnard, Thomas and Zhao, Yao and Piot, Bilal and Ferret, Johan and Blondel, Mathieu},
+ year = {2024},
+ urldate = {2024-09-11},
+ number = {arXiv:2402.04792},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/GTI664DM/Guo et al. - 2024 - Direct Language Model Alignment from Online AI Feedback.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Human-Computer Interaction},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Direct alignment from preferences (DAP) methods, such as DPO, have recently emerged as efficient alternatives to reinforcement learning from human feedback (RLHF), that do not require a separate reward model. However, the preference datasets used in DAP methods are usually collected ahead of training and never updated, thus the feedback is purely offline. Moreover, responses in these datasets are often sampled from a language model distinct from the one being aligned, and since the model evolves over training, the alignment phase is inevitably off-policy. In this study, we posit that online feedback is key and improves DAP methods. Our method, online AI feedback (OAIF), uses an LLM as annotator: on each training iteration, we sample two responses from the current model and prompt the LLM annotator to choose which one is preferred, thus providing online feedback. Despite its simplicity, we demonstrate via human evaluation in several tasks that OAIF outperforms both offline DAP and RLHF methods. We further show that the feedback leveraged in OAIF is easily controllable, via instruction prompts to the LLM annotator.},
+ primaryclass = {cs},
+ eprint = {2402.04792},
+ month = {February}
+}
+\stopverb}

@@ -1,0 +1,12 @@
+\date{2025-01-28}
+\title{Threads on the hardware level}
+\author{kellenkanarios}
+
+\p{I have been wondering how multithreading is actually implemented on the hardware level. Here, I summarize my findings:
+\ul{
+    \li{Threads have their own program counter and can fetch and decode instructions in parallel.}
+    \li{Threads have their own registers, but \strong{share} most execution resources i.e. memory, ALU, etc.}
+    \li{Thread instructions are scheduled just as typical instructions to maximize throughput.}
+  }
+}
+

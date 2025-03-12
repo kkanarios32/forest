@@ -1,0 +1,13 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex]
+For a sequence $A_{1},A_{2},\ldots$ of sets, the $\lim\sup A_n$ is defined as
+[/latex]
+%Front
+%Back
+[latex]
+$$\lim\sup A_{n}=\bigcap_{n=1}^{\infty}\bigcup A_{k}\tag{4.4}$$
+[/latex]
+%Back

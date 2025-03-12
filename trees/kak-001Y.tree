@@ -1,0 +1,5 @@
+\date{2024-12-28}
+\title{Dense Subset}
+\tag{math}
+\taxon{definition}
+\p{A subset #{A} of #{X} is said to be a dense subset of X if for every #{x \in X} , every neighborhood #{U} of #{x} intersects #{A}; that is, #{U \cap A \neq \emptyset} (One of many conditions but my favorite).}

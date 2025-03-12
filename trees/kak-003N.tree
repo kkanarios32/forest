@@ -1,0 +1,6 @@
+\date{2025-01-27}
+\title{First-order approximation}
+\taxon{theorem}
+\p{
+Let #{f:\mathbb{R}^{n}\to\mathbb{R}} be continuously differentiable, and #{\nabla f(\mathbf{x})} is #{\gamma_{L}(\mathbf{x}_{0})}-Lipschitz continuous at #{\mathbf{x}_{0}}, then ##{\left|f(\mathbf{x})-\widehat{f_{L}}(\mathbf{x};\mathbf{x}_{0})\right|\ \leq\ \frac{\gamma_{L}(\mathbf{x}_{0})}{2}\,||\mathbf{x}-\mathbf{x}_{0}||_{2}^{2}\,,} where we define ##{\widehat{f_{L}}(\mathbf{x};\mathbf{x}_{0})\ :=\ f(\mathbf{x}_{0})\ +\ \langle\nabla f(\mathbf{x}_{0}),\mathbf{x}-\mathbf{x}_{0}\rangle\,.}
+  }

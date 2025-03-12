@@ -1,0 +1,7 @@
+\date{2025-02-01}
+\title{Convex Function}
+\taxon{definition}
+\p{A function #{f : C \to \mathbb{R}} is said to be convex if #{C} is convex, and for any #{x_1, x_2 \in C}, #{\lambda \in [0,1]}, we have
+##{f(\lambda x_1 + (1 - \lambda)x_2) \leq \lambda f(x_1) + (1 - \lambda)f(x_2)}
+and strictly convex if the inequality is strict.
+}

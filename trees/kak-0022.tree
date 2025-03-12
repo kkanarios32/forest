@@ -1,0 +1,16 @@
+\date{2024-12-28}
+\title{Finite Sequence Measurability}
+\taxon{theorem}
+\p{Let #{X_1, \ldots, X_n} be [[kak-001W]]'s
+\ol{
+    \li{The [[kak-000O]] #{\sigma(X_1, \ldots, X_n)} consists of the sets
+##{\left[(X_1, \ldots, X_n) \in H\right] = \left[\omega \mid (X_1(\omega), \ldots, X_n(\omega)) \in H\right]}
+    for #{H \subset \mathbb{R}^n}.
+    }
+    \li{A simple random variable #{Y} is measurable #{\sigma(X_1, \ldots, X_n)} if and only if 
+##{Y = f(X_1, \ldots, X_n)}
+    for some #{f: \mathbb{R}^n \to \mathbb{R}}.
+    }
+  }
+}
+

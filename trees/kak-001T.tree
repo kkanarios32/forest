@@ -1,0 +1,11 @@
+\date{2024-12-27}
+\title{Borel-Cantelli Two}
+\taxon{theorem}
+\import{base-macros}
+\p{If #{\{A_n\}} is an independent sequence of events and #{\sum_{n}P(A_n)} diverges, then #{P(\lim\sup_n A_n) = 1}.}
+\proof{
+    Consider the complement. By independence, we have
+##{P(\bigcap_{k = n}^{n + m} A_k^c) = \prod_{k = n}^{n + m}(1 - P(A_k)) \leq
+    \exp(-\sum_{k = n}^{n + m} P(A_k)),}
+    where the last inequality comes from #{1 - x \leq e^{-x}}. Since the series diverges, taking #{m \to \infty} yields the desired result.
+  }

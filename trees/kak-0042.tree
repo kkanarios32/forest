@@ -1,0 +1,19 @@
+\date{2025-01-30}
+\import{base-macros}
+\title{Chapman-Kolmogorov Equation}
+\taxon{definition}
+\p{
+		        #{p^{m + n}(x,y) = \sum_{z \in S} p^{m}(x,z) p^{n}(z,y)}.
+}
+\proof{
+    Note that
+##{
+      \begin{align*}
+        p^{m + n}(x, y) &= \mathbb{P}(X_{m+n} = y \mid X_{0} = x) \\
+        &= \sum_{z} \mathbb{P}(X_{m+n} = y, X_{m} = z \mid X_{0} = x) \\
+        &= \sum_{z} \mathbb{P}(X_{m+n} = y \mid X_m = z, X_{0} = x) \mathbb{P}(X_m = z \mid X_0 = x) \\
+        &= \sum_{z} \mathbb{P}(X_{m+n} = y \mid X_m = z) \mathbb{P}(X_m = z \mid X_0 = x) \\
+        &= \sum_{z} p^{n}(z, y) p^{m}(x, z)
+      \end{align*}
+    }
+  }

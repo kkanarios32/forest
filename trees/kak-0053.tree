@@ -1,0 +1,7 @@
+\date{2025-02-10}
+\title{Continuous Mapping Theorem}
+\taxon{theorem}
+\p{
+Let #{X_{n}\stackrel{{p}}{{\rightarrow}}X}, and #{f:\mathcal{X}\rightarrow\mathbb{R}} denote a continuous function. Then,
+##{f(X_n) \stackrel{p}{\rightarrow} f(X)}
+  }

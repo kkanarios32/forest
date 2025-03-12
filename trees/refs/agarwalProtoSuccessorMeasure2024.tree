@@ -1,0 +1,28 @@
+% ["references"]
+\title{Proto Successor Measure: Representing the Space of All Possible Solutions of Reinforcement Learning}
+\date{2024-11}
+\author{Siddhant Agarwal}\author{Harshit Sikchi}\author{Peter Stone}\author{Amy Zhang}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2411.19418}
+\meta{external}{https://arxiv.org/abs/2411.19418}
+
+\meta{bibtex}{\startverb
+@misc{agarwalProtoSuccessorMeasure2024,
+ title = {Proto {{Successor Measure}}: {{Representing}} the {{Space}} of {{All Possible Solutions}} of {{Reinforcement Learning}}},
+ author = {Agarwal, Siddhant and Sikchi, Harshit and Stone, Peter and Zhang, Amy},
+ year = {2024},
+ doi = {10.48550/arXiv.2411.19418},
+ urldate = {2024-12-04},
+ number = {arXiv:2411.19418},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/IZN7I7NS/Agarwal et al. - 2024 - Proto Successor Measure Representing the Space of All Possible Solutions of Reinforcement Learning.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Having explored an environment, intelligent agents should be able to transfer their knowledge to most downstream tasks within that environment. Referred to as "zero-shot learning," this ability remains elusive for general-purpose reinforcement learning algorithms. While recent works have attempted to produce zero-shot RL agents, they make assumptions about the nature of the tasks or the structure of the MDP. We present {\textbackslash}emph\{Proto Successor Measure\}: the basis set for all possible solutions of Reinforcement Learning in a dynamical system. We provably show that any possible policy can be represented using an affine combination of these policy independent basis functions. Given a reward function at test time, we simply need to find the right set of linear weights to combine these basis corresponding to the optimal policy. We derive a practical algorithm to learn these basis functions using only interaction data from the environment and show that our approach can produce the optimal policy at test time for any given reward function without additional environmental interactions. Project page: https://agarwalsiddhant10.github.io/projects/psm.html.},
+ primaryclass = {cs},
+ eprint = {2411.19418},
+ month = {November},
+ shorttitle = {Proto {{Successor Measure}}}
+}
+\stopverb}

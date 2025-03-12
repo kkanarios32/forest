@@ -1,0 +1,6 @@
+\date{2025-01-27}
+\title{#{R}-convergence}
+\taxon{definition}
+\p{
+We say the #{R}-convergence is of order #{p\;(\geq1)}, ##{\min_{\mathbf{x}_{*}\in\mathcal{X}}||\mathbf{x}_{k}-\mathbf{x}_{*}||_{2}\;\leq\;\rho_{k},} if the sequence #{\{\rho_{k}\}_{k\geq1}} is [[kak-003Q]] of the order #{p}. 
+  }

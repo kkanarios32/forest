@@ -1,0 +1,12 @@
+% ["references"]
+\title{Lecture Notes on Game Theory}
+\author{Tilman Borgers}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@article{borgersLectureNotesGame,
+ title = {Lecture {{Notes}} on {{Game Theory}}},
+ author = {Borgers, Tilman},
+ file = {/home/kellen/Zotero/storage/CYJDCVHC/Borgers - Lecture Notes on Game Theory.pdf},
+ langid = {english}
+}
+\stopverb}

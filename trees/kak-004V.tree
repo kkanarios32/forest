@@ -1,0 +1,21 @@
+\date{2025-02-03}
+\import{base-macros}
+\title{Newton's Method}
+\p{Consider [second-order taylor approximation](kak-003O) of #{f}
+##{ f(\mathbf{x}_{k}+\mathbf{d})\ \approx\ \underbrace{f(\mathbf{x}_{k})+\mathbf{d}^{\top}\nabla f(\mathbf{x}_{k})+{\frac{1}{2}}\mathbf{d}^{\top}\nabla^{2}f(\mathbf{x}_{k})\mathbf{d}}_{Q_k( \mathbf{d})}}
+Then setting #{\nabla Q_k( \mathbf{d})} and solving for #{\mathbf{d}}, we get
+##{
+  \nabla f( \mathbf{x}_k) + \frac{1}{2}\nabla^2 f( \mathbf{x}_k) \mathbf{d} = 0
+}
+Thus, take \em{Newton's direction}
+##{\mathbf{d}_{k}^{N}=-\left(\nabla^{2}f(\mathbf{x}_{k})\right)^{-1}\nabla f(\mathbf{x}_{k}).}
+}
+
+\remark{
+  Some notes
+    \ul{
+      \li{\strong{Fast convergence:} Newton's method usually has local quadratic convergence.}
+      \li{\strong{Expensive:} requires storing and inverting #{\nabla^2 f( \mathbf{x})}.}
+      \li{\strong{Unstable:} #{\nabla^2 f \succ 0} might not hold for general nonlinear problems.}
+    }
+  }

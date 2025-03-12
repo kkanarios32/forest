@@ -1,0 +1,22 @@
+\date{2025-02-01}
+\import{base-macros}
+\title{Gibb's inequality}
+\taxon{theorem}
+\p{
+    ##{D_{\mathrm{KL}}(P || Q) \geq 0}
+}
+\proof{
+Note that 
+##{
+\begin{align*}
+ D_{\mathrm{KL}}(P || Q) &= \mathbb{E}_P \left[\log\left(\frac{P(x)}{Q(x)}\right)\right] \\
+&= \mathbb{E}_P \left[-\log\left(\frac{Q(x)}{P(x)}\right)\right] \\
+\end{align*}
+}
+By [[kak-002G]],
+##{
+  \begin{align*}
+    D_{\mathrm{KL}}(P || Q) &\geq -\log \left(\mathbb{E}_P \left[\frac{Q(x)}{P(x)}\right]\right) = 0
+  \end{align*}
+}
+}

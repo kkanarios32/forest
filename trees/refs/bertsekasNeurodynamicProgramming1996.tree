@@ -1,0 +1,20 @@
+% ["references"]
+\title{Neuro-dynamic programming}
+\date{1996}
+\author{Dimitri P. Bertsekas}\author{John N. Tsitsiklis}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@book{bertsekasNeurodynamicProgramming1996,
+ title = {Neuro-Dynamic Programming},
+ author = {Bertsekas, Dimitri P. and Tsitsiklis, John N.},
+ year = {1996},
+ isbn = {978-1-886529-10-6},
+ series = {Optimization and Neural Computation Series},
+ publisher = {Athena Scientific},
+ address = {Belmont, Mass},
+ file = {/home/kellen/Zotero/storage/JEIDXXG5/Bertsekas and Tsitsiklis - 1996 - Neuro-dynamic programming.pdf},
+ keywords = {Dynamic programming,Mathematical optimization,Neural networks (Computer Science)},
+ lccn = {QA76.87 .B47 1996},
+ langid = {english}
+}
+\stopverb}

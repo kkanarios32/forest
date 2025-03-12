@@ -1,0 +1,11 @@
+\date{2025-02-11}
+\taxon{definition}
+\title{Achievability}
+\p{A positive real number #{R} is said to be \em{achievable} if for all #{\epsilon > 0} (perturbation parameter) there exists a block length #{N(\epsilon)} such that #{\forall n > N(\epsilon)} the following holds
+\ul{
+    \li{There exists an #{(n, \theta)} [coding system](kak-0059) such that #{\frac{\log \theta}{n} < R + \epsilon} and #{\mathbb{P}|\hat{X}^n \neq X^n| < \epsilon}.}
+  }
+}
+
+\p{Alternatively, a positive real number #{R} is said to be \em{achievable} if there exists a sequence of [coding systems](kak-0059) #{(n, \theta)} such that #{\lim_{n \to \infty} \frac{\log \theta}{n} \to R} and #{\lim_{n \to \infty} \mathbb{P}|\hat{X}^n \neq X^n| \to 0}.
+}

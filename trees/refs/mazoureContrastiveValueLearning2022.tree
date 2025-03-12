@@ -1,0 +1,27 @@
+% ["references"]
+\title{Contrastive Value Learning: Implicit Models for Simple Offline RL}
+\date{2022-11}
+\author{Bogdan Mazoure}\author{Benjamin Eysenbach}\author{Ofir Nachum}\author{Jonathan Tompson}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2211.02100}
+\meta{external}{https://arxiv.org/abs/2211.02100}
+
+\meta{bibtex}{\startverb
+@misc{mazoureContrastiveValueLearning2022,
+ title = {Contrastive {{Value Learning}}: {{Implicit Models}} for {{Simple Offline RL}}},
+ author = {Mazoure, Bogdan and Eysenbach, Benjamin and Nachum, Ofir and Tompson, Jonathan},
+ year = {2022},
+ doi = {10.48550/arXiv.2211.02100},
+ urldate = {2025-01-09},
+ number = {arXiv:2211.02100},
+ publisher = {arXiv},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Model-based reinforcement learning (RL) methods are appealing in the offline setting because they allow an agent to reason about the consequences of actions without interacting with the environment. Prior methods learn a 1-step dynamics model, which predicts the next state given the current state and action. These models do not immediately tell the agent which actions to take, but must be integrated into a larger RL framework. Can we model the environment dynamics in a different way, such that the learned model does directly indicate the value of each action? In this paper, we propose Contrastive Value Learning (CVL), which learns an implicit, multi-step model of the environment dynamics. This model can be learned without access to reward functions, but nonetheless can be used to directly estimate the value of each action, without requiring any TD learning. Because this model represents the multi-step transitions implicitly, it avoids having to predict high-dimensional observations and thus scales to high-dimensional tasks. Our experiments demonstrate that CVL outperforms prior offline RL methods on complex continuous control benchmarks.},
+ primaryclass = {cs},
+ eprint = {2211.02100},
+ month = {November},
+ shorttitle = {Contrastive {{Value Learning}}}
+}
+\stopverb}

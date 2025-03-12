@@ -1,0 +1,6 @@
+\date{2024-12-28}
+\title{Distribution}
+\taxon{definition}
+\p{The \em{distribution} of a simple random variable #{X} is the probability measure #{\mu} defined for all subsets #{A} of the line by 
+##{\mu(A) = P[X \in A]}
+}

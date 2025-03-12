@@ -1,0 +1,30 @@
+\date{2024-11-22}
+\title{Markov Decision Processes}
+\import{base-macros}
+
+\p{
+In reinforcement learning, the interactions between the agent and the environment are often described by an infinite-horizon, discounted Markov Decision Process (MDP).
+}
+
+\transclude{kak-000Z}
+
+\p{From an MDP and a policy #{\pi : S \to A}, we can define a Value function for #{\pi}.}
+
+\transclude{kak-0010}
+
+\p{The expectation is over the randomness of the the transitions #{P} and if the policy #{\pi} is stochastic. When determining a policy we are more interested with the value of an action in a specific state rather than just the state itself. To get this, we can define a #{Q}-function in a similar way.}
+
+\transclude{kak-0011}
+
+\p{If the reward #{r(s,a)} is bounded by some #{R_{\text{max}}}. Then we can trivially bound both the value and action value function by #{(R_{max}/1 - \gamma)}}
+
+\proof{
+    This is just a geometric series i.e. 
+##{\begin{align*}
+V_{M}^{s}(s)&=\mathbb{E}\Big[\sum_{t=0}^{\infty}\gamma^{t}r(s_{t},a_{t})\mid\pi,s_{0}=s\Big] \\
+&\leq \mathbb{E}\Big[\sum_{t=0}^{\infty}\gamma^{t}R_{\text{max}}\mid\pi,s_{0}=s\Big] \\
+&= R_{\text{max}} \sum_{t=0}^{\infty}\gamma^{t} \\
+&= R_{\text{max}}/ 1 - \gamma
+    \end{align*}
+  }
+  }

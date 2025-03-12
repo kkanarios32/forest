@@ -1,0 +1,49 @@
+\title{11/14/2024}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{daily}
+\import{base-macros}
+
+\p{This day did not quite go to plan. The contrastive RL repo is not exactly how imagined it...}
+
+\put\transclude/toc{false}
+\section{Daily Summary}{
+    \strong{GPU Project:}
+    \ul{
+      \li{Have GPU kernel for part of chaining algorithm. Makes a CPU call for another part}
+      \ul{
+        \li{
+          Need to write a kernel for a naturally sequential DP.
+        }
+        \li{
+            My initial impression is just how to reuse any memory accesses that have been done for the current GPU kernel.
+          }
+      }
+      \li{Key question is does even a naive kernel implementation speed up the overall program due to the eliminated memory transfer between GPU and CPU? }
+      }
+    \strong{Contrastive RL:}
+    \ul{
+      \li{Question is how to do contrastive RL in a lifelong setting? i.e. non-episodic and potentially changing reward functions.}
+      \li{Have a pretty good idea how to implement the ant gather environment. However, current setup returns object positions.}
+      \ul{
+          \li{ If there are a lot (potentially infinite) apples / bombs this will not work.}
+          \li{ Need to modify so observations are images, but this makes problem significantly harder. }
+        }
+    }
+}
+
+\section{Tomorrow Todo's}{
+\ul{
+  \li{Might not have time for self-study tomorrow. It is a packed day.}
+  \li{For research,}
+  \ul{
+    \li{\strong{CRL stuff:} Render ant gather environment. Hopefully, before compilers meeting. }
+    \li{\strong{Compilers stuff:} Have meeting. Need actionable goals for runtime information logging. }
+    \li{\strong{LLMs stuff:} After group meeting, must make slides on weak-to-strong. Look at new version of paper.}
+  }
+  \li{If I somehow have extra time, then continue with probability self study. Ideally, I get through the background chapter by Monday. We want to get to probability measures to do probability!}
+  \ul{
+      \li{It seems it may also be a good idea to get some background with discrete stochastic processes, so I may concurrently follow along an MIT courseware course. TBD.}
+    }
+}
+}

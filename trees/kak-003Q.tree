@@ -1,0 +1,6 @@
+\date{2025-01-27}
+\title{#{Q}-convergence}
+\taxon{definition}
+\p{
+We say the #{Q}-convergence is of order #{(p \geq1)} and with factor #{(\gamma > 0)}, if #{\exists k_{0}}, such that #{\forall k\geq k_{0}}: ##{\boxed{\min_{\mathbf{x_{*}}\in\mathcal{X}}||\mathbf{x_{k}}-\mathbf{x_{*}}||_{2}\ \leq\ \gamma\cdot\left(\min_{\mathbf{x_{*}}\in\mathcal{X}}||\mathbf{x_{k-1}}-\mathbf{x_{*}}||_{2}\right)^{p}.}}
+  }

@@ -1,0 +1,21 @@
+% ["references"]
+\title{Step-size Optimization for Continual Learning}
+\date{2024-01}
+\author{Thomas Degris}\author{Khurram Javed}\author{Arsalan Sharifnassab}\author{Yuxin Liu}\author{Richard Sutton}
+\taxon{reference}
+\meta{external}{https://arxiv.org/abs/2401.17401v1}
+
+\meta{bibtex}{\startverb
+@misc{degrisStepsizeOptimizationContinual2024,
+ title = {Step-Size {{Optimization}} for {{Continual Learning}}},
+ author = {Degris, Thomas and Javed, Khurram and Sharifnassab, Arsalan and Liu, Yuxin and Sutton, Richard},
+ year = {2024},
+ urldate = {2024-09-06},
+ howpublished = {https://arxiv.org/abs/2401.17401v1},
+ journal = {arXiv.org},
+ file = {/home/kellen/Zotero/storage/YSGENB8H/Degris et al. - 2024 - Step-size Optimization for Continual Learning.pdf},
+ langid = {english},
+ abstract = {In continual learning, a learner has to keep learning from the data over its whole life time. A key issue is to decide what knowledge to keep and what knowledge to let go. In a neural network, this can be implemented by using a step-size vector to scale how much gradient samples change network weights. Common algorithms, like RMSProp and Adam, use heuristics, specifically normalization, to adapt this step-size vector. In this paper, we show that those heuristics ignore the effect of their adaptation on the overall objective function, for example by moving the step-size vector away from better step-size vectors. On the other hand, stochastic meta-gradient descent algorithms, like IDBD (Sutton, 1992), explicitly optimize the step-size vector with respect to the overall objective function. On simple problems, we show that IDBD is able to consistently improve step-size vectors, where RMSProp and Adam do not. We explain the differences between the two approaches and their respective limitations. We conclude by suggesting that combining both approaches could be a promising future direction to improve the performance of neural networks in continual learning.},
+ month = {January}
+}
+\stopverb}

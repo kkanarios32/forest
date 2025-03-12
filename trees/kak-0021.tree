@@ -1,0 +1,4 @@
+\date{2024-12-28}
+\title{Independence of Random Variable}
+\taxon{definition}
+\p{A sequence of random variables #{X_1, X_2, \ldots} is \em{independent} if the classes #{\sigma(X_1), \sigma(X_2), \ldots} are [independent](kak-001O).}

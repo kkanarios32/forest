@@ -1,0 +1,7 @@
+\date{2025-01-30}
+\taxon{definition}
+\p{
+  We say #{T_y} is a return time if #{T_y = \inf \{n \geq 1 \mid X_n = y\}}, #{\rho_{xy} = \mathbb{P}(T_y < \infty)}. We write the #{k}th return time as 
+	##{T_{y}^{k} = \min \{n > T_y^{k - 1} \mid X_{n} = y\}}
+  with #{T_y^{1} \coloneqq T_{y}}.
+}

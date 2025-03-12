@@ -1,0 +1,13 @@
+% ["references"]
+\title{Occupancy-based Policy Gradient: Estimation, Convergence, and Optimality}
+\author{Audrey Huang}\author{Nan Jiang}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@article{huangOccupancybasedPolicyGradient,
+ title = {Occupancy-Based {{Policy Gradient}}: {{Estimation}}, {{Convergence}}, and {{Optimality}}},
+ author = {Huang, Audrey and Jiang, Nan},
+ file = {/home/kellen/Zotero/storage/P7NI2N95/Huang and Jiang - Occupancy-based Policy Gradient Estimation, Convergence, and Optimality.pdf},
+ langid = {english},
+ abstract = {Occupancy functions play an instrumental role in reinforcement learning (RL) for guiding exploration, handling distribution shift, and optimizing general objectives beyond the expected return. Yet, computationally efficient policy optimization methods that use (only) occupancy functions are virtually non-existent. In this paper, we establish the theoretical foundations of model-free policy gradient (PG) methods that compute the gradient through the occupancy for both online and offline RL, without modeling value functions. Our algorithms reduce gradient estimation to squared-loss regression and are computationally oracle-efficient. We characterize the sample complexities of both local and global convergence, accounting for both finite-sample estimation error and the roles of exploration (online) and data coverage (offline). Occupancy-based PG naturally handles arbitrary offline data distributions, and, with one-line algorithmic changes, can be adapted to optimize any differentiable objective functional.}
+}
+\stopverb}

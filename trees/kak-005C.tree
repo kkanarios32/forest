@@ -1,0 +1,22 @@
+\date{2025-02-11}
+\import{base-macros}
+\title{Entropy as [MRSC](kak-005B)}
+\taxon{theorem}
+\p{
+##{R_s = H(P_X) = H(X) = -\sum_{x \in \mathcal{X}} P_X(x) \log P_X(x)}
+}
+
+\proof{
+  \p{
+    First we will show that #{H(X)} is [achievable](kak-005A). Then we will have #{R_s \leq H(X)} by definition. Idea: take #{\theta = 2^{n(H(X) + \epsilon)} + 1}. Give each element in typical set a unique index, everything else the same index. By properties of typical set, #{\mathbb{P}(\text{error}) < \epsilon} for sufficiently large #{n}.
+  }
+  \p{
+      For the other direction, suppose we have some #{R} [achievable](kak-005A). By definition, for all #{\epsilon > 0}, for all sufficiently large #{n} there exists a [kak-0059] with parameters #{(n, \theta)} such that
+##{
+        \begin{align*}
+          \frac{\log \theta}{n} < R + \epsilon, \quad \mathbb{P}(\text{error}) < \epsilon
+        \end{align*}
+      }
+      Use [[kak-0050]] to show this is not possible.
+    }
+}

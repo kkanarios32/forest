@@ -1,0 +1,1771 @@
+[
+  {
+    "URL": "https://arxiv.org/abs/2501.12948",
+    "author": [
+      {
+        "family": "DeepSeek-AI"
+      },
+      {
+        "family": "Guo",
+        "given": "Daya"
+      },
+      {
+        "family": "Yang",
+        "given": "Dejian"
+      },
+      {
+        "family": "Zhang",
+        "given": "Haowei"
+      },
+      {
+        "family": "Song",
+        "given": "Junxiao"
+      },
+      {
+        "family": "Zhang",
+        "given": "Ruoyu"
+      },
+      {
+        "family": "Xu",
+        "given": "Runxin"
+      },
+      {
+        "family": "Zhu",
+        "given": "Qihao"
+      },
+      {
+        "family": "Ma",
+        "given": "Shirong"
+      },
+      {
+        "family": "Wang",
+        "given": "Peiyi"
+      },
+      {
+        "family": "Bi",
+        "given": "Xiao"
+      },
+      {
+        "family": "Zhang",
+        "given": "Xiaokang"
+      },
+      {
+        "family": "Yu",
+        "given": "Xingkai"
+      },
+      {
+        "family": "Wu",
+        "given": "Yu"
+      },
+      {
+        "family": "Wu",
+        "given": "Z. F."
+      },
+      {
+        "family": "Gou",
+        "given": "Zhibin"
+      },
+      {
+        "family": "Shao",
+        "given": "Zhihong"
+      },
+      {
+        "family": "Li",
+        "given": "Zhuoshu"
+      },
+      {
+        "family": "Gao",
+        "given": "Ziyi"
+      },
+      {
+        "family": "Liu",
+        "given": "Aixin"
+      },
+      {
+        "family": "Xue",
+        "given": "Bing"
+      },
+      {
+        "family": "Wang",
+        "given": "Bingxuan"
+      },
+      {
+        "family": "Wu",
+        "given": "Bochao"
+      },
+      {
+        "family": "Feng",
+        "given": "Bei"
+      },
+      {
+        "family": "Lu",
+        "given": "Chengda"
+      },
+      {
+        "family": "Zhao",
+        "given": "Chenggang"
+      },
+      {
+        "family": "Deng",
+        "given": "Chengqi"
+      },
+      {
+        "family": "Zhang",
+        "given": "Chenyu"
+      },
+      {
+        "family": "Ruan",
+        "given": "Chong"
+      },
+      {
+        "family": "Dai",
+        "given": "Damai"
+      },
+      {
+        "family": "Chen",
+        "given": "Deli"
+      },
+      {
+        "family": "Ji",
+        "given": "Dongjie"
+      },
+      {
+        "family": "Li",
+        "given": "Erhang"
+      },
+      {
+        "family": "Lin",
+        "given": "Fangyun"
+      },
+      {
+        "family": "Dai",
+        "given": "Fucong"
+      },
+      {
+        "family": "Luo",
+        "given": "Fuli"
+      },
+      {
+        "family": "Hao",
+        "given": "Guangbo"
+      },
+      {
+        "family": "Chen",
+        "given": "Guanting"
+      },
+      {
+        "family": "Li",
+        "given": "Guowei"
+      },
+      {
+        "family": "Zhang",
+        "given": "H."
+      },
+      {
+        "family": "Bao",
+        "given": "Han"
+      },
+      {
+        "family": "Xu",
+        "given": "Hanwei"
+      },
+      {
+        "family": "Wang",
+        "given": "Haocheng"
+      },
+      {
+        "family": "Ding",
+        "given": "Honghui"
+      },
+      {
+        "family": "Xin",
+        "given": "Huajian"
+      },
+      {
+        "family": "Gao",
+        "given": "Huazuo"
+      },
+      {
+        "family": "Qu",
+        "given": "Hui"
+      },
+      {
+        "family": "Li",
+        "given": "Hui"
+      },
+      {
+        "family": "Guo",
+        "given": "Jianzhong"
+      },
+      {
+        "family": "Li",
+        "given": "Jiashi"
+      },
+      {
+        "family": "Wang",
+        "given": "Jiawei"
+      },
+      {
+        "family": "Chen",
+        "given": "Jingchang"
+      },
+      {
+        "family": "Yuan",
+        "given": "Jingyang"
+      },
+      {
+        "family": "Qiu",
+        "given": "Junjie"
+      },
+      {
+        "family": "Li",
+        "given": "Junlong"
+      },
+      {
+        "family": "Cai",
+        "given": "J. L."
+      },
+      {
+        "family": "Ni",
+        "given": "Jiaqi"
+      },
+      {
+        "family": "Liang",
+        "given": "Jian"
+      },
+      {
+        "family": "Chen",
+        "given": "Jin"
+      },
+      {
+        "family": "Dong",
+        "given": "Kai"
+      },
+      {
+        "family": "Hu",
+        "given": "Kai"
+      },
+      {
+        "family": "Gao",
+        "given": "Kaige"
+      },
+      {
+        "family": "Guan",
+        "given": "Kang"
+      },
+      {
+        "family": "Huang",
+        "given": "Kexin"
+      },
+      {
+        "family": "Yu",
+        "given": "Kuai"
+      },
+      {
+        "family": "Wang",
+        "given": "Lean"
+      },
+      {
+        "family": "Zhang",
+        "given": "Lecong"
+      },
+      {
+        "family": "Zhao",
+        "given": "Liang"
+      },
+      {
+        "family": "Wang",
+        "given": "Litong"
+      },
+      {
+        "family": "Zhang",
+        "given": "Liyue"
+      },
+      {
+        "family": "Xu",
+        "given": "Lei"
+      },
+      {
+        "family": "Xia",
+        "given": "Leyi"
+      },
+      {
+        "family": "Zhang",
+        "given": "Mingchuan"
+      },
+      {
+        "family": "Zhang",
+        "given": "Minghua"
+      },
+      {
+        "family": "Tang",
+        "given": "Minghui"
+      },
+      {
+        "family": "Li",
+        "given": "Meng"
+      },
+      {
+        "family": "Wang",
+        "given": "Miaojun"
+      },
+      {
+        "family": "Li",
+        "given": "Mingming"
+      },
+      {
+        "family": "Tian",
+        "given": "Ning"
+      },
+      {
+        "family": "Huang",
+        "given": "Panpan"
+      },
+      {
+        "family": "Zhang",
+        "given": "Peng"
+      },
+      {
+        "family": "Wang",
+        "given": "Qiancheng"
+      },
+      {
+        "family": "Chen",
+        "given": "Qinyu"
+      },
+      {
+        "family": "Du",
+        "given": "Qiushi"
+      },
+      {
+        "family": "Ge",
+        "given": "Ruiqi"
+      },
+      {
+        "family": "Zhang",
+        "given": "Ruisong"
+      },
+      {
+        "family": "Pan",
+        "given": "Ruizhe"
+      },
+      {
+        "family": "Wang",
+        "given": "Runji"
+      },
+      {
+        "family": "Chen",
+        "given": "R. J."
+      },
+      {
+        "family": "Jin",
+        "given": "R. L."
+      },
+      {
+        "family": "Chen",
+        "given": "Ruyi"
+      },
+      {
+        "family": "Lu",
+        "given": "Shanghao"
+      },
+      {
+        "family": "Zhou",
+        "given": "Shangyan"
+      },
+      {
+        "family": "Chen",
+        "given": "Shanhuang"
+      },
+      {
+        "family": "Ye",
+        "given": "Shengfeng"
+      },
+      {
+        "family": "Wang",
+        "given": "Shiyu"
+      },
+      {
+        "family": "Yu",
+        "given": "Shuiping"
+      },
+      {
+        "family": "Zhou",
+        "given": "Shunfeng"
+      },
+      {
+        "family": "Pan",
+        "given": "Shuting"
+      },
+      {
+        "family": "Li",
+        "given": "S. S."
+      },
+      {
+        "family": "Zhou",
+        "given": "Shuang"
+      },
+      {
+        "family": "Wu",
+        "given": "Shaoqing"
+      },
+      {
+        "family": "Ye",
+        "given": "Shengfeng"
+      },
+      {
+        "family": "Yun",
+        "given": "Tao"
+      },
+      {
+        "family": "Pei",
+        "given": "Tian"
+      },
+      {
+        "family": "Sun",
+        "given": "Tianyu"
+      },
+      {
+        "family": "Wang",
+        "given": "T."
+      },
+      {
+        "family": "Zeng",
+        "given": "Wangding"
+      },
+      {
+        "family": "Zhao",
+        "given": "Wanjia"
+      },
+      {
+        "family": "Liu",
+        "given": "Wen"
+      },
+      {
+        "family": "Liang",
+        "given": "Wenfeng"
+      },
+      {
+        "family": "Gao",
+        "given": "Wenjun"
+      },
+      {
+        "family": "Yu",
+        "given": "Wenqin"
+      },
+      {
+        "family": "Zhang",
+        "given": "Wentao"
+      },
+      {
+        "family": "Xiao",
+        "given": "W. L."
+      },
+      {
+        "family": "An",
+        "given": "Wei"
+      },
+      {
+        "family": "Liu",
+        "given": "Xiaodong"
+      },
+      {
+        "family": "Wang",
+        "given": "Xiaohan"
+      },
+      {
+        "family": "Chen",
+        "given": "Xiaokang"
+      },
+      {
+        "family": "Nie",
+        "given": "Xiaotao"
+      },
+      {
+        "family": "Cheng",
+        "given": "Xin"
+      },
+      {
+        "family": "Liu",
+        "given": "Xin"
+      },
+      {
+        "family": "Xie",
+        "given": "Xin"
+      },
+      {
+        "family": "Liu",
+        "given": "Xingchao"
+      },
+      {
+        "family": "Yang",
+        "given": "Xinyu"
+      },
+      {
+        "family": "Li",
+        "given": "Xinyuan"
+      },
+      {
+        "family": "Su",
+        "given": "Xuecheng"
+      },
+      {
+        "family": "Lin",
+        "given": "Xuheng"
+      },
+      {
+        "family": "Li",
+        "given": "X. Q."
+      },
+      {
+        "family": "Jin",
+        "given": "Xiangyue"
+      },
+      {
+        "family": "Shen",
+        "given": "Xiaojin"
+      },
+      {
+        "family": "Chen",
+        "given": "Xiaosha"
+      },
+      {
+        "family": "Sun",
+        "given": "Xiaowen"
+      },
+      {
+        "family": "Wang",
+        "given": "Xiaoxiang"
+      },
+      {
+        "family": "Song",
+        "given": "Xinnan"
+      },
+      {
+        "family": "Zhou",
+        "given": "Xinyi"
+      },
+      {
+        "family": "Wang",
+        "given": "Xianzu"
+      },
+      {
+        "family": "Shan",
+        "given": "Xinxia"
+      },
+      {
+        "family": "Li",
+        "given": "Y. K."
+      },
+      {
+        "family": "Wang",
+        "given": "Y. Q."
+      },
+      {
+        "family": "Wei",
+        "given": "Y. X."
+      },
+      {
+        "family": "Zhang",
+        "given": "Yang"
+      },
+      {
+        "family": "Xu",
+        "given": "Yanhong"
+      },
+      {
+        "family": "Li",
+        "given": "Yao"
+      },
+      {
+        "family": "Zhao",
+        "given": "Yao"
+      },
+      {
+        "family": "Sun",
+        "given": "Yaofeng"
+      },
+      {
+        "family": "Wang",
+        "given": "Yaohui"
+      },
+      {
+        "family": "Yu",
+        "given": "Yi"
+      },
+      {
+        "family": "Zhang",
+        "given": "Yichao"
+      },
+      {
+        "family": "Shi",
+        "given": "Yifan"
+      },
+      {
+        "family": "Xiong",
+        "given": "Yiliang"
+      },
+      {
+        "family": "He",
+        "given": "Ying"
+      },
+      {
+        "family": "Piao",
+        "given": "Yishi"
+      },
+      {
+        "family": "Wang",
+        "given": "Yisong"
+      },
+      {
+        "family": "Tan",
+        "given": "Yixuan"
+      },
+      {
+        "family": "Ma",
+        "given": "Yiyang"
+      },
+      {
+        "family": "Liu",
+        "given": "Yiyuan"
+      },
+      {
+        "family": "Guo",
+        "given": "Yongqiang"
+      },
+      {
+        "family": "Ou",
+        "given": "Yuan"
+      },
+      {
+        "family": "Wang",
+        "given": "Yuduan"
+      },
+      {
+        "family": "Gong",
+        "given": "Yue"
+      },
+      {
+        "family": "Zou",
+        "given": "Yuheng"
+      },
+      {
+        "family": "He",
+        "given": "Yujia"
+      },
+      {
+        "family": "Xiong",
+        "given": "Yunfan"
+      },
+      {
+        "family": "Luo",
+        "given": "Yuxiang"
+      },
+      {
+        "family": "You",
+        "given": "Yuxiang"
+      },
+      {
+        "family": "Liu",
+        "given": "Yuxuan"
+      },
+      {
+        "family": "Zhou",
+        "given": "Yuyang"
+      },
+      {
+        "family": "Zhu",
+        "given": "Y. X."
+      },
+      {
+        "family": "Xu",
+        "given": "Yanhong"
+      },
+      {
+        "family": "Huang",
+        "given": "Yanping"
+      },
+      {
+        "family": "Li",
+        "given": "Yaohui"
+      },
+      {
+        "family": "Zheng",
+        "given": "Yi"
+      },
+      {
+        "family": "Zhu",
+        "given": "Yuchen"
+      },
+      {
+        "family": "Ma",
+        "given": "Yunxian"
+      },
+      {
+        "family": "Tang",
+        "given": "Ying"
+      },
+      {
+        "family": "Zha",
+        "given": "Yukun"
+      },
+      {
+        "family": "Yan",
+        "given": "Yuting"
+      },
+      {
+        "family": "Ren",
+        "given": "Z. Z."
+      },
+      {
+        "family": "Ren",
+        "given": "Zehui"
+      },
+      {
+        "family": "Sha",
+        "given": "Zhangli"
+      },
+      {
+        "family": "Fu",
+        "given": "Zhe"
+      },
+      {
+        "family": "Xu",
+        "given": "Zhean"
+      },
+      {
+        "family": "Xie",
+        "given": "Zhenda"
+      },
+      {
+        "family": "Zhang",
+        "given": "Zhengyan"
+      },
+      {
+        "family": "Hao",
+        "given": "Zhewen"
+      },
+      {
+        "family": "Ma",
+        "given": "Zhicheng"
+      },
+      {
+        "family": "Yan",
+        "given": "Zhigang"
+      },
+      {
+        "family": "Wu",
+        "given": "Zhiyu"
+      },
+      {
+        "family": "Gu",
+        "given": "Zihui"
+      },
+      {
+        "family": "Zhu",
+        "given": "Zijia"
+      },
+      {
+        "family": "Liu",
+        "given": "Zijun"
+      },
+      {
+        "family": "Li",
+        "given": "Zilin"
+      },
+      {
+        "family": "Xie",
+        "given": "Ziwei"
+      },
+      {
+        "family": "Song",
+        "given": "Ziyang"
+      },
+      {
+        "family": "Pan",
+        "given": "Zizheng"
+      },
+      {
+        "family": "Huang",
+        "given": "Zhen"
+      },
+      {
+        "family": "Xu",
+        "given": "Zhipeng"
+      },
+      {
+        "family": "Zhang",
+        "given": "Zhongyu"
+      },
+      {
+        "family": "Zhang",
+        "given": "Zhen"
+      }
+    ],
+    "id": "deepseekai2025deepseekr1incentivizingreasoningcapability",
+    "issued": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "title": "DeepSeek-R1: Incentivizing reasoning capability in LLMs via reinforcement learning",
+    "title-short": "DeepSeek-R1",
+    "type": ""
+  },
+  {
+    "URL": "https://arxiv.org/abs/2412.19437",
+    "author": [
+      {
+        "family": "DeepSeek-AI"
+      },
+      {
+        "family": "Liu",
+        "given": "Aixin"
+      },
+      {
+        "family": "Feng",
+        "given": "Bei"
+      },
+      {
+        "family": "Xue",
+        "given": "Bing"
+      },
+      {
+        "family": "Wang",
+        "given": "Bingxuan"
+      },
+      {
+        "family": "Wu",
+        "given": "Bochao"
+      },
+      {
+        "family": "Lu",
+        "given": "Chengda"
+      },
+      {
+        "family": "Zhao",
+        "given": "Chenggang"
+      },
+      {
+        "family": "Deng",
+        "given": "Chengqi"
+      },
+      {
+        "family": "Zhang",
+        "given": "Chenyu"
+      },
+      {
+        "family": "Ruan",
+        "given": "Chong"
+      },
+      {
+        "family": "Dai",
+        "given": "Damai"
+      },
+      {
+        "family": "Guo",
+        "given": "Daya"
+      },
+      {
+        "family": "Yang",
+        "given": "Dejian"
+      },
+      {
+        "family": "Chen",
+        "given": "Deli"
+      },
+      {
+        "family": "Ji",
+        "given": "Dongjie"
+      },
+      {
+        "family": "Li",
+        "given": "Erhang"
+      },
+      {
+        "family": "Lin",
+        "given": "Fangyun"
+      },
+      {
+        "family": "Dai",
+        "given": "Fucong"
+      },
+      {
+        "family": "Luo",
+        "given": "Fuli"
+      },
+      {
+        "family": "Hao",
+        "given": "Guangbo"
+      },
+      {
+        "family": "Chen",
+        "given": "Guanting"
+      },
+      {
+        "family": "Li",
+        "given": "Guowei"
+      },
+      {
+        "family": "Zhang",
+        "given": "H."
+      },
+      {
+        "family": "Bao",
+        "given": "Han"
+      },
+      {
+        "family": "Xu",
+        "given": "Hanwei"
+      },
+      {
+        "family": "Wang",
+        "given": "Haocheng"
+      },
+      {
+        "family": "Zhang",
+        "given": "Haowei"
+      },
+      {
+        "family": "Ding",
+        "given": "Honghui"
+      },
+      {
+        "family": "Xin",
+        "given": "Huajian"
+      },
+      {
+        "family": "Gao",
+        "given": "Huazuo"
+      },
+      {
+        "family": "Li",
+        "given": "Hui"
+      },
+      {
+        "family": "Qu",
+        "given": "Hui"
+      },
+      {
+        "family": "Cai",
+        "given": "J. L."
+      },
+      {
+        "family": "Liang",
+        "given": "Jian"
+      },
+      {
+        "family": "Guo",
+        "given": "Jianzhong"
+      },
+      {
+        "family": "Ni",
+        "given": "Jiaqi"
+      },
+      {
+        "family": "Li",
+        "given": "Jiashi"
+      },
+      {
+        "family": "Wang",
+        "given": "Jiawei"
+      },
+      {
+        "family": "Chen",
+        "given": "Jin"
+      },
+      {
+        "family": "Chen",
+        "given": "Jingchang"
+      },
+      {
+        "family": "Yuan",
+        "given": "Jingyang"
+      },
+      {
+        "family": "Qiu",
+        "given": "Junjie"
+      },
+      {
+        "family": "Li",
+        "given": "Junlong"
+      },
+      {
+        "family": "Song",
+        "given": "Junxiao"
+      },
+      {
+        "family": "Dong",
+        "given": "Kai"
+      },
+      {
+        "family": "Hu",
+        "given": "Kai"
+      },
+      {
+        "family": "Gao",
+        "given": "Kaige"
+      },
+      {
+        "family": "Guan",
+        "given": "Kang"
+      },
+      {
+        "family": "Huang",
+        "given": "Kexin"
+      },
+      {
+        "family": "Yu",
+        "given": "Kuai"
+      },
+      {
+        "family": "Wang",
+        "given": "Lean"
+      },
+      {
+        "family": "Zhang",
+        "given": "Lecong"
+      },
+      {
+        "family": "Xu",
+        "given": "Lei"
+      },
+      {
+        "family": "Xia",
+        "given": "Leyi"
+      },
+      {
+        "family": "Zhao",
+        "given": "Liang"
+      },
+      {
+        "family": "Wang",
+        "given": "Litong"
+      },
+      {
+        "family": "Zhang",
+        "given": "Liyue"
+      },
+      {
+        "family": "Li",
+        "given": "Meng"
+      },
+      {
+        "family": "Wang",
+        "given": "Miaojun"
+      },
+      {
+        "family": "Zhang",
+        "given": "Mingchuan"
+      },
+      {
+        "family": "Zhang",
+        "given": "Minghua"
+      },
+      {
+        "family": "Tang",
+        "given": "Minghui"
+      },
+      {
+        "family": "Li",
+        "given": "Mingming"
+      },
+      {
+        "family": "Tian",
+        "given": "Ning"
+      },
+      {
+        "family": "Huang",
+        "given": "Panpan"
+      },
+      {
+        "family": "Wang",
+        "given": "Peiyi"
+      },
+      {
+        "family": "Zhang",
+        "given": "Peng"
+      },
+      {
+        "family": "Wang",
+        "given": "Qiancheng"
+      },
+      {
+        "family": "Zhu",
+        "given": "Qihao"
+      },
+      {
+        "family": "Chen",
+        "given": "Qinyu"
+      },
+      {
+        "family": "Du",
+        "given": "Qiushi"
+      },
+      {
+        "family": "Chen",
+        "given": "R. J."
+      },
+      {
+        "family": "Jin",
+        "given": "R. L."
+      },
+      {
+        "family": "Ge",
+        "given": "Ruiqi"
+      },
+      {
+        "family": "Zhang",
+        "given": "Ruisong"
+      },
+      {
+        "family": "Pan",
+        "given": "Ruizhe"
+      },
+      {
+        "family": "Wang",
+        "given": "Runji"
+      },
+      {
+        "family": "Xu",
+        "given": "Runxin"
+      },
+      {
+        "family": "Zhang",
+        "given": "Ruoyu"
+      },
+      {
+        "family": "Chen",
+        "given": "Ruyi"
+      },
+      {
+        "family": "Li",
+        "given": "S. S."
+      },
+      {
+        "family": "Lu",
+        "given": "Shanghao"
+      },
+      {
+        "family": "Zhou",
+        "given": "Shangyan"
+      },
+      {
+        "family": "Chen",
+        "given": "Shanhuang"
+      },
+      {
+        "family": "Wu",
+        "given": "Shaoqing"
+      },
+      {
+        "family": "Ye",
+        "given": "Shengfeng"
+      },
+      {
+        "family": "Ye",
+        "given": "Shengfeng"
+      },
+      {
+        "family": "Ma",
+        "given": "Shirong"
+      },
+      {
+        "family": "Wang",
+        "given": "Shiyu"
+      },
+      {
+        "family": "Zhou",
+        "given": "Shuang"
+      },
+      {
+        "family": "Yu",
+        "given": "Shuiping"
+      },
+      {
+        "family": "Zhou",
+        "given": "Shunfeng"
+      },
+      {
+        "family": "Pan",
+        "given": "Shuting"
+      },
+      {
+        "family": "Wang",
+        "given": "T."
+      },
+      {
+        "family": "Yun",
+        "given": "Tao"
+      },
+      {
+        "family": "Pei",
+        "given": "Tian"
+      },
+      {
+        "family": "Sun",
+        "given": "Tianyu"
+      },
+      {
+        "family": "Xiao",
+        "given": "W. L."
+      },
+      {
+        "family": "Zeng",
+        "given": "Wangding"
+      },
+      {
+        "family": "Zhao",
+        "given": "Wanjia"
+      },
+      {
+        "family": "An",
+        "given": "Wei"
+      },
+      {
+        "family": "Liu",
+        "given": "Wen"
+      },
+      {
+        "family": "Liang",
+        "given": "Wenfeng"
+      },
+      {
+        "family": "Gao",
+        "given": "Wenjun"
+      },
+      {
+        "family": "Yu",
+        "given": "Wenqin"
+      },
+      {
+        "family": "Zhang",
+        "given": "Wentao"
+      },
+      {
+        "family": "Li",
+        "given": "X. Q."
+      },
+      {
+        "family": "Jin",
+        "given": "Xiangyue"
+      },
+      {
+        "family": "Wang",
+        "given": "Xianzu"
+      },
+      {
+        "family": "Bi",
+        "given": "Xiao"
+      },
+      {
+        "family": "Liu",
+        "given": "Xiaodong"
+      },
+      {
+        "family": "Wang",
+        "given": "Xiaohan"
+      },
+      {
+        "family": "Shen",
+        "given": "Xiaojin"
+      },
+      {
+        "family": "Chen",
+        "given": "Xiaokang"
+      },
+      {
+        "family": "Zhang",
+        "given": "Xiaokang"
+      },
+      {
+        "family": "Chen",
+        "given": "Xiaosha"
+      },
+      {
+        "family": "Nie",
+        "given": "Xiaotao"
+      },
+      {
+        "family": "Sun",
+        "given": "Xiaowen"
+      },
+      {
+        "family": "Wang",
+        "given": "Xiaoxiang"
+      },
+      {
+        "family": "Cheng",
+        "given": "Xin"
+      },
+      {
+        "family": "Liu",
+        "given": "Xin"
+      },
+      {
+        "family": "Xie",
+        "given": "Xin"
+      },
+      {
+        "family": "Liu",
+        "given": "Xingchao"
+      },
+      {
+        "family": "Yu",
+        "given": "Xingkai"
+      },
+      {
+        "family": "Song",
+        "given": "Xinnan"
+      },
+      {
+        "family": "Shan",
+        "given": "Xinxia"
+      },
+      {
+        "family": "Zhou",
+        "given": "Xinyi"
+      },
+      {
+        "family": "Yang",
+        "given": "Xinyu"
+      },
+      {
+        "family": "Li",
+        "given": "Xinyuan"
+      },
+      {
+        "family": "Su",
+        "given": "Xuecheng"
+      },
+      {
+        "family": "Lin",
+        "given": "Xuheng"
+      },
+      {
+        "family": "Li",
+        "given": "Y. K."
+      },
+      {
+        "family": "Wang",
+        "given": "Y. Q."
+      },
+      {
+        "family": "Wei",
+        "given": "Y. X."
+      },
+      {
+        "family": "Zhu",
+        "given": "Y. X."
+      },
+      {
+        "family": "Zhang",
+        "given": "Yang"
+      },
+      {
+        "family": "Xu",
+        "given": "Yanhong"
+      },
+      {
+        "family": "Xu",
+        "given": "Yanhong"
+      },
+      {
+        "family": "Huang",
+        "given": "Yanping"
+      },
+      {
+        "family": "Li",
+        "given": "Yao"
+      },
+      {
+        "family": "Zhao",
+        "given": "Yao"
+      },
+      {
+        "family": "Sun",
+        "given": "Yaofeng"
+      },
+      {
+        "family": "Li",
+        "given": "Yaohui"
+      },
+      {
+        "family": "Wang",
+        "given": "Yaohui"
+      },
+      {
+        "family": "Yu",
+        "given": "Yi"
+      },
+      {
+        "family": "Zheng",
+        "given": "Yi"
+      },
+      {
+        "family": "Zhang",
+        "given": "Yichao"
+      },
+      {
+        "family": "Shi",
+        "given": "Yifan"
+      },
+      {
+        "family": "Xiong",
+        "given": "Yiliang"
+      },
+      {
+        "family": "He",
+        "given": "Ying"
+      },
+      {
+        "family": "Tang",
+        "given": "Ying"
+      },
+      {
+        "family": "Piao",
+        "given": "Yishi"
+      },
+      {
+        "family": "Wang",
+        "given": "Yisong"
+      },
+      {
+        "family": "Tan",
+        "given": "Yixuan"
+      },
+      {
+        "family": "Ma",
+        "given": "Yiyang"
+      },
+      {
+        "family": "Liu",
+        "given": "Yiyuan"
+      },
+      {
+        "family": "Guo",
+        "given": "Yongqiang"
+      },
+      {
+        "family": "Wu",
+        "given": "Yu"
+      },
+      {
+        "family": "Ou",
+        "given": "Yuan"
+      },
+      {
+        "family": "Zhu",
+        "given": "Yuchen"
+      },
+      {
+        "family": "Wang",
+        "given": "Yuduan"
+      },
+      {
+        "family": "Gong",
+        "given": "Yue"
+      },
+      {
+        "family": "Zou",
+        "given": "Yuheng"
+      },
+      {
+        "family": "He",
+        "given": "Yujia"
+      },
+      {
+        "family": "Zha",
+        "given": "Yukun"
+      },
+      {
+        "family": "Xiong",
+        "given": "Yunfan"
+      },
+      {
+        "family": "Ma",
+        "given": "Yunxian"
+      },
+      {
+        "family": "Yan",
+        "given": "Yuting"
+      },
+      {
+        "family": "Luo",
+        "given": "Yuxiang"
+      },
+      {
+        "family": "You",
+        "given": "Yuxiang"
+      },
+      {
+        "family": "Liu",
+        "given": "Yuxuan"
+      },
+      {
+        "family": "Zhou",
+        "given": "Yuyang"
+      },
+      {
+        "family": "Wu",
+        "given": "Z. F."
+      },
+      {
+        "family": "Ren",
+        "given": "Z. Z."
+      },
+      {
+        "family": "Ren",
+        "given": "Zehui"
+      },
+      {
+        "family": "Sha",
+        "given": "Zhangli"
+      },
+      {
+        "family": "Fu",
+        "given": "Zhe"
+      },
+      {
+        "family": "Xu",
+        "given": "Zhean"
+      },
+      {
+        "family": "Huang",
+        "given": "Zhen"
+      },
+      {
+        "family": "Zhang",
+        "given": "Zhen"
+      },
+      {
+        "family": "Xie",
+        "given": "Zhenda"
+      },
+      {
+        "family": "Zhang",
+        "given": "Zhengyan"
+      },
+      {
+        "family": "Hao",
+        "given": "Zhewen"
+      },
+      {
+        "family": "Gou",
+        "given": "Zhibin"
+      },
+      {
+        "family": "Ma",
+        "given": "Zhicheng"
+      },
+      {
+        "family": "Yan",
+        "given": "Zhigang"
+      },
+      {
+        "family": "Shao",
+        "given": "Zhihong"
+      },
+      {
+        "family": "Xu",
+        "given": "Zhipeng"
+      },
+      {
+        "family": "Wu",
+        "given": "Zhiyu"
+      },
+      {
+        "family": "Zhang",
+        "given": "Zhongyu"
+      },
+      {
+        "family": "Li",
+        "given": "Zhuoshu"
+      },
+      {
+        "family": "Gu",
+        "given": "Zihui"
+      },
+      {
+        "family": "Zhu",
+        "given": "Zijia"
+      },
+      {
+        "family": "Liu",
+        "given": "Zijun"
+      },
+      {
+        "family": "Li",
+        "given": "Zilin"
+      },
+      {
+        "family": "Xie",
+        "given": "Ziwei"
+      },
+      {
+        "family": "Song",
+        "given": "Ziyang"
+      },
+      {
+        "family": "Gao",
+        "given": "Ziyi"
+      },
+      {
+        "family": "Pan",
+        "given": "Zizheng"
+      }
+    ],
+    "id": "deepseekai2024deepseekv3technicalreport",
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "title": "DeepSeek-V3 technical report",
+    "type": ""
+  },
+  {
+    "URL": "https://arxiv.org/abs/2402.03300",
+    "author": [
+      {
+        "family": "Shao",
+        "given": "Zhihong"
+      },
+      {
+        "family": "Wang",
+        "given": "Peiyi"
+      },
+      {
+        "family": "Zhu",
+        "given": "Qihao"
+      },
+      {
+        "family": "Xu",
+        "given": "Runxin"
+      },
+      {
+        "family": "Song",
+        "given": "Junxiao"
+      },
+      {
+        "family": "Bi",
+        "given": "Xiao"
+      },
+      {
+        "family": "Zhang",
+        "given": "Haowei"
+      },
+      {
+        "family": "Zhang",
+        "given": "Mingchuan"
+      },
+      {
+        "family": "Li",
+        "given": "Y. K."
+      },
+      {
+        "family": "Wu",
+        "given": "Y."
+      },
+      {
+        "family": "Guo",
+        "given": "Daya"
+      }
+    ],
+    "id": "shao2024deepseekmathpushinglimitsmathematical",
+    "issued": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "title": "DeepSeekMath: Pushing the limits of mathematical reasoning in open language models",
+    "title-short": "DeepSeekMath",
+    "type": ""
+  },
+  {
+    "URL": "https://arxiv.org/abs/1707.06347",
+    "author": [
+      {
+        "family": "Schulman",
+        "given": "John"
+      },
+      {
+        "family": "Wolski",
+        "given": "Filip"
+      },
+      {
+        "family": "Dhariwal",
+        "given": "Prafulla"
+      },
+      {
+        "family": "Radford",
+        "given": "Alec"
+      },
+      {
+        "family": "Klimov",
+        "given": "Oleg"
+      }
+    ],
+    "id": "schulman2017proximalpolicyoptimizationalgorithms",
+    "issued": {
+      "date-parts": [
+        [
+          2017
+        ]
+      ]
+    },
+    "title": "Proximal policy optimization algorithms",
+    "type": ""
+  },
+  {
+    "author": [
+      {
+        "family": "Zeng",
+        "given": "Weihao"
+      },
+      {
+        "family": "Huang",
+        "given": "Yuzhen"
+      },
+      {
+        "family": "Liu",
+        "given": "Wei"
+      },
+      {
+        "family": "He",
+        "given": "Keqing"
+      },
+      {
+        "family": "Liu",
+        "given": "Qian"
+      },
+      {
+        "family": "Ma",
+        "given": "Zejun"
+      },
+      {
+        "family": "He",
+        "given": "Junxian"
+      }
+    ],
+    "id": "zeng2025simplerl",
+    "issued": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "note": "Notion Blog",
+    "publisher": "https://hkust-nlp.notion.site/simplerl-reason",
+    "title": "7B model and 8K examples: Emerging reasoning with reinforcement learning is both effective and efficient",
+    "title-short": "7B model and 8K examples",
+    "type": ""
+  }
+]

@@ -1,0 +1,28 @@
+\date{2025-02-02}
+\title{Notes on Systems Programming}
+\tag{note}
+\tag{unfinished}
+\tag{systems}
+\import{base-macros}
+
+\tag{systems}
+
+\subtree{
+\title{Reading List / Useful Resources}
+  \p{
+  \ul{
+      \li{[A Memory Allocator](https://gee.cs.oswego.edu/dl/html/malloc.html)}
+      \li{[A Malloc Tutorial](https://wiki-prog.infoprepa.epita.fr/images/0/04/Malloc_tutorial.pdf)}
+      \li{[A compiler writing journey](https://github.com/DoctorWkt/acwj)}
+      \li{[Writing your own Virtual Machine](https://www.jmeiners.com/lc3-vm/)}
+      \li{[Struct alignment in C](http://www.catb.org/esr/structure-packing/)}
+      \li{[Write a Simple Garbage Collector](https://maplant.com/2020-04-25-Writing-a-Simple-Garbage-Collector-in-C.html)}
+      \li{[Virual function explanation](https://stackoverflow.com/questions/2391679/why-do-we-need-virtual-functions-in-c)}
+    }
+  }
+}
+
+\query{
+  \open\query
+  \union{\tag{c}}{\tag{memory}}{\tag{cpp}}
+}

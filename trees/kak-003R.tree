@@ -1,0 +1,11 @@
+\date{2025-01-27}
+\title{First-order convergence}
+\taxon{definition}
+\p{
+     First-order function value convergence 
+     ##{||\nabla f(\mathbf{x}_k)||_2 \; \leq \; \varepsilon.}
+       \ul{
+        \li{ For convex functions, this also means convergence to the global minimizer}
+        \li{For nonconvex functions, this only means   convergence to a [[kak-003P]] (e.g., a local minimizer or a saddle point).}
+       }
+  }

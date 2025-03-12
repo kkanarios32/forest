@@ -1,0 +1,7 @@
+\date{2025-01-15}
+\taxon{theorem}
+\title{Hoeffding's Inequality}
+\p{
+  Let #{X_1, \ldots, X_n} be independent centered [[kak-002L]]. Then for any #{a = (a_1, \ldots, a_n) \in \mathbb{R}^n} and for any #{t > 0}
+  ##{\mathbb{P}\left(\left|\sum_{k = 1}^{n} a_j X_j\right| > t \right) \leq 2 \exp\left(-c \frac{t^2}{\lVert a\rVert^2}\right)}
+}

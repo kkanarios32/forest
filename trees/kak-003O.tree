@@ -1,0 +1,4 @@
+\date{2025-01-27}
+\title{Second-order approximation}
+\taxon{theorem}
+\p{Let #{f:\mathbb{R}^{n}\to\mathbb{R}} be twice continuously differentiable, and suppose #{\nabla^{2}f(\mathbf{x})} is #{\gamma_{Q}(\mathbf{x}_{0})}-Lipschitz continuous at #{\mathbf{x}_{0}}, then ##{\left|f(\mathbf{x})-\widehat{f}_{Q}(\mathbf{x};\mathbf{x}_{0})\right|\ \leq\ \frac{\gamma_{Q}(\mathbf{x}_{0})}{6}\left||\mathbf{x}-\mathbf{x}_{0}\right||_{2}^{3},} where we define ##{\widehat{f}_{Q}(\mathbf{x};\mathbf{x}_{0}):=f(\mathbf{x}_{0})+\langle\nabla f(\mathbf{x}_{0}),\mathbf{x}-\mathbf{x}_{0}\rangle} ##{+\frac{1}{2}(\mathbf{x}-\mathbf{x}_{0})^{\top}\nabla^{2}f(\mathbf{x}_{0})(\mathbf{x}-\mathbf{x}_{0}).}}

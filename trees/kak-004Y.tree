@@ -1,0 +1,29 @@
+\date{2025-02-09}
+\import{base-macros}
+\title{Maximum Aposteriori Estimator}
+\taxon{theorem}
+\p{The optimal estimator #{g^* : \mathcal{Y} \to \mathcal{X}} is
+##{
+\begin{align*}
+  g*(y) = \arg\max_{x \in \mathcal{X}} P_{X | Y}(x | y)
+\end{align*}
+}
+}
+
+\proof{
+    Recall that
+##{
+    \begin{align*}
+      P_{e}(g) &= \sum_{x}\sum_y P_{XY}(x, y) \cdot \mathbf{1}_{x \neq g(y)} \\
+      &= \sum_{y} P_Y(y) \sum_{x} P_{X|Y}(x|y) \mathbf{1}_{x \neq g(y)} \\
+      &= \sum_{y} P_Y(y) (1 - P_{X|Y}(g(y)|y)) \\
+    \end{align*}
+}
+To minimize this, we take
+##{
+  \begin{align*}
+    g^*(y) = \arg\max_{x} P_{X|Y}(x | y)
+  \end{align*}
+}
+as desired.
+}

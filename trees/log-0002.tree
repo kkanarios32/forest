@@ -1,0 +1,33 @@
+\title{11/13/2024}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{daily}
+
+\p{It has been awhile since my last entry. Unfortunately, I had some travel among other things, but I am ready to finish the semester strong.}
+
+\p{\strong{Daily Summary:} Today we finally narrowed down the scope of our compilers project. To summarize, we have implemented a CFG pass as part of Jaclang to serve as part of our LamIR to pass to a language model at runtime. However, a few questions remain:}
+\ul{
+  \li{What runtime information is important to provide in addition to the CFG, AST, etc?}
+  \ul{
+    \li{Currently we are focused on annotating edges of the CFG with visitation counts as they happen at runtime.}
+    \li{As an implementation detail, is there a better way then \code{sys.settrace} to get runtime information without having to modify CPython source code?}
+    }
+    \li{How do we represent this representation in natural language in order for the LLM to provide meaningful results?}
+    \li{What is a meaningful result?}
+    \ul{
+        \li{Currently, we are interested in smart asserts, but ideally some code optimization can be performed.}
+      }
+}
+
+\p{\strong{Tomorrow Todo's:}}
+
+\ul{
+  \li{In preparation for MATH 626 next semester, I need to brush up on probability. To do so, I will be following along with [Probability and Measure](https://www.colorado.edu/amath/sites/default/files/attached-files/billingsley.pdf) by Billingsley.}
+  \li{For research,}
+  \ul{
+    \li{Must get contrastive RL experiments up and running,}
+    \li{If that happens I plan to set up dumping runtime info in Jaclang.}
+    \li{Also I have a scheduled meeting with AMD advisors for GPU project. We will see what comes of this.}
+  }
+  \li{Paper of the week will still be [[gcrl]]. Any other extra/break time will be towards blog post.}
+}

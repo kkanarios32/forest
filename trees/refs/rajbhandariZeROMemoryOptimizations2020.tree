@@ -1,0 +1,26 @@
+% ["references"]
+\title{ZeRO: Memory Optimizations Toward Training Trillion Parameter Models}
+\date{2020-05}
+\author{Samyam Rajbhandari}\author{Jeff Rasley}\author{Olatunji Ruwase}\author{Yuxiong He}
+\taxon{reference}
+\meta{external}{https://arxiv.org/abs/1910.02054}
+
+\meta{bibtex}{\startverb
+@misc{rajbhandariZeROMemoryOptimizations2020,
+ title = {{{ZeRO}}: {{Memory Optimizations Toward Training Trillion Parameter Models}}},
+ author = {Rajbhandari, Samyam and Rasley, Jeff and Ruwase, Olatunji and He, Yuxiong},
+ year = {2020},
+ urldate = {2024-09-18},
+ number = {arXiv:1910.02054},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/FDXIZE3Y/Rajbhandari et al. - 2020 - ZeRO Memory Optimizations Toward Training Trillion Parameter Models.pdf},
+ keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Large deep learning models offer significant accuracy gains, but training billions to trillions of parameters is challenging. Existing solutions such as data and model parallelisms exhibit fundamental limitations to fit these models into limited device memory, while obtaining computation, communication and development efficiency. We develop a novel solution, Zero Redundancy Optimizer (ZeRO), to optimize memory, vastly improving training speed while increasing the model size that can be efficiently trained. ZeRO eliminates memory redundancies in data- and model-parallel training while retaining low communication volume and high computational granularity, allowing us to scale the model size proportional to the number of devices with sustained high efficiency. Our analysis on memory requirements and communication volume demonstrates: ZeRO has the potential to scale beyond 1 Trillion parameters using today's hardware.},
+ primaryclass = {cs, stat},
+ eprint = {1910.02054},
+ month = {May},
+ shorttitle = {{{ZeRO}}}
+}
+\stopverb}

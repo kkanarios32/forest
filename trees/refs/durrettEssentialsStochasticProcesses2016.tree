@@ -1,0 +1,22 @@
+% ["references"]
+\title{Essentials of Stochastic Processes}
+\date{2016}
+\author{Richard Durrett}
+\taxon{reference}
+\meta{doi}{10.1007/978-3-319-45614-0}
+\meta{bibtex}{\startverb
+@book{durrettEssentialsStochasticProcesses2016,
+ title = {Essentials of {{Stochastic Processes}}},
+ author = {Durrett, Richard},
+ year = {2016},
+ isbn = {978-3-319-45613-3 978-3-319-45614-0},
+ doi = {10.1007/978-3-319-45614-0},
+ urldate = {2024-10-18},
+ series = {Springer {{Texts}} in {{Statistics}}},
+ publisher = {Springer International Publishing},
+ address = {Cham},
+ file = {/home/kellen/Zotero/storage/MVRAWH8Q/Durrett - 2016 - Essentials of Stochastic Processes.pdf},
+ langid = {english},
+ copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining}
+}
+\stopverb}

@@ -1,0 +1,4 @@
+\date{2024-12-29}
+\title{Jensen's Inequality}
+\taxon{theorem}
+\p{If #{\phi} is a convex function on the range of #{X} then ##{\phi(\mathbb{E}[X]) \leq \mathbb{E}[\phi(X)]}}

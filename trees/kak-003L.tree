@@ -1,0 +1,6 @@
+\date{2025-01-27}
+\title{Mean Value Theorem I}
+\taxon{theorem}
+\p{
+ Let #{f:\mathbb{R}^{n}\mapsto\mathbb{R}} be continuously differentiable. For any fixed #{\mathbf{x}} and #{\mathbf{y}}, we have ##{\,f(\mathbf{y})\,=\,f(\mathbf{x})\,+\,\langle\nabla f(\mathbf{z}(t_{L})),\mathbf{y}-\mathbf{x}\rangle\,} for some #{\mathbf{z}(t_{L})=(1-t_{L})\cdot\mathbf{x}+t_{L}\cdot\mathbf{y}} with #{t_{L}\in(0,1)\,}. 
+  }

@@ -1,0 +1,27 @@
+% ["references"]
+\title{Online Intrinsic Rewards for Decision Making Agents from Large Language Model Feedback}
+\date{2024-12}
+\author{Qinqing Zheng}\author{Mikael Henaff}\author{Amy Zhang}\author{Aditya Grover}\author{Brandon Amos}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2410.23022}
+\meta{external}{https://arxiv.org/abs/2410.23022}
+
+\meta{bibtex}{\startverb
+@misc{zhengOnlineIntrinsicRewards2024,
+ title = {Online {{Intrinsic Rewards}} for {{Decision Making Agents}} from {{Large Language Model Feedback}}},
+ author = {Zheng, Qinqing and Henaff, Mikael and Zhang, Amy and Grover, Aditya and Amos, Brandon},
+ year = {2024},
+ doi = {10.48550/arXiv.2410.23022},
+ urldate = {2025-01-02},
+ number = {arXiv:2410.23022},
+ publisher = {arXiv},
+ file = {/home/kellenkanarios/Downloads/Papers/Hierarchical RL/Zheng et al_2024_Online Intrinsic Rewards for Decision Making Agents from Large Language Model.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning,Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Automatically synthesizing dense rewards from natural language descriptions is a promising paradigm in reinforcement learning (RL), with applications to sparse reward problems, open-ended exploration, and hierarchical skill design. Recent works have made promising steps by exploiting the prior knowledge of large language models (LLMs). However, these approaches suffer from important limitations: they are either not scalable to problems requiring billions of environment samples, due to requiring LLM annotations for each observation, or they require a diverse offline dataset, which may not exist or be impossible to collect. In this work, we address these limitations through a combination of algorithmic and systems-level contributions. We propose ONI, a distributed architecture that simultaneously learns an RL policy and an intrinsic reward function using LLM feedback. Our approach annotates the agent's collected experience via an asynchronous LLM server, which is then distilled into an intrinsic reward model. We explore a range of algorithmic choices for reward modeling with varying complexity, including hashing, classification, and ranking models. By studying their relative tradeoffs, we shed light on questions regarding intrinsic reward design for sparse reward problems. Our approach achieves state-of-the-art performance across a range of challenging, sparse reward tasks from the NetHack Learning Environment in a simple unified process, solely using the agent's gathered experience, without requiring external datasets. We make our code available at https://github.com/facebookresearch/oni.},
+ primaryclass = {cs},
+ eprint = {2410.23022},
+ month = {December}
+}
+\stopverb}

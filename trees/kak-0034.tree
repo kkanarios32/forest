@@ -1,0 +1,8 @@
+\date{2025-01-26}
+\title{First-order condition}
+\tag{optimization}
+\taxon{theorem}
+\p{If #{f} is first-order continuously differentiable, then #{f} is convex iff
+##{f(\boldsymbol{y}) \geq f(\boldsymbol{x}) + \langle \nabla f(\boldsymbol{x}), \boldsymbol{y} - \boldsymbol{x}
+\rangle}
+}

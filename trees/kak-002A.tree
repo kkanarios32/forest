@@ -1,0 +1,6 @@
+\date{2024-12-28}
+\title{#{k}th Moment}
+\taxon{definition}
+\p{We define the #{k}th moment of #{X} as 
+##{\mathbb{E}[X^k] = \sum_y y P[X^k = y]}
+}

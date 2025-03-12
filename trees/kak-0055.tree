@@ -1,0 +1,19 @@
+\date{2025-02-10}
+\import{base-macros}
+\title{#{\epsilon}-typical set}
+\p{
+Fix an #{\epsilon>0}. Then, an #{\epsilon}-typical set with respect to the pmf #{p_{X}}, denoted by #{A_{\epsilon}^{(n)}}, is defined as
+##{\left\{X^n \in \mathcal{X}^n \mid \left|-\frac{1}{n} \log p_{X^n}(X^n) - H(X)\right| \leq \epsilon \right\}}
+Alternatively,
+##{A_{\epsilon^{(n)}} = \left\{X^n \in \mathcal{X}^n \mid 2^{-n(H(X) + \epsilon)} \leq p_{X^n}(X^n) \leq 2^{-n(H(X) - \epsilon)}\right\}}
+}
+
+\remark{
+  We have the following important properties
+  \ol{
+      \li{#{\mathbb{P}(A_{\epsilon}^{(n)})\geq1-\epsilon{\text{ for large enough }}n}}
+      \li{#{|A_{c}^{(n)}|\leq2^{n(H(X)+\epsilon)}}}
+      \li{#{|A_{\epsilon}^{(n)}|\geq(1-\epsilon)2^{n(H(X)-\epsilon)}\;\text{for large enough }\;n\;,}}
+    }
+    Together, this says that, depending on the entropy, the typical set can contain most of the probability despite being much smaller than the entire space.
+  }

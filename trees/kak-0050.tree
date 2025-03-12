@@ -1,0 +1,10 @@
+\date{2025-02-09}
+\title{Fano's Inequality}
+\p{
+  Suppose that #{X \iff Y \iff \hat{X}} and let #{p_e = \mathbb{P}(X \neq \hat{X})}. Then, we have 
+  ##{
+      \begin{align*}
+        H(p_e) + p_e \log(|\mathcal{X}| - 1) \geq H(X \mid \hat{X}) \geq H(X \mid Y)
+      \end{align*}
+    }
+}

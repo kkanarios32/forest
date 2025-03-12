@@ -1,0 +1,26 @@
+\date{2025-01-29}
+\tag{infot}
+\import{base-macros}
+\title{Chain Rule of Mutual Info}
+\taxon{theorem}
+\p{
+    We have that
+##{
+      \begin{align*}
+        I(X, Y; Z) = I(X; Z) + I(Y; Z | X)
+      \end{align*}
+    }
+}
+\proof{
+    By definition,
+    ##{
+        \begin{align*}
+          I(X, Y; Z) &= H(X,Y) + H(Z) - H(X, Y, Z) \\
+          &= H(X) + H(Y | X) + H(Z) - H(X, Z) - H(Y | X, Z) \\
+          &= H(X) + H(Y | X) + H(Z) - H(X, Z) - H(Y | X, Z) \\
+          &= I(X; Z) + H(Y | X) - (H(Y, Z | X) - H(Z | X)) \\
+          &= I(X; Z) + I(Y; Z | X)
+        \end{align*}
+    }
+    as desired
+  }

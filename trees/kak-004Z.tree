@@ -1,0 +1,27 @@
+\date{2025-02-09}
+\import{base-macros}
+\title{Data Processing Inequality}
+\taxon{theorem}
+\p{
+  Suppose that #{U \to V \to W}. Then #{I(U; W) \leq I(U; V)}.
+  }
+
+\p{
+  \strong{Intuition:} by data processing, we can never create new information about #{U}.
+}
+
+\proof{
+Use chain rule to expand #{I(U; (V, W))} in two ways i.e. 
+##{
+  \begin{align*}
+    I(U; (V, W)) = I(U; V) + I(U; W | V) = I(U; W) + I(U; V | W)
+  \end{align*}
+}
+Since #{U \to V \to W} is a Markov chain, #{I(U; W | V) = 0}. Therefore,
+##{
+\begin{align*}
+  I(U; V)  &= I(U; W) + I(U; V | W) \\
+&\geq I(U; W)
+\end{align*}
+}
+}

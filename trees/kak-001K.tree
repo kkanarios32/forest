@@ -1,0 +1,27 @@
+\date{2024-12-02}
+\taxon{theorem}
+\import{base-macros}
+\p{
+For each sequence #{\{A_{n}\}},
+
+##{P\left(\lim\inf_{n}A_{n}\right)\leq\lim_{n}\inf_{n}P\left(\,A_{n}\right) \leq\lim_{n}\sup_{n}P\left(\,A_{n}\right)\leq P\left(\lim_{n}\sup_{n}A_{n}\right).}
+}
+
+\proof{
+    We define #{B_n \coloneqq \bigcup_{k = n}^{\infty} A_k} and #{B_n} as #{C_n = \bigcap_{k = n}^{\infty} A_k}. Note that #{\{B_n\}} is a monotonically decreasing sequence to #{\lim\sup_n A_n}, and #{C_n} monotonically increases to #{\lim\inf_{n} A_n}. Therefore, we can apply continuity from below / above such that
+##{
+    \begin{align*}
+    \inf_n P(A_n) \geq P(C_n) \iff \lim_n \inf_n P(A_n) &\geq \lim_n P(C_n) \\ 
+    &= P(\lim_n C_n) \\ 
+    &= P(\lim\inf_n A_n)
+    \end{align*}
+}
+      Similarly,
+##{
+      \begin{align*}
+      \sup_n P(A_n) \leq P(B_n) \iff \lim_n \sup_n P(A_n) &\leq \lim_n P(B_n) \\ 
+      &= P(\lim_n B_n) \\ 
+      &= P(\lim\sup_n A_n)
+      \end{align*}
+  }
+}

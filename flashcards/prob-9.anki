@@ -1,0 +1,13 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex]
+Halmo's Monotone Class Theorem. If $\mathcal{F}_{0}$ is a field and $\mathcal{A}$ is a monotone class, then 
+[/latex]
+%Front
+%Back
+[latex]
+$\mathcal{F}_{0}\subset\mathcal{A}$ implies $\sigma(\mathcal{F}_{0})\subset\mathcal{A}$.
+[/latex]
+%Back

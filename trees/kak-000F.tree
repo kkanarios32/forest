@@ -1,0 +1,7 @@
+\date{2024-11-04}
+\title{Consistent estimator}
+\taxon{definition}
+
+\p{Formally speaking, an estimator #{T_{n}} of parameter #{\theta} is said to be \em{weakly consistent}. If it converges in probabilty to the true value of the parameter i.er
+
+##{\lim\limits_{n\rightarrow\infty}T_{n}=\theta. \quad \text{ i.e. for all #{t>0} } \quad \lim\limits_{n\rightarrow\infty}\Pr\left(\left|T_{n}-\theta\right|>c\right)=0.}}

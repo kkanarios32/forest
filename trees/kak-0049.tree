@@ -1,0 +1,20 @@
+\date{2025-01-30}
+\import{base-macros}
+
+\taxon{lemma}
+\p{
+	Suppose #{\mathbb{P}_x(T_{y} \leq k) \geq a > 0} for all #{x \in S}. Then #{\mathbb{P}_x(T_y \geq mk) \leq (1-a)^m}, #{m \in \mathbb{N}}.
+  }
+
+\proof{
+	Define #{X_{n}^{(1)} = X_{k + n}, \ldots, X_{n}^{(m-1)} = X_{(m-1)k + n}}. Then define #{T_{y}^{(1)}, \ldots, T_{y}^{(m-1)}} as the corresponding hitting times of state #{y}. We have
+  ##{
+    \begin{align*}
+      \mathbb{P}_x(T_y > km) &= \mathbb{P}_{x}(T_y > k, T_y^{(1)} > k, \ldots, T_y^{(m-1)} > k) \\
+                            &\leq \mathbb{P}_x(T_y > k, \ldots, T_y^{(m-1)} > k \mid X_{k} \neq y, \ldots, X_{(m-1)k} \neq y) \\
+                            &= \mathbb{P}_{x}(T_y > k)\mathbb{P}_x(T_y^{(1)} > k \mid X_{k} \neq y) \cdots \mathbb{P}_x(T_y^{(m-1)} > k \mid X_{(m-1)k} \neq y) \\
+                            &= \mathbb{P}(T_y > k)\left(\sum_{z \neq y}\underbrace{\mathbb{P}_z(T_y > k)}_{\leq (1-a)} \mathbb{P}_x(X_{k} = z \mid X_{k} \neq y)\right) \\
+                            &\leq (1-a)^{m}\underbrace{\sum_{z \neq y}\mathbb{P}_x \left(X_k = z \mid X_k \neq  y \right)}_{=1}
+    \end{align*}
+  }
+}

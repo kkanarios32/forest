@@ -1,0 +1,14 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex] Let $P$ be a probability measure on a field $\mathcal{F}$. Countable subadditivity. [/latex]
+%Front
+%Back
+[latex]
+\begin{enumerate}
+  \item If $A_{1},A_{2},\ldots$ and $\bigcup_{k=1}^{\infty}A_{k}$ lie in $\mathcal{F}$ (the $A_{k}$ need not be disjoint), then
+    \[P\left(\bigcup_{k=1}^{\infty}A_{k}\right)\leq\sum_{k=1}^{\infty}P(A_{k})\]
+\end{enumerate}
+[/latex]
+%Back

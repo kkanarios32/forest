@@ -1,0 +1,11 @@
+\date{2025-01-15}
+\taxon{theorem}
+\p{
+  Let #{X} be a random variable. Then the following are equivalent.
+  \ol{
+    \li{#{X} is sub-Gaussian;}
+    \li{#{\exists a > 0} such that #{\mathbb{E}(\exp(aX^2)) < \infty};}
+    \li{#{\exists \ell}, #{\forall \lambda > 0}, #{\mathbb{E}(\exp(\lambda X)) \leq X \exp(\lambda^2 \ell)};}
+    \li{#{\exists K' > 0} #{\forall p > 1} #{(\mathbb{E}|X|^{p})^{1/p} \leq K' \sqrt{p}}.}
+  }
+}

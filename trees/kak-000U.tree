@@ -1,0 +1,6 @@
+\date{2024-11-21}
+\taxon{definition}
+\title{#{P^*}-measurable}
+\p{#{A} is #{P^*}-measurable if for every #{E \subset \Omega}, we have that 
+##{P^*(A \cap E) + P^*(A^c \cap E) = P^*(E)}
+}

@@ -1,0 +1,6 @@
+\date{2025-01-30}
+\taxon{definition}
+\title{Stopping time}
+\p{
+	We say #{T : \Omega \to \mathbb{N} \cup \{\infty\}} is a stopping time with respect to #{\{X_n\}} if #{\{T = k\}} can be determined by #{\{X_0, \ldots, X_{k}\}}.
+  }

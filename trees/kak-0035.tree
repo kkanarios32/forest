@@ -1,0 +1,5 @@
+\date{2025-01-26}
+\tag{optimization}
+\title{Second-order condition}
+\taxon{theorem}
+\p{If #{f: \mathbb{R}^n \to \mathbb{R}} is twice-differentiable, then #{f} is convex if and only if #{\nabla^2 f(\boldsymbol{x}) \succeq 0}.}

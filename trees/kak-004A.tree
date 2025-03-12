@@ -1,0 +1,12 @@
+\import{base-macros}
+\date{2025-01-30}
+\title{Old Talks}
+
+\p{Each semester as part of [Lei](leiying)'s group, I am obligated to present a paper / sequence of papers to the group. Here are the slides for these presentations.}
+
+\section{Previous Group Meeting Talks}{
+  \query{
+    \open\query
+    \isect{\tag{group}}{\tag{talk}}
+  }
+}

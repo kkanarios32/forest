@@ -1,0 +1,6 @@
+\date{2024-12-02}
+\title{Conditional Probability}
+\taxon{definition}
+\p{
+##{P(A | B) = \frac{P(A \cap B)}{P(B)}}
+}

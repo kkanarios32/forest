@@ -1,0 +1,62 @@
+% ["deepseek"]
+\title{DeepSeek-V3 technical report}
+\date{2024}
+\author{}\author{Aixin Liu}\author{Bei Feng}\author{Bing Xue}\author{Bingxuan Wang}\author{Bochao Wu}\author{Chengda Lu}\author{Chenggang Zhao}\author{Chengqi Deng}\author{Chenyu Zhang}\author{Chong Ruan}\author{Damai Dai}\author{Daya Guo}\author{Dejian Yang}\author{Deli Chen}\author{Dongjie Ji}\author{Erhang Li}\author{Fangyun Lin}\author{Fucong Dai}\author{Fuli Luo}\author{Guangbo Hao}\author{Guanting Chen}\author{Guowei Li}\author{H. Zhang}\author{Han Bao}\author{Hanwei Xu}\author{Haocheng Wang}\author{Haowei Zhang}\author{Honghui Ding}\author{Huajian Xin}\author{Huazuo Gao}\author{Hui Li}\author{Hui Qu}\author{J. L. Cai}\author{Jian Liang}\author{Jianzhong Guo}\author{Jiaqi Ni}\author{Jiashi Li}\author{Jiawei Wang}\author{Jin Chen}\author{Jingchang Chen}\author{Jingyang Yuan}\author{Junjie Qiu}\author{Junlong Li}\author{Junxiao Song}\author{Kai Dong}\author{Kai Hu}\author{Kaige Gao}\author{Kang Guan}\author{Kexin Huang}\author{Kuai Yu}\author{Lean Wang}\author{Lecong Zhang}\author{Lei Xu}\author{Leyi Xia}\author{Liang Zhao}\author{Litong Wang}\author{Liyue Zhang}\author{Meng Li}\author{Miaojun Wang}\author{Mingchuan Zhang}\author{Minghua Zhang}\author{Minghui Tang}\author{Mingming Li}\author{Ning Tian}\author{Panpan Huang}\author{Peiyi Wang}\author{Peng Zhang}\author{Qiancheng Wang}\author{Qihao Zhu}\author{Qinyu Chen}\author{Qiushi Du}\author{R. J. Chen}\author{R. L. Jin}\author{Ruiqi Ge}\author{Ruisong Zhang}\author{Ruizhe Pan}\author{Runji Wang}\author{Runxin Xu}\author{Ruoyu Zhang}\author{Ruyi Chen}\author{S. S. Li}\author{Shanghao Lu}\author{Shangyan Zhou}\author{Shanhuang Chen}\author{Shaoqing Wu}\author{Shengfeng Ye}\author{Shengfeng Ye}\author{Shirong Ma}\author{Shiyu Wang}\author{Shuang Zhou}\author{Shuiping Yu}\author{Shunfeng Zhou}\author{Shuting Pan}\author{T. Wang}\author{Tao Yun}\author{Tian Pei}\author{Tianyu Sun}\author{W. L. Xiao}\author{Wangding Zeng}\author{Wanjia Zhao}\author{Wei An}\author{Wen Liu}\author{Wenfeng Liang}\author{Wenjun Gao}\author{Wenqin Yu}\author{Wentao Zhang}\author{X. Q. Li}\author{Xiangyue Jin}\author{Xianzu Wang}\author{Xiao Bi}\author{Xiaodong Liu}\author{Xiaohan Wang}\author{Xiaojin Shen}\author{Xiaokang Chen}\author{Xiaokang Zhang}\author{Xiaosha Chen}\author{Xiaotao Nie}\author{Xiaowen Sun}\author{Xiaoxiang Wang}\author{Xin Cheng}\author{Xin Liu}\author{Xin Xie}\author{Xingchao Liu}\author{Xingkai Yu}\author{Xinnan Song}\author{Xinxia Shan}\author{Xinyi Zhou}\author{Xinyu Yang}\author{Xinyuan Li}\author{Xuecheng Su}\author{Xuheng Lin}\author{Y. K. Li}\author{Y. Q. Wang}\author{Y. X. Wei}\author{Y. X. Zhu}\author{Yang Zhang}\author{Yanhong Xu}\author{Yanhong Xu}\author{Yanping Huang}\author{Yao Li}\author{Yao Zhao}\author{Yaofeng Sun}\author{Yaohui Li}\author{Yaohui Wang}\author{Yi Yu}\author{Yi Zheng}\author{Yichao Zhang}\author{Yifan Shi}\author{Yiliang Xiong}\author{Ying He}\author{Ying Tang}\author{Yishi Piao}\author{Yisong Wang}\author{Yixuan Tan}\author{Yiyang Ma}\author{Yiyuan Liu}\author{Yongqiang Guo}\author{Yu Wu}\author{Yuan Ou}\author{Yuchen Zhu}\author{Yuduan Wang}\author{Yue Gong}\author{Yuheng Zou}\author{Yujia He}\author{Yukun Zha}\author{Yunfan Xiong}\author{Yunxian Ma}\author{Yuting Yan}\author{Yuxiang Luo}\author{Yuxiang You}\author{Yuxuan Liu}\author{Yuyang Zhou}\author{Z. F. Wu}\author{Z. Z. Ren}\author{Zehui Ren}\author{Zhangli Sha}\author{Zhe Fu}\author{Zhean Xu}\author{Zhen Huang}\author{Zhen Zhang}\author{Zhenda Xie}\author{Zhengyan Zhang}\author{Zhewen Hao}\author{Zhibin Gou}\author{Zhicheng Ma}\author{Zhigang Yan}\author{Zhihong Shao}\author{Zhipeng Xu}\author{Zhiyu Wu}\author{Zhongyu Zhang}\author{Zhuoshu Li}\author{Zihui Gu}\author{Zijia Zhu}\author{Zijun Liu}\author{Zilin Li}\author{Ziwei Xie}\author{Ziyang Song}\author{Ziyi Gao}\author{Zizheng Pan}
+\taxon{reference}
+\meta{external}{https://arxiv.org/abs/2412.19437}
+
+\meta{bibtex}{\startverb
+@misc{deepseekai2024deepseekv3technicalreport,
+ title = {DeepSeek-V3 Technical Report},
+ author = {DeepSeek-AI and Aixin Liu and Bei Feng and Bing Xue and Bingxuan
+Wang and Bochao Wu and Chengda Lu and Chenggang Zhao and Chengqi Deng
+and Chenyu Zhang and Chong Ruan and Damai Dai and Daya Guo and Dejian
+Yang and Deli Chen and Dongjie Ji and Erhang Li and Fangyun Lin and
+Fucong Dai and Fuli Luo and Guangbo Hao and Guanting Chen and Guowei
+Li and H. Zhang and Han Bao and Hanwei Xu and Haocheng Wang and
+Haowei Zhang and Honghui Ding and Huajian Xin and Huazuo Gao and Hui
+Li and Hui Qu and J. L. Cai and Jian Liang and Jianzhong Guo and
+Jiaqi Ni and Jiashi Li and Jiawei Wang and Jin Chen and Jingchang
+Chen and Jingyang Yuan and Junjie Qiu and Junlong Li and Junxiao Song
+and Kai Dong and Kai Hu and Kaige Gao and Kang Guan and Kexin Huang
+and Kuai Yu and Lean Wang and Lecong Zhang and Lei Xu and Leyi Xia
+and Liang Zhao and Litong Wang and Liyue Zhang and Meng Li and
+Miaojun Wang and Mingchuan Zhang and Minghua Zhang and Minghui Tang
+and Mingming Li and Ning Tian and Panpan Huang and Peiyi Wang and
+Peng Zhang and Qiancheng Wang and Qihao Zhu and Qinyu Chen and Qiushi
+Du and R. J. Chen and R. L. Jin and Ruiqi Ge and Ruisong Zhang and
+Ruizhe Pan and Runji Wang and Runxin Xu and Ruoyu Zhang and Ruyi Chen
+and S. S. Li and Shanghao Lu and Shangyan Zhou and Shanhuang Chen and
+Shaoqing Wu and Shengfeng Ye and Shengfeng Ye and Shirong Ma and
+Shiyu Wang and Shuang Zhou and Shuiping Yu and Shunfeng Zhou and
+Shuting Pan and T. Wang and Tao Yun and Tian Pei and Tianyu Sun and
+W. L. Xiao and Wangding Zeng and Wanjia Zhao and Wei An and Wen Liu
+and Wenfeng Liang and Wenjun Gao and Wenqin Yu and Wentao Zhang and
+X. Q. Li and Xiangyue Jin and Xianzu Wang and Xiao Bi and Xiaodong
+Liu and Xiaohan Wang and Xiaojin Shen and Xiaokang Chen and Xiaokang
+Zhang and Xiaosha Chen and Xiaotao Nie and Xiaowen Sun and Xiaoxiang
+Wang and Xin Cheng and Xin Liu and Xin Xie and Xingchao Liu and
+Xingkai Yu and Xinnan Song and Xinxia Shan and Xinyi Zhou and Xinyu
+Yang and Xinyuan Li and Xuecheng Su and Xuheng Lin and Y. K. Li and
+Y. Q. Wang and Y. X. Wei and Y. X. Zhu and Yang Zhang and Yanhong Xu
+and Yanhong Xu and Yanping Huang and Yao Li and Yao Zhao and Yaofeng
+Sun and Yaohui Li and Yaohui Wang and Yi Yu and Yi Zheng and Yichao
+Zhang and Yifan Shi and Yiliang Xiong and Ying He and Ying Tang and
+Yishi Piao and Yisong Wang and Yixuan Tan and Yiyang Ma and Yiyuan
+Liu and Yongqiang Guo and Yu Wu and Yuan Ou and Yuchen Zhu and Yuduan
+Wang and Yue Gong and Yuheng Zou and Yujia He and Yukun Zha and
+Yunfan Xiong and Yunxian Ma and Yuting Yan and Yuxiang Luo and
+Yuxiang You and Yuxuan Liu and Yuyang Zhou and Z. F. Wu and Z. Z. Ren
+and Zehui Ren and Zhangli Sha and Zhe Fu and Zhean Xu and Zhen Huang
+and Zhen Zhang and Zhenda Xie and Zhengyan Zhang and Zhewen Hao and
+Zhibin Gou and Zhicheng Ma and Zhigang Yan and Zhihong Shao and
+Zhipeng Xu and Zhiyu Wu and Zhongyu Zhang and Zhuoshu Li and Zihui Gu
+and Zijia Zhu and Zijun Liu and Zilin Li and Ziwei Xie and Ziyang
+Song and Ziyi Gao and Zizheng Pan},
+ year = {2024},
+ url = {https://arxiv.org/abs/2412.19437},
+ primaryclass = {cs.CL},
+ archiveprefix = {arXiv},
+ eprint = {2412.19437}
+}
+\stopverb}

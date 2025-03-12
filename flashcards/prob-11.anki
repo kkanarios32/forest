@@ -1,0 +1,13 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex]
+Chain rule of probability $P(A \cap B \cap C) = ?$
+[/latex]
+%Front
+%Back
+[latex]
+$$P(A\cap B\cap C)=P(A)P(B|A)P(C|A\cap B)$$
+[/latex]
+%Back

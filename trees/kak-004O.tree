@@ -1,0 +1,15 @@
+\date{2025-02-03}
+\title{Nesterov's Method}
+\p{
+Generate two sequences #{\{\mathbf{x}_{k}\}_{k\geq1}{\mathrm{~and~}}\{\mathbf{p}_{k}\}_{k\geq1}}
+##{
+\begin{align*}
+{\mathbf{\mathit{p}}}_{k+1}\ &=\ {\mathbf{\mathit{x}}}_{k}\ +\ \beta_{k}\cdot({\mathbf{\mathit{x}}}_{k}-{\mathbf{\mathit{x}}}_{k-1}), \\
+x_{k+1} &= p_{k+1}-\alpha\nabla f(p_{k+1})
+\end{align*}
+}
+\ul{
+\li{\strong{Not} a descent method.}
+\li{With properly chosen #{\alpha} and #{\beta} can achieve [optimal](kak-004N) convergence rate #{O(1/k^2)}}
+}
+}

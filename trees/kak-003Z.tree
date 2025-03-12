@@ -1,0 +1,26 @@
+\date{2025-01-30}
+\tag{note}
+\tag{prob}
+\tag{unfinished}
+\import{base-macros}
+\title{Stochastic Processes}
+\author{kellenkanarios}
+
+\section{Markov Chains}{
+  \section{Definitions}{
+    \transclude{kak-0040}
+    \transclude{kak-0041}
+    \transclude{kak-0042}
+    \transclude{kak-0043}
+  }
+  \section{Classification of States}{
+    \transclude{kak-0044}
+    \transclude{kak-0045}
+    \transclude{kak-0048}
+    \transclude{kak-0046}
+    \transclude{kak-0047}
+    \transclude{kak-0049}
+    \transclude{kak-0058}
+    \transclude{kak-0057}
+  }
+}

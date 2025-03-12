@@ -1,0 +1,7 @@
+\date{2025-02-03}
+\title{Armijo Condition}
+\taxon{definition}
+\p{
+  For some #{c_1 \in (0,1)},
+##{f( \mathbf{x}_k + \tau_k \cdot \mathbf{d}_k) < f( \mathbf{x}_k) + c_1 \cdot \tau_k \cdot \mathbf{d}_{k}^{\top} \nabla f(\mathbf{x}_k)}
+  }

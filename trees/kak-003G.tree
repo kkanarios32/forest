@@ -1,0 +1,9 @@
+\date{2025-01-27}
+\title{Matrix Operator Norm}
+\taxon{definition}
+\p{
+Let #{\mathbf{A}\in\mathbb{R}^{m\times n}}. If #{\left|\left|\cdot\right|\right|_{a}} and #{\left|\left|\cdot\right|\right|_{b}} are norms on #{\mathbb{R}^{n}} and #{\mathbb{R}^{m}}, we have ##{\left|\left|\mathbf{A}\right|\right|_{a\to b}\ :=\ \sup_{\left|\left|\mathbf{x}\right|\right|_{a}\leq 1}\left|\left|\mathbf{A}\mathbf{x}\right|\right|_{b}.}
+It satisfies the \em{three criteria} for norm, and is \em{submultiplicative} ##{||\boldsymbol{A}\boldsymbol{B}||_{a\to b}\ \leq\ ||\boldsymbol{A}||_{a\to b}\cdot ||\boldsymbol{B}||_{a\to b};}. 
+##{||{\cal A}||_{2\to2}\;=\;\sigma_{1}({\cal A})\;\;(\mathrm{{spectral\ norm}},\;\mathrm{{write\ as}}\;||{\cal A}||\;\;);\;}
+##{\begin{array}{l}{{||{\boldsymbol{A}}||_{1\to b}\ =\ \operatorname*{max}_{j=1,\cdots,n}||{\boldsymbol{A e}}_{j}||_{b}}}\\ {{||{\boldsymbol{A}}||_{a\to\infty}\ =\ \operatorname*{max}_{i=1,\cdots,m}||{\boldsymbol{e}}_{i}^{*}{\boldsymbol{A}}||_{b}^{*}\,,\ \ ||{\boldsymbol{v}}||_{b}^{*}\ :=\ \operatorname*{sup}_{||{\boldsymbol{u}}||_{b}\leq1}\langle{\boldsymbol{u}},{\boldsymbol{v}}\rangle\,,}}\end{array}}
+  }

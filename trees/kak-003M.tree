@@ -1,0 +1,6 @@
+\date{2025-01-27}
+\title{Mean Value Theorem II}
+\taxon{theorem}
+\p{
+Let #{f:\mathbb{R}^{n}\mapsto\mathbb{R}} be twice continuously differentiable. For any fixed #{\mathbf{x}} and #{\mathbf{y}}, we have ##{\nabla f(\mathbf{y})\;=\;\nabla f(\mathbf{x})\,+\,\int_{0}^{1}\nabla^{2}f(\mathbf{z}(t))\cdot(\mathbf{y}-\mathbf{x})dt} for some #{\mathbf{z}(t)=(1-t)\mathbf{x}+t\mathbf{y}} with #{t\in(0,1)\,,} and that ##{\boxed{f(\mathbf{y})\;=\;f(\mathbf{x})+(\nabla f(\mathbf{x}),\mathbf{y}-\mathbf{x})+\frac{1}{2}(\mathbf{y}-\mathbf{x})^{\top}\nabla^{2}f(\mathbf{z}(t_{Q}))(\mathbf{y}-\mathbf{x})}} for some #{t_{Q}\in(0,1)\,.}
+  }

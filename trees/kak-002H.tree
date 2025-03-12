@@ -1,0 +1,8 @@
+\date{2024-12-29}
+\title{Holder's Inequality}
+\taxon{theorem}
+\p{Suppose that 
+##{\frac{1}{p} + \frac{1}{q} = 1, \quad p > 1,\ q > 1}
+Then \em{Holder's inequality} is
+##{\mathbb{E}[XY] \leq \left(\mathbb{E}[|X|^p]\right)^{1/p} \cdot \left(\mathbb{E}[|Y|^q]\right)^{1/q}}
+}

@@ -1,0 +1,13 @@
+% ["references"]
+\title{Random Features for Large-Scale Kernel Machines}
+\author{Ali Rahimi}\author{Benjamin Recht}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@article{rahimiRandomFeaturesLargeScale,
+ title = {Random {{Features}} for {{Large-Scale Kernel Machines}}},
+ author = {Rahimi, Ali and Recht, Benjamin},
+ file = {/home/kellen/Zotero/storage/9NSANMTT/013a006f03dbc5392effeb8f18fda755-Paper.pdf},
+ langid = {english},
+ abstract = {To accelerate the training of kernel machines, we propose to map the input data to a randomized low-dimensional feature space and then apply existing fast linear methods. The features are designed so that the inner products of the transformed data are approximately equal to those in the feature space of a user specified shiftinvariant kernel. We explore two sets of random features, provide convergence bounds on their ability to approximate various radial basis kernels, and show that in large-scale classification and regression tasks linear machine learning algorithms applied to these features outperform state-of-the-art large-scale kernel machines.}
+}
+\stopverb}

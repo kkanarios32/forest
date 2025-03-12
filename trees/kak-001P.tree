@@ -1,0 +1,8 @@
+\date{2024-12-27}
+\taxon{theorem}
+\import{base-macros}
+\p{If #{\mathscr{A}_1, \ldots, \mathscr{A}_n} are independent and each #{\mathscr{A}_i} is a [[kak-0018]] then #{\sigma(\mathscr{A}_1), \ldots, \sigma(\mathscr{A}_n)} are independent.}
+
+\proof{
+We have sequence of independent classes and want to show that their respective #{\sigma}-algebras are also independent. The idea is to take the class of events #{B_1} that are independent with #{\mathscr{A}_2, \ldots, \mathscr{A}_n}, and show that #{\sigma(\mathscr{A}_1)} is a subset of this class. To do this, we use [[kak-001B]] by noticing that this class is a [[kak-0019]] that contains the [[kak-0018]] #{\mathscr{A}_1}.
+}

@@ -1,0 +1,16 @@
+\date{2025-02-03}
+\title{Suboptimality of Gradient Descent}
+\taxon{theorem}
+\p{
+Suppose the iterates #{\{\mathbf{x}_{i}\}_{i\geq0}} is generated from a \em{black-box model}:
+
+##{\mathbf{x}_{k+1}\ =\ \mathcal{F}_{k}\left(\left\{\mathbf{x}_{i}\right\}_{i=0}^{k},\ \left\{f(\mathbf{x}_{i})\right\}_{i=0}^{k},\ \left\{\nabla f(\mathbf{x}_{i})\right\}_{i=0}^{k}\right)}
+}
+\p{
+For every positive #{L} and #{R}, there exists a [convex](kak-004D) differentiable #{f} with #{\nabla f} [#{L}-Lipschitz](kak-003J), and an initial point #{\mathbf{x}_{0}} satisfying #{||\mathbf{x}_{0}-\mathbf{x}_{\star}||_{2}\leq R}, such that
+
+##{f(\mathbf{x}_{k})-f(\mathbf{x}_{\star})\ \geq\ c\frac{LR}{k^{2}}\ =\ \Omega(\frac{1}{k^{2}}),}
+
+where #{\ c>0} is some numerical constant.
+
+  }

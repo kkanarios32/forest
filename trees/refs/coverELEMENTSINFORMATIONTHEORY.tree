@@ -1,0 +1,12 @@
+% ["references"]
+\title{ELEMENTS OF INFORMATION THEORY}
+\author{Thomas M Cover}\author{Joy A Thomas}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@article{coverELEMENTSINFORMATIONTHEORY,
+ title = {{{ELEMENTS OF INFORMATION THEORY}}},
+ author = {Cover, Thomas M and Thomas, Joy A},
+ file = {/home/kellen/Zotero/storage/C6AJGW5I/Cover and Thomas - ELEMENTS OF INFORMATION THEORY.pdf},
+ langid = {english}
+}
+\stopverb}

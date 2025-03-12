@@ -1,0 +1,12 @@
+\date{2025-01-30}
+\import{base-macros}
+\title{Strong Markov Property}
+\taxon{theorem}
+\p{
+	Let #{T} be a stopping time with respect to #{X_n}. For any #{k \in \mathbb{N}}, #{x \in S}, given #{\{T < \infty, X_{T} = x\}}, #{X_{T + k}} is independent of #{\{X_0, \ldots, X_{T}\}}. Moreover, 
+##{\mathbb{P}(X_{T + k} \mid T < \infty, X_T = x) = p^k(x,y)}
+}
+
+\proof{
+  TODO
+  }

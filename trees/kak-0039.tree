@@ -1,0 +1,8 @@
+\date{2025-01-26}
+\tag{optimization}
+\title{Subdifferential}
+\taxon{definition}
+
+\p{The \em{subdifferential} is the set of all [subgradient's](kak-0038) of #{f} at #{\boldsymbol{x}_0}.
+##{\partial f(\boldsymbol{x}_0) \coloneqq \{\boldsymbol{u} | f(\boldsymbol{x}) \geq f(\boldsymbol{x}_0) + \langle \boldsymbol{u}, \boldsymbol{x} - \boldsymbol{x}_0 \rangle \}}
+}

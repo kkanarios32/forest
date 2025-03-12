@@ -1,0 +1,6 @@
+\date{2024-11-17}
+\title{Weak Law of Large Numbers (Dyadic)}
+\taxon{theorem}
+\p{
+For each #{\epsilon}, ##{\operatorname*{lim}_{n\to\infty}P\left[\omega\colon\left|{\frac{1}{n}}\sum_{i=1}^{n}d_{i}(\omega)-{\frac{1}{2}}\right|\geq\epsilon\right]=0.}
+  }

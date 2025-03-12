@@ -1,0 +1,12 @@
+\date{2024-11-17}
+\taxon{solution}
+\title{Problem 1.1 Billingsley}
+\ol{
+  \li{
+    A discrete probability space cannot contain an infinite sequence of independent events #{A_1, A_2, \ldots} each with probability #{1/2}. To see this, denote the event space as #{\mathcal{X}}. Note that 
+    ##{P(A_1 \cap A_2) + P(A_1 \cap A_2^c) + P(A_1^c \cap A_2) + P(A_1^c \cap A_2^c) = 1}
+    Therefore, every #{x \in \mathcal{X}} must be in one of those four events and have probability at most #{1/4}. Similarly, we can construct #{n} disjoint sets in the same manner and bound #{\mathbb{P}(\{x\})} by #{1/n}. Taking #{n \to \infty}, we have that #{\mathbb{P}(\{x\}) = 0}. Since #{\mathcal{X}} is a discrete probability space, we must have that 
+    ##{\sum_{x \in \mathcal{X}} \mathbb{P}(\{x\}) = 1}
+    However, we have just shown that for each #{x \in \mathcal{X}}, #{\mathbb{P}(\{x\}) = 0}. Thus, we have reached a contradiction. 
+  }
+}

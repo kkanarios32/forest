@@ -1,0 +1,6 @@
+\date{2025-01-26}
+\title{Positive (semi)definiteness}
+\taxon{definition}
+\p{
+A \em{symmetric} matrix #{\mathbf{A}\in\mathbb{R}^{n\times n}} is \em{positive definite} if #{\mathbf{x}^{\top}\mathbf{A}\mathbf{x}>0} for all nonzero #{\mathbf{x}\in\mathbb{R}^{n}}. It is \em{positive semidefinite (p.s.d.)} if #{\mathbf{x}^{\top}\mathbf{A}\mathbf{x}\geq0} for all #{\mathbf{x}\in\mathbb{R}^{n}}. 
+  }

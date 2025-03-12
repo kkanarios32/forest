@@ -1,0 +1,12 @@
+% ["references"]
+\title{Probabilistic Reinforcement Learning: Using Data to Define Desired Outcomes and Inferring How to Get There}
+\author{Benjamin Eysenbach}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@article{eysenbachProbabilisticReinforcementLearning,
+ title = {Probabilistic {{Reinforcement Learning}}: {{Using Data}} to {{Define Desired Outcomes}} and {{Inferring How}} to {{Get There}}},
+ author = {Eysenbach, Benjamin},
+ file = {/home/kellen/Zotero/storage/PYCTKQX2/Eysenbach - Probabilistic Reinforcement Learning Using Data to Define Desired Outcomes and Inferring How to Get.pdf},
+ langid = {english}
+}
+\stopverb}

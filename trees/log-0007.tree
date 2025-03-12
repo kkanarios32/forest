@@ -1,0 +1,62 @@
+\title{11/21/2024}
+\author{kellenkanarios}
+\meta{author}{false}
+\import{base-macros}
+\tag{daily}
+\put\transclude/toc{false}
+
+\p{Not a maximally productive day but good progress was made on (almost?) every project.}
+
+
+\section{Daily Summary}{
+  \p{
+    \strong{Probability Theory:} I am having a surprisingly good time learning this compared to my experience in undergrad. Today, I finished and thorougly understood the extension of a measure to the #{\sigma}-algebra induced by the outer measure. I left the uniqueness for the next session. I guess the only outstanding question I had was 
+    \ul{
+      \li{
+    Why do we need to impose the extra condition that we need the set to satisfy #{P^*(A \cap E) + P^*(A^c \cap E) = P^*(E)} for every #{E \subset \Omega} vs. just taking #{E = \Omega}?
+      }
+    }
+  }
+
+  \p{
+    \strong{Contrastive RL:} Today was big for my understanding along with an interesting new direction.
+    \ul{
+      \li{I went over both the original [NCE](gutmann2012) and [InfoNCE](vandenOord2018) papers to better understand the non-RL versions.}
+      \li{Finally have kind of understood, where the #{Q}-function comes from in [[eysenbach2023]] even though they do not provide proof of the Lemma that claims it.}
+      \ul{
+          \li{In the [[gutmann2012]] paper, they show that their objective will converge to the distribution that generated the data #{p(x)}. In [[eysenbach2023]], they want to learn the discounted state occupancy measure. To make this their #{p(x)}, 
+          \ol{
+            \li{they take their "positive" examples as drawn from the state occupancy (turns out to do this is not that hard).}
+            \li{they just sample their negative examples uniformly.}
+          }
+          \li{Need to look a little more at #{Q}-function is state discounted probability proof. Why is it not just linearity of expectation / Fubini? Inner series is clearly convergent? Probably related to policy stuff I need to get better at.}
+          }
+        }
+        \li{An interesting idea that came up is to apply goal-conditioned RL to safe RL. Namely, we can discourage the visitation of unsafe states by considering #{Q(s, a, \text{unsafe})}}
+        \ul{
+            \li{Take #{\pi \in \arg\max_{\pi} Q(s, \pi(s), g) - \lambda(\delta) Q(s, \pi(s), \text{obstacle})}, or}
+            \li{take #{\pi \in \arg\max_{\pi} Q(s, \pi(s), g)}, such that #{Q(s, \pi(s), \text{obstacle}) < \epsilon}.}
+          }
+    }
+}
+\p{
+\strong{Ghost in the shell:} New ideas have arisen to turn this course project into a research project.
+\ul{
+    \li{Professors introduce the concept of "phase detection" from microarchitecture.}
+    \li{It seems that this area is concerned with detecting how inputs may influence things like hot paths and detecting when this is going to occur.}
+    \li{These methods all seems to choose metrics and algorithms for these metrics arbitrarily.}
+    \li{Can we pass a superset of all these metrics to an LLM and have it detect phase changes automatically?}
+  }
+}
+}
+
+\section{Tomorrow Todo's}{
+  \ul{
+    \li{I want to start [[jiang2024]] tomorrow, taking a short break from very abstract / rigorous mathematics.}
+    \li{Focus tomorrow is getting profiling up and running.}
+    \ul{
+        \li{By EOD, need to have edges of CFG filled with visitation frequencies.}
+      }
+    \li{If extra time, finish / work on [[kak-0005]] blog post with newfound knowledge.}
+  }
+}

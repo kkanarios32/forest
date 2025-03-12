@@ -1,0 +1,30 @@
+\date{2024-10-29}
+\import{base-macros}
+\title{Disk}
+\p{Here are past things of interest that may be of interest in the future. Unfortunately, they are no longer "hot" and have been paged out (hence the name!).}
+
+\put\transclude/toc{false}
+\put\transclude/numbered{false}
+\put\transclude/metadata{true}
+
+
+\transclude{kak-0003}
+\transclude{kak-004A}
+
+\subtree[log]{
+  \title{Notebook}
+  \query{
+    \open\query
+    \tag{project}
+  }
+}
+
+\subtree{
+  \title{Reading List}
+  \p{I am committing to reading (fairly rigorously) one paper a week. Here I will accumulate my notes and thoughts on each of these papers as I go.}
+  \query{
+    \open\query
+    \isect{\taxon{reference}}{
+    \tag{paper}}{\tag{todo}}
+  }
+}

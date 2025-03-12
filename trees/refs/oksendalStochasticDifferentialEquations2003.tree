@@ -1,0 +1,22 @@
+% ["references"]
+\title{Stochastic Differential Equations}
+\date{2003}
+\author{Bernt Øksendal}
+\taxon{reference}
+\meta{doi}{10.1007/978-3-642-14394-6}
+\meta{bibtex}{\startverb
+@book{oksendalStochasticDifferentialEquations2003,
+ title = {Stochastic {{Differential Equations}}},
+ author = {{\O}ksendal, Bernt},
+ year = {2003},
+ isbn = {978-3-540-04758-2 978-3-642-14394-6},
+ doi = {10.1007/978-3-642-14394-6},
+ urldate = {2025-01-25},
+ series = {Universitext},
+ publisher = {Springer Berlin Heidelberg},
+ address = {Berlin, Heidelberg},
+ file = {/home/kellen/Zotero/storage/WSH4RNVC/Øksendal - 2003 - Stochastic Differential Equations.pdf},
+ langid = {english},
+ copyright = {http://www.springer.com/tdm}
+}
+\stopverb}

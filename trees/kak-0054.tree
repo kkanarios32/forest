@@ -1,0 +1,21 @@
+\date{2025-02-10}
+\title{AEP Theorem}
+\taxon{theorem}
+\p{
+Let #{\{X_{n}:n\geq1\}} denote i.i.d. #{\mathcal{X}}-valued r.v. with distribution #{P_{X}}. Then,
+
+##{
+\begin{align*}
+ \lim_{n\to\infty}-\frac{1}{n}\log p_{X^{n}}(X_{1},\ldots,X_{n}) &= \lim_{n \to \infty} -\frac{1}{n} \log \prod_{i = 1}^{n} P_X(X_i) \\
+ &= \mathbb{E}_{X \sim p_X}[-\log p_X(X)] \\ 
+ &= H(X)
+\end{align*}
+}
+Equivalently, for large #{n}
+##{
+  \begin{align*}
+    \left|-\frac{1}{n} \log p_{X^n}(X^n) - H(X)\right| \leq \epsilon
+  \end{align*}
+}
+with high probability.
+}

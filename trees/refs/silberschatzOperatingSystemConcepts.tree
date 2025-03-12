@@ -1,0 +1,11 @@
+% ["references"]
+\title{Operating System Concepts}
+\author{Abraham Silberschatz}\author{Peter Baer Galvin}\author{Greg Gagne}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@article{silberschatzOperatingSystemConcepts,
+ title = {Operating {{System Concepts}}},
+ author = {Silberschatz, Abraham and Galvin, Peter Baer and Gagne, Greg},
+ file = {/home/kellen/Zotero/storage/GI3ESXU4/Silberschatz et al. - Operating System Concepts.pdf}
+}
+\stopverb}

@@ -1,0 +1,4 @@
+\date{2024-12-02}
+\title{Chain Rule of Probability}
+\taxon{Proposition}
+\p{##{P(A \cap B \cap C) = P(A)P(B | A)P(C | B \cap A)}}

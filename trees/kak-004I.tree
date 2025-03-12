@@ -1,0 +1,17 @@
+\date{2025-02-02}
+\title{Virtual Memory}
+\author{kellenkanarios}
+\tag{memory}
+
+\p{
+  In my foray into C programming, I have become thoroughly confused with virtual memory and the like. Mainly, what is malloc really doing? In the minimap2 library, they implement essentially their own memory management on top of malloc. The reason for this is what had me confused. I think the following summarizes my findings:
+  \ul{
+    \li{When a process is started by the OS, it allocates virtual address space for the process.}
+    \li{Within this virtual address space, malloc allocates memory on the heap. Namely, just returning a pointer (technically virtual address) to a block of memory of the desired size.}
+    \ul{\li{
+      Malloc is an OS system call and therefore stops execution of all threads. 
+      }
+      \li{To get around this, they pre-allocate their own intra-thread memory (a large contiguous chunk) then allocate memory within this chunk throughout the program.}
+    }
+    }
+}

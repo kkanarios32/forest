@@ -1,0 +1,6 @@
+\date{2024-12-27}
+\taxon{definition}
+\p{We say that points #{\omega} and #{\omega'} are #{\mathscr{A}} equivalent if for
+every #{A \in \mathscr{A}},
+##{I_A(\omega) = I_A(\omega')}
+}

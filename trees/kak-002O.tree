@@ -1,0 +1,7 @@
+\date{2025-01-15}
+\title{khinchin's Inequality}
+\taxon{corollary}
+\p{
+      Let #{X_1, \ldots, X_n} be i.i.d. centered [[kak-002L]] such that #{\mathbb{E} X^2 = 1}. Then for any #{p \in [1, \infty]}, there exists #{A_p, B_p > 0} such that #{\forall a = (a_1, \ldots, a_n) \in \mathbb{R}^n}
+      ##{A_p \lVert a \rVert_2 \leq \left(\mathbb{E}\left|\sum_{j = 1}^{n} a_j X_j\right|^p\right)^{1/p} \leq B_p \lVert a \rVert_2}
+  }

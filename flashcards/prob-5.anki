@@ -1,0 +1,14 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex]
+A class $\mathcal{P}$ of subsets of $\Omega$ is a $\pi$-system if
+[/latex]
+%Front
+%Back
+[latex]
+it is closed under the formation of finite intersections:
+$$(\pi)$$A,B\in\mathcal{P}$ implies $A\cap B\in\mathcal{P}.$$
+[/latex]
+%Back

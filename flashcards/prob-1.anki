@@ -1,0 +1,10 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+Outer measure
+%Front
+%Back
+For each subset $A$ of $\Omega$, define its outer measure as
+$$P^{*}(A)=\mathrm{inf}\,\sum_{n}P(A_{n}),$$
+%Back

@@ -1,0 +1,46 @@
+\title{11/20/2024}
+\author{kellenkanarios}
+\meta{author}{false}
+\import{base-macros}
+\tag{daily}
+\put\transclude/toc{false}
+
+\p{I am still hitting an afternoon wall. I have yet to put a full day together in awhile, but the waking up early and working has helped a little bit.}
+
+
+\section{Daily Summary}{
+  \p{
+    \strong{Probability Theory:} Upon waking up, I seem to struggle to immediately go into coding mode. To still be productive, I have instituted a self-study or paper reading upon waking up. For some reason this is more manageable to me? Anyways, I have made it through the second section of [[billingsley1986]], where we defined probabilty measures. I do think carefully going through this without worrying about problem sets, etc. has allowed me to gain a bit more intuition into what is going on.
+  }
+
+  \p{
+    \strong{Weak-to-strong Generalization:} Upon reading the linear probing paper [Kumar et al. 2022](https://arxiv.org/pdf/2202.10054) and Mihir's wonderful presentation, I understand better what their claims are and have kind of shifted focus.
+
+    \ul{
+        \li{In the linear probing case, they assume the in distribution and out of distribution still come from the same "sample space" in some sense.}
+        \li{They also are all correctly labeled unlike in weak-to-strong.}
+        \li{To me, this applies better to easy-to-hard generalization, so we are now exploring this direction instead.}
+        \li{The main question now is how to theoretically represent an "easy" and hard question? Along with how to represent the "latent knowledge" that allows the model to generalize from easy-to-hard?}
+        \li{Need to setup experiments to test linear probing vs. fine-tuning in easy-to-hard.}
+        \li{Existing papers only do linear probing vs. LoRA.}
+    }
+}
+\p{
+\strong{Ghost in the shell:} This project has also started to take off a little bit. I have been tasked with implementing the python tracer to provide profile information to our LaMIR.
+\ul{
+    \li{I am still feeling a bit ambitious and want to do this in C with CPython. However, my group is more intent on just getting something working, which I can understand.}
+    \li{Need to better gauge how difficult a C tracer would be before I decide.}
+  }
+}
+}
+
+\section{Tomorrow Todo's}{
+  \ul{
+    \li{Section 3 of [[billingsley1986]] seems a bit dense. Finish construction of extension and see how we feel.}
+    \li{Time to deeply understand contrastive RL. In particular, how Q-function comes from contrastive loss}
+    \ul{
+        \li{If in the mood, try to understand [[nachum2019]] connection to contrastive RL}
+      }
+    \li{Otherwise, pick one of tracer work / linear probing work to make some progress on.}
+  }
+}

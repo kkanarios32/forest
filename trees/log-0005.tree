@@ -1,0 +1,54 @@
+\title{11/18/2024}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{daily}
+\import{base-macros}
+
+\p{Today we kind of got back on track.}
+
+\put\transclude/toc{false}
+\section{Daily Summary}{
+    \strong{Contrastive RL:} As a way to avoid struggling with mujoco, I re-immersed myself in the relevant literature. I had a few takeaways:
+    \ul{
+      \li{I took a look back at the [[mcleod2022]] paper. I still really want to implement a system that puts everything together. Namely,}
+      \ul{
+          \li{In this paper, they do not learn the cumulants that they use to compute the successor features.}
+          \li{Also, is a continual optimizer enough for non-stationary MDPs when learning cumulants?}
+        }
+        \li{Regarding implementation details for the Contrastive RL stuff. It seems the first priority should actually be implementing the hierarchical policy.}
+        \ul{
+            \li{Currently, the repo is set up to randomly select goals and see how well the goal-conditioned policy can reach them. This is basically the extent of experimentation needed without the hierarchical policy.
+          }
+        }
+      \li{I did come across an alternative successor-feature like apprach that I want to take a closer look at: the Forward-Backward representation [Toutati et al. 2023](https://openreview.net/pdf?id=MYEap_OcQI), [Toutati et al. 2021](http://www.yann-ollivier.org/rech/publs/allpolicies.pdf), [Blier et al. 2021](https://arxiv.org/pdf/2101.07123). Initial impressions:}
+      \ul{
+          \li{Seems to be learned in a very similar manner to the successor feature stuff.}
+          \li{Re-parametrization avoids converging to trivial 0 solution.}
+          \li{Experimentally, seems way better than contrastive (at least for zero shot RL).}
+        }
+    }
+\strong{Weak-to-strong Generalization:} I finished up my slides for our presentation tomorrow.
+\ul{
+    \li{I have sufficiently confused myself on what weak-to-strong generalization even means. Is it}
+    \ol{
+        \li{Correctly answering things that the weak model got incorrect? or}
+        \li{Generalizing correct answers on easier tasks to harder tasks?}
+      }
+      \li{The former case seems to be the hot topic right now, but I think the second one might be what we actually care about?}
+      \li{Maybe think about how to formulate this mathematically.}
+}
+}
+
+\section{Tomorrow Todo's}{
+  \ul{
+    \li{I have a plethora of meetings tomorrow, so I may not get too much done.}
+    \li{For research,}
+    \ul{
+      \li{\strong{CRL stuff:} Meeting with my advisor tomorrow (scary-ish). Will hopefully have next steps after that. }
+      \li{\strong{Compilers stuff:} High-priority after my meeting. Need to figure out how to get branch counts. Even if super naive (no more CPython rabbit holes).}
+      \li{\strong{LLMs stuff:} Talk to group mates. Who knows where this might go.}
+    }
+    \li{I have added another thing to the reading list: [Toutati et al. 2021](http://www.yann-ollivier.org/rech/publs/allpolicies.pdf). This seems to be what I was looking for. A unification of all of the successor-representation-like algorithms that have been floating around my space. }
+    \li{Game-time decision whether I panic prepare stuff for my meeting / presentation, or start the probability measures section of my self-study. We shall see...}
+  }
+}

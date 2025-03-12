@@ -1,0 +1,27 @@
+\date{2024-11-3}
+\title{Daily Tracker}
+\import{base-macros}
+\p{My (somewhat) daily entries of progress / questions / thoughts. Here I will try to write daily thoughts and progress in the spirit of [[richardsutton]]'s research notebook. Also my investment banking friends keep a "daily tracker" to manage workflows, so I intend to enforce a similar progress tracker on myself.}
+
+\p{As daily goals, I want to structure my days as (amortized):
+\ul{
+  \li{Self-study from textbook/course list and review anki ~2hr.}
+  \li{Progress on selected research/coursework ~5-6hrs.}
+  \li{Read and review paper of the week ~1hr.}
+  \li{Miscellanous fiddling with this website / blog posts / interview prep ~1hr.}
+}
+}
+
+
+\hr
+
+\put\transclude/numbered{false}
+\put\transclude/expanded{false}
+
+\transclude{log-0001}
+\transclude{log-0002}
+\transclude{log-0003}
+\transclude{log-0004}
+\transclude{log-0005}
+\transclude{log-0006}
+\transclude{log-0007}

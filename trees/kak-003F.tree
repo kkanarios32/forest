@@ -1,0 +1,10 @@
+\date{2025-01-27}
+\title{Misc.}
+\author{kellenkanarios}
+\tag{subject}
+\tag{unfinished}
+
+\query{
+  \open\query
+  \isect{\tag{note}}{\tag{lost}}
+}

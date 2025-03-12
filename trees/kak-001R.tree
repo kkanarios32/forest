@@ -1,0 +1,27 @@
+\date{2024-12-27}
+\title{Array Method}
+\import{base-macros}
+\taxon{theorem}
+\p{Suppose that the array
+##{
+\begin{array}{ccc}
+A_{11} & A_{12} & \cdots \\
+A_{21} & A_{22} & \cdots \\
+\vdots & \vdots & 
+\end{array}
+}
+of events is independent. If #{\mathscr{F}_1} is the #{\sigma}-algebra generated
+by the first row then #{\mathscr{F}_1, \mathscr{F}_2, \ldots} are
+independent.
+}
+\example{Can write events of flip #{i} as #{H_i} such that the following array
+satisfies the above
+##{
+\begin{array}{ccc}
+H_{2} & H_{4} & \cdots \\
+H_{1} & H_3 & \cdots \\
+\end{array}
+}
+Then row 1 and row 2 are independent from above. Therefore, we have shown that
+even and odd numbered flips' [[kak-000O]]'s are independent.
+}

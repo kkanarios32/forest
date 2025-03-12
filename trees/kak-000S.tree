@@ -1,0 +1,14 @@
+\date{2024-11-20}
+\taxon{theorem}
+\title{Additivity of Intervals}
+\p{
+  We have the following properties
+  \ol{
+\li{ If #{\bigcup_{k}I_{k}\subset I}, and the #{I_{k}} are disjoint, then #{\sum_{k}|I_{k}|\leq|I|}.
+}
+\li{ If #{I\subset\bigcup_{k}I_{k}} (the #{I_{k}} need not be disjoint), then #{|I|\leq\sum_{k}|I_{k}|}.
+}
+\li{ If #{I=\bigcup_{k}I_{k}}, and the #{I_{k}} are disjoint, then #{|I|=\sum_{k}|I_{k}|}.
+}
+  }
+}

@@ -1,0 +1,6 @@
+\date{2025-01-27}
+\title{Schatten #{p}-norm}
+\taxon{definition}
+\p{
+Let #{\mathbf{A}\in\mathbb{R}^{m\times n}}. For any #{p \in [1,+\infty]}, the function ##{\left||\mathbf{A}|\right|_{\mathrm{S}_{p}}\,:=\,\left||\mathbf{\sigma}(\mathbf{A})|\right|_{p}} is a norm on #{\,\mathbb{R}^{m\times n}}. 
+}

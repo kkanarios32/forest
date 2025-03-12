@@ -1,0 +1,13 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex]
+A element $\omega \in \lim\sup A_n$ if and only if
+[/latex]
+%Front
+%Back
+[latex]
+It lies in infinitely many of the $A_n$.
+[/latex]
+%Back

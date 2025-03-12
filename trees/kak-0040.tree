@@ -1,0 +1,18 @@
+\date{2025-01-30}
+\taxon{definition}
+\import{base-macros}
+\title{Markov Chain}
+
+\p{
+	We say a stochastic process #{X_n} is a Markov chain (MC) with transition matrix #{p : \mathcal{S} \times \mathcal{S} \to [0, 1]} if for any #{n \in \mathcal{N}} and #{x}, #{y}, #{x_{0}, \ldots x_{n - 1}}
+  ##{
+		\mathbb{P}(X_{n + 1} = y \mid X_{n} = x, X_{n - 1} = x_{n - 1}, \ldots, X_0 = x_0) = \mathbb{P}(X_{n + 1} = y \mid X_n = x) = p(x, y)
+  }
+	whenever conditional probability is well-defined. 
+	\remark{
+	Moreover, any matrix #{p : \mathcal{S} \times \mathcal{S} \to [0, 1]} satisfying #{\sum_{y \in \mathcal{S}} p(x, y) = 1} is called a stochastic matrix. Given any stochastic matrix #{p}, one can create a MC.
+}
+	\remark{
+		This is called a temporally homogeneous discrete Markov chain because #{p} does not depend on time.
+  }
+}

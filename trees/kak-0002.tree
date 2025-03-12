@@ -1,0 +1,25 @@
+\date{2024-10-29}
+\import{base-macros}
+\title{Blog}
+\author{kellenkanarios}
+\tag{top}
+
+\p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more.}
+
+\put\transclude/toc{false}
+\put\transclude/numbered{false}
+
+\scope{
+\put\transclude/metadata{true}
+\put\transclude/expanded{false}
+\transclude{kak-0005}
+\transclude{kak-005F}
+}
+  \hr
+\subtree[loading]{
+  \title{Coming Soon!!!}
+  \query{
+    \open\query
+    \isect{\tag{blog}}{\tag{upcoming}}
+  }
+}

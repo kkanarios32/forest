@@ -1,0 +1,7 @@
+\date{2025-01-30}
+\title{Transient and recurrent states}
+\taxon{definition}
+
+\p{
+	We say #{x \in S} is recurrent if #{\rho_{xx} = 1} and transient if #{\rho_{xx} < 1}.
+}

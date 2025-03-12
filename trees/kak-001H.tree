@@ -1,0 +1,7 @@
+\date{2024-11-26}
+\title{Axiom of Choice}
+\taxon{axiom}
+\p{
+    The axiom of choice assumes the existence of a choice function #{f}, such that
+    ##{\forall X\left[\varnothing\not\in X\implies\exists f\colon X\to\bigcup_{A\in X}A\quad\forall A\in X\left(f(A)\in A\right)\right]\,.}
+  }

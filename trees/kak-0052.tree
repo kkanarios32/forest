@@ -1,0 +1,6 @@
+\date{2025-02-10}
+\taxon{corollary}
+\p{
+#{\{X_{n}:n\geq1\}}: a sequence of i.i.d. r.v.s. with mean #{\mu}, variance #{\sigma^{2}}. Let #{f:\mathcal{X}\rightarrow\mathbb{R}} be any function, such that #{\mathrm{Var}(f(X))=\sigma_{f}^{2}<\infty}. Then,
+##{\frac{1}{n} \sum_{i = 1}^{n} f(X_i) \stackrel{p}{\rightarrow} \mathbb{E}[f(X)]}
+  }

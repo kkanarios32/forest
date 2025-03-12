@@ -1,0 +1,6 @@
+\date{2025-01-19}
+\title{Soft Actor Critic}
+\tag{rl}
+\p{
+    Want to solve MaxEnt problem subject to constraint on #{Q} function #{\implies} Boltzmann distribution with energy #{(Q)} function..
+  }

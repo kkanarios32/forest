@@ -1,0 +1,4 @@
+\date{2025-02-01}
+\title{Convex set}
+\taxon{definition}
+\p{#{C} is said to be convex if for any #{x_1, x_2 \in C} and #{\lambda \in [0,1]} then #{\lambda x_1 + (1 - \lambda)x_2 \in C}}

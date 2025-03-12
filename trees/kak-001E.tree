@@ -1,0 +1,6 @@
+\date{2024-11-26}
+\title{Halmo's Monotone Class Theorem}
+\taxon{theorem}
+\p{
+If #{\mathscr{F}_{0}} is a field and #{\mathscr{A}} is a monotone class, then #{\mathscr{F}_{0}\subset\mathscr{A}} implies #{\sigma(\mathscr{F}_{0})\subset\mathscr{A}}.
+}

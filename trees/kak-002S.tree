@@ -1,0 +1,18 @@
+\date{2025-01-15}
+\title{Linear MDP}
+\taxon{definition}
+\p{
+An MDP #{\mathcal{M}=(\mathcal{S},\mathcal{A},H,P,r)} is called a \em{linear MDP} if there exists two feature maps #{\phi:\mathcal{S}\times\mathcal{A}\rightarrow\mathbb{R}^{d}}, #{\mu:\mathcal{S}\rightarrow\mathbb{R}^{d}} and a vector #{\theta_{r}\in\mathbb{R}^{d}}, such that
+
+##{P(s^{\prime}|s,a)=\langle\phi(s,a),\mu(s^{\prime})\rangle,\quad r(s,a)=\langle\phi(s,a),\theta_{r}\rangle}
+
+and #{\phi} and #{\mu} also satisfy the normalization conditions:
+
+##{
+\begin{align*}
+  &\forall(s,a),\ \lVert \phi(s,a) \rVert_{2} \leq 1,\ \lVert \theta_{r}\rVert_{2} \leq \sqrt{d} \\
+  &\forall g:\mathcal{S}\rightarrow\mathbb{R},\ \lVert g \rVert_{L_{\infty}}\leq 1\ \Rightarrow\left\lVert \int_{\mathcal{S}}\mu(s^{\prime})g(s^{\prime})ds^{\prime}\right \rVert_{2}\leq \sqrt{d}
+\end{align*}
+}
+
+}

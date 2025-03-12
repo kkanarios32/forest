@@ -1,0 +1,15 @@
+\date{2024-11-22}
+\title{Markov Decision Process}
+\taxon{definition}
+
+\p{
+A Markov Decision Process #{M=(S,A,P,\tau,\gamma,\mu)} is a tuple, where
+
+\ul{
+  \li{A state space #{S}, which may be finite or infinite. For mathematical convenience, we will assume that #{S} is finite or countably infinite.}
+  \li{A action space #{A}, which also may be discrete or infinite. For mathematical convenience, we will assume that #{A} is finite. }
+  \li{A transition function #{P:S\times A\to\Delta(S)}, where #{\Delta(S)} is the space of probability distributions over #{S} (i.e., the below) #{P_{S}} is #{\mathcal{P}(S|\tau_{0})} is the probability of transitioning to state #{s^{\prime}} upon taking action #{a} in state #{s}.}
+  \li{A reward function #{r: S\times A \to [0,1]}. #{r(s, a)} is the immediate reward associated with taking action #{a} in state #{s}. More generally, the #{r(s,a)} could be a random variable (where the distribution depends on #{a}, #{0}). While we largely focus on the case where #{r(s,a)} is deterministic, the extension to methods with stochastic rewards are often straightforward.}
+  \li{A discount factor #{\gamma \in (0,1)}, which defines a horizon for the problem.}
+}
+}

@@ -1,0 +1,22 @@
+% ["references"]
+\title{Numerical optimization}
+\date{2006}
+\author{Jorge Nocedal}\author{Stephen J. Wright}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@book{nocedalNumericalOptimization2006,
+ title = {Numerical Optimization},
+ author = {Nocedal, Jorge and Wright, Stephen J.},
+ year = {2006},
+ isbn = {978-0-387-30303-1},
+ edition = {2nd ed},
+ series = {Springer Series in Operations Research},
+ publisher = {Springer},
+ address = {New York},
+ file = {/home/kellen/Zotero/storage/ZNRAHE63/Nocedal and Wright - 2006 - Numerical optimization.pdf},
+ annotation = {OCLC: ocm68629100},
+ keywords = {Mathematical optimization},
+ lccn = {QA402.5 .N62 2006},
+ langid = {english}
+}
+\stopverb}

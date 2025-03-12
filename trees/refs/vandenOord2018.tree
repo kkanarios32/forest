@@ -1,0 +1,16 @@
+\title{Contrastive Predictive Decoding}
+\taxon{reference}
+\tag{contrastive}
+\meta{doi}{10.48550/arXiv.1807.03748}
+\meta{bibtex}\verb<<<|
+@misc{oord2019representationlearningcontrastivepredictive,
+      title={Representation Learning with Contrastive Predictive Coding}, 
+      author={Aaron van den Oord and Yazhe Li and Oriol Vinyals},
+      year={2019},
+      eprint={1807.03748},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/1807.03748}, 
+}
+<<<
+

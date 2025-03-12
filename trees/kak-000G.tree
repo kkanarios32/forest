@@ -1,0 +1,89 @@
+\date{2024-11-05}
+\title{On-policy Prediction with Approximation}
+\import{base-macros}
+
+\p{
+In my opinion, the most important part of this chapter is now that when we update say a #{Q} function for a specific state action pair #{(s,a)}, then this update can affect the value of the #{Q(s', a')} due to the reuse of the internal parameters.
+  }
+
+\refcardt{exercise}{}{9.1}{sutton2022}{
+  \p{Show that tabular methods are a special case of linear function approximation. What would the feature vectors be?}
+}
+
+\solution{
+\p{As a linear function approximation method, we have two quantities #{\boldsymbol{w}} and #{\boldsymbol{x}(s)}. We make the update
+##{w_{t + 1} = w_{t} + \alpha(r_t + \gamma w_{t}^{\top} x_{t+1} - w_t^{\top} x_t) x_t}
+In the tabular setting, we just assume that we have the capacity to represent every possible state. This means that #{x(s) \in \mathbb{R}^{|S|}}. Therefore, if we define the features as #{x : s_i \mapsto \boldsymbol{e}_i} then we can recover policy evaluation by taking,
+##{r_i = \mathbb{E}_{a \sim \pi, s \sim p}[r(s_i)], \quad w_i = v_{\pi}(s_i)}
+}
+Substituting, we get 
+##{
+##{w_{t + 1} = w_{t} + \alpha(\mathbb{E}_{a \sim \pi, s \sim p}[r(s_i)] + v(s_{t + 1}) - v(s_{t})) \cdot \boldsymbol{e}_i}
+}
+Since #{\boldsymbol{w}} is our vector of values, updating the #{i}th entry is exactly performing exactly one update to #{v_{\pi}(s_i)} in the tabular setting.
+}
+
+\refcardt{exercise}{}{9.2}{sutton2022}{
+  \p{Why does (9.17) define #{(n + 1)^k} distinct features for dimension k? }
+}
+\solution{
+  \p{For each #{s_j}, there are #{n + 1} options for #{c_{i, j}}. Since there are #{k}, #{s_{j}}'s, there are #{(n + 1)^k} total possible features for #{x_i}.}
+}
+
+
+\refcardt{exercise}{}{9.3}{sutton2022}{
+\p{What #{n} and #{c_{i,j}} produce the feature vectors ##{\mathbf{x}(s)=(1,s_{1},s_{2},s_{1}s_{2},s_{1}^{2},s_{2}^{2},s_{1}^{2}s_{2}^{2},s_{1}s_{2}^{2},s_{1}^{2}s_{2}^{2})^{\top}?}
+}
+}
+\solution{
+  \p{#{n = 2} and #{c_{ij}} as 
+##{\boldsymbol{c_0} = [0, 0], \quad
+  \boldsymbol{c_1} = [1, 0] \\
+  \boldsymbol{c_2} = [0, 1], \quad
+  \boldsymbol{c_3} = [1, 1] \\
+  \boldsymbol{c_4} = [2, 0], \quad
+  \boldsymbol{c_5} = [0, 2] \\
+  \boldsymbol{c_6} = [2, 2], \quad
+  \boldsymbol{c_7} = [1, 2], \quad
+  \boldsymbol{c_8} = [2, 2]
+  }
+  }
+}
+
+\question{
+  \ol{
+    \li{In section 9.5.2, what do they mean when they say you can select #{n} so all the fourier features can be used?
+    \ol{
+        \li{Pick #{n} so that #{(n + 1)^k < mk^2}.}
+        \li{Pick #{n} so that #{(n + 1)^k} is reasonable.}
+      }
+    }
+    \p{
+    In the tabular case, I think (a) is correct. My initial understanding of state representation is as a representation learning i.e. compression type objective. If we assume that #{s_i \in [m]}, then we do not gain anything in the tabular setting if our value function vector is the same size as the underlying transition kernel. When in the continuous state space regime i.e. #{s_i \in [0,1]}, there is no amount of features that would overfit the transition kernel. Therefore, it is just about trying to learn as much as possible about the underlying relations of the state dimensions.
+    }
+    \p{
+    In the #{2}-dimensional case, the feature vector #{c_i = [1,1]} would provide information on how #{s_1} and #{s_2} relate not just their specific values. You want the learning algorithm to understand the relationships, so that it can make better use of the internal parameters when learning something like a #{Q} function. This is basically just SVD but instead of classification you are learning a #{Q} function. The compression  
+    }
+  }
+  }
+
+\question{
+  \ol{
+    \li{In Figure 9.5, why do fourier features outperform polynomial features?
+    \ol{
+        \li{The fourier features got lucky on the seeds (lol).}
+        \li{The choice of #{\boldsymbol{c}} is not specified. A good choice can provide improvement specific to the problem?}
+        \li{Polynomial features range is very large. Can suffer from blowup or vanishing of features.}
+      }
+    }
+    One of the advantages of fourier features mentioned previously is the ability to select which features to serve as your basis. However, for this setup I assume they just use all of the fourier features. This likely means it is more of an issue with the polynomial features and (c). If you have a large polynomial then even relative similar states #{s_1 = 1.1}, #{s_2 = 0.9}, #{\ldots} can blow up or vanish making them likely more unstable when using gradient-based methods.
+  }
+  }
+
+\refcardt{exercise}{}{9.4}{sutton2022}{
+  \p{
+    You could do anisotropic (big word for asymmetric) tile partitioning. If we consider the two state dimensions as (x,y) coordinates and suppose that we want to only generalize across the #{y}-direction i.e. we want states with the same #{x} coordinate to have similar values then we would tile with long thin tiles. Therefore, states with the same #{x} coordinate would lie in the same vertical tile and if the tiles are very thin any change in #{x}-coordinate would lie in disjoint tiles.
+  }
+}
+
+\remark{I think that RBF as a continuous generalization coarse-coding is a nice intuition I want to remember here. Essentially, you just weight a state by how close it is to the center of the receptive field. This weighting is done via a Gaussian kernel, which I believe is arbitrary and can be any distance measure of choice.}

@@ -1,0 +1,19 @@
+% ["deepseek"]
+\title{Proximal policy optimization algorithms}
+\date{2017}
+\author{John Schulman}\author{Filip Wolski}\author{Prafulla Dhariwal}\author{Alec Radford}\author{Oleg Klimov}
+\taxon{reference}
+\meta{external}{https://arxiv.org/abs/1707.06347}
+
+\meta{bibtex}{\startverb
+@misc{schulman2017proximalpolicyoptimizationalgorithms,
+ title = {Proximal Policy Optimization Algorithms},
+ author = {John Schulman and Filip Wolski and Prafulla Dhariwal and Alec
+Radford and Oleg Klimov},
+ year = {2017},
+ url = {https://arxiv.org/abs/1707.06347},
+ primaryclass = {cs.LG},
+ archiveprefix = {arXiv},
+ eprint = {1707.06347}
+}
+\stopverb}

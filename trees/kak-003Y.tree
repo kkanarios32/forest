@@ -1,0 +1,28 @@
+\date{2025-01-30}
+\title{The History and Evolution of Policy Gradient Algorithms}
+\author{kellenkanarios}
+\tag{blog}
+\tag{upcoming}
+\tag{rl}
+
+\p{
+  Rough itinerary,
+  \ul{
+      \li{Vanilla policy gradient
+      \ul{
+          \li{Policy gradient theorem + proof}
+          \li{Deterministic policy gradient theorem + (maybe)proof}
+        }
+      }
+      \li{Actor critic method
+      \ul{
+        \li{A2C: Variance reduction method}
+        \li{(Maybe) A3C: Asynchronous update}
+        }
+      }
+      \li{Trust region policy optimization}
+      \li{Soft Actor Critic}
+      \li{[Proximal Policy Optimization](schulman2017proximalpolicyoptimizationalgorithms)}
+      \li{[[kak-003X]]}
+    }
+}

@@ -1,0 +1,16 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex]
+A class $\mathcal{M}$ of subsets of $\Omega$ is monotone if
+[/latex]
+%Front
+%Back
+[latex]
+\begin{enumerate}
+  \item [(i)] $A_{1},A_{2},\ldots\in\mathcal{M}$ and $A_{n}\uparrow A$ imply $A\in\mathcal{M}$;
+  \item [(ii)] $A_{1},A_{2},\ \ldots\in\mathcal{M}$ and $A_{n}\downarrow A$ imply $A\in\mathcal{M}$.
+\end{enumerate}
+[/latex]
+%Back

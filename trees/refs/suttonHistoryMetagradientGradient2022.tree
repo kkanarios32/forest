@@ -1,0 +1,22 @@
+% ["references"]
+\title{A History of Meta-gradient: Gradient Methods for Meta-learning}
+\date{2022-02}
+\author{Richard S. Sutton}
+\taxon{reference}
+\meta{external}{https://arxiv.org/abs/2202.09701v1}
+
+\meta{bibtex}{\startverb
+@misc{suttonHistoryMetagradientGradient2022,
+ title = {A {{History}} of {{Meta-gradient}}: {{Gradient Methods}} for {{Meta-learning}}},
+ author = {Sutton, Richard S.},
+ year = {2022},
+ urldate = {2024-09-06},
+ howpublished = {https://arxiv.org/abs/2202.09701v1},
+ journal = {arXiv.org},
+ file = {/home/kellen/Zotero/storage/93SUJHK4/Sutton - 2022 - A History of Meta-gradient Gradient Methods for Meta-learning.pdf},
+ langid = {english},
+ abstract = {The history of meta-learning methods based on gradient descent is reviewed, focusing primarily on methods that adapt step-size (learning rate) meta-parameters.},
+ month = {February},
+ shorttitle = {A {{History}} of {{Meta-gradient}}}
+}
+\stopverb}

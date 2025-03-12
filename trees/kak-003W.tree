@@ -1,0 +1,11 @@
+\date{2025-01-29}
+\title{LLMs stuff}
+\tag{note}
+\tag{lost}
+\import{base-macros}
+\section{Useful Resources}{
+    \ul{
+        \li{[PPO + LLM Tricks](https://hijkzzz.notion.site/rlhf-implementation-tricks?v=158d9a33ecc98132bf9e000c39227361)}
+      }
+}
+

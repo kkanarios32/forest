@@ -1,0 +1,7 @@
+\date{2024-11-04}
+\title{NCE loss}
+\taxon{definition}
+\tag{loss}
+
+\p{The \em{[NCE](nce)} loss aims to minimize the following objective ##{\mathcal{L}_{N} = - \sum_{t} \log \left[h(x_t; \theta)\right] + \log\left[1 - h(y_t; \theta)\right],} where #{x_t} are samples from the data distribution and #{y_t} are randomly generated samples and ##{\begin{array}{r c l}{{h({\bf u};\theta)}}&{{=}}&{{\frac{1}{1+\exp\left[-G({\bf u};\theta)\right]},}}\\ {{G({\bf u};\theta)}}&{{=}}&{{\ln p_{m}({\bf u};\theta)-\ln p_{n}({\bf u}).}}\end{array}}
+}

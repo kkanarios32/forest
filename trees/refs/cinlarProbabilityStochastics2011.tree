@@ -1,0 +1,23 @@
+% ["references"]
+\title{Probability and Stochastics}
+\date{2011}
+\author{Erhan Çinlar}
+\taxon{reference}
+\meta{doi}{10.1007/978-0-387-87859-1}
+\meta{bibtex}{\startverb
+@book{cinlarProbabilityStochastics2011,
+ title = {Probability and {{Stochastics}}},
+ author = {{\c C}inlar, Erhan},
+ year = {2011},
+ isbn = {978-0-387-87858-4 978-0-387-87859-1},
+ doi = {10.1007/978-0-387-87859-1},
+ urldate = {2024-10-18},
+ series = {Graduate {{Texts}} in {{Mathematics}}},
+ volume = {261},
+ publisher = {Springer New York},
+ address = {New York, NY},
+ file = {/home/kellen/Zotero/storage/GHJPXQJR/Çinlar - 2011 - Probability and Stochastics.pdf},
+ langid = {english},
+ copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining}
+}
+\stopverb}

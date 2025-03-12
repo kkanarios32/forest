@@ -1,0 +1,4 @@
+\date{2024-12-28}
+\title{Uniformly Bounded}
+\taxon{definition}
+\p{If #{\exists K} such that #{X_n(\omega) \leq K} for every #{\omega} and #{n} then the #{X_n} are \em{uniformly bounded}.}

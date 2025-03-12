@@ -1,0 +1,6 @@
+\date{2025-01-27}
+\title{Smooth Function}
+\taxon{definition}
+\p{
+     A differentiable function #{f(\mathbf{x})} is called smooth iff it has a Lipschitz continuous gradient, i.e., iff #{L< \infty} such that ##{||\nabla f(\mathbf{x})-\nabla f(\mathbf{z}) ||_{2}\ \leq L ||\mathbf{x}-\mathbf{z} ||_{2},\quad \forall \mathbf{x},\ \mathbf{z}\in\mathbb{R}^{n}}
+}

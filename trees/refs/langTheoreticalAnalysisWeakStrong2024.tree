@@ -1,0 +1,25 @@
+% ["references"]
+\title{Theoretical Analysis of Weak-to-Strong Generalization}
+\date{2024-05}
+\author{Hunter Lang}\author{David Sontag}\author{Aravindan Vijayaraghavan}
+\taxon{reference}
+\meta{external}{https://arxiv.org/abs/2405.16043}
+
+\meta{bibtex}{\startverb
+@misc{langTheoreticalAnalysisWeakStrong2024,
+ title = {Theoretical {{Analysis}} of {{Weak-to-Strong Generalization}}},
+ author = {Lang, Hunter and Sontag, David and Vijayaraghavan, Aravindan},
+ year = {2024},
+ urldate = {2024-09-18},
+ number = {arXiv:2405.16043},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/LJQ96YTP/Lang et al. - 2024 - Theoretical Analysis of Weak-to-Strong Generalization.pdf},
+ keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Strong student models can learn from weaker teachers: when trained on the predictions of a weaker model, a strong pretrained student can learn to correct the weak model's errors and generalize to examples where the teacher is not confident, even when these examples are excluded from training. This enables learning from cheap, incomplete, and possibly incorrect label information, such as coarse logical rules or the generations of a language model. We show that existing weak supervision theory fails to account for both of these effects, which we call pseudolabel correction and coverage expansion, respectively. We give a new bound based on expansion properties of the data distribution and student hypothesis class that directly accounts for pseudolabel correction and coverage expansion. Our bounds capture the intuition that weak-to-strong generalization occurs when the strong model is unable to fit the mistakes of the weak teacher without incurring additional error. We show that these expansion properties can be checked from finite data and give empirical evidence that they hold in practice.},
+ primaryclass = {cs, stat},
+ eprint = {2405.16043},
+ month = {May}
+}
+\stopverb}

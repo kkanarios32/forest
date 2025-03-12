@@ -1,0 +1,10 @@
+\date{2025-02-11}
+\taxon{definition}
+\title{Coding system}
+\p{A coding system with parameters #{(n, \theta)} consist of an encoder and a decoder, where an encoder is a function
+##{
+  e: \mathcal{X}^n \to \{1, 2, \ldots, \theta\}
+}
+and a decoder is a function 
+##{f: \{1, 2, \ldots, \theta\} \to \mathcal{X}^n}
+}

@@ -1,0 +1,6 @@
+\date{2024-11-26}
+\title{Dynkin's #{\pi\text{-}\lambda}}
+\taxon{theorem}
+\p{
+If #{\mathscr{P}} is a #{\pi}-system and #{\mathscr{L}} is a #{\lambda}-system, then #{\mathscr{P}\subset\mathscr{L}} implies #{\sigma(\mathscr{P})\subset\mathscr{L}}.
+}

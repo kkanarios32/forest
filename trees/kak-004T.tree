@@ -1,0 +1,12 @@
+\date{2025-02-03}
+\title{Convergence of GD with backtracking}
+\taxon{theorem}
+\p{
+Let the function #{f(\pmb{x})} be #{\mu}-strongly convex and #{L}-smooth. With backtracking
+
+linesearch, the GD method converges with
+
+##{f(\pmb{x}_k)-f(\pmb{x}_\star)\ \le\ \left(1-\min\left\{2c_1\mu,\dfrac{2\alpha c_1\mu}{L}\right\}\right)^k(f(\pmb{x}_0)-f(\pmb{x}_\star))}
+
+where #{\pmb{x}_\star} is the unique minimizer.
+}

@@ -1,0 +1,23 @@
+% ["references"]
+\title{Constrained Markov Decision Processes: Stochastic Modeling}
+\date{2021-12}
+\author{Eitan Altman}
+\taxon{reference}
+\meta{doi}{10.1201/9781315140223}
+\meta{bibtex}{\startverb
+@book{altmanConstrainedMarkovDecision2021,
+ title = {Constrained {{Markov Decision Processes}}: {{Stochastic Modeling}}},
+ author = {Altman, Eitan},
+ year = {2021},
+ isbn = {978-1-315-14022-3},
+ doi = {10.1201/9781315140223},
+ urldate = {2024-11-27},
+ edition = {1},
+ publisher = {Routledge},
+ address = {Boca Raton},
+ file = {/home/kellen/Zotero/storage/GBXKPARY/Altman - 2021 - Constrained Markov Decision Processes Stochastic Modeling.pdf},
+ langid = {english},
+ month = {December},
+ shorttitle = {Constrained {{Markov Decision Processes}}}
+}
+\stopverb}

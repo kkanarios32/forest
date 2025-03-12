@@ -1,0 +1,6 @@
+\date{2025-01-30}
+\title{Communicates}
+\taxon{definition}
+\p{
+	We say #{x} communicates with #{y} and denote it by #{x \to y} if #{\rho_{xy} > 0}.
+  }

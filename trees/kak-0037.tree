@@ -1,0 +1,6 @@
+\date{2025-01-26}
+\tag{optimization}
+\title{Smooth Problem}
+\taxon{definition}
+
+\p{A problem is \em{smooth} if both the objective function and the constraints are differentiable.}

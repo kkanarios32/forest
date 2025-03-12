@@ -1,0 +1,8 @@
+\date{2025-02-10}
+\title{High probability sets}
+\taxon{corollary}
+\p{
+Let #{B_{\epsilon}^{(n)}\subset\mathcal{X}^{n}} be the smallest set with probability at least #{1-\epsilon}. Then, we must have
+
+##{\mathbb{P}(A_{\epsilon}^{(n)}\cap B_{\epsilon}^{(n)})\geq1-2\epsilon}
+}

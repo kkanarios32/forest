@@ -1,0 +1,19 @@
+% ["references"]
+\title{Discovering Hierarchical Achievements in Reinforcement Learning via Contrastive Learning}
+\date{2023-12}
+\author{Seungyong Moon}\author{Junyoung Yeom}\author{Bumsoo Park}\author{Hyun Oh Song}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@article{moonDiscoveringHierarchicalAchievements2023,
+ title = {Discovering {{Hierarchical Achievements}} in {{Reinforcement Learning}} via {{Contrastive Learning}}},
+ author = {Moon, Seungyong and Yeom, Junyoung and Park, Bumsoo and Song, Hyun Oh},
+ year = {2023},
+ urldate = {2024-12-21},
+ journal = {Advances in Neural Information Processing Systems},
+ volume = {36},
+ pages = {63674--63686},
+ file = {/home/kellenkanarios/Downloads/Papers/Continual-RL/Moon et al_2023_Discovering Hierarchical Achievements in Reinforcement Learning via Contrastive.pdf},
+ langid = {english},
+ month = {December}
+}
+\stopverb}

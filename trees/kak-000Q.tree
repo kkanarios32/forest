@@ -1,0 +1,6 @@
+\date{2024-11-20}
+\title{Probability Space}
+\taxon{definition}
+\p{
+If #{\mathscr{F}} is a #{\sigma}-field in #{\Omega} and #{P} is a probability measure on #{\mathscr{F}}, the triple #{(\Omega,\mathscr{F},P)} is called a probability measure space, or simply a probability space. A support of #{P} is any #{\mathscr{F}}-set #{A} for which #{P(A)=1}.
+  }

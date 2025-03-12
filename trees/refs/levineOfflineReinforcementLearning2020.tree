@@ -1,0 +1,26 @@
+% ["references"]
+\title{Offline Reinforcement Learning: Tutorial, Review, and Perspectives on Open Problems}
+\date{2020-11}
+\author{Sergey Levine}\author{Aviral Kumar}\author{George Tucker}\author{Justin Fu}
+\taxon{reference}
+\meta{external}{https://arxiv.org/abs/2005.01643}
+
+\meta{bibtex}{\startverb
+@misc{levineOfflineReinforcementLearning2020,
+ title = {Offline {{Reinforcement Learning}}: {{Tutorial}}, {{Review}}, and {{Perspectives}} on {{Open Problems}}},
+ author = {Levine, Sergey and Kumar, Aviral and Tucker, George and Fu, Justin},
+ year = {2020},
+ urldate = {2024-11-17},
+ number = {arXiv:2005.01643},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/QV4MPWZ3/Levine et al. - 2020 - Offline Reinforcement Learning Tutorial, Review, and Perspectives on Open Problems.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In this tutorial article, we aim to provide the reader with the conceptual tools needed to get started on research on offline reinforcement learning algorithms: reinforcement learning algorithms that utilize previously collected data, without additional online data collection. Offline reinforcement learning algorithms hold tremendous promise for making it possible to turn large datasets into powerful decision making engines. Effective offline reinforcement learning methods would be able to extract policies with the maximum possible utility out of the available data, thereby allowing automation of a wide range of decision-making domains, from healthcare and education to robotics. However, the limitations of current algorithms make this difficult. We will aim to provide the reader with an understanding of these challenges, particularly in the context of modern deep reinforcement learning methods, and describe some potential solutions that have been explored in recent work to mitigate these challenges, along with recent applications, and a discussion of perspectives on open problems in the field.},
+ primaryclass = {cs},
+ eprint = {2005.01643},
+ month = {November},
+ shorttitle = {Offline {{Reinforcement Learning}}}
+}
+\stopverb}

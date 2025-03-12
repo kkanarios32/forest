@@ -1,0 +1,8 @@
+\date{2025-02-03}
+\title{Wolfe condition}
+\taxon{definition}
+\p{
+  For some #{0 < c_1 < c_2 < 1},
+##{f(\mathbf{x}_{k}+\tau_{k}\cdot\mathbf{d}_{k})\ <\ f(\mathbf{x}_{k})+c_{1}\cdot\tau_{k}\cdot\mathbf{d}_{k}^{\intercal}\nabla f(\mathbf{x}_{k})}
+##{d_{k}^{\top}\nabla f({\mathbf{x}}_{k}+\tau_{k}{\mathbf{d}}_{k})\ \geq\ c_{2}{\mathbf{d}}_{k}^{\top}\nabla f({\mathbf{x}}_{k})}
+  }

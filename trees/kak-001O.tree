@@ -1,0 +1,14 @@
+\date{2024-12-26}
+\title{Independence}
+\taxon{definition}
+\p{
+  Independence evolves in the following manner:
+  \ol{
+    \li{Events #{A} and #{B} are independent if #{P(A \cap B) = P(A)P(B)}. }
+    \li{A finite collection of events are independent if
+    ##{P(A_{k_1} \cap \cdots \cap A_{k_j}) = P(A_{k_1}) \cdots P(A_{k_j})}
+    }
+    \li{A infinite collection of sets is defined to be independent if every finite subcollection is independent.}
+    \li{Classes #{\mathscr{A}_1, \ldots, \mathscr{A}_n} are independent if for any events #{A_1 \in \mathscr{A}_1, \ldots, A_n \in \mathscr{A}_n}, #{A_1, \ldots, A_n} are independent.}
+    }
+  }

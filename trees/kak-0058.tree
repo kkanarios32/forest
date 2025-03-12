@@ -1,0 +1,5 @@
+\date{2025-02-10}
+\taxon{theorem}
+\p{
+If #{C} is a finite closed and irreducible set, then all states in #{C} are recurrent.
+}

@@ -1,0 +1,9 @@
+\date{2025-02-03}
+\title{Exact Linesearch}
+\taxon{definition}
+\p{
+    For 
+##{x_{k+1}\ =\ x_{k}\ -\ \tau_{k}\cdot\nabla f(x_{k})}
+Choose step size by solving
+##{\tau_{k}\;=\;\arg\operatorname*{min}_{t\geq0}\;f({\mathbf{x}}_{k}-t\cdot\nabla f({\mathbf{x}}_{k}))}
+  }

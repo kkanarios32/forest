@@ -1,0 +1,13 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+Let $P$ be a probability measure on a field $\mathcal{F}$. Continuity from below.
+%Front
+%Back
+[latex]
+\begin{enumerate}
+  \item If $A_{n}$ and $A$ lie in $\mathcal{F}$ and $\mathcal{A}_{n}\uparrow A$, then $P(A_{n})\uparrow P(A)$.
+\end{enumerate}
+[/latex]
+%Back

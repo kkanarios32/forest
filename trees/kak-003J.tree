@@ -1,0 +1,11 @@
+\date{2025-01-27}
+\title{Lipschitz Continous}
+\taxon{definition}
+\p{
+Suppose that 
+\ul{
+  \li{#{f:\mathcal{X}\mapsto\mathcal{Y}} with #{\mathcal{X}} and #{\mathcal{Y}} being open sets;} 
+  \li{#{||\cdot||_{\mathcal{X}}} and #{||\cdot||_{\mathcal{Y}}} are norms on #{\mathcal{X}} and #{\mathcal{Y}}, respectively.}
+  }
+#{f(\cdot)} is Lipschitz continuous over #{\mathcal{X}} if #{\exists L<\infty\,,} such that ##{||f(\boldsymbol{y})-f(\boldsymbol{x})||_{\mathcal{Y}}\ \leq\ L(\boldsymbol{x})\,||\boldsymbol{y}-\boldsymbol{x}||_{\mathcal{X}}\,,\quad\forall\boldsymbol{x},\ \boldsymbol{y}\in\mathcal{X}.}
+  }

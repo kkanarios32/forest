@@ -1,0 +1,6 @@
+\date{2025-01-27}
+\title{Stationary point}
+\taxon{definition}
+\p{
+    A point #{\mathbf{x_{\star}}} is a stationary point of #{f(\cdot)}, if ##{\nabla f(\mathbf{x_{\star}})\ =\ \mathbf{0}.} Here, #{\mathbf{x_{\star}}} is also known as a critical point.
+  }

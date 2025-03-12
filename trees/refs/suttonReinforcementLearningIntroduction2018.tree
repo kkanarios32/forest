@@ -1,0 +1,23 @@
+% ["references"]
+\title{Reinforcement learning: An introduction}
+\date{2018}
+\author{Richard S. Sutton}\author{Andrew G. Barto}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@book{suttonReinforcementLearningIntroduction2018,
+ title = {Reinforcement Learning: An Introduction},
+ author = {Sutton, Richard S. and Barto, Andrew G.},
+ year = {2018},
+ isbn = {978-0-262-03924-6},
+ edition = {Second edition},
+ series = {Adaptive Computation and Machine Learning Series},
+ publisher = {The MIT Press},
+ address = {Cambridge, Massachusetts},
+ file = {/home/kellen/Zotero/storage/DY4UI6G7/Sutton and Barto - 2018 - Reinforcement learning an introduction.pdf},
+ keywords = {Reinforcement learning},
+ lccn = {Q325.6 .R45 2018},
+ langid = {english},
+ abstract = {"Reinforcement learning, one of the most active research areas in artificial intelligence, is a computational approach to learning whereby an agent tries to maximize the total amount of reward it receives while interacting with a complex, uncertain environment. In Reinforcement Learning, Richard Sutton and Andrew Barto provide a clear and simple account of the field's key ideas and algorithms."--},
+ shorttitle = {Reinforcement Learning}
+}
+\stopverb}

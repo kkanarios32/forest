@@ -1,0 +1,8 @@
+\date{2025-01-26}
+\tag{optimization}
+\title{Strong convexity}
+\taxon{definition}
+\p{A function #{f} is #{\mu}-strongly convex if and only if 
+##{g(\boldsymbol{x}) = f(\boldsymbol{x}) - \frac{\mu}{2} ||\boldsymbol{x}||_2^2}
+is convex, #{\forall \boldsymbol{x} \in \mathrm{dom} f}.
+}

@@ -1,0 +1,25 @@
+% ["references"]
+\title{Investigating the Properties of Neural Network Representations in Reinforcement Learning}
+\date{2023-05}
+\author{Han Wang}\author{Erfan Miahi}\author{Martha White}\author{Marlos C. Machado}\author{Zaheer Abbas}\author{Raksha Kumaraswamy}\author{Vincent Liu}\author{Adam White}
+\taxon{reference}
+\meta{external}{https://arxiv.org/abs/2203.15955}
+
+\meta{bibtex}{\startverb
+@misc{wangInvestigatingPropertiesNeural2023,
+ title = {Investigating the {{Properties}} of {{Neural Network Representations}} in {{Reinforcement Learning}}},
+ author = {Wang, Han and Miahi, Erfan and White, Martha and Machado, Marlos C. and Abbas, Zaheer and Kumaraswamy, Raksha and Liu, Vincent and White, Adam},
+ year = {2023},
+ urldate = {2024-10-18},
+ number = {arXiv:2203.15955},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/3QBBT8HR/Wang et al. - 2023 - Investigating the Properties of Neural Network Representations in Reinforcement Learning.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In this paper we investigate the properties of representations learned by deep reinforcement learning systems. Much of the early work on representations for reinforcement learning focused on designing fixed-basis architectures to achieve properties thought to be desirable, such as orthogonality and sparsity. In contrast, the idea behind deep reinforcement learning methods is that the agent designer should not encode representational properties, but rather that the data stream should determine the properties of the representation---good representations emerge under appropriate training schemes. In this paper we bring these two perspectives together, empirically investigating the properties of representations that support transfer in reinforcement learning. We introduce and measure six representational properties over more than 25 thousand agent-task settings. We consider Deep Q-learning agents with different auxiliary losses in a pixel-based navigation environment, with source and transfer tasks corresponding to different goal locations. We develop a method to better understand why some representations work better for transfer, through a systematic approach varying task similarity and measuring and correlating representation properties with transfer performance. We demonstrate the generality of the methodology by investigating representations learned by a Rainbow agent that successfully transfer across games modes in Atari 2600.},
+ primaryclass = {cs},
+ eprint = {2203.15955},
+ month = {May}
+}
+\stopverb}

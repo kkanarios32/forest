@@ -1,0 +1,13 @@
+%%MODELNAME Basic
+%%DECKNAME Math
+%%TAGS
+%Front
+[latex]
+A probability measure $(\Omega, \mathcal{F}, P)$ is \emph{complete} if
+[/latex]
+%Front
+%Back
+[latex]
+for $A \subset B$ if $P(B) = 0$ then $P(A) = 0$.
+[/latex]
+%Back

@@ -1,0 +1,8 @@
+\date{2024-11-26}
+\title{Vitali Sets}
+\taxon{example}
+
+\p{If we consider #{[0,1]}, then we can partition #{[0, 1]} into equivalent classes as #{x \sim y} if #{x - y = r} for some #{r \in \mathbb{Q} \cap [0, 1]}. Denote each of these as #{V_{r}}. By the [[kak-001H]], we can choose one representative from each #{V_r}. We call the set of these representatives #{V}. Therefore, we can write #{[0, 1]} as a countable union via #{[0,1] = \bigcup_{r \in \mathbb{Q}} V + r}. For the Lebesgue measure #{\lambda}, each #{\lambda(V + r) = \lambda(V)}. Since each #{V + r} is disjoint, we have 
+##{\lambda\left(\bigcup_{r \in \mathbb{Q}} V + r\right) = \sum_{r \in \mathbb{Q}} \lambda(V)}
+If #{\lambda(V) = 0}, then #{\lambda([0,1]) \leq \lambda(V) = 0} which is a contradiction. Otherwise #{\lambda ([0,1]) = \sum_{r \in \mathbb{Q}} k = \infty} for some #{k \in \mathbb{R}}. Thus, #{V} is not Lebesgue measurable.
+}

@@ -1,0 +1,10 @@
+\date{2024-12-28}
+\title{Expected Value}
+\taxon{definition}
+\p{A [[kak-001W]] of the form #{X = \sum_{i} x_i I_{A_i}} is assigned expected value as 
+##{\mathbb{E}[X] = \mathbb{E}\left[\sum_i x_i I_{A_i} \right] = \sum_i x_i P(A_i)}
+More generally, if #{f(X) = \sum_i f(x_i) I_{A_i}} then
+##{\mathbb{E}\left[f(X)\right] = \sum_i f(x_i) P(A_i) = \sum_x f(x) P[X = x]}
+A useful identity is as follows:
+##{\mathbb{E}[X] = \int_0^{\infty} P[X \geq x] \mathrm{d}x}
+}

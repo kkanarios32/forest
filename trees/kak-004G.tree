@@ -1,0 +1,138 @@
+\date{2025-02-01}
+\import{base-macros}
+\title{Self-Attention}
+\author{kellenkanarios}
+\tag{llms}
+\p{
+    TLDR: Learned weighting of token embeddings. Essentially, learning which words to "attend" to in the input sequence. Have matrices
+#{\mathbf{Q} = \begin{bmatrix}
+  \begin{bmatrix}
+    \text{---} & \mathbf{q}^{(1)} & \text{---}
+  \end{bmatrix} \\
+  \vdots \\
+  \begin{bmatrix}
+    \text{---} & \mathbf{q}^{(n)} & \text{---}
+  \end{bmatrix}
+\end{bmatrix} \in \mathbb{R}^{n \times d_q}}, 
+#{
+\mathbf{K} = \begin{bmatrix}
+  \begin{bmatrix}
+    \text{---} & \mathbf{k}^{(1)} & \text{---}
+  \end{bmatrix} \\
+  \vdots \\
+  \begin{bmatrix}
+    \text{---} & \mathbf{k}^{(n)} & \text{---}
+  \end{bmatrix}
+\end{bmatrix} \in \mathbb{R}^{n \times d_k}
+}
+#{
+\mathbf{V} = \begin{bmatrix}
+  \begin{bmatrix}
+    \text{---} & \mathbf{v}^{(1)} & \text{---}
+  \end{bmatrix} \\
+  \vdots \\
+  \begin{bmatrix}
+    \text{---} & \mathbf{v}^{(n)} & \text{---}
+  \end{bmatrix}
+\end{bmatrix} \in \mathbb{R}^{n \times d_v}
+}
+}
+\p{
+\strong{Intuition 1:} Convex re-weighting of input tokens.
+  Note that
+##{
+\begin{align*}
+  \begin{bmatrix}
+    p_1 & p_2 & p_3
+  \end{bmatrix} \begin{bmatrix}
+  \begin{bmatrix}
+    \text{---} & \mathbf{v}^{(1)} & \text{---}
+  \end{bmatrix} \\
+  \begin{bmatrix}
+    \text{---} & \mathbf{v}^{(2)} & \text{---}
+  \end{bmatrix} \\
+  \begin{bmatrix}
+    \text{---} & \mathbf{v}^{(3)} & \text{---}
+  \end{bmatrix}
+  \end{bmatrix} = p_1 \mathbf{v}^{(1)} + p_2 \mathbf{v}^{(2)} + p_3 \mathbf{v}^{(3)}
+\end{align*}
+  }
+##{
+\begin{align*}
+  \begin{bmatrix}
+    p_{11} & 0 & 0 \\
+    p_{21} & p_{22} & 0 \\
+    p_{31} & p_{32} & p_{33}
+  \end{bmatrix} \begin{bmatrix}
+  \begin{bmatrix}
+    \text{---} & \mathbf{v}^{(1)} & \text{---}
+  \end{bmatrix} \\
+  \begin{bmatrix}
+    \text{---} & \mathbf{v}^{(2)} & \text{---}
+  \end{bmatrix} \\
+  \begin{bmatrix}
+    \text{---} & \mathbf{v}^{(3)} & \text{---}
+  \end{bmatrix}
+  \end{bmatrix} = 
+  \begin{bmatrix}
+  p_{11} \mathbf{v}^{(1)}  \\
+  p_{21} \mathbf{v}^{(1)} + p_{22} \mathbf{v}^{(2)} \\
+  p_{31} \mathbf{v}^{(1)} + p_{32} \mathbf{v}^{(2)} + p_{33} \mathbf{v}^{(3)}
+  \end{bmatrix}
+\end{align*}
+  }
+  \strong{Intuition 2:} Context dependent re-weighting.
+      If #{\mathbf{p} = \mathbb{S}(\mathbf{Q} \mathbf{K}^T)} then
+      ##{
+        \begin{align*}
+          p_{ij} = \frac{\mathbf{q}^{(i)} \cdot \mathbf{k}^{(j)}}{\sum_{j} \mathbf{q}^{(i)} \cdot \mathbf{k}^{(j)}}
+        \end{align*}
+      }
+}
+\example{
+    Suppose that #{\mathbf{x} = \text{I play with the ball}}. Then 
+##{
+    \begin{align*}
+      \mathbf{x}^{(5)} = \mathrm{Embed}(\text{``ball"})
+    \end{align*}
+  }
+  A feasible query for "ball" would be a verb describing the action of the ball, so maybe
+  ##{
+  \begin{align*}
+      W_q \mathbf{x}^{(5)} = \mathrm{Embed}(\text{``play"})
+  \end{align*}
+  }
+  and a key for "play" would be what you are playing with like a ball, so 
+  ##{
+  \begin{align*}
+      W_k \mathbf{x}^{(2)} = \mathrm{Embed}(\text{``ball"})
+  \end{align*}
+  }
+  i.e.
+##{
+  \begin{align*}
+    \mathrm{Query}(\text{``quantum"}) \cdot \mathrm{Key}(\text{``mechanics"}) \approx
+    ||\mathrm{Query}(\text{``quantum"})|| \cdot ||\mathrm{Key}(\text{``mechanics"})||
+  \end{align*}
+}
+
+}
+
+
+\p{
+##{
+  \begin{align*}
+\left[\mathbb{S}(\mathbf{Q}\mathbf{K}^T)\right]_{4} &= \mathbb{S}\left(\begin{bmatrix}
+\mathbf{q}^{(4)} \cdot \mathbf{k}^{(1)} & \mathbf{q}^{(4)} \cdot \mathbf{k}^{(2)} & \mathbf{q}^{(4)} \cdot \mathbf{k}^{(3)} & \mathbf{q}^{(4)} \cdot \mathbf{k}^{(4)} & \mathbf{q}^{(4)} \cdot \mathbf{k}^{(5)} & \mathbf{q}^{(4)} \cdot \mathbf{k}^{(6)}
+\end{bmatrix}
+\right) \\
+&= \begin{bmatrix}
+0 & 0.2 & 0.3 & 0.5 & 0 & 0
+\end{bmatrix}
+  \end{align*}
+}
+##{
+\left[\mathbb{S}(\mathbf{Q}\mathbf{K}^T)\right]_{4} \mathbf{V} = 0.2 \mathbf{v}^{(2)} + 0.3 \mathbf{v}^{(3)} + 0.5 \mathbf{v}^{(5)}
+}
+
+}

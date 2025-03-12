@@ -1,0 +1,28 @@
+\date{2025-02-01}
+\import{base-macros}
+\title{Log-Sum Inequality}
+\p{
+If #{a_{i},b_{i}>0} for #{i\in\{1,\ldots,n\}}; #{A=\sum_{i=1}^{n}a_{i},\quad B=\sum_{i=1}^{n}b_{i}}
+Then, we have: #{\sum_{i=1}^{n}a_{i}\log a_{i}/b_{i}\geq A\log A/B} 
+  }
+\proof{
+Define #{p_i = \frac{a_i}{A}}, #{q_i = \frac{b_i}{B}}, then 
+##{
+\begin{align*}
+  D_{\mathrm{KL}}(p || q) &= \sum \frac{a_i}{A} \log{\frac{B a_i}{A b_i}} \\
+  &= \sum \frac{a_i}{A} \log{\frac{a_i}{b_i}} - \sum \frac{a_i}{A} \log{\frac{A}{B}} \\
+  &= \sum \frac{a_i}{A} \log{\frac{a_i}{b_i}} - \log{\frac{A}{B}} \\
+\end{align*}
+}
+By [[kak-004E]],
+##{
+\begin{align*}
+  \sum \frac{a_i}{A} \log{\frac{a_i}{b_i}} - \log{\frac{A}{B}} \geq 0
+  &\implies
+  \sum \frac{a_i}{A} \log{\frac{a_i}{b_i}} \geq \log{\frac{A}{B}} \\
+  &\iff
+  A \sum a_i \log{\frac{a_i}{b_i}} \geq A \log{\frac{A}{B}}
+\end{align*}
+}
+as desired.
+}

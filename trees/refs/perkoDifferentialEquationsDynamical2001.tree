@@ -1,0 +1,24 @@
+% ["references"]
+\title{Differential Equations and Dynamical Systems}
+\date{2001}
+\author{Lawrence Perko}
+\taxon{reference}
+\meta{doi}{10.1007/978-1-4613-0003-8}
+\meta{bibtex}{\startverb
+@book{perkoDifferentialEquationsDynamical2001,
+ title = {Differential {{Equations}} and {{Dynamical Systems}}},
+ author = {Perko, Lawrence},
+ year = {2001},
+ isbn = {978-1-4612-6526-9 978-1-4613-0003-8},
+ doi = {10.1007/978-1-4613-0003-8},
+ urldate = {2025-01-25},
+ series = {Texts in {{Applied Mathematics}}},
+ editor = {Marsden, J. E. and Sirovich, L. and Golubitsky, M.},
+ volume = {7},
+ publisher = {Springer New York},
+ address = {New York, NY},
+ file = {/home/kellen/Zotero/storage/FRK58JEY/Perko - 2001 - Differential Equations and Dynamical Systems.pdf},
+ langid = {english},
+ copyright = {http://www.springer.com/tdm}
+}
+\stopverb}

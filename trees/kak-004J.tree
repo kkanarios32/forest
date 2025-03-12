@@ -1,0 +1,3 @@
+\date{2025-02-03}
+\title{Word Embeddings}
+##{\mathrm{Tok}(\mathbf{x})=\begin{bmatrix} 132\\ 17 \\ 87\\ 83\\ 184\end{bmatrix}}

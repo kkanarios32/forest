@@ -1,0 +1,18 @@
+% ["deepseek"]
+\title{7B model and 8K examples: Emerging reasoning with reinforcement learning is both effective and efficient}
+\date{2025}
+\author{Weihao Zeng}\author{Yuzhen Huang}\author{Wei Liu}\author{Keqing He}\author{Qian Liu}\author{Zejun Ma}\author{Junxian He}
+\taxon{reference}
+\meta{external}{https://hkust-nlp.notion.site/simplerl-reason}
+
+\meta{bibtex}{\startverb
+@misc{zeng2025simplerl,
+ title = {7B Model and 8K Examples: Emerging Reasoning with Reinforcement
+Learning is Both Effective and Efficient},
+ author = {Weihao Zeng and Yuzhen Huang and Wei Liu and Keqing He and Qian Liu
+and Zejun Ma and Junxian He},
+ year = {2025},
+ howpublished = {\url{https://hkust-nlp.notion.site/simplerl-reason}},
+ note = {Notion Blog}
+}
+\stopverb}

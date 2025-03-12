@@ -1,0 +1,31 @@
+% ["references"]
+\title{The Deep Learning Compiler: A Comprehensive Survey}
+\date{2021-03}
+\author{Mingzhen Li}\author{Yi Liu}\author{Xiaoyan Liu}\author{Qingxiao Sun}\author{Xin You}\author{Hailong Yang}\author{Zhongzhi Luan}\author{Lin Gan}\author{Guangwen Yang}\author{Depei Qian}
+\taxon{reference}
+\meta{doi}{10.1109/TPDS.2020.3030548}
+\meta{external}{https://arxiv.org/abs/2002.03794}
+
+\meta{bibtex}{\startverb
+@article{liDeepLearningCompiler2021,
+ title = {The {{Deep Learning Compiler}}: {{A Comprehensive Survey}}},
+ author = {Li, Mingzhen and Liu, Yi and Liu, Xiaoyan and Sun, Qingxiao and You, Xin and Yang, Hailong and Luan, Zhongzhi and Gan, Lin and Yang, Guangwen and Qian, Depei},
+ year = {2021},
+ doi = {10.1109/TPDS.2020.3030548},
+ urldate = {2024-10-20},
+ journal = {IEEE Transactions on Parallel and Distributed Systems},
+ volume = {32},
+ number = {3},
+ pages = {708--727},
+ file = {/home/kellen/Zotero/storage/TLNQRMTF/Li et al. - 2021 - The Deep Learning Compiler A Comprehensive Survey.pdf},
+ keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Performance},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {The difficulty of deploying various deep learning (DL) models on diverse DL hardware has boosted the research and development of DL compilers in the community. Several DL compilers have been proposed from both industry and academia such as Tensorflow XLA and TVM. Similarly, the DL compilers take the DL models described in different DL frameworks as input, and then generate optimized codes for diverse DL hardware as output. However, none of the existing survey has analyzed the unique design architecture of the DL compilers comprehensively. In this paper, we perform a comprehensive survey of existing DL compilers by dissecting the commonly adopted design in details, with emphasis on the DL oriented multi-level IRs, and frontend/backend optimizations. We present detailed analysis on the design of multi-level IRs and illustrate the commonly adopted optimization techniques. Finally, several insights are highlighted as the potential research directions of DL compiler. This is the first survey paper focusing on the design architecture of DL compilers, which we hope can pave the road for future research towards DL compiler.},
+ issn = {1045-9219, 1558-2183, 2161-9883},
+ primaryclass = {cs},
+ eprint = {2002.03794},
+ month = {March},
+ shorttitle = {The {{Deep Learning Compiler}}}
+}
+\stopverb}

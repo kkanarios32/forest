@@ -1,0 +1,9 @@
+\date{2024-11-14}
+\title{Dyadic Intervals}
+\taxon{Example}
+
+\p{Represent coin toss as dyadic expansion consider the set}
+
+##{\left[\omega:\ d_{i}(\omega)=u_{i},\,i=1,\ldots,n \right]=\Big(\sum_{i=1}^{n} \frac{u_{i}}{2^{i}},\ \sum_{i=1}^{n}\frac{u_{i}}{2^{i}} + \frac{1}{2^{n}}\Big).}
+
+\p{More stuff}

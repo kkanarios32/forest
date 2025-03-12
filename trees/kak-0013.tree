@@ -1,0 +1,9 @@
+\date{2024-11-24}
+\title{Mean Square Value Error}
+\taxon{definition}
+
+\p{
+  Since we are in the function approximation regime, we cannot perfectly compute the value of every state. Instead, we must prioritize which states are the most important to us. We can do this with a state distribution #{\mu(s)}. Then
+##{{\overline{{\mathrm{VE}}}}(\mathbf{w})\doteq\sum_{s\in S}\mu(s)\Big[v_{\pi}(s)-{\hat{v}}(s,\mathbf{w})\Big]^{2}.}
+  The canonical choice for #{\mu} is the on-policy distribution because this represents how much time is spent in each state and can be naturally approximated by Monte-carlo methods.
+}

@@ -1,0 +1,13 @@
+\date{2025-01-27}
+\title{Unitary Invariant Matrix Norm}
+\taxon{definition}
+\p{
+Let #{\mathbf{A}\in\mathbb{R}^{m\times n}.} We say the matrix norm is unitary invariant if ##{\left||\mathbf{A}\right||_{\sharp}\ =\ \left||\mathbf{PAQ}\right||_{\sharp},\quad\forall\ \mathbf{P}\in O(m),\ \mathbf{Q}\in O(n).}
+  }
+  \p{Eg.
+  \ul{
+    \li{ \strong{Spectral norm} ##{||A||_{2 \to 2}=\sigma_{1}(A)=||\sigma(A)||_{\infty}} }
+    \li{ \strong{Frobenius norm} ##{\left||\mathbf{A}\right||_{F}\ =\ \sqrt{\sum_{i=1}^{\min\{m,n\}}\sigma_{i}^{2}(\mathbf{A})}\ =\ \left||\mathbf{\sigma}(\mathbf{A})\right||_{2}}
+    }
+}
+  }

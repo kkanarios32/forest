@@ -1,0 +1,9 @@
+\date{2025-01-15}
+\title{Holder's Inequality}
+\p{
+Let #{(S,\Sigma,\mu)} be a measure space and let #{p,q\in[1,\ \infty]} with #{1/p+1/q=1}. Then for all measurable real- or complex-valued functions #{f} and #{g} on #{S},
+
+##{\lVert fg \rVert \leq \lVert f \rVert_{p}\lVert g \rVert_{q}.}
+
+If, in addition, #{p,q\in(1,\ \infty)} and #{f\in L^{q}(\mu)} and #{g\in L^{q}(\mu)}, then Holder's inequality becomes an equality if and only if #{\lVert f\rVert^{p}} and #{\lVert g\rVert^{q}} are linearly dependent in #{L^{1}(\mu)}, meaning that there exist real numbers #{a,\,\beta\geq0}, not both of them zero, such that #{\lVert f\rVert^{p}=\beta\,\lVert g\rVert^{q}} #{\mu}-almost everywhere.
+  }

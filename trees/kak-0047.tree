@@ -1,0 +1,17 @@
+\date{2025-01-30}
+\import{base-macros}
+\title{Transitivity of communcation}
+\taxon{lemma}
+\p{
+	If #{x \to y}, #{y \to z}, then #{x \to z}.
+  }
+\proof{
+	By assumption, there exists #{m, n \leq t} such that #{p^{m}(x,y) > 0} and #{p^n(y,z) > 0}. Then 
+  ##{
+	\begin{align*}
+		p^{m + n}(x, z) &= \sum_{k \in S} p^{m}(x, k)p^{n}(k,z) \\
+										&\geq p^{m}(x,y)p^{n}(y,z) \quad \quad (\text{Strong Markov})\\ 
+										&> 0
+	\end{align*}
+  }
+}

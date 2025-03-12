@@ -1,0 +1,16 @@
+\date{2025-01-26}
+\tag{optimization}
+\title{Singular Value Decomposition}
+\taxon{fact}
+
+\p{
+Let #{\mathbf{A}\in\mathbb{R}^{m\times n}} with #{\operatorname{rank}(\mathbf{A})=r}. There exist #{\sigma_{1}\geq\sigma_{2}\geq\cdots\geq\sigma_{r}>0}, and matrices ##{\mathbf{U}\in\mathbb{R}^{m\times r},\ \mathbf{V}\in\mathbb{R}^{n\times r},} with \em{orthonormal} columns #{(\mathbf{U}^{\top}\mathbf{U}=\mathbf{I},\ \mathbf{V}^{\top}\mathbf{V}=\mathbf{I})} such that ##{\mathbf{A}\ =\ \mathbf{U}\mathbf{\Sigma}\mathbf{V}^{\top}\ =\ \sum_{i=1}^{r}\sigma_{i}\mathbf{u}_{i}\mathbf{v}_{i}^{\top}\,,\quad\mathbf{\Sigma}\ =\ \operatorname{diag}\left(\sigma_{1},\cdots,\sigma_{r}\right).}
+  }
+
+  \p{Relationship between eigen decomposition and SVD
+  \ul{
+      \li{The columns of #{\boldsymbol{V}} are eigenvectors of #{\boldsymbol{A}^T\boldsymbol{A}}}
+      \li{The columns of #{\boldsymbol{U}} are eigenvectors of #{\boldsymbol{A}\boldsymbol{A}^T}}
+      \li{#{{{\sigma_{i}({\mathbf{A}})}}={\sqrt{\lambda_{i}({{{\mathbf{A}}{\mathbf{A}}^{\mathsf{T}}}})}}={\sqrt{\lambda_{i}({\mathbf{A}}^{\mathsf{T}}{\mathbf{A}})}}}}
+    }
+  }

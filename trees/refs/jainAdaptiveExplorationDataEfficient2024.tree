@@ -1,0 +1,26 @@
+% ["references"]
+\title{Adaptive Exploration for Data-Efficient General Value Function Evaluations}
+\date{2024-10}
+\author{Arushi Jain}\author{Josiah P. Hanna}\author{Doina Precup}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2405.07838}
+\meta{external}{https://arxiv.org/abs/2405.07838}
+
+\meta{bibtex}{\startverb
+@misc{jainAdaptiveExplorationDataEfficient2024,
+ title = {Adaptive {{Exploration}} for {{Data-Efficient General Value Function Evaluations}}},
+ author = {Jain, Arushi and Hanna, Josiah P. and Precup, Doina},
+ year = {2024},
+ doi = {10.48550/arXiv.2405.07838},
+ urldate = {2024-12-18},
+ number = {arXiv:2405.07838},
+ publisher = {arXiv},
+ file = {/home/kellenkanarios/Downloads/Papers/Continual-RL/Jain et al_2024_Adaptive Exploration for Data-Efficient General Value Function Evaluations.pdf;/home/kellen/Zotero/storage/SAPYRAL8/2405.html},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {General Value Functions (GVFs) (Sutton et al., 2011) represent predictive knowledge in reinforcement learning. Each GVF computes the expected return for a given policy, based on a unique reward. Existing methods relying on fixed behavior policies or pre-collected data often face data efficiency issues when learning multiple GVFs in parallel using off-policy methods. To address this, we introduce GVFExplorer, which adaptively learns a single behavior policy that efficiently collects data for evaluating multiple GVFs in parallel. Our method optimizes the behavior policy by minimizing the total variance in return across GVFs, thereby reducing the required environmental interactions. We use an existing temporal-difference-style variance estimator to approximate the return variance. We prove that each behavior policy update decreases the overall mean squared error in GVF predictions. We empirically show our method's performance in tabular and nonlinear function approximation settings, including Mujoco environments, with stationary and non-stationary reward signals, optimizing data usage and reducing prediction errors across multiple GVFs.},
+ primaryclass = {cs},
+ eprint = {2405.07838},
+ month = {October}
+}
+\stopverb}

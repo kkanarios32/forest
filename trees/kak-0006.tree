@@ -1,0 +1,53 @@
+\date{2024-10-29}
+\title{What's up with all these fancy optimizers?}
+\author{kellenkanarios}
+\tag{blog}
+\tag{draft}
+\import{base-macros}
+
+\p{Throughout my trials and tribulations with experimental RL, I ran into the seemingly prevelant problem of severe instability dependent on optimizers and even hyperparameters of optimizers. In this blog, I aim to understand where and why things have seemingly evolved out of control from trusty SGD.}
+
+\<html:div>[style]{
+  width: 25\%; 
+  height: 200px; 
+  background-image: url('test.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat;
+  display: inline-block;
+}{}
+
+\<html:div>[style]{
+  width: 25\%; 
+  height: 200px; 
+  background-image: url('test.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat;
+  display: inline-block;
+}{}
+
+\<html:div>[style]{
+  width: 25\%; 
+  height: 200px; 
+  background-image: url('test.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat;
+  display: inline-block;
+}{}
+
+\<html:div>[style]{
+  width: 25\%; 
+  height: 200px; 
+  background-image: url('test.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat;
+  display: inline-block;
+}{}
+
+\<html:div>[style]{
+  width: 25\%; 
+  height: 200px; 
+  background-image: url('test.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat;
+  display: inline-block;
+}{}

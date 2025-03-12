@@ -1,0 +1,7 @@
+\date{2024-12-28}
+\title{Simple Random Variable}
+\taxon{definition}
+\p{Let #{(\Omega, \mathscr{F}, P)} be an arbitrary probability space, and let #{X} be a real-valued function on #{\Omega}. #{X} is a simple random variable if it has finite range and if 
+##{\left[\omega \mid X(\omega) = x \right] \in \mathscr{F}}
+for each #{x} in its finite range.
+}
