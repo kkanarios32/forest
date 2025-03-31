@@ -1,3 +1,6 @@
 [submodule "theme"]
 	path = theme
 	url = https://git.sr.ht/~jonsterling/forester-base-theme
+[submodule "output"]
+	path = output
+	url = git@github.com:kkanarios32/kkanarios32.github.io.git
