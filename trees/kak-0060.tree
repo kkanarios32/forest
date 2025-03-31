@@ -1,0 +1,5 @@
+\date{2025-03-25}
+\import{base-macros}
+\taxon{theorem}
+\title{Optimality of Huffman Code}
+\p{Let #{X \sim P_X} be an #{\mathcal{X}}-valued random variable. Define ##{L_H = \mathbb{E}_{X \sim P_X}[\ell_H(x)]} and ##{L^*(P_X) = \min_{\ell_1, \ldots, \ell_m} \sum_{i = 1}^{m} P_X(x_i) \ell_i.} Then #{L_H = L^*(P_X)}.}

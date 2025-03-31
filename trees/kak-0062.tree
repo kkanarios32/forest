@@ -1,0 +1,14 @@
+\date{2025-03-25}
+\import{base-macros}
+\taxon{proposition}
+\p{
+
+Suppose #{ |\mathcal{X}|=m }, and #{ \mathcal{P}_{n} } denotes the set of all distinct types that can be constructed using elements of #{ \mathcal{X}^{n} }. Then, we have_
+
+##{ |\mathcal{P}_{n}|=\binom{n+m-1}{m-1}\leq(n+1)^{m}. }
+
+  }
+
+\remark{
+#{\mathcal{X}^n} has exponentially many elements in #{n}. However, among the exponentially many elements they can only create polynomially many types in #{n} for fixed #{m}.
+}

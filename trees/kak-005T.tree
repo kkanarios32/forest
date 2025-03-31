@@ -1,0 +1,13 @@
+\date{2025-03-23}
+\tag{2025-03-23}
+\title{Shannon Fano Elias Code}
+\import{base-macros}
+\p{\strong{Idea}: map symbol #{x} to interval in #{(0,1)} using the CDF of #{X}.}
+\ul{
+  \li{Assume #{x_{1} < x_{2} < \cdots < x_m}}
+  \li{#{X \sim P_X} is #{\mathcal{X}}-valued r.v. with #{\mathbf{p}_X}}
+  \li{CDF of #{X = F_X(x) \coloneqq  \sum_{x_i \leq x} P(x_i)}}
+  \li{Midpoint function: #{G(x) = \sum_{x_i < x} P_X(x) + \frac{P_X(x)}{2} = F_X(x) - \frac{P_X(x)}{2}}}
+  \li{Codeword: #{e(x) = \left\lfloor G(x) \right\rfloor_{\ell(x)}=} first #{\ell(x)} bits of #{G(x)}}
+  \li{#{\ell(x) = \left\lceil \log(\frac{1}{P_X(x)}) \right\rceil + 1}}
+}

@@ -1,0 +1,9 @@
+\date{2025-03-25}
+\import{base-macros}
+\taxon{theorem}
+
+\p{
+Let #{ P\in\mathcal{P}_{n} }, and #{ T(P) } denote its type class. Then, the following bounds hold:
+
+##{ (n+1)^{-m}2^{nH(P)}\leq|T(P)|\leq 2^{nH(P)}. }
+}

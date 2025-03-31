@@ -2,8 +2,10 @@
 \title{Learning}
 \p{Here are things I am actively learning / working on before they become a more complete set of [[kak-0003]].}
 
+
 \put\transclude/numbered{false}
 \put\transclude/toc{false}
+\put\transclude/expanded{false}
 
 \query{
     \open\query
@@ -17,6 +19,7 @@
     \open\query
     \isect{\tag{note}}{\tag{systems}}{\tag{unfinished}}
 }
+
 \query{
     \open\query
     \isect{\tag{note}}{\tag{lost}}

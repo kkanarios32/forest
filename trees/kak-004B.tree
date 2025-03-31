@@ -5,6 +5,7 @@
 \tag{note}
 \tag{unfinished}
 \tag{lost}
+\xmlns:html{http://www.w3.org/1999/xhtml}
 
 \section{Lecture 5}{
 \transclude{kak-004C}
@@ -118,3 +119,106 @@ Denoted #{U \to V \to W}.
 \transclude{kak-005B}
 \transclude{kak-005C}
   }
+
+\section{Variable Rate Source Coding}{
+\transclude{kak-005K}
+\transclude{kak-005L}
+\remark{Although it is unclear here, the difference between variable and fixed rate source coding is that we allow our encoder and decoder to map to/from #{\{0,1\}^* }, where #{^*} is variable i.e. our encoded versions of our alphabet can have varying lengths.}
+\transclude{kak-005U}
+\transclude{kak-005M}
+\transclude{kak-005N}
+\remark{[Prefix free](kak-005N) codes are [uniquely decodable](kak-005M). To show unique-decodability, you simply have to provide a way to decode and show it is unique. For [prefix-free](kak-005N), greedily decoding suffices.}
+\figure{
+\<html:img>[width]{300px}[src]{img/types-of-codes.png}{}
+\figcaption{Taxonomy of codes from \ref{coverELEMENTSINFORMATIONTHEORY}.}
+}
+\remark{
+Note that [non-singular](kak-005U) does not imply [uniquely decodable](kak-005M). This is because for [uniquely decodable](kak-005M) we require the extension to be [non-singular](kak-005U). For example, if we have that #{e(0) = 0, e(1) = 1, e(2) = 01}. Then #{e^*(01) = e^*(2)}. From this, we can see that [uniquely decodable](kak-005M) is a much stronger condition.
+}
+}
+
+
+\section{Kraft's inequality}{
+\transclude{kak-005O}
+\remark{Other direction is also true. For any #{\ell_i} satisfying Kraft's inequality, one can construct a prefix-free code whose lengths of #{e(x_i) = \ell_i}.}
+\remark{Surprisingly, any [uniquely decodable](kak-005M) code must also satisfy [[kak-005O]].}
+    }
+\section{Performance Limit of Variable Rate Source Codes}{
+\transclude{kak-005P}
+\transclude{kak-005Q}
+\transclude{kak-005R}
+\transclude{kak-005S}
+}
+\transclude{kak-005T}
+\transclude{kak-005Z}
+
+\section{Method of Types}{
+    \transclude{kak-005X}
+    \transclude{kak-005Y}
+    \transclude{kak-0061}
+\example{
+    Let #{\mathcal{X} = \{1,2,3\}.} For #{n = 2}, #{x^n = 12} the [type](kak-005X) is #{(\frac{1}{2},\frac{1}{2}, 0)} and the [type class](kak-0061) is #{\{12, 21\}  }.
+}
+\section{Properties}{
+\transclude{kak-0062}
+\transclude{kak-0063}
+\transclude{kak-0065}
+\transclude{kak-0064}
+\transclude{kak-0066}
+}
+}
+\section{Large Deviation Theory}{
+\transclude{kak-0067}
+}
+
+\section{Hypothesis testing}{
+\transclude{kak-0069}
+\transclude{kak-006A}
+\transclude{kak-006B}
+\section{Notions of optimality}{
+\transclude{kak-006C}
+\transclude{kak-006D}
+\transclude{kak-006E}
+}
+\section{Optimal NP Test}{
+\transclude{kak-0068}
+\transclude{kak-006F}
+}
+\section{Error Exponents in Hypothesis Testing}{
+In the previous section, we consider the optimal test in the non-asymptotic regime i.e. for finite #{n} what test minimizes the error according to some notion of error. In this section, we ask the question of what is the rate that this error converges to #{0}. More specifically, if #{\text{error}_n \leq 2^{-nV}} then what is the best (largest) #{V} we can hope to achieve?
+\section{NP Error Exponent}{
+\transclude{kak-006G}
+\transclude{kak-006H}
+}
+\section{Bayesian Error Exponent}{
+\transclude{kak-006I}
+\transclude{kak-006J}
+}
+}
+}
+\section{Fixed-Rate Universal Source Coding}{
+\transclude{kak-006K}
+\section{Construction of universal fixed rated code}{
+    To construct, a universal fixed rate code, we need a code that satisfies (i) and (ii) from [[kak-006K]]. 
+    \ul{
+        \li{
+Let #{ |\mathcal{X}|=m }, and for any #{ n\geq1 } and a given #{ R>0 }, define #{ R_n=R-m \frac{\log n+1}{n}}
+            }
+      \li{Consider the subset #{A_n \subset \mathcal{X}^n}, defined as ##{A_n = \{x^n \in \mathcal{X}^n \mid H(\hat{P}_{x^n} \leq R_n)\}  }}
+      \li{Then just define the encoder in the usual way i.e. for encoder #{e_n} give every #{x^n \in A_n} a unique code and everything else map to the same code.}
+      \li{Then the decoder can easily identify everything in #{A_n} and it suffices to show that in the limit the probabilities concentrate around #{A_n}.}
+    }
+\transclude{kak-006L}
+}
+}
+\section{Variable-Rate Universal Source Coding}{
+\transclude{kak-006M}
+\section{Redundancy-Capacity Theorem}{
+\transclude{kak-006N}
+\remark{
+It will turn out the optimal choice of #{Q} is the centroid associated with the #{k} elements of #{\mathcal{P}}.
+}
+\transclude{kak-006O}
+}
+\transclude{kak-006P}
+}

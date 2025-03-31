@@ -1,0 +1,10 @@
+\date{2025-03-26}
+\import{base-macros}
+\taxon{proposition}
+\title{Optimal Bayesian Test}
+
+\p{
+Let #{ X^{n}\stackrel{{i.i.d.}}{{\sim}}P_{X} }, and consider a binary hypothesis testing problem with #{ H_{0}:P_{X}=P_{0} } versus #{ H_{1}:P_{X}=P_{1}. } Let #{ (\pi_{0},\pi_{1}) } denote the prior distribution of the two hypotheses being true. Then, the Bayes optimal hypothesis test with uniform loss is defined as
+
+##{ \Psi_{D}^{*}(X^{n})=\operatorname*{argmin}_{\Psi}\pi_{0}\pi_{10}(\Psi)+\pi_{1}\pi_{01}(\Psi)=\begin{cases}1&\text{ if }L(X^{n})>\pi_{0}/\pi_{1}\\ 0&\text{otherwise.}\end{cases}, }
+  }

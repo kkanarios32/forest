@@ -1,0 +1,15 @@
+\date{2025-03-30}
+\import{base-macros}
+\taxon{definition}
+\title{Fixed rate universal code}
+\p{
+  
+A sequence of fixed-rate source codes #{ \{(e_{n},f_{n}):n \geq 1\} } with parameters #{ \{(n,2^{nR_{n}}):n \geq 1\} } is said to be universal with rate #{ R } if the following are true:
+\ol{
+  \li{
+The limiting rate satisfies #{ \lim_{n\to\infty}R_{n}\leq R }.
+    }
+  \li{
+For any distribution #{ P } over the alphabet #{ \mathcal{X} } with #{ H(P)<R }, the probability of error, #{ \mathbb{P}_{X^{n}\sim P^{n}} \left(f_{n}(e_{n}(X^{n})) \neq X^{n}\right)=0}.}
+}
+}

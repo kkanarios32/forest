@@ -1,0 +1,9 @@
+\date{2025-03-25}
+\import{base-macros}
+\taxon{definition}
+\title{Type classes}
+\p{
+For any type #{ P\in\mathcal{P}_{n} }, we can associate the type class #{ T(P) }, defined as
+
+##{ T(P)=\{x^{n}:\tilde{P}_{x^{n}}=P\}. }
+  }

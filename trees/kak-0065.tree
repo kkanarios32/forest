@@ -1,0 +1,13 @@
+\date{2025-03-25}
+\taxon{lemma}
+\p{
+
+
+Suppose #{ X_{1},X_{2},\ldots,X_{n}\stackrel{{i.i.d.}}{{\sim}}Q } for an arbitrary distribution #{ Q } over the alphabet #{ \mathcal{X} }. Then, we have
+
+##{ \mathbb{P}(X^{n}=x^{n}) \equiv Q^{n}(x^{n}) = 2^{-n(H(\widehat{P}_{x^{n}})+D_{2n}(\widehat{P}_{x^{n}})=Q)}. }
+
+In other words, the probability that #{ X^{n} } takes a value #{ x^{n} } only depends on #{ x^{n} } through its type #{ \widehat{P}_{x^{n}} }. Furthermore, types that are far away from #{ Q } in relative entropy are exponentially less probable than those that are close to #{ Q }.
+
+An immediate consequence of this is that if #{ Q\in\mathcal{P}_{n} }, and #{ x^{n}\in T(Q) }, then #{ Q^{n}(x^{n})=2^{-nH(Q)} }.
+  }

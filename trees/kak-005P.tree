@@ -1,0 +1,5 @@
+\date{2025-03-23}
+\import{base-macros}
+\taxon{definition}
+\title{Variable rate code}
+\p{A variable rate code with parameter #{n} is a prefix-free code #{e : \mathcal{X}^n \to \{0, 1\}^* }, and a decoder #{f : \{0,1\}^* \to \mathcal{X}^n }}

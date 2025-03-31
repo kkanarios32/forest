@@ -1,0 +1,8 @@
+\date{2025-03-23}
+\import{base-macros}
+\taxon{definition}
+
+\p{A coding system (variable rate) with parameter #{n} and an encoder-decoder pair #{(e,f)}, where 
+##{e: \mathcal{X}^n \to \{0, 1\}^*, \quad \text{and} \quad f: \{0, 1\}^* \to \mathcal{X}^n}
+We want the probability of error to be exactly zero; that is #{\mathbb{P}(X^n \neq f(e(X^n))) = 0}.
+}

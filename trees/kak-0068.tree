@@ -1,0 +1,12 @@
+\date{2025-03-25}
+\import{base-macros}
+\taxon{theorem}
+\title{Optimal NP Test}
+\p{
+Consider a hypothesis testing problem with observations #{ X^{n}\stackrel{\text{i.i.d.}}{\sim}P_{X} }, with the null #{ H_{0} : P_{X} =P_{0} } and alternative #{ H_{1}:P_{X}=P_{1} }. Then, the optimal NP test with level #{ \alpha\in \open-closed{0,1} } has the following structure:
+
+##{ \Psi_{NP}^{*}(X^{n})=\begin{cases}1,&\text{ if }L(X^{n})>\tau\\ \gamma,&\text{ if }L(X^{n})=\tau\\ 0,&\text{ if }L(X^{n})<\tau.\end{cases} }
+
+In the above display, #{ L(X^{n}) } denotes the likelihood ratio #{ p_{1}(X^{n})/p_{0}(X^{n}) }, and #{ \gamma\in[0,1] } and #{ \tau\geq0 } are constants that ensure #{ \pi_{1|0}(\Psi^*_{NP})=\mathbb{P}_{H_{0}}(\Psi^*_{NP}(X^{n})=1)=\alpha }. Namely, 
+##{\tau = \inf\{\tau \mid \alpha \geq \mathbb{P}(L(X^n) > \tau)\}} and ##{\gamma = \frac{\alpha - \mathbb{P}(L(X^n) > \tau)}{\mathbb{P}(L(X^n) = \tau)}}
+}

@@ -1,0 +1,8 @@
+\date{2025-03-25}
+\import{base-macros}
+\title{Huffman Code}
+\transclude{kak-005W}
+\transclude{kak-0060}
+\remark{
+SFE satisfies #{L_H < H(X) + \frac{2}{n}} i.e. it achieves the optimal rate as #{n \to \infty}. Huffman coding achieves optimality for all finite values #{n}.
+}

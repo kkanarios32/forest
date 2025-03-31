@@ -1,0 +1,7 @@
+\date{2025-03-25}
+\import{base-macros}
+\taxon{definition}
+\title{Bayesian Framework}
+\p{Assume we have prior distributions #{(\pi_{0}, \pi_{1})} over the two hypotheses and there exists costs #{C_{1|0}}, #{C_{0|1}} associated with [type I and type II error](kak-006B) respectively. Then the Bayes optimal solution is the solution of 
+##{ \operatorname*{min}_{P_{Z|X}}\pi_{0}C_{1|0}\mathbb{P}_{H_{0}}(Z=1)+\pi_{1}C_{0|1}\mathbb{P}_{H_{1}}(Z=0). }
+}

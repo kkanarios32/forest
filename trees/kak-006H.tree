@@ -1,0 +1,9 @@
+\date{2025-03-26}
+\import{base-macros}
+\taxon{theorem}
+\title{Stein's Lemma}
+\p{
+
+For any #{ \alpha>0 }, we have #{ V_{\alpha}=D_{KL}(P_{0}\parallel P_{1}) }, which also implies that #{ V^{*}=D_{KL}(P_{0}\parallel P_{1}) }. In other words, the relative entropy between #{ P_{0} } and #{ P_{1} } is the optimal type-II error exponent associated with a binary hypothesis testing problem with #{ H_{0}:P_{X}=P_{0} } and #{ H_{1}:P_{X}=P_{1} }.
+
+  }

@@ -1,0 +1,9 @@
+\date{2025-03-23}
+\import{base-macros}
+\taxon{definition}
+\title{Variable rate achievability}
+\p{A nonnegative number #{R} is said to be achievable if for all #{\epsilon > 0}, there exists an #{n(\epsilon)} such that for all #{n \geq n(\epsilon)}, the following holds
+\ul{
+  \li{There exists a variable rate code with #{\mathbb{E}[\ell(X^n)]/n = R} and #{\mathbb{P}(X^n \neq f(e(X^n))) = 0} for all #{n}.}
+}
+}

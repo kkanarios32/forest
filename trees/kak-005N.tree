@@ -1,0 +1,5 @@
+\date{2025-03-23}
+\import{base-macros}
+\taxon{definition}
+\title{instantaneous / prefix-free code}
+\p{A code is said to be prefix-free or instantaneous if no codeword is a prefix of another.}
