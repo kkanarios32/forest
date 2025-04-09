@@ -34,7 +34,9 @@
     }
   }
 
-\query{
-  \open\query
-  \union{\tag{c}}{\tag{memory}}{\tag{cpp}}
-}
+\query\datalog{
+    ?X -:
+    {\rel/has-tag ?X '{cpp}}
+    {\rel/has-tag ?X '{memory}}
+    {\rel/has-tag ?X '{c}}
+  }

@@ -1,7 +1,6 @@
 \date{2025-03-23}
-\tag{2025-03-23}
-\title{Shannon Fano Elias Code}
 \import{base-macros}
+\title{Shannon Fano Elias Code}
 \p{\strong{Idea}: map symbol #{x} to interval in #{(0,1)} using the CDF of #{X}.}
 \ul{
   \li{Assume #{x_{1} < x_{2} < \cdots < x_m}}

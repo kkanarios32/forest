@@ -11,8 +11,8 @@
 \put\transclude/metadata{true}
 
 \section{Old #{\LaTeX} Notes from Undergrad}{
-\query{
-  \open\query
-  \tag{texnote}
-}
+  \query\datalog{
+  ?X -:
+  {\rel/has-tag ?X '{texnote}}
+  }
 }

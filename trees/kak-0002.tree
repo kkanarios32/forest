@@ -21,8 +21,9 @@
 \subtree[loading]{
   \title{Coming Soon!!!}
   \p{A rough plan of blogs I hope to make in the future. Stay on the lookout!!!}
-  \query{
-    \open\query
-    \isect{\tag{blog}}{\tag{upcoming}}
+  \query\datalog{
+  ?X -:
+  {\rel/has-tag ?X '{blog}}
+  {\rel/has-tag ?X '{upcoming}}
   }
 }
