@@ -1,0 +1,28 @@
+% ["references"]
+\title{Noise Contrastive Estimation and Negative Sampling for Conditional Models: Consistency and Statistical Efficiency}
+\date{2018-09}
+\author{Zhuang Ma}\author{Michael Collins}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.1809.01812}
+\meta{external}{https://arxiv.org/abs/1809.01812}
+
+\meta{bibtex}{\startverb
+@misc{maNoiseContrastiveEstimation2018,
+ title = {Noise {{Contrastive Estimation}} and {{Negative Sampling}} for {{Conditional Models}}: {{Consistency}} and {{Statistical Efficiency}}},
+ author = {Ma, Zhuang and Collins, Michael},
+ year = {2018},
+ doi = {10.48550/arXiv.1809.01812},
+ urldate = {2025-02-03},
+ number = {arXiv:1809.01812},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/BC92TTTC/Ma and Collins - 2018 - Noise Contrastive Estimation and Negative Sampling for Conditional Models Consistency and Statistic.pdf},
+ keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Statistics - Methodology},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Noise Contrastive Estimation (NCE) is a powerful parameter estimation method for loglinear models, which avoids calculation of the partition function or its derivatives at each training step, a computationally demanding step in many cases. It is closely related to negative sampling methods, now widely used in NLP. This paper considers NCE-based estimation of conditional models. Conditional models are frequently encountered in practice; however there has not been a rigorous theoretical analysis of NCE in this setting, and we will argue there are subtle but important questions when generalizing NCE to the conditional case. In particular, we analyze two variants of NCE for conditional models: one based on a classification objective, the other based on a ranking objective. We show that the rankingbased variant of NCE gives consistent parameter estimates under weaker assumptions than the classification-based method; we analyze the statistical efficiency of the ranking-based and classification-based variants of NCE; finally we describe experiments on synthetic data and language modeling showing the effectiveness and trade-offs of both methods.},
+ primaryclass = {cs},
+ eprint = {1809.01812},
+ month = {September},
+ shorttitle = {Noise {{Contrastive Estimation}} and {{Negative Sampling}} for {{Conditional Models}}}
+}
+\stopverb}

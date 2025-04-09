@@ -1,0 +1,24 @@
+% ["references"]
+\title{Tuning-free step-size adaptation}
+\date{2012-03}
+\author{Ashique Rupam Mahmood}\author{Richard S. Sutton}\author{Thomas Degris}\author{Patrick M. Pilarski}
+\taxon{reference}
+\meta{doi}{10.1109/ICASSP.2012.6288330}
+\meta{bibtex}{\startverb
+@inproceedings{mahmoodTuningfreeStepsizeAdaptation2012,
+ title = {Tuning-Free Step-Size Adaptation},
+ author = {Mahmood, Ashique Rupam and Sutton, Richard S. and Degris, Thomas and Pilarski, Patrick M.},
+ year = {2012},
+ isbn = {978-1-4673-0046-9 978-1-4673-0045-2 978-1-4673-0044-5},
+ doi = {10.1109/ICASSP.2012.6288330},
+ urldate = {2025-02-05},
+ booktitle = {2012 {{IEEE International Conference}} on {{Acoustics}}, {{Speech}} and {{Signal Processing}} ({{ICASSP}})},
+ pages = {2121--2124},
+ publisher = {IEEE},
+ address = {Kyoto, Japan},
+ file = {/home/kellen/Zotero/storage/ER798P67/Mahmood et al. - 2012 - Tuning-free step-size adaptation.pdf},
+ langid = {english},
+ abstract = {Incremental learning algorithms based on gradient descent are effective and popular in online supervised learning, reinforcement learning, signal processing, and many other application areas. An oft-noted drawback of these algorithms is that they include a step-size parameter that needs to be tuned for best performance, which may require manual intervention and significant domain knowledge or additional data. In many cases, an entire vector of step-size parameters (e.g., one for each input feature) needs to be tuned in order to attain the best performance of the algorithm. To address this, several methods have been proposed for adapting step sizes online. For example, Sutton's IDBD method can find the best vector step size for the LMS algorithm, and Schraudolph's ELK1 method, an extension of IDBD to neural networks, has proven effective on large applications, such as 3D hand tracking. However, to date all such step-size adaptation methods have included a tunable step-size parameter of their own, which we call the meta-step-size parameter. In this paper we show that the performance of existing step-size adaptation methods are strongly dependent on the choice of their meta-step-size parameter and that their meta-step-size parameter cannot be set reliably in a problem-independent way. We introduce a series of modifications and normalizations to the IDBD method that together eliminate the need to tune the meta-step-size parameter to the particular problem. We show that the resulting overall algorithm, called Autostep, performs as well or better than the existing step-size adaptation methods on a number of idealized and robot prediction problems and does not require any tuning of its meta-step-size parameter. The ideas behind Autostep are not restricted to the IDBD method and the same principles are potentially applicable to other incremental learning settings, such as reinforcement learning.},
+ month = {March}
+}
+\stopverb}

@@ -3,8 +3,6 @@
 \date{2019-01}
 \author{Ofir Nachum}\author{Shixiang Gu}\author{Honglak Lee}\author{Sergey Levine}
 \taxon{reference}
-\tag{paper}
-\tag{todo}
 \meta{external}{https://arxiv.org/abs/1810.01257}
 
 \meta{bibtex}{\startverb

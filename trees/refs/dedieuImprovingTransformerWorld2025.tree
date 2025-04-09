@@ -1,0 +1,27 @@
+% ["references"]
+\title{Improving Transformer World Models for Data-Efficient RL}
+\date{2025-02}
+\author{Antoine Dedieu}\author{Joseph Ortiz}\author{Xinghua Lou}\author{Carter Wendelken}\author{Wolfgang Lehrach}\author{J. Swaroop Guntupalli}\author{Miguel Lazaro-Gredilla}\author{Kevin Patrick Murphy}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2502.01591}
+\meta{external}{https://arxiv.org/abs/2502.01591}
+
+\meta{bibtex}{\startverb
+@misc{dedieuImprovingTransformerWorld2025,
+ title = {Improving {{Transformer World Models}} for {{Data-Efficient RL}}},
+ author = {Dedieu, Antoine and Ortiz, Joseph and Lou, Xinghua and Wendelken, Carter and Lehrach, Wolfgang and Guntupalli, J. Swaroop and {Lazaro-Gredilla}, Miguel and Murphy, Kevin Patrick},
+ year = {2025},
+ doi = {10.48550/arXiv.2502.01591},
+ urldate = {2025-02-16},
+ number = {arXiv:2502.01591},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/ICQPUZXS/Dedieu et al. - 2025 - Improving Transformer World Models for Data-Efficient RL.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {We present an approach to model-based RL that achieves a new state of the art performance on the challenging Craftax-classic benchmark, an open-world 2D survival game that requires agents to exhibit a wide range of general abilities -- such as strong generalization, deep exploration, and long-term reasoning. With a series of careful design choices aimed at improving sample efficiency, our MBRL algorithm achieves a reward of 67.4\% after only 1M environment steps, significantly outperforming DreamerV3, which achieves 53.2\%, and, for the first time, exceeds human performance of 65.0\%. Our method starts by constructing a SOTA model-free baseline, using a novel policy architecture that combines CNNs and RNNs. We then add three improvements to the standard MBRL setup: (a) "Dyna with warmup", which trains the policy on real and imaginary data, (b) "nearest neighbor tokenizer" on image patches, which improves the scheme to create the transformer world model (TWM) inputs, and (c) "block teacher forcing", which allows the TWM to reason jointly about the future tokens of the next timestep.},
+ primaryclass = {cs},
+ eprint = {2502.01591},
+ month = {February}
+}
+\stopverb}

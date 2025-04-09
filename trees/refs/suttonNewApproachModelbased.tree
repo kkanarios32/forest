@@ -1,0 +1,12 @@
+% ["references"]
+\title{Toward a New Approach to Model-based Reinforcement Learning}
+\author{Richard S Sutton}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@article{suttonNewApproachModelbased,
+ title = {Toward a {{New Approach}} to {{Model-based Reinforcement Learning}}},
+ author = {Sutton, Richard S},
+ file = {/home/kellen/Zotero/storage/VJQU89XE/Sutton - Toward a New Approach to Model-based Reinforcement Learning.pdf},
+ langid = {english}
+}
+\stopverb}

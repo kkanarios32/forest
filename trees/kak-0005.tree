@@ -1,7 +1,10 @@
 \date{2024-10-29}
 \title{Contrastive Reinforcement Learning}
 \author{kellenkanarios}
+\import{base-macros}
 
 \p{In this blog post, we aim to demistify [\em{Contrastive Reinforcement Learning}](gcrl). This term often gets thrown around in the dark inner circles of the reinforcement learning community. However, for those that are not familiar with contrastive learning, what does contrastive even mean? For those that are, how can reinforcement learning be contrastive? Throughout this blog post, we will answer these questions and many more.}
 
 \transclude{kak-0009}
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{contrastive-rl}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

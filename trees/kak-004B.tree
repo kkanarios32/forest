@@ -222,3 +222,26 @@ It will turn out the optimal choice of #{Q} is the centroid associated with the 
 }
 \transclude{kak-006P}
 }
+\section{Channel Coding}{
+\transclude{kak-006S}
+\transclude{kak-006T}
+\transclude{kak-006U}
+\transclude{kak-006V}
+\remark{
+    We make the following simplifying assumptions (for now)
+    \ul{
+        \li{
+We assume no feedback. This means that if we have #{W \to X_{1} \to Y_{1} \to X_{2} \to \cdots} then #{X_i} does not use the knowledge of previous channel outputs i.e. #{Y^{i - 1} \leftrightarrow (W, X^{i - 1}) \leftrightarrow X_i}.
+            }
+            \li{
+Random encoding: #{X^n(i)} is drawn i.i.d from some specified distribution #{P_X}.
+                }
+    }
+}
+\transclude{kak-006W}
+\transclude{kak-006X}
+\transclude{kak-006Y}
+\remark{
+The capacity of a [symmetric or weakly symmetric](kak-006Y) channel is #{\log(|\mathcal{Y}|) - H(r)}, where #{r} is the first row of #{P_{Y|X}}.
+}
+}

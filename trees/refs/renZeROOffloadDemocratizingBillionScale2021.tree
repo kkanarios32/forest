@@ -1,0 +1,28 @@
+% ["references"]
+\title{ZeRO-Offload: Democratizing Billion-Scale Model Training}
+\date{2021-01}
+\author{Jie Ren}\author{Samyam Rajbhandari}\author{Reza Yazdani Aminabadi}\author{Olatunji Ruwase}\author{Shuangyan Yang}\author{Minjia Zhang}\author{Dong Li}\author{Yuxiong He}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2101.06840}
+\meta{external}{https://arxiv.org/abs/2101.06840}
+
+\meta{bibtex}{\startverb
+@misc{renZeROOffloadDemocratizingBillionScale2021,
+ title = {{{ZeRO-Offload}}: {{Democratizing Billion-Scale Model Training}}},
+ author = {Ren, Jie and Rajbhandari, Samyam and Aminabadi, Reza Yazdani and Ruwase, Olatunji and Yang, Shuangyan and Zhang, Minjia and Li, Dong and He, Yuxiong},
+ year = {2021},
+ doi = {10.48550/arXiv.2101.06840},
+ urldate = {2025-01-30},
+ number = {arXiv:2101.06840},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/EQNAIMY3/Ren et al. - 2021 - ZeRO-Offload Democratizing Billion-Scale Model Training.pdf},
+ keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Large-scale model training has been a playing ground for a limited few requiring complex model refactoring and access to prohibitively expensive GPU clusters. ZeRO-Offload changes the large model training landscape by making large model training accessible to nearly everyone. It can train models with over 13 billion parameters on a single GPU, a 10x increase in size compared to popular framework such as PyTorch, and it does so without requiring any model change from the data scientists or sacrificing computational efficiency.},
+ primaryclass = {cs},
+ eprint = {2101.06840},
+ month = {January},
+ shorttitle = {{{ZeRO-Offload}}}
+}
+\stopverb}

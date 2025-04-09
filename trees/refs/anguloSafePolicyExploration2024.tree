@@ -1,0 +1,27 @@
+% ["references"]
+\title{Safe Policy Exploration Improvement via Subgoals}
+\date{2024-08}
+\author{Brian Angulo}\author{Gregory Gorbov}\author{Aleksandr Panov}\author{Konstantin Yakovlev}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2408.13881}
+\meta{external}{https://arxiv.org/abs/2408.13881}
+
+\meta{bibtex}{\startverb
+@misc{anguloSafePolicyExploration2024,
+ title = {Safe {{Policy Exploration Improvement}} via {{Subgoals}}},
+ author = {Angulo, Brian and Gorbov, Gregory and Panov, Aleksandr and Yakovlev, Konstantin},
+ year = {2024},
+ doi = {10.48550/arXiv.2408.13881},
+ urldate = {2025-03-17},
+ number = {arXiv:2408.13881},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/PBVLANC9/Angulo et al. - 2024 - Safe Policy Exploration Improvement via Subgoals.pdf},
+ keywords = {Computer Science - Machine Learning,Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Reinforcement learning is a widely used approach to autonomous navigation, showing potential in various tasks and robotic setups. Still, it often struggles to reach distant goals when safety constraints are imposed (e.g., the wheeled robot is prohibited from moving close to the obstacles). One of the main reasons for poor performance in such setups, which is common in practice, is that the need to respect the safety constraints degrades the exploration capabilities of an RL agent. To this end, we introduce a novel learnable algorithm that is based on decomposing the initial problem into smaller sub-problems via intermediate goals, on the one hand, and respects the limit of the cumulative safety constraints, on the other hand -- SPEIS(Safe Policy Exploration Improvement via Subgoals). It comprises the two coupled policies trained end-to-end: subgoal and safe. The subgoal policy is trained to generate the subgoal based on the transitions from the buffer of the safe (main) policy that helps the safe policy to reach distant goals. Simultaneously, the safe policy maximizes its rewards while attempting not to violate the limit of the cumulative safety constraints, thus providing a certain level of safety. We evaluate SPEIS in a wide range of challenging (simulated) environments that involve different types of robots in two different environments: autonomous vehicles from the POLAMP environment and car, point, doggo, and sweep from the safety-gym environment. We demonstrate that our method consistently outperforms state-of-the-art competitors and can significantly reduce the collision rate while maintaining high success rates (higher by 80\% compared to the best-performing methods).},
+ primaryclass = {cs},
+ eprint = {2408.13881},
+ month = {August}
+}
+\stopverb}

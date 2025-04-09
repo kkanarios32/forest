@@ -1,3 +1,11 @@
+@article{agarwalDeepReinforcementLearning,
+  title = {Deep {{Reinforcement Learning}} at the {{Edge}} of the {{Statistical Precipice}}},
+  author = {Agarwal, Rishabh and Schwarzer, Max and Castro, Pablo Samuel and Courville, Aaron and Bellemare, Marc G},
+  abstract = {Deep reinforcement learning (RL) algorithms are predominantly evaluated by comparing their relative performance on a large suite of tasks. Most published results on deep RL benchmarks compare point estimates of aggregate performance such as mean and median scores across tasks, ignoring the statistical uncertainty implied by the use of a finite number of training runs. Beginning with the Arcade Learning Environment (ALE), the shift towards computationally-demanding benchmarks has led to the practice of evaluating only a small number of runs per task, exacerbating the statistical uncertainty in point estimates. In this paper, we argue that reliable evaluation in the few-run deep RL regime cannot ignore the uncertainty in results without running the risk of slowing down progress in the field. We illustrate this point using a case study on the Atari 100k benchmark, where we find substantial discrepancies between conclusions drawn from point estimates alone versus a more thorough statistical analysis. With the aim of increasing the field's confidence in reported results with a handful of runs, we advocate for reporting interval estimates of aggregate performance and propose performance profiles to account for the variability in results, as well as present more robust and efficient aggregate metrics, such as interquartile mean scores, to achieve small uncertainty in results. Using such statistical tools, we scrutinize performance evaluations of existing algorithms on other widely used RL benchmarks including the ALE, Procgen, and the DeepMind Control Suite, again revealing discrepancies in prior comparisons. Our findings call for a change in how we evaluate performance in deep RL, for which we present a more rigorous evaluation methodology, accompanied with an open-source library rliable2, to prevent unreliable results from stagnating the field.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/5AQZ3YSU/Agarwal et al. - Deep Reinforcement Learning at the Edge of the Statistical Precipice.pdf}
+}
+
 @misc{agarwalProtoSuccessorMeasure2024,
   title = {Proto {{Successor Measure}}: {{Representing}} the {{Space}} of {{All Possible Solutions}} of {{Reinforcement Learning}}},
   shorttitle = {Proto {{Successor Measure}}},
@@ -40,6 +48,51 @@
   file = {/home/kellen/Zotero/storage/GBXKPARY/Altman - 2021 - Constrained Markov Decision Processes Stochastic Modeling.pdf}
 }
 
+@misc{anguloSafePolicyExploration2024,
+  title = {Safe {{Policy Exploration Improvement}} via {{Subgoals}}},
+  author = {Angulo, Brian and Gorbov, Gregory and Panov, Aleksandr and Yakovlev, Konstantin},
+  year = {2024},
+  month = aug,
+  number = {arXiv:2408.13881},
+  eprint = {2408.13881},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2408.13881},
+  urldate = {2025-03-17},
+  abstract = {Reinforcement learning is a widely used approach to autonomous navigation, showing potential in various tasks and robotic setups. Still, it often struggles to reach distant goals when safety constraints are imposed (e.g., the wheeled robot is prohibited from moving close to the obstacles). One of the main reasons for poor performance in such setups, which is common in practice, is that the need to respect the safety constraints degrades the exploration capabilities of an RL agent. To this end, we introduce a novel learnable algorithm that is based on decomposing the initial problem into smaller sub-problems via intermediate goals, on the one hand, and respects the limit of the cumulative safety constraints, on the other hand -- SPEIS(Safe Policy Exploration Improvement via Subgoals). It comprises the two coupled policies trained end-to-end: subgoal and safe. The subgoal policy is trained to generate the subgoal based on the transitions from the buffer of the safe (main) policy that helps the safe policy to reach distant goals. Simultaneously, the safe policy maximizes its rewards while attempting not to violate the limit of the cumulative safety constraints, thus providing a certain level of safety. We evaluate SPEIS in a wide range of challenging (simulated) environments that involve different types of robots in two different environments: autonomous vehicles from the POLAMP environment and car, point, doggo, and sweep from the safety-gym environment. We demonstrate that our method consistently outperforms state-of-the-art competitors and can significantly reduce the collision rate while maintaining high success rates (higher by 80\% compared to the best-performing methods).},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Computer Science - Robotics},
+  file = {/home/kellen/Zotero/storage/PBVLANC9/Angulo et al. - 2024 - Safe Policy Exploration Improvement via Subgoals.pdf}
+}
+
+@article{antonoglouPLANNINGSTOCHASTICENVIRONMENTS2022,
+  title = {{{PLANNING IN STOCHASTIC ENVIRONMENTS WITH A LEARNED MODEL}}},
+  author = {Antonoglou, Ioannis and Schrittwieser, Julian and Ozair, Sherjil and Hubert, Thomas},
+  year = {2022},
+  abstract = {Model-based reinforcement learning has proven highly successful. However, learning a model in isolation from its use during planning is problematic in complex environments. To date, the most effective techniques have instead combined valueequivalent model learning with powerful tree-search methods. This approach is exemplified by MuZero, which has achieved state-of-the-art performance in a wide range of domains, from board games to visually rich environments, with discrete and continuous action spaces, in online and offline settings. However, previous instantiations of this approach were limited to the use of deterministic models. This limits their performance in environments that are inherently stochastic, partially observed, or so large and complex that they appear stochastic to a finite agent. In this paper we extend this approach to learn and plan with stochastic models. Specifically, we introduce a new algorithm, Stochastic MuZero, that learns a stochastic model incorporating afterstates, and uses this model to perform a stochastic tree search. Stochastic MuZero matched or exceeded the state of the art in a set of canonical single and multi-agent environments, including 2048 and backgammon, while maintaining the superhuman performance of standard MuZero in the game of Go.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/TGICFELW/Antonoglou et al. - 2022 - PLANNING IN STOCHASTIC ENVIRONMENTS WITH A LEARNED MODEL.pdf}
+}
+
+@misc{bernsteinOldOptimizerNew2024,
+  title = {Old {{Optimizer}}, {{New Norm}}: {{An Anthology}}},
+  shorttitle = {Old {{Optimizer}}, {{New Norm}}},
+  author = {Bernstein, Jeremy and Newhouse, Laker},
+  year = {2024},
+  month = dec,
+  number = {arXiv:2409.20325},
+  eprint = {2409.20325},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2409.20325},
+  urldate = {2025-02-26},
+  abstract = {Deep learning optimizers are often motivated through a mix of convex and approximate second-order theory. We select three such methods -- Adam, Shampoo and Prodigy -- and argue that each method can instead be understood as a squarely first-order method without convexity assumptions. In fact, after switching off exponential moving averages, each method is equivalent to steepest descent under a particular norm. By generalizing this observation, we chart a new design space for training algorithms. Different operator norms should be assigned to different tensors based on the role that the tensor plays within the network. For example, while linear and embedding layers may have the same weight space of \${\textbackslash}mathbb\{R\}{\textasciicircum}\{m{\textbackslash}times n\}\$, these layers play different roles and should be assigned different norms. We hope that this idea of carefully metrizing the neural architecture might lead to more stable, scalable and indeed faster training.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning,Mathematics - Optimization and Control},
+  file = {/home/kellen/Zotero/storage/96NMW68I/Bernstein and Newhouse - 2024 - Old Optimizer, New Norm An Anthology.pdf;/home/kellen/Zotero/storage/URA6S2M3/2409.html}
+}
+
 @book{bertsekasNeurodynamicProgramming1996,
   title = {Neuro-Dynamic Programming},
   author = {Bertsekas, Dimitri P. and Tsitsiklis, John N.},
@@ -65,6 +118,43 @@
   isbn = {978-0-471-00710-4},
   langid = {english},
   file = {/home/kellen/Zotero/storage/JSCDN2UH/Billingsley - 1995 - Probability and measure.pdf}
+}
+
+@misc{bilokonDesignPatternsLowlatency2023,
+  title = {C++ {{Design Patterns}} for {{Low-latency Applications Including High-frequency Trading}}},
+  author = {Bilokon, Paul and Gunduz, Burak},
+  year = {2023},
+  month = sep,
+  number = {arXiv:2309.04259},
+  eprint = {2309.04259},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2309.04259},
+  urldate = {2025-03-22},
+  abstract = {This work aims to bridge the existing knowledge gap in the optimisation of latency-critical code, specifically focusing on high-frequency trading (HFT) systems. The research culminates in three main contributions: the creation of a Low-Latency Programming Repository, the optimisation of a market-neutral statistical arbitrage pairs trading strategy, and the implementation of the Disruptor pattern in C++. The repository serves as a practical guide and is enriched with rigorous statistical benchmarking, while the trading strategy optimisation led to substantial improvements in speed and profitability. The Disruptor pattern showcased significant performance enhancement over traditional queuing methods. Evaluation metrics include speed, cache utilisation, and statistical significance, among others. Techniques like Cache Warming and Constexpr showed the most significant gains in latency reduction. Future directions involve expanding the repository, testing the optimised trading algorithm in a live trading environment, and integrating the Disruptor pattern with the trading algorithm for comprehensive system benchmarking. The work is oriented towards academics and industry practitioners seeking to improve performance in latencysensitive applications. The repository, trading strategy, and the Disruptor library can be found at https://github.com/0burak/imperial hft.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Performance,Quantitative Finance - Trading and Market Microstructure},
+  file = {/home/kellen/Zotero/storage/S3IB9ZSU/Bilokon and Gunduz - 2023 - C++ Design Patterns for Low-latency Applications Including High-frequency Trading.pdf}
+}
+
+@misc{blierLearningSuccessorStates2021,
+  title = {Learning {{Successor States}} and {{Goal-Dependent Values}}: {{A Mathematical Viewpoint}}},
+  shorttitle = {Learning {{Successor States}} and {{Goal-Dependent Values}}},
+  author = {Blier, L{\'e}onard and Tallec, Corentin and Ollivier, Yann},
+  year = {2021},
+  month = jan,
+  number = {arXiv:2101.07123},
+  eprint = {2101.07123},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2101.07123},
+  urldate = {2025-02-27},
+  abstract = {In reinforcement learning, temporal difference-based algorithms can be sample-inefficient: for instance, with sparse rewards, no learning occurs until a reward is observed. This can be remedied by learning richer objects, such as a model of the environment, or successor states. Successor states model the expected future state occupancy from any given state [Dayan, 1993, Kulkarni et al., 2016], and summarize all paths in the environment for a given policy. They are related to goal-dependent value functions, which learn how to reach arbitrary states.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Zotero/storage/LUN44LMX/Blier et al. - 2021 - Learning Successor States and Goal-Dependent Values A Mathematical Viewpoint.pdf}
 }
 
 @article{borgersLectureNotesGame,
@@ -233,6 +323,51 @@
   file = {/home/kellen/Zotero/storage/C6AJGW5I/Cover and Thomas - ELEMENTS OF INFORMATION THEORY.pdf}
 }
 
+@misc{dangeloWhyWeNeed2024,
+  title = {Why {{Do We Need Weight Decay}} in {{Modern Deep Learning}}?},
+  author = {D'Angelo, Francesco and Andriushchenko, Maksym and Varre, Aditya and Flammarion, Nicolas},
+  year = {2024},
+  month = nov,
+  number = {arXiv:2310.04415},
+  eprint = {2310.04415},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2310.04415},
+  urldate = {2025-02-26},
+  abstract = {Weight decay is a broadly used technique for training state-of-the-art deep networks from image classification to large language models. Despite its widespread usage and being extensively studied in the classical literature, its role remains poorly understood for deep learning. In this work, we highlight that the role of weight decay in modern deep learning is different from its regularization effect studied in classical learning theory. For deep networks on vision tasks trained with multipass SGD, we show how weight decay modifies the optimization dynamics enhancing the ever-present implicit regularization of SGD via the loss stabilization mechanism. In contrast, for large language models trained with nearly one-epoch training, we describe how weight decay balances the bias-variance tradeoff in stochastic optimization leading to lower training loss and improved training stability. Overall, we present a unifying perspective from ResNets on vision tasks to LLMs: weight decay is never useful as an explicit regularizer but instead changes the training dynamics in a desirable way. The code is available at https://github.com/tml-epfl/why-weight-decay},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Zotero/storage/5GJGM755/D'Angelo et al. - 2024 - Why Do We Need Weight Decay in Modern Deep Learning.pdf}
+}
+
+@article{danihelkaPOLICYIMPROVEMENTPLANNING2022,
+  title = {{{POLICY IMPROVEMENT BY PLANNING WITH GUMBEL}}},
+  author = {Danihelka, Ivo and Guez, Arthur and Schrittwieser, Julian and Silver, David},
+  year = {2022},
+  abstract = {AlphaZero is a powerful reinforcement learning algorithm based on approximate policy iteration and tree search. However, AlphaZero can fail to improve its policy network, if not visiting all actions at the root of a search tree. To address this issue, we propose a policy improvement algorithm based on sampling actions without replacement. Furthermore, we use the idea of policy improvement to replace the more heuristic mechanisms by which AlphaZero selects and uses actions, both at root nodes and at non-root nodes. Our new algorithms, Gumbel AlphaZero and Gumbel MuZero, respectively without and with model-learning, match the state of the art on Go, chess, and Atari, and significantly improve prior performance when planning with few simulations.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/D7IB2GI6/Danihelka et al. - 2022 - POLICY IMPROVEMENT BY PLANNING WITH GUMBEL.pdf}
+}
+
+@misc{dedieuImprovingTransformerWorld2025,
+  title = {Improving {{Transformer World Models}} for {{Data-Efficient RL}}},
+  author = {Dedieu, Antoine and Ortiz, Joseph and Lou, Xinghua and Wendelken, Carter and Lehrach, Wolfgang and Guntupalli, J. Swaroop and {Lazaro-Gredilla}, Miguel and Murphy, Kevin Patrick},
+  year = {2025},
+  month = feb,
+  number = {arXiv:2502.01591},
+  eprint = {2502.01591},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2502.01591},
+  urldate = {2025-02-16},
+  abstract = {We present an approach to model-based RL that achieves a new state of the art performance on the challenging Craftax-classic benchmark, an open-world 2D survival game that requires agents to exhibit a wide range of general abilities -- such as strong generalization, deep exploration, and long-term reasoning. With a series of careful design choices aimed at improving sample efficiency, our MBRL algorithm achieves a reward of 67.4\% after only 1M environment steps, significantly outperforming DreamerV3, which achieves 53.2\%, and, for the first time, exceeds human performance of 65.0\%. Our method starts by constructing a SOTA model-free baseline, using a novel policy architecture that combines CNNs and RNNs. We then add three improvements to the standard MBRL setup: (a) "Dyna with warmup", which trains the policy on real and imaginary data, (b) "nearest neighbor tokenizer" on image patches, which improves the scheme to create the transformer world model (TWM) inputs, and (c) "block teacher forcing", which allows the TWM to reason jointly about the future tokens of the next timestep.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Zotero/storage/ICQPUZXS/Dedieu et al. - 2025 - Improving Transformer World Models for Data-Efficient RL.pdf}
+}
+
 @misc{degrisStepsizeOptimizationContinual2024,
   title = {Step-Size {{Optimization}} for {{Continual Learning}}},
   author = {Degris, Thomas and Javed, Khurram and Sharifnassab, Arsalan and Liu, Yuxin and Sutton, Richard},
@@ -291,6 +426,14 @@
   file = {/home/kellen/Zotero/storage/MVRAWH8Q/Durrett - 2016 - Essentials of Stochastic Processes.pdf}
 }
 
+@article{ellisAdamLocalTime,
+  title = {Adam on {{Local Time}}: {{Addressing Nonstationarity}} in {{RL}} with {{Relative Adam Timesteps}}},
+  author = {Ellis, Benjamin and Jackson, Matthew T and Lupu, Andrei and Goldie, Alexander D},
+  abstract = {In reinforcement learning (RL), it is common to apply techniques used broadly in machine learning such as neural network function approximators and momentumbased optimizers [1, 2]. However, such tools were largely developed for supervised learning rather than nonstationary RL, leading practitioners to adopt target networks [3], clipped policy updates [4], and other RL-specific implementation tricks [5, 6] to combat this mismatch, rather than directly adapting this toolchain for use in RL. In this paper, we take a different approach and instead address the effect of nonstationarity by adapting the widely used Adam optimiser [7]. We first analyse the impact of nonstationary gradient magnitude---such as that caused by a change in target network---on Adam's update size, demonstrating that such a change can lead to large updates and hence sub-optimal performance. To address this, we introduce Adam with Relative Timesteps, or Adam-Rel. Rather than using the global timestep in the Adam update, Adam-Rel uses the local timestep within an epoch, essentially resetting Adam's timestep to 0 after target changes. We demonstrate that this avoids large updates and reduces to learning rate annealing in the absence of such increases in gradient magnitude. Evaluating Adam-Rel in both on-policy and off-policy RL, we demonstrate improved performance in both Atari and Craftax. We then show that increases in gradient norm occur in RL in practice, and examine the differences between our theoretical model and the observed data.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/ATS4JHHU/Ellis et al. - Adam on Local Time Addressing Nonstationarity in RL with Relative Adam Timesteps.pdf}
+}
+
 @article{elsayedDeepReinforcementLearning,
   title = {Deep {{Reinforcement Learning Without Experience Replay}}, {{Target Networks}}, or {{Batch Updates}}},
   author = {Elsayed, Mohamed and Vasan, Gautham and Mahmood, A Rupam},
@@ -332,6 +475,18 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
   file = {/home/kellen/Zotero/storage/WVQKIMN4/Eysenbach et al. - 2023 - Contrastive Learning as Goal-Conditioned Reinforcement Learning.pdf}
+}
+
+@inproceedings{eysenbachInformationGeometryUnsupervised2021,
+  title = {The {{Information Geometry}} of {{Unsupervised Reinforcement Learning}}},
+  booktitle = {International {{Conference}} on {{Learning Representations}}},
+  author = {Eysenbach, Benjamin and Salakhutdinov, Ruslan and Levine, Sergey},
+  year = {2021},
+  month = oct,
+  urldate = {2025-02-16},
+  abstract = {How can a reinforcement learning (RL) agent prepare to solve downstream tasks if those tasks are not known a priori? One approach is unsupervised skill discovery, a class of algorithms that learn a set of policies without access to a reward function. Such algorithms bear a close resemblance to representation learning algorithms (e.g., contrastive learning) in supervised learning, in that both are pretraining algorithms that maximize some approximation to a mutual information objective. While prior work has shown that the set of skills learned by such methods can accelerate downstream RL tasks, prior work offers little analysis into whether these skill learning algorithms are optimal, or even what notion of optimality would be appropriate to apply to them. In this work, we show that unsupervised skill discovery algorithms based on mutual information maximization do not learn skills that are optimal for every possible reward function. However, we show that the distribution over skills provides an optimal initialization minimizing regret against adversarially-chosen reward functions, assuming a certain type of adaptation procedure. Our analysis also provides a geometric perspective on these skill learning methods.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/VE3YH9VL/Eysenbach et al. - 2021 - The Information Geometry of Unsupervised Reinforcement Learning.pdf}
 }
 
 @article{eysenbachProbabilisticReinforcementLearning,
@@ -443,6 +598,23 @@
   file = {/home/kellen/Zotero/storage/GTI664DM/Guo et al. - 2024 - Direct Language Model Alignment from Online AI Feedback.pdf}
 }
 
+@inproceedings{guptaModelbasedSafeReinforcement2024,
+  title = {Model-Based {{Safe Reinforcement Learning}} Using {{Variable Horizon Rollouts}}},
+  booktitle = {Proceedings of the 7th {{Joint International Conference}} on {{Data Science}} \& {{Management}} of {{Data}} (11th {{ACM IKDD CODS}} and 29th {{COMAD}})},
+  author = {Gupta, Shourya and Suryaman, Utkarsh and Narava, Rahul and Jha, Shashi Shekhar},
+  year = {2024},
+  month = jan,
+  pages = {100--108},
+  publisher = {ACM},
+  address = {Bangalore India},
+  doi = {10.1145/3632410.3632446},
+  urldate = {2025-03-17},
+  abstract = {Safe reinforcement learning aims to ensure the safety of agents and their interactions with the environment. Traditional reinforcement learning algorithms often neglect safety considerations, resulting in undesirable consequences when deployed in real-world scenarios. To address this issue, safe reinforcement learning algorithms incorporate safety constraints or modify the reward distribution to prioritize the safety of the agent. Recent literature on modelbased safe reinforcement learning uses a fixed look-ahead horizon to avoid unsafe states, limiting the agent's adaptability to changing environments. In this paper, we propose a variable horizon lookahead based on the agent's current state, resulting in improved performance and adaptability in uncertain environments. Our approach leverages the Gaussian process regression model to estimate the value of the horizon dynamically based on the agent's current state. To enhance sample efficiency, we introduce a selective sampling strategy that reduces the number of rollouts by eliminating samples that may lead to unsafe states and also optimizes the use of computational resources while ensuring safety. We evaluate the effectiveness of our approach in multiple mujoco environments. Our results demonstrate a significant reduction in terms of safety violations during validating compared to existing approaches from the literature.},
+  isbn = {979-8-4007-1634-8},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/FBVZY26U/Gupta et al. - 2024 - Model-based Safe Reinforcement Learning using Variable Horizon Rollouts.pdf}
+}
+
 @inproceedings{gutmannNoisecontrastiveEstimationNew2010,
   title = {Noise-Contrastive Estimation: {{A}} New Estimation Principle for Unnormalized Statistical Models},
   shorttitle = {Noise-Contrastive Estimation},
@@ -457,6 +629,50 @@
   abstract = {We present a new estimation principle for parameterized statistical models. The idea is to perform nonlinear logistic regression to discriminate between the observed data and some artificially generated noise, using the model log-density function in the regression nonlinearity.  We show that this leads to a consistent (convergent) estimator of the parameters, and analyze the asymptotic variance.  In particular, the method is shown to directly work for unnormalized models, i.e. models where the density function does not integrate to one. The normalization constant can be estimated just like any other parameter. For a tractable ICA model, we compare the method with other estimation methods that can be used to learn unnormalized models, including score matching, contrastive divergence, and maximum-likelihood where the normalization constant is estimated with importance sampling. Simulations show that noise-contrastive estimation offers the best trade-off between computational and statistical efficiency. The method is then applied to the modeling of natural images: We show that the method can successfully estimate a large-scale two-layer model and a Markov random field.},
   langid = {english},
   file = {/home/kellenkanarios/Downloads/Papers/Papers/Contrastive RL/Gutmann_Hyvärinen_2010_Noise-contrastive estimation.pdf}
+}
+
+@article{gutmannNoiseContrastiveEstimationUnnormalized,
+  title = {Noise-{{Contrastive Estimation}} of {{Unnormalized Statistical Models}}, with {{Applications}} to {{Natural Image Statistics}}},
+  author = {Gutmann, Michael U and Gutmann, Michael and Hyvarinen, Aapo and Hyvarinen, Aapo},
+  abstract = {We consider the task of estimating, from observed data, a probabilistic model that is parameterized by a finite number of parameters. In particular, we are considering the situation where the model probability density function is unnormalized. That is, the model is only specified up to the partition function. The partition function normalizes a model so that it integrates to one for any choice of the parameters. However, it is often impossible to obtain it in closed form. Gibbs distributions, Markov and multi-layer networks are examples of models where analytical normalization is often impossible. Maximum likelihood estimation can then not be used without resorting to numerical approximations which are often computationally expensive. We propose here a new objective function for the estimation of both normalized and unnormalized models. The basic idea is to perform nonlinear logistic regression to discriminate between the observed data and some artificially generated noise. With this approach, the normalizing partition function can be estimated like any other parameter. We prove that the new estimation method leads to a consistent (convergent) estimator of the parameters. For large noise sample sizes, the new estimator is furthermore shown to behave like the maximum likelihood estimator. In the estimation of unnormalized models, there is a trade-off between statistical and computational performance. We show that the new method strikes a competitive trade-off in comparison to other estimation methods for unnormalized models. As an application to real data, we estimate novel two-layer models of natural image statistics with spline nonlinearities.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/7HQNNPRL/Gutmann et al. - Noise-Contrastive Estimation of Unnormalized Statistical Models, with Applications to Natural Image.pdf}
+}
+
+@misc{hazanIntroductionOnlineConvex2023,
+  title = {Introduction to {{Online Convex Optimization}}},
+  author = {Hazan, Elad},
+  year = {2023},
+  month = aug,
+  number = {arXiv:1909.05207},
+  eprint = {1909.05207},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1909.05207},
+  urldate = {2025-02-16},
+  abstract = {This manuscript portrays optimization as a process. In many practical applications the environment is so complex that it is infeasible to lay out a comprehensive theoretical model and use classical algorithmic theory and mathematical optimization. It is necessary as well as beneficial to take a robust approach, by applying an optimization method that learns as one goes along, learning from experience as more aspects of the problem are observed. This view of optimization as a process has become prominent in varied fields and has led to some spectacular success in modeling and systems that are now part of our daily lives.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Mathematics - Optimization and Control,Statistics - Machine Learning},
+  file = {/home/kellen/Zotero/storage/AB366M9X/Hazan - 2023 - Introduction to Online Convex Optimization.pdf}
+}
+
+@misc{hesselPodracerArchitecturesScalable2021,
+  title = {Podracer Architectures for Scalable {{Reinforcement Learning}}},
+  author = {Hessel, Matteo and Kroiss, Manuel and Clark, Aidan and Kemaev, Iurii and Quan, John and Keck, Thomas and Viola, Fabio and van Hasselt, Hado},
+  year = {2021},
+  month = apr,
+  number = {arXiv:2104.06272},
+  eprint = {2104.06272},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2104.06272},
+  urldate = {2025-02-11},
+  abstract = {Supporting state-of-the-art AI research requires balancing rapid prototyping, ease of use, and quick iteration, with the ability to deploy experiments at a scale traditionally associated with production systems.Deep learning frameworks such as TensorFlow, PyTorch and JAX allow users to transparently make use of accelerators, such as TPUs and GPUs, to offload the more computationally intensive parts of training and inference in modern deep learning systems. Popular training pipelines that use these frameworks for deep learning typically focus on (un-)supervised learning. How to best train reinforcement learning (RL) agents at scale is still an active research area. In this report we argue that TPUs are particularly well suited for training RL agents in a scalable, efficient and reproducible way. Specifically we describe two architectures designed to make the best use of the resources available on a TPU Pod (a special configuration in a Google data center that features multiple TPU devices connected to each other by extremely low latency communication channels).},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Zotero/storage/YM29JDFM/Hessel et al. - 2021 - Podracer architectures for scalable Reinforcement Learning.pdf}
 }
 
 @article{huangOccupancybasedPolicyGradient,
@@ -484,6 +700,24 @@
   file = {/home/kellen/Zotero/storage/JV6TZ7S9/Huang et al. - 2023 - Reinforcement Learning in Low-Rank MDPs with Density Features.pdf}
 }
 
+@misc{hubertLearningPlanningComplex2021,
+  title = {Learning and {{Planning}} in {{Complex Action Spaces}}},
+  author = {Hubert, Thomas and Schrittwieser, Julian and Antonoglou, Ioannis and Barekatain, Mohammadamin and Schmitt, Simon and Silver, David},
+  year = {2021},
+  month = apr,
+  number = {arXiv:2104.06303},
+  eprint = {2104.06303},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2104.06303},
+  urldate = {2025-03-31},
+  abstract = {Many important real-world problems have action spaces that are high-dimensional, continuous or both, making full enumeration of all possible actions infeasible. Instead, only small subsets of actions can be sampled for the purpose of policy evaluation and improvement. In this paper, we propose a general framework to reason in a principled way about policy evaluation and improvement over such sampled action subsets. This sample-based policy iteration framework can in principle be applied to any reinforcement learning algorithm based upon policy iteration. Concretely, we propose Sampled MuZero, an extension of the MuZero algorithm that is able to learn in domains with arbitrarily complex action spaces by planning over sampled actions. We demonstrate this approach on the classical board game of Go and on two continuous control benchmark domains: DeepMind Control Suite and Real-World RL Suite.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Zotero/storage/AWL8Y6DZ/Hubert et al. - 2021 - Learning and Planning in Complex Action Spaces.pdf}
+}
+
 @article{jaakkolaConvergenceStochasticIterative,
   title = {On the {{Convergence}} of {{Stochastic Iterative Dynamic Programming Algorithms}}},
   author = {Jaakkola, Tommi and Jordan, Michael I and Singh, Satinder P},
@@ -507,6 +741,24 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
   file = {/home/kellenkanarios/Downloads/Papers/Continual-RL/Jain et al_2024_Adaptive Exploration for Data-Efficient General Value Function Evaluations.pdf;/home/kellen/Zotero/storage/SAPYRAL8/2405.html}
+}
+
+@misc{jiangContextualDecisionProcesses2016,
+  title = {Contextual {{Decision Processes}} with {{Low Bellman Rank}} Are {{PAC-Learnable}}},
+  author = {Jiang, Nan and Krishnamurthy, Akshay and Agarwal, Alekh and Langford, John and Schapire, Robert E.},
+  year = {2016},
+  month = dec,
+  number = {arXiv:1610.09512},
+  eprint = {1610.09512},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1610.09512},
+  urldate = {2025-02-05},
+  abstract = {This paper studies systematic exploration for reinforcement learning with rich observations and function approximation. We introduce a new model called contextual decision processes, that unifies and generalizes most prior settings. Our first contribution is a complexity measure, the Bellman rank , that we show enables tractable learning of near-optimal behavior in these processes and is naturally small for many well-studied reinforcement learning settings. Our second contribution is a new reinforcement learning algorithm that engages in systematic exploration to learn contextual decision processes with low Bellman rank. Our algorithm provably learns near-optimal behavior with a number of samples that is polynomial in all relevant parameters but independent of the number of unique observations. The approach uses Bellman error minimization with optimistic exploration and provides new insights into efficient exploration for reinforcement learning with function approximation.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Zotero/storage/RCXBGU3P/Jiang et al. - 2016 - Contextual Decision Processes with Low Bellman Rank are PAC-Learnable.pdf}
 }
 
 @misc{kalikarAcceleratingLongreadAnalysis2021,
@@ -614,6 +866,31 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning},
   file = {/home/kellenkanarios/Downloads/Papers/Hierarchical RL/Klissarov et al_2024_MaestroMotif.pdf}
+}
+
+@article{kolobovHeuristicSearchGeneralized2011,
+  title = {Heuristic {{Search}} for {{Generalized Stochastic Shortest Path MDPs}}},
+  author = {Kolobov, Andrey and Mausam, Mausam and Weld, Daniel and Geffner, Hector},
+  year = {2011},
+  month = mar,
+  journal = {Proceedings of the International Conference on Automated Planning and Scheduling},
+  volume = {21},
+  pages = {130--137},
+  issn = {2334-0843},
+  doi = {10.1609/icaps.v21i1.13452},
+  urldate = {2025-03-22},
+  abstract = {Research in efficient methods for solving infinite-horizon MDPs has so far concentrated primarily on discounted MDPs and the more general stochastic shortest path problems (SSPs). These are MDPs with 1) an optimal value function V* that is the unique solution of Bellman equation and 2) optimal policies that are the greedy policies w.r.t. V*. This paper\&rsquo;s main contribution is the description of a new class of MDPs, that have well-defined optimal solutions that do not comply with either 1 or 2 above. We call our new class Generalized Stochastic Shortest Path (GSSP) problems. GSSP allows more general reward structure than SSP and subsumes several established MDP types including SSP, positive-bounded, negative, and discounted-reward models. While existing efficient heuristic search algorithms like LAO* and LRTDP are not guaranteed to converge to the optimal value function for GSSPs, we present a new heuristic-search-based family of algorithms, FRET (Find, Revise, Eliminate Traps). A preliminary empirical evaluation shows that FRET solves GSSPs much more efficiently than Value Iteration.},
+  copyright = {Copyright (c) 2021 Proceedings of the International Conference on Automated Planning and Scheduling},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/Q77EPBX6/Kolobov et al. - 2011 - Heuristic Search for Generalized Stochastic Shortest Path MDPs.pdf}
+}
+
+@article{konidarisEfficientSkillLearning,
+  title = {Efficient {{Skill Learning}} Using {{Abstraction Selection}}},
+  author = {Konidaris, George and Barto, Andrew},
+  abstract = {We present an algorithm for selecting an appropriate abstraction when learning a new skill. We show empirically that it can consistently select an appropriate abstraction using very little sample data, and that it significantly improves skill learning performance in a reasonably large real-valued reinforcement learning domain.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/P465ZLK5/Konidaris and Barto - Efficient Skill Learning using Abstraction Selection.pdf}
 }
 
 @article{kulkarniHierarchicalDeepReinforcement,
@@ -785,6 +1062,24 @@
   file = {/home/kellen/Zotero/storage/U4V4YFWK/Li - 2018 - Minimap2 pairwise alignment for nucleotide sequen.pdf}
 }
 
+@misc{liuMuonScalableLLM2025,
+  title = {Muon Is {{Scalable}} for {{LLM Training}}},
+  author = {Liu, Jingyuan and Su, Jianlin and Yao, Xingcheng and Jiang, Zhejun and Lai, Guokun and Du, Yulun and Qin, Yidao and Xu, Weixin and Lu, Enzhe and Yan, Junjie and Chen, Yanru and Zheng, Huabin and Liu, Yibo and Liu, Shaowei and Yin, Bohong and He, Weiran and Zhu, Han and Wang, Yuzhi and Wang, Jianzhou and Dong, Mengnan and Zhang, Zheng and Kang, Yongsheng and Zhang, Hao and Xu, Xinran and Zhang, Yutao and Wu, Yuxin and Zhou, Xinyu and Yang, Zhilin},
+  year = {2025},
+  month = feb,
+  number = {arXiv:2502.16982},
+  eprint = {2502.16982},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2502.16982},
+  urldate = {2025-02-26},
+  abstract = {Recently, the Muon optimizer (K. Jordan et al. 2024) based on matrix orthogonalization has demonstrated strong results in training small-scale language models, but the scalability to larger models has not been proven. We identify two crucial techniques for scaling up Muon: (1) adding weight decay and (2) carefully adjusting the per-parameter update scale. These techniques allow Muon to work out-ofthe-box on large-scale training without the need of hyper-parameter tuning. Scaling law experiments indicate that Muon achieves {$\sim$} 2{\texttimes} computational efficiency compared to AdamW with compute optimal training. Based on these improvements, we introduce Moonlight, a 3B/16B-parameter Mixture-of-Expert (MoE) model trained with 5.7T tokens using Muon. Our model improves the current Pareto frontier, achieving better performance with much fewer training FLOPs compared to prior models. We open-source our distributed Muon implementation that is memory optimal and communication efficient. We also release the pretrained, instruction-tuned, and intermediate checkpoints to support future research.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning},
+  file = {/home/kellen/Zotero/storage/JSHH2RNX/Liu et al. - 2025 - Muon is Scalable for LLM Training.pdf}
+}
+
 @misc{liuSingleGoalAll2024,
   title = {A {{Single Goal}} Is {{All You Need}}: {{Skills}} and {{Exploration Emerge}} from {{Contrastive RL}} without {{Rewards}}, {{Demonstrations}}, or {{Subgoals}}},
   shorttitle = {A {{Single Goal}} Is {{All You Need}}},
@@ -820,6 +1115,23 @@
   file = {/home/kellen/Zotero/storage/PEJ6S5ZX/Machado et al. - 2023 - Temporal Abstraction in Reinforcement Learning with the Successor Representation.pdf}
 }
 
+@inproceedings{mahmoodTuningfreeStepsizeAdaptation2012,
+  title = {Tuning-Free Step-Size Adaptation},
+  booktitle = {2012 {{IEEE International Conference}} on {{Acoustics}}, {{Speech}} and {{Signal Processing}} ({{ICASSP}})},
+  author = {Mahmood, Ashique Rupam and Sutton, Richard S. and Degris, Thomas and Pilarski, Patrick M.},
+  year = {2012},
+  month = mar,
+  pages = {2121--2124},
+  publisher = {IEEE},
+  address = {Kyoto, Japan},
+  doi = {10.1109/ICASSP.2012.6288330},
+  urldate = {2025-02-05},
+  abstract = {Incremental learning algorithms based on gradient descent are effective and popular in online supervised learning, reinforcement learning, signal processing, and many other application areas. An oft-noted drawback of these algorithms is that they include a step-size parameter that needs to be tuned for best performance, which may require manual intervention and significant domain knowledge or additional data. In many cases, an entire vector of step-size parameters (e.g., one for each input feature) needs to be tuned in order to attain the best performance of the algorithm. To address this, several methods have been proposed for adapting step sizes online. For example, Sutton's IDBD method can find the best vector step size for the LMS algorithm, and Schraudolph's ELK1 method, an extension of IDBD to neural networks, has proven effective on large applications, such as 3D hand tracking. However, to date all such step-size adaptation methods have included a tunable step-size parameter of their own, which we call the meta-step-size parameter. In this paper we show that the performance of existing step-size adaptation methods are strongly dependent on the choice of their meta-step-size parameter and that their meta-step-size parameter cannot be set reliably in a problem-independent way. We introduce a series of modifications and normalizations to the IDBD method that together eliminate the need to tune the meta-step-size parameter to the particular problem. We show that the resulting overall algorithm, called Autostep, performs as well or better than the existing step-size adaptation methods on a number of idealized and robot prediction problems and does not require any tuning of its meta-step-size parameter. The ideas behind Autostep are not restricted to the IDBD method and the same principles are potentially applicable to other incremental learning settings, such as reinforcement learning.},
+  isbn = {978-1-4673-0046-9 978-1-4673-0045-2 978-1-4673-0044-5},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/ER798P67/Mahmood et al. - 2012 - Tuning-free step-size adaptation.pdf}
+}
+
 @misc{malladiFineTuningLanguageModels2024,
   title = {Fine-{{Tuning Language Models}} with {{Just Forward Passes}}},
   author = {Malladi, Sadhika and Gao, Tianyu and Nichani, Eshaan and Damian, Alex and Lee, Jason D. and Chen, Danqi and Arora, Sanjeev},
@@ -835,6 +1147,25 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning},
   file = {/home/kellen/Zotero/storage/2J3FEQX7/Malladi et al. - 2024 - Fine-Tuning Language Models with Just Forward Passes.pdf}
+}
+
+@misc{maNoiseContrastiveEstimation2018,
+  title = {Noise {{Contrastive Estimation}} and {{Negative Sampling}} for {{Conditional Models}}: {{Consistency}} and {{Statistical Efficiency}}},
+  shorttitle = {Noise {{Contrastive Estimation}} and {{Negative Sampling}} for {{Conditional Models}}},
+  author = {Ma, Zhuang and Collins, Michael},
+  year = {2018},
+  month = sep,
+  number = {arXiv:1809.01812},
+  eprint = {1809.01812},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1809.01812},
+  urldate = {2025-02-03},
+  abstract = {Noise Contrastive Estimation (NCE) is a powerful parameter estimation method for loglinear models, which avoids calculation of the partition function or its derivatives at each training step, a computationally demanding step in many cases. It is closely related to negative sampling methods, now widely used in NLP. This paper considers NCE-based estimation of conditional models. Conditional models are frequently encountered in practice; however there has not been a rigorous theoretical analysis of NCE in this setting, and we will argue there are subtle but important questions when generalizing NCE to the conditional case. In particular, we analyze two variants of NCE for conditional models: one based on a classification objective, the other based on a ranking objective. We show that the rankingbased variant of NCE gives consistent parameter estimates under weaker assumptions than the classification-based method; we analyze the statistical efficiency of the ranking-based and classification-based variants of NCE; finally we describe experiments on synthetic data and language modeling showing the effectiveness and trade-offs of both methods.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Statistics - Methodology},
+  file = {/home/kellen/Zotero/storage/BC92TTTC/Ma and Collins - 2018 - Noise Contrastive Estimation and Negative Sampling for Conditional Models Consistency and Statistic.pdf}
 }
 
 @misc{mazoureContrastiveValueLearning2022,
@@ -870,6 +1201,23 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Zotero/storage/GUALHQEZ/McLeod et al. - 2022 - Continual Auxiliary Task Learning.pdf}
+}
+
+@book{montavonNeuralNetworksTricks2012,
+  title = {Neural {{Networks}}: {{Tricks}} of the {{Trade}}: {{Second Edition}}},
+  shorttitle = {Neural {{Networks}}},
+  editor = {Montavon, Gr{\'e}goire and Orr, Genevi{\`e}ve B. and M{\"u}ller, Klaus-Robert},
+  year = {2012},
+  series = {Lecture {{Notes}} in {{Computer Science}}},
+  volume = {7700},
+  publisher = {Springer Berlin Heidelberg},
+  address = {Berlin, Heidelberg},
+  doi = {10.1007/978-3-642-35289-8},
+  urldate = {2025-02-28},
+  copyright = {http://www.springer.com/tdm},
+  isbn = {978-3-642-35288-1 978-3-642-35289-8},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/3R38Z36Y/Montavon et al. - 2012 - Neural Networks Tricks of the Trade Second Edition.pdf}
 }
 
 @article{moonDiscoveringHierarchicalAchievements2023,
@@ -1013,6 +1361,24 @@
   file = {/home/kellen/Zotero/storage/8ZBPFQEK/Oord et al. - 2019 - Representation Learning with Contrastive Predictive Coding.pdf;/home/kellen/Zotero/storage/H9PLPKN6/Oord et al. - 2019 - Representation Learning with Contrastive Predictive Coding.pdf}
 }
 
+@misc{parisottoStabilizingTransformersReinforcement2019,
+  title = {Stabilizing {{Transformers}} for {{Reinforcement Learning}}},
+  author = {Parisotto, Emilio and Song, H. Francis and Rae, Jack W. and Pascanu, Razvan and Gulcehre, Caglar and Jayakumar, Siddhant M. and Jaderberg, Max and Kaufman, Raphael Lopez and Clark, Aidan and Noury, Seb and Botvinick, Matthew M. and Heess, Nicolas and Hadsell, Raia},
+  year = {2019},
+  month = oct,
+  number = {arXiv:1910.06764},
+  eprint = {1910.06764},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1910.06764},
+  urldate = {2025-02-10},
+  abstract = {Owing to their ability to both effectively integrate information over long time horizons and scale to massive amounts of data, self-attention architectures have recently shown breakthrough success in natural language processing (NLP), achieving state-of-the-art results in domains such as language modeling and machine translation. Harnessing the transformer's ability to process long time horizons of information could provide a similar performance boost in partially observable reinforcement learning (RL) domains, but the large-scale transformers used in NLP have yet to be successfully applied to the RL setting. In this work we demonstrate that the standard transformer architecture is difficult to optimize, which was previously observed in the supervised learning setting but becomes especially pronounced with RL objectives. We propose architectural modifications that substantially improve the stability and learning speed of the original Transformer and XL variant. The proposed architecture, the Gated Transformer-XL (GTrXL), surpasses LSTMs on challenging memory environments and achieves state-of-the-art results on the multi-task DMLab-30 benchmark suite, exceeding the performance of an external memory architecture. We show that the GTrXL, trained using the same losses, has stability and performance that consistently matches or exceeds a competitive LSTM baseline, including on more reactive tasks where memory is less critical. GTrXL offers an easy-to-train, simple-to-implement but substantially more expressive architectural alternative to the standard multi-layer LSTM ubiquitously used for RL agents in partially observable environments.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Zotero/storage/QP6P6B9C/Parisotto et al. - 2019 - Stabilizing Transformers for Reinforcement Learning.pdf}
+}
+
 @misc{parkFoundationPoliciesHilbert2024,
   title = {Foundation {{Policies}} with {{Hilbert Representations}}},
   author = {Park, Seohong and Kreiman, Tobias and Levine, Sergey},
@@ -1063,6 +1429,42 @@
   isbn = {978-1-4612-6526-9 978-1-4613-0003-8},
   langid = {english},
   file = {/home/kellen/Zotero/storage/FRK58JEY/Perko - 2001 - Differential Equations and Dynamical Systems.pdf}
+}
+
+@misc{piresHierarchicalReinforcementLearning2023,
+  title = {Hierarchical {{Reinforcement Learning}} in {{Complex 3D Environments}}},
+  author = {Pires, Bernardo Avila and Behbahani, Feryal and Soyer, Hubert and Nikiforou, Kyriacos and Keck, Thomas and Singh, Satinder},
+  year = {2023},
+  month = feb,
+  number = {arXiv:2302.14451},
+  eprint = {2302.14451},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2302.14451},
+  urldate = {2025-02-03},
+  abstract = {Hierarchical Reinforcement Learning (HRL) agents have the potential to demonstrate appealing capabilities such as planning and exploration with abstraction, transfer, and skill reuse. Recent successes with HRL across different domains provide evidence that practical, effective HRL agents are possible, even if existing agents do not yet fully realize the potential of HRL. Despite these successes, visually complex partially observable 3D environments remained a challenge for HRL agents. We address this issue with Hierarchical Hybrid Offline-Online (H2O2), a hierarchical deep reinforcement learning agent that discovers and learns to use options from scratch using its own experience. We show that H2O2 is competitive with a strong non-hierarchical Muesli baseline in the DeepMind Hard Eight tasks and we shed new light on the problem of learning hierarchical agents in complex environments. Our empirical study of H2O2 reveals previously unnoticed practical challenges and brings new perspective to the current understanding of hierarchical agents in complex domains.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Zotero/storage/E6YDS983/Pires et al. - 2023 - Hierarchical Reinforcement Learning in Complex 3D Environments.pdf}
+}
+
+@misc{prietoGrokkingEdgeNumerical2025,
+  title = {Grokking at the {{Edge}} of {{Numerical Stability}}},
+  author = {Prieto, Lucas and Barsbey, Melih and Mediano, Pedro A. M. and Birdal, Tolga},
+  year = {2025},
+  month = jan,
+  number = {arXiv:2501.04697},
+  eprint = {2501.04697},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2501.04697},
+  urldate = {2025-02-26},
+  abstract = {Grokking, or sudden generalization that occurs after prolonged overfitting, is a surprising phenomenon that has challenged our understanding of deep learning. While a lot of progress has been made in understanding grokking, it is still not clear why generalization is delayed and why grokking often does not happen without regularization. In this work we argue that without regularization, grokking tasks push models to the edge of numerical stability, introducing floating point errors in the Softmax that we refer to as Softmax Collapse (SC). We show that SC prevents grokking and that mitigating SC leads to grokking without regularization. Investigating the root cause of SC, we find that beyond the point of overfitting, the gradients strongly align with what we call the na{\textasciidieresis}{\i}ve loss minimization (NLM) direction. This component of the gradient does not change the predictions of the model but decreases the loss by scaling the logits, usually through the scaling of the weights along their current direction. We show that this scaling of the logits explains the delay in generalization characteristic of grokking, and eventually leads to SC, stopping learning altogether. To validate these hypotheses, we introduce two key contributions that mitigate the issues faced in grokking tasks: (i) StableMax, a new activation function that prevents SC and enables grokking without regularization, and (ii) {$\perp$} Grad, a training algorithm that leads to quick generalization in grokking tasks by preventing NLM altogether. These contributions provide new insights into grokking, shedding light on its delayed generalization, reliance on regularization, and the effectiveness of known grokking-inducing methods. Code for this paper can be found at: https://github.com/LucasPrietoAl/ grokking-at-the-edge-of-numerical-stability.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Zotero/storage/V2IGQLJH/Prieto et al. - 2025 - Grokking at the Edge of Numerical Stability.pdf}
 }
 
 @misc{qiOnlineDPOOnline2024,
@@ -1127,6 +1529,43 @@
   file = {/home/kellen/Zotero/storage/FLMMCTDT/Regehr and Ayoub - 2021 - An Elementary Proof that Q-learning Converges Almost Surely.pdf}
 }
 
+@misc{renZeROOffloadDemocratizingBillionScale2021,
+  title = {{{ZeRO-Offload}}: {{Democratizing Billion-Scale Model Training}}},
+  shorttitle = {{{ZeRO-Offload}}},
+  author = {Ren, Jie and Rajbhandari, Samyam and Aminabadi, Reza Yazdani and Ruwase, Olatunji and Yang, Shuangyan and Zhang, Minjia and Li, Dong and He, Yuxiong},
+  year = {2021},
+  month = jan,
+  number = {arXiv:2101.06840},
+  eprint = {2101.06840},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2101.06840},
+  urldate = {2025-01-30},
+  abstract = {Large-scale model training has been a playing ground for a limited few requiring complex model refactoring and access to prohibitively expensive GPU clusters. ZeRO-Offload changes the large model training landscape by making large model training accessible to nearly everyone. It can train models with over 13 billion parameters on a single GPU, a 10x increase in size compared to popular framework such as PyTorch, and it does so without requiring any model change from the data scientists or sacrificing computational efficiency.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning},
+  file = {/home/kellen/Zotero/storage/EQNAIMY3/Ren et al. - 2021 - ZeRO-Offload Democratizing Billion-Scale Model Training.pdf}
+}
+
+@misc{ruderOverviewGradientDescent2017,
+  title = {An Overview of Gradient Descent Optimization Algorithms},
+  author = {Ruder, Sebastian},
+  year = {2017},
+  month = jun,
+  number = {arXiv:1609.04747},
+  eprint = {1609.04747},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1609.04747},
+  urldate = {2025-02-28},
+  abstract = {Gradient descent optimization algorithms, while increasingly popular, are often used as black-box optimizers, as practical explanations of their strengths and weaknesses are hard to come by. This article aims to provide the reader with intuitions with regard to the behaviour of different algorithms that will allow her to put them to use. In the course of this overview, we look at different variants of gradient descent, summarize challenges, introduce the most common optimization algorithms, review architectures in a parallel and distributed setting, and investigate additional strategies for optimizing gradient descent.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Zotero/storage/L2GP2CTQ/Ruder - 2017 - An overview of gradient descent optimization algorithms.pdf}
+}
+
 @misc{sanz-alonsoFirstCourseMonte2024,
   title = {A {{First Course}} in {{Monte Carlo Methods}}},
   author = {{Sanz-Alonso}, Daniel and {Al-Ghattas}, Omar},
@@ -1142,6 +1581,46 @@
   langid = {english},
   keywords = {Computer Science - Numerical Analysis,Mathematics - History and Overview,Mathematics - Numerical Analysis,Statistics - Computation},
   file = {/home/kellen/Zotero/storage/YQNKW8C5/Sanz-Alonso and Al-Ghattas - 2024 - A First Course in Monte Carlo Methods.pdf}
+}
+
+@article{schrittwieserMasteringAtariGo2020,
+  title = {Mastering {{Atari}}, {{Go}}, {{Chess}} and {{Shogi}} by {{Planning}} with a {{Learned Model}}},
+  author = {Schrittwieser, Julian and Antonoglou, Ioannis and Hubert, Thomas and Simonyan, Karen and Sifre, Laurent and Schmitt, Simon and Guez, Arthur and Lockhart, Edward and Hassabis, Demis and Graepel, Thore and Lillicrap, Timothy and Silver, David},
+  year = {2020},
+  month = dec,
+  journal = {Nature},
+  volume = {588},
+  number = {7839},
+  eprint = {1911.08265},
+  primaryclass = {cs},
+  pages = {604--609},
+  issn = {0028-0836, 1476-4687},
+  doi = {10.1038/s41586-020-03051-4},
+  urldate = {2025-03-31},
+  abstract = {Constructing agents with planning capabilities has long been one of the main challenges in the pursuit of artificial intelligence. Tree-based planning methods have enjoyed huge success in challenging domains, such as chess and Go, where a perfect simulator is available. However, in real-world problems the dynamics governing the environment are often complex and unknown. In this work we present the MuZero algorithm which, by combining a tree-based search with a learned model, achieves superhuman performance in a range of challenging and visually complex domains, without any knowledge of their underlying dynamics. MuZero learns a model that, when applied iteratively, predicts the quantities most directly relevant to planning: the reward, the action-selection policy, and the value function. When evaluated on 57 different Atari games - the canonical video game environment for testing AI techniques, in which model-based planning approaches have historically struggled - our new algorithm achieved a new state of the art. When evaluated on Go, chess and shogi, without any knowledge of the game rules, MuZero matched the superhuman performance of the AlphaZero algorithm that was supplied with the game rules.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Zotero/storage/I7Y4VSFZ/Schrittwieser et al. - 2020 - Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model.pdf}
+}
+
+@misc{sharifnassabMetaOptimizeFrameworkOptimizing2024,
+  title = {{{MetaOptimize}}: {{A Framework}} for {{Optimizing Step Sizes}} and {{Other Meta-parameters}}},
+  shorttitle = {{{MetaOptimize}}},
+  author = {Sharifnassab, Arsalan and Salehkaleybar, Saber and Sutton, Richard},
+  year = {2024},
+  month = oct,
+  number = {arXiv:2402.02342},
+  eprint = {2402.02342},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2402.02342},
+  urldate = {2025-03-04},
+  abstract = {We address the challenge of optimizing meta-parameters (i.e., hyperparameters) in machine learning algorithms, a critical factor influencing training efficiency and model performance. Moving away from the computationally expensive traditional meta-parameter search methods, we introduce MetaOptimize framework that dynamically adjusts meta-parameters, particularly step sizes (also known as learning rates), during training. More specifically, MetaOptimize can wrap around any first-order optimization algorithm, tuning step sizes on the fly to minimize a specific form of regret that accounts for long-term effect of step sizes on training, through a discounted sum of future losses. We also introduce low complexity variants of MetaOptimize that, in conjunction with its adaptability to multiple optimization algorithms, demonstrate performance competitive to those of best hand-crafted learning rate schedules across various machine learning applications.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Mathematics - Optimization and Control},
+  file = {/home/kellen/Zotero/storage/MWJ3CB3E/2402.pdf}
 }
 
 @misc{shoeybiMegatronLMTrainingMultiBillion2020,
@@ -1166,6 +1645,14 @@
   title = {Operating {{System Concepts}}},
   author = {Silberschatz, Abraham and Galvin, Peter Baer and Gagne, Greg},
   file = {/home/kellen/Zotero/storage/GI3ESXU4/Silberschatz et al. - Operating System Concepts.pdf}
+}
+
+@article{silverDeterministicPolicyGradient,
+  title = {Deterministic {{Policy Gradient Algorithms}}},
+  author = {Silver, David and Lever, Guy and Heess, Nicolas and Degris, Thomas and Wierstra, Daan and Riedmiller, Martin},
+  abstract = {In this paper we consider deterministic policy gradient algorithms for reinforcement learning with continuous actions. The deterministic policy gradient has a particularly appealing form: it is the expected gradient of the action-value function. This simple form means that the deterministic policy gradient can be estimated much more efficiently than the usual stochastic policy gradient. To ensure adequate exploration, we introduce an off-policy actor-critic algorithm that learns a deterministic target policy from an exploratory behaviour policy. We demonstrate that deterministic policy gradient algorithms can significantly outperform their stochastic counterparts in high-dimensional action spaces.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/HYF79JZL/Silver et al. - Deterministic Policy Gradient Algorithms.pdf}
 }
 
 @misc{sniderOperatorFusionXLA2023,
@@ -1208,6 +1695,14 @@
   file = {/home/kellen/Zotero/storage/6IGQEBVP/Stochastic Approximation Algorithms and Applications.pdf}
 }
 
+@article{suttonAdaptingBiasGradient,
+  title = {Adapting {{Bias}} by {{Gradient Descent}}: {{An Incremental Version}} of {{Delta-Bar-Delta}}},
+  author = {Sutton, Richard S},
+  abstract = {Appropriate bias is widely viewed as the key to efficient learning and generalization. I present a new algorithm, the Incremental Delta-Bar-Delta (IDBD) algorithm, for the learning of appropriate biases based on previous learning experience. The IDBD algorithm is developed for the case of a simple, linear learning system---the LMS or delta rule with a separate learning-rate parameter for each input. The IDBD algorithm adjusts the learning-rate parameters, which are an important form of bias for this system. Because bias in this approach is adapted based on previous learning experience, the appropriate testbeds are drifting or non-stationary learning tasks. For particular tasks of this type, I show that the IDBD algorithm performs better than ordinary LMS and in fact finds the optimal learning rates. The IDBD algorithm extends and improves over prior work by Jacobs and by me in that it is fully incremental and has only a single free parameter. This paper also extends previous work by presenting a derivation of the IDBD algorithm as gradient descent in the space of learning-rate parameters. Finally, I offer a novel interpretation of the IDBD algorithm as an incremental form of hold-one-out cross validation.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/NJPU4WDD/Sutton - Adapting Bias by Gradient Descent An Incremental Version of Delta-Bar-Delta.pdf}
+}
+
 @misc{suttonHistoryMetagradientGradient2022,
   title = {A {{History}} of {{Meta-gradient}}: {{Gradient Methods}} for {{Meta-learning}}},
   shorttitle = {A {{History}} of {{Meta-gradient}}},
@@ -1220,6 +1715,31 @@
   howpublished = {https://arxiv.org/abs/2202.09701v1},
   langid = {english},
   file = {/home/kellen/Zotero/storage/93SUJHK4/Sutton - 2022 - A History of Meta-gradient Gradient Methods for Meta-learning.pdf}
+}
+
+@article{suttonLearningPredictMethods1988,
+  title = {Learning to Predict by the Methods of Temporal Differences},
+  author = {Sutton, Richard S.},
+  year = {1988},
+  month = aug,
+  journal = {Machine Learning},
+  volume = {3},
+  number = {1},
+  pages = {9--44},
+  issn = {0885-6125, 1573-0565},
+  doi = {10.1007/BF00115009},
+  urldate = {2025-02-16},
+  abstract = {This article introduces a class of incremental learning procedures specialized for prediction---that is, for using past experience with an incompletely known system to predict its future behavior. Whereas conventional prediction-learning methods assign credit by means of the difference between predicted and actual outcomes, the new methods assign credit by means of the difference between temporally successive predictions. Although such temporal-difference methods have been used in Samuel's checker player, Holland's bucket brigade, and the author's Adaptive Heuristic Critic, they have remained poorly understood. Here we prove their convergence and optimality for special cases and relate them to supervised-learning methods. For most real-world prediction problems, temporal-difference methods require less memory and less peak computation than conventional methods; and they produce more accurate predictions. We argue that most problems to which supervised learning is currently applied are really prediction problems of the sort to which temporaldifference methods can be applied to advantage.},
+  copyright = {http://www.springer.com/tdm},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/Q953STTS/Sutton - 1988 - Learning to predict by the methods of temporal differences.pdf}
+}
+
+@article{suttonNewApproachModelbased,
+  title = {Toward a {{New Approach}} to {{Model-based Reinforcement Learning}}},
+  author = {Sutton, Richard S},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/VJQU89XE/Sutton - Toward a New Approach to Model-based Reinforcement Learning.pdf}
 }
 
 @book{suttonReinforcementLearningIntroduction2018,
@@ -1237,6 +1757,48 @@
   lccn = {Q325.6 .R45 2018},
   keywords = {Reinforcement learning},
   file = {/home/kellen/Zotero/storage/DY4UI6G7/Sutton and Barto - 2018 - Reinforcement learning an introduction.pdf}
+}
+
+@article{tesslerDeepHierarchicalApproach2017,
+  title = {A {{Deep Hierarchical Approach}} to {{Lifelong Learning}} in {{Minecraft}}},
+  author = {Tessler, Chen and Givony, Shahar and Zahavy, Tom and Mankowitz, Daniel and Mannor, Shie},
+  year = {2017},
+  month = feb,
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume = {31},
+  number = {1},
+  issn = {2374-3468, 2159-5399},
+  doi = {10.1609/aaai.v31i1.10744},
+  urldate = {2025-03-17},
+  abstract = {We propose a lifelong learning system that has the ability to reuse and transfer knowledge from one task to another while efficiently retaining the previously learned knowledgebase. Knowledge is transferred by learning reusable skills to solve tasks in Minecraft, a popular video game which is an unsolved and high-dimensional lifelong learning problem. These reusable skills, which we refer to as Deep Skill Networks, are then incorporated into our novel Hierarchical Deep Reinforcement Learning Network (H-DRLN) architecture using two techniques: (1) a deep skill array and (2) skill distillation, our novel variation of policy distillation (Rusu et al. 2015) for learning skills. Skill distillation enables the HDRLN to efficiently retain knowledge and therefore scale in lifelong learning, by accumulating knowledge and encapsulating multiple reusable skills into a single distilled network. The H-DRLN exhibits superior performance and lower learning sample complexity compared to the regular Deep Q Network (Mnih et al. 2015) in sub-domains of Minecraft.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/YRIUA9S2/Tessler et al. - 2017 - A Deep Hierarchical Approach to Lifelong Learning in Minecraft.pdf}
+}
+
+@misc{thakoorGeneralisedPolicyImprovement2022,
+  title = {Generalised {{Policy Improvement}} with {{Geometric Policy Composition}}},
+  author = {Thakoor, Shantanu and Rowland, Mark and Borsa, Diana and Dabney, Will and Munos, R{\'e}mi and Barreto, Andr{\'e}},
+  year = {2022},
+  month = jun,
+  number = {arXiv:2206.08736},
+  eprint = {2206.08736},
+  primaryclass = {stat},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2206.08736},
+  urldate = {2025-02-16},
+  abstract = {We introduce a method for policy improvement that interpolates between the greedy approach of value-based reinforcement learning (RL) and the full planning approach typical of model-based RL. The new method builds on the concept of a geometric horizon model (GHM, also known as a {$\gamma$}-model), which models the discounted statevisitation distribution of a given policy. We show that we can evaluate any non-Markov policy that switches between a set of base Markov policies with fixed probability by a careful composition of the base policy GHMs, without any additional learning. We can then apply generalised policy improvement (GPI) to collections of such nonMarkov policies to obtain a new Markov policy that will in general outperform its precursors. We provide a thorough theoretical analysis of this approach, develop applications to transfer and standard RL, and empirically demonstrate its effectiveness over standard GPI on a challenging deep RL continuous control task. We also provide an analysis of GHM training methods, proving a novel convergence result regarding previously proposed methods and showing how to train these models stably in deep RL settings.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Zotero/storage/7R2UW6U8/Thakoor et al. - 2022 - Generalised Policy Improvement with Geometric Policy Composition.pdf}
+}
+
+@article{thomasSafeReinforcementLearning,
+  title = {Safe {{Reinforcement Learning}} by {{Imagining}} the {{Near Future}}},
+  author = {Thomas, Garrett and Luo, Yuping and Ma, Tengyu},
+  abstract = {Safe reinforcement learning is a promising path toward applying reinforcement learning algorithms to real-world problems, where suboptimal behaviors may lead to actual negative consequences. In this work, we focus on the setting where unsafe states can be avoided by planning ahead a short time into the future. In this setting, a model-based agent with a sufficiently accurate model can avoid unsafe states. We devise a model-based algorithm that heavily penalizes unsafe trajectories, and derive guarantees that our algorithm can avoid unsafe states under certain assumptions. Experiments demonstrate that our algorithm can achieve competitive rewards with fewer safety violations in several continuous control tasks.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/U6CCSU6W/Thomas et al. - Safe Reinforcement Learning by Imagining the Near Future.pdf}
 }
 
 @misc{touatiDoesZeroShotReinforcement2023,
@@ -1298,6 +1860,21 @@
   file = {/home/kellen/Zotero/storage/DC3KWF38/Vershynin - High-Dimensional Probability.pdf}
 }
 
+@inproceedings{vezhnevetsFeUdalNetworksHierarchical2017,
+  title = {{{FeUdal Networks}} for {{Hierarchical Reinforcement Learning}}},
+  booktitle = {Proceedings of the 34th {{International Conference}} on {{Machine Learning}}},
+  author = {Vezhnevets, Alexander Sasha and Osindero, Simon and Schaul, Tom and Heess, Nicolas and Jaderberg, Max and Silver, David and Kavukcuoglu, Koray},
+  year = {2017},
+  month = jul,
+  pages = {3540--3549},
+  publisher = {PMLR},
+  issn = {2640-3498},
+  urldate = {2025-02-10},
+  abstract = {We introduce FeUdal Networks (FuNs): a novel architecture for hierarchical reinforcement learning. Our approach is inspired by the feudal reinforcement learning proposal of Dayan and Hinton, and gains power and efficacy by decoupling end-to-end learning across multiple levels -- allowing it to utilise different resolutions of time. Our framework employs a Manager module and a Worker module. The Manager operates at a slower time scale and sets abstract goals which are conveyed to and enacted by the Worker. The Worker generates primitive actions at every tick of the environment. The decoupled structure of FuN conveys several benefits -- in addition to facilitating very long timescale credit assignment it also encourages the emergence of sub-policies associated with different goals set by the Manager. These properties allow FuN to dramatically outperform a strong baseline agent on tasks that involve long-term credit assignment or memorisation.},
+  langid = {english},
+  file = {/home/kellen/Zotero/storage/U76B4QZ8/Vezhnevets et al. - 2017 - FeUdal Networks for Hierarchical Reinforcement Learning.pdf}
+}
+
 @misc{wangInvestigatingPropertiesNeural2023,
   title = {Investigating the {{Properties}} of {{Neural Network Representations}} in {{Reinforcement Learning}}},
   author = {Wang, Han and Miahi, Erfan and White, Martha and Machado, Marlos C. and Abbas, Zaheer and Kumaraswamy, Raksha and Liu, Vincent and White, Adam},
@@ -1313,6 +1890,39 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Zotero/storage/3QBBT8HR/Wang et al. - 2023 - Investigating the Properties of Neural Network Representations in Reinforcement Learning.pdf}
+}
+
+@inproceedings{weingertnerMonteCarloTree2020,
+  title = {Monte {{Carlo Tree Search With Reinforcement Learning}} for {{Motion Planning}}},
+  booktitle = {2020 {{IEEE}} 23rd {{International Conference}} on {{Intelligent Transportation Systems}} ({{ITSC}})},
+  author = {Weingertner, Philippe and Ho, Minnie and Timofeev, Andrey and Aubert, S{\'e}bastien and {Pita-Gil}, Guillermo},
+  year = {2020},
+  month = sep,
+  pages = {1--7},
+  doi = {10.1109/ITSC45102.2020.9294697},
+  urldate = {2025-03-19},
+  abstract = {Motion planning for an autonomous vehicle is most challenging for scenarios such as large, multi-lane, and unsignalized intersections in the presence of dense traffic. In such situations, the motion planner has to deal with multiple crossing-points to reach an objective in a safe, comfortable, and efficient way. In addition, motion planning challenges include real-time computation and scalability to complex scenes with many objects and different road geometries. In this work, we propose a motion planning system addressing these challenges. We enable real-time applicability of a Monte Carlo Tree Search algorithm with a deep-learning heuristic. We learn a fast evaluation function from accurate, but non real-time models. While using Deep Reinforcement Learning techniques we maintain a clear separation between making predictions and making decisions. We reduce the complexity of the search model and benchmark the proposed agent against multiple methods: rules-based, MCTS, A\textsuperscript{*} search, deep learning, and Model Predictive Control. We show that our agent outperforms these other agents in a variety of challenging scenarios, where we benchmark safety, comfort and efficiency metrics.},
+  keywords = {Acceleration,Complexity theory,Dynamics,Planning,Real-time systems,Safety,Search problems},
+  file = {/home/kellen/Zotero/storage/YRS3JGCL/Weingertner et al. - 2020 - Monte Carlo Tree Search With Reinforcement Learning for Motion Planning.pdf;/home/kellen/Zotero/storage/K56QQ2MD/9294697.html}
+}
+
+@misc{wengEnvPoolHighlyParallel2022,
+  title = {{{EnvPool}}: {{A Highly Parallel Reinforcement Learning Environment Execution Engine}}},
+  shorttitle = {{{EnvPool}}},
+  author = {Weng, Jiayi and Lin, Min and Huang, Shengyi and Liu, Bo and Makoviichuk, Denys and Makoviychuk, Viktor and Liu, Zichen and Song, Yufan and Luo, Ting and Jiang, Yukun and Xu, Zhongwen and Yan, Shuicheng},
+  year = {2022},
+  month = oct,
+  number = {arXiv:2206.10558},
+  eprint = {2206.10558},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2206.10558},
+  urldate = {2025-02-17},
+  abstract = {There has been significant progress in developing reinforcement learning (RL) training systems. Past works such as IMPALA, Apex, Seed RL, Sample Factory, and others, aim to improve the system's overall throughput. In this paper, we aim to address a common bottleneck in the RL training system, i.e., parallel environment execution, which is often the slowest part of the whole system but receives little attention. With a curated design for paralleling RL environments, we have improved the RL environment simulation speed across different hardware setups, ranging from a laptop and a modest workstation, to a high-end machine such as NVIDIA DGX-A100. On a high-end machine, EnvPool achieves one million frames per second for the environment execution on Atari environments and three million frames per second on MuJoCo environments. When running EnvPool on a laptop, the speed is 2.8{\texttimes} that of the Python subprocess. Moreover, great compatibility with existing RL training libraries has been demonstrated in the open-sourced community, including CleanRL, rl\_games, DeepMind Acme, etc. Finally, EnvPool allows researchers to iterate their ideas at a much faster pace and has great potential to become the de facto RL environment execution engine. Example runs show that it only takes five minutes to train agents to play Atari Pong and MuJoCo Ant on a laptop. EnvPool is open-sourced at https://github.com/sail-sg/envpool.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Performance,Computer Science - Robotics},
+  file = {/home/kellen/Zotero/storage/UEN5NUYA/Weng et al. - 2022 - EnvPool A Highly Parallel Reinforcement Learning Environment Execution Engine.pdf}
 }
 
 @book{wrightHighDimensionalDataAnalysis2022,
@@ -1371,6 +1981,24 @@
   abstract = {Safe reinforcement learning (RL) focuses on training reward-maximizing agents subject to pre-defined safety constraints. Yet, learning versatile safe policies that can adapt to varying safety constraint requirements during deployment without retraining remains a largely unexplored and challenging area. In this work, we formulate the versatile safe RL problem and consider two primary requirements: training efficiency and zero-shot adaptation capability. To address them, we introduce the Constraint-Conditioned Policy Optimization (CCPO) framework, consisting of two key modules: (1) Versatile Value Estimation (VVE) for approximating value functions under unseen threshold conditions, and (2) Conditioned Variational Inference (CVI) for encoding arbitrary constraint thresholds during policy optimization. Our extensive experiments demonstrate that CCPO outperforms the baselines in terms of safety and task performance, while preserving zero-shot adaptation capabilities to different constraint thresholds data-efficiently. This makes our approach suitable for real-world dynamic applications.},
   langid = {english},
   file = {/home/kellen/Zotero/storage/L9L6VL45/Yao et al. - Constraint-Conditioned Policy Optimization for Versatile Safe Reinforcement Learning.pdf}
+}
+
+@misc{zhangConstrainedReinforcementLearning2024,
+  title = {Constrained {{Reinforcement Learning}} with {{Smoothed Log Barrier Function}}},
+  author = {Zhang, Baohe and Zhang, Yuan and Frison, Lilli and Brox, Thomas and B{\"o}decker, Joschka},
+  year = {2024},
+  month = mar,
+  number = {arXiv:2403.14508},
+  eprint = {2403.14508},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2403.14508},
+  urldate = {2025-02-03},
+  abstract = {Reinforcement Learning (RL) has been widely applied to many control tasks and substantially improved the performances compared to conventional control methods in many domains where the reward function is well defined. However, for many real-world problems, it is often more convenient to formulate optimization problems in terms of rewards and constraints simultaneously. Optimizing such constrained problems via reward shaping can be difficult as it requires tedious manual tuning of reward functions with several interacting terms. Recent formulations which include constraints mostly require a pre-training phase, which often needs human expertise to collect data or assumes having a sub-optimal policy readily available. We propose a new constrained RL method called CSAC-LB (Constrained Soft Actor-Critic with Log Barrier Function), which achieves competitive performance without any pre-training by applying a linear smoothed log barrier function to an additional safety critic. It implements an adaptive penalty for policy learning and alleviates the numerical issues that are known to complicate the application of the log barrier function method. As a result, we show that with CSAC-LB, we achieve state-of-the-art performance on several constrained control tasks with different levels of difficulty and evaluate our methods in a locomotion task on a real quadruped robot platform.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Systems and Control,Electrical Engineering and Systems Science - Systems and Control},
+  file = {/home/kellen/Zotero/storage/GLQ2NBB3/Zhang et al. - 2024 - Constrained Reinforcement Learning with Smoothed Log Barrier Function.pdf}
 }
 
 @misc{zhangRevisitingZerothOrderOptimization2024,

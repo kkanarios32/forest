@@ -1,0 +1,23 @@
+% ["references"]
+\title{Neural Networks: Tricks of the Trade: Second Edition}
+\date{2012}
+\taxon{reference}
+\meta{doi}{10.1007/978-3-642-35289-8}
+\meta{bibtex}{\startverb
+@book{montavonNeuralNetworksTricks2012,
+ title = {Neural {{Networks}}: {{Tricks}} of the {{Trade}}: {{Second Edition}}},
+ year = {2012},
+ isbn = {978-3-642-35288-1 978-3-642-35289-8},
+ doi = {10.1007/978-3-642-35289-8},
+ urldate = {2025-02-28},
+ series = {Lecture {{Notes}} in {{Computer Science}}},
+ editor = {Montavon, Gr{\'e}goire and Orr, Genevi{\`e}ve B. and M{\"u}ller, Klaus-Robert},
+ volume = {7700},
+ publisher = {Springer Berlin Heidelberg},
+ address = {Berlin, Heidelberg},
+ file = {/home/kellen/Zotero/storage/3R38Z36Y/Montavon et al. - 2012 - Neural Networks Tricks of the Trade Second Edition.pdf},
+ langid = {english},
+ copyright = {http://www.springer.com/tdm},
+ shorttitle = {Neural {{Networks}}}
+}
+\stopverb}

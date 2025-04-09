@@ -1,0 +1,27 @@
+% ["references"]
+\title{Old Optimizer, New Norm: An Anthology}
+\date{2024-12}
+\author{Jeremy Bernstein}\author{Laker Newhouse}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2409.20325}
+\meta{external}{https://arxiv.org/abs/2409.20325}
+
+\meta{bibtex}{\startverb
+@misc{bernsteinOldOptimizerNew2024,
+ title = {Old {{Optimizer}}, {{New Norm}}: {{An Anthology}}},
+ author = {Bernstein, Jeremy and Newhouse, Laker},
+ year = {2024},
+ doi = {10.48550/arXiv.2409.20325},
+ urldate = {2025-02-26},
+ number = {arXiv:2409.20325},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/96NMW68I/Bernstein and Newhouse - 2024 - Old Optimizer, New Norm An Anthology.pdf;/home/kellen/Zotero/storage/URA6S2M3/2409.html},
+ keywords = {Computer Science - Machine Learning,Mathematics - Optimization and Control},
+ archiveprefix = {arXiv},
+ abstract = {Deep learning optimizers are often motivated through a mix of convex and approximate second-order theory. We select three such methods -- Adam, Shampoo and Prodigy -- and argue that each method can instead be understood as a squarely first-order method without convexity assumptions. In fact, after switching off exponential moving averages, each method is equivalent to steepest descent under a particular norm. By generalizing this observation, we chart a new design space for training algorithms. Different operator norms should be assigned to different tensors based on the role that the tensor plays within the network. For example, while linear and embedding layers may have the same weight space of \${\textbackslash}mathbb\{R\}{\textasciicircum}\{m{\textbackslash}times n\}\$, these layers play different roles and should be assigned different norms. We hope that this idea of carefully metrizing the neural architecture might lead to more stable, scalable and indeed faster training.},
+ primaryclass = {cs},
+ eprint = {2409.20325},
+ month = {December},
+ shorttitle = {Old {{Optimizer}}, {{New Norm}}}
+}
+\stopverb}

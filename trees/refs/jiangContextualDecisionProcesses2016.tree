@@ -1,0 +1,27 @@
+% ["references"]
+\title{Contextual Decision Processes with Low Bellman Rank are PAC-Learnable}
+\date{2016-12}
+\author{Nan Jiang}\author{Akshay Krishnamurthy}\author{Alekh Agarwal}\author{John Langford}\author{Robert E. Schapire}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.1610.09512}
+\meta{external}{https://arxiv.org/abs/1610.09512}
+
+\meta{bibtex}{\startverb
+@misc{jiangContextualDecisionProcesses2016,
+ title = {Contextual {{Decision Processes}} with {{Low Bellman Rank}} Are {{PAC-Learnable}}},
+ author = {Jiang, Nan and Krishnamurthy, Akshay and Agarwal, Alekh and Langford, John and Schapire, Robert E.},
+ year = {2016},
+ doi = {10.48550/arXiv.1610.09512},
+ urldate = {2025-02-05},
+ number = {arXiv:1610.09512},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/RCXBGU3P/Jiang et al. - 2016 - Contextual Decision Processes with Low Bellman Rank are PAC-Learnable.pdf},
+ keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {This paper studies systematic exploration for reinforcement learning with rich observations and function approximation. We introduce a new model called contextual decision processes, that unifies and generalizes most prior settings. Our first contribution is a complexity measure, the Bellman rank , that we show enables tractable learning of near-optimal behavior in these processes and is naturally small for many well-studied reinforcement learning settings. Our second contribution is a new reinforcement learning algorithm that engages in systematic exploration to learn contextual decision processes with low Bellman rank. Our algorithm provably learns near-optimal behavior with a number of samples that is polynomial in all relevant parameters but independent of the number of unique observations. The approach uses Bellman error minimization with optimistic exploration and provides new insights into efficient exploration for reinforcement learning with function approximation.},
+ primaryclass = {cs},
+ eprint = {1610.09512},
+ month = {December}
+}
+\stopverb}

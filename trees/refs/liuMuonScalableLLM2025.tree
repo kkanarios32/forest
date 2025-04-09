@@ -1,0 +1,27 @@
+% ["references"]
+\title{Muon is Scalable for LLM Training}
+\date{2025-02}
+\author{Jingyuan Liu}\author{Jianlin Su}\author{Xingcheng Yao}\author{Zhejun Jiang}\author{Guokun Lai}\author{Yulun Du}\author{Yidao Qin}\author{Weixin Xu}\author{Enzhe Lu}\author{Junjie Yan}\author{Yanru Chen}\author{Huabin Zheng}\author{Yibo Liu}\author{Shaowei Liu}\author{Bohong Yin}\author{Weiran He}\author{Han Zhu}\author{Yuzhi Wang}\author{Jianzhou Wang}\author{Mengnan Dong}\author{Zheng Zhang}\author{Yongsheng Kang}\author{Hao Zhang}\author{Xinran Xu}\author{Yutao Zhang}\author{Yuxin Wu}\author{Xinyu Zhou}\author{Zhilin Yang}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2502.16982}
+\meta{external}{https://arxiv.org/abs/2502.16982}
+
+\meta{bibtex}{\startverb
+@misc{liuMuonScalableLLM2025,
+ title = {Muon Is {{Scalable}} for {{LLM Training}}},
+ author = {Liu, Jingyuan and Su, Jianlin and Yao, Xingcheng and Jiang, Zhejun and Lai, Guokun and Du, Yulun and Qin, Yidao and Xu, Weixin and Lu, Enzhe and Yan, Junjie and Chen, Yanru and Zheng, Huabin and Liu, Yibo and Liu, Shaowei and Yin, Bohong and He, Weiran and Zhu, Han and Wang, Yuzhi and Wang, Jianzhou and Dong, Mengnan and Zhang, Zheng and Kang, Yongsheng and Zhang, Hao and Xu, Xinran and Zhang, Yutao and Wu, Yuxin and Zhou, Xinyu and Yang, Zhilin},
+ year = {2025},
+ doi = {10.48550/arXiv.2502.16982},
+ urldate = {2025-02-26},
+ number = {arXiv:2502.16982},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/JSHH2RNX/Liu et al. - 2025 - Muon is Scalable for LLM Training.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Recently, the Muon optimizer (K. Jordan et al. 2024) based on matrix orthogonalization has demonstrated strong results in training small-scale language models, but the scalability to larger models has not been proven. We identify two crucial techniques for scaling up Muon: (1) adding weight decay and (2) carefully adjusting the per-parameter update scale. These techniques allow Muon to work out-ofthe-box on large-scale training without the need of hyper-parameter tuning. Scaling law experiments indicate that Muon achieves {$\sim$} 2{\texttimes} computational efficiency compared to AdamW with compute optimal training. Based on these improvements, we introduce Moonlight, a 3B/16B-parameter Mixture-of-Expert (MoE) model trained with 5.7T tokens using Muon. Our model improves the current Pareto frontier, achieving better performance with much fewer training FLOPs compared to prior models. We open-source our distributed Muon implementation that is memory optimal and communication efficient. We also release the pretrained, instruction-tuned, and intermediate checkpoints to support future research.},
+ primaryclass = {cs},
+ eprint = {2502.16982},
+ month = {February}
+}
+\stopverb}

@@ -1,0 +1,28 @@
+% ["references"]
+\title{EnvPool: A Highly Parallel Reinforcement Learning Environment Execution Engine}
+\date{2022-10}
+\author{Jiayi Weng}\author{Min Lin}\author{Shengyi Huang}\author{Bo Liu}\author{Denys Makoviichuk}\author{Viktor Makoviychuk}\author{Zichen Liu}\author{Yufan Song}\author{Ting Luo}\author{Yukun Jiang}\author{Zhongwen Xu}\author{Shuicheng Yan}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2206.10558}
+\meta{external}{https://arxiv.org/abs/2206.10558}
+
+\meta{bibtex}{\startverb
+@misc{wengEnvPoolHighlyParallel2022,
+ title = {{{EnvPool}}: {{A Highly Parallel Reinforcement Learning Environment Execution Engine}}},
+ author = {Weng, Jiayi and Lin, Min and Huang, Shengyi and Liu, Bo and Makoviichuk, Denys and Makoviychuk, Viktor and Liu, Zichen and Song, Yufan and Luo, Ting and Jiang, Yukun and Xu, Zhongwen and Yan, Shuicheng},
+ year = {2022},
+ doi = {10.48550/arXiv.2206.10558},
+ urldate = {2025-02-17},
+ number = {arXiv:2206.10558},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/UEN5NUYA/Weng et al. - 2022 - EnvPool A Highly Parallel Reinforcement Learning Environment Execution Engine.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Performance,Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {There has been significant progress in developing reinforcement learning (RL) training systems. Past works such as IMPALA, Apex, Seed RL, Sample Factory, and others, aim to improve the system's overall throughput. In this paper, we aim to address a common bottleneck in the RL training system, i.e., parallel environment execution, which is often the slowest part of the whole system but receives little attention. With a curated design for paralleling RL environments, we have improved the RL environment simulation speed across different hardware setups, ranging from a laptop and a modest workstation, to a high-end machine such as NVIDIA DGX-A100. On a high-end machine, EnvPool achieves one million frames per second for the environment execution on Atari environments and three million frames per second on MuJoCo environments. When running EnvPool on a laptop, the speed is 2.8{\texttimes} that of the Python subprocess. Moreover, great compatibility with existing RL training libraries has been demonstrated in the open-sourced community, including CleanRL, rl\_games, DeepMind Acme, etc. Finally, EnvPool allows researchers to iterate their ideas at a much faster pace and has great potential to become the de facto RL environment execution engine. Example runs show that it only takes five minutes to train agents to play Atari Pong and MuJoCo Ant on a laptop. EnvPool is open-sourced at https://github.com/sail-sg/envpool.},
+ primaryclass = {cs},
+ eprint = {2206.10558},
+ month = {October},
+ shorttitle = {{{EnvPool}}}
+}
+\stopverb}

@@ -1,0 +1,13 @@
+\date{2025-04-01}
+\import{base-macros}
+\taxon{definition}
+\title{Symmetric Channels}
+\p{A channel is symmetric if
+\ol{
+  \li{each row is a permutation of the first row} 
+  \li{
+  each column is a permutation of the first column
+    }
+}
+ It is weakly symmetric if it satisfies #{1} but the columns only sum to the same value.
+}

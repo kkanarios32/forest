@@ -1,0 +1,27 @@
+% ["references"]
+\title{Podracer architectures for scalable Reinforcement Learning}
+\date{2021-04}
+\author{Matteo Hessel}\author{Manuel Kroiss}\author{Aidan Clark}\author{Iurii Kemaev}\author{John Quan}\author{Thomas Keck}\author{Fabio Viola}\author{Hado van Hasselt}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2104.06272}
+\meta{external}{https://arxiv.org/abs/2104.06272}
+
+\meta{bibtex}{\startverb
+@misc{hesselPodracerArchitecturesScalable2021,
+ title = {Podracer Architectures for Scalable {{Reinforcement Learning}}},
+ author = {Hessel, Matteo and Kroiss, Manuel and Clark, Aidan and Kemaev, Iurii and Quan, John and Keck, Thomas and Viola, Fabio and van Hasselt, Hado},
+ year = {2021},
+ doi = {10.48550/arXiv.2104.06272},
+ urldate = {2025-02-11},
+ number = {arXiv:2104.06272},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/YM29JDFM/Hessel et al. - 2021 - Podracer architectures for scalable Reinforcement Learning.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Supporting state-of-the-art AI research requires balancing rapid prototyping, ease of use, and quick iteration, with the ability to deploy experiments at a scale traditionally associated with production systems.Deep learning frameworks such as TensorFlow, PyTorch and JAX allow users to transparently make use of accelerators, such as TPUs and GPUs, to offload the more computationally intensive parts of training and inference in modern deep learning systems. Popular training pipelines that use these frameworks for deep learning typically focus on (un-)supervised learning. How to best train reinforcement learning (RL) agents at scale is still an active research area. In this report we argue that TPUs are particularly well suited for training RL agents in a scalable, efficient and reproducible way. Specifically we describe two architectures designed to make the best use of the resources available on a TPU Pod (a special configuration in a Google data center that features multiple TPU devices connected to each other by extremely low latency communication channels).},
+ primaryclass = {cs},
+ eprint = {2104.06272},
+ month = {April}
+}
+\stopverb}

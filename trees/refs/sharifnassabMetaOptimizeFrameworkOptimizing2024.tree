@@ -1,0 +1,28 @@
+% ["references"]
+\title{MetaOptimize: A Framework for Optimizing Step Sizes and Other Meta-parameters}
+\date{2024-10}
+\author{Arsalan Sharifnassab}\author{Saber Salehkaleybar}\author{Richard Sutton}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2402.02342}
+\meta{external}{https://arxiv.org/abs/2402.02342}
+
+\meta{bibtex}{\startverb
+@misc{sharifnassabMetaOptimizeFrameworkOptimizing2024,
+ title = {{{MetaOptimize}}: {{A Framework}} for {{Optimizing Step Sizes}} and {{Other Meta-parameters}}},
+ author = {Sharifnassab, Arsalan and Salehkaleybar, Saber and Sutton, Richard},
+ year = {2024},
+ doi = {10.48550/arXiv.2402.02342},
+ urldate = {2025-03-04},
+ number = {arXiv:2402.02342},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/MWJ3CB3E/2402.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Mathematics - Optimization and Control},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {We address the challenge of optimizing meta-parameters (i.e., hyperparameters) in machine learning algorithms, a critical factor influencing training efficiency and model performance. Moving away from the computationally expensive traditional meta-parameter search methods, we introduce MetaOptimize framework that dynamically adjusts meta-parameters, particularly step sizes (also known as learning rates), during training. More specifically, MetaOptimize can wrap around any first-order optimization algorithm, tuning step sizes on the fly to minimize a specific form of regret that accounts for long-term effect of step sizes on training, through a discounted sum of future losses. We also introduce low complexity variants of MetaOptimize that, in conjunction with its adaptability to multiple optimization algorithms, demonstrate performance competitive to those of best hand-crafted learning rate schedules across various machine learning applications.},
+ primaryclass = {cs},
+ eprint = {2402.02342},
+ month = {October},
+ shorttitle = {{{MetaOptimize}}}
+}
+\stopverb}

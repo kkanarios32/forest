@@ -46,3 +46,5 @@ This was a bit ridiculous. The first of many challenges was around import resolu
 \section{Formatters and Linters}{
   \code{compat.nvim}, \code{mason.nvim}, black, isort.
 }
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{nvim}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

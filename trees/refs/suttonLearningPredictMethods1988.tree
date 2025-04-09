@@ -1,0 +1,25 @@
+% ["references"]
+\title{Learning to predict by the methods of temporal differences}
+\date{1988-08}
+\author{Richard S. Sutton}
+\taxon{reference}
+\meta{doi}{10.1007/BF00115009}
+\meta{bibtex}{\startverb
+@article{suttonLearningPredictMethods1988,
+ title = {Learning to Predict by the Methods of Temporal Differences},
+ author = {Sutton, Richard S.},
+ year = {1988},
+ doi = {10.1007/BF00115009},
+ urldate = {2025-02-16},
+ journal = {Machine Learning},
+ volume = {3},
+ number = {1},
+ pages = {9--44},
+ file = {/home/kellen/Zotero/storage/Q953STTS/Sutton - 1988 - Learning to predict by the methods of temporal differences.pdf},
+ langid = {english},
+ copyright = {http://www.springer.com/tdm},
+ abstract = {This article introduces a class of incremental learning procedures specialized for prediction---that is, for using past experience with an incompletely known system to predict its future behavior. Whereas conventional prediction-learning methods assign credit by means of the difference between predicted and actual outcomes, the new methods assign credit by means of the difference between temporally successive predictions. Although such temporal-difference methods have been used in Samuel's checker player, Holland's bucket brigade, and the author's Adaptive Heuristic Critic, they have remained poorly understood. Here we prove their convergence and optimality for special cases and relate them to supervised-learning methods. For most real-world prediction problems, temporal-difference methods require less memory and less peak computation than conventional methods; and they produce more accurate predictions. We argue that most problems to which supervised learning is currently applied are really prediction problems of the sort to which temporaldifference methods can be applied to advantage.},
+ issn = {0885-6125, 1573-0565},
+ month = {August}
+}
+\stopverb}

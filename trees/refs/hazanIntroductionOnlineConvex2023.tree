@@ -1,0 +1,27 @@
+% ["references"]
+\title{Introduction to Online Convex Optimization}
+\date{2023-08}
+\author{Elad Hazan}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.1909.05207}
+\meta{external}{https://arxiv.org/abs/1909.05207}
+
+\meta{bibtex}{\startverb
+@misc{hazanIntroductionOnlineConvex2023,
+ title = {Introduction to {{Online Convex Optimization}}},
+ author = {Hazan, Elad},
+ year = {2023},
+ doi = {10.48550/arXiv.1909.05207},
+ urldate = {2025-02-16},
+ number = {arXiv:1909.05207},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/AB366M9X/Hazan - 2023 - Introduction to Online Convex Optimization.pdf},
+ keywords = {Computer Science - Machine Learning,Mathematics - Optimization and Control,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {This manuscript portrays optimization as a process. In many practical applications the environment is so complex that it is infeasible to lay out a comprehensive theoretical model and use classical algorithmic theory and mathematical optimization. It is necessary as well as beneficial to take a robust approach, by applying an optimization method that learns as one goes along, learning from experience as more aspects of the problem are observed. This view of optimization as a process has become prominent in varied fields and has led to some spectacular success in modeling and systems that are now part of our daily lives.},
+ primaryclass = {cs},
+ eprint = {1909.05207},
+ month = {August}
+}
+\stopverb}

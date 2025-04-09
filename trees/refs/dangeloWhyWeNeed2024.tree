@@ -1,0 +1,27 @@
+% ["references"]
+\title{Why Do We Need Weight Decay in Modern Deep Learning?}
+\date{2024-11}
+\author{Francesco D’Angelo}\author{Maksym Andriushchenko}\author{Aditya Varre}\author{Nicolas Flammarion}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2310.04415}
+\meta{external}{https://arxiv.org/abs/2310.04415}
+
+\meta{bibtex}{\startverb
+@misc{dangeloWhyWeNeed2024,
+ title = {Why {{Do We Need Weight Decay}} in {{Modern Deep Learning}}?},
+ author = {D'Angelo, Francesco and Andriushchenko, Maksym and Varre, Aditya and Flammarion, Nicolas},
+ year = {2024},
+ doi = {10.48550/arXiv.2310.04415},
+ urldate = {2025-02-26},
+ number = {arXiv:2310.04415},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/5GJGM755/D'Angelo et al. - 2024 - Why Do We Need Weight Decay in Modern Deep Learning.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Weight decay is a broadly used technique for training state-of-the-art deep networks from image classification to large language models. Despite its widespread usage and being extensively studied in the classical literature, its role remains poorly understood for deep learning. In this work, we highlight that the role of weight decay in modern deep learning is different from its regularization effect studied in classical learning theory. For deep networks on vision tasks trained with multipass SGD, we show how weight decay modifies the optimization dynamics enhancing the ever-present implicit regularization of SGD via the loss stabilization mechanism. In contrast, for large language models trained with nearly one-epoch training, we describe how weight decay balances the bias-variance tradeoff in stochastic optimization leading to lower training loss and improved training stability. Overall, we present a unifying perspective from ResNets on vision tasks to LLMs: weight decay is never useful as an explicit regularizer but instead changes the training dynamics in a desirable way. The code is available at https://github.com/tml-epfl/why-weight-decay},
+ primaryclass = {cs},
+ eprint = {2310.04415},
+ month = {November}
+}
+\stopverb}

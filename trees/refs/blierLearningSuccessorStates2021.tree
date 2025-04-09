@@ -1,0 +1,28 @@
+% ["references"]
+\title{Learning Successor States and Goal-Dependent Values: A Mathematical Viewpoint}
+\date{2021-01}
+\author{Léonard Blier}\author{Corentin Tallec}\author{Yann Ollivier}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2101.07123}
+\meta{external}{https://arxiv.org/abs/2101.07123}
+
+\meta{bibtex}{\startverb
+@misc{blierLearningSuccessorStates2021,
+ title = {Learning {{Successor States}} and {{Goal-Dependent Values}}: {{A Mathematical Viewpoint}}},
+ author = {Blier, L{\'e}onard and Tallec, Corentin and Ollivier, Yann},
+ year = {2021},
+ doi = {10.48550/arXiv.2101.07123},
+ urldate = {2025-02-27},
+ number = {arXiv:2101.07123},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/LUN44LMX/Blier et al. - 2021 - Learning Successor States and Goal-Dependent Values A Mathematical Viewpoint.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In reinforcement learning, temporal difference-based algorithms can be sample-inefficient: for instance, with sparse rewards, no learning occurs until a reward is observed. This can be remedied by learning richer objects, such as a model of the environment, or successor states. Successor states model the expected future state occupancy from any given state [Dayan, 1993, Kulkarni et al., 2016], and summarize all paths in the environment for a given policy. They are related to goal-dependent value functions, which learn how to reach arbitrary states.},
+ primaryclass = {cs},
+ eprint = {2101.07123},
+ month = {January},
+ shorttitle = {Learning {{Successor States}} and {{Goal-Dependent Values}}}
+}
+\stopverb}

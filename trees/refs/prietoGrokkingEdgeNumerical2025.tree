@@ -1,0 +1,27 @@
+% ["references"]
+\title{Grokking at the Edge of Numerical Stability}
+\date{2025-01}
+\author{Lucas Prieto}\author{Melih Barsbey}\author{Pedro A. M. Mediano}\author{Tolga Birdal}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2501.04697}
+\meta{external}{https://arxiv.org/abs/2501.04697}
+
+\meta{bibtex}{\startverb
+@misc{prietoGrokkingEdgeNumerical2025,
+ title = {Grokking at the {{Edge}} of {{Numerical Stability}}},
+ author = {Prieto, Lucas and Barsbey, Melih and Mediano, Pedro A. M. and Birdal, Tolga},
+ year = {2025},
+ doi = {10.48550/arXiv.2501.04697},
+ urldate = {2025-02-26},
+ number = {arXiv:2501.04697},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/V2IGQLJH/Prieto et al. - 2025 - Grokking at the Edge of Numerical Stability.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Grokking, or sudden generalization that occurs after prolonged overfitting, is a surprising phenomenon that has challenged our understanding of deep learning. While a lot of progress has been made in understanding grokking, it is still not clear why generalization is delayed and why grokking often does not happen without regularization. In this work we argue that without regularization, grokking tasks push models to the edge of numerical stability, introducing floating point errors in the Softmax that we refer to as Softmax Collapse (SC). We show that SC prevents grokking and that mitigating SC leads to grokking without regularization. Investigating the root cause of SC, we find that beyond the point of overfitting, the gradients strongly align with what we call the na{\textasciidieresis}{\i}ve loss minimization (NLM) direction. This component of the gradient does not change the predictions of the model but decreases the loss by scaling the logits, usually through the scaling of the weights along their current direction. We show that this scaling of the logits explains the delay in generalization characteristic of grokking, and eventually leads to SC, stopping learning altogether. To validate these hypotheses, we introduce two key contributions that mitigate the issues faced in grokking tasks: (i) StableMax, a new activation function that prevents SC and enables grokking without regularization, and (ii) {$\perp$} Grad, a training algorithm that leads to quick generalization in grokking tasks by preventing NLM altogether. These contributions provide new insights into grokking, shedding light on its delayed generalization, reliance on regularization, and the effectiveness of known grokking-inducing methods. Code for this paper can be found at: https://github.com/LucasPrietoAl/ grokking-at-the-edge-of-numerical-stability.},
+ primaryclass = {cs},
+ eprint = {2501.04697},
+ month = {January}
+}
+\stopverb}

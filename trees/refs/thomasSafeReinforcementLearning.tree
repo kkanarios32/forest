@@ -1,0 +1,13 @@
+% ["references"]
+\title{Safe Reinforcement Learning by Imagining the Near Future}
+\author{Garrett Thomas}\author{Yuping Luo}\author{Tengyu Ma}
+\taxon{reference}
+\meta{bibtex}{\startverb
+@article{thomasSafeReinforcementLearning,
+ title = {Safe {{Reinforcement Learning}} by {{Imagining}} the {{Near Future}}},
+ author = {Thomas, Garrett and Luo, Yuping and Ma, Tengyu},
+ file = {/home/kellen/Zotero/storage/U6CCSU6W/Thomas et al. - Safe Reinforcement Learning by Imagining the Near Future.pdf},
+ langid = {english},
+ abstract = {Safe reinforcement learning is a promising path toward applying reinforcement learning algorithms to real-world problems, where suboptimal behaviors may lead to actual negative consequences. In this work, we focus on the setting where unsafe states can be avoided by planning ahead a short time into the future. In this setting, a model-based agent with a sufficiently accurate model can avoid unsafe states. We devise a model-based algorithm that heavily penalizes unsafe trajectories, and derive guarantees that our algorithm can avoid unsafe states under certain assumptions. Experiments demonstrate that our algorithm can achieve competitive rewards with fewer safety violations in several continuous control tasks.}
+}
+\stopverb}

@@ -1,0 +1,27 @@
+% ["references"]
+\title{C++ Design Patterns for Low-latency Applications Including High-frequency Trading}
+\date{2023-09}
+\author{Paul Bilokon}\author{Burak Gunduz}
+\taxon{reference}
+\meta{doi}{10.48550/arXiv.2309.04259}
+\meta{external}{https://arxiv.org/abs/2309.04259}
+
+\meta{bibtex}{\startverb
+@misc{bilokonDesignPatternsLowlatency2023,
+ title = {C++ {{Design Patterns}} for {{Low-latency Applications Including High-frequency Trading}}},
+ author = {Bilokon, Paul and Gunduz, Burak},
+ year = {2023},
+ doi = {10.48550/arXiv.2309.04259},
+ urldate = {2025-03-22},
+ number = {arXiv:2309.04259},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/S3IB9ZSU/Bilokon and Gunduz - 2023 - C++ Design Patterns for Low-latency Applications Including High-frequency Trading.pdf},
+ keywords = {Computer Science - Performance,Quantitative Finance - Trading and Market Microstructure},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {This work aims to bridge the existing knowledge gap in the optimisation of latency-critical code, specifically focusing on high-frequency trading (HFT) systems. The research culminates in three main contributions: the creation of a Low-Latency Programming Repository, the optimisation of a market-neutral statistical arbitrage pairs trading strategy, and the implementation of the Disruptor pattern in C++. The repository serves as a practical guide and is enriched with rigorous statistical benchmarking, while the trading strategy optimisation led to substantial improvements in speed and profitability. The Disruptor pattern showcased significant performance enhancement over traditional queuing methods. Evaluation metrics include speed, cache utilisation, and statistical significance, among others. Techniques like Cache Warming and Constexpr showed the most significant gains in latency reduction. Future directions involve expanding the repository, testing the optimised trading algorithm in a live trading environment, and integrating the Disruptor pattern with the trading algorithm for comprehensive system benchmarking. The work is oriented towards academics and industry practitioners seeking to improve performance in latencysensitive applications. The repository, trading strategy, and the Disruptor library can be found at https://github.com/0burak/imperial hft.},
+ primaryclass = {cs},
+ eprint = {2309.04259},
+ month = {September}
+}
+\stopverb}
