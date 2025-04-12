@@ -245,3 +245,19 @@ Random encoding: #{X^n(i)} is drawn i.i.d from some specified distribution #{P_X
 The capacity of a [symmetric or weakly symmetric](kak-006Y) channel is #{\log(|\mathcal{Y}|) - H(r)}, where #{r} is the first row of #{P_{Y|X}}.
 }
 }
+\section{Channel Coding}{
+    \p{We have three components to the channel coding problem:}
+    \ol{
+      \li{Channel encoder}
+      \li{Noisy channel}
+      \li{Channel decoder}
+    }
+    \p{We first pass #{W} to the channel encoder get some #{X^n} which goes into noisy channel and becomes #{Y^n}. Then the goal is for the channel decoder to recover #{W} from #{Y^n}. This means that the goal of the encoder is to reduce redundancy while also ensuring that there is no overlap when passed through the noisy channel.}
+\transclude{kak-0070}
+\transclude{kak-0071}
+\remark{
+We can decompose the joint distribution #{P_{X^n, Y^n}} in terms of the what depends on the channel and the what depends on the encoder. Namely,
+##{P_{X^n, Y^n} = \prod_{i=1}^{n} P_{X_i | X^{i - 1}, Y^{i - 1}} \prod_{i=1}^{n}  P_{Y_i | X^{i}, Y^{i - 1}}}
+Note that the first term depends only on the encoder and the second term depends only on the channel.
+}
+}

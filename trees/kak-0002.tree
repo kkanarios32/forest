@@ -17,12 +17,3 @@
 \transclude{kak-005G}
 \transclude{kak-006Q}
 }
-  \hr
-\subtree[loading]{
-  \title{Coming Soon!!!}
-  \p{A rough plan of blogs I hope to make in the future. Stay on the lookout!!!}
-  \query{
-    \open\query
-    \isect{\tag{blog}}{\tag{upcoming}}
-  }
-}

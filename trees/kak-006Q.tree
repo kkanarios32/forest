@@ -4,9 +4,11 @@
 \p{\em{One thing that should be learned [...] is the great power of general purpose methods, of methods that continue to scale with increased computation even as the available computation becomes very great. The two methods that seem to scale arbitrarily in this way are search and learning.} - [[richardsutton]]}
 \section{What is Planning?}{
   \p{
-I have struggled with this question for a long time. In the RL community, you often here this vague term "planning" thrown around in all sorts of different situations. The only definition I have come up with that leaves me somewhat satisfied is "policy improvement in the absence of learning". Due to this, I think it is easier to show why learning algorithms are not planning. As an example, in [Q-learning](suttonReinforcementLearningIntroduction2018) you interact with the environment and learn via updating your Q-function. You then immediately recover an action via #{a \in \arg\max_{a} Q(s, a)}.
+    In [[suttonReinforcementLearningIntroduction2018]], they define planning as \em{a computational process that takes a model as input and outputs a policy}. Like everything Sutton writes, I agree with it for the most part. I have struggled with this question for a long time. In the RL community, you often here this vague term "planning" thrown around in all sorts of different situations. I think the key distinction between traditional methods is shown when looking at these methods directly. The only definition I have come up with that leaves me somewhat satisfied is "policy improvement in the absence of learning.
   }
-\p{In the case of Q-learning, you are not making any "plans" rather you are trying to learn a compressed representation of anything you might need to know in order to circumnavigate the need to plan. On the contrary, imagine that you are }
+  \p{
+    As an example, in [Q-learning](suttonReinforcementLearningIntroduction2018) you interact with the environment and learn via updating your Q-function. You then immediately recover an action via #{a \in \arg\max_{a} Q(s, a)} This does not require that you input a model rather you only input the current state and receive the corresponding action. Learning can be seen as distilling everything needed into the model, where planning allows the model to see and plan based on the consequences of potential actions using a model of the environment.
+  }
 }
 \transclude{kak-006R}
 

@@ -297,4 +297,21 @@ Is actually just one iteration of Gauss-Seidel!
 }
 }
 
+\section{Planning and Learning with Tabular Methods}{
+\refcardt{exercise}{}{8.1}{sutton2022}{
+  If you pick #{n} large enough, then the "first pass" would be just as good. This means that you will be able to update the #{Q}-values of every #{(s,a)} pair you encountered. However, with Dyna you are updating your #{Q}-value based on updated #{Q}-values, meaning that you are no longer limited to the #{n}-step trajectory encountered. Thus, I do not think that #{n}-step methods can match Dyna with a perfect world model.
+}
+\refcardt{exercise}{}{8.5}{sutton2022}{
+  You could modify the algorithm by maintaining an empirical distribution for states and rewards in your model instead of the exact deterministic transition. To handle changing environments, you could then weight the updates to the empirical distribution to value the more recent entries higher i.e. 
+  ##{\hat{R}_{t + 1}(S,A) = \lambda \hat{R}_{t}(S, A) + (1 - \lambda)R_{t + 1}(S, A)}
+}
+\refcardt{exercise}{}{8.6}{sutton2022}{
+  This would strengthen the case for sample updates because the samples would most likely concentrate around the higher probability states. Since these states are much more likely to occur, the computed #{Q}-values will likely end up very similar without the extra computation required by the expected update.
+}
+
+\refcardt{exercise}{}{8.7}{sutton2022}{
+
+}
+}
+
 \transclude{kak-000G}
