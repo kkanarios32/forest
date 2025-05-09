@@ -6,24 +6,21 @@
 \xmlns:html{http://www.w3.org/1999/xhtml}
 
 \p{This is my [forest](https://www.jonmsterling.com/foreign-forester-tfmt-000V.xml). I am a PhD student at the [[umich]] as part of the [Electrical and Computer Engineering program](https://ece.engin.umich.edu/), where I work on reinforcement learning. My PhD advisor is [[leiying]]. Previously, I obtained a BS from the [[umich]] in Mathematics and Computer Science, where I graduated with honors and high honors respectively. During my undergrad, I worked with [[leiying]] as part of the [SURE Program](https://sure.engin.umich.edu/) and as a teaching assitant for [EECS 602](https://sites.google.com/view/intro-to-rl/home).
+}
 \p{\strong{DISCLAIMER:} This website still heavily under construction.}
 
-% \<html:iframe>{"https://calendar.google.com/calendar/embed?src=kellenkk%40umich.edu&ctz=America%2FNew_York"}
-%
-
-  \ul{
-    \li{This is a (outdated) picture of me
-    \<html:div>[style]{
-      width: 25\%; 
-      height: 200px; 
-      background-image: url('img/profile-pic.png'); 
-      background-size: contain; 
-      background-repeat: no-repeat;
-    }{}
-    }
-    \li{Email: [kellenkk@umich.edu](mailto:kellenkk@umich.edu)}
-    \li{CV: [kellen-cv](files/kellen-kanarios-cv.pdf)}
-    }
+\ul{
+  \li{This is a (outdated) picture of me
+  \<html:div>[style]{
+    width: 25\%; 
+    height: 200px; 
+    background-image: url('img/profile-pic.png'); 
+    background-size: contain; 
+    background-repeat: no-repeat;
+  }{}
+  }
+  \li{Email: [kellenkk@umich.edu](mailto:kellenkk@umich.edu)}
+  \li{CV: [kellen-cv](files/kellen-kanarios-cv.pdf)}
 }
 
 \scope{
@@ -41,7 +38,19 @@
     }
 }
 
+
+
+% \<html:figure>[style]{
+%      width: 100px;
+%      height: 100px;
+%    }{
+%    \<html:embed>[src]{
+%      "https://wakatime.com/share/@9387d0ee-aec4-4d11-87f8-f44bf09577a4/d7cfcda7-10bd-42a7-8183-058ea804bd48.svg}{}
+%    }
+%}
+
 \hr
+
 
 \put\transclude/expanded{false}
 \subtree[pub]{

@@ -1,0 +1,13 @@
+\date{2025-04-14}
+\import{base-macros}
+\taxon{definition}
+\title{Riemannian Gradient Descent}
+  \p{
+For #{f : \mathcal{M} \mapsto \mathbb{R}},
+##{ x_{k+1}\ =\ R_{{\mathbf{x}}_{k}}(-\tau_{k}\operatorname{grad}f({\mathbf{x}}_{k})) }
+    }
+\p{
+  Can do backtracking line search i.e.
+
+\strong{while} ##{f(R_{x_{k}}(-\tau\,{\rm grad}\,f(\mathbf{x}_{k}))) > f(\mathbf{x}_{k}) - c_{1}\tau\, | |{\rm grad}\,f(\mathbf{x}_{k})| |_{2}^{2} } \strong{do} ##{ \tau\ \leftarrow\ \alpha\cdot\tau }
+}

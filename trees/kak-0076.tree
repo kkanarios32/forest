@@ -1,0 +1,7 @@
+\date{2025-04-14}
+\import{base-macros}
+\taxon{definition}
+\title{Retraction}
+\p{
+A retraction is a [smooth map](kak-003K) #{ R:\mathrm{T}\mathcal{M}\mapsto\mathcal{M} } such that if #{ h(t)=R(\mathbf{x},t\mathbf{v})=R_{\mathbf{x}}(t\mathbf{v}) }, then #{ h(0)=\mathbf{x} } and #{ h^{\prime}(0)=\mathbf{v} }.
+}

@@ -1,0 +1,19 @@
+\date{2025-04-22}
+\import{base-macros}
+
+\taxon{theorem}
+\p{
+The typical set #{ A_{\epsilon}^{(n)} } has the following properties:
+
+\ol{
+  \li{
+#{ \Pr\left(A_{\epsilon}^{(n)}\right)>1-\epsilon } for #{ n } sufficiently large.
+    }
+  \li{
+#{ \mathrm{Vol}\left(A_{\epsilon}^{(n)}\right)\leq2^{n(h(X)+\epsilon)} } for all #{ n }.
+    }
+  \li{
+#{ \mathrm{Vol}\left(A_{\epsilon}^{(n)}\right)\geq(1-\epsilon)2^{n(h(X)-\epsilon)} } for #{ n } sufficiently large.
+    }
+}
+}

@@ -260,4 +260,29 @@ We can decompose the joint distribution #{P_{X^n, Y^n}} in terms of the what dep
 ##{P_{X^n, Y^n} = \prod_{i=1}^{n} P_{X_i | X^{i - 1}, Y^{i - 1}} \prod_{i=1}^{n}  P_{Y_i | X^{i}, Y^{i - 1}}}
 Note that the first term depends only on the encoder and the second term depends only on the channel.
 }
+\p{
+\ul{
+\strong{Assumptions:}
+  \li{The encoder is a deterministic function of #{\mathbf{W}}}
+  \li{The channel does not have access to the message #{\mathbf{W}}.}
+}
+}
+}
+\section{Differential Entropy}{
+\transclude{kak-007C}
+\section{AEP for Continuous Random Variables}{
+\transclude{kak-007E}
+\transclude{kak-007D}
+\transclude{kak-007F}
+}
+\section{Discrete Approximation}{
+\transclude{kak-007G}
+\remark{
+Taking #{\Delta = 2^{-n}}, then #{X^{\Delta}} is an "#{n}-bit" approximation of #{X}.
+}
+\transclude{kak-007H}
+}
+}
+\section{Gaussian Channel}{
+
 }

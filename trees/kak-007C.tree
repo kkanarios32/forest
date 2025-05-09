@@ -1,0 +1,11 @@
+\date{2025-04-22}
+\import{base-macros}
+\taxon{definition}
+\title{Differential Entropy}
+\p{
+The differential entropy #{ h(X) } of a continuous random variable #{ X } with density #{ f(x) } is defined as
+
+##{ h(X)=-\int_{S}f(x)\log f(x)\,dx, }
+
+where #{ S } is the support set of the random variable.
+}
