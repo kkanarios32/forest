@@ -1,0 +1,9 @@
+\date{2025-06-05}
+\title{Upcoming papers of the week}
+
+\p{Here I am storing interesting papers I come across and want to review at some point.}
+\query{
+  \open\query
+  \isect{\taxon{reference}}{
+  \tag{paper}}{\tag{todo}}
+}

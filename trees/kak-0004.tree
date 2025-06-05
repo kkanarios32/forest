@@ -1,12 +1,11 @@
 \date{2024-10-29}
 \import{base-macros}
-\title{Disk}
-\p{These are things that have been paged out to disk (hence the name)! They can be brought back into L1 when they become something that a viewer would frequently use i.e. LFU policy. In english, when I "finish" some notes in [[kak-0015]] they will be moved to [[kak-0003]].}
+\title{Non-volatile memory}
+\p{These are things that have been paged out to disk (hence the name)! Namely, they are completely (mainly external) resources that I have completed at some point but have nowhere else to go.}
 
 \put\transclude/toc{false}
 \put\transclude/numbered{false}
 \put\transclude/metadata{true}
 
 
-\transclude{kak-0015}
 \transclude{kak-004A}

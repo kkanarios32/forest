@@ -1,5 +1,5 @@
 \date{2025-02-02}
-\title{Road to Quant SWE}
+\title{The Computer in Computer Science}
 \tag{note}
 \tag{unfinished}
 \tag{systems}
@@ -7,8 +7,7 @@
 
 \tag{systems}
 
-\p{Here I will be tracking and storing my daily progress on preparing for SWE roles at quant firms. The main distinction here from traditional SWE roles is the deep knowledge of the lower level fundamentals (mainly OS and networking). These things are typically overlooked in FAANG-esque style interviews. This is only a backup plan / out of personal interest in lower-level things. Therefore, I will be pursuing this at a slower pace / longer timescale than traditional aspiring SWEs.}
-
+\p{Here I will be tracking and storing my daily progress on learning how a computer actually works. Throughout my CS degree, I have garnered a vague understanding of how a computer works, but I feel like I never really understood the big pictuer on how things actually go together. Here, I will try to re-learn / internalize computer architecture, operating systems, networking, compilers, etc. Hopefully, by the end I will understand how all these things interact and work together.}
 \subtree{
 \title{Reading List / Useful Resources}
   \p{

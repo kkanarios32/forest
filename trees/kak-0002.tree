@@ -4,7 +4,7 @@
 \author{kellenkanarios}
 \tag{top}
 
-\p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more.}
+\p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more. I maintain short-form blogs in the [marginalia](kak-007L). See [upcoming blogs](kak-007M) and feel free to request!}
 
 \put\transclude/toc{false}
 \put\transclude/numbered{false}
@@ -14,6 +14,5 @@
 \put\transclude/expanded{false}
 \transclude{kak-0005}
 \transclude{kak-005F}
-\transclude{kak-005G}
 \transclude{kak-006Q}
 }

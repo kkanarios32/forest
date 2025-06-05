@@ -10,3 +10,11 @@
     \isect{\tag{group}}{\tag{talk}}
   }
 }
+
+
+\section{Old #{\LaTeX} Notes from Undergrad}{
+\query{
+  \open\query
+  \tag{texnote}
+}
+}

@@ -5,22 +5,26 @@
 \tag{home}
 \xmlns:html{http://www.w3.org/1999/xhtml}
 
-\p{This is my [forest](https://www.jonmsterling.com/foreign-forester-tfmt-000V.xml). I am a PhD student at the [[umich]] as part of the [Electrical and Computer Engineering program](https://ece.engin.umich.edu/), where I work on reinforcement learning. My PhD advisor is [[leiying]]. Previously, I obtained a BS from the [[umich]] in Mathematics and Computer Science, where I graduated with honors and high honors respectively. During my undergrad, I worked with [[leiying]] as part of the [SURE Program](https://sure.engin.umich.edu/) and as a teaching assitant for [EECS 602](https://sites.google.com/view/intro-to-rl/home).
-}
-\p{\strong{DISCLAIMER:} This website still heavily under construction.}
-
-\ul{
-  \li{This is a (outdated) picture of me
-  \<html:div>[style]{
-    width: 25\%; 
-    height: 200px; 
-    background-image: url('img/profile-pic.png'); 
-    background-size: contain; 
-    background-repeat: no-repeat;
-  }{}
+\figure{
+\<html:img>[width]{25\%}[src]{img/profile-pic.png}[style]{
+  float: right;
+  margin-left: 20px;
+  }{
   }
-  \li{Email: [kellenkk@umich.edu](mailto:kellenkk@umich.edu)}
-  \li{CV: [kellen-cv](files/kellen-kanarios-cv.pdf)}
+}
+\p{I am a PhD student at the [[umich]] as part of the [Electrical and Computer Engineering program](https://ece.engin.umich.edu/), where I work on reinforcement learning. My PhD advisor is [[leiying]]. Previously, I obtained a BS from the [[umich]] in Mathematics and Computer Science, where I graduated with honors and high honors respectively. During my undergrad, I worked with [[leiying]] as part of the [SURE Program](https://sure.engin.umich.edu/) and as a teaching assitant for [EECS 602](https://sites.google.com/view/intro-to-rl/home). My [complete CV](files/kellen-kanarios-cv.pdf).
+}
+
+
+\scope{
+  \put\transclude/toc{false}
+  \put\transclude/numbered{false}
+  \subtree[about]{
+    \title{About this website}
+    \p{
+    This is my [forest](https://www.forester-notes.org/index/index.xml) (shoutout to [[jonmsterling]]). This website functions both as a [personal knowledge management system](https://en.wikipedia.org/wiki/Personal_knowledge_management), where I store my notes in [notebooks](kak-0015) and also have some additional external resources in [nvm](kak-0004). I also store my thoughts in a variety of consumption mediums. Namely, short-form notes / blog posts can be found in the "[marginalia](kak-007L)". I also maintain two weekly posting obligations: a [weeknotes / lifelog](kak-0001) and a [paper of the week](kak-005G). 
+      }
+  }
 }
 
 \scope{
@@ -38,17 +42,6 @@
     }
 }
 
-
-
-% \<html:figure>[style]{
-%      width: 100px;
-%      height: 100px;
-%    }{
-%    \<html:embed>[src]{
-%      "https://wakatime.com/share/@9387d0ee-aec4-4d11-87f8-f44bf09577a4/d7cfcda7-10bd-42a7-8183-058ea804bd48.svg}{}
-%    }
-%}
-
 \hr
 
 
@@ -65,18 +58,16 @@
 
 
 \transclude{kak-0002}
-\transclude{kak-0003}
-\transclude{kak-0004}
 
-\hr
 \put\transclude/expanded{true}
 \subtree[meet]{
 \title{Wanna Talk?}
 \p{
   I am currently interested in continual reinforcement learning or more specifically how to learn generalizable representations online. With this, I am currently looking into contrastive / zero-shot / hierarchical RL. If these things sound interesting I would love to talk about your research and potential collaboration opportunities.}
 \p{
-  Beyond research, I have a small list of ##{\text{hobbies} \cup \text{interests} \supseteq \{\text{lifting}, \text{anime}, \text{NFL}, \text{basketball}\}.} If you are a student at [[umich]], I also have strong opinions / advice on courses.
+  If you are a student at [[umich]], I also have strong opinions / advice on courses.
   \ul{
+    \li{Email me at [kellenkk@umich.edu](mailto:kellenkk@umich.edu)}
     \li{[Schedule a meeting](https://calendly.com/kellenkk-umich/30min)!}
   }
 }
