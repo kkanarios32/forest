@@ -1,6 +1,6 @@
 \date{2025-03-23}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 
 \p{A coding system (variable rate) with parameter #{n} and an encoder-decoder pair #{(e,f)}, where 
 ##{e: \mathcal{X}^n \to \{0, 1\}^*, \quad \text{and} \quad f: \{0, 1\}^* \to \mathcal{X}^n}

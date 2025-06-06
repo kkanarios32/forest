@@ -1,7 +1,7 @@
 \date{2025-01-26}
 \import{base-macros}
 \title{Best rank-#{r} approximation}
-\taxon{theorem}
+\taxon{Theorem}
 
 \p{
  Let #{\mathbf{A}\in\mathbb{R}^{m\times n}} with SVD, #{\mathbf{A}=\sum_{i=1}^{\min\{m,n\}}\sigma_{i}\mathbf{u}_{i}\mathbf{v}_{i}^{\top}}. Then an optimal solution to the best rank-#{r} approximation problem ##{\min_{\mathbf{X}}||\mathbf{X}-\mathbf{A}||_{2}\,,\quad\text{s.t.}\quad\text{rank}(\mathbf{X})\ \leq\ r} is the truncated SVD of the following form ##{\boxed{\widehat{\mathbf{A}}_{r}\ =\ \sum_{i=1}^{r}\sigma_{i}\mathbf{u}_{i}\mathbf{v}_{i}^{\top}}\,,\ \ \text{if}\ \ \sigma_{r}>\sigma_{r+1}\,,\,\text{it is unique.}}

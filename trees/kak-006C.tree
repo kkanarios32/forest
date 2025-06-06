@@ -1,6 +1,6 @@
 \date{2025-03-25}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Neyman-Pearson Framework}
 \p{Given #{\alpha \in (0,1)}. The optimal hypothesis test in the \em{Neyman-Pearson} framework is one that satisfies
 ##{\operatorname*{min}_{P_{Z\mid X}}\;\mathbb{P}_{H_{1}}\left(Z=0\right),\quad\mathrm{subject\,to}\quad\mathbb{P}_{H_{0}}\left(Z=1\right)\leq\alpha.}

@@ -2,7 +2,7 @@
 \title{Neuro-dynamic programming}
 \date{1996}
 \author{Dimitri P. Bertsekas}\author{John N. Tsitsiklis}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @book{bertsekasNeurodynamicProgramming1996,
  title = {Neuro-Dynamic Programming},

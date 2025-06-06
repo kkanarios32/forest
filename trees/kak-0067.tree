@@ -1,6 +1,6 @@
 \date{2025-03-25}
 \import{base-macros}
-\taxon{theorem}
+\taxon{Theorem}
 \title{Sanov's Theorem}
 \p{
 Let #{ X^{n}\sim Q^{n} } (i.e., the #{ X }'s are drawn i.i.d. from #{ Q }), and #{ E\subset\Delta_{m} } denote a subset of pmfs over the finite alphabet #{ X=\{a_{1},\ldots,a_{m}\} }. Let #{ Q^{n}(E) } denote the probability #{ \mathbb{P}_{X^{n}\sim Q^{n}}(\widehat{P}_{X^{n}}\in E) }. Then, we have

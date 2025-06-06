@@ -1,6 +1,6 @@
 \date{2024-11-04}
 \title{Maximize Mutual info}
-\taxon{theorem}
+\taxon{Theorem}
 \import{base-macros}
 
 \p{#{\mathcal{L}_N} from [[vandenOord2018]] maximizes a lower bound on the [[kak-000V]] between #{x_{t + k}} and #{c_t}.}

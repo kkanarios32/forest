@@ -1,6 +1,6 @@
 \date{2025-03-25}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Type classes}
 \p{
 For any type #{ P\in\mathcal{P}_{n} }, we can associate the type class #{ T(P) }, defined as

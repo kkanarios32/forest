@@ -2,7 +2,7 @@
 \title{EnvPool: A Highly Parallel Reinforcement Learning Environment Execution Engine}
 \date{2022-10}
 \author{Jiayi Weng}\author{Min Lin}\author{Shengyi Huang}\author{Bo Liu}\author{Denys Makoviichuk}\author{Viktor Makoviychuk}\author{Zichen Liu}\author{Yufan Song}\author{Ting Luo}\author{Yukun Jiang}\author{Zhongwen Xu}\author{Shuicheng Yan}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.48550/arXiv.2206.10558}
 \meta{external}{https://arxiv.org/abs/2206.10558}
 

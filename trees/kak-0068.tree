@@ -1,6 +1,6 @@
 \date{2025-03-25}
 \import{base-macros}
-\taxon{theorem}
+\taxon{Theorem}
 \title{Optimal NP Test}
 \p{
 Consider a hypothesis testing problem with observations #{ X^{n}\stackrel{\text{i.i.d.}}{\sim}P_{X} }, with the null #{ H_{0} : P_{X} =P_{0} } and alternative #{ H_{1}:P_{X}=P_{1} }. Then, the optimal NP test with level #{ \alpha\in \open-closed{0,1} } has the following structure:

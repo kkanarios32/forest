@@ -1,5 +1,5 @@
 \title{Constrastive Learning as Goal Conditioned Reinforcement Learning}
-\taxon{reference}
+\taxon{Reference}
 \tag{contrastive}
 \meta{abstract}{
 In reinforcement learning (RL), it is easier to solve a task if

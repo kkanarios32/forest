@@ -1,6 +1,6 @@
 \date{2025-04-22}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Typical Set for Continuous Random Variables}
 \p{
 For #{ \epsilon>0 } and any #{ n }, we define the typical set #{ A_{\epsilon}^{(n)} } with respect to #{ f(x) } as follows:

@@ -1,6 +1,6 @@
 \date{2025-02-03}
 \title{Convergence of GD with backtracking}
-\taxon{theorem}
+\taxon{Theorem}
 \p{
 Let the function #{f(\pmb{x})} be #{\mu}-strongly convex and #{L}-smooth. With backtracking
 

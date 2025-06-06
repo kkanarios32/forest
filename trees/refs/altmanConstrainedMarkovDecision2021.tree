@@ -2,7 +2,7 @@
 \title{Constrained Markov Decision Processes: Stochastic Modeling}
 \date{2021-12}
 \author{Eitan Altman}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.1201/9781315140223}
 \meta{bibtex}{\startverb
 @book{altmanConstrainedMarkovDecision2021,

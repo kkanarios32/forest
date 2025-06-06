@@ -1,6 +1,6 @@
 \date{2024-11-22}
 \title{Markov Decision Process}
-\taxon{definition}
+\taxon{Definition}
 
 \p{
 A Markov Decision Process #{M=(S,A,P,\tau,\gamma,\mu)} is a tuple, where

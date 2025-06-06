@@ -1,5 +1,5 @@
 \date{2024-12-02}
-\taxon{theorem}
+\taxon{Theorem}
 \import{base-macros}
 \p{
 For each sequence #{\{A_{n}\}},

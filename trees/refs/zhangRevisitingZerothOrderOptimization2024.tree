@@ -2,7 +2,7 @@
 \title{Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark}
 \date{2024-05}
 \author{Yihua Zhang}\author{Pingzhi Li}\author{Junyuan Hong}\author{Jiaxiang Li}\author{Yimeng Zhang}\author{Wenqing Zheng}\author{Pin-Yu Chen}\author{Jason D. Lee}\author{Wotao Yin}\author{Mingyi Hong}\author{Zhangyang Wang}\author{Sijia Liu}\author{Tianlong Chen}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.48550/arXiv.2402.11592}
 \meta{external}{https://arxiv.org/abs/2402.11592}
 

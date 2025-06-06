@@ -1,5 +1,5 @@
 \date{2025-03-24}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Singularity of a code}
 \p{If #{e} is many-to-one then we say that #{e} is singular. Similarly, if #{e} is one-to-one then #{e} is non-singular.}

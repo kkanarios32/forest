@@ -2,7 +2,7 @@
 \title{Improving Transformer World Models for Data-Efficient RL}
 \date{2025-02}
 \author{Antoine Dedieu}\author{Joseph Ortiz}\author{Xinghua Lou}\author{Carter Wendelken}\author{Wolfgang Lehrach}\author{J. Swaroop Guntupalli}\author{Miguel Lazaro-Gredilla}\author{Kevin Patrick Murphy}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.48550/arXiv.2502.01591}
 \meta{external}{https://arxiv.org/abs/2502.01591}
 

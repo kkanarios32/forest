@@ -1,6 +1,6 @@
 \date{2025-03-25}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Hypothesis testing problem}
 \p{
 A binary hypothesis testing problem involves three components: the data #{ X\sim P }, the null hypothesis class #{ \mathcal{P}_{0} }, and the alternative distribution class #{ \mathcal{P}_{1} }, and the goal is to use the data to decide between the null and alternative; that is,

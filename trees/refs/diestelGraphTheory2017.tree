@@ -2,7 +2,7 @@
 \title{Graph Theory}
 \date{2017}
 \author{Reinhard Diestel}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.1007/978-3-662-53622-3}
 \meta{bibtex}{\startverb
 @book{diestelGraphTheory2017,

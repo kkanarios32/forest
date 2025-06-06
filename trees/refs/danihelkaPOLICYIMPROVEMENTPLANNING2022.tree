@@ -2,7 +2,7 @@
 \title{POLICY IMPROVEMENT BY PLANNING WITH GUMBEL}
 \date{2022}
 \author{Ivo Danihelka}\author{Arthur Guez}\author{Julian Schrittwieser}\author{David Silver}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{danihelkaPOLICYIMPROVEMENTPLANNING2022,
  title = {{{POLICY IMPROVEMENT BY PLANNING WITH GUMBEL}}},

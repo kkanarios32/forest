@@ -1,6 +1,6 @@
 \date{2025-04-01}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Achievable rates}
 \p{A rate #{R \geq 0} is achievable if
 \ol{

@@ -1,7 +1,7 @@
 % ["references"]
 \title{High-Dimensional Probability}
 \author{Roman Vershynin}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{vershyninHighDimensionalProbability,
  title = {High-{{Dimensional Probability}}},

@@ -2,7 +2,7 @@
 \title{DeepZero: Scaling up Zeroth-Order Optimization for Deep Model Training}
 \date{2024-03}
 \author{Aochuan Chen}\author{Yimeng Zhang}\author{Jinghan Jia}\author{James Diffenderfer}\author{Jiancheng Liu}\author{Konstantinos Parasyris}\author{Yihua Zhang}\author{Zheng Zhang}\author{Bhavya Kailkhura}\author{Sijia Liu}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.48550/arXiv.2310.02025}
 \meta{external}{https://arxiv.org/abs/2310.02025}
 

@@ -1,6 +1,6 @@
 \date{2025-04-01}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Channel capacity}
 \p{The channel capacity is the maximum [achievable rate](kak-006U) i.e. 
 ##{C = \sup \{R \geq 0 \mid R \text{ is achievable}\}  }

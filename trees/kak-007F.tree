@@ -1,7 +1,7 @@
 \date{2025-04-22}
 \import{base-macros}
 
-\taxon{theorem}
+\taxon{Theorem}
 \p{
 The typical set #{ A_{\epsilon}^{(n)} } has the following properties:
 

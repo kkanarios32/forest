@@ -1,6 +1,6 @@
 \date{2025-01-27}
 \title{First-order convergence}
-\taxon{definition}
+\taxon{Definition}
 \p{
      First-order function value convergence 
      ##{||\nabla f(\mathbf{x}_k)||_2 \; \leq \; \varepsilon.}

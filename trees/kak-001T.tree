@@ -1,6 +1,6 @@
 \date{2024-12-27}
 \title{Borel-Cantelli Two}
-\taxon{theorem}
+\taxon{Theorem}
 \import{base-macros}
 \p{If #{\{A_n\}} is an independent sequence of events and #{\sum_{n}P(A_n)} diverges, then #{P(\lim\sup_n A_n) = 1}.}
 \proof{

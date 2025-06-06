@@ -2,7 +2,7 @@
 \title{Accelerating long-read analysis on modern CPUs}
 \date{2021-07}
 \author{Saurabh Kalikar}\author{Chirag Jain}\author{Vasimuddin Md}\author{Sanchit Misra}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.1101/2021.07.21.453294}
 \meta{bibtex}{\startverb
 @misc{kalikarAcceleratingLongreadAnalysis2021,

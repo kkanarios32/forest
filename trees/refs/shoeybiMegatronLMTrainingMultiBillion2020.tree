@@ -2,7 +2,7 @@
 \title{Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism}
 \date{2020-03}
 \author{Mohammad Shoeybi}\author{Mostofa Patwary}\author{Raul Puri}\author{Patrick LeGresley}\author{Jared Casper}\author{Bryan Catanzaro}
-\taxon{reference}
+\taxon{Reference}
 \meta{external}{https://arxiv.org/abs/1909.08053}
 
 \meta{bibtex}{\startverb

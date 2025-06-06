@@ -2,7 +2,7 @@
 \title{Mm2-gb: GPU Accelerated Minimap2 for Long Read DNA Mapping}
 \date{2024-03}
 \author{Juechu Dong}\author{Xueshen Liu}\author{Harisankar Sadasivan}\author{Sriranjani Sitaraman}\author{Satish Narayanasamy}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.1101/2024.03.23.586366}
 \meta{bibtex}{\startverb
 @misc{dongMm2gbGPUAccelerated2024,

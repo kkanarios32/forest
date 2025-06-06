@@ -1,6 +1,6 @@
 \date{2024-11-26}
 \title{#{\lambda}-system}
-\taxon{definition}
+\taxon{Definition}
 
 \p{
 A class #{\mathscr{L}} is a #{\lambda}-system if it contains #{\Omega} and is closed under the formation of complements and of finite and countable disjoint unions:

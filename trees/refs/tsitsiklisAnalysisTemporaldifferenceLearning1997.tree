@@ -2,7 +2,7 @@
 \title{An analysis of temporal-difference learning with function approximation}
 \date{1997-05}
 \author{J. N. Tsitsiklis}\author{B. Van Roy}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.1109/9.580874}
 \meta{bibtex}{\startverb
 @article{tsitsiklisAnalysisTemporaldifferenceLearning1997,

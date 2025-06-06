@@ -1,6 +1,6 @@
 \date{2024-10-29}
 \import{base-macros}
-\title{Non-volatile memory}
+\title{/dev/null}
 \p{These are things that have been paged out to disk (hence the name)! Namely, they are completely (mainly external) resources that I have completed at some point but have nowhere else to go.}
 
 \put\transclude/toc{false}

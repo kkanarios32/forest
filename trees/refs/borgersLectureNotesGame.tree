@@ -1,7 +1,7 @@
 % ["references"]
 \title{Lecture Notes on Game Theory}
 \author{Tilman Borgers}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{borgersLectureNotesGame,
  title = {Lecture {{Notes}} on {{Game Theory}}},

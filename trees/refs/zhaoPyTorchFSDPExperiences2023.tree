@@ -2,7 +2,7 @@
 \title{PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel}
 \date{2023-04}
 \author{Yanli Zhao}\author{Andrew Gu}\author{Rohan Varma}\author{Liang Luo}\author{Chien-Chin Huang}\author{Min Xu}\author{Less Wright}\author{Hamid Shojanazeri}\author{Myle Ott}\author{Sam Shleifer}\author{Alban Desmaison}\author{Can Balioglu}\author{Pritam Damania}\author{Bernard Nguyen}\author{Geeta Chauhan}\author{Yuchen Hao}\author{Ajit Mathews}\author{Shen Li}
-\taxon{reference}
+\taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2304.11277v2}
 
 \meta{bibtex}{\startverb

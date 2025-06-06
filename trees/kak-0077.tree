@@ -1,6 +1,6 @@
 \date{2025-04-14}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Riemannian Gradient}
 \p{
 Let #{ f:\mathcal{M}\mapsto\mathbb{R} } be [smooth](kak-003K) on the [Riemannian manifold](kak-0072) #{ \mathcal{M} }. The Riemannian gradient #{ \,\operatorname{grad}f(\boldsymbol{x})\, } of #{ f } at #{ \boldsymbol{x}\in\mathcal{M} } is the unique tangent vector at #{ \boldsymbol{x} } such that

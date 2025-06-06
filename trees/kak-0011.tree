@@ -1,6 +1,6 @@
 \date{2024-11-22}
 \title{Action Value Function}
-\taxon{definition}
+\taxon{Definition}
 
 \p{
 For a fixed policy and a starting state #{s_{0}=s}, we define the action value function #{Q_{M}^{s}:S \times A \to\mathbb{R}} as the discounted sum of future rewards after taking action #{A}.

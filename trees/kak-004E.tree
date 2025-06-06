@@ -1,7 +1,7 @@
 \date{2025-02-01}
 \import{base-macros}
 \title{Gibb's inequality}
-\taxon{theorem}
+\taxon{Theorem}
 \p{
     ##{D_{\mathrm{KL}}(P || Q) \geq 0}
 }

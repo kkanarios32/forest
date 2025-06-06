@@ -1,6 +1,6 @@
 \date{2025-03-25}
 \import{base-macros}
-\taxon{theorem}
+\taxon{Theorem}
 
 \p{
 Let #{ P\in\mathcal{P}_{n} }, and #{ T(P) } denote its type class. Then, the following bounds hold:

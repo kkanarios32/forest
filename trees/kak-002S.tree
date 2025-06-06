@@ -1,6 +1,6 @@
 \date{2025-01-15}
 \title{Linear MDP}
-\taxon{definition}
+\taxon{Definition}
 \p{
 An MDP #{\mathcal{M}=(\mathcal{S},\mathcal{A},H,P,r)} is called a \em{linear MDP} if there exists two feature maps #{\phi:\mathcal{S}\times\mathcal{A}\rightarrow\mathbb{R}^{d}}, #{\mu:\mathcal{S}\rightarrow\mathbb{R}^{d}} and a vector #{\theta_{r}\in\mathbb{R}^{d}}, such that
 

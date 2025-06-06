@@ -1,7 +1,7 @@
 \date{2025-02-09}
 \import{base-macros}
 \title{Maximum Aposteriori Estimator}
-\taxon{theorem}
+\taxon{Theorem}
 \p{The optimal estimator #{g^* : \mathcal{Y} \to \mathcal{X}} is
 ##{
 \begin{align*}

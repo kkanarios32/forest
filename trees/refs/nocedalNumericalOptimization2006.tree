@@ -2,7 +2,7 @@
 \title{Numerical optimization}
 \date{2006}
 \author{Jorge Nocedal}\author{Stephen J. Wright}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @book{nocedalNumericalOptimization2006,
  title = {Numerical Optimization},

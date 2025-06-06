@@ -1,7 +1,7 @@
 \date{2025-02-10}
 \import{base-macros}
 \title{Weak Law of Large Numbers}
-\taxon{theorem}
+\taxon{Theorem}
 \p{
 #{\{X_{n}:n\geq1\}}: a sequence of i.i.d. r.v.s. with mean #{\mu}, variance #{\sigma^{2}}. Then,
 

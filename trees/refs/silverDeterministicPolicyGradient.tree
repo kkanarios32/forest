@@ -1,7 +1,7 @@
 % ["references"]
 \title{Deterministic Policy Gradient Algorithms}
 \author{David Silver}\author{Guy Lever}\author{Nicolas Heess}\author{Thomas Degris}\author{Daan Wierstra}\author{Martin Riedmiller}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{silverDeterministicPolicyGradient,
  title = {Deterministic {{Policy Gradient Algorithms}}},

@@ -2,7 +2,7 @@
 \title{PLANNING IN STOCHASTIC ENVIRONMENTS WITH A LEARNED MODEL}
 \date{2022}
 \author{Ioannis Antonoglou}\author{Julian Schrittwieser}\author{Sherjil Ozair}\author{Thomas Hubert}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{antonoglouPLANNINGSTOCHASTICENVIRONMENTS2022,
  title = {{{PLANNING IN STOCHASTIC ENVIRONMENTS WITH A LEARNED MODEL}}},

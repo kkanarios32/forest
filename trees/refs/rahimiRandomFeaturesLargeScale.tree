@@ -1,7 +1,7 @@
 % ["references"]
 \title{Random Features for Large-Scale Kernel Machines}
 \author{Ali Rahimi}\author{Benjamin Recht}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{rahimiRandomFeaturesLargeScale,
  title = {Random {{Features}} for {{Large-Scale Kernel Machines}}},

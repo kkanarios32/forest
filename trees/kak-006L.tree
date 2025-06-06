@@ -1,6 +1,6 @@
 \date{2025-03-30}
 \import{base-macros}
-\taxon{theorem}
+\taxon{Theorem}
 
 \p{
 The code constructed above is a universal fixed-rate code, such that #{ \lim_{n\to\infty}\mathbb{P}_{X^{n}\sim P^{n}}(f_{n}(e_{n}(X^{n}))\neq X^{n})=0 } for all #{ P } with #{ H(P)<R }.

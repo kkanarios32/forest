@@ -1,6 +1,6 @@
 \date{2024-11-04}
 \title{Consistent estimator}
-\taxon{definition}
+\taxon{Definition}
 
 \p{Formally speaking, an estimator #{T_{n}} of parameter #{\theta} is said to be \em{weakly consistent}. If it converges in probabilty to the true value of the parameter i.er
 

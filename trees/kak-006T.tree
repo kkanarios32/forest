@@ -1,6 +1,6 @@
 \date{2025-04-01}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Discrete memoryless channel}
 \p{
     We have the following components

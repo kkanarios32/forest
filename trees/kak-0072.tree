@@ -1,6 +1,6 @@
 \date{2025-04-14}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Riemannian Manifold}
 \p{
 A Riemannian manifold #{ (\mathcal{M},\langle\cdot,\cdot\rangle) } is a [smooth manifold](kak-0073)

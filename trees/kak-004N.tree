@@ -1,6 +1,6 @@
 \date{2025-02-03}
 \title{Suboptimality of Gradient Descent}
-\taxon{theorem}
+\taxon{Theorem}
 \p{
 Suppose the iterates #{\{\mathbf{x}_{i}\}_{i\geq0}} is generated from a \em{black-box model}:
 

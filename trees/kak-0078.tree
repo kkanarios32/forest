@@ -1,6 +1,6 @@
 \date{2025-04-14}
 \import{base-macros}
-\taxon{claim}
+\taxon{Claim}
 \title{Riemmanian Metric}
 \p{
 #{ \langle\cdot,\cdot\rangle_{\textbf{x}} } defines a [[kak-0078]] on #{ \mathcal{M} } if for any two smooth vector fields #{\mathbf{V}} and #{\mathbf{W}}, the function #{ \textbf{x}\mapsto\left\langle\mathbf{V}(\textbf{x}),\mathbf{W}(\textbf{x})\right\rangle_{\textbf{x}} } is smooth.

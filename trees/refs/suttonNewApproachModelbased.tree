@@ -1,7 +1,7 @@
 % ["references"]
 \title{Toward a New Approach to Model-based Reinforcement Learning}
 \author{Richard S Sutton}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{suttonNewApproachModelbased,
  title = {Toward a {{New Approach}} to {{Model-based Reinforcement Learning}}},

@@ -86,7 +86,7 @@
  \scope{
    \put\transclude/toc{false}
    \subtree{%
-     \taxon{example}
+     \taxon{Example}
      \body
    }
  }
@@ -96,7 +96,7 @@
  \scope{
    \put\transclude/toc{false}
    \subtree{%
-     \taxon{proof}
+     \taxon{Proof}
      \body
    }
  }
@@ -117,7 +117,7 @@
 \def\remark[body]{%
     \put\transclude/toc{false}
     \subtree{%
-      \taxon{remark}
+      \taxon{Remark}
       \body
     }
 }
@@ -125,7 +125,7 @@
 \def\claim[body]{%
     \put\transclude/toc{false}
     \subtree{%
-      \taxon{claim}
+      \taxon{Claim}
       \body
     }
 }
@@ -133,7 +133,7 @@
 \def\question[body]{%
     \put\transclude/toc{false}
     \subtree{%
-      \taxon{question}
+      \taxon{Question}
       \body
     }
 }
@@ -141,7 +141,7 @@
 \def\answer[body]{%
     \put\transclude/toc{false}
     \subtree{%
-      \taxon{answer}
+      \taxon{Answer}
       \body
     }
 }
@@ -149,7 +149,7 @@
 \def\problem[body]{%
     \put\transclude/toc{false}
     \subtree{%
-      \taxon{problem}
+      \taxon{Problem}
       \body
     }
 }
@@ -169,7 +169,7 @@
  \scope{
    \put\transclude/toc{false}
    \subtree{
-     \taxon{solution}
+     \taxon{Solution}
      \body
    }
  }

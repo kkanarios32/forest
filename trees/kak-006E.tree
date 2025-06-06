@@ -1,6 +1,6 @@
 \date{2025-03-25}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Minimax Optimal}
 \p{Find a test that minimzes the maximum of the [two errors](kak-006B) i.e. 
 ##{ \operatorname*{min}_{P_{Z|X}}\operatorname*{max}\left\{\mathbb{P}_{H_{0}}(Z=1),\ \mathbb{P}_{H_{1}}(Z=0)\right\}=\operatorname*{min}_{P_{Z|X}}\operatorname*{max}\left\{\pi_{1|0}(P_{Z|X}),\ \pi_{0|1}(P_{Z|X})\right\}. }

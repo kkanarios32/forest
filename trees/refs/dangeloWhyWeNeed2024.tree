@@ -1,8 +1,7 @@
-% ["references"]
 \title{Why Do We Need Weight Decay in Modern Deep Learning?}
 \date{2024-11}
 \author{Francesco D’Angelo}\author{Maksym Andriushchenko}\author{Aditya Varre}\author{Nicolas Flammarion}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.48550/arXiv.2310.04415}
 \meta{external}{https://arxiv.org/abs/2310.04415}
 

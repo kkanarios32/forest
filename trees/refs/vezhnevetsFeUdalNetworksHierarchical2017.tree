@@ -2,7 +2,7 @@
 \title{FeUdal Networks for Hierarchical Reinforcement Learning}
 \date{2017-07}
 \author{Alexander Sasha Vezhnevets}\author{Simon Osindero}\author{Tom Schaul}\author{Nicolas Heess}\author{Max Jaderberg}\author{David Silver}\author{Koray Kavukcuoglu}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{vezhnevetsFeUdalNetworksHierarchical2017,
  title = {{{FeUdal Networks}} for {{Hierarchical Reinforcement Learning}}},

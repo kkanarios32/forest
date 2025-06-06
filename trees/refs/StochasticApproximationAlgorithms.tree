@@ -1,6 +1,6 @@
 % ["references"]
 \title{Stochastic Approximation Algorithms and Applications}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @book{StochasticApproximationAlgorithms,
  title = {Stochastic {{Approximation Algorithms}} and {{Applications}}},

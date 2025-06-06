@@ -1,6 +1,6 @@
 \date{2024-11-26}
 \title{Monotone Class}
-\taxon{definition}
+\taxon{Definition}
 \p{
 A class #{\mathscr{M}} of subsets of #{\Omega} is monotone if it is closed under the formation of monotone unions and intersections:
 

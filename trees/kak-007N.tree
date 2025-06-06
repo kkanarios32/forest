@@ -2,8 +2,9 @@
 \title{Upcoming papers of the week}
 
 \p{Here I am storing interesting papers I come across and want to review at some point.}
-\query{
-  \open\query
-  \isect{\taxon{reference}}{
-  \tag{paper}}{\tag{todo}}
+\query\datalog{
+  ?X -:
+  {\rel/is-reference ?X}
+  {\rel/has-tag ?X '{paper}}
+  {\rel/has-tag ?X '{todo}}
 }

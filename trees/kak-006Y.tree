@@ -1,6 +1,6 @@
 \date{2025-04-01}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Symmetric Channels}
 \p{A channel is symmetric if
 \ol{

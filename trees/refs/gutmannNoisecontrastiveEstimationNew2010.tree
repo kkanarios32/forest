@@ -2,7 +2,7 @@
 \title{Noise-contrastive estimation: A new estimation principle for unnormalized statistical models}
 \date{2010-03}
 \author{Michael Gutmann}\author{Aapo Hyvärinen}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{gutmannNoisecontrastiveEstimationNew2010,
  title = {Noise-Contrastive Estimation: {{A}} New Estimation Principle for Unnormalized Statistical Models},

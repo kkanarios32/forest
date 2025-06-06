@@ -1,7 +1,7 @@
 % ["references"]
 \title{Constraint-Conditioned Policy Optimization for Versatile Safe Reinforcement Learning}
 \author{Yihang Yao}\author{Zuxin Liu}\author{Zhepeng Cen}\author{Jiacheng Zhu}\author{Wenhao Yu}\author{Tingnan Zhang}\author{Ding Zhao}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{yaoConstraintConditionedPolicyOptimization,
  title = {Constraint-{{Conditioned Policy Optimization}} for {{Versatile Safe Reinforcement Learning}}},

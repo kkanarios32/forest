@@ -2,7 +2,7 @@
 \title{Minimap2: Pairwise alignment for nucleotide sequences}
 \date{2018-09}
 \author{Heng Li}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.1093/bioinformatics/bty191}
 \meta{bibtex}{\startverb
 @article{liMinimap2PairwiseAlignment2018,

@@ -1,6 +1,6 @@
 \date{2024-12-29}
 \title{Holder's Inequality}
-\taxon{theorem}
+\taxon{Theorem}
 \p{Suppose that 
 ##{\frac{1}{p} + \frac{1}{q} = 1, \quad p > 1,\ q > 1}
 Then \em{Holder's inequality} is

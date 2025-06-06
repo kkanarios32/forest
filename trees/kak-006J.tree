@@ -1,6 +1,6 @@
 \date{2025-03-26}
 \import{base-macros}
-\taxon{theorem}
+\taxon{Theorem}
 \title{Optimal Bayesian Error Exponent}
 
 \p{

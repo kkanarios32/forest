@@ -1,6 +1,6 @@
 \date{2025-04-14}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Riemannian Gradient Descent}
   \p{
 For #{f : \mathcal{M} \mapsto \mathbb{R}},

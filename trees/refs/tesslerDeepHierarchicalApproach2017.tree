@@ -2,7 +2,7 @@
 \title{A Deep Hierarchical Approach to Lifelong Learning in Minecraft}
 \date{2017-02}
 \author{Chen Tessler}\author{Shahar Givony}\author{Tom Zahavy}\author{Daniel Mankowitz}\author{Shie Mannor}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.1609/aaai.v31i1.10744}
 \meta{bibtex}{\startverb
 @article{tesslerDeepHierarchicalApproach2017,

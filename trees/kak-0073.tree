@@ -1,6 +1,6 @@
 \date{2025-04-14}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Smooth Manifold}
 \p{
 We say #{ \mathcal{M}\subseteq\mathbb{R}^{n} } is an embedded smooth submanifold of codimension #{ k } if there exists a [smooth function](kak-003K) #{ g:\mathbb{R}^{n}\mapsto\mathbb{R}^{k} }, such that

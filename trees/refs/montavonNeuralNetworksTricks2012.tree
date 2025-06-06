@@ -1,7 +1,7 @@
 % ["references"]
 \title{Neural Networks: Tricks of the Trade: Second Edition}
 \date{2012}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.1007/978-3-642-35289-8}
 \meta{bibtex}{\startverb
 @book{montavonNeuralNetworksTricks2012,

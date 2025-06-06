@@ -1,6 +1,6 @@
 \date{2025-03-30}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Minimax Redundancy}
 \p{
 Let #{ \mathcal{X} } denote an alphabet of size #{ m }, and let #{ \mathcal{P}=\{P_{1},\ldots,P_{k}\} } denote a collection of #{ k } distinct distributions on #{ \mathcal{X} } (every #{ P_{i} } can be identified with a pmf in #{ \Delta_{m} }). Now, consider the following two-player game:

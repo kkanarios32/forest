@@ -1,7 +1,7 @@
 \date{2025-02-03}
 \import{base-macros}
 \title{Sublinear convergence of GD}
-\taxon{theorem}
+\taxon{Theorem}
 \p{
 Suppose #{f:\mathbb{R}^{n}\mapsto\mathbb{R}} is convex and smooth with its gradient #{L}-Lipschitz. If we run GD for #{k} iterations with a fixed step size #{\tau=1/L}, it will yield a sequence #{\left\{\mathbf{x}_{k}\right\}_{k\geq1}} such that
 

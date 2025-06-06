@@ -1,6 +1,6 @@
 \date{2024-11-24}
 \title{Mean Square Value Error}
-\taxon{definition}
+\taxon{Definition}
 
 \p{
   Since we are in the function approximation regime, we cannot perfectly compute the value of every state. Instead, we must prioritize which states are the most important to us. We can do this with a state distribution #{\mu(s)}. Then

@@ -1,6 +1,6 @@
 \date{2025-03-23}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Variable rate achievability}
 \p{A nonnegative number #{R} is said to be achievable if for all #{\epsilon > 0}, there exists an #{n(\epsilon)} such that for all #{n \geq n(\epsilon)}, the following holds
 \ul{

@@ -1,7 +1,7 @@
 % ["references"]
 \title{Reinforcement Learning: Theory and Algorithms}
 \author{Alekh Agarwal}\author{Nan Jiang}\author{Sham M Kakade}\author{Wen Sun}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{agarwalReinforcementLearningTheory,
  title = {Reinforcement {{Learning}}: {{Theory}} and {{Algorithms}}},

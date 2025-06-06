@@ -2,7 +2,7 @@
 \title{ZeRO-Offload: Democratizing Billion-Scale Model Training}
 \date{2021-01}
 \author{Jie Ren}\author{Samyam Rajbhandari}\author{Reza Yazdani Aminabadi}\author{Olatunji Ruwase}\author{Shuangyan Yang}\author{Minjia Zhang}\author{Dong Li}\author{Yuxiong He}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.48550/arXiv.2101.06840}
 \meta{external}{https://arxiv.org/abs/2101.06840}
 

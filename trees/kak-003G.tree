@@ -1,6 +1,6 @@
 \date{2025-01-27}
 \title{Matrix Operator Norm}
-\taxon{definition}
+\taxon{Definition}
 \p{
 Let #{\mathbf{A}\in\mathbb{R}^{m\times n}}. If #{\left|\left|\cdot\right|\right|_{a}} and #{\left|\left|\cdot\right|\right|_{b}} are norms on #{\mathbb{R}^{n}} and #{\mathbb{R}^{m}}, we have ##{\left|\left|\mathbf{A}\right|\right|_{a\to b}\ :=\ \sup_{\left|\left|\mathbf{x}\right|\right|_{a}\leq 1}\left|\left|\mathbf{A}\mathbf{x}\right|\right|_{b}.}
 It satisfies the \em{three criteria} for norm, and is \em{submultiplicative} ##{||\boldsymbol{A}\boldsymbol{B}||_{a\to b}\ \leq\ ||\boldsymbol{A}||_{a\to b}\cdot ||\boldsymbol{B}||_{a\to b};}. 

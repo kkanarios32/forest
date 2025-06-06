@@ -1,6 +1,6 @@
 \date{2024-11-20}
 \title{#{\sigma}-field}
-\taxon{definition}
+\taxon{Definition}
 
 \p{A class of subsets #{\mathscr{F}} of #{\Omega} is a #{\sigma}-field if the following holds
   \ol{

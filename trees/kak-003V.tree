@@ -2,7 +2,7 @@
 \tag{infot}
 \import{base-macros}
 \title{Chain Rule of Mutual Info}
-\taxon{theorem}
+\taxon{Theorem}
 \p{
     We have that
 ##{

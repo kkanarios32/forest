@@ -1,6 +1,6 @@
 \date{2025-04-14}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Tangent Bundle}
 \p{
 The tangent bundle of #{ {\cal M} } is the disjoint union of all [tangent spaces](kak-0075):

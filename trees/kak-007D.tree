@@ -1,6 +1,6 @@
 \date{2025-04-22}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Volume of set}
 \p{
  The volume Vol(#{ A }) of a set #{ A\subset\mathcal{R}^{n} } is defined as

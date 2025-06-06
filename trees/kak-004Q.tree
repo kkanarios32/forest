@@ -1,6 +1,6 @@
 \date{2025-02-03}
 \title{Exact Linesearch}
-\taxon{definition}
+\taxon{Definition}
 \p{
     For 
 ##{x_{k+1}\ =\ x_{k}\ -\ \tau_{k}\cdot\nabla f(x_{k})}

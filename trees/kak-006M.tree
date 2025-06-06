@@ -1,6 +1,6 @@
 \date{2025-03-30}
 \import{base-macros}
-\taxon{proposition}
+\taxon{Proposition}
 \p{
 Suppose #{ X\sim Q }, but we encode it using an optimal code for #{ P }. Then, the redundancy incurred is approximately equal to #{ D_{KL}(Q\parallel P) }.
   }

@@ -2,7 +2,7 @@
 \title{Tuning-free step-size adaptation}
 \date{2012-03}
 \author{Ashique Rupam Mahmood}\author{Richard S. Sutton}\author{Thomas Degris}\author{Patrick M. Pilarski}
-\taxon{reference}
+\taxon{Reference}
 \meta{doi}{10.1109/ICASSP.2012.6288330}
 \meta{bibtex}{\startverb
 @inproceedings{mahmoodTuningfreeStepsizeAdaptation2012,

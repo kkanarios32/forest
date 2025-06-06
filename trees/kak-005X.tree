@@ -1,6 +1,6 @@
 \date{2025-03-25}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{type or empirical distribution}
 \p{The "type" #{ \widehat{P}_{x^{n}} } associated with #{ x^{n}\in\mathcal{X}^{n} } is the probability distribution on #{ \mathcal{X} } with pmf #{ \widehat{\boldsymbol{p}}_{x^{n}} }, defined as
 

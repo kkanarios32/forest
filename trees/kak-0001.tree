@@ -6,7 +6,7 @@
 \xmlns:html{http://www.w3.org/1999/xhtml}
 
 \figure{
-\<html:img>[width]{25\%}[src]{img/profile-pic.png}[style]{
+\<html:img>[width]{25\%}[src]{\route-asset{assets/img/profile-pic.png}}[style]{
   float: right;
   margin-left: 20px;
   }{
@@ -22,7 +22,7 @@
   \subtree[about]{
     \title{About this website}
     \p{
-    This is my [forest](https://www.forester-notes.org/index/index.xml) (shoutout to [[jonmsterling]]). This website functions both as a [personal knowledge management system](https://en.wikipedia.org/wiki/Personal_knowledge_management), where I store my notes in [notebooks](kak-0015) and also have some additional external resources in [nvm](kak-0004). I also store my thoughts in a variety of consumption mediums. Namely, short-form notes / blog posts can be found in the "[marginalia](kak-007L)". I also maintain two weekly posting obligations: a [weeknotes / lifelog](kak-0001) and a [paper of the week](kak-005G). 
+    This is my [forest](https://www.forester-notes.org/index/index.xml) (shoutout to [[jonmsterling]] who is remarkably helpful). This website functions both as a [personal knowledge management system](https://en.wikipedia.org/wiki/Personal_knowledge_management), where I store my notes in [notebooks](kak-0015) and also have some additional external resources in [[kak-0004]]. Additionally, I store my thoughts in a variety of consumption mediums. Namely, short-form notes / blog posts can be found in the "[marginalia](kak-007L)". I also maintain two weekly posting obligations: a [weeknotes / lifelog](kak-0001) and a [paper of the week](kak-005G). 
       }
   }
 }
@@ -47,15 +47,14 @@
 
 \put\transclude/expanded{false}
 \subtree[pub]{
- \title{research}
- \query{
-  \open\query
-  \isect{\author{kellenkanarios}}{\taxon{reference}}{
-   \union{\tag{refereed}}{\tag{accepted}}
+ \title{Research}
+  \query\datalog{
+  ?X -:
+  {\rel/has-author ?X @{kellenkanarios}}
+  {\rel/is-reference ?X}
+  {\rel/has-tag ?X '{refereed}}
   }
- }
 }
-
 
 \transclude{kak-0002}
 

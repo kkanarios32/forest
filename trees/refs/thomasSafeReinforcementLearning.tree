@@ -1,7 +1,7 @@
 % ["references"]
 \title{Safe Reinforcement Learning by Imagining the Near Future}
 \author{Garrett Thomas}\author{Yuping Luo}\author{Tengyu Ma}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{thomasSafeReinforcementLearning,
  title = {Safe {{Reinforcement Learning}} by {{Imagining}} the {{Near Future}}},

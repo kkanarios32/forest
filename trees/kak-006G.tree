@@ -1,6 +1,6 @@
 \date{2025-03-26}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Optimal Error Exponent in NP setting}
 \p{
 We say that an error exponent #{ V } is achievable with type-1 error #{ \alpha>0 }, if there exist a sequence of tests #{ (\Psi_{n}) } with errors #{ (\alpha_{n},\beta_{n}) }, satisfying

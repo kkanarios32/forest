@@ -1,5 +1,5 @@
 \date{2025-01-15}
-\taxon{theorem}
+\taxon{Theorem}
 \title{Hoeffding's Inequality}
 \p{
   Let #{X_1, \ldots, X_n} be independent centered [[kak-002L]]. Then for any #{a = (a_1, \ldots, a_n) \in \mathbb{R}^n} and for any #{t > 0}

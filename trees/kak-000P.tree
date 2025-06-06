@@ -1,5 +1,5 @@
 \date{2024-11-20}
-\taxon{definition}
+\taxon{Definition}
 \title{Probability Measure}
 \p{
 A set function is a real-valued function defined on some class of subsets of #{\Omega}. A set function #{P} on a field #{\mathscr{F}} is a probability measure if it satisfies these conditions:

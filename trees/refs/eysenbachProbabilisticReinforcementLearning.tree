@@ -1,7 +1,7 @@
 % ["references"]
 \title{Probabilistic Reinforcement Learning: Using Data to Define Desired Outcomes and Inferring How to Get There}
 \author{Benjamin Eysenbach}
-\taxon{reference}
+\taxon{Reference}
 \meta{bibtex}{\startverb
 @article{eysenbachProbabilisticReinforcementLearning,
  title = {Probabilistic {{Reinforcement Learning}}: {{Using Data}} to {{Define Desired Outcomes}} and {{Inferring How}} to {{Get There}}},

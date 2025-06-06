@@ -1,6 +1,6 @@
 \date{2024-12-27}
 \title{Borel-Cantelli One}
-\taxon{theorem}
+\taxon{Theorem}
 \import{base-macros}
 \p{If #{\sum_{n}P(A_n)} converges, then #{P(\lim\sup_n A_n) = 0}.}
 \proof{

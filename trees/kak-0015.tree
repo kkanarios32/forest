@@ -7,20 +7,29 @@
 \put\transclude/toc{false}
 \put\transclude/expanded{false}
 
-\query{
-    \open\query
-    \isect{\tag{note}}{\tag{rl}}{\tag{unfinished}}
-}
-\query{
-    \open\query
-    \isect{\tag{note}}{\tag{prob}}{\tag{unfinished}}
-}
-\query{
-    \open\query
-    \isect{\tag{note}}{\tag{systems}}{\tag{unfinished}}
+\query\datalog{
+    ?X -:
+    {\rel/has-tag ?X '{note}}
+    {\rel/has-tag ?X '{rl}}
+    {\rel/has-tag ?X '{unfinished}}
 }
 
-\query{
-    \open\query
-    \isect{\tag{note}}{\tag{lost}}
+\query\datalog{
+    ?X -:
+    {\rel/has-tag ?X '{note}}
+    {\rel/has-tag ?X '{prob}}
+    {\rel/has-tag ?X '{unfinished}}
+}
+
+\query\datalog{
+    ?X -:
+    {\rel/has-tag ?X '{note}}
+    {\rel/has-tag ?X '{systems}}
+    {\rel/has-tag ?X '{unfinished}}
+}
+
+\query\datalog{
+    ?X -:
+    {\rel/has-tag ?X '{note}}
+    {\rel/has-tag ?X '{lost}}
 }

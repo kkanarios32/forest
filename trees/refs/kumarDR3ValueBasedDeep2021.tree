@@ -2,7 +2,7 @@
 \title{DR3: Value-Based Deep Reinforcement Learning Requires Explicit Regularization}
 \date{2021-12}
 \author{Aviral Kumar}\author{Rishabh Agarwal}\author{Tengyu Ma}\author{Aaron Courville}\author{George Tucker}\author{Sergey Levine}
-\taxon{reference}
+\taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2112.04716}
 
 \meta{bibtex}{\startverb

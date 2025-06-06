@@ -1,6 +1,6 @@
 \date{2025-04-12}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{General definition of channel}
 \p{
 A channel (with memory) is a sequence of conditional distributions:_

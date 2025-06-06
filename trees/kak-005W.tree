@@ -1,6 +1,6 @@
 \date{2025-03-25}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Huffman Code}
 \p{Given #{x_1, \ldots x_m} proceed as follows:
 \ol{

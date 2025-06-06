@@ -1,5 +1,5 @@
 \date{2025-02-11}
-\taxon{definition}
+\taxon{Definition}
 \title{Achievability}
 \p{A positive real number #{R} is said to be \em{achievable} if for all #{\epsilon > 0} (perturbation parameter) there exists a block length #{N(\epsilon)} such that #{\forall n > N(\epsilon)} the following holds
 \ul{

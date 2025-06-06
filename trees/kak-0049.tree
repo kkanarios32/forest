@@ -1,7 +1,7 @@
 \date{2025-01-30}
 \import{base-macros}
 
-\taxon{lemma}
+\taxon{Lemma}
 \p{
 	Suppose #{\mathbb{P}_x(T_{y} \leq k) \geq a > 0} for all #{x \in S}. Then #{\mathbb{P}_x(T_y \geq mk) \leq (1-a)^m}, #{m \in \mathbb{N}}.
   }

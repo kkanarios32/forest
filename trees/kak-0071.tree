@@ -1,6 +1,6 @@
 \date{2025-04-12}
 \import{base-macros}
-\taxon{definition}
+\taxon{Definition}
 \title{Encoder}
 \p{
 An encoder (with feedback) with parameter #{ (n,\Theta) } for a channel is a vector of mappings #{ e_{i} } for #{ i=1,2,\ldots,n }, where

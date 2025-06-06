@@ -5,16 +5,17 @@
 \p{Each semester as part of [Lei](leiying)'s group, I am obligated to present a paper / sequence of papers to the group. Here are the slides for these presentations.}
 
 \section{Previous Group Meeting Talks}{
-  \query{
-    \open\query
-    \isect{\tag{group}}{\tag{talk}}
+  \query\datalog{
+  ?X -:
+  {\rel/has-tag ?X '{group}}
+  {\rel/has-tag ?X '{talk}}
   }
 }
 
 
 \section{Old #{\LaTeX} Notes from Undergrad}{
-\query{
-  \open\query
-  \tag{texnote}
+\query\datalog{
+  ?X -:
+  {\rel/has-tag ?X '{texnote}}
 }
 }

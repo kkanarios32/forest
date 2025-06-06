@@ -1,7 +1,7 @@
 \date{2024-12-27}
 \title{Array Method}
 \import{base-macros}
-\taxon{theorem}
+\taxon{Theorem}
 \p{Suppose that the array
 ##{
 \begin{array}{ccc}

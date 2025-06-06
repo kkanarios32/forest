@@ -1,6 +1,6 @@
 \date{2025-02-10}
 \title{AEP Theorem}
-\taxon{theorem}
+\taxon{Theorem}
 \p{
 Let #{\{X_{n}:n\geq1\}} denote i.i.d. #{\mathcal{X}}-valued r.v. with distribution #{P_{X}}. Then,
 

@@ -4,15 +4,16 @@
 \author{kellenkanarios}
 \tag{top}
 
-\p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more. I maintain short-form blogs in the [marginalia](kak-007L). See [upcoming blogs](kak-007M) and feel free to request!}
+\p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more. For more short-form blogs, see the [marginalia](kak-007L). See [upcoming blogs](kak-007M) and feel free to request! This blog also has a corresponding [Atom feed](/kak-0002/atom.xml)}
 
 \put\transclude/toc{false}
 \put\transclude/numbered{false}
-
-\scope{
 \put\transclude/metadata{true}
 \put\transclude/expanded{false}
+
 \transclude{kak-0005}
 \transclude{kak-005F}
 \transclude{kak-006Q}
-}
+
+
+\syndicate-current-tree-as-atom-feed

@@ -1,6 +1,6 @@
 \date{2025-02-03}
 \title{Linear convergence for strong convexity}
-\taxon{theorem}
+\taxon{Theorem}
 \p{
 Let #{f:\mathbb{R}^{n}\mapsto\mathbb{R}} be smooth and [#{\mu}-strongly convex](kak-0036), and suppose its gradient #{\nabla f(\mathbf{x})} is [#{L}-Lipschitz](kak-003J). Choose a fixed step size #{\tau_{k}\equiv\tau=\frac{2}{\mu+L}}, then
 
