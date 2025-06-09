@@ -5,5 +5,14 @@
 \title{Upcoming Blogs}
 \xmlns:html{http://www.w3.org/1999/xhtml}
 
+\ul{
+  \li{[[kak-003Y]]}
+  \li{[[kak-006Q]]}
+  \li{[[kak-003D]]}
+  \li{[[kak-007O]]}
+  \li{[[kak-007P]]}
+}
+
+
 \p{Request more below!}
 \<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

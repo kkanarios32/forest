@@ -1,7 +1,5 @@
 [forest]
-trees = ["trees" ]                   # The directories in which your trees are stored
-templates = ["templates"]
+trees = ["/home/kellen/Projects/forest/trees"]                   # The directories in which your trees are stored
 assets = ["assets"]                  # The directories in which your assets are stored
-prefixes = ["kak"]
 home = "kak-0001"
 url = "https://kkanarios32.github.io/"
