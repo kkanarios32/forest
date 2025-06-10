@@ -8,6 +8,6 @@ Let #{ \mathcal{X} } denote an alphabet of size #{ m }, and let #{ \mathcal{P}=\
   \li{Player 1, representing adversary, chooses a distribution #{P} from the set #{\mathcal{P}}}
   \li{Player 2, representing source coder, constructs a code according to the distribution #{Q \in \Delta_m} without knowledge of #{P}}
 }
-The goal of Player 2is to identify a #{Q} that minimizes the worst-case [redundancy](kak-006N)
+The goal of Player 2is to identify a #{Q} that minimizes the worst-case [redundancy](006N)
 ##{{\mathcal{R}}^{*}\equiv{\mathcal{R}}^{*}({\mathcal{P}}):=\operatorname*{min}_{Q\in\Delta_{m}}\operatorname*{max}_{P\in{\mathcal{P}}}{\mathcal{R}}(P,Q)=\operatorname*{min}_{Q\in\Delta_{m}}\operatorname*{max}_{P\in{\mathcal{P}}}D_{\mathrm{KL}}(P\parallel Q).}
   }

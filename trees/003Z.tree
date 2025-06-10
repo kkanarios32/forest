@@ -8,19 +8,19 @@
 
 \section{Markov Chains}{
   \section{Definitions}{
-    \transclude{kak-0040}
-    \transclude{kak-0041}
-    \transclude{kak-0042}
-    \transclude{kak-0043}
+    \transclude{0040}
+    \transclude{0041}
+    \transclude{0042}
+    \transclude{0043}
   }
   \section{Classification of States}{
-    \transclude{kak-0044}
-    \transclude{kak-0045}
-    \transclude{kak-0048}
-    \transclude{kak-0046}
-    \transclude{kak-0047}
-    \transclude{kak-0049}
-    \transclude{kak-0058}
-    \transclude{kak-0057}
+    \transclude{0044}
+    \transclude{0045}
+    \transclude{0048}
+    \transclude{0046}
+    \transclude{0047}
+    \transclude{0049}
+    \transclude{0058}
+    \transclude{0057}
   }
 }

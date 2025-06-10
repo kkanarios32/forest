@@ -2,6 +2,6 @@
 \import{base-macros}
 \taxon{Theorem}
 \title{Kraft's inequality}
-\p{Let #{e: \mathcal{X} \to \{0,1\}^* } denote a [prefix-free](kak-005N) code with lengths #{\ell_i = \ell(x_i)} for #{x_i \in \mathcal{X}}. Suppose #{|\mathcal{X}| = m}. Then the following must be true:
+\p{Let #{e: \mathcal{X} \to \{0,1\}^* } denote a [prefix-free](005N) code with lengths #{\ell_i = \ell(x_i)} for #{x_i \in \mathcal{X}}. Suppose #{|\mathcal{X}| = m}. Then the following must be true:
 ##{\sum_{i=1}^{m} 2^{-\ell_i} \leq 1}
 }

@@ -8,7 +8,7 @@
 ##{\frac{1}{n}\sum_{i=1}^{n}X_{i}\stackrel{{p}}{{\rightarrow}}\mu}
 }
 \proof{
-    By [[kak-002F]],
+    By [[002F]],
     ##{
     \begin{align*}
       \mathbb{P}(|\hat{X} - \mu| > a) \leq -\frac{\sigma^2}{a^2}

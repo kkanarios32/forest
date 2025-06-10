@@ -2,6 +2,6 @@
 \title{Minimum rate of source coding}
 \taxon{Definition}
 \p{
-The \em{minimum rate of source coding} #{R_s} is the infimum over all #{R} such that #{R} is [achievable](kak-005A) i.e.  
+The \em{minimum rate of source coding} #{R_s} is the infimum over all #{R} such that #{R} is [achievable](005A) i.e.  
 ##{R_s \coloneqq \inf \{R \mid R \text{ is achievable}\}}
   }

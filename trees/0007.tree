@@ -9,16 +9,16 @@
 \p{For these notes, I will attempt to refresh my knowledge of measure-theoretic probability along with learning stochastic processes for the first time. I will be following [Probability and Stochastics](https://link.springer.com/book/10.1007/978-0-387-87859-1) by Cinlar. Unfortunately, there are no solutions to exercises, but it is by far the best written book I have found.}
 
 \section{Borel's Normal Number Theorem}{
-  \transclude{kak-000S}
+  \transclude{000S}
   \remark{
-  The important takeaway from [[kak-000S]] is that extending (2) from finite to countable unions requires Heine-Borel theorem, illustrating that this extension is non-trivial. This will be important to remember as we continue to extend the Lebesgue measure to #{\sigma}-algebras. 
+  The important takeaway from [[000S]] is that extending (2) from finite to countable unions requires Heine-Borel theorem, illustrating that this extension is non-trivial. This will be important to remember as we continue to extend the Lebesgue measure to #{\sigma}-algebras. 
   }
   This section aims to motivate why we need to approach probability from a measure theoretic point of view.
   As an example, we will do the first exercise for this section.
-  \transclude{kak-000L}
+  \transclude{000L}
   \scope{
   \put\transclude/numbered{false}
-  \transclude{kak-000N}
+  \transclude{000N}
   }
   I think my main takeaway from this is that infinite sequences break discrete probability because each discrete event will have probability zero. This is not actually a problem because in an infinite sequence the occurence of any such sequence "feasibly" has zero probability. However, we still want to reason about probabilistic things like the convergence of the average of the sequence. Since discrete probability is broken, we cannot even use it for these things. This is why we need to use measure theory to allow for zero probability sequences, but still provide information about these more "general" events. Who knows if this intuition is right though?
 }
@@ -36,32 +36,32 @@
 
 
 \section{Probability Measures}{
-\transclude{kak-000O}
+\transclude{000O}
 \p{It seems, in this section, we aim to answer why certain decisions were made regarding what can be analyzed. For example, 
 }
-\question{Why do we only allow consider countable unions in the definition of a [[kak-000O]]?}
+\question{Why do we only allow consider countable unions in the definition of a [[000O]]?}
 \answer{Because this is what god intended.}
-\transclude{kak-000P}
-\transclude{kak-000Q}
-\transclude{kak-000R}
+\transclude{000P}
+\transclude{000Q}
+\transclude{000R}
 }
 
 \section{Existence and Extension}{
-    \p{Here we will see how we can define a probability measure on an algebra #{\mathscr{F}_0} and get a unique extension to the [[kak-000O]] #{\mathscr{F} = \sigma(\mathscr{F}_0)}. I guess the key here is uniqueness?}
-    \transclude{kak-000T}
+    \p{Here we will see how we can define a probability measure on an algebra #{\mathscr{F}_0} and get a unique extension to the [[000O]] #{\mathscr{F} = \sigma(\mathscr{F}_0)}. I guess the key here is uniqueness?}
+    \transclude{000T}
     \remark{Taking #{P_*(A) = 1 - P^*(A^c)} gives the inner measure. This is just analogously approximating from the inside.}
     Intuition is that the sets that are "measurable" should be sets that can be arbitrarily approximated from the inside and outside, or equivalently
 ##{P^*(A) + P^*(A^c) = 1}
     \ol{
       \li{My intution for this is that if a set is not arbitrarily well approximated by countable other sets from our algebra then we cannot hope to get an accurate measure from our measure defined on only the algebra.}
-      \li{The countableness is just from the definition of the [[kak-000O]].}
+      \li{The countableness is just from the definition of the [[000O]].}
     }
     \p{
-    Then we can use #{P^*} as our measure. To do this, we will need to show that #{P^*} is countable additive as one might expect. The rest of the properties of a [[kak-000P]] are trivial.
+    Then we can use #{P^*} as our measure. To do this, we will need to show that #{P^*} is countable additive as one might expect. The rest of the properties of a [[000P]] are trivial.
     }
 
     \proof{
-      \p{Suppose that #{A \subset \bigcup_{n = 1}^{\infty} A_n}. By the definition of [[kak-000T]], we can find some #{B_{nk}}, such that #{A_n \subset \bigcup_{k = 1}^{\infty} B_{nk}} where 
+      \p{Suppose that #{A \subset \bigcup_{n = 1}^{\infty} A_n}. By the definition of [[000T]], we can find some #{B_{nk}}, such that #{A_n \subset \bigcup_{k = 1}^{\infty} B_{nk}} where 
 ##{\sum_{k} P(B_{nk}) < P^*(A_n) + \epsilon 2^{-k}}
 Now take #{C_n = \bigcup_{k} B_{nk}}, so that #{\bigcup_{n} A_n \subset \bigcup_{n} C_n} and
 ##{P^*\left(\bigcup_n A_n\right) < \sum_{n} P(C_n) = \sum_{n} \sum_{k} P(B_{nk}) < \sum_{n} P^*(A_n) + \epsilon}
@@ -72,64 +72,64 @@ Now take #{C_n = \bigcup_{k} B_{nk}}, so that #{\bigcup_{n} A_n \subset \bigcup_
     \p{
       It turns out that for some reason only enforcing #{A} and its complement to sum to #{1} is not restrictive enough? From this, we end up with the final condition
     }
-    \transclude{kak-000U}
+    \transclude{000U}
     \p{
         You then only need to show two things:
         \ol{
             \li{The class of #{P^*}-measurable sets contains #{\mathscr{F_0}},}
-            \li{The class of #{P^*}-measurable sets is a [[kak-000O]].}
+            \li{The class of #{P^*}-measurable sets is a [[000O]].}
           }
-        From these, we can conclude that #{P^*} is at least defined on a [[kak-000O]] containing #{\sigma(\mathscr{F}_0)}. Restricting #{P^*} to #{\sigma(\mathscr{F}_0)}, then yields the desired extension.
+        From these, we can conclude that #{P^*} is at least defined on a [[000O]] containing #{\sigma(\mathscr{F}_0)}. Restricting #{P^*} to #{\sigma(\mathscr{F}_0)}, then yields the desired extension.
     }
 }
 
 \section{Uniqueness}{
     \p{We now want to show that the extension we developed in the previous section is actually unique. The first question we have is what do we mean by unique? To answer this, we need to remember what we have done so far.
     \ol{
-        \li{We have a [[kak-000P]] #{P}, defined on an algebra #{\mathscr{F}_0}.}
+        \li{We have a [[000P]] #{P}, defined on an algebra #{\mathscr{F}_0}.}
         \li{We then extended #{P} to #{\sigma(\mathscr{F}_0)} via #{P^*}, so that for every #{A \in \mathscr{F}_0} we have #{P(A) = P^*(A)} and #{P^*} is defined on all of #{\sigma(\mathscr{F}_0)}}
       }
       From this, our only restriction is that #{P^*(A) = P(A)} for #{A \in \mathscr{F}_0}. Therefore, uniqueness here means that if #{P^*(A) = Q(A)} for some #{Q} and every #{A \in \mathscr{F}_0}. Then #{P^*(A) = Q(A)} for every #{A \in \sigma(\mathscr{F}_0)}.
     }
 
-\transclude{kak-0018}
-\transclude{kak-0019}
-\p{I was a bit unsure that a [[kak-0019]] is not a [[kak-000O]], but the author provided an example that I will walk through to understand the distinction }
+\transclude{0018}
+\transclude{0019}
+\p{I was a bit unsure that a [[0019]] is not a [[000O]], but the author provided an example that I will walk through to understand the distinction }
 
 \example{
-Consider a four point space #{\Omega = \{x_1, x_2, x_3, x_4\}}. We can define a [[kak-0019]] by taking #{\mathscr{L} = \emptyset, \Omega,} and the six two point sets. The union of any two disjoint two point sets will be #{\Omega}. However, a non-disjoint union of two disjoint sets can result in a three point set, which is not in #{\mathscr{L}}. These non-disjoint unions would be covered in a [[kak-000O]].
+Consider a four point space #{\Omega = \{x_1, x_2, x_3, x_4\}}. We can define a [[0019]] by taking #{\mathscr{L} = \emptyset, \Omega,} and the six two point sets. The union of any two disjoint two point sets will be #{\Omega}. However, a non-disjoint union of two disjoint sets can result in a three point set, which is not in #{\mathscr{L}}. These non-disjoint unions would be covered in a [[000O]].
   }
 
 \p{To remedy this disconnect, we have the following lemma:}
 
-\transclude{kak-001A}
+\transclude{001A}
 
 \p{In our example, we could take the intersection of say #{\{x_1, x_2\}} and #{\{x_2, x_3\}} to get #{\{x_2\}}. We could then take a disjoint union of #{\{x_1, x_3\}} and #{\{x_2\}} to get #{\{x_1, x_2, x_3\}}.} 
 
-\transclude{kak-001B}
+\transclude{001B}
 
-\p{Now we will see how this allows us to prove our desired result i.e. the uniqueness of our extension of a probability on an algebra to the [[kak-0000]] via the outer measure.}
+\p{Now we will see how this allows us to prove our desired result i.e. the uniqueness of our extension of a probability on an algebra to the [[0000]] via the outer measure.}
 
-\transclude{kak-001C}
+\transclude{001C}
 
-\p{An (important?) note is that this works due to our definition of a [[kak-000P]]. Namely, countable additivity is really a condition on countable disjoint unions, meaning that the [[kak-000O]] induced by a [[kak-000P]] does not make full use of the generality allowed under arbitrary countable unions because it must satisfy countable additivity.}
+\p{An (important?) note is that this works due to our definition of a [[000P]]. Namely, countable additivity is really a condition on countable disjoint unions, meaning that the [[000O]] induced by a [[000P]] does not make full use of the generality allowed under arbitrary countable unions because it must satisfy countable additivity.}
 
-\p{For completeness and future use, we introduce here the notion of monotone classes and Halmo's useful [theorem](kak-001E).}
-\transclude{kak-001D}
-\transclude{kak-001E}
+\p{For completeness and future use, we introduce here the notion of monotone classes and Halmo's useful [theorem](001E).}
+\transclude{001D}
+\transclude{001E}
 
 \p{Also for completeness, we introduce completeness lol.}
 
-\transclude{kak-001F}
+\transclude{001F}
 
 \p{You might be wondering when this is not the case because we have subadditivity. However, it is not the case that #{P(A) > 0} but instead that #{A} is not measurable. As an example,}
 
-\transclude{kak-001G}
+\transclude{001G}
 
 \refcardt{exercise}{}{3.2}{billingsley1986}{
-  Let #{P} be a probability measure on a field #{\mathscr{F}_{0}} and for every subset #{A} of #{\Omega} define #{P^{\star}(A)} by [(3.1)](kak-000T). Denote also by #{P} the extension of #{P} to #{\mathscr{F}=\sigma(\mathscr{F}_{0})}.
+  Let #{P} be a probability measure on a field #{\mathscr{F}_{0}} and for every subset #{A} of #{\Omega} define #{P^{\star}(A)} by [(3.1)](000T). Denote also by #{P} the extension of #{P} to #{\mathscr{F}=\sigma(\mathscr{F}_{0})}.
   \ol{
-      \li{Show that #{A} is [[kak-000U]] if and only if #{P^*(A) = P_*(A)}.}
+      \li{Show that #{A} is [[000U]] if and only if #{P^*(A) = P_*(A)}.}
     }
 }
 \solution{
@@ -153,87 +153,87 @@ Consider a four point space #{\Omega = \{x_1, x_2, x_3, x_4\}}. We can define a 
         \li{#{E} is \strong{NOT} necessarily in #{\mathscr{F}} hence the need for #{B}.}
       }
     }
-    \li{#{P} (abuse of notation) is #{P^*} restricted to the [[kak-000U]] subsets of #{\Omega}.}
+    \li{#{P} (abuse of notation) is #{P^*} restricted to the [[000U]] subsets of #{\Omega}.}
   }
-  Common question is why we cannot just apply finite additivity and have everything [[kak-000U]]? The answer is that #{P^*} is not countably subadditive on #{\mathcal{P}(\Omega)} but only the [[kak-000U]] sets.
+  Common question is why we cannot just apply finite additivity and have everything [[000U]]? The answer is that #{P^*} is not countably subadditive on #{\mathcal{P}(\Omega)} but only the [[000U]] sets.
 }
 }
 
 \section{Denumerable Probabilities}{
 The results of this section concern infinite sequences of events in a probability space. They will be illustrated by examples in the unit interval. By this will always be meant the triple (#{\Omega}, #{\mathscr{F}}, #{P}) for which #{\Omega} is (0,1), #{\mathscr{F}} is the #{\sigma}-field #{\mathscr{B}} of Borel sets there, and #{P(A)} is for #{A} in #{\mathscr{F}} the Lebesgue measure #{\lambda(A)} of #{A}. 
-\transclude{kak-001J}
-\transclude{kak-001I}
-\transclude{kak-001M}
-\transclude{kak-001N}
-\transclude{kak-001K}
-\transclude{kak-001O}
-\transclude{kak-001P}
-\p{\strong{Meaning in english:} In the book, they give the example of even and odd numbered coin tosses. We want to know when a new event only depends on even or odd coin tosses. Concretely, we know that even and odd coin tosses are independent, and we want to know if, for example, the outcome of every fourth coin toss is independent of odd tosses. We can do this rigorously by showing that this event is in the #{\sigma}-algebra of even coin tosses. Then by [Theorem 5.7](kak-001P), we know that this event is also independent of odd coin tosses.}
-\transclude{kak-001R}
+\transclude{001J}
+\transclude{001I}
+\transclude{001M}
+\transclude{001N}
+\transclude{001K}
+\transclude{001O}
+\transclude{001P}
+\p{\strong{Meaning in english:} In the book, they give the example of even and odd numbered coin tosses. We want to know when a new event only depends on even or odd coin tosses. Concretely, we know that even and odd coin tosses are independent, and we want to know if, for example, the outcome of every fourth coin toss is independent of odd tosses. We can do this rigorously by showing that this event is in the #{\sigma}-algebra of even coin tosses. Then by [Theorem 5.7](001P), we know that this event is also independent of odd coin tosses.}
+\transclude{001R}
 \section{Subfields}{
 \remark{Intuition of subfields are spaces with partial information. My best
 memory of this coming up in probability was conditional expectation.
 Esssentially, we need to consider the subfield of events conditioned on some
 event that already occured.}
-\transclude{kak-001S}
+\transclude{001S}
 \p{From this definition, we can conclude an observer with the information of
 #{\sigma(\mathscr{A})} has only the information of the equivalence class but
 cannot identify a specific point from this class.}
 }
 \section{The Borel-Cantelli Lemmas}{
-    \transclude{kak-001Q}
-    \transclude{kak-001T}
+    \transclude{001Q}
+    \transclude{001T}
 }
 \section{Zero-one Law}{
-\transclude{kak-001U}
+\transclude{001U}
 \example{The #{\lim\sup_n A_n} and #{\lim\inf_n A_n} are both tail events.}
   }
-  \transclude{kak-001V}
+  \transclude{001V}
 }
 
 \section{Random Variables}{
-  \transclude{kak-001W}
+  \transclude{001W}
   \example{
     Consider the function 
     ##{X = \sum_{i} x_i I_{A_i}}
     If #{A_i} are finite partition of #{\Omega} into #{\mathscr{F}}-sets, then inverse image is at most countable union of the A_i's, which is an #{\mathscr{F}}-set. Therefore, this function is measurable.
   }
-  \transclude{kak-0022}
-  \transclude{kak-001X}
+  \transclude{0022}
+  \transclude{001X}
   \section{Convergence of Random Variables}{
 In probability, rather than standard convergence, we actually can consider convergence with high probability or almost surely (should come up later). Formally, we care about measuring the probability of the event #{\{\omega \mid \lim_n X_n(\omega) \to X(\omega)\}}. The first question we must ask is whether this set is measurable. They do not really cover this in the textbook, but it is an important trick that comes up a lot.
 \proof{
-We consider the complement. Note that the sequence of random variables not converging can be written as #{\forall \epsilon, \exists n} such that #{|X_n(\omega) - X(\omega)| \geq \epsilon}. For a fixed #{\epsilon}, this is the #{\lim\sup} of the sequence #{A_n \coloneqq [|X_n - X| \geq \epsilon]}. We know that #{\lim\sup} of measurable sequence is measurable because it is a countable intersection of countable unions. Therefore, the last thing we need is to show for all #{\epsilon}. This can be done just using rationals because #{\mathbb{Q}} is [dense](kak-001Y) in #{\mathbb{R}}. Then we have a countable union of countable sets as desired.
+We consider the complement. Note that the sequence of random variables not converging can be written as #{\forall \epsilon, \exists n} such that #{|X_n(\omega) - X(\omega)| \geq \epsilon}. For a fixed #{\epsilon}, this is the #{\lim\sup} of the sequence #{A_n \coloneqq [|X_n - X| \geq \epsilon]}. We know that #{\lim\sup} of measurable sequence is measurable because it is a countable intersection of countable unions. Therefore, the last thing we need is to show for all #{\epsilon}. This can be done just using rationals because #{\mathbb{Q}} is [dense](001Y) in #{\mathbb{R}}. Then we have a countable union of countable sets as desired.
   }
-    \transclude{kak-001Z}
-    \transclude{kak-0020}
+    \transclude{001Z}
+    \transclude{0020}
     \remark{
-        By [Theorem 5.5](kak-001K), almost sure convergence #{\implies} convergence in probability. Converse is NOT true.
+        By [Theorem 5.5](001K), almost sure convergence #{\implies} convergence in probability. Converse is NOT true.
       }
       \example{Can make array of rows, where the #{n}th row consists of #{n} intervals that evenly divide #{[0,1]}. Then #{P(A_n) \to 0} but #{[A_n \text{ i.o}] = [0,1]} }
     }
     \section{Independence}{
-        \transclude{kak-0021}
+        \transclude{0021}
       }
     \section{Existence of Independent Sequences}{
-        \transclude{kak-0023}
-        \transclude{kak-0024}
-\p{\strong{Guess for english translation}: I think what this is saying is that rather than try to define a probability space for a random variable, we can instead just pick probability measures and know that the [[kak-001W]] come for free? i.e. (from the book) we can just define a trivial space #{\Omega = \{1, 0\}} and probability measure #{P(1) = p}, #{P(0) = 1 - p} and know that we can get a Bernoulli random variable? In this case #{X(1) = 1}, #{X(0) = 0} such that #{P(X = 1) = p} and #{P(X = 0) = 1 - p}?}
+        \transclude{0023}
+        \transclude{0024}
+\p{\strong{Guess for english translation}: I think what this is saying is that rather than try to define a probability space for a random variable, we can instead just pick probability measures and know that the [[001W]] come for free? i.e. (from the book) we can just define a trivial space #{\Omega = \{1, 0\}} and probability measure #{P(1) = p}, #{P(0) = 1 - p} and know that we can get a Bernoulli random variable? In this case #{X(1) = 1}, #{X(0) = 0} such that #{P(X = 1) = p} and #{P(X = 0) = 1 - p}?}
 
   \remark{In the text, they say that the underlying probability space does not really matter. Basically, all calculations are determined by the distribution in range space. So I guess that is also what this theorem is getting at? }
   }
 
   \section{Expected Value}{
-\transclude{kak-0029}
-\transclude{kak-002A}
-\transclude{kak-002B}
-\transclude{kak-002C}
+\transclude{0029}
+\transclude{002A}
+\transclude{002B}
+\transclude{002C}
     }
   \section{Inequalities}{
-    \transclude{kak-002E}
-    \transclude{kak-002F}
-\transclude{kak-002G}
-\transclude{kak-002H}
+    \transclude{002E}
+    \transclude{002F}
+\transclude{002G}
+\transclude{002H}
     } 
 }
 

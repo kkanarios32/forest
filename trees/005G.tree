@@ -3,7 +3,7 @@
 \author{kellenkanarios}
 \xmlns:html{http://www.w3.org/1999/xhtml}
 
-\p{I will be reading and reviewing one paper a week (tentatively). More accurately, I will allocate ~6hrs a week to read a paper. However much I accomplish in this time will determine the actual rate of these reviews. This will be an infinitely expanding blog to keep track of all of these reviews. More ambitiously, I may try to reproduce any paper that I find particularly interesting. These special papers might be a Paper of the Month!. See [upcoming papers](kak-007N) and feel free to request!}
+\p{I will be reading and reviewing one paper a week (tentatively). More accurately, I will allocate ~6hrs a week to read a paper. However much I accomplish in this time will determine the actual rate of these reviews. This will be an infinitely expanding blog to keep track of all of these reviews. More ambitiously, I may try to reproduce any paper that I find particularly interesting. These special papers might be a Paper of the Month!. See [upcoming papers](007N) and feel free to request!}
 
 
 \<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{poaw}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

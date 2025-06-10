@@ -10,7 +10,7 @@
     As an example, in [Q-learning](suttonReinforcementLearningIntroduction2018) you interact with the environment and learn via updating your Q-function. You then immediately recover an action via #{a \in \arg\max_{a} Q(s, a)} This does not require that you input a model rather you only input the current state and receive the corresponding action. Learning can be seen as distilling everything needed into the model, where planning allows the model to see and plan based on the consequences of potential actions using a model of the environment.
   }
 }
-\transclude{kak-006R}
+\transclude{006R}
 
 
 \<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{mcts}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

@@ -10,6 +10,6 @@ x_{k+1} &= p_{k+1}-\alpha\nabla f(p_{k+1})
 }
 \ul{
 \li{\strong{Not} a descent method.}
-\li{With properly chosen #{\alpha} and #{\beta} can achieve [optimal](kak-004N) convergence rate #{O(1/k^2)}}
+\li{With properly chosen #{\alpha} and #{\beta} can achieve [optimal](004N) convergence rate #{O(1/k^2)}}
 }
 }

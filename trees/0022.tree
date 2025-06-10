@@ -1,9 +1,9 @@
 \date{2024-12-28}
 \title{Finite Sequence Measurability}
 \taxon{Theorem}
-\p{Let #{X_1, \ldots, X_n} be [[kak-001W]]'s
+\p{Let #{X_1, \ldots, X_n} be [[001W]]'s
 \ol{
-    \li{The [[kak-000O]] #{\sigma(X_1, \ldots, X_n)} consists of the sets
+    \li{The [[000O]] #{\sigma(X_1, \ldots, X_n)} consists of the sets
 ##{\left[(X_1, \ldots, X_n) \in H\right] = \left[\omega \mid (X_1(\omega), \ldots, X_n(\omega)) \in H\right]}
     for #{H \subset \mathbb{R}^n}.
     }

@@ -9,8 +9,8 @@
 
 \section{Convex Optimization Background}{
 
-\transclude{kak-0034}
-\transclude{kak-0035}
+\transclude{0034}
+\transclude{0035}
 
 \p{
 \strong{Operations that preserve convexity}
@@ -20,11 +20,11 @@
   }
 }
 
-\transclude{kak-0036}
-\transclude{kak-0037}
+\transclude{0036}
+\transclude{0037}
 
-\transclude{kak-0038}
-\transclude{kak-0039}
+\transclude{0038}
+\transclude{0039}
 }
 
 \section{Useful Miscellanous Math Background}{
@@ -47,17 +47,17 @@
     Where #{\pi} is a cyclic permutation on #{\{1,2,\cdots,n\}}
     } 
     }
-    \transclude{kak-003A}
-    \transclude{kak-003B}
-    \transclude{kak-003C}
-    \transclude{kak-003G}
-    \transclude{kak-003H}
-    \transclude{kak-003I}
+    \transclude{003A}
+    \transclude{003B}
+    \transclude{003C}
+    \transclude{003G}
+    \transclude{003H}
+    \transclude{003I}
   }
     \section{Taylor Expansion and Lipschitz Functions}{
-      \transclude{kak-003J}
-      \transclude{kak-003K}
-      \transclude{kak-003L}
+      \transclude{003J}
+      \transclude{003K}
+      \transclude{003L}
       \remark{
         \ul{
           \li{ If #{f:\mathbb{R}^n\mapsto\mathbb{R}} is continuously differentiable, ##{\begin{aligned}      |f(\pmb{x})-f(\pmb{y})| &\leq & \sup_{\pmb{z} \in \mathbb{R}^n} ||\nabla f(\pmb{z})||_2 \, ||\pmb{x}-\pmb{y}||_2   \end{aligned}} so that the Lipschitz constant of #{f} is #{\sup_{\pmb{z} \in \mathbb{R}^n} ||\nabla f(\pmb{z})||_2}.}
@@ -65,12 +65,12 @@
           }
         }
       }
-      \transclude{kak-003M}
-      \transclude{kak-003N}
-      \transclude{kak-003O}
+      \transclude{003M}
+      \transclude{003N}
+      \transclude{003O}
     }
   \section{Optimality Conditions}{
-    \transclude{kak-003P}
+    \transclude{003P}
     \ul{
     \li{\strong{First order necessary condition}:
     If #{\ \mathbf{x_{\star}}} is a local minimizer of #{\ f:\mathbb{R}^{n}\mapsto\mathbb{R}}, and #{f} is continuously differentiable in an open neighborhood of #{\ \mathbf{x_{\star}}}, then we must have ##{\boxed{\nabla f(\mathbf{x_{\star}})\ =\ \mathbf{0}.}}
@@ -106,60 +106,60 @@
     Want to find
 ##{\operatorname*{min}_{\mathbf{x}}\ f(\mathbf{x}),\quad\text{s.t.}\quad\mathbf{x}\ \in\ \mathcal{C}.} Solve the problem via iterative methods of optimization, which produce a sequence of points ##{\mathbf{x}_{1},\ \mathbf{x}_{2},\ \cdots,\mathbf{x}_{k},\cdots} starting from an initialization #{\mathbf{x}_{0}}. 
     }
-    \transclude{kak-003R}
-    \transclude{kak-003Q}
-    \transclude{kak-003S}
+    \transclude{003R}
+    \transclude{003Q}
+    \transclude{003S}
   }
 
 }
 \section{Iterative Methods}{
   \strong{Assume:}
   \ul{
-      \li{#{f: \mathbb{R}^n \to \mathbb{R}} is a [[kak-004D]] and a [[kak-003K]].}
-      \li{The gradient #{\nabla f(\mathbf{x})} is [#{L}-Lipschitz](kak-003J).}
+      \li{#{f: \mathbb{R}^n \to \mathbb{R}} is a [[004D]] and a [[003K]].}
+      \li{The gradient #{\nabla f(\mathbf{x})} is [#{L}-Lipschitz](003J).}
     }
   \section{Convergence of Gradient Descent}{
-  \transclude{kak-004L}
-  \transclude{kak-004M}
-  \transclude{kak-004N}
+  \transclude{004L}
+  \transclude{004M}
+  \transclude{004N}
   }
   \section{Accelerated Gradient Descent}{
-\transclude{kak-004O}
-\transclude{kak-004P}
+\transclude{004O}
+\transclude{004P}
     }
   \section{Line Search}{
-\transclude{kak-004Q}
+\transclude{004Q}
 \remark{Way to computationally expensive to use in practice.}
-    \transclude{kak-004R}
-    \transclude{kak-004S}
+    \transclude{004R}
+    \transclude{004S}
     \remark{
-        Wolfe condition requires evaluating gradient of function each update to #{\tau_k}. However,  [[kak-004R]] only requires evaluating gradient once. Therefore, it is primarily used in practice.
+        Wolfe condition requires evaluating gradient of function each update to #{\tau_k}. However,  [[004R]] only requires evaluating gradient once. Therefore, it is primarily used in practice.
       }
     \remark{
         Backtracking is not used in optimizing DNNs because even function evaluation is very expensive.
       }
-\transclude{kak-004T}
+\transclude{004T}
     }
   \section{How function properties affect convergence}{
-    \transclude{kak-004U}
+    \transclude{004U}
     \remark{
-        [[kak-0036]] is a sufficient but not necessary condition for linear convergene of gradient descent.
+        [[0036]] is a sufficient but not necessary condition for linear convergene of gradient descent.
       }
     }
   \section{Newton and Quasi-Newton Method}{
-\transclude{kak-004V}
-\transclude{kak-004W}
+\transclude{004V}
+\transclude{004W}
   }
 }
 \section{Optimization on the Riemmanian Manifold}{
-\transclude{kak-0073}
-\transclude{kak-0072}
-\transclude{kak-0075}
-\transclude{kak-0074}
-\transclude{kak-0076}
-\transclude{kak-0079}
-\transclude{kak-0078}
-\transclude{kak-0077}
-\transclude{kak-007A}
-\transclude{kak-007B}
+\transclude{0073}
+\transclude{0072}
+\transclude{0075}
+\transclude{0074}
+\transclude{0076}
+\transclude{0079}
+\transclude{0078}
+\transclude{0077}
+\transclude{007A}
+\transclude{007B}
 }

@@ -14,7 +14,7 @@ Define #{p_i = \frac{a_i}{A}}, #{q_i = \frac{b_i}{B}}, then
   &= \sum \frac{a_i}{A} \log{\frac{a_i}{b_i}} - \log{\frac{A}{B}} \\
 \end{align*}
 }
-By [[kak-004E]],
+By [[004E]],
 ##{
 \begin{align*}
   \sum \frac{a_i}{A} \log{\frac{a_i}{b_i}} - \log{\frac{A}{B}} \geq 0

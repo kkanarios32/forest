@@ -3,7 +3,7 @@
 \taxon{Definition}
 \title{Smooth Manifold}
 \p{
-We say #{ \mathcal{M}\subseteq\mathbb{R}^{n} } is an embedded smooth submanifold of codimension #{ k } if there exists a [smooth function](kak-003K) #{ g:\mathbb{R}^{n}\mapsto\mathbb{R}^{k} }, such that
+We say #{ \mathcal{M}\subseteq\mathbb{R}^{n} } is an embedded smooth submanifold of codimension #{ k } if there exists a [smooth function](003K) #{ g:\mathbb{R}^{n}\mapsto\mathbb{R}^{k} }, such that
 
 ##{ \mathcal{M}\equiv\left\{\boldsymbol{x}\in\mathbb{R}^{n}\mid g(\boldsymbol{x})=\boldsymbol{0}\right\}, }
 

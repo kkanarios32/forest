@@ -9,19 +9,19 @@
 \p{ \strong{Unsupervised setting:} Now suppose that we get rid of labels and are just given #{n} dog samples #{\mathcal{D}} from some distribution #{p_{\mathcal{D}}}. We now want to be able to learn #{p_{\theta}} to somehow estimate this distribution. An approach is to learn to distinguish the sample dogs given from random noise. To do so, we generate #{n} random images #{\mathcal{R}} according to some distribution #{p_{\mathcal{R}}}. We can now return to the supervised learning setting, where we treat #{\mathcal{D}} and #{\mathcal{R}} as two classes. If we recall standard supervised learning practice, given a sample #{x}, we then want to find ##{p(\mathcal{D} \mid x) = 1 - p(\mathcal{R} \mid X).} 
 As an explicit example, we will use logistic regression. Namely, we will model #{p(x) = p(\mathcal{D} \mid x)} as ##{p_{\theta}(x) = \frac{1}{1 + e^{-G_{\theta}(x)}}.} However, #{p_{\theta}(x)} is estimating #{p(\mathcal{D} \mid x)}, where we care about #{p(x \mid \mathcal{D})}. To estimate the correct quantity, we need to leverage our knowledge of the noise distribution. Recall that if #{p_{\theta}(x) = p(\mathcal{D} \mid x)} then #{G_{\theta}(x) = \log \frac{p(x \mid \mathcal{D})}{p(x \mid \mathcal{R})}}. Since we generated the samples from #{\mathcal{R}}, we have the explicit distribution i.e. #{p(x \mid \mathcal{R}) = p_{\mathcal{R}}(x)}. Therefore, we can restrict #{G_{\theta}} to explicitly learn #{p(x \mid \mathcal{D})} by considering ##{G_{\theta}(x) = \log p_{\theta}(x \mid \mathcal{D}) - \log p_{\mathcal{R}}(x),} considering the cross entropy loss we get the [NCE loss](nce)
 }
-\transclude{kak-000E}
+\transclude{000E}
 
-\p{In [[gutmann2012]], they show under mild conditions that the estimator #{p_{\theta}(x \mid D) \to p_{\mathcal{D}}(x)} in probability as the number of samples in the loss goes to infinity. Equivalently, the estimator is [consistent](kak-000F).}
+\p{In [[gutmann2012]], they show under mild conditions that the estimator #{p_{\theta}(x \mid D) \to p_{\mathcal{D}}(x)} in probability as the number of samples in the loss goes to infinity. Equivalently, the estimator is [consistent](000F).}
 
 \p{\strong{Time series:} Before we get to contrastive RL, it is a natural question to wonder how does this apply to temporal sequences? Concretely, we want to make predictions about the future given the current "context". However, we want to do so in an unsupervised way, meaning we are only given trajectories not a notion of what it means for a trajectory to be good. Naively, one can try to do this in a supervised manner. For a #{k} step prediction, this would just be your model predicting what will happen in #{k} steps then seeing if it matches what occured #{k} steps in the future in the sample trajectory. However, if your sample space #{\mathcal{X}} is very high-dimensional, modeling this relationship can require an exorbinant amount of trajectories.}
 
 \p{Fast forwarding to contrastive RL, current work is primarily considered with a particular contrastive objective.}
 
-\transclude{kak-000B}
+\transclude{000B}
 
 \p{Now we need to unpack this very ominous loss. To start, what are #{x_k} and #{c_t}?}
 
-\transclude{kak-000C}
+\transclude{000C}
 
 ##{
 \operatorname*{max}_{f(u,v)}\mathbb{E}_{(u,v^{+})\sim p(u,v)}\left[\log\sigma(\underbrace{f(u,{\green v^{+}})}_{\phi(u)^{T}\psi({\green v^{+}})})+\log(1-\sigma(\underbrace{f(u,{\red v^{-}})}_{\phi(u)^{T}\psi({\red v^{-}})}))\right]

@@ -3,7 +3,7 @@
 \taxon{Theorem}
 \import{base-macros}
 
-\p{#{\mathcal{L}_N} from [[vandenOord2018]] maximizes a lower bound on the [[kak-000V]] between #{x_{t + k}} and #{c_t}.}
+\p{#{\mathcal{L}_N} from [[vandenOord2018]] maximizes a lower bound on the [[000V]] between #{x_{t + k}} and #{c_t}.}
 \proof{All we must do is plug #{\frac{p(x \mid c)}{p(x)}} back into the objective.
   ##{\begin{align*}
     \mathcal{L}_{\mathbb{N}}^{\text{opt}}&=-\,\mathbb{E}\log\left[\frac{\frac{p(x_{t+k}|c_{t})}{p(x_{t+k})}}{\frac{p(x_{t+k}|c_{t})}{p(x_{t+k})}+\sum_{x_{j}\in X_{\text{neg}}}\frac{p(x_{j}|c_{t})}{p(x_{j})}}\right] \\

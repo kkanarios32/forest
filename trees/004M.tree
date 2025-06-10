@@ -16,7 +16,7 @@ Given #{f} is convex and smooth, and #{\mathbf{x}_*} is an optimal solution, the
 ##{f(\mathbf{x}_{\star})\geq f(\mathbf{x})+\nabla f(\mathbf{x})^{\top}(\mathbf{x}_{\star}-\mathbf{x})}
 Flipping the inequality yields
 ##{f(\mathbf{x})\leq f(\mathbf{x}_{\star})+\nabla f(\mathbf{x})^{\top}(\mathbf{x}-\mathbf{x}_{\star})}
-By [previous lemma](kak-004L), taking #{\mathbf{x}' = \mathbf{x} - \frac{1}{L} \nabla f( \mathbf{x})} yields
+By [previous lemma](004L), taking #{\mathbf{x}' = \mathbf{x} - \frac{1}{L} \nabla f( \mathbf{x})} yields
 ##{f(\mathbf{x}^{\prime})\leq f(\mathbf{x})-{\frac{1}{2L}}\left||\nabla f(\mathbf{x})\right||_{2}^{2}}
 such that
 ##{f(\mathbf{x}^{\prime})\leq f(\mathbf{x}_{\star})+\nabla f(\mathbf{x})^{\top}(\mathbf{x}-\mathbf{x}_{\star})-{\frac{1}{2L}}\left||\nabla f(\mathbf{x})\right||_{2}^{2}}

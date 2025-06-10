@@ -3,5 +3,5 @@
 \taxon{Definition}
 \title{Retraction}
 \p{
-A retraction is a [smooth map](kak-003K) #{ R:\mathrm{T}\mathcal{M}\mapsto\mathcal{M} } such that if #{ h(t)=R(\mathbf{x},t\mathbf{v})=R_{\mathbf{x}}(t\mathbf{v}) }, then #{ h(0)=\mathbf{x} } and #{ h^{\prime}(0)=\mathbf{v} }.
+A retraction is a [smooth map](003K) #{ R:\mathrm{T}\mathcal{M}\mapsto\mathcal{M} } such that if #{ h(t)=R(\mathbf{x},t\mathbf{v})=R_{\mathbf{x}}(t\mathbf{v}) }, then #{ h(0)=\mathbf{x} } and #{ h^{\prime}(0)=\mathbf{v} }.
 }

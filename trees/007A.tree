@@ -3,7 +3,7 @@
 \taxon{Definition}
 \title{Riemannian Hessian}  
 \p{
-Let #{ f:{\cal M}\mapsto\mathbb{R} } be [smooth](kak-003K) on the [[kak-0072]] #{ {\cal M} }. The Riemannian Hessian #{ {\rm Hess}\,f(\mathbf{x}):{\rm T}_{\mathbf{x}}{\cal M}\mapsto{\rm T}_{\mathbf{x}}{\cal M} } of #{ f } at #{ \mathbf{x}\in{\cal M} } is a mapping from #{ {\rm T}_{\mathbf{x}}{\cal M} } to #{ {\rm T}_{\mathbf{x}}{\cal M} } with
+Let #{ f:{\cal M}\mapsto\mathbb{R} } be [smooth](003K) on the [[0072]] #{ {\cal M} }. The Riemannian Hessian #{ {\rm Hess}\,f(\mathbf{x}):{\rm T}_{\mathbf{x}}{\cal M}\mapsto{\rm T}_{\mathbf{x}}{\cal M} } of #{ f } at #{ \mathbf{x}\in{\cal M} } is a mapping from #{ {\rm T}_{\mathbf{x}}{\cal M} } to #{ {\rm T}_{\mathbf{x}}{\cal M} } with
 
 ##{ {\rm Hess}\,f(\mathbf{x})[\mathbf{v}]\ :=\ \widetilde{\nabla}_{\mathbf{v}}\,{\rm grad}\,f(\mathbf{x}). }
 \ul{

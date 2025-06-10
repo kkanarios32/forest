@@ -8,18 +8,18 @@
 \xmlns:html{http://www.w3.org/1999/xhtml}
 
 \section{Lecture 5}{
-\transclude{kak-004C}
-\transclude{kak-004D}
+\transclude{004C}
+\transclude{004D}
 
-\transclude{kak-0034}
+\transclude{0034}
 \remark{
     This can be thought of as the tangent is always an underestimate of a convex function.
   }
-\transclude{kak-0035}
+\transclude{0035}
 \remark{
   This implies positive curvature or the common "bowl-shaped" interpretation.
   }
-\transclude{kak-002G}
+\transclude{002G}
 \remark{
     Holds with equality if and only if 
     \ol{
@@ -27,7 +27,7 @@
       \li{#{X} is a constant almost surely.}
       }
   }
-\transclude{kak-004E}
+\transclude{004E}
 \problem{
   When is #{D_{\mathrm{KL}}(P || Q) = 0}?
 }
@@ -37,7 +37,7 @@
         Q(x) / P(x) = c \implies Q(x) = P(x) c \iff \sum Q(x) = c \sum P(x) \implies c = 1
       }
   }
-  \strong{Applications of [[kak-004E]]:}
+  \strong{Applications of [[004E]]:}
   \ul{
     \li{
       #{I(X; Y) \geq 0}
@@ -46,8 +46,8 @@
     \li{#{H(X^n) \leq \sum_{i = 1}^n H(X_i)}}
     \li{#{H(X) \leq \log |\mathcal{X}|}}
   }
-  \transclude{kak-004F}
-  \strong{Consequences of [[kak-004F]]:}
+  \transclude{004F}
+  \strong{Consequences of [[004F]]:}
   \ul{
       \li{Joint convexity of #{D_{\mathrm{KL}}(P || Q)},}
       \li{Individual convexity of #{D_{\mathrm{KL}}(P || Q)}.}
@@ -55,7 +55,7 @@
     }
 }
 \section{Lecture 7}{
-\transclude{kak-004Y}
+\transclude{004Y}
 \section{Data Processing Inequality}{
     High-level
     \ul{
@@ -80,21 +80,21 @@ Denoted #{U \to V \to W}.
           \li{Estimation: #{X \to Y \to \hat{X}}}
       } 
 
-\transclude{kak-004Z}
+\transclude{004Z}
 }
 \section{Fano's Inequality}{
     \ul{
         \li{#{H(X | Y)} controls the error probability #{P_e}.}
       }
-\transclude{kak-0050}
+\transclude{0050}
 }
   }
 \section{Asymptotic Equipartion Propery}{
-\transclude{kak-0051}
-\transclude{kak-0052}
-\transclude{kak-0053}
-\transclude{kak-0054}
-\transclude{kak-0055}
+\transclude{0051}
+\transclude{0052}
+\transclude{0053}
+\transclude{0054}
+\transclude{0055}
 \p{
 \strong{interpretation:} #{A_{\epsilon}^{(n)}\,\text{ is a subset of }\,{\mathcal{X}}^{n}}
 \ul{
@@ -103,11 +103,11 @@ Denoted #{U \to V \to W}.
     \li{Almost equiprobable sequences.}
   }
 }
-\transclude{kak-0056}
+\transclude{0056}
 }
 
 \section{Fixed-rate lossless source coding}{
-\transclude{kak-0059}
+\transclude{0059}
 \p{
     \strong{Performance:}
     \ul{
@@ -115,91 +115,91 @@ Denoted #{U \to V \to W}.
         \li{Probability of decoding error = #{\mathbb{P}|\hat{X}^n \neq X^n|}}
       }
   }
-\transclude{kak-005A}
-\transclude{kak-005B}
-\transclude{kak-005C}
+\transclude{005A}
+\transclude{005B}
+\transclude{005C}
   }
 
 \section{Variable Rate Source Coding}{
-\transclude{kak-005K}
-\transclude{kak-005L}
+\transclude{005K}
+\transclude{005L}
 \remark{Although it is unclear here, the difference between variable and fixed rate source coding is that we allow our encoder and decoder to map to/from #{\{0,1\}^* }, where #{^*} is variable i.e. our encoded versions of our alphabet can have varying lengths.}
-\transclude{kak-005U}
-\transclude{kak-005M}
-\transclude{kak-005N}
-\remark{[Prefix free](kak-005N) codes are [uniquely decodable](kak-005M). To show unique-decodability, you simply have to provide a way to decode and show it is unique. For [prefix-free](kak-005N), greedily decoding suffices.}
+\transclude{005U}
+\transclude{005M}
+\transclude{005N}
+\remark{[Prefix free](005N) codes are [uniquely decodable](005M). To show unique-decodability, you simply have to provide a way to decode and show it is unique. For [prefix-free](005N), greedily decoding suffices.}
 \figure{
 \<html:img>[width]{300px}[src]{img/types-of-codes.png}{}
 \figcaption{Taxonomy of codes from \ref{coverELEMENTSINFORMATIONTHEORY}.}
 }
 \remark{
-Note that [non-singular](kak-005U) does not imply [uniquely decodable](kak-005M). This is because for [uniquely decodable](kak-005M) we require the extension to be [non-singular](kak-005U). For example, if we have that #{e(0) = 0, e(1) = 1, e(2) = 01}. Then #{e^*(01) = e^*(2)}. From this, we can see that [uniquely decodable](kak-005M) is a much stronger condition.
+Note that [non-singular](005U) does not imply [uniquely decodable](005M). This is because for [uniquely decodable](005M) we require the extension to be [non-singular](005U). For example, if we have that #{e(0) = 0, e(1) = 1, e(2) = 01}. Then #{e^*(01) = e^*(2)}. From this, we can see that [uniquely decodable](005M) is a much stronger condition.
 }
 }
 
 
 \section{Kraft's inequality}{
-\transclude{kak-005O}
+\transclude{005O}
 \remark{Other direction is also true. For any #{\ell_i} satisfying Kraft's inequality, one can construct a prefix-free code whose lengths of #{e(x_i) = \ell_i}.}
-\remark{Surprisingly, any [uniquely decodable](kak-005M) code must also satisfy [[kak-005O]].}
+\remark{Surprisingly, any [uniquely decodable](005M) code must also satisfy [[005O]].}
     }
 \section{Performance Limit of Variable Rate Source Codes}{
-\transclude{kak-005P}
-\transclude{kak-005Q}
-\transclude{kak-005R}
-\transclude{kak-005S}
+\transclude{005P}
+\transclude{005Q}
+\transclude{005R}
+\transclude{005S}
 }
-\transclude{kak-005T}
-\transclude{kak-005Z}
+\transclude{005T}
+\transclude{005Z}
 
 \section{Method of Types}{
-    \transclude{kak-005X}
-    \transclude{kak-005Y}
-    \transclude{kak-0061}
+    \transclude{005X}
+    \transclude{005Y}
+    \transclude{0061}
 \example{
-    Let #{\mathcal{X} = \{1,2,3\}.} For #{n = 2}, #{x^n = 12} the [type](kak-005X) is #{(\frac{1}{2},\frac{1}{2}, 0)} and the [type class](kak-0061) is #{\{12, 21\}  }.
+    Let #{\mathcal{X} = \{1,2,3\}.} For #{n = 2}, #{x^n = 12} the [type](005X) is #{(\frac{1}{2},\frac{1}{2}, 0)} and the [type class](0061) is #{\{12, 21\}  }.
 }
 \section{Properties}{
-\transclude{kak-0062}
-\transclude{kak-0063}
-\transclude{kak-0065}
-\transclude{kak-0064}
-\transclude{kak-0066}
+\transclude{0062}
+\transclude{0063}
+\transclude{0065}
+\transclude{0064}
+\transclude{0066}
 }
 }
 \section{Large Deviation Theory}{
-\transclude{kak-0067}
+\transclude{0067}
 }
 
 \section{Hypothesis testing}{
-\transclude{kak-0069}
-\transclude{kak-006A}
-\transclude{kak-006B}
+\transclude{0069}
+\transclude{006A}
+\transclude{006B}
 \section{Notions of optimality}{
-\transclude{kak-006C}
-\transclude{kak-006D}
-\transclude{kak-006E}
+\transclude{006C}
+\transclude{006D}
+\transclude{006E}
 }
 \section{Optimal NP Test}{
-\transclude{kak-0068}
-\transclude{kak-006F}
+\transclude{0068}
+\transclude{006F}
 }
 \section{Error Exponents in Hypothesis Testing}{
 In the previous section, we consider the optimal test in the non-asymptotic regime i.e. for finite #{n} what test minimizes the error according to some notion of error. In this section, we ask the question of what is the rate that this error converges to #{0}. More specifically, if #{\text{error}_n \leq 2^{-nV}} then what is the best (largest) #{V} we can hope to achieve?
 \section{NP Error Exponent}{
-\transclude{kak-006G}
-\transclude{kak-006H}
+\transclude{006G}
+\transclude{006H}
 }
 \section{Bayesian Error Exponent}{
-\transclude{kak-006I}
-\transclude{kak-006J}
+\transclude{006I}
+\transclude{006J}
 }
 }
 }
 \section{Fixed-Rate Universal Source Coding}{
-\transclude{kak-006K}
+\transclude{006K}
 \section{Construction of universal fixed rated code}{
-    To construct, a universal fixed rate code, we need a code that satisfies (i) and (ii) from [[kak-006K]]. 
+    To construct, a universal fixed rate code, we need a code that satisfies (i) and (ii) from [[006K]]. 
     \ul{
         \li{
 Let #{ |\mathcal{X}|=m }, and for any #{ n\geq1 } and a given #{ R>0 }, define #{ R_n=R-m \frac{\log n+1}{n}}
@@ -208,25 +208,25 @@ Let #{ |\mathcal{X}|=m }, and for any #{ n\geq1 } and a given #{ R>0 }, define #
       \li{Then just define the encoder in the usual way i.e. for encoder #{e_n} give every #{x^n \in A_n} a unique code and everything else map to the same code.}
       \li{Then the decoder can easily identify everything in #{A_n} and it suffices to show that in the limit the probabilities concentrate around #{A_n}.}
     }
-\transclude{kak-006L}
+\transclude{006L}
 }
 }
 \section{Variable-Rate Universal Source Coding}{
-\transclude{kak-006M}
+\transclude{006M}
 \section{Redundancy-Capacity Theorem}{
-\transclude{kak-006N}
+\transclude{006N}
 \remark{
 It will turn out the optimal choice of #{Q} is the centroid associated with the #{k} elements of #{\mathcal{P}}.
 }
-\transclude{kak-006O}
+\transclude{006O}
 }
-\transclude{kak-006P}
+\transclude{006P}
 }
 \section{Channel Coding}{
-\transclude{kak-006S}
-\transclude{kak-006T}
-\transclude{kak-006U}
-\transclude{kak-006V}
+\transclude{006S}
+\transclude{006T}
+\transclude{006U}
+\transclude{006V}
 \remark{
     We make the following simplifying assumptions (for now)
     \ul{
@@ -238,11 +238,11 @@ Random encoding: #{X^n(i)} is drawn i.i.d from some specified distribution #{P_X
                 }
     }
 }
-\transclude{kak-006W}
-\transclude{kak-006X}
-\transclude{kak-006Y}
+\transclude{006W}
+\transclude{006X}
+\transclude{006Y}
 \remark{
-The capacity of a [symmetric or weakly symmetric](kak-006Y) channel is #{\log(|\mathcal{Y}|) - H(r)}, where #{r} is the first row of #{P_{Y|X}}.
+The capacity of a [symmetric or weakly symmetric](006Y) channel is #{\log(|\mathcal{Y}|) - H(r)}, where #{r} is the first row of #{P_{Y|X}}.
 }
 }
 \section{Channel Coding}{
@@ -253,8 +253,8 @@ The capacity of a [symmetric or weakly symmetric](kak-006Y) channel is #{\log(|\
       \li{Channel decoder}
     }
     \p{We first pass #{W} to the channel encoder get some #{X^n} which goes into noisy channel and becomes #{Y^n}. Then the goal is for the channel decoder to recover #{W} from #{Y^n}. This means that the goal of the encoder is to reduce redundancy while also ensuring that there is no overlap when passed through the noisy channel.}
-\transclude{kak-0070}
-\transclude{kak-0071}
+\transclude{0070}
+\transclude{0071}
 \remark{
 We can decompose the joint distribution #{P_{X^n, Y^n}} in terms of the what depends on the channel and the what depends on the encoder. Namely,
 ##{P_{X^n, Y^n} = \prod_{i=1}^{n} P_{X_i | X^{i - 1}, Y^{i - 1}} \prod_{i=1}^{n}  P_{Y_i | X^{i}, Y^{i - 1}}}
@@ -269,18 +269,18 @@ Note that the first term depends only on the encoder and the second term depends
 }
 }
 \section{Differential Entropy}{
-\transclude{kak-007C}
+\transclude{007C}
 \section{AEP for Continuous Random Variables}{
-\transclude{kak-007E}
-\transclude{kak-007D}
-\transclude{kak-007F}
+\transclude{007E}
+\transclude{007D}
+\transclude{007F}
 }
 \section{Discrete Approximation}{
-\transclude{kak-007G}
+\transclude{007G}
 \remark{
 Taking #{\Delta = 2^{-n}}, then #{X^{\Delta}} is an "#{n}-bit" approximation of #{X}.
 }
-\transclude{kak-007H}
+\transclude{007H}
 }
 }
 \section{Gaussian Channel}{
