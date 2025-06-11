@@ -4,5 +4,5 @@
 \author{kellenkanarios}
 \tag{refereed}
 
-\meta{external}{slides/continual_rl_slides.pdf}
-\meta{external}{papers/honors_thesis.pdf}
+\meta{slides}{\route-asset{assets/slides/continual_rl_slides.pdf}}
+\meta{paper}{\route-asset{assets/papers/honors_thesis.pdf}}

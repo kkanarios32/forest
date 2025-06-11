@@ -8,7 +8,7 @@
 \tag{accepted}
 \tag{research}
 
-\meta{external}{slides/cabai_slides.pdf}
-\meta{external}{posters/cabai_rlc_poster.pdf}
+\meta{slides}{\route-asset{assets/slides/cabai_slides.pdf}}
+\meta{poster}{\route-asset{assets/posters/cabai_rlc_poster.pdf}}
 \meta{doi}{10.48550/arXiv.2402.16710}
 \meta{venue}{[[rlc]]}
