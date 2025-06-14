@@ -12,7 +12,7 @@
   }{
   }
 }
-\p{I am a PhD student at the [[umich]] as part of the [Electrical and Computer Engineering program](https://ece.engin.umich.edu/), where I work on reinforcement learning. My PhD advisor is [[leiying]]. Previously, I obtained a BS from the [[umich]] in Mathematics and Computer Science, where I graduated with honors and high honors respectively. During my undergrad, I worked with [[leiying]] as part of the [SURE Program](https://sure.engin.umich.edu/) and as a teaching assitant for [EECS 602](https://sites.google.com/view/intro-to-rl/home). My full CV is also available \<html:a>[style]{text-decoration: underline;}[href]{\route-asset{assets/files/kellen-kanarios-cv.pdf}}{here}.
+\p{I am a PhD student at the [[umich]] as part of the [Electrical and Computer Engineering program](https://ece.engin.umich.edu/), where I work on reinforcement learning. My PhD advisor is [[leiying]]. Previously, I obtained a BS from the [[umich]] in Mathematics and Computer Science, where I graduated with honors and high honors respectively. During my undergrad, I worked with [[leiying]] as part of the [SURE Program](https://sure.engin.umich.edu/) and as a teaching assitant for [EECS 602](https://sites.google.com/view/intro-to-rl/home). My full CV is also available \<html:a>[style]{text-decoration: underline;}[href]{\route-asset{assets/files/kellen-kanarios-cv.pdf}}{here}. 
 }
 
 \scope{
@@ -21,7 +21,7 @@
   \subtree[about]{
     \title{About this website}
     \p{
-    This is my [forest](https://www.forester-notes.org/index/index.xml) (shoutout to [[jonmsterling]] who is remarkably helpful). This website functions both as a [personal knowledge management system](https://en.wikipedia.org/wiki/Personal_knowledge_management), where I store my notes in [notebooks](0015) and also have some additional external resources in [[0004]]. Additionally, I store my thoughts in a variety of consumption mediums. Namely, short-form notes / blog posts can be found in the "[marginalia](007L)". I also maintain two weekly posting obligations: a [weeknotes / lifelog](0001) and a [paper of the week](005G). 
+    This is my [forest](https://www.forester-notes.org/index/index.xml) (shoutout to [[jonmsterling]] who is remarkably helpful). This website functions both as a [personal knowledge management system](https://en.wikipedia.org/wiki/Personal_knowledge_management), where I store my notes in [notebooks](0015) and also have some additional external resources in [[0004]]. Additionally, I store my thoughts in a variety of consumption mediums. Namely, short-form notes / blog posts can be found in the "[marginalia](007L)". I also maintain two weekly posting obligations: a [weeknotes / lifelog](007S) and a [paper of the week](005G). 
       }
   }
 }
@@ -58,7 +58,7 @@
 }
 
 \subtree[meet]{
-\title{Wanna Talk?}
+\title{Wanna Chat?}
 \p{
   I am currently interested in continual reinforcement learning or more specifically how to learn generalizable representations online. With this, I am currently looking into contrastive / zero-shot / hierarchical RL. If these things sound interesting I would love to talk about your research and potential collaboration opportunities.}
 \p{
@@ -70,9 +70,10 @@
 }
   \<html:div>[style]{
       overflow: hidden;
-      width: 90\%;
+      width: 95\%;
       height: 450px;
-      position: relative;
+      margin-left: auto;
+      margin-right: auto;
     }{
       \<html:iframe>[src]{
        https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America\%2FNew_York&showPrint=0&showTz=0&showCalendars=0&showDate=0&showNav=0&showTitle=0&showTabs=0&src=a2VsbGVua2tAdW1pY2guZWR1&src=Y181ZWRiOGU2NTI3MzgzMTVjZWUwNmUyMGEzNzRmNTVlZjE4ODY1MzQwZTg3ODU5MmE1MWI5ZDc5MjYwMTA1ZTIxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=Y183YzBlNjEzOWMyNmUzYmYzOWM2Y2M5ODE0ZjFlNTVkY2M4Zjk0MDNjMWZjNDI0ODQ4MjIzYjJmODhiMGE5MjYwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=Y19jYzExODVhYjFlZDA3ZTE1YmViNWMzYjZhZDcwY2M3ZmFkZGI0MWJlZDUyNjlhZjM2MWVlM2Q3MDA4NWFlNzk0QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=Y19jODA4NGNjYjQxNzcxOGY4ZWI4ZjViZjE4ODQ0MjFmNzJlYjdkMjU4ODcxOTUwY2RiZDMzNThlZGFjYjY5YWU3QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=Y183OTYzZDk4ODAxMzJkNmEwZTE3NGJiMDliNTM5MzJmMDA5MzlhNTU3Mzc4ZWI0MDhkMzJlMTg2YjA1ODY1ZWRmQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=\%23039be5&color=\%23f6bf26&color=\%23ef6c00&color=\%237cb342&color=\%23c0ca33&color=\%23d50000

@@ -5,5 +5,5 @@
 \tag{refereed}
 
 \meta{slides}{\route-asset{assets/slides/amg_slides.pdf}}
-\meta{poster}{posters/amg_poster.pptx}
-\meta{doi}{https://www.osti.gov/servlets/purl/2205732/}
+\meta{poster}{\route-asset{assets/posters/amg_poster.pptx}}
+\meta{doi}{10.2172/2205732}

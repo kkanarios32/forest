@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Learning to predict by the methods of temporal differences}
 \date{1988-08}
 \author{Richard S. Sutton}

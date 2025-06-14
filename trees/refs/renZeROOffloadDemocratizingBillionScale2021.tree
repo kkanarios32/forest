@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{ZeRO-Offload: Democratizing Billion-Scale Model Training}
 \date{2021-01}
 \author{Jie Ren}\author{Samyam Rajbhandari}\author{Reza Yazdani Aminabadi}\author{Olatunji Ruwase}\author{Shuangyan Yang}\author{Minjia Zhang}\author{Dong Li}\author{Yuxiong He}

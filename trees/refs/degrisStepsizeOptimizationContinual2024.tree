@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Step-size Optimization for Continual Learning}
 \date{2024-01}
 \author{Thomas Degris}\author{Khurram Javed}\author{Arsalan Sharifnassab}\author{Yuxin Liu}\author{Richard Sutton}

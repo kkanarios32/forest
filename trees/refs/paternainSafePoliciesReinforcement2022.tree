@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Safe Policies for Reinforcement Learning via Primal-Dual Methods}
 \date{2022-01}
 \author{Santiago Paternain}\author{Miguel Calvo-Fullana}\author{Luiz F. O. Chamon}\author{Alejandro Ribeiro}

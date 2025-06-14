@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{DeepZero: Scaling up Zeroth-Order Optimization for Deep Model Training}
 \date{2024-03}
 \author{Aochuan Chen}\author{Yimeng Zhang}\author{Jinghan Jia}\author{James Diffenderfer}\author{Jiancheng Liu}\author{Konstantinos Parasyris}\author{Yihua Zhang}\author{Zheng Zhang}\author{Bhavya Kailkhura}\author{Sijia Liu}

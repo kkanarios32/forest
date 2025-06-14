@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Temporal Abstraction in Reinforcement Learning with the Successor Representation}
 \date{2023-04}
 \author{Marlos C. Machado}\author{Andre Barreto}\author{Doina Precup}\author{Michael Bowling}

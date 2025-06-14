@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{The Deep Learning Compiler: A Comprehensive Survey}
 \date{2021-03}
 \author{Mingzhen Li}\author{Yi Liu}\author{Xiaoyan Liu}\author{Qingxiao Sun}\author{Xin You}\author{Hailong Yang}\author{Zhongzhi Luan}\author{Lin Gan}\author{Guangwen Yang}\author{Depei Qian}

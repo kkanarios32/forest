@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Safe Reinforcement Learning by Imagining the Near Future}
 \author{Garrett Thomas}\author{Yuping Luo}\author{Tengyu Ma}
 \taxon{Reference}

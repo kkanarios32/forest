@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Random Features for Large-Scale Kernel Machines}
 \author{Ali Rahimi}\author{Benjamin Recht}
 \taxon{Reference}

@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Occupancy-based Policy Gradient: Estimation, Convergence, and Optimality}
 \author{Audrey Huang}\author{Nan Jiang}
 \taxon{Reference}

@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Bandit Algorithms}
 \date{2020-07}
 \author{Tor Lattimore}\author{Csaba Szepesvári}

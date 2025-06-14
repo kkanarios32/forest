@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Podracer architectures for scalable Reinforcement Learning}
 \date{2021-04}
 \author{Matteo Hessel}\author{Manuel Kroiss}\author{Aidan Clark}\author{Iurii Kemaev}\author{John Quan}\author{Thomas Keck}\author{Fabio Viola}\author{Hado van Hasselt}

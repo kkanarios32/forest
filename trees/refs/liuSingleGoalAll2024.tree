@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{A Single Goal is All You Need: Skills and Exploration Emerge from Contrastive RL without Rewards, Demonstrations, or Subgoals}
 \date{2024-08}
 \author{Grace Liu}\author{Michael Tang}\author{Benjamin Eysenbach}

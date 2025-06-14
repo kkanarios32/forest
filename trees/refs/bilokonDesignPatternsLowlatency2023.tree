@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{C++ Design Patterns for Low-latency Applications Including High-frequency Trading}
 \date{2023-09}
 \author{Paul Bilokon}\author{Burak Gunduz}

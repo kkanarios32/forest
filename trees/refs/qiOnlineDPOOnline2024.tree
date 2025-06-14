@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Online DPO: Online Direct Preference Optimization with Fast-Slow Chasing}
 \date{2024-06}
 \author{Biqing Qi}\author{Pengfei Li}\author{Fangyuan Li}\author{Junqi Gao}\author{Kaiyan Zhang}\author{Bowen Zhou}

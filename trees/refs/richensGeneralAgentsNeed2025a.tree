@@ -1,0 +1,26 @@
+% ["refs"]
+\title{General agents need world models}
+\date{2025-06}
+\author{Jonathan Richens}\author{David Abel}\author{Alexis Bellot}\author{Tom Everitt}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2506.01622}
+\meta{external}{https://arxiv.org/abs/2506.01622}
+
+\meta{bibtex}{\startverb
+@misc{richensGeneralAgentsNeed2025a,
+ title = {General Agents Need World Models},
+ author = {Richens, Jonathan and Abel, David and Bellot, Alexis and Everitt, Tom},
+ year = {2025},
+ doi = {10.48550/arXiv.2506.01622},
+ urldate = {2025-06-11},
+ number = {arXiv:2506.01622},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/3NQTKCFM/Richens et al. - 2025 - General agents need world models.pdf;/home/kellen/Zotero/storage/QUPA8N7V/2506.html},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {Are world models a necessary ingredient for flexible, goal-directed behaviour, or is model-free learning sufficient? We provide a formal answer to this question, showing that any agent capable of generalizing to multi-step goal-directed tasks must have learned a predictive model of its environment. We show that this model can be extracted from the agent's policy, and that increasing the agents performance or the complexity of the goals it can achieve requires learning increasingly accurate world models. This has a number of consequences: from developing safe and general agents, to bounding agent capabilities in complex environments, and providing new algorithms for eliciting world models from agents.},
+ primaryclass = {cs},
+ eprint = {2506.01622},
+ month = {June}
+}
+\stopverb}

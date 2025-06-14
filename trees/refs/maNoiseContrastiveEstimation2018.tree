@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Noise Contrastive Estimation and Negative Sampling for Conditional Models: Consistency and Statistical Efficiency}
 \date{2018-09}
 \author{Zhuang Ma}\author{Michael Collins}

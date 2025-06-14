@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Operator Fusion in XLA: Analysis and Evaluation}
 \date{2023-01}
 \author{Daniel Snider}\author{Ruofan Liang}

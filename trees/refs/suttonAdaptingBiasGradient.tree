@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Adapting Bias by Gradient Descent: An Incremental Version of Delta-Bar-Delta}
 \author{Richard S Sutton}
 \taxon{Reference}

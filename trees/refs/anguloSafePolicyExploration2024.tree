@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Safe Policy Exploration Improvement via Subgoals}
 \date{2024-08}
 \author{Brian Angulo}\author{Gregory Gorbov}\author{Aleksandr Panov}\author{Konstantin Yakovlev}

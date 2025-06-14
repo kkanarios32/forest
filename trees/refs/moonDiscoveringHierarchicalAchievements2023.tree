@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Discovering Hierarchical Achievements in Reinforcement Learning via Contrastive Learning}
 \date{2023-12}
 \author{Seungyong Moon}\author{Junyoung Yeom}\author{Bumsoo Park}\author{Hyun Oh Song}

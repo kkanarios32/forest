@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review}
+\date{2018-05}
+\author{Sergey Levine}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1805.00909}
+\meta{external}{https://arxiv.org/abs/1805.00909}
+
+\meta{bibtex}{\startverb
+@misc{levineReinforcementLearningControl2018,
+ title = {Reinforcement {{Learning}} and {{Control}} as {{Probabilistic Inference}}: {{Tutorial}} and {{Review}}},
+ author = {Levine, Sergey},
+ year = {2018},
+ doi = {10.48550/arXiv.1805.00909},
+ urldate = {2025-06-09},
+ number = {arXiv:1805.00909},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/IYEPBARH/Levine - 2018 - Reinforcement Learning and Control as Probabilistic Inference Tutorial and Review.pdf;/home/kellen/Zotero/storage/RJMAVWQB/Massiani et al. - 2023 - Safe Value Functions.pdf;/home/kellen/Zotero/storage/VLBM7SRT/1805.html},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {The framework of reinforcement learning or optimal control provides a mathematical formalization of intelligent decision making that is powerful and broadly applicable. While the general form of the reinforcement learning problem enables effective reasoning about uncertainty, the connection between reinforcement learning and inference in probabilistic models is not immediately obvious. However, such a connection has considerable value when it comes to algorithm design: formalizing a problem as probabilistic inference in principle allows us to bring to bear a wide array of approximate inference tools, extend the model in flexible and powerful ways, and reason about compositionality and partial observability. In this article, we will discuss how a generalization of the reinforcement learning or optimal control problem, which is sometimes termed maximum entropy reinforcement learning, is equivalent to exact probabilistic inference in the case of deterministic dynamics, and variational inference in the case of stochastic dynamics. We will present a detailed derivation of this framework, overview prior work that has drawn on this and related ideas to propose new reinforcement learning and control algorithms, and describe perspectives on future research.},
+ primaryclass = {cs},
+ eprint = {1805.00909},
+ month = {May},
+ shorttitle = {Reinforcement {{Learning}} and {{Control}} as {{Probabilistic Inference}}}
+}
+\stopverb}

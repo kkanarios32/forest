@@ -1,0 +1,21 @@
+% ["refs"]
+\title{Efficient BackProp}
+\date{2012}
+\author{Yann A. LeCun}\author{Léon Bottou}\author{Genevieve B. Orr}\author{Klaus-Robert Müller}
+\taxon{Reference}
+\meta{doi}{10.1007/978-3-642-35289-8_3}
+\meta{bibtex}{\startverb
+@incollection{LeCun2012,
+ title = {Efficient {{BackProp}}},
+ author = {LeCun, Yann A. and Bottou, L{\'e}on and Orr, Genevieve B. and M{\"u}ller, Klaus-Robert},
+ year = {2012},
+ isbn = {978-3-642-35289-8},
+ doi = {10.1007/978-3-642-35289-8_3},
+ booktitle = {Neural Networks: {{Tricks}} of the Trade: {{Second}} Edition},
+ editor = {Montavon, Gr{\'e}goire and Orr, Genevi{\`e}ve B. and M{\"u}ller, Klaus-Robert},
+ pages = {9--48},
+ publisher = {Springer Berlin Heidelberg},
+ address = {Berlin, Heidelberg},
+ abstract = {The convergence of back-propagation learning is analyzed so as to explain common phenomenon observed by practitioners. Many undesirable behaviors of backprop can be avoided with tricks that are rarely exposed in serious technical publications. This paper gives some of those tricks, and offers explanations of why they work.}
+}
+\stopverb}

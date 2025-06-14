@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Adam on Local Time: Addressing Nonstationarity in RL with Relative Adam Timesteps}
 \author{Benjamin Ellis}\author{Matthew T Jackson}\author{Andrei Lupu}\author{Alexander D Goldie}
 \taxon{Reference}

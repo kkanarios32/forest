@@ -1,0 +1,25 @@
+% ["refs"]
+\title{Quasi-monotone Subgradient Methods for Nonsmooth Convex Minimization}
+\date{2015-06}
+\author{Yu. Nesterov}\author{V. Shikhman}
+\taxon{Reference}
+\meta{doi}{10.1007/s10957-014-0677-5}
+\meta{bibtex}{\startverb
+@article{nesterovQuasimonotoneSubgradientMethods2015,
+ title = {Quasi-Monotone {{Subgradient Methods}} for {{Nonsmooth Convex Minimization}}},
+ author = {Nesterov, {\relax Yu}. and Shikhman, V.},
+ year = {2015},
+ doi = {10.1007/s10957-014-0677-5},
+ urldate = {2025-05-01},
+ journal = {Journal of Optimization Theory and Applications},
+ volume = {165},
+ number = {3},
+ pages = {917--940},
+ file = {/home/kellen/Zotero/storage/RU7CP4EP/Nesterov and Shikhman - 2015 - Quasi-monotone Subgradient Methods for Nonsmooth Convex Minimization.pdf},
+ keywords = {68Q25,90C25,90C47,Convex optimization,Nonsmooth optimzation,Primal-dual methods,Rate of convergence,Subgradient methods},
+ langid = {english},
+ abstract = {In this paper, we develop new subgradient methods for solving nonsmooth convex optimization problems. These methods guarantee the best possible rate of convergence for the whole sequence of test points. Our methods are applicable as efficient real-time stabilization tools for potential systems with infinite horizon. Preliminary numerical experiments confirm a high efficiency of the new schemes.},
+ issn = {1573-2878},
+ month = {June}
+}
+\stopverb}

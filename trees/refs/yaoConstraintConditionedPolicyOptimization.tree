@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Constraint-Conditioned Policy Optimization for Versatile Safe Reinforcement Learning}
 \author{Yihang Yao}\author{Zuxin Liu}\author{Zhepeng Cen}\author{Jiacheng Zhu}\author{Wenhao Yu}\author{Tingnan Zhang}\author{Ding Zhao}
 \taxon{Reference}

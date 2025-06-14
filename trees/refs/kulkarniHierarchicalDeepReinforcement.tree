@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction and Intrinsic Motivation}
 \author{Tejas D Kulkarni}\author{Karthik Narasimhan}\author{Ardavan Saeedi}\author{Josh Tenenbaum}
 \taxon{Reference}

@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Heuristic Search for Generalized Stochastic Shortest Path MDPs}
 \date{2011-03}
 \author{Andrey Kolobov}\author{Mausam Mausam}\author{Daniel Weld}\author{Hector Geffner}

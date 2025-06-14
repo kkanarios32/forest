@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Streaming Deep Reinforcement Learning Finally Works}
 \date{2024-10}
 \author{Mohamed Elsayed}\author{Gautham Vasan}\author{A. Rupam Mahmood}

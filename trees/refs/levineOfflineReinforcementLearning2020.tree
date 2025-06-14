@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Offline Reinforcement Learning: Tutorial, Review, and Perspectives on Open Problems}
 \date{2020-11}
 \author{Sergey Levine}\author{Aviral Kumar}\author{George Tucker}\author{Justin Fu}

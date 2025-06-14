@@ -1,0 +1,29 @@
+% ["refs"]
+\title{Safe Value Functions}
+\date{2023-05}
+\author{Pierre-François Massiani}\author{Steve Heim}\author{Friedrich Solowjow}\author{Sebastian Trimpe}
+\taxon{Reference}
+\meta{doi}{10.1109/TAC.2022.3200948}
+\meta{external}{https://arxiv.org/abs/2105.12204}
+
+\meta{bibtex}{\startverb
+@article{massianiSafeValueFunctions2023,
+ title = {Safe {{Value Functions}}},
+ author = {Massiani, Pierre-Fran{\c c}ois and Heim, Steve and Solowjow, Friedrich and Trimpe, Sebastian},
+ year = {2023},
+ doi = {10.1109/TAC.2022.3200948},
+ urldate = {2025-06-14},
+ journal = {IEEE Transactions on Automatic Control},
+ volume = {68},
+ number = {5},
+ pages = {2743--2757},
+ file = {/home/kellen/Zotero/storage/PZ39TCLF/Massiani et al. - 2023 - Safe Value Functions.pdf;/home/kellen/Zotero/storage/6P779RDU/2105.html},
+ keywords = {Computer Science - Machine Learning,Computer Science - Robotics,Computer Science - Systems and Control,Electrical Engineering and Systems Science - Systems and Control},
+ archiveprefix = {arXiv},
+ abstract = {Safety constraints and optimality are important, but sometimes conflicting criteria for controllers. Although these criteria are often solved separately with different tools to maintain formal guarantees, it is also common practice in reinforcement learning to simply modify reward functions by penalizing failures, with the penalty treated as a mere heuristic. We rigorously examine the relationship of both safety and optimality to penalties, and formalize sufficient conditions for safe value functions (SVFs): value functions that are both optimal for a given task, and enforce safety constraints. We reveal this structure by examining when rewards preserve viability under optimal control, and show that there always exists a finite penalty that induces a safe value function. This penalty is not unique, but upper-unbounded: larger penalties do not harm optimality. Although it is often not possible to compute the minimum required penalty, we reveal clear structure of how the penalty, rewards, discount factor, and dynamics interact. This insight suggests practical, theory-guided heuristics to design reward functions for control problems where safety is important.},
+ issn = {0018-9286, 1558-2523, 2334-3303},
+ primaryclass = {eess},
+ eprint = {2105.12204},
+ month = {May}
+}
+\stopverb}

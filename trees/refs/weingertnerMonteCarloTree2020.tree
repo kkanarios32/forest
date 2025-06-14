@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Monte Carlo Tree Search With Reinforcement Learning for Motion Planning}
 \date{2020-09}
 \author{Philippe Weingertner}\author{Minnie Ho}\author{Andrey Timofeev}\author{Sébastien Aubert}\author{Guillermo Pita-Gil}

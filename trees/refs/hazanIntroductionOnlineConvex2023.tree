@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Introduction to Online Convex Optimization}
 \date{2023-08}
 \author{Elad Hazan}

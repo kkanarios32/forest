@@ -1,0 +1,17 @@
+% ["refs"]
+\title{Normalization and effective learning rates in reinforcement learning}
+\date{2024}
+\author{Clare Lyle}\author{Zeyu Zheng}\author{Khimya Khetarpal}\author{James Martens}\author{Hado Hasselt}\author{Razvan Pascanu}\author{Will Dabney}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@inproceedings{NEURIPS2024_c04d37be,
+ title = {Normalization and Effective Learning Rates in Reinforcement Learning},
+ author = {Lyle, Clare and Zheng, Zeyu and Khetarpal, Khimya and Martens, James and {van Hasselt}, Hado and Pascanu, Razvan and Dabney, Will},
+ year = {2024},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {Globerson, A. and Mackey, L. and Belgrave, D. and Fan, A. and Paquet, U. and Tomczak, J. and Zhang, C.},
+ volume = {37},
+ pages = {106440--106473},
+ publisher = {Curran Associates, Inc.}
+}
+\stopverb}

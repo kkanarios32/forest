@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{An analysis of temporal-difference learning with function approximation}
 \date{1997-05}
 \author{J. N. Tsitsiklis}\author{B. Van Roy}

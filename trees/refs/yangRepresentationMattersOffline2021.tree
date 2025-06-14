@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Representation Matters: Offline Pretraining for Sequential Decision Making}
 \date{2021-07}
 \author{Mengjiao Yang}\author{Ofir Nachum}

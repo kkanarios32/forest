@@ -1,4 +1,5 @@
 \date{2025-03-04}
+\author{kellenkanarios}
 \import{base-macros}
 
 \title{Rebuilding My (Neo)Vim Config From Scratch}

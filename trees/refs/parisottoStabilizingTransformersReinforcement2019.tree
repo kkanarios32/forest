@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Stabilizing Transformers for Reinforcement Learning}
 \date{2019-10}
 \author{Emilio Parisotto}\author{H. Francis Song}\author{Jack W. Rae}\author{Razvan Pascanu}\author{Caglar Gulcehre}\author{Siddhant M. Jayakumar}\author{Max Jaderberg}\author{Raphael Lopez Kaufman}\author{Aidan Clark}\author{Seb Noury}\author{Matthew M. Botvinick}\author{Nicolas Heess}\author{Raia Hadsell}

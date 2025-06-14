@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Deterministic Policy Gradient Algorithms}
 \author{David Silver}\author{Guy Lever}\author{Nicolas Heess}\author{Thomas Degris}\author{Daan Wierstra}\author{Martin Riedmiller}
 \taxon{Reference}

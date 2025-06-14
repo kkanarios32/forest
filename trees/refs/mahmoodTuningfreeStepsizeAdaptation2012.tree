@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Tuning-free step-size adaptation}
 \date{2012-03}
 \author{Ashique Rupam Mahmood}\author{Richard S. Sutton}\author{Thomas Degris}\author{Patrick M. Pilarski}

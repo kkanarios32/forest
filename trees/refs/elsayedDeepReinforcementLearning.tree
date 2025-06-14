@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Deep Reinforcement Learning Without Experience Replay, Target Networks, or Batch Updates}
 \author{Mohamed Elsayed}\author{Gautham Vasan}\author{A Rupam Mahmood}
 \taxon{Reference}

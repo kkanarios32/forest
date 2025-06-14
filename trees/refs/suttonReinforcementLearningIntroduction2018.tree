@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Reinforcement learning: An introduction}
 \date{2018}
 \author{Richard S. Sutton}\author{Andrew G. Barto}

@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{TVM: An Automated End-to-End Optimizing Compiler for Deep Learning}
 \date{2018-10}
 \author{Tianqi Chen}\author{Thierry Moreau}\author{Ziheng Jiang}\author{Lianmin Zheng}\author{Eddie Yan}\author{Meghan Cowan}\author{Haichen Shen}\author{Leyuan Wang}\author{Yuwei Hu}\author{Luis Ceze}\author{Carlos Guestrin}\author{Arvind Krishnamurthy}

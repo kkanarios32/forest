@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Accelerating long-read analysis on modern CPUs}
 \date{2021-07}
 \author{Saurabh Kalikar}\author{Chirag Jain}\author{Vasimuddin Md}\author{Sanchit Misra}

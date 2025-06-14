@@ -1,0 +1,26 @@
+% ["refs"]
+\title{Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics}
+\date{2025-05}
+\author{Maksim Bobrin}\author{Ilya Zisman}\author{Alexander Nikulin}\author{Vladislav Kurenkov}\author{Dmitry Dylov}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2505.13150}
+\meta{external}{https://arxiv.org/abs/2505.13150}
+
+\meta{bibtex}{\startverb
+@misc{bobrinZeroShotAdaptationBehavioral2025,
+ title = {Zero-{{Shot Adaptation}} of {{Behavioral Foundation Models}} to {{Unseen Dynamics}}},
+ author = {Bobrin, Maksim and Zisman, Ilya and Nikulin, Alexander and Kurenkov, Vladislav and Dylov, Dmitry},
+ year = {2025},
+ doi = {10.48550/arXiv.2505.13150},
+ urldate = {2025-06-05},
+ number = {arXiv:2505.13150},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/B7PR392U/Bobrin et al. - 2025 - Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics.pdf;/home/kellen/Zotero/storage/A6XW86X2/2505.html},
+ keywords = {Computer Science - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {Behavioral Foundation Models (BFMs) proved successful in producing policies for arbitrary tasks in a zero-shot manner, requiring no test-time training or task-specific fine-tuning. Among the most promising BFMs are the ones that estimate the successor measure learned in an unsupervised way from task-agnostic offline data. However, these methods fail to react to changes in the dynamics, making them inefficient under partial observability or when the transition function changes. This hinders the applicability of BFMs in a real-world setting, e.g., in robotics, where the dynamics can unexpectedly change at test time. In this work, we demonstrate that Forward-Backward (FB) representation, one of the methods from the BFM family, cannot distinguish between distinct dynamics, leading to an interference among the latent directions, which parametrize different policies. To address this, we propose a FB model with a transformer-based belief estimator, which greatly facilitates zero-shot adaptation. We also show that partitioning the policy encoding space into dynamics-specific clusters, aligned with the context-embedding directions, yields additional gain in performance. These traits allow our method to respond to the dynamics observed during training and to generalize to unseen ones. Empirically, in the changing dynamics setting, our approach achieves up to a 2x higher zero-shot returns compared to the baselines for both discrete and continuous tasks.},
+ primaryclass = {cs},
+ eprint = {2505.13150},
+ month = {May}
+}
+\stopverb}

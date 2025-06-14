@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Model-based Safe Reinforcement Learning using Variable Horizon Rollouts}
 \date{2024-01}
 \author{Shourya Gupta}\author{Utkarsh Suryaman}\author{Rahul Narava}\author{Shashi Shekhar Jha}

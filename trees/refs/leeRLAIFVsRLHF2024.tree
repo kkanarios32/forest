@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{RLAIF vs. RLHF: Scaling Reinforcement Learning from Human Feedback with AI Feedback}
 \date{2024-09}
 \author{Harrison Lee}\author{Samrat Phatale}\author{Hassan Mansoor}\author{Thomas Mesnard}\author{Johan Ferret}\author{Kellie Lu}\author{Colton Bishop}\author{Ethan Hall}\author{Victor Carbune}\author{Abhinav Rastogi}\author{Sushant Prakash}

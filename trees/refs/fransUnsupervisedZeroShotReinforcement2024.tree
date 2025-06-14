@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Unsupervised Zero-Shot Reinforcement Learning via Functional Reward Encodings}
 \date{2024-02}
 \author{Kevin Frans}\author{Seohong Park}\author{Pieter Abbeel}\author{Sergey Levine}

@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Deep Reinforcement Learning at the Edge of the Statistical Precipice}
 \author{Rishabh Agarwal}\author{Max Schwarzer}\author{Pablo Samuel Castro}\author{Aaron Courville}\author{Marc G Bellemare}
 \taxon{Reference}

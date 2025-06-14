@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Learning Successor States and Goal-Dependent Values: A Mathematical Viewpoint}
 \date{2021-01}
 \author{Léonard Blier}\author{Corentin Tallec}\author{Yann Ollivier}

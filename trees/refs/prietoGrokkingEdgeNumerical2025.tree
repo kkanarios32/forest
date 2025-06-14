@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Grokking at the Edge of Numerical Stability}
 \date{2025-01}
 \author{Lucas Prieto}\author{Melih Barsbey}\author{Pedro A. M. Mediano}\author{Tolga Birdal}

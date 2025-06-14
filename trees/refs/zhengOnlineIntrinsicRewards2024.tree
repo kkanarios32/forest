@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Online Intrinsic Rewards for Decision Making Agents from Large Language Model Feedback}
 \date{2024-12}
 \author{Qinqing Zheng}\author{Mikael Henaff}\author{Amy Zhang}\author{Aditya Grover}\author{Brandon Amos}

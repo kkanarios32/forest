@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Contrastive Value Learning: Implicit Models for Simple Offline RL}
 \date{2022-11}
 \author{Bogdan Mazoure}\author{Benjamin Eysenbach}\author{Ofir Nachum}\author{Jonathan Tompson}

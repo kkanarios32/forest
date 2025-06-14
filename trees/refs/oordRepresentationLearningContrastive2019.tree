@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Representation Learning with Contrastive Predictive Coding}
 \date{2019-01}
 \author{Aaron van den Oord}\author{Yazhe Li}\author{Oriol Vinyals}

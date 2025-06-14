@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{An Elementary Proof that Q-learning Converges Almost Surely}
 \date{2021-08}
 \author{Matthew T. Regehr}\author{Alex Ayoub}

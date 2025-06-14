@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Learning and Planning in Complex Action Spaces}
 \date{2021-04}
 \author{Thomas Hubert}\author{Julian Schrittwieser}\author{Ioannis Antonoglou}\author{Mohammadamin Barekatain}\author{Simon Schmitt}\author{David Silver}

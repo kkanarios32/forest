@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Reinforcement Learning in Low-Rank MDPs with Density Features}
 \date{2023-02}
 \author{Audrey Huang}\author{Jinglin Chen}\author{Nan Jiang}

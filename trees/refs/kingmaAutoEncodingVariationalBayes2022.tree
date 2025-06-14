@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Auto-Encoding Variational Bayes}
 \date{2022-12}
 \author{Diederik P. Kingma}\author{Max Welling}

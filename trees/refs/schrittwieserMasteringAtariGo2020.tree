@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model}
 \date{2020-12}
 \author{Julian Schrittwieser}\author{Ioannis Antonoglou}\author{Thomas Hubert}\author{Karen Simonyan}\author{Laurent Sifre}\author{Simon Schmitt}\author{Arthur Guez}\author{Edward Lockhart}\author{Demis Hassabis}\author{Thore Graepel}\author{Timothy Lillicrap}\author{David Silver}

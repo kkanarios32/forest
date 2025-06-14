@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{POLICY IMPROVEMENT BY PLANNING WITH GUMBEL}
 \date{2022}
 \author{Ivo Danihelka}\author{Arthur Guez}\author{Julian Schrittwieser}\author{David Silver}

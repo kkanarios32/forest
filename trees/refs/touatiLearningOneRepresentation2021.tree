@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Learning One Representation to Optimize All Rewards}
 \date{2021-10}
 \author{Ahmed Touati}\author{Yann Ollivier}

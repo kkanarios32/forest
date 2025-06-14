@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Noise-Contrastive Estimation of Unnormalized Statistical Models, with Applications to Natural Image Statistics}
 \author{Michael U Gutmann}\author{Michael Gutmann}\author{Aapo Hyvarinen}\author{Aapo Hyvarinen}
 \taxon{Reference}

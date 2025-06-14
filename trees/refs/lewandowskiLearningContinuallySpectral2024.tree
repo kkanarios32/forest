@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Learning Continually by Spectral Regularization}
 \date{2024-06}
 \author{Alex Lewandowski}\author{Saurabh Kumar}\author{Dale Schuurmans}\author{András György}\author{Marlos C. Machado}

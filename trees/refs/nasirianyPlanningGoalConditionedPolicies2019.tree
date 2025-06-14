@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Planning with Goal-Conditioned Policies}
+\date{2019-11}
+\author{Soroush Nasiriany}\author{Vitchyr H. Pong}\author{Steven Lin}\author{Sergey Levine}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1911.08453}
+\meta{external}{https://arxiv.org/abs/1911.08453}
+
+\meta{bibtex}{\startverb
+@misc{nasirianyPlanningGoalConditionedPolicies2019,
+ title = {Planning with {{Goal-Conditioned Policies}}},
+ author = {Nasiriany, Soroush and Pong, Vitchyr H. and Lin, Steven and Levine, Sergey},
+ year = {2019},
+ doi = {10.48550/arXiv.1911.08453},
+ urldate = {2025-06-14},
+ number = {arXiv:1911.08453},
+ publisher = {arXiv},
+ file = {/home/kellen/Zotero/storage/VFMFXBAY/Nasiriany et al. - 2019 - Planning with Goal-Conditioned Policies.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Planning methods can solve temporally extended sequential decision making problems by composing simple behaviors. However, planning requires suitable abstractions for the states and transitions, which typically need to be designed by hand. In contrast, model-free reinforcement learning (RL) can acquire behaviors from low-level inputs directly, but often struggles with temporally extended tasks. Can we utilize reinforcement learning to automatically form the abstractions needed for planning, thus obtaining the best of both approaches? We show that goalconditioned policies learned with RL can be incorporated into planning, so that a planner can focus on which states to reach, rather than how those states are reached. However, with complex state observations such as images, not all inputs represent valid states. We therefore also propose using a latent variable model to compactly represent the set of valid states for the planner, so that the policies provide an abstraction of actions, and the latent variable model provides an abstraction of states. We compare our method with planning-based and model-free methods and find that our method significantly outperforms prior work when evaluated on image-based robot navigation and manipulation tasks that require non-greedy, multi-staged behavior.},
+ primaryclass = {cs},
+ eprint = {1911.08453},
+ month = {November}
+}
+\stopverb}

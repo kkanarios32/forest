@@ -1,4 +1,4 @@
-% ["references"]
+% ["references", "refs"]
 \title{Investigating the Properties of Neural Network Representations in Reinforcement Learning}
 \date{2023-05}
 \author{Han Wang}\author{Erfan Miahi}\author{Martha White}\author{Marlos C. Machado}\author{Zaheer Abbas}\author{Raksha Kumaraswamy}\author{Vincent Liu}\author{Adam White}
