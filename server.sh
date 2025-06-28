@@ -2,8 +2,8 @@
 
 trap "kill 0" EXIT
 
-python3 -m http.server 1313 -d output &>/dev/null &
+python3 -m http.server 1234 -d output &>/dev/null &
 
-watch -n 1 ./build.sh
+find trees | entr -r sh -c './build.sh && qutebrowser --target window ":reload"'
 
 wait

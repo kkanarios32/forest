@@ -2,3 +2,4 @@ python-3.12
 *.json
 build
 .venv
+.python-version
