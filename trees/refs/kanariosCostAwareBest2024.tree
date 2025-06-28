@@ -1,8 +1,12 @@
 \title{Cost Aware Best Arm Identification}
 \date{2024-07}
 \taxon{Reference}
+\tag{research}
+\author{kellenkanarios}
 \meta{doi}{10.48550/arXiv.2402.16710}
-\meta{external}{https://arxiv.org/abs/2402.16710}
+
+\meta{slides}{\route-asset{assets/slides/cabai_slides.pdf}}
+\meta{poster}{\route-asset{assets/posters/cabai_rlc_poster.pdf}}
 
 \meta{bibtex}{\startverb
 @misc{kanariosCostAwareBest2024,

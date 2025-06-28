@@ -11,7 +11,13 @@
     \li{\strong{Stack and Frame Pointer:} Used to manage where we currently are on the stack.}
   }
   }
-  \li{}
 }
 }
+}
+\section{Process API}{
+\p{\strong{Create:}}
+\p{\strong{Destroy:}}
+\p{\strong{Wait:}}
+\p{\strong{Miscellaneous Control:}}
+\p{\strong{Status:}}
 }

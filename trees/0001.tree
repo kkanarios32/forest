@@ -33,7 +33,7 @@
     \title{News}
       \ul{
       \li{[\strong{September. 2024}] I will officially be starting my PhD at [[umich]]}
-      \li{[\strong{August. 2024}] I finished my undergraduate [thesis](meta2024) and officially graduated!}
+      \li{[\strong{August. 2024}] I finished my undergraduate [thesis](kanariosThesis2024) and officially graduated!}
       \li{[\strong{May. 2024}] Our [paper](kanariosCostAwareBest2024) got accepted by [[rlc]]}
       \li{[\strong{January. 2024}] I will be TAing [EECS 602](https://sites.google.com/view/intro-to-rl/home)}
       }
@@ -51,7 +51,7 @@
     ?X -:
     {\rel/has-author ?X @{kellenkanarios}}
     {\rel/is-reference ?X}
-    {\rel/has-tag ?X '{refereed}}
+    {\rel/has-tag ?X '{research}}
     }
   }
   \transclude{0002}

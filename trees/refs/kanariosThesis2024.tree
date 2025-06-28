@@ -1,0 +1,8 @@
+\title{Meta Learning for Continual Reinforcement Learning: An Investigation}
+\date{2024-08-20}
+\taxon{Reference}
+\author{kellenkanarios}
+\tag{research}
+
+\meta{slides}{\route-asset{assets/slides/continual_rl_slides.pdf}}
+\meta{paper}{\route-asset{assets/papers/honors_thesis.pdf}}
