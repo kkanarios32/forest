@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Contextual Decision Processes with Low Bellman Rank are PAC-Learnable}
 \date{2016-12}
-\author{Nan Jiang}\author{Akshay Krishnamurthy}\author{Alekh Agarwal}\author{John Langford}\author{Robert E. Schapire}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1610.09512}
 \meta{external}{https://arxiv.org/abs/1610.09512}
@@ -15,7 +13,7 @@
  urldate = {2025-02-05},
  number = {arXiv:1610.09512},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/RCXBGU3P/Jiang et al. - 2016 - Contextual Decision Processes with Low Bellman Rank are PAC-Learnable.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/RCXBGU3P/Jiang et al. - 2016 - Contextual Decision Processes with Low Bellman Rank are PAC-Learnable.pdf},
  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

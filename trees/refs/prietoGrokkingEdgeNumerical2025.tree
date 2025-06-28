@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Grokking at the Edge of Numerical Stability}
 \date{2025-01}
-\author{Lucas Prieto}\author{Melih Barsbey}\author{Pedro A. M. Mediano}\author{Tolga Birdal}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2501.04697}
 \meta{external}{https://arxiv.org/abs/2501.04697}
@@ -15,7 +13,7 @@
  urldate = {2025-02-26},
  number = {arXiv:2501.04697},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/V2IGQLJH/Prieto et al. - 2025 - Grokking at the Edge of Numerical Stability.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/V2IGQLJH/Prieto et al. - 2025 - Grokking at the Edge of Numerical Stability.pdf},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

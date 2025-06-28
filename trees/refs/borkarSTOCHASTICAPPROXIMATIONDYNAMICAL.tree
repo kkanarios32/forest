@@ -1,12 +1,10 @@
-% ["refs"]
 \title{STOCHASTIC APPROXIMATION : A DYNAMICAL SYSTEMS VIEWPOINT}
-\author{Vivek S Borkar}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{borkarSTOCHASTICAPPROXIMATIONDYNAMICAL,
  title = {{{STOCHASTIC APPROXIMATION}} : {{A DYNAMICAL SYSTEMS VIEWPOINT}}},
  author = {Borkar, Vivek S},
- file = {/home/kellen/Zotero/storage/E8YY7W7Z/Borkar - STOCHASTIC APPROXIMATION  A DYNAMICAL SYSTEMS VIEWPOINT.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/E8YY7W7Z/Borkar - STOCHASTIC APPROXIMATION  A DYNAMICAL SYSTEMS VIEWPOINT.pdf},
  langid = {english}
 }
 \stopverb}

@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Learning and Planning in Complex Action Spaces}
 \date{2021-04}
-\author{Thomas Hubert}\author{Julian Schrittwieser}\author{Ioannis Antonoglou}\author{Mohammadamin Barekatain}\author{Simon Schmitt}\author{David Silver}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2104.06303}
 \meta{external}{https://arxiv.org/abs/2104.06303}
@@ -15,7 +13,7 @@
  urldate = {2025-03-31},
  number = {arXiv:2104.06303},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/AWL8Y6DZ/Hubert et al. - 2021 - Learning and Planning in Complex Action Spaces.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/AWL8Y6DZ/Hubert et al. - 2021 - Learning and Planning in Complex Action Spaces.pdf},
  keywords = {Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

@@ -1,0 +1,24 @@
+\title{Addressing Loss of Plasticity and Catastrophic Forgetting in Continual Learning}
+\date{2024-04}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2404.00781}
+\meta{external}{https://arxiv.org/abs/2404.00781}
+
+\meta{bibtex}{\startverb
+@misc{elsayedAddressingLossPlasticity2024,
+ title = {Addressing {{Loss}} of {{Plasticity}} and {{Catastrophic Forgetting}} in {{Continual Learning}}},
+ author = {Elsayed, Mohamed and Mahmood, A. Rupam},
+ year = {2024},
+ doi = {10.48550/arXiv.2404.00781},
+ urldate = {2025-06-19},
+ number = {arXiv:2404.00781},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/EZ2X8XML/Elsayed and Mahmood - 2024 - Addressing Loss of Plasticity and Catastrophic Forgetting in Continual Learning.pdf;/home/kellen/Downloads/pdfs/storage/6IRTU8RR/2404.html},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {Deep representation learning methods struggle with continual learning, suffering from both catastrophic forgetting of useful units and loss of plasticity, often due to rigid and unuseful units. While many methods address these two issues separately, only a few currently deal with both simultaneously. In this paper, we introduce Utility-based Perturbed Gradient Descent (UPGD) as a novel approach for the continual learning of representations. UPGD combines gradient updates with perturbations, where it applies smaller modifications to more useful units, protecting them from forgetting, and larger modifications to less useful units, rejuvenating their plasticity. We use a challenging streaming learning setup where continual learning problems have hundreds of non-stationarities and unknown task boundaries. We show that many existing methods suffer from at least one of the issues, predominantly manifested by their decreasing accuracy over tasks. On the other hand, UPGD continues to improve performance and surpasses or is competitive with all methods in all problems. Finally, in extended reinforcement learning experiments with PPO, we show that while Adam exhibits a performance drop after initial learning, UPGD avoids it by addressing both continual learning issues.},
+ primaryclass = {cs},
+ eprint = {2404.00781},
+ month = {April}
+}
+\stopverb}

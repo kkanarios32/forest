@@ -1,0 +1,25 @@
+\title{Intention-Conditioned Flow Occupancy Models}
+\date{2025-06}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2506.08902}
+\meta{external}{https://arxiv.org/abs/2506.08902}
+
+\meta{bibtex}{\startverb
+@misc{zhengIntentionConditionedFlowOccupancy2025,
+ title = {Intention-{{Conditioned Flow Occupancy Models}}},
+ author = {Zheng, Chongyi and Park, Seohong and Levine, Sergey and Eysenbach, Benjamin},
+ year = {2025},
+ doi = {10.48550/arXiv.2506.08902},
+ urldate = {2025-06-25},
+ number = {arXiv:2506.08902},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/MGADHFSN/Zheng et al. - 2025 - Intention-Conditioned Flow Occupancy Models.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Large-scale pre-training has fundamentally changed how machine learning research is done today: large foundation models are trained once, and then can be used by anyone in the community (including those without data or compute resources to train a model from scratch) to adapt and fine-tune to specific tasks. Applying this same framework to reinforcement learning (RL) is appealing because it offers compelling avenues for addressing core challenges in RL, including sample efficiency and robustness. However, there remains a fundamental challenge to pre-train large models in the context of RL: actions have long-term dependencies, so training a foundation model that reasons across time is important. Recent advances in generative AI have provided new tools for modeling highly complex distributions. In this paper, we build a probabilistic model to predict which states an agent will visit in the temporally distant future (i.e., an occupancy measure) using flow matching. As large datasets are often constructed by many distinct users performing distinct tasks, we include in our model a latent variable capturing the user intention. This intention increases the expressivity of our model, and enables adaptation with generalized policy improvement. We call our proposed method intention-conditioned flow occupancy models (InFOM). Comparing with alternative methods for pre-training, our experiments on 36 state-based and 4 image-based benchmark tasks demonstrate that the proposed method achieves 1.8{\texttimes} median improvement in returns and increases success rates by 36\%.},
+ primaryclass = {cs},
+ eprint = {2506.08902},
+ month = {June}
+}
+\stopverb}

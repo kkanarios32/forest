@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Reinforcement learning: An introduction}
 \date{2018}
-\author{Richard S. Sutton}\author{Andrew G. Barto}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @book{suttonReinforcementLearningIntroduction2018,
@@ -13,7 +11,7 @@
  series = {Adaptive Computation and Machine Learning Series},
  publisher = {The MIT Press},
  address = {Cambridge, Massachusetts},
- file = {/home/kellen/Zotero/storage/DY4UI6G7/Sutton and Barto - 2018 - Reinforcement learning an introduction.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/DY4UI6G7/Sutton and Barto - 2018 - Reinforcement learning an introduction.pdf},
  keywords = {Reinforcement learning},
  lccn = {Q325.6 .R45 2018},
  langid = {english},

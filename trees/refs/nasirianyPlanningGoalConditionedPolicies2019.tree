@@ -1,7 +1,5 @@
-% ["refs"]
 \title{Planning with Goal-Conditioned Policies}
 \date{2019-11}
-\author{Soroush Nasiriany}\author{Vitchyr H. Pong}\author{Steven Lin}\author{Sergey Levine}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1911.08453}
 \meta{external}{https://arxiv.org/abs/1911.08453}
@@ -15,7 +13,7 @@
  urldate = {2025-06-14},
  number = {arXiv:1911.08453},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/VFMFXBAY/Nasiriany et al. - 2019 - Planning with Goal-Conditioned Policies.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/VFMFXBAY/Nasiriany et al. - 2019 - Planning with Goal-Conditioned Policies.pdf},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

@@ -4,6 +4,14 @@
 \xmlns:html{http://www.w3.org/1999/xhtml}
 
 \def\nowrap[body]{\<html:span>[style]{white-space: nowrap}{\body}}
+
+\def\iblock[body]{
+ \<html:div>[class]{jms-indent-block}[style]{margin-left: 1em}{\body}
+}
+\def\irow[body]{
+ \<html:div>[class]{jms-indent-row}[style]{min-height: 1em}{\body}
+}
+
 \def\mark[body]{\<html:mark>{\body}}
 
 \def\lsquare{\startverb[\stopverb}
@@ -176,19 +184,3 @@
 }
 
 \def\citek[uid]{\let\escape[x]{\x}[\escape{[\uid]}](\uid)}
-
-
-
-
-\xmlns:jms-indent{jonmsterling:indenting}
-
-\def\iblock[body]{
- \<jms-indent:block>{\body}
-}
-
-\def\irow[body]{
- \<jms-indent:row>{\body}
-}
-
-
-\p{This tree defines the basic notational macros used across my forest.}

@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{The Deep Learning Compiler: A Comprehensive Survey}
 \date{2021-03}
-\author{Mingzhen Li}\author{Yi Liu}\author{Xiaoyan Liu}\author{Qingxiao Sun}\author{Xin You}\author{Hailong Yang}\author{Zhongzhi Luan}\author{Lin Gan}\author{Guangwen Yang}\author{Depei Qian}
 \taxon{Reference}
 \meta{doi}{10.1109/TPDS.2020.3030548}
 \meta{external}{https://arxiv.org/abs/2002.03794}
@@ -17,7 +15,7 @@
  volume = {32},
  number = {3},
  pages = {708--727},
- file = {/home/kellen/Zotero/storage/TLNQRMTF/Li et al. - 2021 - The Deep Learning Compiler A Comprehensive Survey.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/TLNQRMTF/Li et al. - 2021 - The Deep Learning Compiler A Comprehensive Survey.pdf},
  keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Performance},
  langid = {english},
  archiveprefix = {arXiv},

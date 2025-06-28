@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Introduction to Online Convex Optimization}
 \date{2023-08}
-\author{Elad Hazan}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1909.05207}
 \meta{external}{https://arxiv.org/abs/1909.05207}
@@ -15,7 +13,7 @@
  urldate = {2025-02-16},
  number = {arXiv:1909.05207},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/AB366M9X/Hazan - 2023 - Introduction to Online Convex Optimization.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/AB366M9X/Hazan - 2023 - Introduction to Online Convex Optimization.pdf},
  keywords = {Computer Science - Machine Learning,Mathematics - Optimization and Control,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

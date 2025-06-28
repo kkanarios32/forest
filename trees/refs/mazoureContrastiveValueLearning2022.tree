@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Contrastive Value Learning: Implicit Models for Simple Offline RL}
 \date{2022-11}
-\author{Bogdan Mazoure}\author{Benjamin Eysenbach}\author{Ofir Nachum}\author{Jonathan Tompson}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2211.02100}
 \meta{external}{https://arxiv.org/abs/2211.02100}

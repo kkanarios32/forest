@@ -1,7 +1,5 @@
-% ["refs"]
 \title{A statistical framework for weak-to-strong generalization}
 \date{2024-05}
-\author{Seamus Somerstep}\author{Felipe Maia Polo}\author{Moulinath Banerjee}\author{Ya’acov Ritov}\author{Mikhail Yurochkin}\author{Yuekai Sun}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2405.16236}
 
@@ -13,7 +11,7 @@
  urldate = {2024-09-25},
  number = {arXiv:2405.16236},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/UIG2LRFF/Somerstep et al. - 2024 - A statistical framework for weak-to-strong general.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/UIG2LRFF/Somerstep et al. - 2024 - A statistical framework for weak-to-strong general.pdf},
  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

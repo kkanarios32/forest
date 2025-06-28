@@ -1,0 +1,26 @@
+\title{The Need for a Big World Simulator: A Scientific Challenge for Continual Learning}
+\date{2024-08}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2408.02930}
+\meta{external}{https://arxiv.org/abs/2408.02930}
+
+\meta{bibtex}{\startverb
+@misc{kumarNeedBigWorld2024,
+ title = {The {{Need}} for a {{Big World Simulator}}: {{A Scientific Challenge}} for {{Continual Learning}}},
+ author = {Kumar, Saurabh and Jeon, Hong Jun and Lewandowski, Alex and Roy, Benjamin Van},
+ year = {2024},
+ doi = {10.48550/arXiv.2408.02930},
+ urldate = {2025-06-27},
+ number = {arXiv:2408.02930},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/2G4W3ULT/Kumar et al. - 2024 - The Need for a Big World Simulator A Scientific C.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {The ``small agent, big world'' frame offers a conceptual view that motivates the need for continual learning. The idea is that a small agent operating in a much bigger world cannot store all information that the world has to offer. To perform well, the agent must be carefully designed to ingest, retain, and eject the right information. To enable the development of performant continual learning agents, a number of synthetic environments have been proposed. However, these benchmarks suffer from limitations, including unnatural distribution shifts and a lack of fidelity to the ``small agent, big world'' framing. This paper aims to formalize two desiderata for the design of future simulated environments. These two criteria aim to reflect the objectives and complexity of continual learning in practical settings while enabling rapid prototyping of algorithms on a smaller scale.},
+ primaryclass = {cs},
+ eprint = {2408.02930},
+ month = {August},
+ shorttitle = {The {{Need}} for a {{Big World Simulator}}}
+}
+\stopverb}

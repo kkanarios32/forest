@@ -1,7 +1,5 @@
-% ["refs"]
 \title{Why Do We Need Weight Decay in Modern Deep Learning?}
 \date{2024-11}
-\author{Francesco D’Angelo}\author{Maksym Andriushchenko}\author{Aditya Varre}\author{Nicolas Flammarion}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2310.04415}
 \meta{external}{https://arxiv.org/abs/2310.04415}
@@ -15,7 +13,7 @@
  urldate = {2025-02-26},
  number = {arXiv:2310.04415},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/5GJGM755/D'Angelo et al. - 2024 - Why Do We Need Weight Decay in Modern Deep Learning.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/5GJGM755/D'Angelo et al. - 2024 - Why Do We Need Weight Decay in Modern Deep Learning.pdf},
  keywords = {Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

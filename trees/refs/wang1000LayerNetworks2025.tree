@@ -1,0 +1,25 @@
+\title{1000 Layer Networks for Self-Supervised RL: Scaling Depth Can Enable New Goal-Reaching Capabilities}
+\date{2025-03}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2503.14858}
+\meta{external}{https://arxiv.org/abs/2503.14858}
+
+\meta{bibtex}{\startverb
+@misc{wang1000LayerNetworks2025,
+ title = {1000 {{Layer Networks}} for {{Self-Supervised RL}}: {{Scaling Depth Can Enable New Goal-Reaching Capabilities}}},
+ author = {Wang, Kevin and Javali, Ishaan and Bortkiewicz, Micha{\l} and Trzci{\'n}ski, Tomasz and Eysenbach, Benjamin},
+ year = {2025},
+ doi = {10.48550/arXiv.2503.14858},
+ urldate = {2025-06-15},
+ number = {arXiv:2503.14858},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/ZF9NUUCX/Wang et al. - 2025 - 1000 Layer Networks for Self-Supervised RL Scaling Depth Can Enable New Goal-Reaching Capabilities.pdf;/home/kellen/Downloads/pdfs/storage/6J3X7MF5/2503.html},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {Scaling up self-supervised learning has driven breakthroughs in language and vision, yet comparable progress has remained elusive in reinforcement learning (RL). In this paper, we study building blocks for self-supervised RL that unlock substantial improvements in scalability, with network depth serving as a critical factor. Whereas most RL papers in recent years have relied on shallow architectures (around 2 - 5 layers), we demonstrate that increasing the depth up to 1024 layers can significantly boost performance. Our experiments are conducted in an unsupervised goal-conditioned setting, where no demonstrations or rewards are provided, so an agent must explore (from scratch) and learn how to maximize the likelihood of reaching commanded goals. Evaluated on simulated locomotion and manipulation tasks, our approach increases performance by \$2{\textbackslash}times\$ - \$50{\textbackslash}times\$. Increasing the model depth not only increases success rates but also qualitatively changes the behaviors learned.},
+ primaryclass = {cs},
+ eprint = {2503.14858},
+ month = {March},
+ shorttitle = {1000 {{Layer Networks}} for {{Self-Supervised RL}}}
+}
+\stopverb}

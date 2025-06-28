@@ -1,7 +1,5 @@
-% ["refs"]
 \title{Temporal Difference Flows}
 \date{2025-03}
-\author{Jesse Farebrother}\author{Matteo Pirotta}\author{Andrea Tirinzoni}\author{Rémi Munos}\author{Alessandro Lazaric}\author{Ahmed Touati}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2503.09817}
 \meta{external}{https://arxiv.org/abs/2503.09817}
@@ -15,7 +13,7 @@
  urldate = {2025-06-14},
  number = {arXiv:2503.09817},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/2V2SR66H/Farebrother et al. - 2025 - Temporal Difference Flows.pdf;/home/kellen/Zotero/storage/D27PSL2L/2503.html},
+ file = {/home/kellen/Downloads/pdfs/storage/2V2SR66H/Farebrother et al. - 2025 - Temporal Difference Flows.pdf;/home/kellen/Downloads/pdfs/storage/D27PSL2L/2503.html},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
  archiveprefix = {arXiv},
  abstract = {Predictive models of the future are fundamental for an agent's ability to reason and plan. A common strategy learns a world model and unrolls it step-by-step at inference, where small errors can rapidly compound. Geometric Horizon Models (GHMs) offer a compelling alternative by directly making predictions of future states, avoiding cumulative inference errors. While GHMs can be conveniently learned by a generative analog to temporal difference (TD) learning, existing methods are negatively affected by bootstrapping predictions at train time and struggle to generate high-quality predictions at long horizons. This paper introduces Temporal Difference Flows (TD-Flow), which leverages the structure of a novel Bellman equation on probability paths alongside flow-matching techniques to learn accurate GHMs at over 5x the horizon length of prior methods. Theoretically, we establish a new convergence result and primarily attribute TD-Flow's efficacy to reduced gradient variance during training. We further show that similar arguments can be extended to diffusion-based methods. Empirically, we validate TD-Flow across a diverse set of domains on both generative metrics and downstream tasks including policy evaluation. Moreover, integrating TD-Flow with recent behavior foundation models for planning over pre-trained policies demonstrates substantial performance gains, underscoring its promise for long-horizon decision-making.},

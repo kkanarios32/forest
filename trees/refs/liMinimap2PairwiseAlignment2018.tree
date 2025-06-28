@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Minimap2: Pairwise alignment for nucleotide sequences}
 \date{2018-09}
-\author{Heng Li}
 \taxon{Reference}
 \meta{doi}{10.1093/bioinformatics/bty191}
 \meta{bibtex}{\startverb
@@ -16,7 +14,7 @@
  volume = {34},
  number = {18},
  pages = {3094--3100},
- file = {/home/kellen/Zotero/storage/U4V4YFWK/Li - 2018 - Minimap2 pairwise alignment for nucleotide sequen.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/U4V4YFWK/Li - 2018 - Minimap2 pairwise alignment for nucleotide sequen.pdf},
  langid = {english},
  copyright = {https://academic.oup.com/journals/pages/open\_access/funder\_policies/chorus/standard\_publication\_model},
  abstract = {Motivation: Recent advances in sequencing technologies promise ultra-long reads of \$100 kb in average, full-length mRNA or cDNA reads in high throughput and genomic contigs over 100 Mb in length. Existing alignment programs are unable or inefficient to process such data at scale, which presses for the development of new alignment algorithms.},

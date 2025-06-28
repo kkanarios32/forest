@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Numerical optimization}
 \date{2006}
-\author{Jorge Nocedal}\author{Stephen J. Wright}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @book{nocedalNumericalOptimization2006,
@@ -13,7 +11,7 @@
  series = {Springer Series in Operations Research},
  publisher = {Springer},
  address = {New York},
- file = {/home/kellen/Zotero/storage/ZNRAHE63/Nocedal and Wright - 2006 - Numerical optimization.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/ZNRAHE63/Nocedal and Wright - 2006 - Numerical optimization.pdf},
  annotation = {OCLC: ocm68629100},
  keywords = {Mathematical optimization},
  lccn = {QA402.5 .N62 2006},

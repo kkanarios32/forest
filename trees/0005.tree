@@ -3,7 +3,7 @@
 \author{kellenkanarios}
 \import{base-macros}
 
-\p{In this blog post, we aim to demistify [\em{Contrastive Reinforcement Learning}](gcrl). This term often gets thrown around in the dark inner circles of the reinforcement learning community. However, for those that are not familiar with contrastive learning, what does contrastive even mean? For those that are, how can reinforcement learning be contrastive? Throughout this blog post, we will answer these questions and many more.}
+\p{In this blog post, we aim to demistify [\em{Contrastive Reinforcement Learning}](eysenbachContrastiveLearningGoalConditioned2023). This term often gets thrown around in the dark inner circles of the reinforcement learning community. However, for those that are not familiar with contrastive learning, what does contrastive even mean? For those that are, how can reinforcement learning be contrastive? Throughout this blog post, we will answer these questions and many more.}
 
 \transclude{0009}
 

@@ -1,0 +1,38 @@
+\import{base-macros}
+\title{Diffusion Models}
+\author{kellenkanarios}
+\p{These will be short notes on the [video tutorial](https://www.youtube.com/watch?v=NJ72iEPRXFk) by [[sanjayshakkottai]]. }
+
+\section{What is an SDE?}{
+  \p{
+  First we have to discuss ODEs. For the ODE,
+  ##{dx_t = \underbrace{\mu(x_t, t)}_{\text{``drift term''}} \mathrm{d}t}
+  We have the following possible vector representation
+  }
+\latex{
+#{
+  \begin{tikzpicture}
+  \draw[->] (-1,0) -- (3,0) node[right] {$x$};
+  \draw[->] (0,-1) -- (0,3) node[above] {$y$};
+  \node[circle, orange, fill, inner sep=1pt] at (2,2) {} ;
+  \node[orange] at (2.2,2.2) {$\boldsymbol{x_t}$};
+  \draw[orange, ->, thick] (2, 2) -- (1.5,1.5) node[midway, below] {};
+  \node[orange] at (2.2, 1.5)  {\footnotesize $\boldsymbol{\mu(x, t)}$};
+  \end{tikzpicture}
+}
+}
+\p{This can be thought of as #{x_{t + h} - x_t \approx \mu(x_t, t) \cdot h + o(h)}}
+}
+\section{How does the pdf of the SDE evolve?}{
+}
+\transclude{007W}
+
+\section{Reversing the [OU](007W) process to generate images.}{
+
+}
+\section{Tweedle's Formula to compte the drift of the reverse process.}{
+
+}
+\section{Generative flow models using ODEs}{
+
+}

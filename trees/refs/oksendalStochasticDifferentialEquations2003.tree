@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Stochastic Differential Equations}
 \date{2003}
-\author{Bernt Øksendal}
 \taxon{Reference}
 \meta{doi}{10.1007/978-3-642-14394-6}
 \meta{bibtex}{\startverb
@@ -15,7 +13,7 @@
  series = {Universitext},
  publisher = {Springer Berlin Heidelberg},
  address = {Berlin, Heidelberg},
- file = {/home/kellen/Zotero/storage/WSH4RNVC/Øksendal - 2003 - Stochastic Differential Equations.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/WSH4RNVC/Øksendal - 2003 - Stochastic Differential Equations.pdf},
  langid = {english},
  copyright = {http://www.springer.com/tdm}
 }

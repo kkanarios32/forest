@@ -1,0 +1,25 @@
+\title{Flow Matching Guide and Code}
+\date{2024-12}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2412.06264}
+\meta{external}{https://arxiv.org/abs/2412.06264}
+
+\meta{bibtex}{\startverb
+@misc{lipmanFlowMatchingGuide2024a,
+ title = {Flow {{Matching Guide}} and {{Code}}},
+ author = {Lipman, Yaron and Havasi, Marton and Holderrieth, Peter and Shaul, Neta and Le, Matt and Karrer, Brian and Chen, Ricky T. Q. and {Lopez-Paz}, David and {Ben-Hamu}, Heli and Gat, Itai},
+ year = {2024},
+ doi = {10.48550/arXiv.2412.06264},
+ urldate = {2025-06-24},
+ number = {arXiv:2412.06264},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/4INDYLDI/Lipman et al. - 2024 - Flow Matching Guide and Code.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Flow Matching (FM) is a recent framework for generative modeling that has achieved state-of-the-art performance across various domains, including image, video, audio, speech, and biological structures. This guide offers a comprehensive and self-contained review of FM, covering its mathematical foundations, design choices, and extensions. By also providing a PyTorch package featuring relevant examples (e.g., image and text generation), this work aims to serve as a resource for both novice and experienced researchers interested in understanding, applying and further developing FM.},
+ primaryclass = {cs},
+ eprint = {2412.06264},
+ month = {December}
+}
+\stopverb}

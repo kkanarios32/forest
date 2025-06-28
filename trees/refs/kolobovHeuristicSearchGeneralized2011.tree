@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Heuristic Search for Generalized Stochastic Shortest Path MDPs}
 \date{2011-03}
-\author{Andrey Kolobov}\author{Mausam Mausam}\author{Daniel Weld}\author{Hector Geffner}
 \taxon{Reference}
 \meta{doi}{10.1609/icaps.v21i1.13452}
 \meta{bibtex}{\startverb
@@ -14,7 +12,7 @@
  journal = {Proceedings of the International Conference on Automated Planning and Scheduling},
  volume = {21},
  pages = {130--137},
- file = {/home/kellen/Zotero/storage/Q77EPBX6/Kolobov et al. - 2011 - Heuristic Search for Generalized Stochastic Shortest Path MDPs.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/Q77EPBX6/Kolobov et al. - 2011 - Heuristic Search for Generalized Stochastic Shortest Path MDPs.pdf},
  langid = {english},
  copyright = {Copyright (c) 2021 Proceedings of the International Conference on Automated Planning and Scheduling},
  abstract = {Research in efficient methods for solving infinite-horizon MDPs has so far concentrated primarily on discounted MDPs and the more general stochastic shortest path problems (SSPs). These are MDPs with 1) an optimal value function V* that is the unique solution of Bellman equation and 2) optimal policies that are the greedy policies w.r.t. V*. This paper\&rsquo;s main contribution is the description of a new class of MDPs, that have well-defined optimal solutions that do not comply with either 1 or 2 above. We call our new class Generalized Stochastic Shortest Path (GSSP) problems. GSSP allows more general reward structure than SSP and subsumes several established MDP types including SSP, positive-bounded, negative, and discounted-reward models. While existing efficient heuristic search algorithms like LAO* and LRTDP are not guaranteed to converge to the optimal value function for GSSPs, we present a new heuristic-search-based family of algorithms, FRET (Find, Revise, Eliminate Traps). A preliminary empirical evaluation shows that FRET solves GSSPs much more efficiently than Value Iteration.},

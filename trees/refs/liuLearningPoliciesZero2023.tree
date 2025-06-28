@@ -1,0 +1,24 @@
+\title{Learning Policies with Zero or Bounded Constraint Violation for Constrained MDPs}
+\date{2023-01}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2106.02684}
+\meta{external}{https://arxiv.org/abs/2106.02684}
+
+\meta{bibtex}{\startverb
+@misc{liuLearningPoliciesZero2023,
+ title = {Learning {{Policies}} with {{Zero}} or {{Bounded Constraint Violation}} for {{Constrained MDPs}}},
+ author = {Liu, Tao and Zhou, Ruida and Kalathil, Dileep and Kumar, P. R. and Tian, Chao},
+ year = {2023},
+ doi = {10.48550/arXiv.2106.02684},
+ urldate = {2025-06-15},
+ number = {arXiv:2106.02684},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/ZYYI666X/Liu et al. - 2023 - Learning Policies with Zero or Bounded Constraint Violation for Constrained MDPs.pdf;/home/kellen/Downloads/pdfs/storage/QS3LNMDW/2106.html},
+ keywords = {Computer Science - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {We address the issue of safety in reinforcement learning. We pose the problem in an episodic framework of a constrained Markov decision process. Existing results have shown that it is possible to achieve a reward regret of \${\textbackslash}tilde\{{\textbackslash}mathcal\{O\}\}({\textbackslash}sqrt\{K\})\$ while allowing an \${\textbackslash}tilde\{{\textbackslash}mathcal\{O\}\}({\textbackslash}sqrt\{K\})\$ constraint violation in \$K\$ episodes. A critical question that arises is whether it is possible to keep the constraint violation even smaller. We show that when a strictly safe policy is known, then one can confine the system to zero constraint violation with arbitrarily high probability while keeping the reward regret of order \${\textbackslash}tilde\{{\textbackslash}mathcal\{O\}\}({\textbackslash}sqrt\{K\})\$. The algorithm which does so employs the principle of optimistic pessimism in the face of uncertainty to achieve safe exploration. When no strictly safe policy is known, though one is known to exist, then it is possible to restrict the system to bounded constraint violation with arbitrarily high probability. This is shown to be realized by a primal-dual algorithm with an optimistic primal estimate and a pessimistic dual update.},
+ primaryclass = {cs},
+ eprint = {2106.02684},
+ month = {January}
+}
+\stopverb}

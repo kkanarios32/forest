@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Unsupervised Zero-Shot Reinforcement Learning via Functional Reward Encodings}
 \date{2024-02}
-\author{Kevin Frans}\author{Seohong Park}\author{Pieter Abbeel}\author{Sergey Levine}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2402.17135}
 \meta{external}{https://arxiv.org/abs/2402.17135}
@@ -15,7 +13,7 @@
  urldate = {2024-12-04},
  number = {arXiv:2402.17135},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/FUDVV3U4/Frans et al. - 2024 - Unsupervised Zero-Shot Reinforcement Learning via Functional Reward Encodings.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/FUDVV3U4/Frans et al. - 2024 - Unsupervised Zero-Shot Reinforcement Learning via Functional Reward Encodings.pdf},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Probability and measure}
 \date{1995}
-\author{Patrick Billingsley}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @book{billingsleyProbabilityMeasure1995,
@@ -13,7 +11,7 @@
  series = {Wiley Series in Probability and Mathematical Statistics},
  publisher = {Wiley},
  address = {New York, NY},
- file = {/home/kellen/Zotero/storage/JSCDN2UH/Billingsley - 1995 - Probability and measure.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/JSCDN2UH/Billingsley - 1995 - Probability and measure.pdf},
  langid = {english}
 }
 \stopverb}

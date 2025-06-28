@@ -1,0 +1,25 @@
+\title{Learning Latent Dynamics for Planning from Pixels}
+\date{2019-06}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1811.04551}
+\meta{external}{https://arxiv.org/abs/1811.04551}
+
+\meta{bibtex}{\startverb
+@misc{hafnerLearningLatentDynamics2019,
+ title = {Learning {{Latent Dynamics}} for {{Planning}} from {{Pixels}}},
+ author = {Hafner, Danijar and Lillicrap, Timothy and Fischer, Ian and Villegas, Ruben and Ha, David and Lee, Honglak and Davidson, James},
+ year = {2019},
+ doi = {10.48550/arXiv.1811.04551},
+ urldate = {2025-06-15},
+ number = {arXiv:1811.04551},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/LBZWJU59/Hafner et al. - 2019 - Learning Latent Dynamics for Planning from Pixels.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Planning has been very successful for control tasks with known environment dynamics. To leverage planning in unknown environments, the agent needs to learn the dynamics from interactions with the world. However, learning dynamics models that are accurate enough for planning has been a long-standing challenge, especially in image-based domains. We propose the Deep Planning Network (PlaNet), a purely model-based agent that learns the environment dynamics from images and chooses actions through fast online planning in latent space. To achieve high performance, the dynamics model must accurately predict the rewards ahead for multiple time steps. We approach this using a latent dynamics model with both deterministic and stochastic transition components. Moreover, we propose a multi-step variational inference objective that we name latent overshooting. Using only pixel observations, our agent solves continuous control tasks with contact dynamics, partial observability, and sparse rewards, which exceed the difficulty of tasks that were previously solved by planning with learned models. PlaNet uses substantially fewer episodes and reaches final performance close to and sometimes higher than strong model-free algorithms.},
+ primaryclass = {cs},
+ eprint = {1811.04551},
+ month = {June}
+}
+\stopverb}

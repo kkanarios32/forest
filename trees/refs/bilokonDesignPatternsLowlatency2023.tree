@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{C++ Design Patterns for Low-latency Applications Including High-frequency Trading}
 \date{2023-09}
-\author{Paul Bilokon}\author{Burak Gunduz}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2309.04259}
 \meta{external}{https://arxiv.org/abs/2309.04259}
@@ -15,7 +13,7 @@
  urldate = {2025-03-22},
  number = {arXiv:2309.04259},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/S3IB9ZSU/Bilokon and Gunduz - 2023 - C++ Design Patterns for Low-latency Applications Including High-frequency Trading.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/S3IB9ZSU/Bilokon and Gunduz - 2023 - C++ Design Patterns for Low-latency Applications Including High-frequency Trading.pdf},
  keywords = {Computer Science - Performance,Quantitative Finance - Trading and Market Microstructure},
  langid = {english},
  archiveprefix = {arXiv},

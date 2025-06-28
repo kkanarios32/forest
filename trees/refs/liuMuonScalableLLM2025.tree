@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Muon is Scalable for LLM Training}
 \date{2025-02}
-\author{Jingyuan Liu}\author{Jianlin Su}\author{Xingcheng Yao}\author{Zhejun Jiang}\author{Guokun Lai}\author{Yulun Du}\author{Yidao Qin}\author{Weixin Xu}\author{Enzhe Lu}\author{Junjie Yan}\author{Yanru Chen}\author{Huabin Zheng}\author{Yibo Liu}\author{Shaowei Liu}\author{Bohong Yin}\author{Weiran He}\author{Han Zhu}\author{Yuzhi Wang}\author{Jianzhou Wang}\author{Mengnan Dong}\author{Zheng Zhang}\author{Yongsheng Kang}\author{Hao Zhang}\author{Xinran Xu}\author{Yutao Zhang}\author{Yuxin Wu}\author{Xinyu Zhou}\author{Zhilin Yang}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2502.16982}
 \meta{external}{https://arxiv.org/abs/2502.16982}
@@ -15,7 +13,7 @@
  urldate = {2025-02-26},
  number = {arXiv:2502.16982},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/JSHH2RNX/Liu et al. - 2025 - Muon is Scalable for LLM Training.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/JSHH2RNX/Liu et al. - 2025 - Muon is Scalable for LLM Training.pdf},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

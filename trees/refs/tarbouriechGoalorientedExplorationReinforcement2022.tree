@@ -1,7 +1,5 @@
-% ["refs"]
 \title{Goal-oriented exploration for reinforcement learning}
 \date{2022}
-\author{Jean Tarbouriech}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @phdthesis{tarbouriechGoalorientedExplorationReinforcement2022,
@@ -9,7 +7,7 @@
  author = {Tarbouriech, Jean},
  year = {2022},
  urldate = {2025-06-09},
- file = {/home/kellen/Zotero/storage/2QGU8XLP/Tarbouriech - 2022 - Goal-oriented exploration for reinforcement learning.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/2QGU8XLP/Tarbouriech - 2022 - Goal-oriented exploration for reinforcement learning.pdf},
  school = {Universit{\'e} de Lille}
 }
 \stopverb}

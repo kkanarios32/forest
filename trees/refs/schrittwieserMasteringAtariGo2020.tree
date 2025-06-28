@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model}
 \date{2020-12}
-\author{Julian Schrittwieser}\author{Ioannis Antonoglou}\author{Thomas Hubert}\author{Karen Simonyan}\author{Laurent Sifre}\author{Simon Schmitt}\author{Arthur Guez}\author{Edward Lockhart}\author{Demis Hassabis}\author{Thore Graepel}\author{Timothy Lillicrap}\author{David Silver}
 \taxon{Reference}
 \meta{doi}{10.1038/s41586-020-03051-4}
 \meta{external}{https://arxiv.org/abs/1911.08265}
@@ -17,7 +15,7 @@
  volume = {588},
  number = {7839},
  pages = {604--609},
- file = {/home/kellen/Zotero/storage/I7Y4VSFZ/Schrittwieser et al. - 2020 - Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/I7Y4VSFZ/Schrittwieser et al. - 2020 - Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model.pdf},
  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

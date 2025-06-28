@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Data-Efficient Hierarchical Reinforcement Learning}
 \date{2018-10}
-\author{Ofir Nachum}\author{Shixiang Gu}\author{Honglak Lee}\author{Sergey Levine}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/1805.08296}
 
@@ -13,7 +11,7 @@
  urldate = {2024-10-24},
  number = {arXiv:1805.08296},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/E5S647TN/Nachum et al. - 2018 - Data-Efficient Hierarchical Reinforcement Learning.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/E5S647TN/Nachum et al. - 2018 - Data-Efficient Hierarchical Reinforcement Learning.pdf},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

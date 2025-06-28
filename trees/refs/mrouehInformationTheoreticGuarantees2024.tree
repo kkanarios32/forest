@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Information Theoretic Guarantees For Policy Alignment In Large Language Models}
 \date{2024-06}
-\author{Youssef Mroueh}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2406.05883}
 
@@ -13,7 +11,7 @@
  urldate = {2024-09-18},
  number = {arXiv:2406.05883},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/5NKQB3ZU/Mroueh - 2024 - Information Theoretic Guarantees For Policy Alignment In Large Language Models.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/5NKQB3ZU/Mroueh - 2024 - Information Theoretic Guarantees For Policy Alignment In Large Language Models.pdf},
  keywords = {Computer Science - Information Theory,Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

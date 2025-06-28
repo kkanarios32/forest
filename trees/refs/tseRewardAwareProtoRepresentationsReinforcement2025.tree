@@ -1,0 +1,25 @@
+\title{Reward-Aware Proto-Representations in Reinforcement Learning}
+\date{2025-05}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2505.16217}
+\meta{external}{https://arxiv.org/abs/2505.16217}
+
+\meta{bibtex}{\startverb
+@misc{tseRewardAwareProtoRepresentationsReinforcement2025,
+ title = {Reward-{{Aware Proto-Representations}} in {{Reinforcement Learning}}},
+ author = {Tse, Hon Tik and Chandrasekar, Siddarth and Machado, Marlos C.},
+ year = {2025},
+ doi = {10.48550/arXiv.2505.16217},
+ urldate = {2025-06-27},
+ number = {arXiv:2505.16217},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/V4VASC3J/Tse et al. - 2025 - Reward-Aware Proto-Representations in Reinforcemen.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In recent years, the successor representation (SR) has attracted increasing attention in reinforcement learning (RL), and it has been used to address some of its key challenges, such as exploration, credit assignment, and generalization. The SR can be seen as representing the underlying credit assignment structure of the environment by implicitly encoding its induced transition dynamics. However, the SR is reward-agnostic. In this paper, we discuss a similar representation that also takes into account the reward dynamics of the problem. We study the default representation (DR), a recently proposed representation with limited theoretical (and empirical) analysis. Here, we lay some of the theoretical foundation underlying the DR in the tabular case by (1) deriving dynamic programming and (2) temporaldifference methods to learn the DR, (3) characterizing the basis for the vector space of the DR, and (4) formally extending the DR to the function approximation case through default features. Empirically, we analyze the benefits of the DR in many of the settings in which the SR has been applied, including (1) reward shaping, (2) option discovery, (3) exploration, and (4) transfer learning. Our results show that, compared to the SR, the DR gives rise to qualitatively different, reward-aware behaviour and quantitatively better performance in several settings.},
+ primaryclass = {cs},
+ eprint = {2505.16217},
+ month = {May}
+}
+\stopverb}

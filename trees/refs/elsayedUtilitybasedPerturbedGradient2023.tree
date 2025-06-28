@@ -1,0 +1,26 @@
+\title{Utility-based Perturbed Gradient Descent: An Optimizer for Continual Learning}
+\date{2023-04}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2302.03281}
+\meta{external}{https://arxiv.org/abs/2302.03281}
+
+\meta{bibtex}{\startverb
+@misc{elsayedUtilitybasedPerturbedGradient2023,
+ title = {Utility-Based {{Perturbed Gradient Descent}}: {{An Optimizer}} for {{Continual Learning}}},
+ author = {Elsayed, Mohamed and Mahmood, A. Rupam},
+ year = {2023},
+ doi = {10.48550/arXiv.2302.03281},
+ urldate = {2025-06-27},
+ number = {arXiv:2302.03281},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/2RCAQS2F/Elsayed and Mahmood - 2023 - Utility-based Perturbed Gradient Descent An Optim.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Modern representation learning methods often struggle to adapt quickly under non-stationarity because they suffer from catastrophic forgetting and decaying plasticity. Such problems prevent learners from fast adaptation since they may forget useful features or have difficulty learning new ones. Hence, these methods are rendered ineffective for continual learning. This paper proposes Utility-based Perturbed Gradient Descent (UPGD), an online learning algorithm well-suited for continual learning agents. UPGD protects useful weights or features from forgetting and perturbs less useful ones based on their utilities. Our empirical results show that UPGD helps reduce forgetting and maintain plasticity, enabling modern representation learning methods to work effectively in continual learning.},
+ primaryclass = {cs},
+ eprint = {2302.03281},
+ month = {April},
+ shorttitle = {Utility-Based {{Perturbed Gradient Descent}}}
+}
+\stopverb}

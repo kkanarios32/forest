@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Constrained Markov Decision Processes: Stochastic Modeling}
 \date{2021-12}
-\author{Eitan Altman}
 \taxon{Reference}
 \meta{doi}{10.1201/9781315140223}
 \meta{bibtex}{\startverb
@@ -15,7 +13,7 @@
  edition = {1},
  publisher = {Routledge},
  address = {Boca Raton},
- file = {/home/kellen/Zotero/storage/GBXKPARY/Altman - 2021 - Constrained Markov Decision Processes Stochastic Modeling.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/GBXKPARY/Altman - 2021 - Constrained Markov Decision Processes Stochastic Modeling.pdf},
  langid = {english},
  month = {December},
  shorttitle = {Constrained {{Markov Decision Processes}}}

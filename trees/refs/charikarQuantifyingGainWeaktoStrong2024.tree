@@ -1,7 +1,5 @@
-% ["refs"]
 \title{Quantifying the Gain in Weak-to-Strong Generalization}
 \date{2024-10}
-\author{Moses Charikar}\author{Chirag Pabbaraju}\author{Kirankumar Shiragur}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2405.15116}
 
@@ -13,7 +11,7 @@
  urldate = {2024-10-24},
  number = {arXiv:2405.15116},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/Y3LYJ8Q8/Charikar et al. - 2024 - Quantifying the Gain in Weak-to-Strong Generalization.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/Y3LYJ8Q8/Charikar et al. - 2024 - Quantifying the Gain in Weak-to-Strong Generalization.pdf},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

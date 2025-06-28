@@ -1,12 +1,10 @@
-% ["references", "refs"]
 \title{Lecture Notes on Game Theory}
-\author{Tilman Borgers}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{borgersLectureNotesGame,
  title = {Lecture {{Notes}} on {{Game Theory}}},
  author = {Borgers, Tilman},
- file = {/home/kellen/Zotero/storage/CYJDCVHC/Borgers - Lecture Notes on Game Theory.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/CYJDCVHC/Borgers - Lecture Notes on Game Theory.pdf},
  langid = {english}
 }
 \stopverb}

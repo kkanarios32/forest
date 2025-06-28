@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{ZeRO: Memory Optimizations Toward Training Trillion Parameter Models}
 \date{2020-05}
-\author{Samyam Rajbhandari}\author{Jeff Rasley}\author{Olatunji Ruwase}\author{Yuxiong He}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/1910.02054}
 
@@ -13,7 +11,7 @@
  urldate = {2024-09-18},
  number = {arXiv:1910.02054},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/FDXIZE3Y/Rajbhandari et al. - 2020 - ZeRO Memory Optimizations Toward Training Trillion Parameter Models.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/FDXIZE3Y/Rajbhandari et al. - 2020 - ZeRO Memory Optimizations Toward Training Trillion Parameter Models.pdf},
  keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

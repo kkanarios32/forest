@@ -1,0 +1,26 @@
+\title{Discovering Temporal Structure: An Overview of Hierarchical Reinforcement Learning}
+\date{2025-06}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2506.14045}
+\meta{external}{https://arxiv.org/abs/2506.14045}
+
+\meta{bibtex}{\startverb
+@misc{klissarovDiscoveringTemporalStructure2025,
+ title = {Discovering {{Temporal Structure}}: {{An Overview}} of {{Hierarchical Reinforcement Learning}}},
+ author = {Klissarov, Martin and Bagaria, Akhil and Luo, Ziyan and Konidaris, George and Precup, Doina and Machado, Marlos C.},
+ year = {2025},
+ doi = {10.48550/arXiv.2506.14045},
+ urldate = {2025-06-27},
+ number = {arXiv:2506.14045},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/5WDE2SRD/Klissarov et al. - 2025 - Discovering Temporal Structure An Overview of Hie.pdf},
+ keywords = {Computer Science - Artificial Intelligence},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Developing agents capable of exploring, planning and learning in complex open-ended environments is a grand challenge in artificial intelligence (AI). Hierarchical reinforcement learning (HRL) offers a promising solution to this challenge by discovering and exploiting the temporal structure within a stream of experience. The strong appeal of the HRL framework has led to a rich and diverse body of literature attempting to discover a useful structure. However, it is still not clear how one might define what constitutes good structure in the first place, or the kind of problems in which identifying it may be helpful. This work aims to identify the benefits of HRL from the perspective of the fundamental challenges in decision-making, as well as highlight its impact on the performance trade-offs of AI agents. Through these benefits, we then cover the families of methods that discover temporal structure in HRL, ranging from learning directly from online experience to offline datasets, to leveraging large language models (LLMs). Finally, we highlight the challenges of temporal structure discovery and the domains that are particularly well-suited for such endeavours.},
+ primaryclass = {cs},
+ eprint = {2506.14045},
+ month = {June},
+ shorttitle = {Discovering {{Temporal Structure}}}
+}
+\stopverb}

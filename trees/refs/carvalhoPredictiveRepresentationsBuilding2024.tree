@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Predictive representations: Building blocks of intelligence}
 \date{2024-07}
-\author{Wilka Carvalho}\author{Momchil S. Tomov}\author{William Cothi}\author{Caswell Barry}\author{Samuel J. Gershman}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2402.06590}
 
@@ -13,7 +11,7 @@
  urldate = {2024-09-11},
  number = {arXiv:2402.06590},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/AWBJ53L5/Carvalho et al. - 2024 - Predictive representations building blocks of intelligence.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/AWBJ53L5/Carvalho et al. - 2024 - Predictive representations building blocks of intelligence.pdf},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

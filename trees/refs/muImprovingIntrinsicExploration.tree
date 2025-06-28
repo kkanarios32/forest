@@ -1,0 +1,11 @@
+\title{Improving Intrinsic Exploration with Language Abstractions}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{muImprovingIntrinsicExploration,
+ title = {Improving {{Intrinsic Exploration}} with {{Language Abstractions}}},
+ author = {Mu, Jesse and Zhong, Victor and Raileanu, Roberta and Jiang, Minqi and Goodman, Noah and Rockt{\"a}schel, Tim and Grefenstette, Edward},
+ file = {/home/kellen/Downloads/pdfs/storage/BSEUWMD8/Mu et al. - Improving Intrinsic Exploration with Language Abst.pdf},
+ langid = {english},
+ abstract = {Reinforcement learning (RL) agents are particularly hard to train when rewards are sparse. One common solution is to use intrinsic rewards to encourage agents to explore their environment. However, recent intrinsic exploration methods often use state-based novelty measures which reward low-level exploration and may not scale to domains requiring more abstract skills. Instead, we explore language as a general medium for highlighting relevant abstractions in an environment. Unlike previous work, we evaluate whether language can improve over existing exploration methods by directly extending (and comparing to) competitive intrinsic exploration baselines: AMIGo (Campero et al., 2021) and NovelD (Zhang et al., 2021). These language-based variants outperform their non-linguistic forms by 47--85\% across 13 challenging tasks from the MiniGrid and MiniHack environment suites.}
+}
+\stopverb}

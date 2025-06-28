@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Essentials of Stochastic Processes}
 \date{2016}
-\author{Richard Durrett}
 \taxon{Reference}
 \meta{doi}{10.1007/978-3-319-45614-0}
 \meta{bibtex}{\startverb
@@ -15,7 +13,7 @@
  series = {Springer {{Texts}} in {{Statistics}}},
  publisher = {Springer International Publishing},
  address = {Cham},
- file = {/home/kellen/Zotero/storage/MVRAWH8Q/Durrett - 2016 - Essentials of Stochastic Processes.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/MVRAWH8Q/Durrett - 2016 - Essentials of Stochastic Processes.pdf},
  langid = {english},
  copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining}
 }

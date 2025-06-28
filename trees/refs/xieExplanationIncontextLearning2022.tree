@@ -1,7 +1,5 @@
-% ["refs"]
 \title{An Explanation of In-context Learning as Implicit Bayesian Inference}
 \date{2022-07}
-\author{Sang Michael Xie}\author{Aditi Raghunathan}\author{Percy Liang}\author{Tengyu Ma}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2111.02080}
 
@@ -13,7 +11,7 @@
  urldate = {2024-10-15},
  number = {arXiv:2111.02080},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/RKQR98C3/Xie et al. - 2022 - An Explanation of In-context Learning as Implicit Bayesian Inference.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/RKQR98C3/Xie et al. - 2022 - An Explanation of In-context Learning as Implicit Bayesian Inference.pdf},
  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

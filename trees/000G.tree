@@ -6,7 +6,7 @@
 In my opinion, the most important part of this chapter is now that when we update say a #{Q} function for a specific state action pair #{(s,a)}, then this update can affect the value of the #{Q(s', a')} due to the reuse of the internal parameters.
   }
 
-\refcardt{exercise}{}{9.1}{sutton2022}{
+\refcardt{exercise}{}{9.1}{suttonReinforcementLearningIntroduction2018}{
   \p{Show that tabular methods are a special case of linear function approximation. What would the feature vectors be?}
 }
 
@@ -23,7 +23,7 @@ Substituting, we get
 Since #{\boldsymbol{w}} is our vector of values, updating the #{i}th entry is exactly performing exactly one update to #{v_{\pi}(s_i)} in the tabular setting.
 }
 
-\refcardt{exercise}{}{9.2}{sutton2022}{
+\refcardt{exercise}{}{9.2}{suttonReinforcementLearningIntroduction2018}{
   \p{Why does (9.17) define #{(n + 1)^k} distinct features for dimension k? }
 }
 \solution{
@@ -31,7 +31,7 @@ Since #{\boldsymbol{w}} is our vector of values, updating the #{i}th entry is ex
 }
 
 
-\refcardt{exercise}{}{9.3}{sutton2022}{
+\refcardt{exercise}{}{9.3}{suttonReinforcementLearningIntroduction2018}{
 \p{What #{n} and #{c_{i,j}} produce the feature vectors ##{\mathbf{x}(s)=(1,s_{1},s_{2},s_{1}s_{2},s_{1}^{2},s_{2}^{2},s_{1}^{2}s_{2}^{2},s_{1}s_{2}^{2},s_{1}^{2}s_{2}^{2})^{\top}?}
 }
 }
@@ -80,7 +80,7 @@ Since #{\boldsymbol{w}} is our vector of values, updating the #{i}th entry is ex
   }
   }
 
-\refcardt{exercise}{}{9.4}{sutton2022}{
+\refcardt{exercise}{}{9.4}{suttonReinforcementLearningIntroduction2018}{
   \p{
     You could do anisotropic (big word for asymmetric) tile partitioning. If we consider the two state dimensions as (x,y) coordinates and suppose that we want to only generalize across the #{y}-direction i.e. we want states with the same #{x} coordinate to have similar values then we would tile with long thin tiles. Therefore, states with the same #{x} coordinate would lie in the same vertical tile and if the tiles are very thin any change in #{x}-coordinate would lie in disjoint tiles.
   }

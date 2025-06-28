@@ -1,0 +1,11 @@
+\taxon{Reference}
+\meta{external}{https://pages.cs.wisc.edu/~remzi/OSTEP/}
+
+\meta{bibtex}{\startverb
+@article{arpaci2018operating,
+  title={Operating systems: Three easy pieces},
+  author={Arpaci-Dusseau, Remzi H and Arpaci-Dusseau, Andrea C},
+  year={2018},
+  publisher={Arpaci-Dusseau Books, LLC Madison, WI, USA}
+}
+\stopverb}

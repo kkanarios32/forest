@@ -1,12 +1,10 @@
-% ["references", "refs"]
 \title{ELEMENTS OF INFORMATION THEORY}
-\author{Thomas M Cover}\author{Joy A Thomas}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{coverELEMENTSINFORMATIONTHEORY,
  title = {{{ELEMENTS OF INFORMATION THEORY}}},
  author = {Cover, Thomas M and Thomas, Joy A},
- file = {/home/kellen/Zotero/storage/C6AJGW5I/Cover and Thomas - ELEMENTS OF INFORMATION THEORY.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/C6AJGW5I/Cover and Thomas - ELEMENTS OF INFORMATION THEORY.pdf},
  langid = {english}
 }
 \stopverb}

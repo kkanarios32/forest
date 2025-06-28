@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Noise Contrastive Estimation and Negative Sampling for Conditional Models: Consistency and Statistical Efficiency}
 \date{2018-09}
-\author{Zhuang Ma}\author{Michael Collins}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1809.01812}
 \meta{external}{https://arxiv.org/abs/1809.01812}
@@ -15,7 +13,7 @@
  urldate = {2025-02-03},
  number = {arXiv:1809.01812},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/BC92TTTC/Ma and Collins - 2018 - Noise Contrastive Estimation and Negative Sampling for Conditional Models Consistency and Statistic.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/BC92TTTC/Ma and Collins - 2018 - Noise Contrastive Estimation and Negative Sampling for Conditional Models Consistency and Statistic.pdf},
  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Statistics - Methodology},
  langid = {english},
  archiveprefix = {arXiv},

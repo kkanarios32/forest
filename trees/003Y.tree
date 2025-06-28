@@ -22,7 +22,7 @@
       }
       \li{Trust region policy optimization}
       \li{Soft Actor Critic}
-      \li{[Proximal Policy Optimization](schulman2017proximalpolicyoptimizationalgorithms)}
+      \li{[Proximal Policy Optimization](schulmanProximalPolicyOptimization2017)}
       \li{[[003X]]}
     }
 }

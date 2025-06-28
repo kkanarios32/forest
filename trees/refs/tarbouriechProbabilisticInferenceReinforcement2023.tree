@@ -1,7 +1,5 @@
-% ["refs"]
 \title{Probabilistic Inference in Reinforcement Learning Done Right}
 \date{2023-11}
-\author{Jean Tarbouriech}\author{Tor Lattimore}\author{Brendan O’Donoghue}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2311.13294}
 \meta{external}{https://arxiv.org/abs/2311.13294}
@@ -15,7 +13,7 @@
  urldate = {2025-06-09},
  number = {arXiv:2311.13294},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/6QTWS9LM/Tarbouriech et al. - 2023 - Probabilistic Inference in Reinforcement Learning Done Right.pdf;/home/kellen/Zotero/storage/YTUL9362/2311.html},
+ file = {/home/kellen/Downloads/pdfs/storage/6QTWS9LM/Tarbouriech et al. - 2023 - Probabilistic Inference in Reinforcement Learning Done Right.pdf;/home/kellen/Downloads/pdfs/storage/YTUL9362/2311.html},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
  archiveprefix = {arXiv},
  abstract = {A popular perspective in Reinforcement learning (RL) casts the problem as probabilistic inference on a graphical model of the Markov decision process (MDP). The core object of study is the probability of each state-action pair being visited under the optimal policy. Previous approaches to approximate this quantity can be arbitrarily poor, leading to algorithms that do not implement genuine statistical inference and consequently do not perform well in challenging problems. In this work, we undertake a rigorous Bayesian treatment of the posterior probability of state-action optimality and clarify how it flows through the MDP. We first reveal that this quantity can indeed be used to generate a policy that explores efficiently, as measured by regret. Unfortunately, computing it is intractable, so we derive a new variational Bayesian approximation yielding a tractable convex optimization problem and establish that the resulting policy also explores efficiently. We call our approach VAPOR and show that it has strong connections to Thompson sampling, K-learning, and maximum entropy exploration. We conclude with some experiments demonstrating the performance advantage of a deep RL version of VAPOR.},

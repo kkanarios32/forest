@@ -1,0 +1,25 @@
+\title{Cost Aware Best Arm Identification}
+\date{2024-07}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2402.16710}
+\meta{external}{https://arxiv.org/abs/2402.16710}
+
+\meta{bibtex}{\startverb
+@misc{kanariosCostAwareBest2024,
+ title = {Cost {{Aware Best Arm Identification}}},
+ author = {Kanarios, Kellen and Zhang, Qining and Ying, Lei},
+ year = {2024},
+ doi = {10.48550/arXiv.2402.16710},
+ urldate = {2025-06-27},
+ number = {arXiv:2402.16710},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/KCBBU7NQ/Kanarios et al. - 2024 - Cost Aware Best Arm Identification.pdf},
+ keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In this paper, we study a best arm identification problem with dual objects. In addition to the classic reward, each arm is associated with a cost distribution and the goal is to identify the largest reward arm using the minimum expected cost. We call it Cost Aware Best Arm Identification (CABAI), which captures the separation of testing and implementation phases in product development pipelines and models the objective shift between phases, i.e., cost for testing and reward for implementation. We first derive a theoretical lower bound for CABAI and propose an algorithm called CTAS to match it asymptotically. To reduce the computation of CTAS, we further propose a simple algorithm called Chernoff Overlap (CO), based on a square-root rule, which we prove is optimal in simplified two-armed models and generalizes well in numerical experiments. Our results show that (i) ignoring the heterogeneous action cost results in sub-optimality in practice, and (ii) simple algorithms can deliver near-optimal performance over a wide range of problems.},
+ primaryclass = {cs},
+ eprint = {2402.16710},
+ month = {July}
+}
+\stopverb}

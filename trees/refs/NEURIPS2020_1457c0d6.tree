@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Language models are few-shot learners}
 \date{2020}
-\author{Tom Brown}\author{Benjamin Mann}\author{Nick Ryder}\author{Melanie Subbiah}\author{Jared D Kaplan}\author{Prafulla Dhariwal}\author{Arvind Neelakantan}\author{Pranav Shyam}\author{Girish Sastry}\author{Amanda Askell}\author{Sandhini Agarwal}\author{Ariel Herbert-Voss}\author{Gretchen Krueger}\author{Tom Henighan}\author{Rewon Child}\author{Aditya Ramesh}\author{Daniel Ziegler}\author{Jeffrey Wu}\author{Clemens Winter}\author{Chris Hesse}\author{Mark Chen}\author{Eric Sigler}\author{Mateusz Litwin}\author{Scott Gray}\author{Benjamin Chess}\author{Jack Clark}\author{Christopher Berner}\author{Sam McCandlish}\author{Alec Radford}\author{Ilya Sutskever}\author{Dario Amodei}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{NEURIPS2020_1457c0d6,

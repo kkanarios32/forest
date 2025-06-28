@@ -1,6 +1,6 @@
 \date{2024-10-30}
 \author{kellenkanarios}
-\title{Notes on [[billingsley1986]]}
+\title{Notes on [[billingsleyProbabilityMeasure1995]]}
 \import{base-macros}
 \tag{prob}
 \tag{note}
@@ -108,7 +108,7 @@ Consider a four point space #{\Omega = \{x_1, x_2, x_3, x_4\}}. We can define a 
 
 \transclude{001B}
 
-\p{Now we will see how this allows us to prove our desired result i.e. the uniqueness of our extension of a probability on an algebra to the [[0000]] via the outer measure.}
+\p{Now we will see how this allows us to prove our desired result i.e. the uniqueness of our extension of a probability on an algebra via the outer measure.}
 
 \transclude{001C}
 
@@ -126,7 +126,7 @@ Consider a four point space #{\Omega = \{x_1, x_2, x_3, x_4\}}. We can define a 
 
 \transclude{001G}
 
-\refcardt{exercise}{}{3.2}{billingsley1986}{
+\refcardt{exercise}{}{3.2}{billingsleyProbabilityMeasure1995}{
   Let #{P} be a probability measure on a field #{\mathscr{F}_{0}} and for every subset #{A} of #{\Omega} define #{P^{\star}(A)} by [(3.1)](000T). Denote also by #{P} the extension of #{P} to #{\mathscr{F}=\sigma(\mathscr{F}_{0})}.
   \ol{
       \li{Show that #{A} is [[000U]] if and only if #{P^*(A) = P_*(A)}.}

@@ -1,0 +1,20 @@
+\title{Reward-respecting subtasks for model-based reinforcement learning}
+\date{2023-11}
+\taxon{Reference}
+\meta{doi}{10.1016/j.artint.2023.104001}
+\meta{bibtex}{\startverb
+@article{suttonRewardrespectingSubtasksModelbased2023,
+ title = {Reward-Respecting Subtasks for Model-Based Reinforcement Learning},
+ author = {Sutton, Richard S. and Machado, Marlos C. and Holland, G. Zacharias and Szepesvari, David and Timbers, Finbarr and Tanner, Brian and White, Adam},
+ year = {2023},
+ doi = {10.1016/j.artint.2023.104001},
+ urldate = {2025-06-27},
+ journal = {Artificial Intelligence},
+ volume = {324},
+ pages = {104001},
+ file = {/home/kellen/Downloads/pdfs/storage/NVDLPRUE/Sutton et al. - 2023 - Reward-respecting subtasks for model-based reinfor.pdf},
+ langid = {english},
+ issn = {00043702},
+ month = {November}
+}
+\stopverb}

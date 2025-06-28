@@ -1,0 +1,26 @@
+\title{Fast Monte Carlo Tree Diffusion: 100x Speedup via Parallel Sparse Planning}
+\date{2025-06}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2506.09498}
+\meta{external}{https://arxiv.org/abs/2506.09498}
+
+\meta{bibtex}{\startverb
+@misc{yoonFastMonteCarlo2025,
+ title = {Fast {{Monte Carlo Tree Diffusion}}: 100x {{Speedup}} via {{Parallel Sparse Planning}}},
+ author = {Yoon, Jaesik and Cho, Hyeonseo and Bengio, Yoshua and Ahn, Sungjin},
+ year = {2025},
+ doi = {10.48550/arXiv.2506.09498},
+ urldate = {2025-06-25},
+ number = {arXiv:2506.09498},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/59RZRQQT/Yoon et al. - 2025 - Fast Monte Carlo Tree Diffusion 100x Speedup via .pdf},
+ keywords = {Computer Science - Artificial Intelligence},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Diffusion models have recently emerged as a powerful approach for trajectory planning. However, their inherently non-sequential nature limits their effectiveness in long-horizon reasoning tasks at test time. The recently proposed Monte Carlo Tree Diffusion (MCTD) offers a promising solution by combining diffusion with tree-based search, achieving state-of-the-art performance on complex planning problems. Despite its strengths, our analysis shows that MCTD incurs substantial computational overhead due to the sequential nature of tree search and the cost of iterative denoising. To address this, we propose Fast-MCTD, a more efficient variant that preserves the strengths of MCTD while significantly improving its speed and scalability. Fast-MCTD integrates two techniques: Parallel MCTD, which enables parallel rollouts via delayed tree updates and redundancy-aware selection; and Sparse MCTD, which reduces rollout length through trajectory coarsening. Experiments show that Fast-MCTD achieves up to 100{\texttimes} speedup over standard MCTD while maintaining or improving planning performance. Remarkably, it even outperforms Diffuser in inference speed on some tasks, despite Diffuser requiring no search and yielding weaker solutions. These results position Fast-MCTD as a practical and scalable solution for diffusion-based inference-time reasoning.},
+ primaryclass = {cs},
+ eprint = {2506.09498},
+ month = {June},
+ shorttitle = {Fast {{Monte Carlo Tree Diffusion}}}
+}
+\stopverb}

@@ -50,7 +50,7 @@ bib_dir = project_root / "trees" / "refs"
 # Set the bib file name
 bib_filename = sys.argv[1] if len(sys.argv) > 1 else "refs"
 # create a directory to store the split files
-generated_dir = bib_dir / "generated"
+generated_dir = tex_dir / "generated"
 os.makedirs(generated_dir, exist_ok=True)
 
 bib_file = pathlib.Path(tex_dir) / f"{bib_filename}.bib"
@@ -97,14 +97,12 @@ def tree_template(
     original_bibtex="",
 ):
     formatted = ""
-    if bib_filenames != "":
-        formatted += f"% {bib_filenames}\n"
     if title != "":
         formatted += f"\\title{{{title}}}\n"
     if date != "":
         formatted += f"\\date{{{date}}}\n"
-    if authors != "":
-        formatted += f"{authors}\n"
+    # if authors != "":
+    #     formatted += f"{authors}\n"
     formatted += "\\taxon{Reference}\n"
     if meta_doi != "":
         formatted += f"{meta_doi}"

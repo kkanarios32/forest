@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Hierarchical Reinforcement Learning in Complex 3D Environments}
 \date{2023-02}
-\author{Bernardo Avila Pires}\author{Feryal Behbahani}\author{Hubert Soyer}\author{Kyriacos Nikiforou}\author{Thomas Keck}\author{Satinder Singh}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2302.14451}
 \meta{external}{https://arxiv.org/abs/2302.14451}
@@ -15,7 +13,7 @@
  urldate = {2025-02-03},
  number = {arXiv:2302.14451},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/E6YDS983/Pires et al. - 2023 - Hierarchical Reinforcement Learning in Complex 3D Environments.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/E6YDS983/Pires et al. - 2023 - Hierarchical Reinforcement Learning in Complex 3D Environments.pdf},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

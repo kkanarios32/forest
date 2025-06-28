@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Generalised Policy Improvement with Geometric Policy Composition}
 \date{2022-06}
-\author{Shantanu Thakoor}\author{Mark Rowland}\author{Diana Borsa}\author{Will Dabney}\author{Rémi Munos}\author{André Barreto}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2206.08736}
 \meta{external}{https://arxiv.org/abs/2206.08736}
@@ -15,7 +13,7 @@
  urldate = {2025-02-16},
  number = {arXiv:2206.08736},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/7R2UW6U8/Thakoor et al. - 2022 - Generalised Policy Improvement with Geometric Policy Composition.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/7R2UW6U8/Thakoor et al. - 2022 - Generalised Policy Improvement with Geometric Policy Composition.pdf},
  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

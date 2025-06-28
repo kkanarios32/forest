@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Differential Equations and Dynamical Systems}
 \date{2001}
-\author{Lawrence Perko}
 \taxon{Reference}
 \meta{doi}{10.1007/978-1-4613-0003-8}
 \meta{bibtex}{\startverb
@@ -17,7 +15,7 @@
  volume = {7},
  publisher = {Springer New York},
  address = {New York, NY},
- file = {/home/kellen/Zotero/storage/FRK58JEY/Perko - 2001 - Differential Equations and Dynamical Systems.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/FRK58JEY/Perko - 2001 - Differential Equations and Dynamical Systems.pdf},
  langid = {english},
  copyright = {http://www.springer.com/tdm}
 }

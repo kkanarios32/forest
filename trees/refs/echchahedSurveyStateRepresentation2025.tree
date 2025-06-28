@@ -1,0 +1,25 @@
+\title{A Survey of State Representation Learning for Deep Reinforcement Learning}
+\date{2025-06}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2506.17518}
+\meta{external}{https://arxiv.org/abs/2506.17518}
+
+\meta{bibtex}{\startverb
+@misc{echchahedSurveyStateRepresentation2025,
+ title = {A {{Survey}} of {{State Representation Learning}} for {{Deep Reinforcement Learning}}},
+ author = {Echchahed, Ayoub and Castro, Pablo Samuel},
+ year = {2025},
+ doi = {10.48550/arXiv.2506.17518},
+ urldate = {2025-06-27},
+ number = {arXiv:2506.17518},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/8T83X33L/Echchahed and Castro - 2025 - A Survey of State Representation Learning for Deep.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Representation learning methods are an important tool for addressing the challenges posed by complex observations spaces in sequential decision making problems. Recently, many methods have used a wide variety of types of approaches for learning meaningful state representations in reinforcement learning, allowing better sample efficiency, generalization, and performance. This survey aims to provide a broad categorization of these methods within a model-free online setting, exploring how they tackle the learning of state representations differently. We categorize the methods into six main classes, detailing their mechanisms, benefits, and limitations. Through this taxonomy, our aim is to enhance the understanding of this field and provide a guide for new researchers. We also discuss techniques for assessing the quality of representations, and detail relevant future directions.},
+ primaryclass = {cs},
+ eprint = {2506.17518},
+ month = {June}
+}
+\stopverb}

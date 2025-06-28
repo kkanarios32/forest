@@ -1,6 +1,6 @@
 \def\latex-preamble{
  \startverb
- \usepackage{amsmath, mathtools}
+ \usepackage{tikz, tikz-cd, mathtools, amssymb, amsmath, stmaryrd}
  \ExplSyntaxOff
  \stopverb
 }

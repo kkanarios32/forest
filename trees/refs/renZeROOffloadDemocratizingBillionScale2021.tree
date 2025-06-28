@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{ZeRO-Offload: Democratizing Billion-Scale Model Training}
 \date{2021-01}
-\author{Jie Ren}\author{Samyam Rajbhandari}\author{Reza Yazdani Aminabadi}\author{Olatunji Ruwase}\author{Shuangyan Yang}\author{Minjia Zhang}\author{Dong Li}\author{Yuxiong He}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2101.06840}
 \meta{external}{https://arxiv.org/abs/2101.06840}
@@ -15,7 +13,7 @@
  urldate = {2025-01-30},
  number = {arXiv:2101.06840},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/EQNAIMY3/Ren et al. - 2021 - ZeRO-Offload Democratizing Billion-Scale Model Training.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/EQNAIMY3/Ren et al. - 2021 - ZeRO-Offload Democratizing Billion-Scale Model Training.pdf},
  keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

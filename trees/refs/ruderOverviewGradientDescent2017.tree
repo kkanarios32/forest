@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{An overview of gradient descent optimization algorithms}
 \date{2017-06}
-\author{Sebastian Ruder}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1609.04747}
 \meta{external}{https://arxiv.org/abs/1609.04747}
@@ -15,7 +13,7 @@
  urldate = {2025-02-28},
  number = {arXiv:1609.04747},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/L2GP2CTQ/Ruder - 2017 - An overview of gradient descent optimization algorithms.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/L2GP2CTQ/Ruder - 2017 - An overview of gradient descent optimization algorithms.pdf},
  keywords = {Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

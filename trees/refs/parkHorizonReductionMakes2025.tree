@@ -1,7 +1,5 @@
-% ["refs"]
 \title{Horizon Reduction Makes RL Scalable}
 \date{2025-06}
-\author{Seohong Park}\author{Kevin Frans}\author{Deepinder Mann}\author{Benjamin Eysenbach}\author{Aviral Kumar}\author{Sergey Levine}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2506.04168}
 \meta{external}{https://arxiv.org/abs/2506.04168}
@@ -15,7 +13,7 @@
  urldate = {2025-06-14},
  number = {arXiv:2506.04168},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/GZMYP9DB/Park et al. - 2025 - Horizon Reduction Makes RL Scalable.pdf;/home/kellen/Zotero/storage/GF47MGGU/2506.html},
+ file = {/home/kellen/Downloads/pdfs/storage/GZMYP9DB/Park et al. - 2025 - Horizon Reduction Makes RL Scalable.pdf;/home/kellen/Downloads/pdfs/storage/GF47MGGU/2506.html},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
  archiveprefix = {arXiv},
  abstract = {In this work, we study the scalability of offline reinforcement learning (RL) algorithms. In principle, a truly scalable offline RL algorithm should be able to solve any given problem, regardless of its complexity, given sufficient data, compute, and model capacity. We investigate if and how current offline RL algorithms match up to this promise on diverse, challenging, previously unsolved tasks, using datasets up to 1000x larger than typical offline RL datasets. We observe that despite scaling up data, many existing offline RL algorithms exhibit poor scaling behavior, saturating well below the maximum performance. We hypothesize that the horizon is the main cause behind the poor scaling of offline RL. We empirically verify this hypothesis through several analysis experiments, showing that long horizons indeed present a fundamental barrier to scaling up offline RL. We then show that various horizon reduction techniques substantially enhance scalability on challenging tasks. Based on our insights, we also introduce a minimal yet scalable method named SHARSA that effectively reduces the horizon. SHARSA achieves the best asymptotic performance and scaling behavior among our evaluation methods, showing that explicitly reducing the horizon unlocks the scalability of offline RL. Code: https://github.com/seohongpark/horizon-reduction},

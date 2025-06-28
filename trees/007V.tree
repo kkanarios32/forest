@@ -1,0 +1,17 @@
+\import{base-macros}
+\date{2025-06-23T03:40:22Z}
+\title{[[007U]]: [TPE](arpaci2018operating) Processes}
+\section{The Abstraction}{
+\p{\em{A process} consists of a few primary components
+\ol{
+  \li{\strong{Memory}: each process requires its own portion of memory for (i) to store the instructions of the program to execute and (ii) for the memory required by the calling program. This is referred to as the \em{address space}.}
+  \li{\strong{Registers}: for those familiar with computers, instructions typically deal with registers, where information is loaded from memory into registers to perform computation. Additionally, there are special registers reserved for certain mechanisms i.e.
+  \ul{
+    \li{\strong{Program Counter (PC)}: This register is in charge of telling us what instruction we are currently on in the executing program.}
+    \li{\strong{Stack and Frame Pointer:} Used to manage where we currently are on the stack.}
+  }
+  }
+  \li{}
+}
+}
+}

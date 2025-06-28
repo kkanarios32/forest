@@ -1,0 +1,25 @@
+\title{Mitigating Plasticity Loss in Continual Reinforcement Learning by Reducing Churn}
+\date{2025-05}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2506.00592}
+\meta{external}{https://arxiv.org/abs/2506.00592}
+
+\meta{bibtex}{\startverb
+@misc{tangMitigatingPlasticityLoss2025,
+ title = {Mitigating {{Plasticity Loss}} in {{Continual Reinforcement Learning}} by {{Reducing Churn}}},
+ author = {Tang, Hongyao and {Obando-Ceron}, Johan and Castro, Pablo Samuel and Courville, Aaron and Berseth, Glen},
+ year = {2025},
+ doi = {10.48550/arXiv.2506.00592},
+ urldate = {2025-06-27},
+ number = {arXiv:2506.00592},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/PWAQ3ZB5/Tang et al. - 2025 - Mitigating Plasticity Loss in Continual Reinforcem.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Plasticity, or the ability of an agent to adapt to new tasks, environments, or distributions, is crucial for continual learning. In this paper, we study the loss of plasticity in deep continual RL from the lens of churn: network output variability for out-of-batch data induced by mini-batch training. We demonstrate that (1) the loss of plasticity is accompanied by the exacerbation of churn due to the gradual rank decrease of the Neural Tangent Kernel (NTK) matrix; (2) reducing churn helps prevent rank collapse and adjusts the step size of regular RL gradients adaptively. Moreover, we introduce Continual Churn Approximated Reduction (C-CHAIN) and demonstrate it improves learning performance and outperforms baselines in a diverse range of continual learning environments on OpenAI Gym Control, ProcGen, DeepMind Control Suite, and MinAtar benchmarks.},
+ primaryclass = {cs},
+ eprint = {2506.00592},
+ month = {May}
+}
+\stopverb}

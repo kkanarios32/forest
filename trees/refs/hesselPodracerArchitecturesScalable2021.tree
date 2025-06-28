@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Podracer architectures for scalable Reinforcement Learning}
 \date{2021-04}
-\author{Matteo Hessel}\author{Manuel Kroiss}\author{Aidan Clark}\author{Iurii Kemaev}\author{John Quan}\author{Thomas Keck}\author{Fabio Viola}\author{Hado van Hasselt}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2104.06272}
 \meta{external}{https://arxiv.org/abs/2104.06272}
@@ -15,7 +13,7 @@
  urldate = {2025-02-11},
  number = {arXiv:2104.06272},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/YM29JDFM/Hessel et al. - 2021 - Podracer architectures for scalable Reinforcement Learning.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/YM29JDFM/Hessel et al. - 2021 - Podracer architectures for scalable Reinforcement Learning.pdf},
  keywords = {Computer Science - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

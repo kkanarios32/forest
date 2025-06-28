@@ -1,0 +1,25 @@
+\title{Plan Online, Learn Offline: Efficient Learning and Exploration via Model-Based Control}
+\date{2019-01}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1811.01848}
+\meta{external}{https://arxiv.org/abs/1811.01848}
+
+\meta{bibtex}{\startverb
+@misc{lowreyPlanOnlineLearn2019,
+ title = {Plan {{Online}}, {{Learn Offline}}: {{Efficient Learning}} and {{Exploration}} via {{Model-Based Control}}},
+ author = {Lowrey, Kendall and Rajeswaran, Aravind and Kakade, Sham and Todorov, Emanuel and Mordatch, Igor},
+ year = {2019},
+ doi = {10.48550/arXiv.1811.01848},
+ urldate = {2025-06-15},
+ number = {arXiv:1811.01848},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/IRAHSQC4/Lowrey et al. - 2019 - Plan Online, Learn Offline Efficient Learning and Exploration via Model-Based Control.pdf;/home/kellen/Downloads/pdfs/storage/4MIV3P2X/1811.html},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {We propose a plan online and learn offline (POLO) framework for the setting where an agent, with an internal model, needs to continually act and learn in the world. Our work builds on the synergistic relationship between local model-based control, global value function learning, and exploration. We study how local trajectory optimization can cope with approximation errors in the value function, and can stabilize and accelerate value function learning. Conversely, we also study how approximate value functions can help reduce the planning horizon and allow for better policies beyond local solutions. Finally, we also demonstrate how trajectory optimization can be used to perform temporally coordinated exploration in conjunction with estimating uncertainty in value function approximation. This exploration is critical for fast and stable learning of the value function. Combining these components enable solutions to complex simulated control tasks, like humanoid locomotion and dexterous in-hand manipulation, in the equivalent of a few minutes of experience in the real world.},
+ primaryclass = {cs},
+ eprint = {1811.01848},
+ month = {January},
+ shorttitle = {Plan {{Online}}, {{Learn Offline}}}
+}
+\stopverb}

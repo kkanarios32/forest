@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Auto-Encoding Variational Bayes}
 \date{2022-12}
-\author{Diederik P. Kingma}\author{Max Welling}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1312.6114}
 \meta{external}{https://arxiv.org/abs/1312.6114}
@@ -15,7 +13,7 @@
  urldate = {2025-01-07},
  number = {arXiv:1312.6114},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/4CIQB3XP/1312.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/4CIQB3XP/1312.pdf},
  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

@@ -1,7 +1,5 @@
-% ["refs"]
 \title{Theoretical Analysis of Weak-to-Strong Generalization}
 \date{2024-05}
-\author{Hunter Lang}\author{David Sontag}\author{Aravindan Vijayaraghavan}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2405.16043}
 
@@ -13,7 +11,7 @@
  urldate = {2024-09-18},
  number = {arXiv:2405.16043},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/LJQ96YTP/Lang et al. - 2024 - Theoretical Analysis of Weak-to-Strong Generalization.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/LJQ96YTP/Lang et al. - 2024 - Theoretical Analysis of Weak-to-Strong Generalization.pdf},
  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

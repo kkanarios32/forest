@@ -1,0 +1,13 @@
+\title{REVISITING INTRINSIC REWARD FOR EXPLORATION IN PROCEDURALLY GENERATED ENVIRONMENTS}
+\date{2023}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{wangREVISITINGINTRINSICREWARD2023,
+ title = {{{REVISITING INTRINSIC REWARD FOR EXPLORATION IN PROCEDURALLY GENERATED ENVIRONMENTS}}},
+ author = {Wang, Kaixin and Zhou, Kuangqi and Kang, Bingyi and Feng, Jiashi and Yan, Shuicheng},
+ year = {2023},
+ file = {/home/kellen/Downloads/pdfs/storage/MC8I3P2R/Wang et al. - 2023 - REVISITING INTRINSIC REWARD FOR EXPLORATION IN PRO.pdf},
+ langid = {english},
+ abstract = {Exploration under sparse rewards remains a key challenge in deep reinforcement learning. Recently, studying exploration in procedurally-generated environments has drawn increasing attention. Existing works generally combine lifelong intrinsic rewards and episodic intrinsic rewards to encourage exploration. Though various lifelong and episodic intrinsic rewards have been proposed, the individual contributions of the two kinds of intrinsic rewards to improving exploration are barely investigated. To bridge this gap, we disentangle these two parts and conduct ablative experiments. We consider lifelong and episodic intrinsic rewards used in prior works, and compare the performance of all lifelong-episodic combinations on the commonly used MiniGrid benchmark. Experimental results show that only using episodic intrinsic rewards can match or surpass prior state-of-the-art methods. On the other hand, only using lifelong intrinsic rewards hardly makes progress in exploration. This demonstrates that episodic intrinsic reward is more crucial than lifelong one in boosting exploration. Moreover, we find through experimental analysis that the lifelong intrinsic reward does not accurately reflect the novelty of states, which explains why it does not help much in improving exploration.}
+}
+\stopverb}

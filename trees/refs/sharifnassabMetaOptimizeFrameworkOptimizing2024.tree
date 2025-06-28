@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{MetaOptimize: A Framework for Optimizing Step Sizes and Other Meta-parameters}
 \date{2024-10}
-\author{Arsalan Sharifnassab}\author{Saber Salehkaleybar}\author{Richard Sutton}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2402.02342}
 \meta{external}{https://arxiv.org/abs/2402.02342}
@@ -15,7 +13,7 @@
  urldate = {2025-03-04},
  number = {arXiv:2402.02342},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/MWJ3CB3E/2402.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/MWJ3CB3E/2402.pdf},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Mathematics - Optimization and Control},
  langid = {english},
  archiveprefix = {arXiv},

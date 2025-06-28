@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{The Information Geometry of Unsupervised Reinforcement Learning}
 \date{2021-10}
-\author{Benjamin Eysenbach}\author{Ruslan Salakhutdinov}\author{Sergey Levine}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{eysenbachInformationGeometryUnsupervised2021,
@@ -10,7 +8,7 @@
  year = {2021},
  urldate = {2025-02-16},
  booktitle = {International {{Conference}} on {{Learning Representations}}},
- file = {/home/kellen/Zotero/storage/VE3YH9VL/Eysenbach et al. - 2021 - The Information Geometry of Unsupervised Reinforcement Learning.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/VE3YH9VL/Eysenbach et al. - 2021 - The Information Geometry of Unsupervised Reinforcement Learning.pdf},
  langid = {english},
  abstract = {How can a reinforcement learning (RL) agent prepare to solve downstream tasks if those tasks are not known a priori? One approach is unsupervised skill discovery, a class of algorithms that learn a set of policies without access to a reward function. Such algorithms bear a close resemblance to representation learning algorithms (e.g., contrastive learning) in supervised learning, in that both are pretraining algorithms that maximize some approximation to a mutual information objective. While prior work has shown that the set of skills learned by such methods can accelerate downstream RL tasks, prior work offers little analysis into whether these skill learning algorithms are optimal, or even what notion of optimality would be appropriate to apply to them. In this work, we show that unsupervised skill discovery algorithms based on mutual information maximization do not learn skills that are optimal for every possible reward function. However, we show that the distribution over skills provides an optimal initialization minimizing regret against adversarially-chosen reward functions, assuming a certain type of adaptation procedure. Our analysis also provides a geometric perspective on these skill learning methods.},
  month = {October}

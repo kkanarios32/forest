@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Stabilizing Transformers for Reinforcement Learning}
 \date{2019-10}
-\author{Emilio Parisotto}\author{H. Francis Song}\author{Jack W. Rae}\author{Razvan Pascanu}\author{Caglar Gulcehre}\author{Siddhant M. Jayakumar}\author{Max Jaderberg}\author{Raphael Lopez Kaufman}\author{Aidan Clark}\author{Seb Noury}\author{Matthew M. Botvinick}\author{Nicolas Heess}\author{Raia Hadsell}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1910.06764}
 \meta{external}{https://arxiv.org/abs/1910.06764}
@@ -15,7 +13,7 @@
  urldate = {2025-02-10},
  number = {arXiv:1910.06764},
  publisher = {arXiv},
- file = {/home/kellen/Zotero/storage/QP6P6B9C/Parisotto et al. - 2019 - Stabilizing Transformers for Reinforcement Learning.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/QP6P6B9C/Parisotto et al. - 2019 - Stabilizing Transformers for Reinforcement Learning.pdf},
  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},

@@ -1,0 +1,19 @@
+\title{Safe Reinforcement Learning Using Advantage-Based Intervention}
+\date{2021-07}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@inproceedings{wagenerSafeReinforcementLearning2021,
+ title = {Safe {{Reinforcement Learning Using Advantage-Based Intervention}}},
+ author = {Wagener, Nolan C. and Boots, Byron and Cheng, Ching-An},
+ year = {2021},
+ urldate = {2025-06-15},
+ booktitle = {Proceedings of the 38th {{International Conference}} on {{Machine Learning}}},
+ pages = {10630--10640},
+ publisher = {PMLR},
+ file = {/home/kellen/Downloads/pdfs/storage/ALKUBTMZ/Wagener et al. - 2021 - Safe Reinforcement Learning Using Advantage-Based Intervention.pdf;/home/kellen/Downloads/pdfs/storage/YR8E34C3/Wagener et al. - 2021 - Safe Reinforcement Learning Using Advantage-Based Intervention.pdf},
+ langid = {english},
+ abstract = {Many sequential decision problems involve finding a policy that maximizes total reward while obeying safety constraints. Although much recent research has focused on the development of safe reinforcement learning (RL) algorithms that produce a safe policy after training, ensuring safety during training as well remains an open problem. A fundamental challenge is performing exploration while still satisfying constraints in an unknown Markov decision process (MDP). In this work, we address this problem for the chance-constrained setting.We propose a new algorithm, SAILR, that uses an intervention mechanism based on advantage functions to keep the agent safe throughout training and optimizes the agent's policy using off-the-shelf RL algorithms designed for unconstrained MDPs. Our method comes with strong guarantees on safety during "both" training and deployment (i.e., after training and without the intervention mechanism) and policy performance compared to the optimal safety-constrained policy. In our experiments, we show that SAILR violates constraints far less during training than standard safe RL and constrained MDP approaches and converges to a well-performing policy that can be deployed safely without intervention. Our code is available at https://github.com/nolanwagener/safe\_rl.},
+ issn = {2640-3498},
+ month = {July}
+}
+\stopverb}

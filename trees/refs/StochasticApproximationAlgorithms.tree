@@ -1,9 +1,8 @@
-% ["references", "refs"]
 \title{Stochastic Approximation Algorithms and Applications}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @book{StochasticApproximationAlgorithms,
  title = {Stochastic {{Approximation Algorithms}} and {{Applications}}},
- file = {/home/kellen/Zotero/storage/6IGQEBVP/Stochastic Approximation Algorithms and Applications.pdf}
+ file = {/home/kellen/Downloads/pdfs/storage/6IGQEBVP/Stochastic Approximation Algorithms and Applications.pdf}
 }
 \stopverb}

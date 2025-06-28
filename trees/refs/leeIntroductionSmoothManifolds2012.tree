@@ -1,7 +1,5 @@
-% ["references", "refs"]
 \title{Introduction to Smooth Manifolds}
 \date{2012}
-\author{John M. Lee}
 \taxon{Reference}
 \meta{doi}{10.1007/978-1-4419-9982-5}
 \meta{bibtex}{\startverb
@@ -16,7 +14,7 @@
  volume = {218},
  publisher = {Springer New York},
  address = {New York, NY},
- file = {/home/kellen/Zotero/storage/GFNZMLM6/Lee - 2012 - Introduction to Smooth Manifolds.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/GFNZMLM6/Lee - 2012 - Introduction to Smooth Manifolds.pdf},
  langid = {english},
  copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining}
 }
