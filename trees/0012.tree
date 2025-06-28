@@ -186,7 +186,7 @@ and
 }
 
 \section{Dynamic Programming}{
-  \remark{\strong{Value Iteration as Linear Algebra:} During my brief stint at [IPAM](https://www.ipam.ucla.edu/), I spent a lot of time focused on [solving large systems for discretized PDEs](kanariosdas2023). From this, I learned about iterative methods, such as Gauss-Jacobi and Gauss-Seidel. Interestingly, these methods can be used to interpret some of RL's most fundamental algorithms. If we define the following matrices,
+  \remark{\strong{Value Iteration as Linear Algebra:} During my brief stint at [IPAM](https://www.ipam.ucla.edu/), I spent a lot of time focused on [solving large systems for discretized PDEs](kanariosParallelAMG2023). From this, I learned about iterative methods, such as Gauss-Jacobi and Gauss-Seidel. Interestingly, these methods can be used to interpret some of RL's most fundamental algorithms. If we define the following matrices,
 ##{
   \begin{align*}
         R &= \begin{bmatrix}
