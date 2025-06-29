@@ -15,13 +15,75 @@
 }
 }
 \section{Process API}{
-\p{\strong{Create:} stuff}
-\p{\strong{Destroy:}}
-\p{\strong{Wait:}}
-\p{\strong{Miscellaneous Control:}}
-\p{\strong{Status:}}
+  \p{In order to implement a process, one must support each of the following operations}
+  \ol{
+    \li{
+\strong{Create:} \p{The operating system must implement a mechanism to create a process. This consists of loading the program from disk, initializing memory (i.e. stack and heap), and jumping to \code{main} (typically).}
+    }
+\remark{
+The stack is allocated up front and does not change. However, typically a small amount of memory is allocated for the heap and it grows via \code{malloc}. This is non-trivial because if \code{malloc} is called without available heap memory then memory must be allocated by the OS. I need to look into [how](https://gee.cs.oswego.edu/dl/html/malloc.html) this is done more.
+}
+\remark{
+  The OS will also initialize the parameters to \code{main} i.e. \code{argc} or \code{argv}.
+}
+    \li{
+\strong{Destroy:} Clearly, if a process is misbehaved or the user just does not want it to run any longer, there must be some mechanism to \em{kill} the process.
+      }
+    \li{ \strong{Wait:} In the case of dependencies (piping?), it may be useful to wait for a process to complete.
+      }
+    \li{
+\strong{Miscellaneous Control:} The example provided in the book is to \em{suspend} a process.
+      }
+    \li{
+\strong{Status:} It is helpful to be able to get information about running processes.
+    }
+  }
+\p{There are also process \em{states}. These states are \strong{running}, \strong{ready}, and \strong{blocked}. These states are pretty self-explanatory.
+  }
+}
+\section{Data Structures}{
+  \p{It seems throughout the book we will be seeing implementation examples from the smaller [xv6](https://github.com/mit-pdos/xv6-public) OS.}
+  \remark{
+  In addition to the process implementation below, there is also a data structure that must keep track of all the processes. This is the \strong{process list} or \strong{process control block}.
+  }
+\p{
+  \pre\verb<<<|
+// the registers xv6 will save and restore
+// to stop and subsequently restart a process
+struct context {
+  int eip;
+  int esp;
+  int ebx;
+  int ecx;
+  int edx;
+  int esi;
+  int edi;
+  int ebp;
+};
+// the different states a process can be in
+enum proc_state { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
+// the information xv6 tracks about each process
+// including its register context and state
+struct proc {
+  char *mem; // Start of process memory
+  uint sz; // Size of process memory
+  char *kstack; // Bottom of kernel stack for this process
+  enum proc_state state; // Process state
+  int pid; // Process ID
+  struct proc *parent; // Parent process
+  void *chan; // If non-zero, sleeping on chan
+  int killed; // If non-zero, have been killed
+  struct file *ofile[NOFILE]; // Open files
+  struct inode *cwd; // Current directory
+  struct context context; // Switch here to run process
+  struct trapframe *tf; // Trap frame for the current interrupt
+};
+  <<<
+  }
 }
 
+\scope{
+  \put\transclude/expanded{false}
 \section{Homework}{
   \ol{
     \li{Run \code{process.py} with the flags \code{-l 5:100, 5:100}. What should the CPU utilization be?
@@ -44,7 +106,7 @@
     with this, we can conclude that the utilization is 100\%. We will execute one instruction for the first process until it completes, then the five instructions of the next process. If both are waiting on IO, then I do not think this would be the case? 
     }
     \solution{
-    Using the solution flags -cp, there is 100\% utilization. 
+    Using the solution flags \code{-cp}, there is 100\% utilization. 
     }
   }
     \li{Run \code{process.py} with the flags \code{-l 4:100, 1:0}. How long does it take to complete both processes?
@@ -171,3 +233,4 @@ pens when you use \code{-S SWITCH ON IO} vs. \code{-S SWITCH ON END}?
 }
     }
   }
+}
