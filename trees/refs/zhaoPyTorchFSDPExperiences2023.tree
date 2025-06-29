@@ -1,3 +1,4 @@
+% ["refs"]
 \title{PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel}
 \date{2023-04}
 \taxon{Reference}

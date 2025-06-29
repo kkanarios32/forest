@@ -97,6 +97,8 @@ def tree_template(
     original_bibtex="",
 ):
     formatted = ""
+    if bib_filenames != "":
+        formatted += f"% {bib_filenames}\n"
     if title != "":
         formatted += f"\\title{{{title}}}\n"
     if date != "":

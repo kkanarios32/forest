@@ -1,3 +1,4 @@
+% ["refs"]
 \title{Deep Reinforcement Learning Without Experience Replay, Target Networks, or Batch Updates}
 \taxon{Reference}
 \meta{bibtex}{\startverb

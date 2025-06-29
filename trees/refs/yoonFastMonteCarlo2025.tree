@@ -1,3 +1,4 @@
+% ["refs"]
 \title{Fast Monte Carlo Tree Diffusion: 100x Speedup via Parallel Sparse Planning}
 \date{2025-06}
 \taxon{Reference}

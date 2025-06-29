@@ -1,3 +1,4 @@
+% ["refs"]
 \title{ZeRO: Memory Optimizations Toward Training Trillion Parameter Models}
 \date{2020-05}
 \taxon{Reference}
