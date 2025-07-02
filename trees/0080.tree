@@ -1,0 +1,35 @@
+\import{base-macros}
+\date{2025-06-30T18:37:01Z}
+\title{Diversity is All You Need}
+\author{kellenkanarios}
+\p{The talk starts discussing [Ben's](beneysenbach) amazing paper [DIAYN](eysenbachDiversityAllYou2018). An idea that has become incredibly popular in unsupervised / self-supervised RL is learning \em{conditional} policies. In [[0005]], the learn a \em{goal-conditioned} policy and value function i.e.
+##{\pi_{\theta}(s \mid g), \quad Q_{\psi}(s, a, g)}
+However, we are not limited to goals. In [successor-feature-based](machadoTemporalAbstractionReinforcement2023) frameworks, one learns a \em{task} vector #{\mathbf{w}} such that ##{r(s, a) = \phi(s,a) \cdot \mathbf{w},}
+where #{\phi} is a lower dimensional representation. To learn the task vector (assuming you have #{\phi} which is a whole other issue), you can recover #{\mathbf{w}} by solving the linear regression
+##{\min_{\psi} \|r(s,a) - \phi(s,a) \cdot \mathbf{w}_{\psi}\|^{2} }
+One can then learn a \em{task} conditioned policy #{\pi_{\theta}(s \mid \mathbf{w})}. This is precisely the idea in USFA.
+}
+\p{Getting back to [DIAYN](eysenbachDiversityAllYou2018) (get used to these tangents), instead of a \em{task} or \em{goal}, they condition on a \em{skill} #{\mathbf{z}}. However, unlike a goal which is just a state in the environment, or a task which can be learned via regression as above, it is unclear how to learn this "skill" #{\mathbf{z}}.
+ }
+\p{
+  In this paper, they consider a skill as something distinguishable by a third party. What does this mean:
+}
+  \iblock{
+  \em{If you have a skill, then a discriminator observing you perform your skill should be able to tell you which skill you performed.}
+  }
+  \p{
+  Crucially, the discriminator does \strong{not} know which actions you took when performing this skill. Namely, they must be able to identify the skill purely based on the \strong{states} you visited when performing that skill. Mathematically, this can be roughly translated as maximizing the [mutual information](000V) #{I^{\pi}(\mathbf{z}; \tau)}, where #{\tau} is a trajectory of states #{(s_0, s_1, \ldots, s_T) \sim \pi} visited by your policy #{\pi}. Using our previous knowledge of [mutual information](000V), we can rewrite this as
+  ##{I^{\pi}(\mathbf{z}, \tau) = H(\mathbf{z}) - H(\mathbf{z} \mid \tau),}
+  where #{H} is the [entropy](0081). Since #{H(\mathbf{z})} is a constant, this is essentially,
+  ##{\min_{\mathbf{z}} H(\mathbf{z} \mid \tau)}
+  which very intuitively corresponds to the notion that #{\mathbf{z}} should be able to be \em{predicted} by #{\tau}. Formally, this is captured by the fact that the [entropy](0081) is minimized i.e. #{0} when #{\mathbf{z} = f(\tau)} for some invertible #{f}.
+  \remark{
+  Recall that [entropy](0081) is actually defined on the PDF of a random variable #{X}. Therefore, minimizing the entropy over #{\mathbf{z}} is actually finding a distribution #{p(\mathbf{z})}.
+  }
+  To learn the distribution #{p(\mathbf{z})}, they utilize the [ELBO](0082).
+  }
+  \p{
+  learning a discrimator distribution #{q_{\theta}} such that
+  ##{\max_{\theta} q_{\theta}(\mathbf{z} \mid s_t),}
+  where we can easily learn this via maximum likelihood estimation because we are given #{s_{t + 1} \sim \pi(s_{t} \mid \mathbf{z})}
+}

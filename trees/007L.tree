@@ -1,5 +1,10 @@
 \date{2025-06-05}
 \title{Marginalia}
+\put\transclude/numbered{false}
+\put\transclude/expanded{false}
+\put\transclude/metadata{true}
+
 \p{This is my short-form blog, where I will jot down (primarily) self-contained notes about things I find interesting or other random stuff in my life.}
 
-\transclude{007T}
+\transclude{0088}
+\transclude{0082}

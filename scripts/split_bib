@@ -1,4 +1,12 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+#
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "bibtexparser",
+# ]
+# ///
+
 import json
 import os
 import pathlib
@@ -42,7 +50,7 @@ BIB_TEX_WRITER.display_order_sorting = SortingStrategy.PRESERVE
 # Get the script directory
 script_dir = Path(__file__).resolve().parent
 # Set the project root directory
-project_root = script_dir
+project_root = script_dir.parent
 
 # Set the bib directory
 tex_dir = project_root / "tex"

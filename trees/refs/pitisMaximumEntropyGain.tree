@@ -1,0 +1,11 @@
+% ["refs"]
+\title{Maximum Entropy Gain Exploration for Long Horizon Multi-goal Reinforcement Learning}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{pitisMaximumEntropyGain,
+ title = {Maximum {{Entropy Gain Exploration}} for {{Long Horizon Multi-goal Reinforcement Learning}}},
+ author = {Pitis, Silviu and Chan, Harris and Zhao, Stephen and Stadie, Bradly},
+ file = {/home/kellen/Downloads/pdfs/storage/XG7ZYYIG/Pitis et al. - Maximum Entropy Gain Exploration for Long Horizon .pdf},
+ langid = {english}
+}
+\stopverb}

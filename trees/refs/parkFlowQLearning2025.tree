@@ -1,0 +1,26 @@
+% ["refs"]
+\title{Flow Q-Learning}
+\date{2025-05}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2502.02538}
+\meta{external}{https://arxiv.org/abs/2502.02538}
+
+\meta{bibtex}{\startverb
+@misc{parkFlowQLearning2025,
+ title = {Flow {{Q-Learning}}},
+ author = {Park, Seohong and Li, Qiyang and Levine, Sergey},
+ year = {2025},
+ doi = {10.48550/arXiv.2502.02538},
+ urldate = {2025-07-01},
+ number = {arXiv:2502.02538},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/83WF47FI/Park et al. - 2025 - Flow Q-Learning.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {We present flow Q-learning (FQL), a simple and performant offline reinforcement learning (RL) method that leverages an expressive flow-matching policy to model arbitrarily complex action distributions in data. Training a flow policy with RL is a tricky problem, due to the iterative nature of the action generation process. We address this challenge by training an expressive one-step policy with RL, rather than directly guiding an iterative flow policy to maximize values. This way, we can completely avoid unstable recursive backpropagation, eliminate costly iterative action generation at test time, yet still mostly maintain expressivity. We experimentally show that FQL leads to strong performance across 73 challenging state- and pixel-based OGBench and D4RL tasks in offline RL and offline-to-online RL. Project page: https://seohong.me/projects/fql/},
+ primaryclass = {cs},
+ eprint = {2502.02538},
+ month = {May}
+}
+\stopverb}

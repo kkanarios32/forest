@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Diffusion Meets Flow Matching: Two Sides of the Same Coin}
+\date{2024-12}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@misc{gaoDiffusionMeetsFlow2024,
+ title = {Diffusion {{Meets Flow Matching}}: {{Two Sides}} of the {{Same Coin}}},
+ author = {Gao, Ruiqi and Hoogeboom, Emiel and Heek, Jonathan and De Bortoli, Valentin and Murphy, Kevin P. and Salimans, Tim},
+ year = {2024},
+ month = {December}
+}
+\stopverb}

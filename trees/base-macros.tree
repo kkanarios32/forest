@@ -5,9 +5,26 @@
 
 \def\nowrap[body]{\<html:span>[style]{white-space: nowrap}{\body}}
 
-\def\iblock[body]{
- \<html:div>[class]{jms-indent-block}[style]{margin-left: 1em}{\body}
+\def\colblock[body]{
+ \<html:div>[class]{jms-indent-block}[style]{
+  margin-left: 1em;
+  margin-bottom: 1em;
+  border-left: 4px solid black;
+  padding-left: 12px;
+  background-color: whitesmoke;
+  }{\body}
 }
+
+\def\iblock[body]{
+ \<html:div>[class]{jms-indent-block}[style]{
+  margin-left: 1em;
+  margin-bottom: 1em;
+  border-left: 4px solid black;
+  padding-left: 12px;
+  background-color: whitesmoke;
+  }{\body}
+}
+
 \def\irow[body]{
  \<html:div>[class]{jms-indent-row}[style]{min-height: 1em}{\body}
 }
@@ -163,11 +180,9 @@
 }
 
 \def\section[tit][body]{
-  \scope{
-    \subtree{
-      \title{\tit}
-      \body
-    }
+  \subtree{
+    \title{\tit}
+    \body
   }
 }
 

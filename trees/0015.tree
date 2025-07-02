@@ -10,26 +10,11 @@
 \query\datalog{
     ?X -:
     {\rel/has-tag ?X '{note}}
-    {\rel/has-tag ?X '{rl}}
-    {\rel/has-tag ?X '{unfinished}}
+    {\rel/has-tag ?X '{top}}
 }
 
-\query\datalog{
-    ?X -:
-    {\rel/has-tag ?X '{note}}
-    {\rel/has-tag ?X '{prob}}
-    {\rel/has-tag ?X '{unfinished}}
-}
-
-\query\datalog{
-    ?X -:
-    {\rel/has-tag ?X '{note}}
-    {\rel/has-tag ?X '{systems}}
-    {\rel/has-tag ?X '{unfinished}}
-}
-
-\query\datalog{
-    ?X -:
-    {\rel/has-tag ?X '{note}}
-    {\rel/has-tag ?X '{lost}}
-}
+% \transclude{004H}
+% \transclude{004B}
+% \transclude{003Z}
+% \transclude{0033}
+% \transclude{0012}

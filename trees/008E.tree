@@ -1,0 +1,11 @@
+\import{base-macros}
+\taxon{Definition}
+\title{Generated probability paths}
+\p{We say that a [vector field](008C) \em{generates} a [probability density path](008B) if the [flow](008D) of #{v_t} satisfies
+##{p_t = [\phi_t]_* p_{0},}
+where
+##{[\phi_t]_*p_{0}(x) = p_{0}(\phi_t^{-1}(x)) \det\left[ \frac{\partial \phi_t^{-1} }{\partial x}(x) \right].  }
+}
+\remark{
+A [vector field](008C) generates a [probability density path](008B) if it satisfies the continuity equation.
+}

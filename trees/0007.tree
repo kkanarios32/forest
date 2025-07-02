@@ -4,9 +4,8 @@
 \import{base-macros}
 \tag{prob}
 \tag{note}
-\tag{unfinished}
 
-\p{For these notes, I will attempt to refresh my knowledge of measure-theoretic probability along with learning stochastic processes for the first time. I will be following [Probability and Stochastics](https://link.springer.com/book/10.1007/978-0-387-87859-1) by Cinlar. Unfortunately, there are no solutions to exercises, but it is by far the best written book I have found.}
+\p{For these notes, I will attempt to refresh my knowledge of measure-theoretic probability along with learning stochastic processes for the first time. I will be following [Probability and Stochastics](https://link.springer.com/book/10.1007/978-0-387-87859-1) by Cinlar. Unfortunately, there are no solutions to Exercises, but it is by far the best written book I have found.}
 
 \section{Borel's Normal Number Theorem}{
   \transclude{000S}
@@ -14,7 +13,7 @@
   The important takeaway from [[000S]] is that extending (2) from finite to countable unions requires Heine-Borel theorem, illustrating that this extension is non-trivial. This will be important to remember as we continue to extend the Lebesgue measure to #{\sigma}-algebras. 
   }
   This section aims to motivate why we need to approach probability from a measure theoretic point of view.
-  As an example, we will do the first exercise for this section.
+  As an example, we will do the first Exercise for this section.
   \transclude{000L}
   \scope{
   \put\transclude/numbered{false}
@@ -126,7 +125,7 @@ Consider a four point space #{\Omega = \{x_1, x_2, x_3, x_4\}}. We can define a 
 
 \transclude{001G}
 
-\refcardt{exercise}{}{3.2}{billingsleyProbabilityMeasure1995}{
+\refcardt{Exercise}{}{3.2}{billingsleyProbabilityMeasure1995}{
   Let #{P} be a probability measure on a field #{\mathscr{F}_{0}} and for every subset #{A} of #{\Omega} define #{P^{\star}(A)} by [(3.1)](000T). Denote also by #{P} the extension of #{P} to #{\mathscr{F}=\sigma(\mathscr{F}_{0})}.
   \ol{
       \li{Show that #{A} is [[000U]] if and only if #{P^*(A) = P_*(A)}.}

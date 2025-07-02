@@ -1,0 +1,11 @@
+#!/bin/bash
+FILENAME=$(opam exec -- forester new --dest="$FORESTDIR/trees")
+TEMPLATE="$1"
+echo $FILENAME
+
+# if templates/$TREE_PREFIX.tree exists
+if [ -f templates/$TEMPLATE.tree ]; then
+  cat templates/$TEMPLATE.tree >> $FILENAME
+fi
+
+# nvim $FILENAME

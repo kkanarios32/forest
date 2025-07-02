@@ -1,18 +1,18 @@
 \date{2024-11-24}
 \import{base-macros}
-\title{Notes on [[suttonReinforcementLearningIntroduction2018]]}
+\title{Notebook: [[suttonReinforcementLearningIntroduction2018]]}
 \author{kellenkanarios}
 \tag{rl}
 \tag{note}
-\tag{unfinished}
+\tag{top}
 
 \p{This won't really be notes, my lab has begun taking a few undergrads who are not familiar with RL. I will be onboarding them by going through [[suttonReinforcementLearningIntroduction2018]]. Specifically, I will be following the [[richardsutton]] flavor of RL through his [CMPUT 609](https://drive.google.com/drive/folders/0B3w765rOKuKANmxNbXdwaE1YU1k?resourcekey=0-JZz-noRuJgogNsg1ljgV8w) course. You know what the say: the best way to learn is to teach! Here, I will try to solve all the problems as we go and prepare some questions for the undergrads for when we meet. Additionally, I will document my foray into more advanced exploration of topics introduced in the textbook.} 
 
 \section{Multi-armed Bandits}{
-\refcardt{exercise}{}{2.1}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{2.1}{suttonReinforcementLearningIntroduction2018}{
   In the case of two actions, (assuming that #{Q_*(a_1) > Q_*(a_2)}) the probability of the greedy action being selected is #{1 - \epsilon} or 0.5.
 }
-\refcardt{exercise}{}{2.2}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{2.2}{suttonReinforcementLearningIntroduction2018}{
   In the long run #{\epsilon = 0.01}, would achieve the highest reward. The expected reward can be written as
 ##{
     \begin{align*}
@@ -21,10 +21,10 @@
   }
   The exception is that if #{\epsilon = 0}, then there are no guarantees. For example, if your initialization is zeros. Then you could have an empirical average of a suboptimal arm that is always positive and you would never deviate. Thus, to ensure you converge to the true optimal arm you need #{\epsilon > 0}.
 }
-\refcardt{exercise}{}{2.3}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{2.3}{suttonReinforcementLearningIntroduction2018}{
   TODO
 }
-\refcardt{exercise}{}{2.4}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{2.4}{suttonReinforcementLearningIntroduction2018}{
   Following the steps in 2.6,
   ##{
       \begin{align*}
@@ -35,14 +35,14 @@
       \end{align*}
     }
 }
-\refcardt{exercise}{}{2.6}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{2.6}{suttonReinforcementLearningIntroduction2018}{
   Since all of the arms in the testbed have distributions with support less than 5, in the beginning the unpulled arm's optimistic estimates will be higher than the empirical estimates of the previously pulled arms. Therefore, in the early stages all of the arms will be pulled in a round robin fashion, and assuming deterministic rewards the optimal arm will keep being pulled until it falls below the other optimistic values.
 }
 
-\refcardt{exercise}{}{2.8}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{2.8}{suttonReinforcementLearningIntroduction2018}{
   Since there are 10 arms (presumably with the same initialization), the UCB bonus will enforce that the first 10 pulls are round robin (uniform) pulling of each of the 10 arms. Then on the 11th step each will have the same UCB bonus term but the one with the highest empirical reward will be pulled, leading to a spike. It then drops in subsequent steps because the UCB bonus of that arm will decrease and other (possibly less optimal) arms are pulled in subsequent steps.
 }
-\refcardt{exercise}{}{2.9}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{2.9}{suttonReinforcementLearningIntroduction2018}{
   We can just expand the denominator as
 ##{
     \begin{align*}
@@ -52,7 +52,7 @@
     \end{align*}
   }
 }
-\refcardt{exercise}{}{2.10}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{2.10}{suttonReinforcementLearningIntroduction2018}{
   In case 1, the best you can hope to achieve is #{\max_{a} \mathbb{E} [R(a)]}. In this case, we have
 ##{
     \begin{align*}
@@ -73,10 +73,10 @@
 }
 
 \section{Markov Decision Processes}{
-\refcardt{exercise}{}{3.3}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.3}{suttonReinforcementLearningIntroduction2018}{
   I think you draw the line at where you can already execute the necessary behavior to get from one state to another. This is eerily familiar to the line of work known as hierarchical reinforcement learning, where you gradually learn higher level of abstraction by executing subpolicies.
 }
-\refcardt{exercise}{}{3.5}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.5}{suttonReinforcementLearningIntroduction2018}{
   We need to add the notion of a terminal state. This can be done by just adding some #{t} to the state space #{S}. Then
   ##{
       \begin{cases}
@@ -86,7 +86,7 @@
 }
 I think the idea is just that when you hit a terminal state you no longer can reach other states.
   }
-\refcardt{exercise}{}{3.6}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.6}{suttonReinforcementLearningIntroduction2018}{
   Let #{T} denote the length of the episode. Then the return #{G_t} would be 
 ##{
   \begin{align*}
@@ -94,11 +94,11 @@ G_t &= R_{t+1} + \gamma R_{t + 2} + \cdots + \gamma^{T - {t + 1}} R_T = - \gamma
   \end{align*}
 }
 }
-\refcardt{exercise}{}{3.7}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.7}{suttonReinforcementLearningIntroduction2018}{
   You have not effectively communicated the task. The agent has no incentive to solve the maze as fast as possible. This means that no matter the duration it took to solve the task the agent would receive the same reward. To fix this, you can give -1 reward at each time step, or use a discount factor to capture the time.
 }
 
-\refcardt{exercise}{}{3.8}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.8}{suttonReinforcementLearningIntroduction2018}{
   Due to the recursive relationship, we will start from the back
 ##{
     \begin{align*}
@@ -112,7 +112,7 @@ G_t &= R_{t+1} + \gamma R_{t + 2} + \cdots + \gamma^{T - {t + 1}} R_T = - \gamma
   }
 }
 
-\refcardt{exercise}{}{3.9}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.9}{suttonReinforcementLearningIntroduction2018}{
 From the definition,
 ##{
 \begin{align*}
@@ -135,7 +135,7 @@ and
 }
   }
 
-\refcardt{exercise}{}{3.11}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.11}{suttonReinforcementLearningIntroduction2018}{
   By just expanding,
 ##{
     \begin{align*}
@@ -143,14 +143,14 @@ and
     \end{align*}
   }
 }
-\refcardt{exercise}{}{3.12}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.12}{suttonReinforcementLearningIntroduction2018}{
   ##{
       \begin{align*}
         v_{\pi}(s) &= \sum_{a} \pi(a \mid s) q_{\pi}(s, a)
       \end{align*}
     }
 }
-\refcardt{exercise}{}{3.12}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.12}{suttonReinforcementLearningIntroduction2018}{
 ##{
 \begin{align*}
   q_{\pi}(s, a) = \sum_{s', r} p(s', r \mid s, a) \big(r + \gamma v_{\pi}(s')\big)
@@ -158,7 +158,7 @@ and
   }
 }
 
-\refcardt{exercise}{}{3.15}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.15}{suttonReinforcementLearningIntroduction2018}{
   Recall that 
 ##{
     \begin{align*}
@@ -176,11 +176,11 @@ and
   }
   Therefore, #{v_c = \frac{c}{1 - \gamma}}.
 }
-\refcardt{exercise}{}{3.16}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{3.16}{suttonReinforcementLearningIntroduction2018}{
   In the episodic case, this would not be the same. In the maze running example, #{v_c} would be larger for longer episodes. This would then incentivize the agent to actually take LONGER, where as we want the agent to solve the maze as fast as possible.
 }
-\refcardt{exercise}{}{3.18}{suttonReinforcementLearningIntroduction2018}{
-  This is similar to exercise 3.12. Namely, 
+\refcardt{Exercise}{}{3.18}{suttonReinforcementLearningIntroduction2018}{
+  This is similar to Exercise 3.12. Namely, 
 ##{v_{\pi}(s) = \mathbb{E}_{\pi}[q_{\pi}(s, a)] = \sum_{a} \pi(a \mid s) q_{\pi}(s, a)}
 }
 }
@@ -218,7 +218,7 @@ and
 Is actually just one iteration of Gauss-Seidel!
     }
     \remark{(Number of updates as pseudo discount factor). }
-  \refcardt{exercise}{}{4.1}{suttonReinforcementLearningIntroduction2018}{
+  \refcardt{Exercise}{}{4.1}{suttonReinforcementLearningIntroduction2018}{
     We have that
 ##{
       \begin{align*}
@@ -235,7 +235,7 @@ Is actually just one iteration of Gauss-Seidel!
       \end{align*}
     }
   }
-  \refcardt{exercise}{}{4.3}{suttonReinforcementLearningIntroduction2018}{
+  \refcardt{Exercise}{}{4.3}{suttonReinforcementLearningIntroduction2018}{
   }
 
 }
@@ -298,18 +298,18 @@ Is actually just one iteration of Gauss-Seidel!
 }
 
 \section{Planning and Learning with Tabular Methods}{
-\refcardt{exercise}{}{8.1}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{8.1}{suttonReinforcementLearningIntroduction2018}{
   If you pick #{n} large enough, then the "first pass" would be just as good. This means that you will be able to update the #{Q}-values of every #{(s,a)} pair you encountered. However, with Dyna you are updating your #{Q}-value based on updated #{Q}-values, meaning that you are no longer limited to the #{n}-step trajectory encountered. Thus, I do not think that #{n}-step methods can match Dyna with a perfect world model.
 }
-\refcardt{exercise}{}{8.5}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{8.5}{suttonReinforcementLearningIntroduction2018}{
   You could modify the algorithm by maintaining an empirical distribution for states and rewards in your model instead of the exact deterministic transition. To handle changing environments, you could then weight the updates to the empirical distribution to value the more recent entries higher i.e. 
   ##{\hat{R}_{t + 1}(S,A) = \lambda \hat{R}_{t}(S, A) + (1 - \lambda)R_{t + 1}(S, A)}
 }
-\refcardt{exercise}{}{8.6}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{8.6}{suttonReinforcementLearningIntroduction2018}{
   This would strengthen the case for sample updates because the samples would most likely concentrate around the higher probability states. Since these states are much more likely to occur, the computed #{Q}-values will likely end up very similar without the extra computation required by the expected update.
 }
 
-\refcardt{exercise}{}{8.7}{suttonReinforcementLearningIntroduction2018}{
+\refcardt{Exercise}{}{8.7}{suttonReinforcementLearningIntroduction2018}{
 
 }
 }

@@ -1,11 +1,18 @@
-\date{2025-01-29}
-\title{LLMs stuff}
-\tag{note}
-\tag{lost}
 \import{base-macros}
-\section{Useful Resources}{
+\date{2025-07-01}
+\title{LLMs}
+\author{kellenkanarios}
+\tag{project}
+\tag{top}
+\import{base-macros}
+
+\p{This will be my backlog accumulator / dump of related resources for my journey through the dubious waters of [Stanford's](stanford) [CS336](https://stanford-cs336.github.io/spring2025/index.html#schedule) and the broader journey toward understanding industry-level LLMs.}
+
+\scope{
+\put\transclude/numbered{false}
+\section{Reading List / Useful Resources}{
     \ul{
         \li{[PPO + LLM Tricks](https://hijkzzz.notion.site/rlhf-implementation-tricks?v=158d9a33ecc98132bf9e000c39227361)}
       }
 }
-
+}

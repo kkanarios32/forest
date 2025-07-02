@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+TMPFILE=$(mktemp)
+forester query all > $TMPFILE
+QUERY="$1"
+
+# Check query provided
+if [ -z "$QUERY" ]; then
+  echo "Usage: has <search term>" >&2
+  exit 1
+fi
+
+# Use rg to search with color output and line numbers
+rg --with-filename --color=always --line-number "$QUERY" --glob '!trees/refs/**' trees/ | while IFS=: read -r filepath lineno rest; do
+  # Extract URI from filename (trees/008C.tree → 008C)
+  filename=$(basename "$filepath")
+  uri="${filename%%.*}"
+
+  # Lookup title using jq
+  title=$(jq -r --arg uri "$uri" 'map(select(.uri == $uri)) | .[0].title' "$TMPFILE")
+
+  # Fallback if not found
+  [ -z "$title" ] && title="[unknown title]"
+
+  rest=$(echo -n "$rest" | sed 's/^[[:space:]]*//')
+  # Reconstruct the output with title and line number
+  echo -e "\033[1;35m${title}\033[0m (\033[0;36m${uri}\033[0m):\n${lineno}: ${rest}"
+done
+
+rm $TMPFILE

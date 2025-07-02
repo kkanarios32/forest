@@ -1,0 +1,9 @@
+\date{2025-07-01T18:29:19Z}
+\title{Reparametrization Trick}
+\author{kellenkanarios}
+
+\p{For #{q_{\phi}(\cdot | x) \sim N(\mu_{\phi}(x), \sigma_{\phi}(x))}. The \em{reparametrization trick} allows us to differentate through a random sample by sampling from #{q_{\phi}(\cdot | x)} via 
+##{z(\phi) = \mu_{\phi}(x) + \sigma_{\phi}(x) \cdot \epsilon,}
+where #{\epsilon \sim N(0, 1)}. Then, for a given sample #{\epsilon}, we can easily compute
+##{\nabla_{\phi} z(\phi) = \nabla_{\phi} \mu_{\phi}(x) + \nabla_{\phi}\sigma_{\phi}(x) \cdot \epsilon}
+}

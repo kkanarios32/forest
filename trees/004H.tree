@@ -1,7 +1,7 @@
 \date{2025-02-02}
 \title{The Computer in Computer Science}
-\tag{note}
-\tag{unfinished}
+\tag{project}
+\tag{top}
 \tag{systems}
 \import{base-macros}
 
@@ -28,14 +28,8 @@
 \subtree{
     \title{Tentative plan of study}
     \ol{
-      \li{Work through three easy pieces.}
+      \li{Work through three easy pieces. [Schedule](https://pages.cs.wisc.edu/~shivaram/cs537-sp20/)
+      }
       \li{Work through TCP/IP illustrated.}
     }
   }
-
-\query\datalog{
-  ?X -:
-  {\rel/has-tag ?X '{c}}
-  {\rel/has-tag ?X '{memory}}
-  {\rel/has-tag ?X '{cpp}}
-}

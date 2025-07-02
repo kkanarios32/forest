@@ -1,0 +1,8 @@
+\import{base-macros}
+\date{2025-06-30T17:41:25Z}
+\title{Self Supervised Reinforcement Learning}
+\author{kellenkanarios}
+
+\p{Short blog / notes from [[beneysenbach]]'s [tutorial](https://ben-eysenbach.github.io/self-supervised-rl/) at [[rldm]]}
+
+\transclude{0080}

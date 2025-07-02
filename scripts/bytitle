@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+TMPFILE=$(mktemp)
+forester query all > $TMPFILE
+
+SELECTED=$(jq -r '.[] | "\(.title)\t\(.sourcePath)"' "$TMPFILE" \
+  | fzf  --with-nth=1 --delimiter='\t' --bind 'enter:accept' \
+  | cut -f2)
+
+rm $TMPFILE
+[ -n "$SELECTED" ] && nvim "$SELECTED"

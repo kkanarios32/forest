@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+TMPFILE=$(mktemp)
+forester query all > $TMPFILE
+
+TAGS=("$@")
+tag_json=$(printf '%s\n' "${TAGS[@]}" | jq -R . | jq -s .)
+
+SELECTED=$(jq -r --argjson tags "$tag_json" '
+  .[] |
+  select(
+    (.tags? // []) as $file_tags |
+    ($tags | all(. as $t | $file_tags | index($t)))
+  ) |
+  "\(.title)\t\(.sourcePath)"
+' "$TMPFILE" \
+  | fzf --with-nth=1 --delimiter='\t' --bind 'enter:accept' \
+  | cut -f2)
+
+rm $TMPFILE
+[ -n "$SELECTED" ] && nvim "$SELECTED"

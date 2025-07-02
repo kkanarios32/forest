@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow}
+\date{2022-09}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2209.03003}
+\meta{external}{https://arxiv.org/abs/2209.03003}
+
+\meta{bibtex}{\startverb
+@misc{liuFlowStraightFast2022,
+ title = {Flow {{Straight}} and {{Fast}}: {{Learning}} to {{Generate}} and {{Transfer Data}} with {{Rectified Flow}}},
+ author = {Liu, Xingchao and Gong, Chengyue and Liu, Qiang},
+ year = {2022},
+ doi = {10.48550/arXiv.2209.03003},
+ urldate = {2025-07-01},
+ number = {arXiv:2209.03003},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/49M9XQS5/Liu et al. - 2022 - Flow Straight and Fast Learning to Generate and T.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {We present rectified flow, a surprisingly simple approach to learning (neural) ordinary differential equation (ODE) models to transport between two empirically observed distributions {$\pi$}0 and {$\pi$}1, hence providing a unified solution to generative modeling and domain transfer, among various other tasks involving distribution transport. The idea of rectified flow is to learn the ODE to follow the straight paths connecting the points drawn from {$\pi$}0 and {$\pi$}1 as much as possible. This is achieved by solving a straightforward nonlinear least squares optimization problem, which can be easily scaled to large models without introducing extra parameters beyond standard supervised learning. The straight paths are special and preferred because they are the shortest paths between two points, and can be simulated exactly without time discretization and hence yield computationally efficient models. We show that the procedure of learning a rectified flow from data, called rectification, turns an arbitrary coupling of {$\pi$}0 and {$\pi$}1 to a new deterministic coupling with provably non-increasing convex transport costs. In addition, recursively applying rectification allows us to obtain a sequence of flows with increasingly straight paths, which can be simulated accurately with coarse time discretization in the inference phase. In empirical studies, we show that rectified flow performs superbly on image generation, image-to-image translation, and domain adaptation. In particular, on image generation and translation, our method yields nearly straight flows that give high quality results even with a single Euler discretization step.},
+ primaryclass = {cs},
+ eprint = {2209.03003},
+ month = {September},
+ shorttitle = {Flow {{Straight}} and {{Fast}}}
+}
+\stopverb}

@@ -1,11 +1,13 @@
 \date{2025-02-01}
 \import{base-macros}
-\title{Information Theory}
+\title{Notebook: Information Theory}
 \author{kellenkanarios}
 \tag{note}
-\tag{unfinished}
-\tag{lost}
+\tag{top}
 \xmlns:html{http://www.w3.org/1999/xhtml}
+\section{Definitions}{
+\transclude{0081}
+}
 
 \section{Lecture 5}{
 \transclude{004C}

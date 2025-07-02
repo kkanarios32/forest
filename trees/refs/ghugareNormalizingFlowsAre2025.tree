@@ -1,0 +1,26 @@
+% ["refs"]
+\title{Normalizing Flows are Capable Models for RL}
+\date{2025-06}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2505.23527}
+\meta{external}{https://arxiv.org/abs/2505.23527}
+
+\meta{bibtex}{\startverb
+@misc{ghugareNormalizingFlowsAre2025,
+ title = {Normalizing {{Flows}} Are {{Capable Models}} for {{RL}}},
+ author = {Ghugare, Raj and Eysenbach, Benjamin},
+ year = {2025},
+ doi = {10.48550/arXiv.2505.23527},
+ urldate = {2025-06-30},
+ number = {arXiv:2505.23527},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/IW3SLYLD/Ghugare and Eysenbach - 2025 - Normalizing Flows are Capable Models for RL.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Modern reinforcement learning (RL) algorithms have found success by using powerful probabilistic models, such as transformers, energy-based models, and diffusion/flow-based models. To this end, RL researchers often choose to pay the price of accommodating these models into their algorithms -- diffusion models are expressive, but are computationally intensive due to their reliance on solving differential equations, while autoregressive transformer models are scalable but typically require learning discrete representations. Normalizing flows (NFs), by contrast, seem to provide an appealing alternative, as they enable likelihoods and sampling without solving differential equations or autoregressive architectures. However, their potential in RL has received limited attention, partly due to the prevailing belief that normalizing flows lack sufficient expressivity. We show that this is not the case. Building on recent work in NFs, we propose a single NF architecture which integrates seamlessly into RL algorithms, serving as a policy, Q-function, and occupancy measure. Our approach leads to much simpler algorithms, and achieves higher performance in imitation learning, offline, goal conditioned RL and unsupervised RL.},
+ primaryclass = {cs},
+ eprint = {2505.23527},
+ month = {June}
+}
+\stopverb}

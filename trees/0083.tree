@@ -1,0 +1,5 @@
+\date{2025-06-30T21:30:15Z}
+\import{base-macros}
+\taxon{Definition}
+\title{Latent Variable}
+\p{Given a joint distribution #{p(X,Z)} for two random variables #{X} and #{Z}. We call a random variable a \em{latent} random variable if we have a dataset #{\mathcal{D}} that only consists of realizations of #{X}.}

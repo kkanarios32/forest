@@ -1,0 +1,26 @@
+% ["refs"]
+\title{Towards General-Purpose Model-Free Reinforcement Learning}
+\date{2025-01}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2501.16142}
+\meta{external}{https://arxiv.org/abs/2501.16142}
+
+\meta{bibtex}{\startverb
+@misc{fujimotoGeneralPurposeModelFreeReinforcement2025,
+ title = {Towards {{General-Purpose Model-Free Reinforcement Learning}}},
+ author = {Fujimoto, Scott and D'Oro, Pierluca and Zhang, Amy and Tian, Yuandong and Rabbat, Michael},
+ year = {2025},
+ doi = {10.48550/arXiv.2501.16142},
+ urldate = {2025-07-01},
+ number = {arXiv:2501.16142},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/I3ZRN2A7/Fujimoto et al. - 2025 - Towards General-Purpose Model-Free Reinforcement L.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Reinforcement learning (RL) promises a framework for near-universal problemsolving. In practice however, RL algorithms are often tailored to specific benchmarks, relying on carefully tuned hyperparameters and algorithmic choices. Recently, powerful model-based RL methods have shown impressive general results across benchmarks but come at the cost of increased complexity and slow run times, limiting their broader applicability. In this paper, we attempt to find a unifying model-free deep RL algorithm that can address a diverse class of domains and problem settings. To achieve this, we leverage model-based representations that approximately linearize the value function, taking advantage of the denser task objectives used by model-based RL while avoiding the costs associated with planning or simulated trajectories. We evaluate our algorithm, MR.Q, on a variety of common RL benchmarks with a single set of hyperparameters and show a competitive performance against domain-specific and general baselines, providing a concrete step towards building general-purpose model-free deep RL algorithms.},
+ primaryclass = {cs},
+ eprint = {2501.16142},
+ month = {January}
+}
+\stopverb}

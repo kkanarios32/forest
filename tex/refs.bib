@@ -32,6 +32,25 @@
   file = {/home/kellen/Downloads/pdfs/storage/Z3QU86C2/Agarwal et al. - Reinforcement Learning Theory and Algorithms.pdf}
 }
 
+@misc{albergoStochasticInterpolantsUnifying2023,
+  title = {Stochastic {{Interpolants}}: {{A Unifying Framework}} for {{Flows}} and {{Diffusions}}},
+  shorttitle = {Stochastic {{Interpolants}}},
+  author = {Albergo, Michael S. and Boffi, Nicholas M. and {Vanden-Eijnden}, Eric},
+  year = {2023},
+  month = nov,
+  number = {arXiv:2303.08797},
+  eprint = {2303.08797},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2303.08797},
+  urldate = {2025-07-01},
+  abstract = {A class of generative models that unifies flow-based and diffusion-based methods is introduced. These models extend the framework proposed in [2], enabling the use of a broad class of continuoustime stochastic processes called `stochastic interpolants' to bridge any two arbitrary probability density functions exactly in finite time. These interpolants are built by combining data from the two prescribed densities with an additional latent variable that shapes the bridge in a flexible way. The time-dependent probability density function of the stochastic interpolant is shown to satisfy a first-order transport equation as well as a family of forward and backward Fokker-Planck equations with tunable diffusion coefficient. Upon consideration of the time evolution of an individual sample, this viewpoint immediately leads to both deterministic and stochastic generative models based on probability flow equations or stochastic differential equations with an adjustable level of noise. The drift coefficients entering these models are time-dependent velocity fields characterized as the unique minimizers of simple quadratic objective functions, one of which is a new objective for the score of the interpolant density. We show that minimization of these quadratic objectives leads to control of the likelihood for generative models built upon stochastic dynamics, while likelihood control for deterministic dynamics is more stringent. We also construct estimators for the likelihood and the cross-entropy of interpolant-based generative models, and we discuss connections with other methods such as score-based diffusion models, stochastic localization processes, probabilistic denoising techniques, and rectifying flows. In addition, we demonstrate that stochastic interpolants recover the Schro{\textasciidieresis}dinger bridge between the two target densities when explicitly optimizing over the interpolant. Finally, algorithmic aspects are discussed and the approach is illustrated on numerical examples.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Condensed Matter - Disordered Systems and Neural Networks,Mathematics - Probability},
+  file = {/home/kellen/Downloads/pdfs/storage/2KCKGFYP/Albergo et al. - 2023 - Stochastic Interpolants A Unifying Framework for .pdf}
+}
+
 @book{altmanConstrainedMarkovDecision2021,
   title = {Constrained {{Markov Decision Processes}}: {{Stochastic Modeling}}},
   shorttitle = {Constrained {{Markov Decision Processes}}},
@@ -186,6 +205,24 @@
   author = {Borkar, Vivek S},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/E8YY7W7Z/Borkar - STOCHASTIC APPROXIMATION  A DYNAMICAL SYSTEMS VIEWPOINT.pdf}
+}
+
+@misc{borsaUniversalSuccessorFeatures2018,
+  title = {Universal {{Successor Features Approximators}}},
+  author = {Borsa, Diana and Barreto, Andr{\'e} and Quan, John and Mankowitz, Daniel and Munos, R{\'e}mi and van Hasselt, Hado and Silver, David and Schaul, Tom},
+  year = {2018},
+  month = dec,
+  number = {arXiv:1812.07626},
+  eprint = {1812.07626},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1812.07626},
+  urldate = {2025-06-30},
+  abstract = {The ability of a reinforcement learning (RL) agent to learn about many reward functions at the same time has many potential benefits, such as the decomposition of complex tasks into simpler ones, the exchange of information between tasks, and the reuse of skills. We focus on one aspect in particular, namely the ability to generalise to unseen tasks. Parametric generalisation relies on the interpolation power of a function approximator that is given the task description as input; one of its most common form are universal value function approximators (UVFAs). Another way to generalise to new tasks is to exploit structure in the RL problem itself. Generalised policy improvement (GPI) combines solutions of previous tasks into a policy for the unseen task; this relies on instantaneous policy evaluation of old policies under the new reward function, which is made possible through successor features (SFs). Our proposed universal successor features approximators (USFAs) combine the advantages of all of these, namely the scalability of UVFAs, the instant inference of SFs, and the strong generalisation of GPI. We discuss the challenges involved in training a USFA, its generalisation properties and demonstrate its practical benefits and transfer abilities on a large-scale domain in which the agent has to navigate in a first-person perspective three-dimensional environment.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/XEY8N7SW/Borsa et al. - 2018 - Universal Successor Features Approximators.pdf}
 }
 
 @misc{caoOfflineGoalConditionedReinforcement2024,
@@ -661,6 +698,25 @@
   file = {/home/kellen/Downloads/pdfs/storage/WVQKIMN4/Eysenbach et al. - 2023 - Contrastive Learning as Goal-Conditioned Reinforcement Learning.pdf}
 }
 
+@misc{eysenbachDiversityAllYou2018,
+  title = {Diversity Is {{All You Need}}: {{Learning Skills}} without a {{Reward Function}}},
+  shorttitle = {Diversity Is {{All You Need}}},
+  author = {Eysenbach, Benjamin and Gupta, Abhishek and Ibarz, Julian and Levine, Sergey},
+  year = {2018},
+  month = oct,
+  number = {arXiv:1802.06070},
+  eprint = {1802.06070},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1802.06070},
+  urldate = {2025-06-30},
+  abstract = {Intelligent creatures can explore their environments and learn useful skills without supervision. In this paper, we propose ``Diversity is All You Need''(DIAYN), a method for learning useful skills without a reward function. Our proposed method learns skills by maximizing an information theoretic objective using a maximum entropy policy. On a variety of simulated robotic tasks, we show that this simple objective results in the unsupervised emergence of diverse skills, such as walking and jumping. In a number of reinforcement learning benchmark environments, our method is able to learn a skill that solves the benchmark task despite never receiving the true task reward. We show how pretrained skills can provide a good parameter initialization for downstream tasks, and can be composed hierarchically to solve complex, sparse reward tasks. Our results suggest that unsupervised discovery of skills can serve as an effective pretraining mechanism for overcoming challenges of exploration and data efficiency in reinforcement learning.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Robotics},
+  file = {/home/kellen/Downloads/pdfs/storage/RMASJINK/Eysenbach et al. - 2018 - Diversity is All You Need Learning Skills without.pdf}
+}
+
 @inproceedings{eysenbachInformationGeometryUnsupervised2021,
   title = {The {{Information Geometry}} of {{Unsupervised Reinforcement Learning}}},
   booktitle = {International {{Conference}} on {{Learning Representations}}},
@@ -695,6 +751,14 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/2V2SR66H/Farebrother et al. - 2025 - Temporal Difference Flows.pdf;/home/kellen/Downloads/pdfs/storage/D27PSL2L/2503.html}
+}
+
+@article{florensaAutomaticGoalGeneration,
+  title = {Automatic {{Goal Generation}} for {{Reinforcement Learning Agents}}},
+  author = {Florensa, Carlos and Held, David and Geng, Xinyang and Abbeel, Pieter},
+  abstract = {Reinforcement learning (RL) is a powerful technique to train an agent to perform a task; however, an agent that is trained using RL is only capable of achieving the single task that is specified via its reward function. Such an approach does not scale well to settings in which an agent needs to perform a diverse set of tasks, such as navigating to varying positions in a room or moving objects to varying locations. Instead, we propose a method that allows an agent to automatically discover the range of tasks that it is capable of performing in its environment. We use a generator network to propose tasks for the agent to try to accomplish, each task being specified as reaching a certain parametrized subset of the state-space. The generator network is optimized using adversarial training to produce tasks that are always at the appropriate level of difficulty for the agent, thus automatically producing a curriculum. We show that, by using this framework, an agent can efficiently and automatically learn to perform a wide set of tasks without requiring any prior knowledge of its environment, even when only sparse rewards are available. Videos and code available at: https://sites.google.com/view/ goalgeneration4rl.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/HZV43KRX/Florensa et al. - Automatic Goal Generation for Reinforcement Learni.pdf}
 }
 
 @misc{fosterFoundationsReinforcementLearning2023,
@@ -750,6 +814,31 @@
   file = {/home/kellen/Downloads/pdfs/storage/FUDVV3U4/Frans et al. - 2024 - Unsupervised Zero-Shot Reinforcement Learning via Functional Reward Encodings.pdf}
 }
 
+@misc{fujimotoGeneralPurposeModelFreeReinforcement2025,
+  title = {Towards {{General-Purpose Model-Free Reinforcement Learning}}},
+  author = {Fujimoto, Scott and D'Oro, Pierluca and Zhang, Amy and Tian, Yuandong and Rabbat, Michael},
+  year = {2025},
+  month = jan,
+  number = {arXiv:2501.16142},
+  eprint = {2501.16142},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2501.16142},
+  urldate = {2025-07-01},
+  abstract = {Reinforcement learning (RL) promises a framework for near-universal problemsolving. In practice however, RL algorithms are often tailored to specific benchmarks, relying on carefully tuned hyperparameters and algorithmic choices. Recently, powerful model-based RL methods have shown impressive general results across benchmarks but come at the cost of increased complexity and slow run times, limiting their broader applicability. In this paper, we attempt to find a unifying model-free deep RL algorithm that can address a diverse class of domains and problem settings. To achieve this, we leverage model-based representations that approximately linearize the value function, taking advantage of the denser task objectives used by model-based RL while avoiding the costs associated with planning or simulated trajectories. We evaluate our algorithm, MR.Q, on a variety of common RL benchmarks with a single set of hyperparameters and show a competitive performance against domain-specific and general baselines, providing a concrete step towards building general-purpose model-free deep RL algorithms.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/I3ZRN2A7/Fujimoto et al. - 2025 - Towards General-Purpose Model-Free Reinforcement L.pdf}
+}
+
+@misc{gaoDiffusionMeetsFlow2024,
+  title = {Diffusion {{Meets Flow Matching}}: {{Two Sides}} of the {{Same Coin}}},
+  author = {Gao, Ruiqi and Hoogeboom, Emiel and Heek, Jonathan and De Bortoli, Valentin and Murphy, Kevin P. and Salimans, Tim},
+  year = {2024},
+  month = dec
+}
+
 @article{garrettIntegratedTaskMotion2021,
   type = {Journal {{Article}}},
   title = {Integrated {{Task}} and {{Motion Planning}}},
@@ -764,6 +853,24 @@
   doi = {10.1146/annurev-control-091420-084139},
   abstract = {The problem of planning for a robot that operates in environments containing a large number of objects, taking actions to move itself through the world as well as to change the state of the objects, is known as task and motion planning (TAMP). TAMP problems contain elements of discrete task planning, discrete--continuous mathematical programming, and continuous motion planning and thus cannot be effectively addressed by any of these fields directly. In this article, we define a class of TAMP problems and survey algorithms for solving them, characterizing the solution methods in terms of their strategies for solving the continuous-space subproblems and their techniques for integrating the discrete and continuous components of the search.},
   keywords = {robotics}
+}
+
+@misc{ghugareNormalizingFlowsAre2025,
+  title = {Normalizing {{Flows}} Are {{Capable Models}} for {{RL}}},
+  author = {Ghugare, Raj and Eysenbach, Benjamin},
+  year = {2025},
+  month = jun,
+  number = {arXiv:2505.23527},
+  eprint = {2505.23527},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2505.23527},
+  urldate = {2025-06-30},
+  abstract = {Modern reinforcement learning (RL) algorithms have found success by using powerful probabilistic models, such as transformers, energy-based models, and diffusion/flow-based models. To this end, RL researchers often choose to pay the price of accommodating these models into their algorithms -- diffusion models are expressive, but are computationally intensive due to their reliance on solving differential equations, while autoregressive transformer models are scalable but typically require learning discrete representations. Normalizing flows (NFs), by contrast, seem to provide an appealing alternative, as they enable likelihoods and sampling without solving differential equations or autoregressive architectures. However, their potential in RL has received limited attention, partly due to the prevailing belief that normalizing flows lack sufficient expressivity. We show that this is not the case. Building on recent work in NFs, we propose a single NF architecture which integrates seamlessly into RL algorithms, serving as a policy, Q-function, and occupancy measure. Our approach leads to much simpler algorithms, and achieves higher performance in imitation learning, offline, goal conditioned RL and unsupervised RL.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/IW3SLYLD/Ghugare and Eysenbach - 2025 - Normalizing Flows are Capable Models for RL.pdf}
 }
 
 @misc{gomezProperLaplacianRepresentation2024,
@@ -1486,6 +1593,25 @@
   file = {/home/kellen/Downloads/pdfs/storage/4INDYLDI/Lipman et al. - 2024 - Flow Matching Guide and Code.pdf}
 }
 
+@misc{liuFlowStraightFast2022,
+  title = {Flow {{Straight}} and {{Fast}}: {{Learning}} to {{Generate}} and {{Transfer Data}} with {{Rectified Flow}}},
+  shorttitle = {Flow {{Straight}} and {{Fast}}},
+  author = {Liu, Xingchao and Gong, Chengyue and Liu, Qiang},
+  year = {2022},
+  month = sep,
+  number = {arXiv:2209.03003},
+  eprint = {2209.03003},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2209.03003},
+  urldate = {2025-07-01},
+  abstract = {We present rectified flow, a surprisingly simple approach to learning (neural) ordinary differential equation (ODE) models to transport between two empirically observed distributions {$\pi$}0 and {$\pi$}1, hence providing a unified solution to generative modeling and domain transfer, among various other tasks involving distribution transport. The idea of rectified flow is to learn the ODE to follow the straight paths connecting the points drawn from {$\pi$}0 and {$\pi$}1 as much as possible. This is achieved by solving a straightforward nonlinear least squares optimization problem, which can be easily scaled to large models without introducing extra parameters beyond standard supervised learning. The straight paths are special and preferred because they are the shortest paths between two points, and can be simulated exactly without time discretization and hence yield computationally efficient models. We show that the procedure of learning a rectified flow from data, called rectification, turns an arbitrary coupling of {$\pi$}0 and {$\pi$}1 to a new deterministic coupling with provably non-increasing convex transport costs. In addition, recursively applying rectification allows us to obtain a sequence of flows with increasingly straight paths, which can be simulated accurately with coarse time discretization in the inference phase. In empirical studies, we show that rectified flow performs superbly on image generation, image-to-image translation, and domain adaptation. In particular, on image generation and translation, our method yields nearly straight flows that give high quality results even with a single Euler discretization step.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/49M9XQS5/Liu et al. - 2022 - Flow Straight and Fast Learning to Generate and T.pdf}
+}
+
 @misc{liuLearningPoliciesZero2023,
   title = {Learning {{Policies}} with {{Zero}} or {{Bounded Constraint Violation}} for {{Constrained MDPs}}},
   author = {Liu, Tao and Zhou, Ruida and Kalathil, Dileep and Kumar, P. R. and Tian, Chao},
@@ -2074,6 +2200,24 @@
   file = {/home/kellen/Downloads/pdfs/storage/QP6P6B9C/Parisotto et al. - 2019 - Stabilizing Transformers for Reinforcement Learning.pdf}
 }
 
+@misc{parkFlowQLearning2025,
+  title = {Flow {{Q-Learning}}},
+  author = {Park, Seohong and Li, Qiyang and Levine, Sergey},
+  year = {2025},
+  month = may,
+  number = {arXiv:2502.02538},
+  eprint = {2502.02538},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2502.02538},
+  urldate = {2025-07-01},
+  abstract = {We present flow Q-learning (FQL), a simple and performant offline reinforcement learning (RL) method that leverages an expressive flow-matching policy to model arbitrarily complex action distributions in data. Training a flow policy with RL is a tricky problem, due to the iterative nature of the action generation process. We address this challenge by training an expressive one-step policy with RL, rather than directly guiding an iterative flow policy to maximize values. This way, we can completely avoid unstable recursive backpropagation, eliminate costly iterative action generation at test time, yet still mostly maintain expressivity. We experimentally show that FQL leads to strong performance across 73 challenging state- and pixel-based OGBench and D4RL tasks in offline RL and offline-to-online RL. Project page: https://seohong.me/projects/fql/},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/83WF47FI/Park et al. - 2025 - Flow Q-Learning.pdf}
+}
+
 @misc{parkFoundationPoliciesHilbert2024,
   title = {Foundation {{Policies}} with {{Hilbert Representations}}},
   author = {Park, Seohong and Kreiman, Tobias and Levine, Sergey},
@@ -2106,6 +2250,24 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/GZMYP9DB/Park et al. - 2025 - Horizon Reduction Makes RL Scalable.pdf;/home/kellen/Downloads/pdfs/storage/GF47MGGU/2506.html}
+}
+
+@misc{parkHorizonReductionMakes2025a,
+  title = {Horizon {{Reduction Makes RL Scalable}}},
+  author = {Park, Seohong and Frans, Kevin and Mann, Deepinder and Eysenbach, Benjamin and Kumar, Aviral and Levine, Sergey},
+  year = {2025},
+  month = jun,
+  number = {arXiv:2506.04168},
+  eprint = {2506.04168},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2506.04168},
+  urldate = {2025-07-01},
+  abstract = {In this work, we study the scalability of offline reinforcement learning (RL) algorithms. In principle, a truly scalable offline RL algorithm should be able to solve any given problem, regardless of its complexity, given sufficient data, compute, and model capacity. We investigate if and how current offline RL algorithms match up to this promise on diverse, challenging, previously unsolved tasks, using datasets up to 1000x larger than typical offline RL datasets. We observe that despite scaling up data, many existing offline RL algorithms exhibit poor scaling behavior, saturating well below the maximum performance. We hypothesize that the horizon is the main cause behind the poor scaling of offline RL. We empirically verify this hypothesis through several analysis experiments, showing that long horizons indeed present a fundamental barrier to scaling up offline RL. We then show that various horizon reduction techniques substantially enhance scalability on challenging tasks. Based on our insights, we also introduce a minimal yet scalable method named SHARSA that effectively reduces the horizon. SHARSA achieves the best asymptotic performance and scaling behavior among our evaluation methods, showing that explicitly reducing the horizon unlocks the scalability of offline RL. Code: https://github.com/seohongpark/horizon-reduction},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/ZTBUYVHS/Park et al. - 2025 - Horizon Reduction Makes RL Scalable.pdf}
 }
 
 @article{parkLIPSCHITZCONSTRAINEDUNSUPERVISEDSKILL2022,
@@ -2168,6 +2330,13 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/E6YDS983/Pires et al. - 2023 - Hierarchical Reinforcement Learning in Complex 3D Environments.pdf}
+}
+
+@article{pitisMaximumEntropyGain,
+  title = {Maximum {{Entropy Gain Exploration}} for {{Long Horizon Multi-goal Reinforcement Learning}}},
+  author = {Pitis, Silviu and Chan, Harris and Zhao, Stephen and Stadie, Bradly},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/XG7ZYYIG/Pitis et al. - Maximum Entropy Gain Exploration for Long Horizon .pdf}
 }
 
 @misc{prietoGrokkingEdgeNumerical2025,
