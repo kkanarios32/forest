@@ -1,9 +1,8 @@
 \date{2024-12-28}
 \title{Stack vs. Heap}
 \import{base-macros}
-\tag{memory}
 
-\p{I often hear this question come up amongst performance-driven developers, and for the longest time I could never get a straight answer as to why the stack was so much better? After a long foray into the inner workings of how memory allocation is actually done, I think I finally have an answer. I do not want to forget this, so I am doing a quick write up here.}
+\p{[\startverb#CS\stopverb](004H). I often hear this question come up amongst performance-driven developers, and for the longest time I could never get a straight answer as to why the stack was so much better? After a long foray into the inner workings of how memory allocation is actually done, I think I finally have an answer. I do not want to forget this, so I am doing a quick write up here.}
 
 \section{Why stack is faster.}{
 This all comes down to memory allocation. Prior to actually running the program, the operating system allocates some amount of memory for both the stack and the heap (I think around 2-4MB?).

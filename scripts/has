@@ -1,30 +1,79 @@
-#!/usr/bin/bash
+#!/usr/bin/python3
 
-TMPFILE=$(mktemp)
-forester query all > $TMPFILE
-QUERY="$1"
+import sys
+from collections import defaultdict
+import json
+from rich import print
+from rich.markup import escape
+import subprocess
 
-# Check query provided
-if [ -z "$QUERY" ]; then
-  echo "Usage: has <search term>" >&2
-  exit 1
-fi
 
-# Use rg to search with color output and line numbers
-rg --with-filename --color=always --line-number "$QUERY" --glob '!trees/refs/**' trees/ | while IFS=: read -r filepath lineno rest; do
-  # Extract URI from filename (trees/008C.tree → 008C)
-  filename=$(basename "$filepath")
-  uri="${filename%%.*}"
+def run_command(cmd):
+    result = subprocess.run(
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"Command {' '.join(cmd)} failed:\n{result.stderr}")
+    return result.stdout
 
-  # Lookup title using jq
-  title=$(jq -r --arg uri "$uri" 'map(select(.uri == $uri)) | .[0].title' "$TMPFILE")
 
-  # Fallback if not found
-  [ -z "$title" ] && title="[unknown title]"
+def prettified_text(text, submatches):
+    curr_idx = 0
+    cut_text = []
+    for match in submatches:
+        start, end = match
+        cut_text.append(text[curr_idx:start])
+        cut_text.append(f"[red]{text[start:end]}[/red]")
+        curr_idx = end
+    cut_text.append(text[curr_idx:])
+    s = "".join(cut_text)
+    s = s.lstrip().rstrip("\n")
+    return s
 
-  rest=$(echo -n "$rest" | sed 's/^[[:space:]]*//')
-  # Reconstruct the output with title and line number
-  echo -e "\033[1;35m${title}\033[0m (\033[0;36m${uri}\033[0m):\n${lineno}: ${rest}"
-done
 
-rm $TMPFILE
+def main(user_query):
+    forester_output = run_command(["forester", "query", "all"])
+    data = json.loads(forester_output)
+    path_to_title = {}
+    for entry in data:
+        path = entry["sourcePath"].split("/")[-1]  # e.g. "008A.tree"
+        uri = entry["uri"]  # e.g. "008A"
+        title = entry["title"]  # e.g. "Flow Matching For Generative Modeling"
+        path_to_title[path] = (title, uri)  # fallback to uri if title is missing
+
+    rg_output = run_command(
+        ["rg", "-S", "--json", user_query, "--iglob", "!trees/refs", "trees/"]
+    )
+
+    lineno_text = defaultdict(list)
+    submatches_dict = defaultdict(list)
+    for line in rg_output.splitlines():
+        if not line.strip():
+            continue
+        event = json.loads(line)
+        if event["type"] == "match":
+            path = event["data"]["path"]["text"].split("/")[-1]
+            lineno = event["data"]["line_number"]
+            text = event["data"]["lines"]["text"]
+            submatches = event["data"]["submatches"]
+            for match in submatches:
+                submatches_dict[(lineno, path)].append((match["start"], match["end"]))
+            lineno_text[path].append((lineno, text))
+
+    for key, lines in lineno_text.items():
+        title, uri = path_to_title[key]
+        title = escape(title)
+        print(f"[cyan]{title}[/cyan]([magenta]{uri}[/magenta]):")
+        for line in lines:
+            lineno, text = line
+            pretty_text = prettified_text(text, submatches_dict[(lineno, key)])
+            print(f"[yellow]{lineno}[/yellow]: {pretty_text}")
+        print()
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python yourscript.py <query>")
+        sys.exit(1)
+    query = sys.argv[1]
+    main(query)
