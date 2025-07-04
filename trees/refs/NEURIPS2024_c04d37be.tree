@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Normalization and effective learning rates in reinforcement learning}
 \date{2024}
+\author/literal{Clare Lyle}\author/literal{Zeyu Zheng}\author/literal{Khimya Khetarpal}\author/literal{James Martens}\author/literal{Hado Hasselt}\author/literal{Razvan Pascanu}\author/literal{Will Dabney}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{NEURIPS2024_c04d37be,

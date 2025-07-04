@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Explore to Generalize in Zero-Shot RL}
+\author/literal{Ev Zisselman}\author/literal{Itai Lavie}\author/literal{Daniel Soudry}\author/literal{Aviv Tamar}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{zisselmanExploreGeneralizeZeroShot,

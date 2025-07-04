@@ -1,6 +1,7 @@
 % ["refs"]
 \title{MetaOptimize: A Framework for Optimizing Step Sizes and Other Meta-parameters}
 \date{2024-10}
+\author/literal{Arsalan Sharifnassab}\author/literal{Saber Salehkaleybar}\author/literal{Richard Sutton}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2402.02342}
 \meta{external}{https://arxiv.org/abs/2402.02342}

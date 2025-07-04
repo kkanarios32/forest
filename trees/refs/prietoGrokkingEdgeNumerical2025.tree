@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Grokking at the Edge of Numerical Stability}
 \date{2025-01}
+\author/literal{Lucas Prieto}\author/literal{Melih Barsbey}\author/literal{Pedro A. M. Mediano}\author/literal{Tolga Birdal}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2501.04697}
 \meta{external}{https://arxiv.org/abs/2501.04697}

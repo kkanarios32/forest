@@ -1,6 +1,7 @@
 % ["refs"]
 \title{An overview of gradient descent optimization algorithms}
 \date{2017-06}
+\author/literal{Sebastian Ruder}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1609.04747}
 \meta{external}{https://arxiv.org/abs/1609.04747}

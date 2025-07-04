@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Muon is Scalable for LLM Training}
 \date{2025-02}
+\author/literal{Jingyuan Liu}\author/literal{Jianlin Su}\author/literal{Xingcheng Yao}\author/literal{Zhejun Jiang}\author/literal{Guokun Lai}\author/literal{Yulun Du}\author/literal{Yidao Qin}\author/literal{Weixin Xu}\author/literal{Enzhe Lu}\author/literal{Junjie Yan}\author/literal{Yanru Chen}\author/literal{Huabin Zheng}\author/literal{Yibo Liu}\author/literal{Shaowei Liu}\author/literal{Bohong Yin}\author/literal{Weiran He}\author/literal{Han Zhu}\author/literal{Yuzhi Wang}\author/literal{Jianzhou Wang}\author/literal{Mengnan Dong}\author/literal{Zheng Zhang}\author/literal{Yongsheng Kang}\author/literal{Hao Zhang}\author/literal{Xinran Xu}\author/literal{Yutao Zhang}\author/literal{Yuxin Wu}\author/literal{Xinyu Zhou}\author/literal{Zhilin Yang}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2502.16982}
 \meta{external}{https://arxiv.org/abs/2502.16982}

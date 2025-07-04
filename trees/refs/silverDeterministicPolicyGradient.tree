@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Deterministic Policy Gradient Algorithms}
+\author/literal{David Silver}\author/literal{Guy Lever}\author/literal{Nicolas Heess}\author/literal{Thomas Degris}\author/literal{Daan Wierstra}\author/literal{Martin Riedmiller}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{silverDeterministicPolicyGradient,

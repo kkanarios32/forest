@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Bandit Algorithms}
 \date{2020-07}
+\author/literal{Tor Lattimore}\author/literal{Csaba Szepesvári}
 \taxon{Reference}
 \meta{doi}{10.1017/9781108571401}
 \meta{bibtex}{\startverb

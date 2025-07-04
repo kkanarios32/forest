@@ -6,7 +6,7 @@ _serve() {
   python3 -m http.server 1234 -d output &>/dev/null &
 
   while true; do 
-    find $FORESTDIR/trees -type f | entr -rd $FORESTDIR/scripts/forbuild
+    find $FORESTDIR/trees -type f | entr -rd $FORESTDIR/scripts/mkprivate
     sleep 1
   done
 

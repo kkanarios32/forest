@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Monte Carlo Tree Search With Reinforcement Learning for Motion Planning}
 \date{2020-09}
+\author/literal{Philippe Weingertner}\author/literal{Minnie Ho}\author/literal{Andrey Timofeev}\author/literal{Sébastien Aubert}\author/literal{Guillermo Pita-Gil}
 \taxon{Reference}
 \meta{doi}{10.1109/ITSC45102.2020.9294697}
 \meta{bibtex}{\startverb

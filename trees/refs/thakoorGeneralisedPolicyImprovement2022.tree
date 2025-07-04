@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Generalised Policy Improvement with Geometric Policy Composition}
 \date{2022-06}
+\author/literal{Shantanu Thakoor}\author/literal{Mark Rowland}\author/literal{Diana Borsa}\author/literal{Will Dabney}\author/literal{Rémi Munos}\author/literal{André Barreto}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2206.08736}
 \meta{external}{https://arxiv.org/abs/2206.08736}

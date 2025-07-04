@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Generative Temporal Difference Learning for Infinite-Horizon Prediction}
 \date{2021-11}
+\author/literal{Michael Janner}\author/literal{Igor Mordatch}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2010.14496}
 \meta{external}{https://arxiv.org/abs/2010.14496}

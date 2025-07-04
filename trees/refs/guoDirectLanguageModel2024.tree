@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Direct Language Model Alignment from Online AI Feedback}
 \date{2024-02}
+\author/literal{Shangmin Guo}\author/literal{Biao Zhang}\author/literal{Tianlin Liu}\author/literal{Tianqi Liu}\author/literal{Misha Khalman}\author/literal{Felipe Llinares}\author/literal{Alexandre Rame}\author/literal{Thomas Mesnard}\author/literal{Yao Zhao}\author/literal{Bilal Piot}\author/literal{Johan Ferret}\author/literal{Mathieu Blondel}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2402.04792}
 

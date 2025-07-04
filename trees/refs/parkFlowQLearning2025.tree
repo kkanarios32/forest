@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Flow Q-Learning}
 \date{2025-05}
+\author/literal{Seohong Park}\author/literal{Qiyang Li}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2502.02538}
 \meta{external}{https://arxiv.org/abs/2502.02538}

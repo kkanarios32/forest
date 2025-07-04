@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Learning Successor States and Goal-Dependent Values: A Mathematical Viewpoint}
 \date{2021-01}
+\author/literal{Léonard Blier}\author/literal{Corentin Tallec}\author/literal{Yann Ollivier}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2101.07123}
 \meta{external}{https://arxiv.org/abs/2101.07123}

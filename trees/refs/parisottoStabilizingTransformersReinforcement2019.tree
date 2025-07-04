@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Stabilizing Transformers for Reinforcement Learning}
 \date{2019-10}
+\author/literal{Emilio Parisotto}\author/literal{H. Francis Song}\author/literal{Jack W. Rae}\author/literal{Razvan Pascanu}\author/literal{Caglar Gulcehre}\author/literal{Siddhant M. Jayakumar}\author/literal{Max Jaderberg}\author/literal{Raphael Lopez Kaufman}\author/literal{Aidan Clark}\author/literal{Seb Noury}\author/literal{Matthew M. Botvinick}\author/literal{Nicolas Heess}\author/literal{Raia Hadsell}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1910.06764}
 \meta{external}{https://arxiv.org/abs/1910.06764}

@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Meta Reinforcement Learning with Autonomous Inference of Subtask Dependencies}
 \date{2020-04}
+\author/literal{Sungryull Sohn}\author/literal{Hyunjae Woo}\author/literal{Jongwook Choi}\author/literal{Honglak Lee}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2001.00248}
 \meta{external}{https://arxiv.org/abs/2001.00248}

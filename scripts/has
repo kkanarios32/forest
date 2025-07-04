@@ -22,8 +22,10 @@ def prettified_text(text, submatches):
     cut_text = []
     for match in submatches:
         start, end = match
-        cut_text.append(text[curr_idx:start])
-        cut_text.append(f"[green]{text[start:end]}[/green]")
+        unmatched_text = escape(text[curr_idx:start])
+        cut_text.append(unmatched_text)
+        matched_word = escape(text[start:end])
+        cut_text.append(f"[green]{matched_word}[/green]")
         curr_idx = end
     cut_text.append(text[curr_idx:])
     s = "".join(cut_text)
@@ -42,7 +44,15 @@ def main(user_query):
         path_to_title[path] = (title, uri)  # fallback to uri if title is missing
 
     rg_output = run_command(
-        ["rg", "-S", "--json", user_query, "--iglob", "!trees/refs", "trees/"]
+        [
+            "rg",
+            "-S",
+            "--json",
+            user_query,
+            "--iglob",
+            "!trees/refs",
+            "trees/",
+        ]
     )
 
     lineno_text = defaultdict(list)

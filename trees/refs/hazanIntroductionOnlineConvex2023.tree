@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Introduction to Online Convex Optimization}
 \date{2023-08}
+\author/literal{Elad Hazan}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1909.05207}
 \meta{external}{https://arxiv.org/abs/1909.05207}

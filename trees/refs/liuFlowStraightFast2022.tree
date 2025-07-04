@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Flow Straight and Fast: Learning to Generate and Transfer Data with Rectified Flow}
 \date{2022-09}
+\author/literal{Xingchao Liu}\author/literal{Chengyue Gong}\author/literal{Qiang Liu}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2209.03003}
 \meta{external}{https://arxiv.org/abs/2209.03003}

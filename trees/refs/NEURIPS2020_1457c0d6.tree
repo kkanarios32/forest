@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Language models are few-shot learners}
 \date{2020}
+\author/literal{Tom Brown}\author/literal{Benjamin Mann}\author/literal{Nick Ryder}\author/literal{Melanie Subbiah}\author/literal{Jared D Kaplan}\author/literal{Prafulla Dhariwal}\author/literal{Arvind Neelakantan}\author/literal{Pranav Shyam}\author/literal{Girish Sastry}\author/literal{Amanda Askell}\author/literal{Sandhini Agarwal}\author/literal{Ariel Herbert-Voss}\author/literal{Gretchen Krueger}\author/literal{Tom Henighan}\author/literal{Rewon Child}\author/literal{Aditya Ramesh}\author/literal{Daniel Ziegler}\author/literal{Jeffrey Wu}\author/literal{Clemens Winter}\author/literal{Chris Hesse}\author/literal{Mark Chen}\author/literal{Eric Sigler}\author/literal{Mateusz Litwin}\author/literal{Scott Gray}\author/literal{Benjamin Chess}\author/literal{Jack Clark}\author/literal{Christopher Berner}\author/literal{Sam McCandlish}\author/literal{Alec Radford}\author/literal{Ilya Sutskever}\author/literal{Dario Amodei}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{NEURIPS2020_1457c0d6,

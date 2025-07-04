@@ -1,5 +1,6 @@
 % ["refs"]
 \title{On the Convergence of Stochastic Iterative Dynamic Programming Algorithms}
+\author/literal{Tommi Jaakkola}\author/literal{Michael I Jordan}\author/literal{Satinder P Singh}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{jaakkolaConvergenceStochasticIterative,

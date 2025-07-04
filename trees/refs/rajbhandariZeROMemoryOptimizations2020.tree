@@ -1,6 +1,7 @@
 % ["refs"]
 \title{ZeRO: Memory Optimizations Toward Training Trillion Parameter Models}
 \date{2020-05}
+\author/literal{Samyam Rajbhandari}\author/literal{Jeff Rasley}\author/literal{Olatunji Ruwase}\author/literal{Yuxiong He}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/1910.02054}
 

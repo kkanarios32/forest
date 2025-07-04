@@ -1,6 +1,7 @@
 % ["refs"]
 \title{A Single Goal is All You Need: Skills and Exploration Emerge from Contrastive RL without Rewards, Demonstrations, or Subgoals}
 \date{2024-08}
+\author/literal{Grace Liu}\author/literal{Michael Tang}\author/literal{Benjamin Eysenbach}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2408.05804}
 \meta{external}{https://arxiv.org/abs/2408.05804}

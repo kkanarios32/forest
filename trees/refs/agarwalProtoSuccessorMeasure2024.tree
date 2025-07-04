@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Proto Successor Measure: Representing the Space of All Possible Solutions of Reinforcement Learning}
 \date{2024-11}
+\author/literal{Siddhant Agarwal}\author/literal{Harshit Sikchi}\author/literal{Peter Stone}\author/literal{Amy Zhang}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2411.19418}
 \meta{external}{https://arxiv.org/abs/2411.19418}

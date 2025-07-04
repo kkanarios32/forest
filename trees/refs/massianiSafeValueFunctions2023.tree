@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Safe Value Functions}
 \date{2023-05}
+\author/literal{Pierre-François Massiani}\author/literal{Steve Heim}\author/literal{Friedrich Solowjow}\author/literal{Sebastian Trimpe}
 \taxon{Reference}
 \meta{doi}{10.1109/TAC.2022.3200948}
 \meta{external}{https://arxiv.org/abs/2105.12204}

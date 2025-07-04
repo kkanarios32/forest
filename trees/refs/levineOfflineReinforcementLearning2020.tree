@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Offline Reinforcement Learning: Tutorial, Review, and Perspectives on Open Problems}
 \date{2020-11}
+\author/literal{Sergey Levine}\author/literal{Aviral Kumar}\author/literal{George Tucker}\author/literal{Justin Fu}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2005.01643}
 

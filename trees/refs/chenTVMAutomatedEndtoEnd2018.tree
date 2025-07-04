@@ -1,6 +1,7 @@
 % ["refs"]
 \title{TVM: An Automated End-to-End Optimizing Compiler for Deep Learning}
 \date{2018-10}
+\author/literal{Tianqi Chen}\author/literal{Thierry Moreau}\author/literal{Ziheng Jiang}\author/literal{Lianmin Zheng}\author/literal{Eddie Yan}\author/literal{Meghan Cowan}\author/literal{Haichen Shen}\author/literal{Leyuan Wang}\author/literal{Yuwei Hu}\author/literal{Luis Ceze}\author/literal{Carlos Guestrin}\author/literal{Arvind Krishnamurthy}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/1802.04799}
 

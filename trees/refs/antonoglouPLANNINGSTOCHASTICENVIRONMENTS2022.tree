@@ -1,6 +1,7 @@
 % ["refs"]
 \title{PLANNING IN STOCHASTIC ENVIRONMENTS WITH A LEARNED MODEL}
 \date{2022}
+\author/literal{Ioannis Antonoglou}\author/literal{Julian Schrittwieser}\author/literal{Sherjil Ozair}\author/literal{Thomas Hubert}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{antonoglouPLANNINGSTOCHASTICENVIRONMENTS2022,

@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Horizon Generalization in Reinforcement Learning}
 \date{2025-01}
+\author/literal{Vivek Myers}\author/literal{Catherine Ji}\author/literal{Benjamin Eysenbach}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2501.02709}
 \meta{external}{https://arxiv.org/abs/2501.02709}

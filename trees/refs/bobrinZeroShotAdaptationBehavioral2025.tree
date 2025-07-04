@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics}
 \date{2025-05}
+\author/literal{Maksim Bobrin}\author/literal{Ilya Zisman}\author/literal{Alexander Nikulin}\author/literal{Vladislav Kurenkov}\author/literal{Dmitry Dylov}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2505.13150}
 \meta{external}{https://arxiv.org/abs/2505.13150}

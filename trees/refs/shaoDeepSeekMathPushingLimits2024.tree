@@ -1,6 +1,7 @@
 % ["refs"]
 \title{DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models}
 \date{2024-04}
+\author/literal{Zhihong Shao}\author/literal{Peiyi Wang}\author/literal{Qihao Zhu}\author/literal{Runxin Xu}\author/literal{Junxiao Song}\author/literal{Xiao Bi}\author/literal{Haowei Zhang}\author/literal{Mingchuan Zhang}\author/literal{Y. K. Li}\author/literal{Y. Wu}\author/literal{Daya Guo}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2402.03300}
 \meta{external}{https://arxiv.org/abs/2402.03300}

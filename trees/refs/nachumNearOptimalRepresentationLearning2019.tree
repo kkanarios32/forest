@@ -1,8 +1,7 @@
-% ["refs", "manual"]
+% ["refs"]
 \title{Near-Optimal Representation Learning for Hierarchical Reinforcement Learning}
 \date{2019-01}
-\tag{todo}
-\tag{paper}
+\author/literal{Ofir Nachum}\author/literal{Shixiang Gu}\author/literal{Honglak Lee}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/1810.01257}
 

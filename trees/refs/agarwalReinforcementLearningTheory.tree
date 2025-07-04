@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Reinforcement Learning: Theory and Algorithms}
+\author/literal{Alekh Agarwal}\author/literal{Nan Jiang}\author/literal{Sham M Kakade}\author/literal{Wen Sun}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{agarwalReinforcementLearningTheory,

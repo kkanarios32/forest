@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Goal-oriented exploration for reinforcement learning}
 \date{2022}
+\author/literal{Jean Tarbouriech}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @phdthesis{tarbouriechGoalorientedExplorationReinforcement2022,

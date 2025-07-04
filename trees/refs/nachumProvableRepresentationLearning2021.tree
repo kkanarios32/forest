@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Provable Representation Learning for Imitation with Contrastive Fourier Features}
 \date{2021-10}
+\author/literal{Ofir Nachum}\author/literal{Mengjiao Yang}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2105.12272}
 \meta{external}{https://arxiv.org/abs/2105.12272}

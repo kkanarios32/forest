@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Constrained Reinforcement Learning with Smoothed Log Barrier Function}
 \date{2024-03}
+\author/literal{Baohe Zhang}\author/literal{Yuan Zhang}\author/literal{Lilli Frison}\author/literal{Thomas Brox}\author/literal{Joschka Bödecker}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2403.14508}
 \meta{external}{https://arxiv.org/abs/2403.14508}

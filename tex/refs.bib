@@ -890,6 +890,15 @@
   file = {/home/kellen/Downloads/pdfs/storage/AGETEYXM/Gomez et al. - 2024 - Proper Laplacian Representation Learning.pdf}
 }
 
+@article{grathwohlFFJORDFreeFormContinuous2019,
+  title = {{{FFJORD}}: {{Free-Form Continuous DYnamics}} for {{Scalable Reversible Generative Models}}},
+  author = {Grathwohl, Will and Chen, Ricky T Q and Bettencourt, Jesse and Sutskever, Ilya and Duvenaud, David},
+  year = {2019},
+  abstract = {Reversible generative models map points from a simple distribution to a complex distribution through an easily invertible neural network. Likelihood-based training of these models requires restricting their architectures to allow cheap computation of Jacobian determinants. Alternatively, the Jacobian trace can be used if the transformation is specified by an ordinary differential equation. In this paper, we use Hutchinson's trace estimator to give a scalable unbiased estimate of the logdensity. The result is a continuous-time invertible generative model with unbiased density estimation and one-pass sampling, while allowing unrestricted neural network architectures. We demonstrate our approach on high-dimensional density estimation, image generation, and variational inference, improving the state-ofthe-art among exact likelihood methods with efficient sampling.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/2H337KKY/Grathwohl et al. - 2019 - FFJORD FREE-FORM CONTINUOUS DYNAMICS FOR SCALABLE.pdf}
+}
+
 @article{guntherExaminingUseTemporalDifference2020,
   title = {Examining the {{Use}} of {{Temporal-Difference Incremental Delta-Bar-Delta}} for {{Real-World Predictive Knowledge Architectures}}},
   author = {G{\"u}nther, Johannes and Ady, Nadia M. and Kearney, Alex and Dawson, Michael R. and Pilarski, Patrick M.},
@@ -3285,8 +3294,4 @@
   abstract = {We study zero-shot generalization in reinforcement learning---optimizing a policy on a set of training tasks to perform well on a similar but unseen test task. To mitigate overfitting, previous work explored different notions of invariance to the task. However, on problems such as the ProcGen Maze, an adequate solution that is invariant to the task visualization does not exist, and therefore invariance-based approaches fail. Our insight is that learning a policy that effectively explores the domain is harder to memorize than a policy that maximizes reward for a specific task, and therefore we expect such learned behavior to generalize well; we indeed demonstrate this empirically on several domains that are difficult for invariancebased approaches. Our Explore to Generalize algorithm (ExpGen) builds on this insight: we train an additional ensemble of agents that optimize reward. At test time, either the ensemble agrees on an action, and we generalize well, or we take exploratory actions, which generalize well and drive us to a novel part of the state space, where the ensemble may potentially agree again. We show that our approach is the state-of-the-art on tasks of the ProcGen challenge that have thus far eluded effective generalization, yielding a success rate of 83\% on the Maze task and 74\% on Heist with 200 training levels. ExpGen can also be combined with an invariance based approach to gain the best of both worlds, setting new state-of-the-art results on ProcGen. Code available at https://github.com/EvZissel/expgen.},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/9D7NJ4H9/Zisselman et al. - Explore to Generalize in Zero-Shot RL.pdf}
-}
-
-@misc{zotero-item-356,
-  howpublished = {https://arxiv.org/pdf/1603.02041}
 }

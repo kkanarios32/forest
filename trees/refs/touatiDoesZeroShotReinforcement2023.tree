@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Does Zero-Shot Reinforcement Learning Exist?}
 \date{2023-03}
+\author/literal{Ahmed Touati}\author/literal{Jérémy Rapin}\author/literal{Yann Ollivier}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2209.14935}
 \meta{external}{https://arxiv.org/abs/2209.14935}

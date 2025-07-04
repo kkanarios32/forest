@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Learning Latent Dynamics for Planning from Pixels}
 \date{2019-06}
+\author/literal{Danijar Hafner}\author/literal{Timothy Lillicrap}\author/literal{Ian Fischer}\author/literal{Ruben Villegas}\author/literal{David Ha}\author/literal{Honglak Lee}\author/literal{James Davidson}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1811.04551}
 \meta{external}{https://arxiv.org/abs/1811.04551}

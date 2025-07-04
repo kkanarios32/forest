@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Flow Matching for Generative Modeling}
 \date{2023-02}
+\author/literal{Yaron Lipman}\author/literal{Ricky T. Q. Chen}\author/literal{Heli Ben-Hamu}\author/literal{Maximilian Nickel}\author/literal{Matt Le}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2210.02747}
 \meta{external}{https://arxiv.org/abs/2210.02747}

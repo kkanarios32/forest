@@ -1,0 +1,10 @@
+#!/bin/bash
+FILENAME=$(opam exec -- forester new --dest="$FORESTDIR/trees")
+TITLE="$*"
+echo $FILENAME
+
+# if templates/$TREE_PREFIX.tree exists
+echo "\\title{$TITLE}" >> $FILENAME
+cat templates/todo.tree >> $FILENAME
+
+# nvim $FILENAME

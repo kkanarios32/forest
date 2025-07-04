@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Hierarchical Reinforcement Learning for Zero-shot Generalization with Subtask Dependencies}
+\author/literal{Sungryull Sohn}\author/literal{Junhyuk Oh}\author/literal{Honglak Lee}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{sohnHierarchicalReinforcementLearning,

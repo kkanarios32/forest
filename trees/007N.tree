@@ -1,3 +1,4 @@
+
 \date{2025-06-05}
 \title{Upcoming papers of the week}
 
@@ -6,7 +7,7 @@
   ?X -:
   {\rel/is-reference ?X}
   {\rel/has-tag ?X '{paper}}
-  {\rel/has-tag ?X '{todo}}
+  {\rel/has-tag ?X '{upcoming}}
 }
 
 \p{Taking requests below!}

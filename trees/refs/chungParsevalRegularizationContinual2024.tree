@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Parseval Regularization for Continual Reinforcement Learning}
 \date{2024-12}
+\author/literal{Wesley Chung}\author/literal{Lynn Cherif}\author/literal{David Meger}\author/literal{Doina Precup}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2412.07224}
 \meta{external}{https://arxiv.org/abs/2412.07224}

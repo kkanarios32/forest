@@ -1,6 +1,7 @@
 % ["refs"]
 \title{POLICY IMPROVEMENT BY PLANNING WITH GUMBEL}
 \date{2022}
+\author/literal{Ivo Danihelka}\author/literal{Arthur Guez}\author/literal{Julian Schrittwieser}\author/literal{David Silver}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{danihelkaPOLICYIMPROVEMENTPLANNING2022,

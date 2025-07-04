@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Mini-Batch Optimization of Contrastive Loss}
 \date{2023-07}
+\author/literal{Jaewoong Cho}\author/literal{Kartik Sreenivasan}\author/literal{Keon Lee}\author/literal{Kyunghoo Mun}\author/literal{Soheun Yi}\author/literal{Jeong-Gwan Lee}\author/literal{Anna Lee}\author/literal{Jy-yong Sohn}\author/literal{Dimitris Papailiopoulos}\author/literal{Kangwook Lee}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2307.05906v1}
 

@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Path Planning and Obstacle Avoidance for Autonomous Mobile Robots: A Review}
 \date{2006}
+\author/literal{Voemir Kunchev}\author/literal{Lakhmi Jain}\author/literal{Vladimir Ivancevic}\author/literal{Anthony Finn}
 \taxon{Reference}
 \meta{doi}{10.1007/11893004_70}
 \meta{bibtex}{\startverb

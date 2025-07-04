@@ -1,9 +1,0 @@
-% ["refs"]
-\taxon{Reference}
-\meta{external}{https://arxiv.org/pdf/1603.02041}
-
-\meta{bibtex}{\startverb
-@misc{zotero-item-356,
- howpublished = {https://arxiv.org/pdf/1603.02041}
-}
-\stopverb}

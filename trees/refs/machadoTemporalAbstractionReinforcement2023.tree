@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Temporal Abstraction in Reinforcement Learning with the Successor Representation}
 \date{2023-04}
+\author/literal{Marlos C. Machado}\author/literal{Andre Barreto}\author/literal{Doina Precup}\author/literal{Michael Bowling}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2110.05740}
 

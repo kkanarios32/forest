@@ -1,6 +1,7 @@
 % ["refs"]
 \title{PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel}
 \date{2023-04}
+\author/literal{Yanli Zhao}\author/literal{Andrew Gu}\author/literal{Rohan Varma}\author/literal{Liang Luo}\author/literal{Chien-Chin Huang}\author/literal{Min Xu}\author/literal{Less Wright}\author/literal{Hamid Shojanazeri}\author/literal{Myle Ott}\author/literal{Sam Shleifer}\author/literal{Alban Desmaison}\author/literal{Can Balioglu}\author/literal{Pritam Damania}\author/literal{Bernard Nguyen}\author/literal{Geeta Chauhan}\author/literal{Yuchen Hao}\author/literal{Ajit Mathews}\author/literal{Shen Li}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2304.11277v2}
 

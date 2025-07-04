@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Representation Learning via Non-Contrastive Mutual Information}
 \date{2025-04}
+\author/literal{Zhaohan Daniel Guo}\author/literal{Bernardo Avila Pires}\author/literal{Khimya Khetarpal}\author/literal{Dale Schuurmans}\author/literal{Bo Dai}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2504.16667}
 \meta{external}{https://arxiv.org/abs/2504.16667}

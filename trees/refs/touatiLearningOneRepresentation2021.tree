@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Learning One Representation to Optimize All Rewards}
 \date{2021-10}
+\author/literal{Ahmed Touati}\author/literal{Yann Ollivier}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2103.07945}
 \meta{external}{https://arxiv.org/abs/2103.07945}

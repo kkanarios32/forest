@@ -1,0 +1,7 @@
+\date{2025-07-03T15:02:23Z}
+
+\syndicate-query-as-json-blob{my-public-forest}{
+\datalog{
+   ?X -: {\rel/is-node ?X} # {\rel/has-tag ?X '{todo}}
+ }
+}

@@ -1,3 +1,4 @@
+
 \import{base-macros}
 \date{2025-07-01T15:26:00Z}
 \title{Tokenization}
@@ -12,7 +13,8 @@ A \em{tokenizer} is responsible for taking text and turning it into a numerical 
     }
  When defining a "good" tokenizer, we are concerned with the \em{compression ratio} i.e. the # of bytes per token.
     }
-    \section{Character-based tokenization}{
+}
+  \section{Character-based tokenization}{
 \p{Trivially, we can do \em{character-based tokenization} i.e. mapping each character to a unique number. For example, #{\mathsf{chr}(97) = \text{``a''}} and #{\mathsf{ord}(\text{``a''}) = 97}. The compression ratio will be #{> 1} because each token corresponds to a character potentially consisting of more than one byte.}
 \iblock{
   \strong{Problems:}
@@ -68,7 +70,6 @@ In GPT2, they first split the raw text into words and then do this byte pair enc
   \li{#{\mathsf{encode}} loops over all merges. Only loop over merges that matter.}
   \li{Detect and preserve special tokens (e.g. <|endoftext|>)}
   \li{Use pre-tokenization (GPT2 regex)}
-}
 }
 }
 }

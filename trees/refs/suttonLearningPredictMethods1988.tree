@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Learning to predict by the methods of temporal differences}
 \date{1988-08}
+\author/literal{Richard S. Sutton}
 \taxon{Reference}
 \meta{doi}{10.1007/BF00115009}
 \meta{bibtex}{\startverb

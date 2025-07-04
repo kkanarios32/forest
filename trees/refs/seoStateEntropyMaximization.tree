@@ -1,5 +1,6 @@
 % ["refs"]
 \title{State Entropy Maximization with Random Encoders for Efficient Exploration}
+\author/literal{Younggyo Seo}\author/literal{Lili Chen}\author/literal{Jinwoo Shin}\author/literal{Honglak Lee}\author/literal{Pieter Abbeel}\author/literal{Kimin Lee}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{seoStateEntropyMaximization,

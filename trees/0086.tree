@@ -1,3 +1,4 @@
+
 \import{base-macros}
 \date{2025-07-01T15:02:29Z}
 \title{[[007U]] (2/66): [CS336](0085) Lecture 1}
@@ -5,70 +6,6 @@
 
 \p{First they give a brief outline of the course (provided below) along with some of the challenges and problem definitions for each of the sections}
 
-\section{Course outline}{
-\section{Basics}{
-\ol{
-  \li{Tokenization}
-  \li{Architecture}
-  \li{Loss function}
-  \li{Optimizer}
-  \li{Learning rate}
-}
-}
-\section{Systems}{
-  \p{ \strong{Goal:} Squeeze the most out of the hardware. }
-\ol{
-  \li{\strong{Kernels}}
-  \p{Basic idea is that the GPU needs to perform computation, but the data cannot fit on the GPU. GPU is the \em{factory} memory is the \em{warehouse}
-  }
-  \iblock{
-    \em{How do we best organize computation to maximize utilization of GPUs by minimizing data movement?}
-  }
-  \li{\strong{Parallelism}}
-  \p{Beyond one GPU, we must then learn how to scale these ideas to multiple GPUs.}
-  \ul{
-    \li{Sharding}
-    \li{{data,tensor,piple,sequence} parallelism}
-    \li{Quantization}
-    \li{Activation checkpointing}
-    \li{CPU offloading}
-  }
-  \li{\strong{Inference}}
-  \p{Two phases: prefill and decode}
-  \ul{
-    \li{In prefill all tokens are given and you just want to output the next coding (compute bound).}
-    \li{In decoding, we need to output one token at a time (memory-bound). }
-  }
-}
-}
-\section{Scaling Laws}{
-  \p{\strong{Goal:} do experiments at small scale in order to pick hyperparameters for much more expensive runs at large scale.}
-\ol{
-  \li{Scaling sequence}
-  \li{Model complexity}
-  \li{Loss metric}
-  \li{Parametric form}
-}
-}
-\section{Data}{
-  \p{\strong{Goal:} what we want the model to actually do i.e. pick your data for your task.}
-\ol{
-  \li{Evaluation}
-  \li{Curation}
-  \li{Transformation}
-  \li{Filtering}
-  \li{Deduplication}
-  \li{Mixing}
-}
-}
-\section{Alignment}{
-\ol{
-  \li{Supervised fine-tuning}
-  \li{Reinforcement learning}
-  \li{Preference data}
-  \li{Synthetic data}
-  \li{Verifiers}
-}
-}
-}
+
+\transclude{DEQT}
 \transclude{0087}

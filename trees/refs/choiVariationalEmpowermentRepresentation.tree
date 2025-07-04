@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Variational Empowerment as Representation Learning for Goal-Based Reinforcement Learning}
+\author/literal{Jongwook Choi}\author/literal{Archit Sharma}\author/literal{Honglak Lee}\author/literal{Sergey Levine}\author/literal{Shixiang Shane Gu}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{choiVariationalEmpowermentRepresentation,

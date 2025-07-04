@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Efficient Skill Learning using Abstraction Selection}
+\author/literal{George Konidaris}\author/literal{Andrew Barto}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{konidarisEfficientSkillLearning,

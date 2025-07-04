@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Utility-based Perturbed Gradient Descent: An Optimizer for Continual Learning}
 \date{2023-04}
+\author/literal{Mohamed Elsayed}\author/literal{A. Rupam Mahmood}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2302.03281}
 \meta{external}{https://arxiv.org/abs/2302.03281}

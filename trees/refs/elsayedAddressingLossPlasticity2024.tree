@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Addressing Loss of Plasticity and Catastrophic Forgetting in Continual Learning}
 \date{2024-04}
+\author/literal{Mohamed Elsayed}\author/literal{A. Rupam Mahmood}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2404.00781}
 \meta{external}{https://arxiv.org/abs/2404.00781}

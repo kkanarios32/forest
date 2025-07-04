@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review}
 \date{2018-05}
+\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1805.00909}
 \meta{external}{https://arxiv.org/abs/1805.00909}

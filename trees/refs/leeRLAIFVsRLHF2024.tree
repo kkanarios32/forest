@@ -1,6 +1,7 @@
 % ["refs"]
 \title{RLAIF vs. RLHF: Scaling Reinforcement Learning from Human Feedback with AI Feedback}
 \date{2024-09}
+\author/literal{Harrison Lee}\author/literal{Samrat Phatale}\author/literal{Hassan Mansoor}\author/literal{Thomas Mesnard}\author/literal{Johan Ferret}\author/literal{Kellie Lu}\author/literal{Colton Bishop}\author/literal{Ethan Hall}\author/literal{Victor Carbune}\author/literal{Abhinav Rastogi}\author/literal{Sushant Prakash}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2309.00267}
 

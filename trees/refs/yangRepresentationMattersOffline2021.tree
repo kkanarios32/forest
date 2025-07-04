@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Representation Matters: Offline Pretraining for Sequential Decision Making}
 \date{2021-07}
+\author/literal{Mengjiao Yang}\author/literal{Ofir Nachum}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{yangRepresentationMattersOffline2021,

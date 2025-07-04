@@ -1,9 +1,8 @@
-% ["refs", "manual"]
+% ["refs"]
 \title{Temporal Difference Flows}
 \date{2025-03}
+\author/literal{Jesse Farebrother}\author/literal{Matteo Pirotta}\author/literal{Andrea Tirinzoni}\author/literal{Rémi Munos}\author/literal{Alessandro Lazaric}\author/literal{Ahmed Touati}
 \taxon{Reference}
-\tag{todo}
-\tag{paper}
 \meta{doi}{10.48550/arXiv.2503.09817}
 \meta{external}{https://arxiv.org/abs/2503.09817}
 

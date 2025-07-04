@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Integrated Task and Motion Planning}
 \date{2021}
+\author/literal{Caelan Reed Garrett}\author/literal{Rohan Chitnis}\author/literal{Rachel Holladay}\author/literal{Beomjoon Kim}\author/literal{Tom Silver}\author/literal{Leslie Pack Kaelbling}\author/literal{Tomás Lozano-Pérez}
 \taxon{Reference}
 \meta{doi}{10.1146/annurev-control-091420-084139}
 \meta{bibtex}{\startverb

@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Neuro-dynamic programming}
 \date{1996}
+\author/literal{Dimitri P. Bertsekas}\author/literal{John N. Tsitsiklis}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @book{bertsekasNeurodynamicProgramming1996,

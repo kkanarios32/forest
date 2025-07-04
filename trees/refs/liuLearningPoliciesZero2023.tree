@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Learning Policies with Zero or Bounded Constraint Violation for Constrained MDPs}
 \date{2023-01}
+\author/literal{Tao Liu}\author/literal{Ruida Zhou}\author/literal{Dileep Kalathil}\author/literal{P. R. Kumar}\author/literal{Chao Tian}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2106.02684}
 \meta{external}{https://arxiv.org/abs/2106.02684}

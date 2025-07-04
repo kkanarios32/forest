@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Unsupervised-to-Online Reinforcement Learning}
 \date{2024-08}
+\author/literal{Junsu Kim}\author/literal{Seohong Park}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2408.14785v1}
 

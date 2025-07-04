@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Goal-Conditioned Reinforcement Learning with Imagined Subgoals}
 \date{2021-07}
+\author/literal{Elliot Chane-Sane}\author/literal{Cordelia Schmid}\author/literal{Ivan Laptev}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2107.00541}
 \meta{external}{https://arxiv.org/abs/2107.00541}

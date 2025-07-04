@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Noise Contrastive Estimation and Negative Sampling for Conditional Models: Consistency and Statistical Efficiency}
 \date{2018-09}
+\author/literal{Zhuang Ma}\author/literal{Michael Collins}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1809.01812}
 \meta{external}{https://arxiv.org/abs/1809.01812}

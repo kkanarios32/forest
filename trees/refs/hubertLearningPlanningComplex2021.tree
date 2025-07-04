@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Learning and Planning in Complex Action Spaces}
 \date{2021-04}
+\author/literal{Thomas Hubert}\author/literal{Julian Schrittwieser}\author/literal{Ioannis Antonoglou}\author/literal{Mohammadamin Barekatain}\author/literal{Simon Schmitt}\author/literal{David Silver}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2104.06303}
 \meta{external}{https://arxiv.org/abs/2104.06303}

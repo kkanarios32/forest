@@ -1,6 +1,7 @@
 % ["refs"]
 \title{HAC Explore: Accelerating Exploration with Hierarchical Reinforcement Learning}
 \date{2021-08}
+\author/literal{Willie McClinton}\author/literal{Andrew Levy}\author/literal{George Konidaris}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2108.05872}
 \meta{external}{https://arxiv.org/abs/2108.05872}

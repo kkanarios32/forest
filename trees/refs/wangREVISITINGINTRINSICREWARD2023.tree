@@ -1,6 +1,7 @@
 % ["refs"]
 \title{REVISITING INTRINSIC REWARD FOR EXPLORATION IN PROCEDURALLY GENERATED ENVIRONMENTS}
 \date{2023}
+\author/literal{Kaixin Wang}\author/literal{Kuangqi Zhou}\author/literal{Bingyi Kang}\author/literal{Jiashi Feng}\author/literal{Shuicheng Yan}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{wangREVISITINGINTRINSICREWARD2023,

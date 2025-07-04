@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Diffusion Meets Flow Matching: Two Sides of the Same Coin}
 \date{2024-12}
+\author/literal{Ruiqi Gao}\author/literal{Emiel Hoogeboom}\author/literal{Jonathan Heek}\author/literal{Valentin De Bortoli}\author/literal{Kevin P. Murphy}\author/literal{Tim Salimans}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @misc{gaoDiffusionMeetsFlow2024,

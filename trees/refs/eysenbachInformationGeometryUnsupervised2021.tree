@@ -1,6 +1,7 @@
 % ["refs"]
 \title{The Information Geometry of Unsupervised Reinforcement Learning}
 \date{2021-10}
+\author/literal{Benjamin Eysenbach}\author/literal{Ruslan Salakhutdinov}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{eysenbachInformationGeometryUnsupervised2021,

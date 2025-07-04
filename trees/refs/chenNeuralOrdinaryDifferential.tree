@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Neural Ordinary Differential Equations}
+\author/literal{Tian Qi Chen}\author/literal{Yulia Rubanova}\author/literal{Jesse Bettencourt}\author/literal{David K Duvenaud}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{chenNeuralOrdinaryDifferential,

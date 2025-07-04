@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Plan Online, Learn Offline: Efficient Learning and Exploration via Model-Based Control}
 \date{2019-01}
+\author/literal{Kendall Lowrey}\author/literal{Aravind Rajeswaran}\author/literal{Sham Kakade}\author/literal{Emanuel Todorov}\author/literal{Igor Mordatch}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1811.01848}
 \meta{external}{https://arxiv.org/abs/1811.01848}

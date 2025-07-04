@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Safe Reinforcement Learning Using Advantage-Based Intervention}
 \date{2021-07}
+\author/literal{Nolan C. Wagener}\author/literal{Byron Boots}\author/literal{Ching-An Cheng}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{wagenerSafeReinforcementLearning2021,

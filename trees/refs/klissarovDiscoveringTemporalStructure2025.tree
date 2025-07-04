@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Discovering Temporal Structure: An Overview of Hierarchical Reinforcement Learning}
 \date{2025-06}
+\author/literal{Martin Klissarov}\author/literal{Akhil Bagaria}\author/literal{Ziyan Luo}\author/literal{George Konidaris}\author/literal{Doina Precup}\author/literal{Marlos C. Machado}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2506.14045}
 \meta{external}{https://arxiv.org/abs/2506.14045}

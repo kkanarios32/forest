@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Step-size Optimization for Continual Learning}
 \date{2024-01}
+\author/literal{Thomas Degris}\author/literal{Khurram Javed}\author/literal{Arsalan Sharifnassab}\author/literal{Yuxin Liu}\author/literal{Richard Sutton}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2401.17401v1}
 

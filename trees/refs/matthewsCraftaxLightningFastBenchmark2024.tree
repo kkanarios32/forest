@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Craftax: A Lightning-Fast Benchmark for Open-Ended Reinforcement Learning}
 \date{2024-06}
+\author/literal{Michael Matthews}\author/literal{Michael Beukman}\author/literal{Benjamin Ellis}\author/literal{Mikayel Samvelyan}\author/literal{Matthew Jackson}\author/literal{Samuel Coward}\author/literal{Jakob Foerster}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2402.16801}
 \meta{external}{https://arxiv.org/abs/2402.16801}

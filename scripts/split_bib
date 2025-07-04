@@ -111,8 +111,8 @@ def tree_template(
         formatted += f"\\title{{{title}}}\n"
     if date != "":
         formatted += f"\\date{{{date}}}\n"
-    # if authors != "":
-    #     formatted += f"{authors}\n"
+    if authors != "":
+        formatted += f"{authors}\n"
     formatted += "\\taxon{Reference}\n"
     if meta_doi != "":
         formatted += f"{meta_doi}"
@@ -141,7 +141,7 @@ def format_author(author):
 def get_author(reference):
     if "author" in reference.keys():
         return "".join(
-            [f"\\author{{{format_author(author)}}}" for author in reference["author"]]
+            [f"\\author/literal{{{format_author(author)}}}" for author in reference["author"]]
         )
     else:
         return ""

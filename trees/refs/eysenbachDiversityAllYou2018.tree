@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Diversity is All You Need: Learning Skills without a Reward Function}
 \date{2018-10}
+\author/literal{Benjamin Eysenbach}\author/literal{Abhishek Gupta}\author/literal{Julian Ibarz}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1802.06070}
 \meta{external}{https://arxiv.org/abs/1802.06070}

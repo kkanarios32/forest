@@ -6,16 +6,34 @@ forester query all > $TMPFILE
 TAGS=("$@")
 tag_json=$(printf '%s\n' "${TAGS[@]}" | jq -R . | jq -s .)
 
-SELECTED=$(jq -r --argjson tags "$tag_json" '
+# SELECTED=$(jq -r --argjson tags "$tag_json" '
+#   .[] |
+#   select(
+#     (.tags? // []) as $file_tags |
+#     ($tags | all(. as $t | $file_tags | index($t)))
+#   ) |
+#   "\(.title)\t\(.sourcePath)"
+# ' "$TMPFILE" \
+#   | fzf --with-nth=1 --delimiter='\t' --bind 'enter:accept' \
+#   | cut -f2)
+#
+# rm $TMPFILE
+# [ -n "$SELECTED" ] && nvim "$SELECTED"
+#
+#
+PINK='\033[0;35m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+jq -r --argjson tags "$tag_json" '
   .[] |
   select(
     (.tags? // []) as $file_tags |
     ($tags | all(. as $t | $file_tags | index($t)))
   ) |
-  "\(.title)\t\(.sourcePath)"
-' "$TMPFILE" \
-  | fzf --with-nth=1 --delimiter='\t' --bind 'enter:accept' \
-  | cut -f2)
+  "\(.title)\t\(.uri)"
+  ' "$TMPFILE" | while IFS=$'\t' read -r TITLE URI; do
+    printf "${PINK}$TITLE${NC}: (${GREEN}$URI${NC})\n"
+  done
 
 rm $TMPFILE
-[ -n "$SELECTED" ] && nvim "$SELECTED"

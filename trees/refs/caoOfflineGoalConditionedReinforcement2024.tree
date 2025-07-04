@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Offline Goal-Conditioned Reinforcement Learning for Safety-Critical Tasks with Recovery Policy}
 \date{2024-03}
+\author/literal{Chenyang Cao}\author/literal{Zichen Yan}\author/literal{Renhao Lu}\author/literal{Junbo Tan}\author/literal{Xueqian Wang}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2403.01734}
 \meta{external}{https://arxiv.org/abs/2403.01734}

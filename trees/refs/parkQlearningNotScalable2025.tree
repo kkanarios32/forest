@@ -1,0 +1,13 @@
+% ["refs"]
+\title{Q-learning is not yet scalable}
+\date{2025-06}
+\author/literal{Seohong Park}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@misc{parkQlearningNotScalable2025,
+ title = {Q-Learning Is Not yet Scalable},
+ author = {Park, Seohong},
+ year = {2025},
+ month = {June}
+}
+\stopverb}

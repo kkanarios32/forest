@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Noise-contrastive estimation: A new estimation principle for unnormalized statistical models}
 \date{2010-03}
+\author/literal{Michael Gutmann}\author/literal{Aapo Hyvärinen}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{gutmannNoisecontrastiveEstimationNew2010,

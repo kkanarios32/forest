@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Online DPO: Online Direct Preference Optimization with Fast-Slow Chasing}
 \date{2024-06}
+\author/literal{Biqing Qi}\author/literal{Pengfei Li}\author/literal{Fangyuan Li}\author/literal{Junqi Gao}\author/literal{Kaiyan Zhang}\author/literal{Bowen Zhou}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2406.05534}
 \meta{external}{https://arxiv.org/abs/2406.05534}

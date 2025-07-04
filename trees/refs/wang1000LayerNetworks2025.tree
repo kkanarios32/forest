@@ -1,6 +1,7 @@
 % ["refs"]
 \title{1000 Layer Networks for Self-Supervised RL: Scaling Depth Can Enable New Goal-Reaching Capabilities}
 \date{2025-03}
+\author/literal{Kevin Wang}\author/literal{Ishaan Javali}\author/literal{Michał Bortkiewicz}\author/literal{Tomasz Trzciński}\author/literal{Benjamin Eysenbach}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2503.14858}
 \meta{external}{https://arxiv.org/abs/2503.14858}

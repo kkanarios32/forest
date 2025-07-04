@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Proximal Policy Optimization Algorithms}
 \date{2017-08}
+\author/literal{John Schulman}\author/literal{Filip Wolski}\author/literal{Prafulla Dhariwal}\author/literal{Alec Radford}\author/literal{Oleg Klimov}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1707.06347}
 \meta{external}{https://arxiv.org/abs/1707.06347}

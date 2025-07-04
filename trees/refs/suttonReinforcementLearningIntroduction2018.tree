@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Reinforcement learning: An introduction}
 \date{2018}
+\author/literal{Richard S. Sutton}\author/literal{Andrew G. Barto}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @book{suttonReinforcementLearningIntroduction2018,

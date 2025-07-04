@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Fine-Tuning Language Models with Just Forward Passes}
 \date{2024-01}
+\author/literal{Sadhika Malladi}\author/literal{Tianyu Gao}\author/literal{Eshaan Nichani}\author/literal{Alex Damian}\author/literal{Jason D. Lee}\author/literal{Danqi Chen}\author/literal{Sanjeev Arora}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2305.17333}
 \meta{external}{https://arxiv.org/abs/2305.17333}

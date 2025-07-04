@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Why Does Hierarchy (Sometimes) Work So Well in Reinforcement Learning?}
 \date{2019-12}
+\author/literal{Ofir Nachum}\author/literal{Haoran Tang}\author/literal{Xingyu Lu}\author/literal{Shixiang Gu}\author/literal{Honglak Lee}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1909.10618}
 \meta{external}{https://arxiv.org/abs/1909.10618}

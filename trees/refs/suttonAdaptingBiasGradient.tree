@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Adapting Bias by Gradient Descent: An Incremental Version of Delta-Bar-Delta}
+\author/literal{Richard S Sutton}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{suttonAdaptingBiasGradient,

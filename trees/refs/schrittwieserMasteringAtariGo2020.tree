@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model}
 \date{2020-12}
+\author/literal{Julian Schrittwieser}\author/literal{Ioannis Antonoglou}\author/literal{Thomas Hubert}\author/literal{Karen Simonyan}\author/literal{Laurent Sifre}\author/literal{Simon Schmitt}\author/literal{Arthur Guez}\author/literal{Edward Lockhart}\author/literal{Demis Hassabis}\author/literal{Thore Graepel}\author/literal{Timothy Lillicrap}\author/literal{David Silver}
 \taxon{Reference}
 \meta{doi}{10.1038/s41586-020-03051-4}
 \meta{external}{https://arxiv.org/abs/1911.08265}

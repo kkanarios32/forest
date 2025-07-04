@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Operator Fusion in XLA: Analysis and Evaluation}
 \date{2023-01}
+\author/literal{Daniel Snider}\author/literal{Ruofan Liang}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2301.13062}
 

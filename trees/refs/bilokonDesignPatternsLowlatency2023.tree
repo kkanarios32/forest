@@ -1,6 +1,7 @@
 % ["refs"]
 \title{C++ Design Patterns for Low-latency Applications Including High-frequency Trading}
 \date{2023-09}
+\author/literal{Paul Bilokon}\author/literal{Burak Gunduz}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2309.04259}
 \meta{external}{https://arxiv.org/abs/2309.04259}

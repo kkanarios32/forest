@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Improving Intrinsic Exploration with Language Abstractions}
+\author/literal{Jesse Mu}\author/literal{Victor Zhong}\author/literal{Roberta Raileanu}\author/literal{Minqi Jiang}\author/literal{Noah Goodman}\author/literal{Tim Rocktäschel}\author/literal{Edward Grefenstette}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{muImprovingIntrinsicExploration,

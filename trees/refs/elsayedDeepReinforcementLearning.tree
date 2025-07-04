@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Deep Reinforcement Learning Without Experience Replay, Target Networks, or Batch Updates}
+\author/literal{Mohamed Elsayed}\author/literal{Gautham Vasan}\author/literal{A Rupam Mahmood}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{elsayedDeepReinforcementLearning,

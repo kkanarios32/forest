@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Successor Feature Landmarks for Long-Horizon Goal-Conditioned Reinforcement Learning}
+\author/literal{Christopher Hoang}\author/literal{Sungryull Sohn}\author/literal{Jongwook Choi}\author/literal{Wilka Carvalho}\author/literal{Honglak Lee}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{hoangSuccessorFeatureLandmarks,

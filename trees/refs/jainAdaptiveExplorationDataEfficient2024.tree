@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Adaptive Exploration for Data-Efficient General Value Function Evaluations}
 \date{2024-10}
+\author/literal{Arushi Jain}\author/literal{Josiah P. Hanna}\author/literal{Doina Precup}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2405.07838}
 \meta{external}{https://arxiv.org/abs/2405.07838}

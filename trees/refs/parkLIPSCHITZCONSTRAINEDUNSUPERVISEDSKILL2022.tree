@@ -1,6 +1,7 @@
 % ["refs"]
 \title{LIPSCHITZ-CONSTRAINED UNSUPERVISED SKILL DISCOVERY}
 \date{2022}
+\author/literal{Seohong Park}\author/literal{Jongwook Choi}\author/literal{Jaekyeom Kim}\author/literal{Honglak Lee}\author/literal{Gunhee Kim}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{parkLIPSCHITZCONSTRAINEDUNSUPERVISEDSKILL2022,

@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Contextual Decision Processes with Low Bellman Rank are PAC-Learnable}
 \date{2016-12}
+\author/literal{Nan Jiang}\author/literal{Akshay Krishnamurthy}\author/literal{Alekh Agarwal}\author/literal{John Langford}\author/literal{Robert E. Schapire}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1610.09512}
 \meta{external}{https://arxiv.org/abs/1610.09512}

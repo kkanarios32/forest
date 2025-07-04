@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Numerical optimization}
 \date{2006}
+\author/literal{Jorge Nocedal}\author/literal{Stephen J. Wright}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @book{nocedalNumericalOptimization2006,

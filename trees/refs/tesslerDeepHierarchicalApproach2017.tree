@@ -1,6 +1,7 @@
 % ["refs"]
 \title{A Deep Hierarchical Approach to Lifelong Learning in Minecraft}
 \date{2017-02}
+\author/literal{Chen Tessler}\author/literal{Shahar Givony}\author/literal{Tom Zahavy}\author/literal{Daniel Mankowitz}\author/literal{Shie Mannor}
 \taxon{Reference}
 \meta{doi}{10.1609/aaai.v31i1.10744}
 \meta{bibtex}{\startverb

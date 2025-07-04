@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Improving Transformer World Models for Data-Efficient RL}
 \date{2025-02}
+\author/literal{Antoine Dedieu}\author/literal{Joseph Ortiz}\author/literal{Xinghua Lou}\author/literal{Carter Wendelken}\author/literal{Wolfgang Lehrach}\author/literal{J. Swaroop Guntupalli}\author/literal{Miguel Lazaro-Gredilla}\author/literal{Kevin Patrick Murphy}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2502.01591}
 \meta{external}{https://arxiv.org/abs/2502.01591}

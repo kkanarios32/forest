@@ -1,6 +1,7 @@
 % ["refs"]
 \title{EnvPool: A Highly Parallel Reinforcement Learning Environment Execution Engine}
 \date{2022-10}
+\author/literal{Jiayi Weng}\author/literal{Min Lin}\author/literal{Shengyi Huang}\author/literal{Bo Liu}\author/literal{Denys Makoviichuk}\author/literal{Viktor Makoviychuk}\author/literal{Zichen Liu}\author/literal{Yufan Song}\author/literal{Ting Luo}\author/literal{Yukun Jiang}\author/literal{Zhongwen Xu}\author/literal{Shuicheng Yan}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2206.10558}
 \meta{external}{https://arxiv.org/abs/2206.10558}

@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Operating System Concepts}
+\author/literal{Abraham Silberschatz}\author/literal{Peter Baer Galvin}\author/literal{Greg Gagne}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{silberschatzOperatingSystemConcepts,

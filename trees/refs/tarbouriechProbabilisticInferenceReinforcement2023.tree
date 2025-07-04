@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Probabilistic Inference in Reinforcement Learning Done Right}
 \date{2023-11}
+\author/literal{Jean Tarbouriech}\author/literal{Tor Lattimore}\author/literal{Brendan O’Donoghue}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2311.13294}
 \meta{external}{https://arxiv.org/abs/2311.13294}

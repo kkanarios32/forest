@@ -1,6 +1,7 @@
 % ["refs"]
 \title{DeepZero: Scaling up Zeroth-Order Optimization for Deep Model Training}
 \date{2024-03}
+\author/literal{Aochuan Chen}\author/literal{Yimeng Zhang}\author/literal{Jinghan Jia}\author/literal{James Diffenderfer}\author/literal{Jiancheng Liu}\author/literal{Konstantinos Parasyris}\author/literal{Yihua Zhang}\author/literal{Zheng Zhang}\author/literal{Bhavya Kailkhura}\author/literal{Sijia Liu}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2310.02025}
 \meta{external}{https://arxiv.org/abs/2310.02025}

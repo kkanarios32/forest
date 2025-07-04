@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Revisiting Zeroth-Order Optimization for Memory-Efficient LLM Fine-Tuning: A Benchmark}
 \date{2024-05}
+\author/literal{Yihua Zhang}\author/literal{Pingzhi Li}\author/literal{Junyuan Hong}\author/literal{Jiaxiang Li}\author/literal{Yimeng Zhang}\author/literal{Wenqing Zheng}\author/literal{Pin-Yu Chen}\author/literal{Jason D. Lee}\author/literal{Wotao Yin}\author/literal{Mingyi Hong}\author/literal{Zhangyang Wang}\author/literal{Sijia Liu}\author/literal{Tianlong Chen}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2402.11592}
 \meta{external}{https://arxiv.org/abs/2402.11592}

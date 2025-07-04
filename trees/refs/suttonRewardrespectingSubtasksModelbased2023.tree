@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Reward-respecting subtasks for model-based reinforcement learning}
 \date{2023-11}
+\author/literal{Richard S. Sutton}\author/literal{Marlos C. Machado}\author/literal{G. Zacharias Holland}\author/literal{David Szepesvari}\author/literal{Finbarr Timbers}\author/literal{Brian Tanner}\author/literal{Adam White}
 \taxon{Reference}
 \meta{doi}{10.1016/j.artint.2023.104001}
 \meta{bibtex}{\startverb

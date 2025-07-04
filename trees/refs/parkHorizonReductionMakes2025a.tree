@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Horizon Reduction Makes RL Scalable}
 \date{2025-06}
+\author/literal{Seohong Park}\author/literal{Kevin Frans}\author/literal{Deepinder Mann}\author/literal{Benjamin Eysenbach}\author/literal{Aviral Kumar}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2506.04168}
 \meta{external}{https://arxiv.org/abs/2506.04168}

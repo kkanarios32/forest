@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Safe Policies for Reinforcement Learning via Primal-Dual Methods}
 \date{2022-01}
+\author/literal{Santiago Paternain}\author/literal{Miguel Calvo-Fullana}\author/literal{Luiz F. O. Chamon}\author/literal{Alejandro Ribeiro}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1911.09101}
 \meta{external}{https://arxiv.org/abs/1911.09101}

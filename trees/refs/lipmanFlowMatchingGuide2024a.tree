@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Flow Matching Guide and Code}
 \date{2024-12}
+\author/literal{Yaron Lipman}\author/literal{Marton Havasi}\author/literal{Peter Holderrieth}\author/literal{Neta Shaul}\author/literal{Matt Le}\author/literal{Brian Karrer}\author/literal{Ricky T. Q. Chen}\author/literal{David Lopez-Paz}\author/literal{Heli Ben-Hamu}\author/literal{Itai Gat}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2412.06264}
 \meta{external}{https://arxiv.org/abs/2412.06264}

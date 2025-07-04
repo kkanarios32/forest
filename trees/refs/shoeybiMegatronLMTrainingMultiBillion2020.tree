@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism}
 \date{2020-03}
+\author/literal{Mohammad Shoeybi}\author/literal{Mostofa Patwary}\author/literal{Raul Puri}\author/literal{Patrick LeGresley}\author/literal{Jared Casper}\author/literal{Bryan Catanzaro}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/1909.08053}
 

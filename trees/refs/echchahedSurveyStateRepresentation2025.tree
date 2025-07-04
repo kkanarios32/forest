@@ -1,6 +1,7 @@
 % ["refs"]
 \title{A Survey of State Representation Learning for Deep Reinforcement Learning}
 \date{2025-06}
+\author/literal{Ayoub Echchahed}\author/literal{Pablo Samuel Castro}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2506.17518}
 \meta{external}{https://arxiv.org/abs/2506.17518}

@@ -1,6 +1,7 @@
 % ["refs"]
 \title{ZeRO-Offload: Democratizing Billion-Scale Model Training}
 \date{2021-01}
+\author/literal{Jie Ren}\author/literal{Samyam Rajbhandari}\author/literal{Reza Yazdani Aminabadi}\author/literal{Olatunji Ruwase}\author/literal{Shuangyan Yang}\author/literal{Minjia Zhang}\author/literal{Dong Li}\author/literal{Yuxiong He}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2101.06840}
 \meta{external}{https://arxiv.org/abs/2101.06840}

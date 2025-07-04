@@ -1,6 +1,7 @@
 % ["refs"]
 \title{The Deep Learning Compiler: A Comprehensive Survey}
 \date{2021-03}
+\author/literal{Mingzhen Li}\author/literal{Yi Liu}\author/literal{Xiaoyan Liu}\author/literal{Qingxiao Sun}\author/literal{Xin You}\author/literal{Hailong Yang}\author/literal{Zhongzhi Luan}\author/literal{Lin Gan}\author/literal{Guangwen Yang}\author/literal{Depei Qian}
 \taxon{Reference}
 \meta{doi}{10.1109/TPDS.2020.3030548}
 \meta{external}{https://arxiv.org/abs/2002.03794}

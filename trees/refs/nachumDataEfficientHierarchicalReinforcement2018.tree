@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Data-Efficient Hierarchical Reinforcement Learning}
 \date{2018-10}
+\author/literal{Ofir Nachum}\author/literal{Shixiang Gu}\author/literal{Honglak Lee}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/1805.08296}
 

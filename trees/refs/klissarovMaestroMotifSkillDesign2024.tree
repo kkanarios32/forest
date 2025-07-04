@@ -1,6 +1,7 @@
 % ["refs"]
 \title{MaestroMotif: Skill Design from Artificial Intelligence Feedback}
 \date{2024-12}
+\author/literal{Martin Klissarov}\author/literal{Mikael Henaff}\author/literal{Roberta Raileanu}\author/literal{Shagun Sodhani}\author/literal{Pascal Vincent}\author/literal{Amy Zhang}\author/literal{Pierre-Luc Bacon}\author/literal{Doina Precup}\author/literal{Marlos C. Machado}\author/literal{Pierluca D’Oro}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2412.08542}
 \meta{external}{https://arxiv.org/abs/2412.08542}

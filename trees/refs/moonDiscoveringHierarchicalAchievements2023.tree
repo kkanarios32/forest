@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Discovering Hierarchical Achievements in Reinforcement Learning via Contrastive Learning}
 \date{2023-11}
+\author/literal{Seungyong Moon}\author/literal{Junyoung Yeom}\author/literal{Bumsoo Park}\author/literal{Hyun Oh Song}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2307.03486}
 \meta{external}{https://arxiv.org/abs/2307.03486}

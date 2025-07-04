@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Automatic Goal Generation for Reinforcement Learning Agents}
+\author/literal{Carlos Florensa}\author/literal{David Held}\author/literal{Xinyang Geng}\author/literal{Pieter Abbeel}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{florensaAutomaticGoalGeneration,

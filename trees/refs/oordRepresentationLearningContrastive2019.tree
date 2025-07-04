@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Representation Learning with Contrastive Predictive Coding}
 \date{2019-01}
+\author/literal{Aaron van den Oord}\author/literal{Yazhe Li}\author/literal{Oriol Vinyals}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/1807.03748}
 

@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Probability and measure}
 \date{1995}
+\author/literal{Patrick Billingsley}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @book{billingsleyProbabilityMeasure1995,

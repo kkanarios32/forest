@@ -1,6 +1,7 @@
 % ["refs"]
 \title{SNAP:Successor Entropy based Incremental Subgoal Discovery for Adaptive Navigation}
 \date{2021-11}
+\author/literal{Rohit K. Dubey}\author/literal{Samuel S. Sohn}\author/literal{Jimmy Abualdenien}\author/literal{Tyler Thrash}\author/literal{Christoph Hoelscher}\author/literal{André Borrmann}\author/literal{Mubbasir Kapadia}
 \taxon{Reference}
 \meta{doi}{10.1145/3487983.3488292}
 \meta{bibtex}{\startverb

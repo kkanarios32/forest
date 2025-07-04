@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Stochastic Interpolants: A Unifying Framework for Flows and Diffusions}
 \date{2023-11}
+\author/literal{Michael S. Albergo}\author/literal{Nicholas M. Boffi}\author/literal{Eric Vanden-Eijnden}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2303.08797}
 \meta{external}{https://arxiv.org/abs/2303.08797}

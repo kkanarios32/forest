@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Adam on Local Time: Addressing Nonstationarity in RL with Relative Adam Timesteps}
+\author/literal{Benjamin Ellis}\author/literal{Matthew T Jackson}\author/literal{Andrei Lupu}\author/literal{Alexander D Goldie}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{ellisAdamLocalTime,

@@ -1,6 +1,7 @@
 % ["refs"]
 \title{FeUdal Networks for Hierarchical Reinforcement Learning}
 \date{2017-07}
+\author/literal{Alexander Sasha Vezhnevets}\author/literal{Simon Osindero}\author/literal{Tom Schaul}\author/literal{Nicolas Heess}\author/literal{Max Jaderberg}\author/literal{David Silver}\author/literal{Koray Kavukcuoglu}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @inproceedings{vezhnevetsFeUdalNetworksHierarchical2017,

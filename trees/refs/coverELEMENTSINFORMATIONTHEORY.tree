@@ -1,5 +1,6 @@
 % ["refs"]
 \title{ELEMENTS OF INFORMATION THEORY}
+\author/literal{Thomas M Cover}\author/literal{Joy A Thomas}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{coverELEMENTSINFORMATIONTHEORY,

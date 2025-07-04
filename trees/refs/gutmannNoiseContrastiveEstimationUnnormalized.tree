@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Noise-Contrastive Estimation of Unnormalized Statistical Models, with Applications to Natural Image Statistics}
+\author/literal{Michael U Gutmann}\author/literal{Michael Gutmann}\author/literal{Aapo Hyvarinen}\author/literal{Aapo Hyvarinen}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{gutmannNoiseContrastiveEstimationUnnormalized,

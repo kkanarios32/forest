@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Safe Policy Exploration Improvement via Subgoals}
 \date{2024-08}
+\author/literal{Brian Angulo}\author/literal{Gregory Gorbov}\author/literal{Aleksandr Panov}\author/literal{Konstantin Yakovlev}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2408.13881}
 \meta{external}{https://arxiv.org/abs/2408.13881}

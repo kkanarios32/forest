@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Podracer architectures for scalable Reinforcement Learning}
 \date{2021-04}
+\author/literal{Matteo Hessel}\author/literal{Manuel Kroiss}\author/literal{Aidan Clark}\author/literal{Iurii Kemaev}\author/literal{John Quan}\author/literal{Thomas Keck}\author/literal{Fabio Viola}\author/literal{Hado van Hasselt}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2104.06272}
 \meta{external}{https://arxiv.org/abs/2104.06272}

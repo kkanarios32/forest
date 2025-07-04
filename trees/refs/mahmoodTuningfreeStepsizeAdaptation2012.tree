@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Tuning-free step-size adaptation}
 \date{2012-03}
+\author/literal{Ashique Rupam Mahmood}\author/literal{Richard S. Sutton}\author/literal{Thomas Degris}\author/literal{Patrick M. Pilarski}
 \taxon{Reference}
 \meta{doi}{10.1109/ICASSP.2012.6288330}
 \meta{bibtex}{\startverb

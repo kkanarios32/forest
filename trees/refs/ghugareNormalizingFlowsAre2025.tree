@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Normalizing Flows are Capable Models for RL}
 \date{2025-06}
+\author/literal{Raj Ghugare}\author/literal{Benjamin Eysenbach}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2505.23527}
 \meta{external}{https://arxiv.org/abs/2505.23527}

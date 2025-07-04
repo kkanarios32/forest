@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Heuristic Search for Generalized Stochastic Shortest Path MDPs}
 \date{2011-03}
+\author/literal{Andrey Kolobov}\author/literal{Mausam Mausam}\author/literal{Daniel Weld}\author/literal{Hector Geffner}
 \taxon{Reference}
 \meta{doi}{10.1609/icaps.v21i1.13452}
 \meta{bibtex}{\startverb

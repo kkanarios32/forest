@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Auto-Encoding Variational Bayes}
 \date{2022-12}
+\author/literal{Diederik P. Kingma}\author/literal{Max Welling}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1312.6114}
 \meta{external}{https://arxiv.org/abs/1312.6114}

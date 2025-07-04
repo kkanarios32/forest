@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Making Sense of Reinforcement Learning and Probabilistic Inference}
 \date{2020-11}
+\author/literal{Brendan O’Donoghue}\author/literal{Ian Osband}\author/literal{Catalin Ionescu}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2001.00805}
 \meta{external}{https://arxiv.org/abs/2001.00805}

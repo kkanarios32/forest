@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Universal Successor Features Approximators}
 \date{2018-12}
+\author/literal{Diana Borsa}\author/literal{André Barreto}\author/literal{John Quan}\author/literal{Daniel Mankowitz}\author/literal{Rémi Munos}\author/literal{Hado van Hasselt}\author/literal{David Silver}\author/literal{Tom Schaul}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.1812.07626}
 \meta{external}{https://arxiv.org/abs/1812.07626}

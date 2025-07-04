@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Foundations of Reinforcement Learning and Interactive Decision Making}
 \date{2023-12}
+\author/literal{Dylan J. Foster}\author/literal{Alexander Rakhlin}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2312.16730}
 \meta{external}{https://arxiv.org/abs/2312.16730}

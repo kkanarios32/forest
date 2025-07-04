@@ -1,5 +1,6 @@
 % ["refs"]
 \title{Occupancy-based Policy Gradient: Estimation, Convergence, and Optimality}
+\author/literal{Audrey Huang}\author/literal{Nan Jiang}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{huangOccupancybasedPolicyGradient,

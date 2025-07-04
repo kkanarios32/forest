@@ -1,6 +1,7 @@
 % ["refs"]
 \title{An Explanation of In-context Learning as Implicit Bayesian Inference}
 \date{2022-07}
+\author/literal{Sang Michael Xie}\author/literal{Aditi Raghunathan}\author/literal{Percy Liang}\author/literal{Tengyu Ma}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2111.02080}
 

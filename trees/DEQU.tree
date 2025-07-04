@@ -1,0 +1,7 @@
+\import{base-macros}
+\date{2025-07-03T23:39:23Z}
+\title{Memory Accounting}
+\p{\strong{Tensor Memory}:
+Tensors are stored as a \em{floating point number}. Memory is determined by (i) number of values in tensor and (ii) data type of each value.
+}
+\transclude{DEQV}

@@ -1,6 +1,7 @@
 % ["refs"]
 \title{Unsupervised Zero-Shot Reinforcement Learning via Functional Reward Encodings}
 \date{2024-02}
+\author/literal{Kevin Frans}\author/literal{Seohong Park}\author/literal{Pieter Abbeel}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{doi}{10.48550/arXiv.2402.17135}
 \meta{external}{https://arxiv.org/abs/2402.17135}

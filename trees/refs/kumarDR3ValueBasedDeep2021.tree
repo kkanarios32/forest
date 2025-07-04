@@ -1,6 +1,7 @@
 % ["refs"]
 \title{DR3: Value-Based Deep Reinforcement Learning Requires Explicit Regularization}
 \date{2021-12}
+\author/literal{Aviral Kumar}\author/literal{Rishabh Agarwal}\author/literal{Tengyu Ma}\author/literal{Aaron Courville}\author/literal{George Tucker}\author/literal{Sergey Levine}
 \taxon{Reference}
 \meta{external}{https://arxiv.org/abs/2112.04716}
 
