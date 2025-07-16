@@ -1,0 +1,13 @@
+\title{Tuesday, July 15, 2025}
+\date{2025-07-15T15:24:04Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{JaxGCRL}{
+\p{In the environment wrapper, they write to \code{traj_id} and pass it through \code{info}. This is then stored in the transition via \code{extra_fields}. It is then used to do the crazy [ninjutsu](008N).}
+\p{A bit of an issue. The environment computes the reward based on the goal, but this goal is set by the higher level policy and is not the true goal we are trying to reach.}
+\p{If the final transition from the subpolicy is done (we are not autoreseting), then we simply manually reset it and make sure that it gets a new trajectory id.}
+\p{Is there a way to only include #{(s,a)} pairs for states #{s} where an action was taken, but use all futures states in the trajectory for #{g}?}
+}
