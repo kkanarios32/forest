@@ -1,8 +1,0 @@
-
-\date{2024-11-26}
-\title{Completeness of a measure}
-\taxon{Definition}
-\tag{prog}
-\p{
-A probability measure #{(\Omega, \mathcal{F}, P)} is \em{complete} if for #{A \subset B} if #{P(B) = 0} then #{P(A) = 0}.
-}

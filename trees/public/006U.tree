@@ -1,0 +1,12 @@
+\tag{public}
+
+\date{2025-04-01}
+\import{base-macros}
+\taxon{Definition}
+\title{Achievable rates}
+\p{A rate #{R \geq 0} is achievable if
+\ol{
+  \li{#{\lim_{n\to\infty} P_{e, \text{max}} = 0}}
+  \li{#{\lim_{n \to \infty} \frac{\log_{2}M_n}{n} = R}}
+}
+}

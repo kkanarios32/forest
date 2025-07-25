@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Soft Actor-Critic Algorithms and Applications}
+\date{2019-01}
+\author/literal{Tuomas Haarnoja}\author/literal{Aurick Zhou}\author/literal{Kristian Hartikainen}\author/literal{George Tucker}\author/literal{Sehoon Ha}\author/literal{Jie Tan}\author/literal{Vikash Kumar}\author/literal{Henry Zhu}\author/literal{Abhishek Gupta}\author/literal{Pieter Abbeel}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1812.05905}
+\meta{external}{https://arxiv.org/abs/1812.05905}
+
+\meta{bibtex}{\startverb
+@misc{haarnojaSoftActorCriticAlgorithms2019,
+ title = {Soft {{Actor-Critic Algorithms}} and {{Applications}}},
+ author = {Haarnoja, Tuomas and Zhou, Aurick and Hartikainen, Kristian and Tucker, George and Ha, Sehoon and Tan, Jie and Kumar, Vikash and Zhu, Henry and Gupta, Abhishek and Abbeel, Pieter and Levine, Sergey},
+ year = {2019},
+ doi = {10.48550/arXiv.1812.05905},
+ urldate = {2025-07-15},
+ number = {arXiv:1812.05905},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/DDUJWGBE/Haarnoja et al. - 2019 - Soft Actor-Critic Algorithms and Applications.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Model-free deep reinforcement learning (RL) algorithms have been successfully applied to a range of challenging sequential decision making and control tasks. However, these methods typically suffer from two major challenges: high sample complexity and brittleness to hyperparameters. Both of these challenges limit the applicability of such methods to real-world domains. In this paper, we describe Soft Actor-Critic (SAC), our recently introduced off-policy actor-critic algorithm based on the maximum entropy RL framework. In this framework, the actor aims to simultaneously maximize expected return and entropy; that is, to succeed at the task while acting as randomly as possible. We extend SAC to incorporate a number of modifications that accelerate training and improve stability with respect to the hyperparameters, including a constrained formulation that automatically tunes the temperature hyperparameter. We systematically evaluate SAC on a range of benchmark tasks, as well as challenging real-world tasks such as locomotion for a quadrupedal robot and robotic manipulation with a dexterous hand. With these improvements, SAC achieves state-of-the-art performance, outperforming prior on-policy and off-policy methods in sample-efficiency and asymptotic performance. Furthermore, we demonstrate that, in contrast to other off-policy algorithms, our approach is very stable, achieving similar performance across different random seeds. These results suggest that SAC is a promising candidate for learning in real-world robotics tasks.},
+ primaryclass = {cs},
+ eprint = {1812.05905},
+ month = {January}
+}
+\stopverb}

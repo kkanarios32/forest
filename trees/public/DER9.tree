@@ -1,0 +1,8 @@
+\tag{public}
+\import{base-macros}
+\date{2025-07-06T20:52:45Z}
+  \title{How function properties affect convergence}
+    \transclude{004U}
+    \remark{
+        [[0036]] is a sufficient but not necessary condition for linear convergene of gradient descent.
+      }

@@ -1,0 +1,148 @@
+#!/usr/bin/env -S uv run --script
+#
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "datetime",
+#     "matplotlib",
+#     "numpy",
+#     "pandas",
+#     "seaborn",
+# ]
+# ///
+
+
+import argparse
+import numpy as np
+import sys
+import os
+
+import subprocess
+import pandas as pd  # type: ignore [import]
+import seaborn as sns
+import matplotlib.pyplot as plt
+from datetime import datetime, timedelta
+from io import StringIO
+
+
+def read_blank_separated(text):
+    return list(filter(None, (s.strip() for s in text.split("\n\n"))))
+
+
+def read_csv(inp):
+    def convert_time(t):
+        if t.isdigit():
+            return pd.to_timedelta(int(t), unit="s")
+        else:
+            return pd.to_timedelta(t)
+
+    return pd.read_csv(
+        StringIO(inp),
+        index_col="Day",
+        usecols=["Day", "Tag", "Time"],
+        converters={"Time": convert_time},
+    )
+
+def set_style():
+    sns.set_context("paper", font_scale=1.5)
+    rc = {
+        "font.family": "sans-serif",
+        "font.sans-serif": "Facebook Sans",
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+        "axes.labelsize": 14,
+        "axes.titlesize": 16,
+        "axes.titleweight": 300,
+        "axes.labelweight": 400,
+        "legend.fontsize": 12,
+        "xtick.labelsize": 12,
+        "ytick.labelsize": 12,
+        "figure.dpi": 300,
+        "savefig.bbox": "tight",
+    }
+    palette = sns.color_palette("ch:start=.2,rot=-.3")
+    sns.set_theme(palette=palette, style="whitegrid", rc=rc)
+
+# --- 1. Read CSV and preprocess ---
+def convert_time(t):
+    """Convert HH:MM:SS or seconds to timedelta"""
+    if isinstance(t, str) and t.isdigit():
+        return pd.to_timedelta(int(t), unit="s")
+    else:
+        return pd.to_timedelta(t)
+
+def daily(df, ax):
+# --- 2. Extract category from Tag ---
+    df["Category"] = df["Tag"].str.extract(r"^([\w-]+):")
+
+# --- 3. Group by Day and Category, summing Time ---
+    grouped = df.groupby(["Day", "Category"])["Time"].sum().unstack(fill_value=pd.Timedelta(0))
+
+# --- 4. Convert timedelta to hours for plotting ---
+    grouped_hours = grouped.applymap(lambda td: td.total_seconds() / 3600)
+
+# --- 5. Plot ---
+    set_style()
+    grouped_hours.plot(kind="bar", ax=ax)
+    ax.set_ylabel("Hours")
+    ax.set_title("Total Time per Category per Day")
+    ax.tick_params(axis="x", rotation=45)
+
+
+def summary(df, ax):
+    set_style()
+# Extract category and strip tag
+    df["Category"] = df["Tag"].str.extract(r"^([\w-]+):")
+    df["Type"] = df["Tag"].str.replace(r"^[\w-]+:", "", regex=True)
+
+# --- 2. Aggregate time per (Category, Type) ---
+    df["Hours"] = df["Time"] / pd.Timedelta(hours=1)
+    agg = df.groupby(["Category", "Type"])["Hours"].sum().reset_index()
+
+# --- 3. Sort tags by category for grouped visual alignment ---
+    agg = agg.sort_values(["Category", "Type"])
+
+# Use seaborn barplot with category-based hue
+    sns.barplot(
+        data=agg,
+        x="Type",
+        y="Hours",
+        hue="Category",
+        dodge=False,  # no spacing, bars stack over each other per tag
+        ax=ax
+    )
+
+    ax.set_ylabel("Total Hours (Week)")
+    ax.set_title("Categories Breakdown")
+    ax.tick_params(axis="x", rotation=45)
+
+def main(argv):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dir", help="save directory")
+    seven_days_ago = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+
+    command = [
+        "arbtt-stats",
+        f"--filter=$date>={seven_days_ago}",
+        "--for-each=day",
+        "--output-format=csv"
+    ]
+
+    result = subprocess.run(command, capture_output=True, text=True)
+    inputs = read_blank_separated(result.stdout)
+    df = read_csv(result.stdout)
+    # if not inputs:
+    #     return print("(no meaningful inputs)")
+    fig, axs = plt.subplots(1, 2, figsize=(18, 6))
+    daily(df, axs[0])
+    summary(df, axs[1])
+    plt.tight_layout()
+
+    save_dir = argv[0]
+    os.makedirs(save_dir, exist_ok=True)
+    save_path = os.path.join(save_dir, "arbtt.png")
+    plt.savefig(save_path)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

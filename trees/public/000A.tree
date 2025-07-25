@@ -1,0 +1,7 @@
+\tag{public}
+
+\date{2024-11-01}
+\title{TVM: What makes a compiler an ML compiler?}
+\tag{blog}
+\tag{draft}
+\p{Here I try to teach the general public about ML compilers in hopes to prepare me for my presentation in CSE 583 (Advanced Compilers).}

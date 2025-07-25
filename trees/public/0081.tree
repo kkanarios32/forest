@@ -1,0 +1,8 @@
+\tag{public}
+
+\title{Entropy}
+\taxon{Definition}
+
+\p{We define the \em{entropy} of a random variable #{X \sim p_{X}}, where #{p_{X} : \mathcal{X} \to [0, 1]} as 
+##{H(X) = -\sum_{x \in |\mathcal{X}|} p_{X}(x) \log p_{X}(x)}
+}

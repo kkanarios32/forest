@@ -1,0 +1,12 @@
+\date{2025-07-14T14:00:29Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Layer Normalization}
+\p{While training a neural network, a common stabilization trick is to apply a normalization to the output. This is done via
+##{\mathrm{LN}: \mathbb{R}^d \to \mathbb{R}^d, \quad \mathbf{x} \mapsto \frac{\mathbf{x} - \mathbb{E}[\mathbf{x}_i]}{\sqrt{\mathrm{Var}[\mathbf{x}_i] + \epsilon}}*\gamma + \beta,}
+Here #{\mathbf{x}} is the output of a layer i.e. #{\mathbf{x}^{\ell} = W^{\ell} f(\mathbf{x}^{\ell - 1})}. The purpose of this is to stabilize weight changes in previous layers and their affect on later layers. 
+}
+\remark{
+Batch normalization is the same idea, where the expectation is taken over the samples #{\mathbf{x}^{(i)}} rather than the components of one sample #{\mathbf{x}_i}. This gives \em{layer normalization} the added benefit of being viable for one sample and inference.
+}

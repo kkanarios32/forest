@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-qutebrowser --target window http://localhost:1234/0001/index.xml &
+qutebrowser --target window http://localhost:1234/index/index.xml &

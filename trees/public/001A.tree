@@ -1,0 +1,5 @@
+\tag{public}
+
+\date{2024-11-26}
+\taxon{Lemma}
+\p{A class that is both a #{\pi}-system and a #{\lambda}-system is a #{\sigma}-field.}

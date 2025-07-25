@@ -1,0 +1,9 @@
+\date{2025-07-14T17:56:18Z}
+\tag{public}
+\title{Group Query Attention}
+
+\p{\em{Group query attention} is the same idea as [MQA](shazeerFastTransformerDecoding2019) but instead of using one #{K} and #{V} for every head, they use a \em{group} of them. Where obviously the number of groups needs to be less than the number of heads.}
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/gqa.png}}{}
+\figcaption{Grouped query uses subset of #{K} and #{V} matrices.}
+}

@@ -1,0 +1,14 @@
+\tag{public}
+
+\date{2025-03-25}
+\import{base-macros}
+\taxon{Proposition}
+
+
+\p{
+Let #{ P\in\mathcal{P}_{n} } denote a type with denominator #{ n }. Then, the type class associated with #{ P }, defined as #{ T(P)=\{x^{n}:\hat{P}_{x^n}=P\} } satisfies
+
+##{ |T(P)|=\prod_{i=1}^{n}\binom{n-N_{i-1}}{N_{i}},\quad\text{where}\quad N_{0}=0,\text{and}\ N_{i}=n\times P(a_{i}), }
+
+for all #{ a_{i}\in\mathcal{X}=\{a_{1},\ldots,a_{m}\} }.
+}

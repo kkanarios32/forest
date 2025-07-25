@@ -1,0 +1,156 @@
+#!/usr/bin/env -S uv run --script
+
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "garmindb",
+#     "matplotlib",
+#     "pandas",
+#     "seaborn",
+# ]
+# ///
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+import sys
+import argparse
+
+import datetime
+import pandas as pd
+import os
+
+from garmindb import GarminConnectConfigManager
+from garmindb.garmindb import (
+    DaysSummary,
+    Sleep,
+    GarminDb,
+)
+from garmindb.summarydb import DaysSummary, SummaryDb
+
+
+def set_style():
+    sns.set_context("poster", font_scale=1.5)
+    rc = {
+        "font.family": "sans-serif",
+        "font.sans-serif": "Facebook Sans",
+        # "axes.spines.top": False,
+        # "axes.spines.right": False,
+        "axes.labelsize": 14,
+        "axes.titlesize": 16,
+        "axes.titleweight": 300,
+        "axes.labelweight": 400,
+        "legend.fontsize": 12,
+        "xtick.labelsize": 12,
+        "ytick.labelsize": 12,
+        "figure.dpi": 300,
+        "savefig.bbox": "tight",
+    }
+    palette = sns.color_palette("ch:start=.2,rot=-.3")
+    sns.set_theme(palette=palette, rc=rc, style="ticks")
+    return palette
+
+
+def minsFromTime(t):
+    return float(t.hour * 3600 + t.minute * 60 + t.second) / 60.0
+
+
+# start date
+start_ts = datetime.datetime.combine(
+    datetime.date(year=2025, month=6, day=5), datetime.datetime.min.time()
+)
+# end date (today)
+end_ts = datetime.datetime.combine(datetime.date.today(), datetime.datetime.max.time())
+
+gc_config = GarminConnectConfigManager()
+db_params = gc_config.get_db_params()
+
+garmin_db = GarminDb(db_params)
+sum_db = SummaryDb(db_params, False)
+data = DaysSummary.get_for_period(sum_db, start_ts, end_ts, DaysSummary)
+sleep = Sleep.get_for_period(garmin_db, start_ts, end_ts)
+
+time = [entry.day for entry in data]
+
+stress_avg = [entry.stress_avg for entry in data]
+bb_max = [entry.bb_max for entry in data]
+bb_min = [entry.bb_min for entry in data]
+rem_sleep_max = [minsFromTime(entry.rem_sleep_avg) for entry in data]
+sleep_avg = [minsFromTime(entry.sleep_avg) / 60 for entry in data]
+deep_sleep = [minsFromTime(sleep_event.deep_sleep) for sleep_event in sleep]
+dm_df = pd.DataFrame(
+    [time, stress_avg, bb_max, bb_min, rem_sleep_max, deep_sleep, sleep_avg]
+).T
+dm_df.columns = [
+    "Date",
+    "stress_avg",
+    "bb_max",
+    "bb_min",
+    "rem_sleep_max",
+    "deep_sleep",
+    "sleep_avg",
+]
+# remove the last record 'cause it's noisy sometimes
+dm_df.drop(dm_df.tail(1).index, inplace=True)
+dm_df = dm_df[dm_df["sleep_avg"] > 0]
+
+# --- Prepare Data ---
+df = dm_df.copy()
+df["deep_sleep"] = df["deep_sleep"] / 60
+df["rem_sleep_max"] = df["rem_sleep_max"] / 60
+
+df["light_sleep"] = df["sleep_avg"] - df["deep_sleep"] - df["rem_sleep_max"]
+df["light_sleep"] = df["light_sleep"].clip(lower=0)
+
+# Melt into long format for stacking
+df_long = df[["Date", "deep_sleep", "rem_sleep_max", "light_sleep"]].melt(
+    id_vars="Date", var_name="Sleep Stage", value_name="Hours"
+)
+
+# Optional: Rename for prettier legend
+df_long["Sleep Stage"] = df_long["Sleep Stage"].map(
+    {"deep_sleep": "Deep", "rem_sleep_max": "REM", "light_sleep": "Light"}
+)
+
+# --- Plot ---
+palette = set_style()
+plt.figure(figsize=(12, 6))
+
+# We need to pivot the data to use Matplotlib for stacking
+pivot = df_long.pivot(index="Date", columns="Sleep Stage", values="Hours")
+pivot = pivot.fillna(0)  # ensure no NaNs
+pivot.index = pd.to_datetime(pivot.index)  # Ensure it's a DatetimeIndex
+pivot.index.strftime("%m-%d")  # "06-17"
+
+
+# Order the stack from bottom to top
+stack_order = ["Light", "REM", "Deep"]
+colors = {"Light": palette[0], "REM": palette[1], "Deep": palette[2]}
+
+# Plot stacked bars manually
+bottom = None
+for stage in stack_order:
+    plt.bar(pivot.index, pivot[stage], bottom=bottom, label=stage, color=colors[stage])
+    if bottom is None:
+        bottom = pivot[stage]
+    else:
+        bottom += pivot[stage]
+
+
+def main(argv):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dir", help="save directory")
+
+# --- Styling ---
+    plt.title("Sleep Composition", fontsize=18)
+    plt.ylabel("Hours")
+    plt.xticks(rotation=90)
+    plt.legend(title="Sleep Stage")
+    sns.despine()
+    plt.tight_layout()
+    save_dir = argv[0]
+    os.makedirs(save_dir, exist_ok=True)
+    save_path = os.path.join(save_dir, "sleep.png")
+    plt.savefig(save_path, dpi=300)
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

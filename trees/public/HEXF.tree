@@ -1,0 +1,7 @@
+\tag{public}
+\date{2025-07-08T22:24:20Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Absolutely Continuous}
+\p{If #{\mu} and #{\nu} are two measures on a [[000O]] #{\mathcal{B}} of subsets of #{X}, we say the #{\nu} is \em{absolutely continuous} with respect to #{\mu} if #{\nu(A) = 0} for any #{A \in B} such that #{\mu(A) = 0}.}

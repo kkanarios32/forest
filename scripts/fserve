@@ -7,7 +7,7 @@ _serve() {
 
   while true; do 
     find $FORESTDIR/trees -type f | entr -rd $FORESTDIR/scripts/mkprivate
-    sleep 1
+    sleep .5
   done
 
   wait

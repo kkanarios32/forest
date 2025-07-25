@@ -1,0 +1,7 @@
+\tag{public}
+\date{2025-07-12T01:19:01Z}
+\import{base-macros}
+\taxon{Definition}
+\title{Floating Point Operations}
+
+\p{We refer to the \strong{total} number of floating point operatings as \em{FLOPS}. Alternatively, we refer to the number of floating point operations per second as \em{FLOP/s}.}

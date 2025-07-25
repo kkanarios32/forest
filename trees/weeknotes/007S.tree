@@ -1,0 +1,13 @@
+\tag{public}
+
+\date{2025-06-12T14:47:57Z}
+\author{kellenkanarios}
+\title{Weeknotes}
+\tag{top}
+
+\put\transclude/numbered{false}
+\put\transclude/metadata{true}
+\put\transclude/expanded{false}
+
+\p{Here I will document my progress for the week along with other miscellaneous things I feel like disclosing publicly.}
+\transclude{2025-W29}

@@ -1,8 +1,11 @@
-% ["refs"]
+% ["refs", "manual"]
 \title{Near-Optimal Representation Learning for Hierarchical Reinforcement Learning}
 \date{2019-01}
-\author/literal{Ofir Nachum}\author/literal{Shixiang Gu}\author/literal{Honglak Lee}\author/literal{Sergey Levine}
+\tag{POTW}
+\tag{upcoming}
+\tag{public}
 \taxon{Reference}
+\author/literal{Ofir Nachum}\author/literal{Shixiang Gu}\author/literal{Honglak Lee}\author/literal{Sergey Levine}
 \meta{external}{https://arxiv.org/abs/1810.01257}
 
 \meta{bibtex}{\startverb

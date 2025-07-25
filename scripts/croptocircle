@@ -1,0 +1,36 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pillow",
+# ]
+# ///
+
+from PIL import Image, ImageDraw
+
+# Load image
+img = Image.open("/home/kellen/Projects/forest/assets/img/logo.png").convert("RGBA")
+width, height = img.size
+size = min(img.size)
+
+circle_diameter = int(min(width, height) * 0.55)
+
+# Calculate coordinates to crop a square centered box
+left = (width - circle_diameter) // 2
+top = (height - circle_diameter) // 2
+right = left + circle_diameter
+bottom = top + circle_diameter
+box = (left, top, right, bottom)
+cropped_img = img.crop(box)
+
+# Create same-sized mask with a centered white circle
+mask = Image.new("L", (circle_diameter, circle_diameter), 0)
+draw = ImageDraw.Draw(mask)
+draw.ellipse((0, 0, circle_diameter, circle_diameter), fill=255)
+
+# Crop image and apply mask
+cropped_img.putalpha(mask)
+
+# Save
+# cropped.save("../assets/img/profile-pic-circle.png")
+cropped_img.save("output.png")

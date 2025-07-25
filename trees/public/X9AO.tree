@@ -1,0 +1,15 @@
+\date{2025-07-14T15:23:21Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Field}
+\p{A \em{field} is a set #{F} together with two binary operations on #{F}: #{+} and #{\cdot}, where a \em{binary operation} is a mapping #{F \times F \to F}. These operations are defined by the following axioms
+\ul{
+  \li{\em{Associativity of addition and multiplication}: #{a + (b + c) = (a + b) + c}, and #{a \cdot (b \cdot c) = (a \cdot b) \cdot c}.}
+  \li{\em{Commutativity of addition and multiplication}: #{a + b = b + a}, and #{a \cdot b = b \cdot a}.}
+  \li{\em{Additive and multiplicative identity}: there exist two distinct elements 0 and 1 in #{F} such that #{a + 0 = a} and #{a \cdot 1 = a}.}
+  \li{\em{Additive inverses}: for every #{a} in #{F}, there exists an element in #{F}, denoted #{-a}, called the \em{additive inverse} of \em{a}, such that #{a + (-a) = 0}.}
+  \li{\em{Multiplicative inverses}: for every #{a \neq 0} in #{F}, there exists an element in #{F}, denoted by #{a^{-1}} or #{1/a}, called the multiplicative inverse of #{a}, such that #{a \cdot a^{-1} = 1}.}
+  \li{\em{Distributivity of multiplication over addition}: #{a \cdot (b + c) = (a \cdot b) + (a \cdot c)}.}
+}
+}

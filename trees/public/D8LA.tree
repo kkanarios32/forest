@@ -1,0 +1,17 @@
+\tag{public}
+\import{base-macros}
+\title{Definitions [FM](lipmanFlowMatchingGenerative2023)}
+\author{kellenkanarios}
+
+\transclude{008B}
+\transclude{008C}
+\transclude{008D}
+ \remark{
+   Modeling a [vector field](008C) via a neural network i.e. #{v_t(x; \theta)} implicitly defines a deep parametric model of the flow #{\phi_t(x)} via solving the ODE or an approximation, such as
+   ##{\phi_{t + \Delta t}(x) \approx \phi_t(x) + \Delta t \cdot v_t(\phi_t(x); \theta)}
+   Obviously, accuracy will be dependent on the step size #{\Delta t}.
+ }
+
+\transclude{008E}
+\transclude{008I}
+\transclude{LRL4}

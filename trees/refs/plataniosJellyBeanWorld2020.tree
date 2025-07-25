@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Jelly Bean World: A Testbed for Never-Ending Learning}
+\date{2020-02}
+\author/literal{Emmanouil Antonios Platanios}\author/literal{Abulhair Saparov}\author/literal{Tom Mitchell}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2002.06306}
+\meta{external}{https://arxiv.org/abs/2002.06306}
+
+\meta{bibtex}{\startverb
+@misc{plataniosJellyBeanWorld2020,
+ title = {Jelly {{Bean World}}: {{A Testbed}} for {{Never-Ending Learning}}},
+ author = {Platanios, Emmanouil Antonios and Saparov, Abulhair and Mitchell, Tom},
+ year = {2020},
+ doi = {10.48550/arXiv.2002.06306},
+ urldate = {2025-07-19},
+ number = {arXiv:2002.06306},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/UJYUJZTP/Platanios et al. - 2020 - Jelly Bean World A Testbed for Never-Ending Learn.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Multiagent Systems,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Machine learning has shown growing success in recent years. However, current machine learning systems are highly specialized, trained for particular problems or domains, and typically on a single narrow dataset. Human learning, on the other hand, is highly general and adaptable. Never-ending learning is a machine learning paradigm that aims to bridge this gap, with the goal of encouraging researchers to design machine learning systems that can learn to perform a wider variety of inter-related tasks in more complex environments. To date, there is no environment or testbed to facilitate the development and evaluation of never-ending learning systems. To this end, we propose the Jelly Bean World testbed. The Jelly Bean World allows experimentation over two-dimensional grid worlds which are filled with items and in which agents can navigate. This testbed provides environments that are sufficiently complex and where more generally intelligent algorithms ought to perform better than current state-of-the-art reinforcement learning approaches. It does so by producing non-stationary environments and facilitating experimentation with multi-task, multi-agent, multi-modal, and curriculum learning settings. We hope that the Jelly Bean World will prompt new interest in the development of never-ending learning, and more broadly general intelligence.},
+ primaryclass = {cs},
+ eprint = {2002.06306},
+ month = {February},
+ shorttitle = {Jelly {{Bean World}}}
+}
+\stopverb}

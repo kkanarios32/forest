@@ -1,0 +1,11 @@
+\import{base-macros}
+\date{2025-07-15T18:08:44Z}
+\tag{public}
+\title{Normalizing Flows}
+\p{Brief notes on [[rezendeVariationalInferenceNormalizing]] to motivate [flow matching](008A).}
+\p{We are concerned with the problem of \em{density estimation}. Given a dataset #{\mathcal{X}}, consisting of samples #{\mathbf{x}_i \sim p(\mathbf{x})}, we want to learn #{p(\mathbf{x})}. One popular way to do this is via \em{variational inference}. As a brief recap, in variational inference, we assume that there is actually a joint distribution #{p(\mathbf{x}, \mathbf{z})}, where #{\mathbf{z}} is a [latent variable](0083). We then find #{p(\mathbf{x})} by maximizing the log-likelihood #{\log \int p(\mathbf{x} \mid \mathbf{z}) \mathrm{d}\mathbf{z}}
+}
+\p{
+ For an example of this, see my post on [expectation maximization](0088). In that post, we utilize the [ELBO](0082) to learn a latent variable model #{q_{\phi}(\mathbf{z} | \mathbf{x})}. As discussed in my post on [ELBO](0082), in order to learn #{p(\mathbf{x})}, we must have that #{p(\mathbf{z} | \mathbf{x})} is in the family #{q_{\phi}}. However, #{q_
+ {\phi}} is usually a Gaussian parametrized by #{\phi}, so that we can easily learn #{\phi}. In this case, it is very unlikely that #{p(\mathbf{z} \mid x)} lies in the family of #{q_{\phi}} and therefore we have no hope of learning the true #{p(\mathbf{x})}.
+}

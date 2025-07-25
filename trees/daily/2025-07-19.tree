@@ -1,0 +1,17 @@
+\title{Saturday, July 19, 2025}
+\date{2025-07-19T22:14:21Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\p{This is my first real entry into my \em{research notebook}}
+\p{Here, I will try to summarize the results of extensive discussions with my [advisor](leiying). We are interested in looking into the \em{representations} learned by reinforcement learning algorithms. By representation, we have decided on the network preceding the last layer. To test the representation, will be to train a linear probe on top of the representation to see what it is able to learn.}
+\p{The first step of this project is building a grid world. I will be using it as an opportunity to finally contribute to [PufferLib](suarezPufferLibMakingReinforcement2024). The environment will be utilized to test the extent of a reinforcement learning agents classification abilities of objects encountered throughout the training process. The initial idea is to take a classification dataset, and scatter these objects throughout a grid world. The agent hitting some of these objects will result in positive reward and the others will result in negative reward.}
+\example{
+We take a #{4}-dimensional vector representing the attributes of a flower. We would then create observations for this via a #{9 \times 9 \times 5} observation, where each channel corresponds to one of the attributes and the final channel is the agent position. We could then make some subset of the flowers positive reward and some negative reward. Notably, this is unlike traditional RL i.e. [JBW]() where each object is distinctly represented. Instead the agent will have to correctly classify the objects in order to know which will incur positive reward. 
+}
+\iblock{
+  A question of primary interest: \em{can we train a classifier to correctly predict within positive and negative classes i.e. if two flowers both give +1 reward will the representation enable distinguishing between them?}
+}
+\p{Furthermore, we do not want the RL task to be a representation learning task. This situation arises when we give the agent positive reward for some flowers and negative reward for others. Instead, we want to reward the agent for downstream tasks that may require learning these things. As an example, if the task is to reach a certain point in the environment and some animals kill you, then learning to survive to reach that point implicitly will require you to learn these classification representations.}

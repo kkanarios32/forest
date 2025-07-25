@@ -1,0 +1,25 @@
+\tag{public}
+\import{base-macros}
+\date{2025-07-06T20:47:40Z}
+  \title{Optimality Conditions}
+    \transclude{003P}
+    \ul{
+    \li{\strong{First order necessary condition}:
+    If #{\ \mathbf{x_{\star}}} is a local minimizer of #{\ f:\mathbb{R}^{n}\mapsto\mathbb{R}}, and #{f} is continuously differentiable in an open neighborhood of #{\ \mathbf{x_{\star}}}, then we must have ##{\boxed{\nabla f(\mathbf{x_{\star}})\ =\ \mathbf{0}.}}
+    \li{\strong{Second order necessary condition:}
+    If #{\mathbf{x_{\star}}} is a local minimizer of #{f:\mathbb{R}^{n}\mapsto\mathbb{R}}, and #{f} is twice continuously differentiable in an open neighborhood around #{\mathbf{x_{\star}}}, then we must have ##{(i)\ \nabla f(\mathbf{x_{\star}})=\mathbf{0};} ##{(ii)\ \nabla^{2}f(\mathbf{x_{\star}})\succeq\mathbf{0}.}
+    \ul{
+        \li{If #{\nabla^{2}f(\mathbf{x_{\star}})\succ\mathbf{0}} then the above is a sufficient condition.}
+      }
+    }
+    }
+  }
+  \remark{
+  Let #{f:\mathbb{R}^{n}\mapsto\mathbb{R}} be a convex function, then 
+  \ul{
+    \li{A local minimizer of #{f} is also its global minimizer. If #{f} is strictly convex, the global minimizer is unique}
+    \li{A point is a global minimizer of #{f} iff ##{\mathbf{0}\ \in\ \partial f(\mathbf{x_{\star}}).}}
+  }
+  If #{f\in\mathcal{C}^{1}}, then #{\nabla f(\mathbf{x_{\star}})=\mathbf{0}} implies that #{\mathbf{x_{\star}}} is a global minimizer.
+  }
+\transclude{DER4}

@@ -1,0 +1,9 @@
+\tag{public}
+
+\date{2024-11-21}
+\title{Mutual Information}
+\taxon{Definition}
+
+\p{The \em{mutual information} between two random variables #{X, Y} is defined with respect to their joint distribution. Namely, it is the [[000W]] between the joint distribution #{p(x,y)} and the product of the marginals #{p(x)p(y)} i.e. 
+##{H(X || Y) = \mathbb{E}_{x,y \sim p(x,y)}\left[\log \frac{p(x, y)}{p(x)p(y)}\right]}
+}

@@ -1,0 +1,17 @@
+\tag{public}
+\import{base-macros}
+\date{2025-07-06T20:45:52Z}
+\title{Taylor Expansion and Lipschitz Functions}
+      \transclude{003J}
+      \transclude{003K}
+      \transclude{003L}
+      \remark{
+        \ul{
+          \li{ If #{f:\mathbb{R}^n\mapsto\mathbb{R}} is continuously differentiable, ##{\begin{aligned}      |f(\pmb{x})-f(\pmb{y})| &\leq & \sup_{\pmb{z} \in \mathbb{R}^n} ||\nabla f(\pmb{z})||_2 \, ||\pmb{x}-\pmb{y}||_2   \end{aligned}} so that the Lipschitz constant of #{f} is #{\sup_{\pmb{z} \in \mathbb{R}^n} ||\nabla f(\pmb{z})||_2}.}
+          \li{If #{f:\mathbb{R}^{n}\mapsto\mathbb{R}} is twice continuously differentiable, ##{||\nabla f(\boldsymbol{x})-\nabla f(\boldsymbol{y})||_{2}\ \leq\ \sup_{\boldsymbol{z}\in\mathbb{R}^{n}}||\nabla^{2}f(\boldsymbol{z})||_{2}\,||\boldsymbol{x}-\boldsymbol{y}||_{2}} so that the Lipschitz constant of #{\nabla f} is #{\sup_{\boldsymbol{z}\in\mathbb{R}^{n}}||\nabla^{2}f(\boldsymbol{z})||_{2}}
+          }
+        }
+      }
+      \transclude{003M}
+      \transclude{003N}
+      \transclude{003O}

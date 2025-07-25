@@ -1,5 +1,0 @@
-
-\date{2025-03-30}
-\import{base-macros}
-\taxon{Theorem}
-\p{#{\mathcal{R}^*(\mathcal{P}) = C(\mathcal{P}) \coloneqq \sup_{\pi \in \Delta_k} I(W; X)}, where #{I(W; X)} is the mutual information between #{W \sim \mathbf{\pi} } and the output #{X}, with #{X | (W = i) \sim P_i}. The optimal #{Q^*} is #{Q_{\pi}^* = \sum_{i = 1}^{k} \pi_i^* P_i}.}

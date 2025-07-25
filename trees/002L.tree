@@ -1,8 +1,0 @@
-
-\date{2025-01-15}
-\title{Sub-Gaussian Random Variables}
-\taxon{Definition}
-\p{
-  A random variable #{X} is called #{K}-Sub-Gaussian if #{\forall t > 0}
-  ##{\mathbb{P}(|X| > t) \leq C\exp\left(-c\left(\frac{t}{k}^2\right)\right)}
-}

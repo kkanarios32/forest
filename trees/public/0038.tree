@@ -1,0 +1,10 @@
+\tag{public}
+
+\date{2025-01-26}
+\tag{optimization}
+\title{Subgradient}
+\taxon{Definition}
+
+\p{Let #{f: \mathbb{R}^n \to \mathbb{R}} be convex. A \em{subgradient} of #{f} at #{\boldsymbol{x}_0} is any #{\boldsymbol{u}} satisfying
+##{f(\boldsymbol{x}) \geq f(\boldsymbol{x}_0) + \langle \boldsymbol{u}, \boldsymbol{x} - \boldsymbol{x}_0 \rangle}
+}

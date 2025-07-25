@@ -1,0 +1,19 @@
+\tag{public}
+
+\date{2024-10-29}
+\import{base-macros}
+\title{Blog}
+\author{kellenkanarios}
+\tag{top}
+
+\p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more. For more short-form blogs, see the [marginalia](007L). See [upcoming blogs](007M) and feel free to request! This blog also has a corresponding [Atom feed](/0002/atom.xml).}
+
+\put\transclude/toc{false}
+\put\transclude/numbered{false}
+\put\transclude/metadata{true}
+\put\transclude/expanded{false}
+
+\transclude{005F}
+
+
+\syndicate-current-tree-as-atom-feed

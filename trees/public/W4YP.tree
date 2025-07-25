@@ -1,0 +1,37 @@
+\import{base-macros}
+\date{2025-07-14T17:21:58Z}
+\tag{public}
+\tag{margin}
+\title{Multi Query Attention}
+\author{kellenkanarios}
+\p{Notes on the paper [[shazeerFastTransformerDecoding2019]].}
+\p{For, 
+\ul{
+  \li{#{b} batch dimension,}
+  \li{#{n} sequence length,}
+  \li{#{d} hidden dimension,}
+  \li{#{h} number of heads.}
+}
+The total [FLOPS](4K5H) for [attention](004G) are roughly #{bnd^2}. This comes from 
+\ol{
+  \li{#{3nd^2} FLOPS to compute #{Q = XW_Q, K = XW_K, V = XW_V}.}
+  \li{Need to do this #{b} times for each input in batch.}
+}
+and the total memory accesses are roughly #{\underbrace{bnd}_{X} + \underbrace{bhn^2}_{\text{softmax}} + \underbrace{d^2}_{\text{projection}}}.
+This gives high arithmetic intensity
+##{O\left(\left(\frac{h}{d} + \frac{1}{bn}\right)^{-1}\right)}
+}
+\p{However, if we do incremental inference then we must multiply our total number of memory accesses by #{n} i.e. #{bn^2d + nd^2}. This gives arithmetic intensity
+##{O\left(\left(\frac{n}{d} + \frac{1}{b}\right)^{-1}\right),}
+which requires large batch and short sequence length.
+}
+\remark{
+I believe we just ignore the softmax memory contribution in the inference case because it does not scale with #{n} anymore as we are computing the logits just for the next token. Therefore, it becomes a #{\frac{d}{h}} term, which we can safely ignore?
+}
+\p{The key is that the #{\frac{n}{d}} term comes from the #{bn^2d} term, where we are loading #{h} #{(b \times n \times d / h)} #{K} and #{V} matrices #{n} times. Thus, we can improve the #{\frac{n}{d}} term by a factor of #{h} by simply not using a different #{K} and #{V} matrix for each head. This is the entire idea behind [MQA](shazeerFastTransformerDecoding2019).}
+\remark{
+Similar to the [[TJLA]], we still can use #{h} #{Q} matrices because we do not need to load #{n} of them into memory because only the last one matters for inference.
+}
+\transclude{XUVV}
+\p{Also inspired by this idea of reducing the dependence of #{K} and #{V} on the sequence length is sliding window attention.}
+\transclude{WM3M}

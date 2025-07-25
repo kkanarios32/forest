@@ -1,0 +1,217 @@
+#!/usr/bin/env -S uv run --script
+#
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "datetime",
+#     "dotenv",
+#     "etils",
+#     "importlib-resources",
+#     "matplotlib",
+#     "pandas",
+#     "requests",
+#     "seaborn",
+#     "typing-extensions",
+# ]
+# ///
+
+
+import sys
+import pandas as pd
+import os
+import matplotlib.pyplot as plt
+import seaborn as sns
+import json
+from datetime import datetime
+from etils import epath
+import argparse
+
+import requests
+from datetime import timedelta
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path="./key.env")
+
+# --- CONFIG ---
+API_KEY = os.getenv("WAKA_API")
+
+
+def set_style():
+    sns.set_context("paper", font_scale=1.5)
+    rc = {
+        "font.family": "sans-serif",
+        "font.sans-serif": "Facebook Sans",
+        # "font.sans-serif": ["Helvetica", "Arial", "DejaVu Sans"],
+        "axes.spines.top": False,
+        "axes.spines.right": False,
+        "axes.labelsize": 14,
+        "axes.titlesize": 16,
+        "axes.titleweight": 300,
+        "axes.labelweight": 400,
+        "legend.fontsize": 12,
+        "xtick.labelsize": 12,
+        "ytick.labelsize": 12,
+        "figure.dpi": 300,
+        "savefig.bbox": "tight",
+    }
+
+    palette = sns.color_palette("ch:start=.2,rot=-.3")
+    sns.set_theme(palette=palette, style="whitegrid", rc=rc)
+
+
+def fetch(end_date):
+    start_date = end_date - timedelta(days=6)
+
+    end_str = end_date.strftime("%Y-%m-%d")
+    start_str = start_date.strftime("%Y-%m-%d")
+
+    # --- API REQUEST ---
+    url = "https://wakatime.com/api/v1/users/current/summaries"
+    params = {"start": start_str, "end": end_str}
+
+    response = requests.get(url, params=params, auth=(API_KEY, ""))
+
+    if response.status_code != 200:
+        print(f"Error: {response.status_code}")
+        print(response.text)
+        exit(1)
+
+    data = response.json()["data"]
+
+    save_dir = f"data/{end_str}"
+    os.makedirs(save_dir, exist_ok=True)
+    path = f"{save_dir}/data.json"
+
+    with epath.Path(path).open("w") as fout:
+        json.dump(data, fout)
+
+    return data
+
+
+def plot(data, save_dir):
+    # --- PROCESS DATA ---
+    # Prepare date labels
+    dates = [entry["range"]["date"] for entry in data]
+    day_labels = [datetime.strptime(d, "%Y-%m-%d").strftime("%a") for d in dates]
+
+    # Total hours
+    totals = [entry["grand_total"]["total_seconds"] / 3600 for entry in data]
+
+    # Languages
+    lang_records = []
+    for entry in data:
+        day = datetime.strptime(entry["range"]["date"], "%Y-%m-%d").strftime("%a")
+        for lang in entry["languages"]:
+            lang_records.append(
+                {
+                    "day": day,
+                    "language": lang["name"],
+                    "hours": lang["total_seconds"] / 3600,
+                }
+            )
+
+    min_hours = 1.0
+    lang_df = pd.DataFrame(lang_records)
+
+    # Filter out languages with total hours below threshold
+    lang_totals = lang_df.groupby("language")["hours"].sum()
+    valid_langs = lang_totals[lang_totals >= min_hours].index
+    lang_df = lang_df[lang_df["language"].isin(valid_langs)]
+
+    # Projects
+    proj_records = []
+    for entry in data:
+        day = datetime.strptime(entry["range"]["date"], "%Y-%m-%d").strftime("%a")
+        for proj in entry["projects"]:
+            proj_records.append(
+                {
+                    "day": day,
+                    "project": proj["name"],
+                    "hours": proj["total_seconds"] / 3600,
+                }
+            )
+
+    proj_df = pd.DataFrame(proj_records)
+    # Filter out projects with total hours below threshold
+    proj_totals = proj_df.groupby("project")["hours"].sum()
+    valid_projs = proj_totals[proj_totals >= min_hours].index
+    proj_df = proj_df[proj_df["project"].isin(valid_projs)]
+    os.makedirs(save_dir, exist_ok=True)
+
+    # --- PLOTTING STYLE ---
+    set_style()
+
+    # --- PLOT 1: Total time ---
+    fig, axs = plt.subplots(2, 1, figsize=(10, 10))
+
+    # --- PLOT 2: Language time ---
+    if not lang_df.empty:
+        lang_pivot = lang_df.pivot_table(
+            index="day", columns="language", values="hours", aggfunc="sum", fill_value=0
+        )
+        lang_pivot = lang_pivot.reindex(
+            ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        )
+        lang_pivot.plot(kind="bar", stacked=True, ax=axs[0])
+        axs[0].set_ylabel("Hours")
+        axs[0].set_xlabel("Day of Week")
+        axs[0].set_title("Coding Time by Language")
+
+        axs[0].legend(
+            title="Language",
+            loc="upper right",
+            fontsize="small",
+            title_fontsize="small",
+            frameon=False,
+            bbox_to_anchor=(1.0, 1.0)
+        )
+    # --- PLOT 3: Project time ---
+    if not proj_df.empty:
+        proj_pivot = proj_df.pivot_table(
+            index="day", columns="project", values="hours", aggfunc="sum", fill_value=0
+        )
+        proj_pivot = proj_pivot.reindex(
+            ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+        )
+        proj_pivot.plot(kind="bar", stacked=True, ax=axs[1])
+        axs[1].set_ylabel("Hours")
+        axs[1].set_xlabel("Day of Week")
+        axs[1].set_title("Coding Time by Project")
+
+        axs[1].legend(
+            title="Project",
+            loc="upper right",
+            fontsize="small",
+            title_fontsize="small",
+            frameon=False,
+            bbox_to_anchor=(1.0, 1.0)
+        )
+
+    plt.tight_layout(rect=[0, 0, 0.85, 1])  # Make space for right-side legend
+
+    save_path = os.path.join(save_dir, "waka.png")
+    plt.savefig(save_path, dpi=300)
+
+
+def main(argv):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dir", help="save directory")
+
+    end_date = datetime.today().date()
+    end_str = end_date.strftime("%Y-%m-%d")
+
+    path = f"data/waka/{end_str}.json"
+    if os.path.exists(path):
+        with epath.Path(path).open("r") as file:
+            data = json.load(file)
+    else:
+        data = fetch(end_date)
+
+    end_str = end_date.strftime("%Y-%m-%d")
+    save_dir = argv[0]
+    os.makedirs(save_dir, exist_ok=True)
+    plot(data, save_dir)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

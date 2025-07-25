@@ -1,0 +1,5 @@
+\tag{public}
+
+\date{2025-03-31}
+\title{Alpha-Zero}
+\p{The major break through of planning was in [alpha-zero](schrittwieserMasteringAtariGo2020), or more accurately at the time was just alpha-go. However, the core idea remained the same. The idea is to learn some notion of a "good" state in a game like chess or go and then leverage this information in combination with some planning.}

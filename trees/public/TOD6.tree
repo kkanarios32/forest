@@ -1,0 +1,32 @@
+\date{2025-07-14T15:13:50Z}
+\import{base-macros}
+\tag{public}
+\title{Rotary Position Embeddings (ROPE)}
+\p{\strong{Notation}:
+For this section, our notion of an \em{embedding} is a function #{f} that takes a token and a position i.e. #{f(x, i)} is the embedding of token #{x}, occurring at position #{i}.
+}
+\p{\strong{Idea:} the [inner product](B1RI) of two embeddings should only need relative positioning i.e. for any two #{\mathbf{x}}, #{\mathbf{y}} with positions #{i} and #{j} respectively, there should exist some #{g}, such that
+##{\langle f(\mathbf{x}, i), f(\mathbf{y}, j) \rangle = g(\mathbf{x}, \mathbf{y}, i - j)}
+Namely, this can be written as a function of just the relative positioning between the embeddings.
+}
+\p{The simplest transformation that only preserves this relative information are [rotations](10H9).}
+\figure{
+\<html:img>[width]{50\%}[src]{\route-asset{assets/img/rope.png}}{}
+\figcaption{Rotating embeddings does not change relative position.}
+}
+\p{However, [rotations](10H9) are only easily defined for #{\mathbb{R}^2}. To get around this, they simply partition their input 2d slices and apply the rotation via
+##{\mathrm{ROT} = \begin{bmatrix} \cos m \theta_{1} & - \sin m \theta_{1} & & & \\
+\sin m \theta_{1} & \cos m \theta_{1} & & & \\
+& & \cos m \theta_{2} & -\sin m \theta_{2} & \\
+& & \sin m \theta_{2} & \cos m \theta_{2} & \\
+& & & & \ddots
+\end{bmatrix} }
+}
+\remark{
+%TODO: understand what this means
+The #{\theta_i}'s are fixed and chosen according to some schedule to capture different "frequencies". 
+}
+\p{The embedding are used by appling them to the query and key matrices separately i.e. 
+##{W_K = \mathrm{ROT}(W_K), \quad W_Q = \mathrm{ROT}(W_Q)}
+These are then what is used in self-attention.
+}

@@ -1,0 +1,7 @@
+\tag{public}
+
+\date{2024-12-27}
+\title{Kolmogorov's Zero-one Law}
+\taxon{Theorem}
+\p{If #{A_1, A_2, \ldots} is an independent sequence of events, then for each
+event #{A} in the [[001U]], #{P(A)} is either #{0} or #{1}.}

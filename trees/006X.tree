@@ -1,6 +1,0 @@
-
-\date{2025-04-01}
-\import{base-macros}
-\taxon{Theorem}
-\title{Shannon's coding theorem}
-\p{Non rigorous: says that [channel capacity](006V) and [information channel capacity](006W) are equal.}

@@ -1,0 +1,162 @@
+\tag{public}
+\import{base-macros}
+\author{kellenkanarios}
+\date{2025-07-01T10:43:22Z}
+\title{[TPE](arpaci2018operating) Process Interlude}
+\put\transclude/numbered{false}
+\p{[[007U]] (3/66)}
+\p{This was a very short chapter just introducing the actual API for some very important system calls. Namely}
+\section{\code{fork()}}{
+  \p{
+The \em{fork} system call allows a program to duplicate itself in a new process from the current instruction. This is quite literally a duplication which entails giving the child its own
+\ol{
+  \li{Address space}
+  \li{Registers}
+  \li{Program counter}
+}
+  }
+\p{
+A fork is invoked in the parent process like
+  \pre\verb<<<|
+  int main()
+    int rc = fork();
+    if (rc < 0) 
+      printf("error with fork");
+    else if (rc == 0)
+      printf("in child");
+    else
+      printf("in parent");
+  <<<
+}
+\p{
+Importantly, you identify whether you are in the child or the parent via the return value of \code{rc} (0 for child), (PID of child for parent).
+}
+\remark{
+Which process is run first (the parent or the child) is non-deterministic and depends on the CPU scheduling algorithm.
+}
+}
+\section{\code{wait()}}{
+  \p{
+  Due to the remark, we need some way to enforce ordering among parent and child. This is the motivation for the \em{wait} system call. Namely, when the parent calls \code{wait()} it tells the CPU not to schedule it until the child completes. 
+  }
+  \question{
+    From the previous [section](007V), we saw the data structure for a process included the state. I assume \code{wait()} is implemented by adjusting the process state in the PCB somehow?
+  }
+  \answer{
+    Doing a bit more research, it seems this is on the right track. Additionally, when a child completes it enters the \code{ZOMBIE} state, where it stores all the relevant information of the process, so that the parent process can then use this information. How this is actually coordinated seems to involve \em{signals} and \em{wait_entries} that essentially track all the children of a parent. The OS can then get a signal of completion from a child and find the corresponding parent?
+  }
+}
+\section{\code{exec()}}{
+\p{While \code{fork()} is useful in the sense that it allows us to spawn new processes from a parent process, it is still limited in that it can only execute instructions following the line of the \code{fork()} call in the parent process.}
+\p{In practice, we do not want to have to compile massive C projects that contain all the necessary files for every possible binary we may want to run. To get around this, we can use the \code{exec()} system call. \code{exec()} allows us to transform a process into the desired executable. What this entails:
+\ol{
+  \li{Loading the code and static data for the executable and overwriting the current coad and static data.}
+  \li{Re-initializing stack and heap memory.}
+  \li{Running the program, where the arguments passed to \code{exec()} are treated as \code{argv} for the program.}
+}
+For a parent process to invoke \code{ls}, they could do something like
+  \pre\verb<<<|
+  int main()
+    int rc = fork();
+    if (rc < 0) 
+      printf("error with fork");
+    else if (rc == 0)
+      printf("in child");
+      exec(ls);
+    else
+      printf("in parent");
+  <<<
+  This spawns a child process and overwrites it with the \code{ls} executable.
+}
+}
+\example{
+Combining \code{fork()} and \code{exec()} is where the true power lies. In particular, with this combination you can practically implement an entire shell. Below is some (hybrid) pseudocode.
+\pre\verb<<<|
+int main()
+  while (true) {
+    command = getcommand();
+    int rc = fork();
+    if (rc < 0) 
+      printf("error with fork");
+    else if (rc == 0)
+      exec(command);
+    else
+      int rc = wait(NULL);
+  }
+<<<
+You can also implement redirection by opening a file prior to calling \code{exec()} i.e.
+\pre\verb<<<|
+int main()
+  while (true) {
+    command = getcommand();
+    int rc = fork();
+    if (rc < 0) 
+      printf("error with fork");
+    else if (rc == 0)
+      close(STD_OUT_FILENO);
+      open(output.txt);
+      exec(command);
+    else
+      int rc = wait(NULL);
+  }
+<<<
+}
+\section{Signals}{
+\p{They briefly mention \em{signals}: what I expect to be an important topic in the future. Namely, you can send a signall to a process via \code{kill()} and the recipient program can "catch" this signal via the system call \code{signal()}.
+}
+\p{This naturally leads to the introduction of a \em{user}. The \em{user} determines which processes they are allowed to signal, where the \em{superuser} can arbitrarily signal all processes.}
+}
+
+%TODO: Coding HW
+\section{Coding Homework}{
+  \p{[[007U]] (6/66).}
+  \ol{
+    \li{Write a program that calls \code{fork()}. Before calling \code{fork()}, have the main process access a variable (e.g., \code{x}) and set its value to something (e.g., 100). What value is the variable in the child process? What happens to the variable when both the child and parent change the value of \code{x}}
+    \answer{
+      Both the parent and the child get a copy of the variable values i.e. #{x}. When they modify #{x} it only affects the copy of #{x} in their local address space.
+    }
+    \li{
+Write a program that opens a file (with the \code{open()} system call) and then calls \code{fork()} to create a new process. Can both the child and parent access the file descriptor returned by \code{open()}? What happens when they are writing to the file concurrently, i.e., at the same time?
+      }
+    \answer{
+      Both do have access to the same file descriptor. I believe that they can interleave writes if writing at the same time but for me whichever process got ran first always finished writing prior the other starting. This may be a scheduling thing, where one process is able to complete before the other is scheduled?
+    }
+    \li{
+Write another program using \code{fork()}. The child process should
+print “hello”; the parent process should print “goodbye”. You should
+try to ensure that the child process always prints first; can you do
+this without calling \code{wait()} in the parent?
+    }
+    \answer{
+      Using the previous problem, in the child, we can write something to a file. Then, in the parent, we can enforce an ordering by making the parent wait in a \code{while} loop until it reads the value written by the child. However, this is terribly inconvenient (and probably why \code{wait()} exists).
+    }
+    \li{
+Now write a program that uses \code{wait()} to wait for the child process to finish in the parent. What does \code{wait()} return? What happens if you use \code{wait()} in the child?
+      }
+      \answer{
+        \code{wait()} returns the pid of the child process that died. Using \code{wait()} in the child just immediately returns #{-1}.
+      }
+      \li{
+Write a program that calls \code{fork()} and then calls some form of \code{exec()} to run the program \code{/bin/ls}. See if you can try all of the variants of \code{exec()}, including \code{execl()}, \code{execle()}, \code{execlp()}, \code{execv()}, \code{execvp()}, and \code{execvP()}. Why do you think there are so many variants of the same basic call?
+        }
+        \answer{
+          It seems that some of them support different types of arguments i.e. \code{execv} family allows variable size argument list. Additionally, there is a distinction in the \em{environment}. This seems to be a list of environment variable values that \code{exec{l,v}e()} will search over. The #{p} family use the same search as the shell i.e. the \code{PATH}.
+        }
+    \li{
+Write a slight modification of the previous program, this time us- ing \code{waitpid()} instead of \code{wait()}. When would \code{waitpid()} be useful?
+    }
+    \answer{
+      If a parent process has multiple children, then \code{wait()} will only wait until the first one dies. \code{waitpid()} lets you specify waiting on a specific child process.
+    }
+    \li{ Write a program that creates a child process, and then in the child closes standard output (\code{STDOUT_FILENO}). What happens if the child calls \code{printf()} to print some output after closing the descriptor? }
+    \answer{
+      Nothing prints in the child process. However, stdout is still open in the parent process and able to print.
+    }
+    \li{
+Write a program that creates two children, and connects the standard output of one to the standard input of the other, using the \code{pipe()} system call
+      }
+    \answer{
+      This required \code{fflush()} for me. I am not sure if this is true in general?
+    }
+  }
+}

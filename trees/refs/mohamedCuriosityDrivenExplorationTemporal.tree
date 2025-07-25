@@ -1,0 +1,13 @@
+% ["refs"]
+\title{Curiosity-Driven Exploration via Temporal Contrastive Learning}
+\author/literal{Faisal Mohamed}\author/literal{Catherine Ji}\author/literal{Benjamin Eysenbach}\author/literal{Glen Berseth}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@inproceedings{mohamedCuriosityDrivenExplorationTemporal,
+ title = {Curiosity-{{Driven Exploration}} via {{Temporal Contrastive Learning}}},
+ author = {Mohamed, Faisal and Ji, Catherine and Eysenbach, Benjamin and Berseth, Glen},
+ urldate = {2025-07-07},
+ booktitle = {Workshop on {{Reinforcement Learning Beyond Rewards}} @ {{Reinforcement Learning Conference}} 2025},
+ file = {/home/kellen/Downloads/pdfs/storage/L8AUHEYW/pdf.pdf}
+}
+\stopverb}

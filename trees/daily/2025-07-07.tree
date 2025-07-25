@@ -1,0 +1,27 @@
+\title{Monday, July 7, 2025}
+\date{2025-07-07T15:28:14Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{private}
+
+\section{\#{[Flow models](008A)}}{
+  \p{
+  While trying to understand [[chenNeuralOrdinaryDifferential]], I first had to understand [CNFs](PY9P) and therefore just discrete normalizing flows. However, in the discrete case, I could not understand why if we learned a mapping #{f} that transforms #{p_0} to #{p_{1}} why we need intermediate mappings #{f_t}. It turns out (I think) there is a trade-off between simplicity and number of intermediate transformations. Namely, given such a mapping, we can compute #{p_{1} \coloneqq p(z(1))} as
+  ##{\log p(z(1)) = \log p(z(0)) + \log \left|\det \frac{\partial f}{\partial z}\right|}
+  Therefore, it is common to take #{f} as something where the #{\log det} of the Jacobian of #{f} is easily computable i.e.
+  ##{f(z) = uh(w \cdot z + b),}
+where #{u} is a scalar, #{h} is a non-linearity, and #{w \cdot z + b} is a standard linear transformation. However, with just one \em{nice} non-linearity #{h}, the representational capacity is not sufficient to learn complex #{p_{1}}. Therefore, we must introduce intermediate #{f_t} which subsequently complicate the #{\log \det}. Hence the tradeoff.
+  }
+  \question{Entering the continuous case: Why does this require solving an ODE?}
+  \answer{To evaluate the the probability #{p_1} involves computing #{p(z(1))}, where we can only evolve #{z} according to an ODE #{\frac{dz}{dt} = f(z(t))}}
+}
+
+\section{\#{[OE](EE7A)}}{
+  \p{I looked at [[beneysenbach]]'s new paper [[mohamedCuriosityDrivenExplorationTemporal]], where they try to also use [contrastive RL](eysenbachContrastiveLearningGoalConditioned2023) to take a stab at craftax. Briefly, they just define a new intrinsinc reward
+  ##{r_{\mathrm{intr}}(s,a) = \|\phi(s,a) - \psi(g)\|^2,}
+  where #{\phi} and #{\psi} are as defined in the [original paper](eysenbachContrastiveLearningGoalConditioned2023). They then just train [PPO](schulmanProximalPolicyOptimization2017) with this intrinsic reward and compare to the standard baselines.
+  }
+  \remark{
+  The familiar question arises of how to pick #{g} for their intrinsic reward. In this paper, they just pick #{g \sim p^{\pi}}, where #{p^{\pi}} is the successor measure. It feels like we can do better, and I still like the idea of using [flow matching](farebrotherTemporalDifferenceFlows2025) to generate goals on the \em{edge of our capabilities} as alluded to in [ben's other paper](ghugareNormalizingFlowsAre2025).
+  }
+}

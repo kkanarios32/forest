@@ -1,0 +1,10 @@
+\tag{public}
+\date{2025-07-06T20:49:43Z}
+\title{Rate of Convergence}
+  \p{
+  Want to find
+##{\operatorname*{min}_{\mathbf{x}}\ f(\mathbf{x}),\quad\text{s.t.}\quad\mathbf{x}\ \in\ \mathcal{C}.} Solve the problem via iterative methods of optimization, which produce a sequence of points ##{\mathbf{x}_{1},\ \mathbf{x}_{2},\ \cdots,\mathbf{x}_{k},\cdots} starting from an initialization #{\mathbf{x}_{0}}. 
+  }
+  \transclude{003R}
+  \transclude{003Q}
+  \transclude{003S}

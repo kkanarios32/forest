@@ -1,0 +1,28 @@
+% ["refs"]
+\title{PufferLib: Making Reinforcement Learning Libraries and Environments Play Nice}
+\date{2024-06}
+\author/literal{Joseph Suarez}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2406.12905}
+\meta{external}{https://arxiv.org/abs/2406.12905}
+
+\meta{bibtex}{\startverb
+@misc{suarezPufferLibMakingReinforcement2024,
+ title = {{{PufferLib}}: {{Making Reinforcement Learning Libraries}} and {{Environments Play Nice}}},
+ author = {Suarez, Joseph},
+ year = {2024},
+ doi = {10.48550/arXiv.2406.12905},
+ urldate = {2025-07-19},
+ number = {arXiv:2406.12905},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/Z64GC96D/Suarez - 2024 - PufferLib Making Reinforcement Learning Libraries.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Multiagent Systems},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {You have an environment, a model, and a reinforcement learning library that are designed to work together but don't. PufferLib makes them play nice. The library provides one-line environment wrappers that eliminate common compatibility problems and fast vectorization to accelerate training. With PufferLib, you can use familiar libraries like CleanRL and SB3 to scale from classic benchmarks like Atari and Procgen to complex simulators like NetHack and Neural MMO. We release pip packages and prebuilt images with dependencies for dozens of environments. All of our code is free and open-source software under the MIT license, complete with baselines, documentation, and support at pufferai.github.io.},
+ primaryclass = {cs},
+ eprint = {2406.12905},
+ month = {June},
+ shorttitle = {{{PufferLib}}}
+}
+\stopverb}

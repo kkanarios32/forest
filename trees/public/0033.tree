@@ -1,0 +1,47 @@
+\tag{public}
+
+\date{2025-01-26}
+\import{base-macros}
+\tag{note}
+\tag{top}
+\title{Notebook: Optimization Theory}
+\author{kellenkanarios}
+
+
+\section{Convex Optimization Background}{
+
+\transclude{0034}
+\transclude{0035}
+
+\transclude{DER0}
+
+\transclude{0036}
+\transclude{0037}
+
+\transclude{0038}
+\transclude{0039}
+}
+
+\section{Useful Miscellanous Math Background}{
+  \p{
+  In this section, we cover many random math facts / tools that come up / are useful in later optimization problems.
+  }
+  \transclude{DER1}
+  \transclude{DER2}
+  \transclude{DER3}
+  \transclude{DER5}
+
+}
+\section{Iterative Methods}{
+  \strong{Assume:}
+  \ul{
+      \li{#{f: \mathbb{R}^n \to \mathbb{R}} is a [[004D]] and a [[003K]].}
+      \li{The gradient #{\nabla f(\mathbf{x})} is [#{L}-Lipschitz](003J).}
+    }
+  \transclude{DER6}
+  \transclude{DER7}
+  \transclude{DER8}
+  \transclude{DER9}
+  \transclude{DERA}
+}
+\transclude{DERB}

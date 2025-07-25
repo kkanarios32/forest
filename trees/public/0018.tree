@@ -1,0 +1,9 @@
+\tag{public}
+
+\date{2024-11-26}
+\title{#{\pi}-system}
+\taxon{Definition}
+\p{
+A class #{\mathcal{P}} of subsets of #{\Omega} is a #{\pi}-system if it is closed under the formation of finite intersections:
+##{A,B\in\mathcal{P} \implies A\cap B\in\mathcal{P}.}
+}

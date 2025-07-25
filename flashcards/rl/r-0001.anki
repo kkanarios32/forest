@@ -1,0 +1,11 @@
+%%MODELNAME Basic
+%%DECKNAME RL
+%%TAGS
+%Front
+Performance Difference Lemma
+%Front
+%Back
+[latex]
+$ V_{\theta_{t + 1}} - V_{\theta_{t} = \frac{1}{1-\gamma}\mathbb{E}_{\rho^{\pi_{\theta_{t + 1}}}(s), \pi_{\theta_{t+1}(a)}}\left[Q_{\pi_{\theta_{t + 1}}(s, a) - V_{\pi_{\theta_{t+1}}}(s)\right]$
+[/latex]
+%Back

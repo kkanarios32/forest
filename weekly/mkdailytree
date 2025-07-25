@@ -1,0 +1,48 @@
+#!/usr/bin/python3
+
+import argparse
+import sys
+
+
+def daily_tree(path, title):
+    return f"""\\import{{base-macros}}
+\\author{{kellenkanarios}}
+\\meta{{author}}{{false}}
+\\tag{{public}}
+\\title{{Weekly Review {title}}}
+
+\\section{{The Quantified Me}}{{
+\\figure{{
+  \\<html:img>[width]{{100\%}}[src]{{\\route-asset{{{path}/waka.png}}}}{{}}
+  \\figcaption{{Wakatime stats for week {title}.}}
+}}
+\\figure{{
+  \\<html:img>[width]{{100\%}}[src]{{\\route-asset{{{path}/arbtt.png}}}}{{}}
+  \\figcaption{{Arbtt-stats for week {title}.}}
+}}
+}}
+\\section{{VO2 Max(ing)}}{{
+\\figure{{
+  \\<html:img>[width]{{100\%}}[src]{{\\route-asset{{{path}/running.png}}}}{{}}
+  \\figcaption{{Running stats for this week.}}
+}}
+}}
+"""
+
+
+def main(argv):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dir", help="save directory")
+    parser.add_argument("file", help="file name")
+
+    asset_path = argv[0]
+    tree_path = argv[1]
+    title = argv[2]
+
+    with open(tree_path, "+w") as tf:
+        tf.flush()
+        tf.write(daily_tree(asset_path, title))
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

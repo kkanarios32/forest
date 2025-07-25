@@ -1,0 +1,14 @@
+\date{2025-07-14T15:15:57Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Inner Product}
+\p{Given a vector space #{V} and a [field](X9AO) #{F}. An \em{inner product} is a map
+##{\langle \cdot, \cdot \rangle : V \times V \to F}
+that satisfies the following three properties:
+\ul{
+  \li{\em{Conjugate symmetry}: #{\langle \mathbf{x}, \mathbf{y} \rangle = \overline{\langle \mathbf{y}, \mathbf{x}\rangle}}}
+  \li{\em{Linearity} in the first argument: #{\langle a\mathbf{x} + b\mathbf{y}, \mathbf{z} \rangle = a\langle \mathbf{x}, \mathbf{z} \rangle + b \langle \mathbf{y}, \mathbf{z} \rangle}}
+  \li{\em{Positive-definiteness}: If #{\mathbf{x}} is not zero, then #{\langle \mathbf{x}, \mathbf{x} \rangle > 0}}
+}
+}

@@ -1,0 +1,20 @@
+\tag{public}
+
+\date{2024-10-29}
+\import{base-macros}
+\title{/dev/null}
+\p{These are things that have been paged out to disk (hence the name)! Namely, they are completely (mainly external) resources that I have completed at some point but have nowhere else to go.}
+
+\put\transclude/toc{false}
+\put\transclude/numbered{false}
+\put\transclude/metadata{true}
+
+
+\transclude{004A}
+
+\section{Old #{\LaTeX} Notes from Undergrad}{
+\query\datalog{
+  ?X -:
+  {\rel/has-tag ?X '{texnote}}
+}
+}

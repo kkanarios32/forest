@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Fast Transformer Decoding: One Write-Head is All You Need}
+\date{2019-11}
+\author/literal{Noam Shazeer}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1911.02150}
+\meta{external}{https://arxiv.org/abs/1911.02150}
+
+\meta{bibtex}{\startverb
+@misc{shazeerFastTransformerDecoding2019,
+ title = {Fast {{Transformer Decoding}}: {{One Write-Head}} Is {{All You Need}}},
+ author = {Shazeer, Noam},
+ year = {2019},
+ doi = {10.48550/arXiv.1911.02150},
+ urldate = {2025-07-14},
+ number = {arXiv:1911.02150},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/BQ6F9K2H/Shazeer - 2019 - Fast Transformer Decoding One Write-Head is All Y.pdf},
+ keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Computer Science - Neural and Evolutionary Computing},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Multi-head attention layers, as used in the Transformer neural sequence model, are a powerful alternative to RNNs for moving information across and between sequences. While training these layers is generally fast and simple, due to parallelizability across the length of the sequence, incremental inference (where such paralleization is impossible) is often slow, due to the memory-bandwidth cost of repeatedly loading the large "keys" and "values" tensors. We propose a variant called multi-query attention, where the keys and values are shared across all of the different attention "heads", greatly reducing the size of these tensors and hence the memory bandwidth requirements of incremental decoding. We verify experimentally that the resulting models can indeed be much faster to decode, and incur only minor quality degradation from the baseline.},
+ primaryclass = {cs},
+ eprint = {1911.02150},
+ month = {November},
+ shorttitle = {Fast {{Transformer Decoding}}}
+}
+\stopverb}

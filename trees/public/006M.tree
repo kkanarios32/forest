@@ -1,0 +1,19 @@
+\tag{public}
+
+\date{2025-03-30}
+\import{base-macros}
+\taxon{Proposition}
+\p{
+Suppose #{ X\sim Q }, but we encode it using an optimal code for #{ P }. Then, the redundancy incurred is approximately equal to #{ D_{KL}(Q\parallel P) }.
+  }
+  \proof{
+  We know that the optimal codeword for #{ P } has lengths approximately equal to #{ \ell_{P}(x)\approx\log(1/p(x)) }, where #{ p } denotes the pmf of #{ P }. Whereas the optimal codeword for #{ Q } assigns lengths #{ \ell_{Q}(x)\approx\log(1/q(x)) }. Then, the redundancy is
+
+##{
+\begin{align*}
+ \mathcal{R}(Q,P)&=\mathbb{E}_{X\sim Q}[\ell_{P}(X)-\ell_{Q}(X)]\approx\mathbb{E}_{X\sim Q}[-\log(p(X))+\log(q(X))] \\
+&=\mathbb{E}_{X\sim Q}\left[\log\left(\frac{q(X)}{p(X)}\right)\right]=D_{\mathrm{KL}}(Q\parallel P)
+.\end{align*}
+}
+
+  }

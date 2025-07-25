@@ -1,0 +1,10 @@
+\tag{public}
+
+\date{2025-03-25}
+\taxon{Definition}
+\title{Set of all types}
+\p{
+For any #{ n\geq1 }, let #{ \mathcal{P}_{n} } denote the set of all possible types over the alphabet #{ \mathcal{X} } with denominator #{ n }. That is,
+
+##{ \mathcal{P}_{n}=\{\widehat{P}_{x^{n}}:x^{n}\in\mathcal{X}^{n}\}. }
+  }

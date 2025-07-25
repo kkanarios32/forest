@@ -1,0 +1,21 @@
+\title{Thursday, July 24, 2025}
+\date{2025-07-24T17:49:27Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{Craftax}{
+Today, I am officially trying to port [JaxGCRL](008N) to work on Craftax. However, this requires a few things I need to adapt. I will be listing them here.
+\ol{
+  \li{Craftax env will not output a goal. Need to either (1) make a wrapper that samples goals and appends to observation space (2) set goal outside of the environment.}
+  \li{TrajectoryIDWrapper depends on Brax wrapper to set 'steps' (i think?). Will need to inject own information in autoreset wrapper in order to indicate to TrajectoryIDWrapper that a new trajectory has begun.}
+  \li{Also going to have to figure out how to train the policy with LSTM/RNN which is not done in original JaxGCRL repo.}
+}
+}
+
+\section{Things that attempted to distract me}{
+\ol{
+  \li{Look into [EnvPool](https://github.com/sail-sg/envpool) at some point. Seems to be a C++ implementation of the multi-threaded env idea I wanted to implement.}
+}
+}

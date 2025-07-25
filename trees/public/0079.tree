@@ -1,0 +1,7 @@
+\tag{public}
+
+\date{2025-04-14}
+\import{base-macros}
+\taxon{Definition}
+\title{Riemannian Metric}
+\p{A choice of inner product #{\langle \cdot, \cdot \rangle_x} for each tangent space #{\mathrm{T}_x \mathcal{M}} defines a Riemannian metric on #{\mathcal{M}}.}

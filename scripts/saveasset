@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+# Prompt user for a name via dmenu
+name=$(dmenu -p "Screenshot name:" <&-)
+
+# Exit if no name is provided
+[ -z "$name" ] && dunstify "No name entered. Aborting." && exit 1
+
+# Create the figures directory if it doesn't exist
+IMGDIR=$FORESTDIR/assets/img
+mkdir -p $IMGDIR
+
+# Take the screenshot using maim and save it
+maim -s "${IMGDIR}/${name}.png" && dunstify "Saved to ${IMGDIR}/${name}.png"

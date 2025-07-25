@@ -1,9 +1,0 @@
-
-\date{2025-04-22}
-\taxon{Definition}
-\title{Multivariate Normal Distribution}
-\p{
-    The multivariate normal distribution is defined by the density function
-          ##{f(\mathbf{x}) = (2\pi)^{-k/2}\operatorname*{det}(\mathbf{\Sigma})^{-1/2}\ \exp\left(-\frac{1}{2}(\mathbf{x}-{\boldsymbol{\mu}})^{\mathrm{{T}}}{\boldsymbol{\Sigma}}^{-1}\big(\mathbf{x}-{\boldsymbol{\mu}}\big)\right)}
-    where #{ \mathbf{\Sigma} } is the covariance matrix ##{\mathbf{\Sigma}_{i,j} = \mathbb{E}[(X_i - \mu_i)(X_j - \mu_j)^{\top}]}and #{ \boldsymbol{\mu} } is the mean vector ##{\mathbf{\mu} = (\mathbb{E}[X_1], \ldots, \mathbb{E}[X_n])}.
-  }

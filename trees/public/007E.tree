@@ -1,0 +1,13 @@
+\tag{public}
+
+\date{2025-04-22}
+\import{base-macros}
+\taxon{Definition}
+\title{Typical Set for Continuous Random Variables}
+\p{
+For #{ \epsilon>0 } and any #{ n }, we define the typical set #{ A_{\epsilon}^{(n)} } with respect to #{ f(x) } as follows:
+
+##{ A_{\epsilon}^{(n)}=\left\{(x_{1},x_{2},\ldots,x_{n})\in S^{n}:\left|-\frac{1}{n}\log f(x_{1},x_{2},\ldots,x_{n})-h(X)\right|\leq\epsilon\right\},\tag{8.11} }
+
+where #{ f(x_{1},x_{2},\ldots,x_{n})=\prod_{i=1}^{n}f(x_{i}) }.
+}

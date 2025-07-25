@@ -1,0 +1,8 @@
+\tag{public}
+\date{2025-07-06T20:43:11Z}
+\title{Operations that preserve convexity}
+\p{The following operations preserve [convexity](004D)}
+\ul{
+    \li{\strong{Nonnegative weighted sums:} if #{f_1, \ldots, f_n} are convex and #{\alpha_1, \ldots, \alpha_n > 0} then we have #{f(\boldsymbol{x}) = \sum_{i = 1}^{n} \alpha_i f_i(\boldsymbol{x})} is convex}
+    \li{\strong{Pointwise maximum:} if #{f_1, \ldots, f_n} are convex then #{f(\boldsymbol{x}) = \max_i \{f_i(\boldsymbol{x})\}} is convex }
+  }

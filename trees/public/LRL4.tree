@@ -1,0 +1,8 @@
+\tag{public}
+\date{2025-07-09T16:25:54Z}
+\import{base-macros}
+\taxon{Definition}
+\title{[Flow Matching](lipmanFlowMatchingGenerative2023) Loss}
+\p{Given an initial noise distribution #{p}, a desired data distribution #{q}, a [probability density path](008B) #{p_t}, such that #{p_{0} = p} and #{p_{1} =q}, and a [vector field](008C) #{u_t} that [generates](008E) #{p_t}. We define the \em{flow matching loss} #{\mathcal{L}_{\mathrm{FM}}} as
+##{\mathcal{L}_{\mathrm{FM}}(\theta) \coloneqq \mathbb{E}_{t, p_t(x)} \|v_t(x; \theta) - u_t\|}
+}

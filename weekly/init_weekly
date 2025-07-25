@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+cd $FORESTDIR/weekly/
+export UV_PYTHON=python3.12
+DIR="$FORESTDIR/assets/weekly/$(date +%Y)/$(date +%V)"
+mkdir -p "$DIR"
+./coding "$DIR"
+./arbtt-plot "$DIR"
+
+garmindb-cli --all --download --import --analyze --latest
+./running "$DIR"
+./sleep "$DIR"
+
+TITLE="$(date +%Y)-W$(date +%V)"
+TREE="$FORESTDIR/trees/weeknotes/$TITLE.tree"
+./mkdailytree "$DIR" "$TREE" "$TITLE"
+echo "\\transclude{$TITLE}" >> $FORESTDIR/trees/weeknotes/007S.tree

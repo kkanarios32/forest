@@ -1,6 +1,0 @@
-
-\date{2025-03-23}
-\import{base-macros}
-\taxon{Definition}
-\title{Variable minimum rate}
-\p{The minimum rate of variable rate source coding is #{R_s \coloneqq \inf \{R \mid R \text{ is achievable}\}  }}

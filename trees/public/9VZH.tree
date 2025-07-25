@@ -1,0 +1,31 @@
+\date{2025-07-14T15:50:11Z}
+\import{base-macros}
+\tag{public}
+\title{Hyperparameter Rules ([CS336](0085))}
+\p{\strong{Rule 1}: #{d_{\text{ff}} = d_{\text{model}}}
+\ul{
+  \li{#{d_{\text{model}}} is the input dimension}
+  \li{#{d_{\text{ff}}} is the hidden dimension}
+}
+}
+\p{\strong{Exception 1}: in the case of [GLUs](K2N7), we recall that to account for extra parameters we scale #{\frac{2}{3}}. Therefore, #{d_{\text{ff}} = \frac{8}{3}d_{\text{model}}}.}
+\p{\strong{Exception 2}: In T5, they use #{d_{\text{ff}} = 64d_{\text{model}}}. The logic for this was that we could maximize the [MFU](99G8) by increasing matrix size. Ended up going back to small #{d_{\text{model}}}.}
+\p{\strong{Rule 2}: #{d_{\text{head}} = d_{\text{model}} / \text{num heads}}
+\ul{
+  \li{I believe the #{d_{\text{head}}} is the output dim of each head.}
+  \li{This just says the total output dim for #{n} heads is the same as if we did one head.}
+  \li{Means there is something important about splitting up the heads.}
+}
+}
+\p{\strong{Rule 3}: Aspect ratio = #{\frac{d_{\text{model}}}{n_{\text{layer}}} \approx 100-200}
+\ul{
+  \li{Pipeline dependent: if network speed is fast than parallelizing is easier and shallow networks are better.}
+  \li{If poor network speed then pipeline parallel might be more viable and deeper networks would be more parallelizable.}
+}
+}
+\p{\strong{Rule 4:} Vocab size
+\ul{
+  \li{For single language models, vocab size is typically #{30-50k}}
+  \li{For multi language models, vocab size is typically #{100-250k}}
+}
+}

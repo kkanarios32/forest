@@ -1,0 +1,206 @@
+\tag{public}
+
+\title{basic macros}
+\import{latex-preamble}
+
+\xmlns:html{http://www.w3.org/1999/xhtml}
+
+\def\nowrap[body]{\<html:span>[style]{white-space: nowrap}{\body}}
+
+\def\#[body]{
+  \startverb#\stopverb\body
+}
+\def\colblock[body]{
+ \<html:div>[class]{jms-indent-block}[style]{
+  margin-left: 1em;
+  margin-bottom: 1em;
+  border-left: 4px solid black;
+  padding-left: 12px;
+  background-color: whitesmoke;
+  }{\body}
+}
+
+\def\iblock[body]{
+ \<html:div>[class]{jms-indent-block}[style]{
+  margin-left: 1em;
+  margin-bottom: 1em;
+  border-left: 4px solid black;
+  padding-left: 12px;
+  background-color: whitesmoke;
+  }{\body}
+}
+
+\def\irow[body]{
+ \<html:div>[class]{jms-indent-row}[style]{min-height: 1em}{\body}
+}
+
+\def\mark[body]{\<html:mark>{\body}}
+
+\def\lsquare{\startverb[\stopverb}
+\def\rsquare{\startverb]\stopverb}
+\def\lparen{\startverb(\stopverb}
+\def\rparen{\startverb)\stopverb}
+
+\def\closed-open[x]{\lsquare\x\rparen}
+\def\open-closed[x]{\lparen\x\rsquare}
+
+\def\collapsed[t][body]{
+ \scope{
+    \put\transclude/toc{false}
+    \put\transclude/expanded{false}
+    \subtree{
+      \title{\t}
+      \body
+   }
+ }
+}
+
+\def\citek[refid]{\let\escape[x]{\x}\<html:span>[class]{link-reference}{[\escape{[\refid]}](\refid)}}
+
+\def\citet[tid][refid]{\let\escape[x]{\x}\<html:span>[class]{link-reference}[tid]{\tid}[refid]{\refid}{[\escape{[\refid, \tid]}](\refid)}}
+
+\def\note[name][body]{
+    \title{\name}
+    \body
+}
+
+
+\def\refnote[name][reference][body]{
+  \note{\name \citek{\reference}}{\body}
+}
+
+\def\refnotet[name][tid][reference][body]{%
+  \title{\name \citet{\tid}{\reference}}
+  \body
+}
+
+\def\refcard[taxa][name][reference][body]{\subtree{\taxon{\taxa}\refnote{\name}{\reference}{\body}}}
+
+\def\refcardt[taxa][name][tid][reference][body]{
+  \scope{
+    \put\transclude/toc{false}
+    \put\transclude/numbered{false}
+    \subtree{
+      \taxon{\taxa}\refnotet{\name}{\tid}{\reference}{\body}
+    }
+  }
+}
+
+\def\embed[src]{
+  \<html:embed>[type]{text/html}[src]{\src}{}
+}
+
+\def\table[body]{
+  \<html:table>{\body}
+}
+\def\tr[body]{
+  \<html:tr>{\body}
+}
+\def\td[body]{
+  \<html:td>{\body}
+}
+\def\th[body]{
+  \<html:th>{\body}
+}
+\def\hr{
+  \<html:hr>{}
+}
+
+\alloc\base/tex-preamble
+
+\def\latex[body]{
+  \tex{\latex-preamble}{\body}
+}
+
+\def\example[body]{%
+ \scope{
+   \put\transclude/toc{false}
+   \subtree{%
+     \taxon{Example}
+     \body
+   }
+ }
+}
+
+\def\proof[body]{%
+ \scope{
+   \put\transclude/toc{false}
+   \subtree{%
+     \taxon{Proof}
+     \body
+   }
+ }
+
+}
+
+\def\md[body]{\<html:div>[class]{markdownit grace-loading}{\body}}
+
+\def\block[tit][body]{%
+    \subtree{%
+      \title{\tit}
+      \body
+    }
+}
+
+\def\mdblock[t][body]{\block{\t}{\md{\body}}}
+
+\def\remark[body]{%
+    \put\transclude/toc{false}
+    \subtree{%
+      \taxon{Remark}
+      \body
+    }
+}
+
+\def\claim[body]{%
+    \put\transclude/toc{false}
+    \subtree{%
+      \taxon{Claim}
+      \body
+    }
+}
+
+\def\question[body]{%
+    \put\transclude/toc{false}
+    \subtree{%
+      \taxon{Question}
+      \body
+    }
+}
+
+\def\answer[body]{%
+    \put\transclude/toc{false}
+    \subtree{%
+      \taxon{Answer}
+      \body
+    }
+}
+
+\def\problem[body]{%
+    \put\transclude/toc{false}
+    \subtree{%
+      \taxon{Problem}
+      \body
+    }
+}
+
+\def\section[tit][body]{
+  \subtree{
+    \title{\tit}
+    \body
+  }
+}
+
+\def\card[taxa][name][body]{\subtree{\taxon{\taxa}\note{\name}{\body}}}
+
+\def\solution[body]{
+ \scope{
+   \put\transclude/toc{false}
+   \subtree{
+     \taxon{Solution}
+     \body
+   }
+ }
+}
+
+\def\citek[uid]{\let\escape[x]{\x}[\escape{[\uid]}](\uid)}

@@ -1,0 +1,9 @@
+\tag{public}
+
+\date{2025-04-01}
+\import{base-macros}
+\taxon{Definition}
+\title{Information channel capacity}
+\p{The information channel capacity  of a [DMC](006T) #{(\mathcal{X}, \mathcal{Y}, P_{Y|X})} is defined as
+##{C(P_{Y|X}) = \max_{P_X}I(X; Y)}
+}

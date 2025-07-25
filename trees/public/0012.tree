@@ -1,0 +1,405 @@
+\tag{public}
+
+\date{2024-11-24}
+\import{base-macros}
+\title{Notebook: [[suttonReinforcementLearningIntroduction2018]]}
+\author{kellenkanarios}
+\tag{rl}
+\tag{note}
+\tag{top}
+
+\p{This won't really be notes, my lab has begun taking a few undergrads who are not familiar with RL. I will be onboarding them by going through [[suttonReinforcementLearningIntroduction2018]]. Specifically, I will be following the [[richardsutton]] flavor of RL through his [CMPUT 609](https://drive.google.com/drive/folders/0B3w765rOKuKANmxNbXdwaE1YU1k?resourcekey=0-JZz-noRuJgogNsg1ljgV8w) course. You know what the say: the best way to learn is to teach! Here, I will try to solve all the problems as we go and prepare some questions for the undergrads for when we meet. Additionally, I will document my foray into more advanced exploration of topics introduced in the textbook.} 
+
+\section{Multi-armed Bandits}{
+\refcardt{Exercise}{}{2.1}{suttonReinforcementLearningIntroduction2018}{
+  In the case of two actions, (assuming that #{Q_*(a_1) > Q_*(a_2)}) the probability of the greedy action being selected is #{1 - \epsilon} or 0.5.
+}
+\refcardt{Exercise}{}{2.2}{suttonReinforcementLearningIntroduction2018}{
+  In the long run #{\epsilon = 0.01}, would achieve the highest reward. The expected reward can be written as
+##{
+    \begin{align*}
+      R^* = \max_{a} q^*(a) + \frac{\epsilon}{n}\sum_{i \neq a}^{n} q^*(i)
+    \end{align*}
+  }
+  The exception is that if #{\epsilon = 0}, then there are no guarantees. For example, if your initialization is zeros. Then you could have an empirical average of a suboptimal arm that is always positive and you would never deviate. Thus, to ensure you converge to the true optimal arm you need #{\epsilon > 0}.
+}
+%TODO: Sutton Exercise 2.3
+%\refcardt{Exercise}{}{2.3}{suttonReinforcementLearningIntroduction2018}{
+%}
+\refcardt{Exercise}{}{2.4}{suttonReinforcementLearningIntroduction2018}{
+  Following the steps in 2.6,
+  ##{
+      \begin{align*}
+        Q_{n + 1} &= Q_n + \alpha_n [R_n - Q_n] \\
+        &= Q_{n - 1} + \alpha_{n - 1}[R_{n - 1} - Q_{n - 1}] + \alpha_n \Big[R_n - (Q_{n - 1} + \alpha_{n - 1}[R_{n - 1} - Q_{n - 1}])\Big] \\
+        &\vdots \\
+        & = \left(\prod_{i = 1}^{n} (1 - \alpha_{i})\right) Q_1 + \sum_{i = 1}^{n} \alpha_n \left(\prod_{i = 1}^{n} (1 - \alpha_{n - i})\right)R_i
+      \end{align*}
+    }
+}
+\refcardt{Exercise}{}{2.6}{suttonReinforcementLearningIntroduction2018}{
+  Since all of the arms in the testbed have distributions with support less than 5, in the beginning the unpulled arm's optimistic estimates will be higher than the empirical estimates of the previously pulled arms. Therefore, in the early stages all of the arms will be pulled in a round robin fashion, and assuming deterministic rewards the optimal arm will keep being pulled until it falls below the other optimistic values.
+}
+
+\refcardt{Exercise}{}{2.8}{suttonReinforcementLearningIntroduction2018}{
+  Since there are 10 arms (presumably with the same initialization), the UCB bonus will enforce that the first 10 pulls are round robin (uniform) pulling of each of the 10 arms. Then on the 11th step each will have the same UCB bonus term but the one with the highest empirical reward will be pulled, leading to a spike. It then drops in subsequent steps because the UCB bonus of that arm will decrease and other (possibly less optimal) arms are pulled in subsequent steps.
+}
+\refcardt{Exercise}{}{2.9}{suttonReinforcementLearningIntroduction2018}{
+  We can just expand the denominator as
+##{
+    \begin{align*}
+      \Pr\{A_t = a\} &= \frac{e^{H_t(a)}}{e^{H_t(a)} + e^{H_t(b)}} \\
+      &= \frac{1}{1 + e^{\frac{H_t(b)}{H_t(a)}}} \\
+      &= \frac{1}{1 + e^{-\frac{H_t(a)}{H_t(b)}}} \\
+    \end{align*}
+  }
+}
+\refcardt{Exercise}{}{2.10}{suttonReinforcementLearningIntroduction2018}{
+  In case 1, the best you can hope to achieve is #{\max_{a} \mathbb{E} [R(a)]}. In this case, we have
+##{
+    \begin{align*}
+      \mathbb{E}[R(1)] &= 0.5 \cdot 10 + 0.5 \cdot 90 = 50, \\
+      \mathbb{E}[R(2)] &= 0.5 \cdot 20 + 0.5 \cdot 80 = 50
+    \end{align*}
+  }
+  Therefore, the best we can hope to achieve is #{50}. If we are given what case we are in, then we can achieve
+##{
+    \begin{align*}
+      R^* &= 0.5 \cdot \max_{a}\mathbb{E}[R(a) \mid x = 1] +
+      0.5 \cdot \max_{a}\mathbb{E}[R(a) \mid x = 2] \\
+      &= 0.5 \cdot 20 + 0.5 \cdot 90 \\
+      &= 55
+    \end{align*}
+  }
+}
+}
+
+\section{Markov Decision Processes}{
+\refcardt{Exercise}{}{3.3}{suttonReinforcementLearningIntroduction2018}{
+  I think you draw the line at where you can already execute the necessary behavior to get from one state to another. This is eerily familiar to the line of work known as hierarchical reinforcement learning, where you gradually learn higher level of abstraction by executing subpolicies.
+}
+\refcardt{Exercise}{}{3.5}{suttonReinforcementLearningIntroduction2018}{
+  We need to add the notion of a terminal state. This can be done by just adding some #{t} to the state space #{S}. Then
+  ##{
+      \begin{cases}
+        p(t, 0 \mid s, a) = 1, &\text{ if } s = t\\
+        \sum_{s^{\prime}\in\mathcal{S}}\sum_{r\in\mathcal{R}}p(s^{\prime},r|s,a)=1,\mathrm{~for~all~}s\in\mathcal{S},a\in\mathcal{A}(s), &\text{ if } s \neq t
+      \end{cases}
+}
+I think the idea is just that when you hit a terminal state you no longer can reach other states.
+  }
+\refcardt{Exercise}{}{3.6}{suttonReinforcementLearningIntroduction2018}{
+  Let #{T} denote the length of the episode. Then the return #{G_t} would be 
+##{
+  \begin{align*}
+G_t &= R_{t+1} + \gamma R_{t + 2} + \cdots + \gamma^{T - {t + 1}} R_T = - \gamma^{T - {t + 1}}
+  \end{align*}
+}
+}
+\refcardt{Exercise}{}{3.7}{suttonReinforcementLearningIntroduction2018}{
+  You have not effectively communicated the task. The agent has no incentive to solve the maze as fast as possible. This means that no matter the duration it took to solve the task the agent would receive the same reward. To fix this, you can give -1 reward at each time step, or use a discount factor to capture the time.
+}
+
+\refcardt{Exercise}{}{3.8}{suttonReinforcementLearningIntroduction2018}{
+  Due to the recursive relationship, we will start from the back
+##{
+    \begin{align*}
+      G_5 &= 0 \\
+      G_4 &= R_{5} + \gamma G_5 = 2 \\
+      G_3 &= R_{4} + \gamma G_4 = 4 \\
+      G_2 &= R_{3} + \gamma G_3 = 8 \\
+      G_1 &= R_{2} + \gamma G_2 = 6 \\
+      G_0 &= R_{1} + \gamma G_1 = 2
+    \end{align*}
+  }
+}
+
+\refcardt{Exercise}{}{3.9}{suttonReinforcementLearningIntroduction2018}{
+From the definition,
+##{
+\begin{align*}
+  G_0 &= R_{1} + \gamma R_{2} + \gamma^2 R_{3} + \cdots \\
+&= 2 + \sum_{i = 1}^{\infty} \gamma^{i} R_{i} \\
+&= 2 + \gamma \sum_{i = 0}^{\infty} \gamma^{i} R_{i + 2} \\
+&= 2 + \frac{7 \gamma}{1 - \gamma} \\
+&= 65
+\end{align*}
+}
+and 
+##{
+\begin{align*}
+  G_1 &= R_{2} + \gamma R_{2} + \gamma^2 R_{3} + \cdots \\
+&= 7 + \sum_{i = 1}^{\infty} \gamma^{i} R_{i} \\
+&= 7 + \gamma \sum_{i = 0}^{\infty} \gamma^{i} R_{i + 3} \\
+&= 7 + \frac{7 \gamma}{1 - \gamma} \\
+&= 70
+\end{align*}
+}
+  }
+
+\refcardt{Exercise}{}{3.11}{suttonReinforcementLearningIntroduction2018}{
+  By just expanding,
+##{
+    \begin{align*}
+      \mathbb{E}[R_{t + 1} \mid S_{t} = s] = \sum_{a} \pi(a \mid s) \sum_{s'} \sum_{r} p(s', r \mid s, a) \cdot r
+    \end{align*}
+  }
+}
+\refcardt{Exercise}{}{3.12}{suttonReinforcementLearningIntroduction2018}{
+  ##{
+      \begin{align*}
+        v_{\pi}(s) &= \sum_{a} \pi(a \mid s) q_{\pi}(s, a)
+      \end{align*}
+    }
+}
+\refcardt{Exercise}{}{3.12}{suttonReinforcementLearningIntroduction2018}{
+##{
+\begin{align*}
+  q_{\pi}(s, a) = \sum_{s', r} p(s', r \mid s, a) \big(r + \gamma v_{\pi}(s')\big)
+\end{align*}
+  }
+}
+
+\refcardt{Exercise}{}{3.15}{suttonReinforcementLearningIntroduction2018}{
+  Recall that 
+##{
+    \begin{align*}
+      v_{\pi}(s) = \mathbb{E}_{\pi} [\sum_{k = 0}^{\infty} R_{t + k + 1} \mid S_t = s]
+    \end{align*}
+  }
+  Adding a constant #{c}, we get
+##{
+    \begin{align*}
+      v_{\pi}'(s) &= \mathbb{E}_{\pi} [\sum_{k = 0}^{\infty} \gamma^{k} R_{t + k + 1} + c \mid S_t = s] \\
+      &= \mathbb{E}_{\pi} [\sum_{k = 0}^{\infty} R_{t + k + 1}\mid S_t = s] +
+\sum_{k = 0}^{\infty} \gamma^{k} c \\
+      &= v_{\pi}(s) + \frac{c}{1 - \gamma}
+    \end{align*}
+  }
+  Therefore, #{v_c = \frac{c}{1 - \gamma}}.
+}
+\refcardt{Exercise}{}{3.16}{suttonReinforcementLearningIntroduction2018}{
+  In the episodic case, this would not be the same. In the maze running example, #{v_c} would be larger for longer episodes. This would then incentivize the agent to actually take LONGER, where as we want the agent to solve the maze as fast as possible.
+}
+\refcardt{Exercise}{}{3.18}{suttonReinforcementLearningIntroduction2018}{
+  This is similar to Exercise 3.12. Namely, 
+##{v_{\pi}(s) = \mathbb{E}_{\pi}[q_{\pi}(s, a)] = \sum_{a} \pi(a \mid s) q_{\pi}(s, a)}
+}
+}
+
+\section{Dynamic Programming}{
+  \remark{\strong{Value Iteration as Linear Algebra:} During my brief stint at [IPAM](https://www.ipam.ucla.edu/), I spent a lot of time focused on [solving large systems for discretized PDEs](kanariosParallelAMG2023). From this, I learned about iterative methods, such as Gauss-Jacobi and Gauss-Seidel. Interestingly, these methods can be used to interpret some of RL's most fundamental algorithms. If we define the following matrices,
+##{
+  \begin{align*}
+        R &= \begin{bmatrix}
+        \mathbb{E}[r(s = 1)]\\
+        \vdots \\
+        \mathbb{E}[r(s = n)]
+        \end{bmatrix}, \quad P = \begin{bmatrix}
+        P_{\pi}(s'=1 | s=1) & \cdots & P_{\pi}(s'=n | s=1) \\
+        \vdots & \ddots & \vdots \\
+        P_{\pi}(s'=1 | s=n) & \cdots & P_{\pi}(s'=n | s=n)
+        \end{bmatrix}, \\  
+        V_k &= \begin{bmatrix}
+        V_k(s = 1)\\
+        \vdots \\
+        V_k(s = n)
+        \end{bmatrix}
+  \end{align*}
+      }
+      Then we can write the value function #{V_{\pi}} as the solution to the linear system
+      ##{
+          V_{\pi} = R + PV_{\pi} \iff V_{\pi} = (1 - P)^{-1} R
+        }
+    This is just inverting a matrix! Updating one state with the canonical update
+##{
+    \begin{align*}
+      v_{k + 1}(s) = \sum_{a}\pi(a|s)\sum_{s^{\prime},r}p(s^{\prime},r\,|\,s,a)\Big[r+\gamma v_{k}(s^{\prime})\Big]
+    \end{align*}
+}
+Is actually just one iteration of Gauss-Seidel!
+    }
+    \remark{(Number of updates as pseudo discount factor). }
+  \refcardt{Exercise}{}{4.1}{suttonReinforcementLearningIntroduction2018}{
+    We have that
+##{
+      \begin{align*}
+        q_{\pi}(11, \mathrm{down}) &= -1,
+      \end{align*}
+    }
+    where there is no recursion because the episode ends.
+    Next,
+##{
+      \begin{align*}
+        q_{\pi}(7, \mathrm{down}) &= -1 + v(11) \\
+        &= -1 - 14 \\ 
+        &= -15
+      \end{align*}
+    }
+  }
+  \refcardt{Exercise}{}{4.3}{suttonReinforcementLearningIntroduction2018}{
+  }
+
+}
+
+
+\scope{
+  \put\transclude/toc{false}
+  \put\transclude/numbered{false}
+\section{Review Question}{
+  \problem{Review the methods discussed in the first part of the book. What are their strengths and weaknesses? When should they be used?}
+  \nowrap{
+    \solution{
+      \table{
+        \tr{
+          \td{}
+          \td{\strong{Strength}}
+          \td{\strong{Weakness}}
+          \td{\strong{Use case}}
+        }
+        \tr{
+          \td{\strong{Bandits}}
+          \td{Simplest case. Can isolate exploration problem.}
+          \td{No credit assignment. Action only effect next timestep.}
+          \td{Clinical trials. Things without temporally extended outcomes.}
+        }
+        \tr{
+          \td{\strong{Dynamic Programming}}
+          \td{Exact solution.}
+          \td{Complexity blows up with state and action space. Model-based.}
+          \td{Tabular MDPs.}
+        }
+        \tr{
+          \td{\strong{Monte Carlo}}
+          \td{Unbiased estimator. Model-free.}
+          \td{Extremely high variance. Must wait till end of episode.}
+          \td{When interacting with environment is inexpensive, episode length is short.}
+        }
+        \tr{
+          \td{\strong{TD methods}}
+          \td{Model-free. Online.}
+          \td{Biased estimator.}
+          \td{Environment interaction is cheap but also episode length is long or continuing.}
+        }
+        \tr{
+          \td{\strong{N step}}
+          \td{Balance bias-variance tradeoff.}
+          \td{Must choose #{n}.}
+          \td{Lower variance continuing environments?}
+        }
+        \tr{
+          \td{\strong{Dyna}}
+          \td{Sample efficiency.}
+          \td{Model-based.}
+          \td{When interacting with environment is costly i.e. driving.}
+        }
+      }
+    }
+  }
+}
+}
+
+\section{Planning and Learning with Tabular Methods}{
+\refcardt{Exercise}{}{8.1}{suttonReinforcementLearningIntroduction2018}{
+  If you pick #{n} large enough, then the "first pass" would be just as good. This means that you will be able to update the #{Q}-values of every #{(s,a)} pair you encountered. However, with Dyna you are updating your #{Q}-value based on updated #{Q}-values, meaning that you are no longer limited to the #{n}-step trajectory encountered. Thus, I do not think that #{n}-step methods can match Dyna with a perfect world model.
+}
+\refcardt{Exercise}{}{8.5}{suttonReinforcementLearningIntroduction2018}{
+  You could modify the algorithm by maintaining an empirical distribution for states and rewards in your model instead of the exact deterministic transition. To handle changing environments, you could then weight the updates to the empirical distribution to value the more recent entries higher i.e. 
+  ##{\hat{R}_{t + 1}(S,A) = \lambda \hat{R}_{t}(S, A) + (1 - \lambda)R_{t + 1}(S, A)}
+}
+\refcardt{Exercise}{}{8.6}{suttonReinforcementLearningIntroduction2018}{
+  This would strengthen the case for sample updates because the samples would most likely concentrate around the higher probability states. Since these states are much more likely to occur, the computed #{Q}-values will likely end up very similar without the extra computation required by the expected update.
+}
+
+\refcardt{Exercise}{}{8.7}{suttonReinforcementLearningIntroduction2018}{
+
+}
+}
+
+\section{On-policy Prediction with Approximation}{
+\p{
+In my opinion, the most important part of this chapter is now that when we update say a #{Q} function for a specific state action pair #{(s,a)}, then this update can affect the value of the #{Q(s', a')} due to the reuse of the internal parameters.
+  }
+
+\refcardt{exercise}{}{9.1}{suttonReinforcementLearningIntroduction2018}{
+  \p{Show that tabular methods are a special case of linear function approximation. What would the feature vectors be?}
+}
+
+\solution{
+\p{As a linear function approximation method, we have two quantities #{\boldsymbol{w}} and #{\boldsymbol{x}(s)}. We make the update
+##{w_{t + 1} = w_{t} + \alpha(r_t + \gamma w_{t}^{\top} x_{t+1} - w_t^{\top} x_t) x_t}
+In the tabular setting, we just assume that we have the capacity to represent every possible state. This means that #{x(s) \in \mathbb{R}^{|S|}}. Therefore, if we define the features as #{x : s_i \mapsto \boldsymbol{e}_i} then we can recover policy evaluation by taking,
+##{r_i = \mathbb{E}_{a \sim \pi, s \sim p}[r(s_i)], \quad w_i = v_{\pi}(s_i)}
+}
+Substituting, we get 
+##{
+##{w_{t + 1} = w_{t} + \alpha(\mathbb{E}_{a \sim \pi, s \sim p}[r(s_i)] + v(s_{t + 1}) - v(s_{t})) \cdot \boldsymbol{e}_i}
+}
+Since #{\boldsymbol{w}} is our vector of values, updating the #{i}th entry is exactly performing exactly one update to #{v_{\pi}(s_i)} in the tabular setting.
+}
+
+\refcardt{exercise}{}{9.2}{suttonReinforcementLearningIntroduction2018}{
+  \p{Why does (9.17) define #{(n + 1)^k} distinct features for dimension k? }
+}
+\solution{
+  \p{For each #{s_j}, there are #{n + 1} options for #{c_{i, j}}. Since there are #{k}, #{s_{j}}'s, there are #{(n + 1)^k} total possible features for #{x_i}.}
+}
+
+
+\refcardt{exercise}{}{9.3}{suttonReinforcementLearningIntroduction2018}{
+\p{What #{n} and #{c_{i,j}} produce the feature vectors ##{\mathbf{x}(s)=(1,s_{1},s_{2},s_{1}s_{2},s_{1}^{2},s_{2}^{2},s_{1}^{2}s_{2}^{2},s_{1}s_{2}^{2},s_{1}^{2}s_{2}^{2})^{\top}?}
+}
+}
+\solution{
+  \p{#{n = 2} and #{c_{ij}} as 
+##{\boldsymbol{c_0} = [0, 0], \quad
+  \boldsymbol{c_1} = [1, 0] \\
+  \boldsymbol{c_2} = [0, 1], \quad
+  \boldsymbol{c_3} = [1, 1] \\
+  \boldsymbol{c_4} = [2, 0], \quad
+  \boldsymbol{c_5} = [0, 2] \\
+  \boldsymbol{c_6} = [2, 2], \quad
+  \boldsymbol{c_7} = [1, 2], \quad
+  \boldsymbol{c_8} = [2, 2]
+  }
+  }
+}
+
+\question{
+  \ol{
+    \li{In section 9.5.2, what do they mean when they say you can select #{n} so all the fourier features can be used?
+    \ol{
+        \li{Pick #{n} so that #{(n + 1)^k < mk^2}.}
+        \li{Pick #{n} so that #{(n + 1)^k} is reasonable.}
+      }
+    }
+    \p{
+    In the tabular case, I think (a) is correct. My initial understanding of state representation is as a representation learning i.e. compression type objective. If we assume that #{s_i \in [m]}, then we do not gain anything in the tabular setting if our value function vector is the same size as the underlying transition kernel. When in the continuous state space regime i.e. #{s_i \in [0,1]}, there is no amount of features that would overfit the transition kernel. Therefore, it is just about trying to learn as much as possible about the underlying relations of the state dimensions.
+    }
+    \p{
+    In the #{2}-dimensional case, the feature vector #{c_i = [1,1]} would provide information on how #{s_1} and #{s_2} relate not just their specific values. You want the learning algorithm to understand the relationships, so that it can make better use of the internal parameters when learning something like a #{Q} function. This is basically just SVD but instead of classification you are learning a #{Q} function. The compression  
+    }
+  }
+  }
+
+\question{
+  \ol{
+    \li{In Figure 9.5, why do fourier features outperform polynomial features?
+    \ol{
+        \li{The fourier features got lucky on the seeds (lol).}
+        \li{The choice of #{\boldsymbol{c}} is not specified. A good choice can provide improvement specific to the problem?}
+        \li{Polynomial features range is very large. Can suffer from blowup or vanishing of features.}
+      }
+    }
+    One of the advantages of fourier features mentioned previously is the ability to select which features to serve as your basis. However, for this setup I assume they just use all of the fourier features. This likely means it is more of an issue with the polynomial features and (c). If you have a large polynomial then even relative similar states #{s_1 = 1.1}, #{s_2 = 0.9}, #{\ldots} can blow up or vanish making them likely more unstable when using gradient-based methods.
+  }
+  }
+
+\refcardt{exercise}{}{9.4}{suttonReinforcementLearningIntroduction2018}{
+  \p{
+    You could do anisotropic (big word for asymmetric) tile partitioning. If we consider the two state dimensions as (x,y) coordinates and suppose that we want to only generalize across the #{y}-direction i.e. we want states with the same #{x} coordinate to have similar values then we would tile with long thin tiles. Therefore, states with the same #{x} coordinate would lie in the same vertical tile and if the tiles are very thin any change in #{x}-coordinate would lie in disjoint tiles.
+  }
+}
+
+\remark{I think that RBF as a continuous generalization coarse-coding is a nice intuition I want to remember here. Essentially, you just weight a state by how close it is to the center of the receptive field. This weighting is done via a Gaussian kernel, which I believe is arbitrary and can be any distance measure of choice.}
+}

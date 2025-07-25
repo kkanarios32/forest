@@ -1,0 +1,15 @@
+\import{base-macros}
+\date{2025-07-03T23:39:23Z}
+\title{Memory Accounting}
+\tag{public}
+\p{\strong{Tensor Memory}:
+Tensors are stored as a \em{floating point number}. Memory is determined by (i) number of values in tensor and (ii) data type of each value.
+}
+\transclude{DEQV}
+\p{\strong{Training Implications}
+\ol{
+  \li{\code{float32} training works but requires lots of memory}
+  \li{Using [lower precision data types](DEQV) allows you to train larger models due to lower memory requirements, but can cause instability}
+  \li{To optimize this tradeoff, use \em{mixed-precision training}.}
+}
+}

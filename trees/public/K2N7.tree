@@ -1,0 +1,15 @@
+\date{2025-07-14T15:07:55Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Gated Linear Unit (GLU)}
+\p{A \em{gated linear unit} is an activation function combined with an elementwise multiplication i.e. 
+\ul{
+  \li{#{\mathrm{ReGLU} = \mathrm{ReLU}(\mathbf{x}) \otimes \mathbf{V} \mathbf{x},}}
+  \li{#{\mathrm{SwiGLU} = \mathrm{Swish}(\mathbf{x}) \otimes \mathbf{V} \mathbf{x},}}
+}
+where #{\mathrm{ReLU}} is the [ReLU](BEA2) activation and #{\mathrm{Swish}} is the [Swish](OZD8) activation respectively.
+}
+\remark{
+The matrix #{\mathbf{V}} introduces additional learnable parameters. Therefore, an architecture that uses gating typically reduces their other parameters by a factor of #{\frac{2}{3}}.
+}

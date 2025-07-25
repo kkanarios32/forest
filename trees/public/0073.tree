@@ -1,0 +1,13 @@
+\tag{public}
+
+\date{2025-04-14}
+\import{base-macros}
+\taxon{Definition}
+\title{Smooth Manifold}
+\p{
+We say #{ \mathcal{M}\subseteq\mathbb{R}^{n} } is an embedded smooth submanifold of codimension #{ k } if there exists a [smooth function](003K) #{ g:\mathbb{R}^{n}\mapsto\mathbb{R}^{k} }, such that
+
+##{ \mathcal{M}\equiv\left\{\boldsymbol{x}\in\mathbb{R}^{n}\mid g(\boldsymbol{x})=\boldsymbol{0}\right\}, }
+
+##{ \mathrm{D}g(\boldsymbol{x}):\mathbb{R}^{n}\mapsto\mathbb{R}^{k}\text{ has rank }k,\ \forall\boldsymbol{x}\in\mathcal{M}. }
+}

@@ -1,0 +1,10 @@
+\date{2025-07-14T14:40:23Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Rectified Linear Unit (ReLU)}
+\p{The \em{rectified linear unit}(ReLU) is defined as
+##{\mathrm{ReLU} : \mathbb{R}^d \to \mathbb{R}^d, \quad \mathbf{x} \mapsto \max(0, \mathbf{x}),}
+where the #{\max} is done elementwise i.e. #{\mathrm{ReLU}(\mathbf{x})_i = \max(0, x_i)}
+This provides "nice" gradients, making it common when training neural networks.
+}

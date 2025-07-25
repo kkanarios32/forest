@@ -1,0 +1,11 @@
+\date{2025-07-14T15:35:38Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Rotation matrix}
+\p{A \em{rotation matrix} is a linear transformation that rotates a vector #{v} by an angle #{\theta} via the transformation
+##{\mathbf{R} = \begin{bmatrix} \cos \theta & - \sin \theta \\ \sin \theta & \cos \theta \end{bmatrix} }
+}
+\p{The transformation can be easily understood by noting where it maps the basis vectors. Namely,
+##{\mathbf{R} \mathbf{e}_1 = \begin{bmatrix} \cos \theta \\ \sin \theta \end{bmatrix}, \quad \mathbf{R} \mathbf{e}_2 = \begin{bmatrix} -\sin \theta \\ \cos \theta \end{bmatrix}}
+}

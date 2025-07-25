@@ -1,0 +1,53 @@
+\date{2025-07-03T15:02:23Z}
+
+\def\rel/root/todo-or-private{kellenkanarios.query.root.todo-or-private}
+
+\execute\datalog{
+   \rel/root/todo-or-private ?X -: {\rel/has-tag ?X '{todo}}
+}
+\execute\datalog{
+   \rel/root/todo-or-private ?X -: {\rel/has-tag ?X '{private}}
+}
+
+\def\rel/root/public-trees{kellenkanarios.query.root.public-trees}
+
+\execute\datalog{
+   \rel/root/public-trees ?X -: 
+   {\rel/has-tag ?Y '{public}}
+   {\rel/transcludes/reflexive-transitive-closure ?Y ?X}
+}
+
+\def\rel/root/public-refs{kellenkanarios.query.root.public-refs}
+
+\execute\datalog{
+   \rel/root/public-refs ?X -: 
+   {\rel/root/public-trees ?Y}
+   {\rel/is-reference ?X}
+   {\rel/links-to ?Y ?X}
+}
+
+\execute\datalog{
+   \rel/root/public-refs ?X -: 
+   {\rel/root/public-trees ?Y}
+   {\rel/is-reference ?X}
+   {\rel/transcludes/transitive-closure ?Y ?X}
+}
+
+\def\rel/root/public{kellenkanarios.query.root.public}
+
+\execute\datalog{
+   \rel/root/public ?X -: 
+   {\rel/root/public-trees ?X}
+}
+
+\execute\datalog{
+   \rel/root/public ?X -: 
+   {\rel/root/public-refs ?X}
+}
+
+\syndicate-query-as-json-blob{my-public-forest}{
+\datalog{
+   ?X -: 
+   {\rel/root/public ?X}
+ }
+}

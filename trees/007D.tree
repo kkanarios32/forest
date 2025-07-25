@@ -1,9 +1,0 @@
-
-\date{2025-04-22}
-\import{base-macros}
-\taxon{Definition}
-\title{Volume of set}
-\p{
- The volume Vol(#{ A }) of a set #{ A\subset\mathcal{R}^{n} } is defined as
-##{ \text{Vol}(A)=\int_{A}dx_{1}\,dx_{2}\,\cdots\,dx_{n}. } 
-}

@@ -1,0 +1,15 @@
+\tag{public}
+\tag{todo}
+\import{base-macros}
+\date{2025-07-01T14:50:53Z}
+\title{Notebook: [Stanford](stanford) [CS336](https://stanford-cs336.github.io/spring2025/index.html#schedule)}
+\author{kellenkanarios}
+\tag{note}
+\tag{top}
+\put\transclude/expanded{false}
+
+\p{Formal notebook for my journey in [Stanford's](stanford) [CS336](https://stanford-cs336.github.io/spring2025/index.html#schedule) as part of my [LLM](003W) self-study endeavors.}
+
+\transclude{0086}
+\transclude{DEQS}
+\transclude{ESQ3}

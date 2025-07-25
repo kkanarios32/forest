@@ -1,0 +1,12 @@
+\tag{public}
+\import{base-macros}
+\date{2025-07-01T15:02:29Z}
+\title{[CS336](0085) Lecture 1}
+\author{kellenkanarios}
+\p{[[007U]] (2/66)}
+
+\p{First they give a brief outline of the course (provided below) along with some of the challenges and problem definitions for each of the sections}
+
+
+\transclude{DEQT}
+\transclude{0087}

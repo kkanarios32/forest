@@ -1,0 +1,44 @@
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\title{Weekly Review 2025-W29}
+
+\section{The Quantified Me}{
+  \p{This section is in large part to gaslight myself on the internet into being more productive but with the information provided let us introspect on what happened this week. }
+  \p{\strong{Coding:} I will now proceed to justify and provide excuses on what went wrong this week. On Monday, we see that I spent a large part of my time on this forest. However, this was actually writing up my notes on [lecture 3](ESQ3) of [CS336](0085). My goal of roughly 1ish hour of miscellaneous learning a day snowballed into what was seemingly #{4} hours of random activity, where I spiraled into [MQA](W4YP). I am thinking of putting this self-study on the backburner in favor of focusing on [three easy pieces](0084) until the semester starts. I intend to take two courses on what is essentially LLMs systems this fall (very excited), so I might as well not double dip now. I am thinking about using projects 1 and 2 of this course to develop my own working LLM implementation. I can then use it as reference to try out and learn any new optimization tricks like [MQA](W4YP) or [[TJLA]], etc. 
+  \p{These plots also finally confirm what I noticed as a general trend in my working life. Namely, I spend a lot of time working Monday-Thu because of my weekly meetings with my advisor on Thursday. However, I do not properly make use of the rest of the week. This is a trend I hope to improve upon in future entries.}
+  }
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{/home/kellen/Projects/forest/assets/weekly/2025/29/waka.png}}{}
+  \figcaption{Wakatime stats for week 2025-W29.}
+}
+  \p{\strong{Rest of (computer) life:} This week I did a pretty good job staying on task (at least on my computer). Very little brainrot was consumed and a decent amount of work was accomplished. Tune in next week to see if we can keep that up!
+  }
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{/home/kellen/Projects/forest/assets/weekly/2025/29/arbtt.png}}{}
+  \figcaption{Arbtt-stats for week 2025-W29.}
+}
+}
+\section{VO2 Max(ing)}{
+  \ul{
+    \li{\strong{Current VO2 Max}: 53}
+    \li{\strong{Weekly Mileage}: 17.2}
+  }
+  \p{Unfortunately, I missed one run this week. The same one I miss every week: Sunday. I will still blame the shin splints, but this may be the last week I can do so (finally!). I am still maintaining a pretty good SPM, but I need to get some more lower HR runs in. From here on out, we should not dip below 20 miles a week. I have some travel coming up at [RLC](rlc), but I should be able to still run while I am there.}
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{/home/kellen/Projects/forest/assets/weekly/2025/29/running.png}}{}
+  \figcaption{Running stats for this week.}
+}
+}
+\section{Goals for next week}{
+\p{This is another section, where I gaslight myself into some accountability on the internet.}
+\p{For my imaginary audience, you should have a lot to look forward to in the next week. Namely, 
+\ol{
+\li{Look forward to an in-depth blog on [flow matching](lipmanFlowMatchingGenerative2023) to accompany my [slides](FMTD).}
+\li{I also should have two new [research bible](005G) entries one on the [forward backward representation](touatiLearningOneRepresentation2021) and the other on [hierarchical rl](nachumNearOptimalRepresentationLearning2019).}
+\li{For my [OS adventure](0084), you should see me (hopefully) get through memory virtualization.
+However, I should definitely get to at least the TLB. Unlikely, I will continue to do all the exercises (because I spend more time writing them down than doing them). I might do one or two of the projects, but they are quite intimidating TBD.}
+}
+Check back in next week to see if I am productive! Also TBD if in the future I will put research-related stuff in this review.
+}
+}

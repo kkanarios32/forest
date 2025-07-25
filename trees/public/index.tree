@@ -1,0 +1,77 @@
+\tag{public}
+\title{Kellen Kanarios}
+\author{kellenkanarios}
+\meta{author}{false}
+\import{base-macros}
+\tag{home}
+\xmlns:html{http://www.w3.org/1999/xhtml}
+
+\<html:figure>[style]{
+  float: right;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  text-align:center;
+  width: 30\%;
+  }{
+\<html:img>[src]{\route-asset{assets/img/ghibli-profile-pic.png}}{}
+\<html:figcaption>[style]{
+  font-size: 0.9em;
+  line-height: 0.85;
+  }{
+  \p{Ann Arbor, MI}
+  \p{EECS 4107}
+  \<html:a>[href]{mailto:kellenkk@umich.edu}{kellenkk@umich.edu}}
+}
+
+\p{ am a PhD student at the [[umich]] as part of the [Electrical and Computer Engineering program](https://ece.engin.umich.edu/), where I work on reinforcement learning. My PhD advisor is [[leiying]]. Previously, I obtained a BS from the [[umich]] in Mathematics and Computer Science, where I graduated with honors and high honors respectively. During my undergrad, I worked with [[leiying]] as part of the [SURE Program](https://sure.engin.umich.edu/) and as a teaching assitant for [EECS 602](https://sites.google.com/view/intro-to-rl/home). My full CV is also available \<html:a>[style]{text-decoration: underline;}[href]{\route-asset{assets/files/kellen-kanarios-cv.pdf}}{here}. 
+}
+\p{
+  \mark{I am interested in continual reinforcement learning or more explicitly how (and what) to learn generalizable \em{information} online}. With this, I am looking into {zero-shot, unsupervised, hierarchical} RL. I am also recreationally interested in Unix (see my [dotfiles](https://github.com/kkanarios32/dotfiles)), HPC, and biologically-plausible learning algorithms. If you are also interested in any of these thing and want to chat, [schedule a meeting](https://calendly.com/kellenkk-umich/30min)!}
+\p{
+  If you are a student at [[umich]] and are interested in research, I am advising a few undergraduates with my [advisor](leiying).
+}
+
+\<html:div>[style]{clear: both;}{}
+
+\scope{
+  \put\transclude/toc{false}
+  \put\transclude/numbered{false}
+  \subtree[about]{
+    \title{About this website}
+    \p{
+    This is my [forest](https://www.forester-notes.org/index/index.xml) (shoutout to [[jonmsterling]] who is remarkably helpful). This website functions both as a [personal knowledge management system](https://en.wikipedia.org/wiki/Personal_knowledge_management), where I store my notes in [notebooks](0015) and also have some additional external resources in [[0004]]. Additionally, I store my thoughts in a variety of consumption mediums. Namely, short-form notes / blog posts can be found in the "[marginalia](007L)". I also maintain two weekly posting obligations: a [weeknotes / lifelog](007S) and a [paper of the week](005G). 
+      }
+  }
+}
+
+\scope{
+  \put\transclude/toc{false}
+  \put\transclude/numbered{false}
+  \subtree[rn]{
+    \title{News}
+      \ul{
+      \li{[\strong{September. 2024}] I will officially be starting my PhD at [[umich]]}
+      \li{[\strong{August. 2024}] I finished my undergraduate [thesis](kanariosThesis2024) and officially graduated!}
+      \li{[\strong{May. 2024}] Our [paper](kanariosCostAwareBest2024) got accepted by [[rlc]]}
+      \li{[\strong{January. 2024}] I will be TAing [EECS 602](https://sites.google.com/view/intro-to-rl/home)}
+      }
+    }
+}
+
+\hr
+
+
+\scope{
+  \put\transclude/expanded{false}
+  \subtree[bib]{
+  \title{Research}
+    \query\datalog{
+    ?X -:
+    {\rel/has-author ?X @{kellenkanarios}}
+    {\rel/is-reference ?X}
+    {\rel/has-tag ?X '{research}}
+    }
+  }
+  \transclude{0002}
+}

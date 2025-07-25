@@ -1,0 +1,31 @@
+\import{base-macros}
+\date{2025-07-13T11:06:23Z}
+\tag{public}
+\title{[CS336](0085) Lecture 3}
+\author{kellenkanarios}
+\p{[Deliberate practice](007U) (5/66).}
+
+\transclude{W4WB}
+\transclude{TOD6}
+\transclude{9VZH}
+\section{Regularization and Dropout}{
+\p{Since there is so much data, it is not feasible to train your model for multiple epochs. This is actually nice in the sense that we do not have to worry about overfitting and performing regularization.}
+\p{However, many of the large models are still trained with weight decay. Tatsu claims that this is not to do with regularization but actually due to some weird interaction with the learning rate schedule. I am not sure I entirely understood this part.}
+}
+\section{Stability Tricks}{
+\p{The [softmax](C00V) is ill-behaved due to the exponentials. In the transformer, we have two softmaxes: one at the end and one in the [attention](004G).
+\ul{
+   \li{For the first, note ##{\log \sigma(\mathbf{x})_i = \log(x_i) - \log \underbrace{\sum_{j=1}^{d} e^{x_j}}_{D(\mathbf{x})}}
+   The only problem is the denominator term. The idea is to enforce the #{D(\mathbf{x}) = 1} by regularizing via a penalty on #{\log D(\mathbf{x})} ie.
+##{\mathcal{L}_{\text{aux}} = 10^{-4} \log^2(D(\mathbf{x}))}
+With the #{\nabla D(\mathbf{x})} should be #{0} and we are effectively only considering the non-exponential term.
+   }
+   \li{For the [attention](004G), they primarily operate on the \em{logits} prior to the softmax. One way is via [layer norm](LVV4) before the [softmax](C00V). Another is via \em{softcapping} i.e.
+   ##{\mathrm{logits} = \mathrm{softcap} \cdot \tanh \left( \frac{\mathrm{logits}}{\mathrm{softcap}} \right) }
+   }
+}
+}
+}
+\section{Attention Variants}{
+\transclude{W4YP}
+}

@@ -1,0 +1,44 @@
+\date{2025-07-24T01:44:31Z}
+\tag{public}
+\tag{margin}
+\import{base-macros}
+\taxon{Theorem}
+\title{Policy Gradient Theorem}
+\p{We can compute the gradient of the expected return with respect to the behavior policy as
+##{\nabla_{\theta} v_{\pi_{\theta}}(s_{0}) = \mathbb{E}_{m_{\pi_{\theta}}(s), \pi_{\theta}(a \mid s)}\left[\nabla_{\theta} \log \pi_{\theta}(a \mid s) Q_{\pi_{\theta}}(s, a)\right] }
+}
+\proof{
+  We want to compute the quantity #{\nabla_{\theta}v_{\pi_{\theta}}(s_{0})}. We expand this as
+  ##{\begin{align*}
+    \nabla_{\theta}v_{\pi_{\theta}}(s_{0}) &= \nabla_{\theta} \left(\sum_{a} \pi(a \mid s_{0}) Q_{\pi_{\theta}}(s_{0}, a)\right) \\
+&= \sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s_{0}) Q_{\pi_{\theta}}(s_{0}, a) + \pi_{\theta}(a \mid s_{0})\underbrace{\nabla_{\theta}Q_{\pi_{\theta}}(s_{0}, a)}_{\text{problem}}
+  .\end{align*}}
+  The gradient #{\nabla_{\theta}Q_{\pi_{\theta}}(s, a)} implicitly relies on #{\theta}. Therefore, we must unroll it i.e.
+  ##{\begin{align*}
+    \nabla_{\theta} Q_{\pi_{\theta}}(s_{0},a) &= \nabla_{\theta} \left[\sum_{r} p(r \mid s_{0}, a) r + \gamma \sum_{s} p(s \mid s_{0}, a) \sum_{a'} \pi(a' \mid s) Q_{\pi_{\theta}}(s, a')\right] \\
+&= \gamma \sum_{s} p(s \mid s_{0}, a) \nabla_{\theta} \left(\sum_{a'} \pi(a' \mid s) Q_{\pi_{\theta}}(s, a')\right) \\
+&= \gamma \sum_{s} p(s \mid s_{0}, a) \left[\sum_{a'} \nabla_{\theta} \pi(a' \mid s) Q_{\pi_{\theta}}(s, a') + \pi(a' \mid s) \nabla_{\theta} Q_{\pi_{\theta}}(s, a')\right]
+  .\end{align*}}
+  We define #{p_{\pi}^{k}(s_{0} \to s)} to be the probability of transitioning from #{s_{0}} to #{s} in #{k} steps under policy #{\pi}. Then continuously unrolling we observe that 
+  ##{\begin{align*}
+    \nabla_{\theta}v_{\pi_{\theta}}(s_{0}) &= \sum_{k}^{\infty} \sum_{a} \sum_{s} \gamma^{k} p_{\pi_{\theta}}^k(s_{0} \to s) \nabla_{\theta} \pi_{\theta}(a \mid s) Q_{\pi_{\theta}}(s, a) \\
+    &= \sum_{s} \sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s) Q_{\pi_{\theta}}(s, a) \underbrace{\sum_{k}^{\infty}  \gamma^{k} p_{\pi_{\theta}}^k(s_{0} \to s)}_{M_{\pi_{\theta}}(s)}
+  ,\end{align*}}
+  where we introduce #{M_{\pi_{\theta}}(s)} to be the unnormalized state occupancy measure. We want this as an expectation we can estimate with samples. To do this, we simply multiply and divide by the normalizing constant i.e. for #{m_{\pi_{\theta}}(s) = \frac{M_{\pi_{\theta}}(s)}{\sum_{s'} M_{\pi_{\theta}}(s')}}
+  ##{\begin{align*}
+    &= \left(\sum_{s'} M_{\pi_{\theta}}(s')\right)\sum_{s} \left(\sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s) Q_{\pi_{\theta}}(s, a)\right) m_{\pi_{\theta}}(s) \\
+    &\propto \mathbb{E}_{m_{\pi_{\theta}}(s)} \left[\sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s) Q_{\pi_{\theta}}(s, a)\right]
+  .\end{align*}}
+  Now this in itself is a policy gradient, but it is a \em{batched} policy gradient in the sense that it requires summing over all #{a}. To get around this, we use the \em{log trick}. Namely,
+  ##{\begin{align*}
+    \sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s) Q_{\pi_{\theta}}(s, a) &= 
+    \sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s) Q_{\pi_{\theta}}(s, a) \frac{\pi_{\theta}(a \mid s)}{\pi_{\theta}(a \mid s)} \\
+    &= \sum_{a} \nabla_{\theta} \log \pi_{\theta}(a \mid s) Q_{\pi_{\theta}}(s, a) \pi_{\theta}(a \mid s) \\
+    &= \mathbb{E}_{\pi(a \mid s)} \left[\nabla_{\theta} \log \pi_{\theta}(a \mid s) Q_{\pi_{\theta}}(s', a)\right]
+  .\end{align*}}
+  Putting it all together, 
+  ##{
+    \nabla_{\theta}v_{\pi_{\theta}}(s_{0}) = 
+    \mathbb{E}_{m_{\pi_{\theta}}(s), \pi(a \mid s)} \left[\nabla_{\theta} \log \pi_{\theta}(a \mid s) Q_{\pi_{\theta}}(s, a)\right]
+    }
+  }

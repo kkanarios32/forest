@@ -1,0 +1,9 @@
+\date{2025-07-14T15:05:06Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Swish Activation}
+\p{The \em{Swish} activation is given by
+##{\mathrm{Swish}(\mathbf{x}) : \mathbb{R}^d \to \mathbb{R}^d, \quad \mathbf{x} \mapsto \mathbf{x} s(\mathbf{x}),}
+where #{s : \mathbb{R}^d \to \mathbb{R}^d} is the [sigmoid function](NNDS).
+}

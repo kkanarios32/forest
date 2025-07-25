@@ -1,9 +1,10 @@
-
+% ["manual"]
 \title{Meta Learning for Continual Reinforcement Learning: An Investigation}
 \date{2024-08-20}
-\taxon{Reference}
 \author{kellenkanarios}
 \tag{research}
+\taxon{Reference}
 
 \meta{slides}{\route-asset{assets/slides/continual_rl_slides.pdf}}
 \meta{paper}{\route-asset{assets/papers/honors_thesis.pdf}}
+\meta{image}{\route-asset{assets/img/thesis-graphic.png}}

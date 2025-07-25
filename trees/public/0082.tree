@@ -1,0 +1,50 @@
+\tag{public}
+\tag{margin}
+\import{base-macros}
+\date{2025-06-30T20:59:54Z}
+\title{Evidence Lower Bound}
+\author{kellenkanarios}
+\put\transclude/numbered{false}
+
+  \p{
+    \strong{Setup:}
+We are given a joint distribution #{p(X, Z; \theta)}, where #{X} and #{Z} are random variables with their joint parametrized by #{\theta}. We are also given a dataset #{\mathcal{D}} containing realizations of \strong{only} #{X} i.e. #{Z} is a [latent random variable](0083).
+  }
+\iblock{\strong{Goal:} We want to learn #{p(x; \theta)}.}
+\p{ However, ##{p(x; \theta) = \int p(x, z; \theta) \mathrm{d}z = \int p(x | z; \theta)p(z) \mathrm{d}z,} which is computationally intractable for most continuous #{Z}.}
+\iblock{\strong{Question:} Can we update #{\theta} for a given realization of #{x} and #{z}?}
+\iblock{\strong{Answer:} Yes!!!}
+\p{\strong{Motivation:} Suppose we had some #{q(z)} that we could sample realizations of #{Z} from. Then we want to find some reasonable #{\ell_{\theta}}, such that
+##{\theta^* \approx \arg\max_{\theta} \mathbb{E}_{x, \sim p(x; \theta^*), z \sim q(z)}[\ell_{\theta}(X, Z)]}
+\remark{
+#{q(z)} can potentially (and will) depend on the sample #{x_i}. This is OK because we are given #{x_i}'s, which we can then just pass to #{q} to get the corresponding #{z_i}.
+}
+Why is this the case? Because then (for well-behaved #{\ell_{\theta}})
+##{\theta_{t + 1} = \theta_{t} - \alpha \nabla_{\theta_{t}}\ell_{\theta_{t}}(x_i, z_i) \to \theta^*}
+i.e. SGD is a reasonable thing to do, where the gradient is for a \strong{single} sample of #{x_i} and #{z_i} which we have readily available from our dataset #{\mathcal{D}} and our distribution #{q} that we can sample from. This idea comes up a lot in optimization, such as the #{\log} trick in the original [policy gradient](003Y).
+}
+\p{Similar to the #{\log} trick, the \em{Evidence Lower Bound} (ELBO) comes from a simple multiply and divide trick. Namely,
+##{\begin{align*}
+  \log p(x; \theta) &= \log \int p(x, z; \theta) \mathrm{d}z \\
+  &= \log \int p(x, z; \theta) \frac{q(z)}{q(z)} \mathrm{d}z \\
+  &= \log \mathbb{E}_{z \sim q(z)} \frac{p(x, Z; \theta)}{q(z)} \\
+  &\geq \mathbb{E}_{z \sim q(z)} \log \frac{p(x, Z; \theta)}{q(z)}
+.\end{align*}}
+The last inequality follows directly from [[002G]]. However, note that this is only a lower bound and therefore not exactly what we want. For example, if we were to pick #{q \sim N(0, 1)} and then optimize the ELBO for #{\theta} we would not necessarily find a good #{\theta} for the likelihood #{\log p(x; \theta)}. Luckily, we can actually get the difference #{\log p(x; \theta) - }ELBO in closed form! Namely,
+##{\begin{align*}
+  \log p(x; \theta) - \mathrm{ELBO} &= \log p(x; \theta) - \mathbb{E}_{z \sim q(z)} \log \frac{p(x, Z; \theta)}{q(z)} \\ 
+&= \int \left(\log p(x; \theta) - \log \frac{p(x, z; \theta)}{q(z)}\right)q(z) \\ 
+&= \int \left(\log \frac{p(x; \theta)q(z)}{p(x, z; \theta)}\right)q(z) \\ 
+&= \int \left(\log \frac{p(x; \theta)q(z)}{p(z | x; \theta)p(x; \theta)}\right)q(z) \\ 
+&= \int \left(\log \frac{q(z)}{p(z | x; \theta)}\right)q(z) \\ 
+&= \mathrm{KL}\big(q(z) \mid\mid p(z | x; \theta)\big)
+.\end{align*}}
+Thus, to tighten the lower bound we can optimize #{q_{\phi}(z)} to try to match #{p(z | x; \theta)}. As a sanity check, lets make sure these match when #{q(z) = p(z \mid x; \theta)}. 
+##{\begin{align*}
+  \mathbb{E}_{z \sim q(z)} \log \frac{p(x, Z; \theta)}{q(z)} &= \int \log \frac{p(x, z; \theta)}{q(z)}\mathrm{d}z \\
+  &= \int \log \frac{p(x; \theta)p(z \mid x; \theta)}{p(z \mid x; \theta)}\mathrm{d}z \\
+  &= \int \log p(x; \theta)\mathrm{d}z \\
+  &= \log(x; \theta)
+.\end{align*}}
+You may be wondering how we use this algorithmically to find #{\theta^*}? This will be the main idea of [expectation maximization](0088). Feel free to check it out!
+}

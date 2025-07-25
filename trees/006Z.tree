@@ -1,9 +1,0 @@
-
-\date{2025-04-09}
-\title{Coming Soon!!!}
-\p{A rough plan of blogs I hope to make in the future. Stay on the lookout!!!}
-\query\datalog{
-  ?X -:
-  {\rel/has-tag ?X '{blog}}
-  {\rel/has-tag ?X '{upcoming}}
-}

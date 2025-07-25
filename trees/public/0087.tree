@@ -1,0 +1,76 @@
+\tag{public}
+
+\import{base-macros}
+\date{2025-07-01T15:26:00Z}
+\title{Tokenization}
+\author{kellenkanarios}
+
+\section{Introduction}{
+  \p{
+A \em{tokenizer} is responsible for taking text and turning it into a numerical representation we can pass to a neural network i.e.
+##{\mathsf{encode}(\text{hello world}) \mapsto \begin{bmatrix} 24912, & 2375 \end{bmatrix} }
+    However, we also need 
+    ##{\mathsf{decode}(\begin{bmatrix} 24912, & 2375 \end{bmatrix}) \mapsto \text{hello world} 
+    }
+ When defining a "good" tokenizer, we are concerned with the \em{compression ratio} i.e. the # of bytes per token.
+    }
+}
+  \section{Character-based tokenization}{
+\p{Trivially, we can do \em{character-based tokenization} i.e. mapping each character to a unique number. For example, #{\mathsf{chr}(97) = \text{``a''}} and #{\mathsf{ord}(\text{``a''}) = 97}. The compression ratio will be #{> 1} because each token corresponds to a character potentially consisting of more than one byte.}
+\iblock{
+  \strong{Problems:}
+  \ol{
+    \li{Very large vocabulary}
+    \li{Many characters are quite rare.}
+  }
+}
+\remark{
+There is a fundamental \strong{tradeoff} between compression ratio and vocabulary size. As an example, suppose we map every sequence of #{n} bytes to a token. This would achieve a compression ratio of #{n}. However, this would require #{256^n} tokens in our vocabulary.
+}
+\p{
+  Problem 2 was not entirely straight-forward to me. This actually reminds me of an idea from my [information theory](004B) course, where we can assume we are given a "prior" over human language then we want to map low-probability characters to large strings in order to minimize the expected length (see [huffman coding](005Z)).
+}
+}
+\section{Byte-based tokenization}{
+\p{In byte-based tokenization, each byte is a token achieving a compression ratio of exactly #{1}, where a byte #{\mapsto [0, 256]}
+. This is very elegant in the sense that our vocabulary size is fixed at #{256}.
+}
+\iblock{
+  \strong{Problem:}
+However, with this, the length of our encoding is # of bytes in the string, which will become too long.
+}
+}
+\section{Word-based tokenization}{
+  \p{
+In \em{word-based tokenization}, we simply split the string into the corresponding words then map each of these to a unique integer.
+    }
+\iblock{
+  \strong{Problem:} The vocabulary size is "unbounded" i.e. if we see a word we have not seen before then we need to extend the vocabulary size.
+}
+}
+\section{Byte Pair Encoding}{
+\p{For the \em{byte pair encoding} (BPE), we instead \em{train} the tokenizer on raw text to automatically determine the vocabulary.}
+\remark{
+In GPT2, they first split the raw text into words and then do this byte pair encoding.
+}
+\p{\strong{Algorithm:}}
+\iblock{
+\em{while} \strong{true}:
+\ol{
+  \li{Count occurences of byte pairs. Store in dict #{D} with #{\{(b_1, b_2): \text{count}\}}}
+  \li{Find #{(b_1, b_2)} with highest count.}
+  \li{Merge #{(b_1, b_2)} by #{(b_{1}, b_{2}) \mapsto b'}}
+  \li{Replace all instances of #{(b_{1}, b_{2})} in string with #{b'} i.e. 
+  ##{b_{1} b_{2} b_{3} b_{4} \mapsto b'b_{3} b_{4}}
+  }
+}
+}
+\remark{
+  There are a few additional implementation details to consider for project 1.
+\ol{
+  \li{#{\mathsf{encode}} loops over all merges. Only loop over merges that matter.}
+  \li{Detect and preserve special tokens (e.g. <|endoftext|>)}
+  \li{Use pre-tokenization (GPT2 regex)}
+}
+}
+}

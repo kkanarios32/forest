@@ -1,0 +1,22 @@
+\import{base-macros}
+\tag{public}
+\title{Torch Tensors}
+  \p{
+In pytorch, tensors are \em{contiguous} blocks of memory, where their shape is controlled by \em{strides}. A stride basically just refers to how far you have to jump in physical memory to correspond to incrementing the logical index i.e. in a (2, 3) matrix each row requires jumping #{3} spots in physical memory. Thus, \code{stride[1] = 3}.
+  }
+\remark{
+Calling \code{.view((m, n))} just changes the stride but does \strong{not} modify the physical memory. If you call \code{.view} that results in a non-contiguous view, then you cannot call \code{.view} again because it assumes contiguous indexing to properly adjust the strides. To deal with this, they have \code{.contiguous()} and \code{.reshape()} is basically \code{.contiguous().view()}.
+}
+\remark{
+All \strong{elementwise} operations make a copy i.e. \code{x + y}. A useful function for masked attention is \code{triu()}.
+}
+\section{Einops}{
+Einops is a useful python library to keep track of high-dimensional matrix operations i.e. matmuls over \code{batch_size}, \code{seqlen}, etc. High level overview
+\ul{
+  \li{Initialize like \code{X[float.tensor, "batch seq hidden"] = torch.tensor((2, 3, 4))}}
+  \li{Can perform matmul with named dims like}
+  \code{z = einsum(x, y, "batch seq1 hidden, batch seq2 hidden -> batch seq1 seq2")}
+  \li{\code{reduce}: \code{x = reduce(x, "x y z -> x y 1")} is just like \code{mean(x, axis=-1)}}
+  \li{\code{rearrange}: \code{x = rearrange(x, "... (heads hidden1) -> ... heads hidden 1")}}
+}
+}

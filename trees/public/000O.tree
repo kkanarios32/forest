@@ -1,0 +1,13 @@
+\tag{public}
+
+\date{2024-11-20}
+\title{#{\sigma}-field}
+\taxon{Definition}
+
+\p{A class of subsets #{\mathscr{F}} of #{\Omega} is a #{\sigma}-field if the following holds
+  \ol{
+    \li{#{\Omega \in \mathscr{F}}}
+    \li{If #{A \in \mathscr{F}} then #{A^c \in \mathscr{F}}}
+    \li{If #{A_1, A_2, \ldots \in \mathscr{F}} then #{\bigcup_{i = 1}^{\infty} A_i \in \mathscr{F}}}
+  }
+}

@@ -1,0 +1,10 @@
+\date{2025-07-14T17:40:06Z}
+\title{KV-cache}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/kv-cache.gif}}{}
+\figcaption{Great animation from [here](https://medium.com/@joaolages/kv-caching-explained-276520203249)}
+}

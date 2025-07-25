@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Learning to Plan in High Dimensions via Neural Exploration-Exploitation Trees}
+\date{2020-02}
+\author/literal{Binghong Chen}\author/literal{Bo Dai}\author/literal{Qinjie Lin}\author/literal{Guo Ye}\author/literal{Han Liu}\author/literal{Le Song}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1903.00070}
+\meta{external}{https://arxiv.org/abs/1903.00070}
+
+\meta{bibtex}{\startverb
+@misc{chenLearningPlanHigh2020,
+ title = {Learning to {{Plan}} in {{High Dimensions}} via {{Neural Exploration-Exploitation Trees}}},
+ author = {Chen, Binghong and Dai, Bo and Lin, Qinjie and Ye, Guo and Liu, Han and Song, Le},
+ year = {2020},
+ doi = {10.48550/arXiv.1903.00070},
+ urldate = {2025-07-17},
+ number = {arXiv:1903.00070},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/MGZUR4RP/Chen et al. - 2020 - Learning to Plan in High Dimensions via Neural Exp.pdf},
+ keywords = {Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {We propose a meta path planning algorithm named Neural Exploration-Exploitation Trees (NEXT) for learning from prior experience for solving new path planning problems in high dimensional continuous state and action spaces. Compared to more classical sampling-based methods like RRT, our approach achieves much better sample efficiency in high-dimensions and can benefit from prior experience of planning in similar environments. More specifically, NEXT exploits a novel neural architecture which can learn promising search directions from problem structures. The learned prior is then integrated into a UCB-type algorithm to achieve an online balance between exploration and exploitation when solving a new problem. We conduct thorough experiments to show that NEXT accomplishes new planning problems with more compact search trees and significantly outperforms state-of-the-art methods on several benchmarks.},
+ primaryclass = {cs},
+ eprint = {1903.00070},
+ month = {February}
+}
+\stopverb}

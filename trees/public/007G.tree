@@ -1,0 +1,17 @@
+\tag{public}
+
+\date{2025-04-22}
+\import{base-macros}
+\taxon{Definition}
+\title{Discrete Approximation of Differential Entropy}
+\p{
+    For,
+    ##{ p_{i}=\int_{i\,\Delta}^{(i+1)\,\Delta}f(x)\,d x=f(x_{i})\Delta\,. }
+    We define the discrete approximation of the differential entropy as
+    ##{\begin{align*}
+H(X^{\Delta})&\coloneqq -\sum_{-\infty}^{\infty}p_{i}\log p_{i} \\
+&=-\sum_{-\infty}^{\infty}f(x_{i})\Delta\log(f(x_{i})\Delta) \\ 
+&=-\sum\Delta f(x_{i})\log f(x_{i})-\sum f(x_{i})\Delta\log\Delta \\ 
+&=-\sum\Delta f(x_{i})\log f(x_{i})-\log\Delta,
+    .\end{align*}}
+  }

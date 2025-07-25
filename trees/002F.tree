@@ -1,5 +1,0 @@
-
-\date{2024-12-29}
-\title{Chebyshev's Inequality}
-\taxon{Theorem}
-\p{##{P[|X - m| \geq \alpha] \leq \frac{1}{\alpha^2} \mathrm{Var}[X]}}

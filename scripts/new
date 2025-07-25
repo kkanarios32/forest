@@ -1,11 +1,10 @@
 #!/bin/bash
-FILENAME=$(opam exec -- forester new --dest="$FORESTDIR/trees")
+FILENAME=$(opam exec -- forester new --random --dest="$FORESTDIR/trees/public")
 TEMPLATE="$1"
 echo $FILENAME
 
 # if templates/$TREE_PREFIX.tree exists
+echo '\tag{public}' >> $FILENAME
 if [ -f templates/$TEMPLATE.tree ]; then
   cat templates/$TEMPLATE.tree >> $FILENAME
 fi
-
-# nvim $FILENAME

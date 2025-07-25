@@ -1,0 +1,13 @@
+\tag{public}
+
+\date{2025-04-12}
+\import{base-macros}
+\taxon{Definition}
+\title{General definition of channel}
+\p{
+A channel (with memory) is a sequence of conditional distributions:_
+
+##{ P_{Y_{1}|X_{1}},P_{Y_{2}|Y_{1},X^{2}},P_{Y_{3}|Y^{2},X^{3}},\ldots,P_{Y_{n}|Y^{n-1},X^{n}}, }
+
+where #{ P_{Y_{n}|Y^{n-1},X^{n}} } is a collection of distributions on #{ \mathcal{Y} } one for every #{ (y^{n-1},x^{n})\in\mathcal{Y}^{n-1}\times\mathcal{X}^{n} }.
+}

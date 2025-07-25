@@ -1,0 +1,15 @@
+\tag{public}
+\import{base-macros}
+\date{2025-07-06T20:51:50Z}
+  \title{Line Search}
+\transclude{004Q}
+\remark{Way to computationally expensive to use in practice.}
+    \transclude{004R}
+    \transclude{004S}
+    \remark{
+        Wolfe condition requires evaluating gradient of function each update to #{\tau_k}. However,  [[004R]] only requires evaluating gradient once. Therefore, it is primarily used in practice.
+      }
+    \remark{
+        Backtracking is not used in optimizing DNNs because even function evaluation is very expensive.
+      }
+\transclude{004T}

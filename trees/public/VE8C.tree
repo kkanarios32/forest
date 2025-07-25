@@ -1,0 +1,77 @@
+\date{2025-07-19T15:19:36Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[TPE](arpaci2018operating) Limited Direct Execution}
+\p{[[007U]] (7/66)}
+
+\p{The contents of this chapter were revolved around two fundamental questions:}
+\iblock{
+  \ol{
+    \li{\em{How do we make sure a program doesn't do what we don't want it to do?}}
+    \li{\em{How do we enable timesharing?}}
+  }
+}
+\section{modes}{
+\p{For the first question, we introduce two modes \em{user mode} and \em{kernel mode}. In \em{user mode}, we are restricted with what sort of operations we can run.}
+\remark{
+More importantly, in user mode, we are limited with what we can \em{see}. We will see later on in memory, but in user mode we have a limited address space allocated for the current process. However, in kernel mode, the address space is the entire computer and can therefore be very dangerous if we are not careful.
+}
+\question{
+  How do we switch from user and kernel mode without allowing processes to run instructions in kernel mode?
+}
+\answer{
+  We must have some cooperation from the hardware. Namely, on boot, the OS code is run and sets up a \em{trap table}.
+}
+}
+\section{trapping}{
+The hardware has some responsibility when switching to kernel mode. Namely, it must store two types of registers (1) user registers (2) kernel register.
+\ol{
+  \li{The user registers are registers that contain the current program context i.e. stack variables, such as \code{x = 1}.}
+  \li{The kernel registers hold more meta-information, such as the PC, the syscall number of the calling syscall, etc.}
+}
+\remark{
+Each time we return to a process or switch between processes the hardware must perform a \em{context switch}. This is when they store all of the context of the current program before replacing it with the context of another program. The cost of such a switch is the tradeoff when performing \em{scheduling} of processes.
+}
+}
+
+\section{syscall implementation}{
+  \p{
+In order to implement the syscall, there needs to be some pre-agreed upon arrangement on where certain things go. For example, the syscall number must be stored in a pre-defined register. The general procedure (I think?) is as follows:
+  }
+\ol{
+  \li{syscall calls trap instruction defined by hardware.}
+  \li{hardware stores all information necessary to restore processes in pre-determined location.}
+  \li{hardware switches to kernel mode from user mode.}
+  \li{hardware jumps to code in OS to handle syscall (trap handler / interrupt handler?).}
+  \li{OS code checks pre-arranged register for the syscall number}
+  \li{OS executes corresponding syscall code.}
+  \li{OS restores program.}
+}
+\remark{
+Due to relying on pre-determined registers, the syscalls are typically hand coded in assembly.
+}
+\remark{
+The OS must also perform checks regarding the safety of the requested operation i.e. we cannot let a process read the kernel code...
+}
+\remark{
+There is a similar mechanism for interrupts via an interrupt handler.
+}
+}
+\section{timesharing}{
+\question{
+  If the CPU is running a process, then how can the kernel decide to stop running it?
+}
+\answer{
+It can't... Instead the hardware performs period interrupts that trap to the OS code. The OS code can then decide what process to run via the \em{scheduler} (next section).
+}
+}
+\section{booting up}{
+\p{This section is a summary of my findings:}
+\ol{
+  \li{Power signals reset of CPU state.}
+  \li{CPU runs BIOS, which checks that hardware works.}
+  \li{BIOS then runs bootloader (i.e. grub).}
+  \li{Bootloader places kernel code in right place and runs it.}
+  \li{Kernel then specifies things like trap table location (which is a special hardware instruction). Also must set timer.}
+}
+}

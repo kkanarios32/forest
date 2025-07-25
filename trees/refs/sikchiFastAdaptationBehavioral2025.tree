@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Fast Adaptation with Behavioral Foundation Models}
+\date{2025-04}
+\author/literal{Harshit Sikchi}\author/literal{Andrea Tirinzoni}\author/literal{Ahmed Touati}\author/literal{Yingchen Xu}\author/literal{Anssi Kanervisto}\author/literal{Scott Niekum}\author/literal{Amy Zhang}\author/literal{Alessandro Lazaric}\author/literal{Matteo Pirotta}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2504.07896}
+\meta{external}{https://arxiv.org/abs/2504.07896}
+
+\meta{bibtex}{\startverb
+@misc{sikchiFastAdaptationBehavioral2025,
+ title = {Fast {{Adaptation}} with {{Behavioral Foundation Models}}},
+ author = {Sikchi, Harshit and Tirinzoni, Andrea and Touati, Ahmed and Xu, Yingchen and Kanervisto, Anssi and Niekum, Scott and Zhang, Amy and Lazaric, Alessandro and Pirotta, Matteo},
+ year = {2025},
+ doi = {10.48550/arXiv.2504.07896},
+ urldate = {2025-07-18},
+ number = {arXiv:2504.07896},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/6WYZ9UB7/Sikchi et al. - 2025 - Fast Adaptation with Behavioral Foundation Models.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Unsupervised zero-shot reinforcement learning (RL) has emerged as a powerful paradigm for pretraining behavioral foundation models (BFMs), enabling agents to solve a wide range of downstream tasks specified via reward functions in a zero-shot fashion, i.e., without additional test-time learning or planning. This is achieved by learning self-supervised task embeddings alongside corresponding near-optimal behaviors and incorporating an inference procedure to directly retrieve the latent task embedding and associated policy for any given reward function. Despite promising results, zero-shot policies are often suboptimal due to errors induced by the unsupervised training process, the embedding, and the inference procedure. In this paper, we focus on devising fast adaptation strategies to improve the zero-shot performance of BFMs in a few steps of online interaction with the environment while avoiding any performance drop during the adaptation process. Notably, we demonstrate that existing BFMs learn a set of skills containing more performant policies than those identified by their inference procedure, making them well-suited for fast adaptation. Motivated by this observation, we propose both actor-critic and actor-only fast adaptation strategies that search in the low-dimensional task-embedding space of the pre-trained BFM to rapidly improve the performance of its zero-shot policies on any downstream task. Notably, our approach mitigates the initial "unlearning" phase commonly observed when fine-tuning pre-trained RL models. We evaluate our fast adaptation strategies on top of four state-of-the-art zero-shot RL methods in multiple navigation and locomotion domains. Our results show that they achieve 10-40\% improvement over their zero-shot performance in a few tens of episodes, outperforming existing baselines.},
+ primaryclass = {cs},
+ eprint = {2504.07896},
+ month = {April}
+}
+\stopverb}

@@ -1,0 +1,7 @@
+\tag{public}
+
+\date{2025-03-23}
+\import{base-macros}
+\taxon{Definition}
+\p{Let #{\ell(x^n)} denote the number of bits in #{e(x^n)}, where #{e} is the encoding function. Then, the rate is ##{\frac{\mathbb{E}[\ell(X^n)]}{n}}
+}

@@ -1,0 +1,25 @@
+\tag{public}
+\import{base-macros}
+\date{2025-07-06T20:44:29Z}
+\title{Basic Matrix Analysis}
+\ul{
+    \li{\strong{Matrix inner product:}
+##{\langle\mathbf{x},\mathbf{z}\rangle\ =\ \sum_{i=1}^{n}x_{i}z_{i}\quad\Longrightarrow\quad\langle\mathbf{X},\mathbf{Z}\rangle\ :=\ \sum_{i=1}^{m}\sum_{j=1}^{n}X_{i j}Z_{i j}} 
+    }
+    \li{\strong{Matrix trace:} #{{{M}}\in\mathbb{R}^{n\times n};\ {{\mathrm{tr}}}({{M}}):=\sum_{i=1}^{n}M_{i i}}
+    ##{
+      \begin{align*}
+      &\langle{\boldsymbol X},{\boldsymbol Z}\rangle\ =\ \mathrm{tr}\left({\boldsymbol X}^{\top}{\boldsymbol Z}\right)\ =\ \mathrm{tr}\left({\boldsymbol X}{\boldsymbol Z}^{\top}\right) \\
+    &\operatorname{tr}(\mathbf{A}\mathbf{B})=\operatorname{tr}(\mathbf{B}\mathbf{A})\\
+      &\operatorname{tr}(\mathbf{A}_{1}\mathbf{A}_{2}\cdots\mathbf{A}_{n})=\operatorname{tr}(\mathbf{A}_{\pi(1)}\mathbf{A}_{\pi(2)}\cdots\mathbf{A}_{\pi(n)})
+      \end{align*}
+    }
+    Where #{\pi} is a cyclic permutation on #{\{1,2,\cdots,n\}}
+    } 
+    }
+    \transclude{003A}
+    \transclude{003B}
+    \transclude{003C}
+    \transclude{003G}
+    \transclude{003H}
+    \transclude{003I}

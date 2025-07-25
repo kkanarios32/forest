@@ -1,0 +1,9 @@
+\tag{public}
+\date{2025-07-09T15:40:25Z}
+\import{base-macros}
+\taxon{Definition}
+\title{Conditional Vector Field}
+
+\p{
+ We define the \em{conditional vector field} #{v_t(\cdot \mid x_{1})} as the [vector field](008C) that [generates](008E) the conditional [probability path](008E) #{p_t(x \mid x_{1})}.
+}

@@ -1,0 +1,23 @@
+\import{base-macros}
+\tag{todo}
+\date{2025-07-01T21:51:12Z}
+\title{Flow Matching: What, Why, and How?}
+\p{This is a blog cataloging my understanding of [[lipmanFlowMatchingGenerative2023]] prior to my group presentation on [[farebrotherTemporalDifferenceFlows2025]].}
+\p{\strong{Disclaimer:} I came into this with literally no background. I have never even taken an ODE course. This may prove advantageous for the more general audience.}
+\section{Motivation}{
+To understand flow matching, it is a useful endeavor to understand the problems in prior work it aims to solve.
+\transclude{B9J9}
+\transclude{PY9P}
+}
+
+\transclude{D8LA}
+\transclude{008F}
+
+ \p{To generate samples, we integrate the \strong{vector field}}
+ \p{\strong{Important:} We do not \em{have} the flow. We only have the flow for a \strong{given} #{x_{1}}. This can then provide a target for the vector field with equivalent gradient.}
+
+ \transclude{008G}
+ \transclude{008H}
+
+
+\transclude{TGWF}

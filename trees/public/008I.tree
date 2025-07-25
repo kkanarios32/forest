@@ -1,0 +1,10 @@
+\tag{public}
+\date{2025-07-02T15:24:15Z}
+\import{base-macros}
+\taxon{Theorem}
+\title{Generation via Continuity Equation}
+\p{
+A [vector field](008C) generates a [probability density path](008B) if it satisfies the [continuity equation](EFN0).
+}
+
+%TODO: Add proof (maybe)

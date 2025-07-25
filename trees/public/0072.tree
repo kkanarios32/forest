@@ -1,0 +1,10 @@
+\tag{public}
+
+\date{2025-04-14}
+\import{base-macros}
+\taxon{Definition}
+\title{Riemannian Manifold}
+\p{
+A Riemannian manifold #{ (\mathcal{M},\langle\cdot,\cdot\rangle) } is a [smooth manifold](0073)
+#{ \mathcal{M} } equipped with positive-definite inner product #{ \langle\cdot,\cdot\rangle } on the tangent space #{ \mathrm{T}_{\pmb{x}}\mathcal{M} } at each point #{ \pmb{x}\in\mathcal{M} }. 
+}

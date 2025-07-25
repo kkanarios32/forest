@@ -1,0 +1,8 @@
+\tag{public}
+
+\date{2024-11-04}
+\title{InfoNCE}
+\taxon{Definition}
+\tag{loss}
+
+\p{The \em{[InfoNCE](oordRepresentationLearningContrastive2019)} loss aims to minimize the following information-theoretic objective ##{\mathcal{L}_{N} = - \mathbb{E}_{\mathcal{X}} \left[\log \frac{f_k(x_{t + k}, c_t)}{\sum_{x_j \in \mathcal{X}} f_k(x_j, c_t)}\right]}}

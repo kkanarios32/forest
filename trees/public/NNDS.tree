@@ -1,0 +1,8 @@
+\date{2025-07-14T15:06:25Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Sigmoid}
+\p{The \em{sigmoid} function is given by
+##{s(\mathbf{x}) = \frac{1}{1 + e^{-x}}}
+}

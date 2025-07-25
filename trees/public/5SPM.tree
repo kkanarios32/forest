@@ -1,0 +1,13 @@
+\date{2025-07-14T14:44:23Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Gaussian Error Linear Unit (GELU)}
+\p{The \em{Gaussian Error Linear Unit} (GELU) is a slight modification to the [ReLU](BEA2) to account for the non-differentiability at #{0}. Namely,
+##{\mathrm{GELU}(\mathbf{x}) : \mathbb{R}^d \to \mathbb{R}^d, \quad \mathbf{x} \mapsto \mathbf{x} \cdot \psi(\mathbf{x}),}
+where #{\psi(\mathbf{x}) = \mathrm{CDF}(\mathcal{N}(\mathbf{x}, \mathbf{I}))}
+}
+\figure{
+\<html:img>[width]{70\%}[src]{\route-asset{assets/img/gelu.png}}{}
+\figcaption{GELU vs. ReLU activation and derivative. Taken from [here](https://www.baeldung.com/cs/gelu-activation-function).}
+}

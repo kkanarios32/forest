@@ -1,0 +1,22 @@
+\tag{public}
+
+\date{2025-03-22}
+\title{Research Bible}
+\author{kellenkanarios}
+\xmlns:html{http://www.w3.org/1999/xhtml}
+\put\transclude/numbered{false}
+\put\transclude/expanded{false}
+\put\transclude/metadata{true}
+\put\transclude/toc{false}
+
+\p{I will be reading and reviewing ~2ish paper a week (tentatively). More accurately, I have allocated roughly 8hrs a week to reading papers. However much I accomplish in this time will determine the actual rate of these reviews. These reviews are mainly just for my own understanding. Rather than techinical details, I will aim to cover
+\ol{
+  \li{Existing / related work and their issues.}
+  \li{Key components of the methodology and how it solves these issues.}
+  \li{Limitations / future directions or relationships to my work.}
+}
+}
+\p{For more in-depth coverage of papers I find particularly interesting, see my [blog](0002). There will likely be overlap i.e. most blogs will start here...}
+\p{See [upcoming papers](007N)!}
+
+\transclude{W4YP}

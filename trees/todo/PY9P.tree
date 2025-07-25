@@ -1,0 +1,10 @@
+\import{base-macros}
+\title{Continuous Normalizing Flows}
+\tag{todo}
+\author{kellenkanarios}
+
+\p{[[rezendeVariationalInferenceNormalizing]], [[chenNeuralOrdinaryDifferential]]}
+
+\section{What is this #{\det} factor?}{
+Since we are considering probability measures over #{\mathbb{R}^n}, it is not enough to just define a mapping between spaces. Explicitly, say that we are considering the two probability measures #{p \sim \mathrm{Unif}[0,1]} and #{q \sim \mathrm{Unif}[0,2]}. Trivially, we have the mapping #{f : [0, 1] \to [0,2]} given by #{f(x) \mapsto 2x}.
+}

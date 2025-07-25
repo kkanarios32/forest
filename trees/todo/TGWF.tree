@@ -1,0 +1,16 @@
+\import{base-macros}
+\tag{todo}
+\title{Flow Matching vs. Diffusion}
+\p{Notes and thoughts from blog [[gaoDiffusionMeetsFlow2024]]. As a useful pre-requisite, I recommend my notes on [diffusion](007T) and [flow matching](008A) respectively.}
+
+\p{To start, I began looking into this due to the wildly empirical claims from [[lipmanFlowMatchingGenerative2023]]. Namely,}
+\iblock{
+  \ul{
+   \li{
+ \em{"We find that using FM provides more robust and stable training, and achieves superior performance compared to score matching."}
+    } 
+   \li{
+ \em{"Furthermore, we find that our models produce better trade-offs between computational cost and sample quality."}
+    } 
+  }
+ }

@@ -1,0 +1,13 @@
+\tag{public}
+\date{2025-07-06T20:48:19Z}
+\title{Constrained Optimality}
+\p{
+    Consider a smooth contained problem with ##{\min_{\mathbf{x}}f(\mathbf{x}),\quad \text{s.t.} \quad r_{i}(\mathbf{x})\ =\ 0,\ 1\leq i\leq p,} ##{h_{j}(\mathbf{x})\ \leq\ 0,\ 1\leq j\leq q.} Consider its Lagrangian function ##{\mathscr{L}(\mathbf{x},\mathbf{u},\mathbf{v})\ =\ f(\mathbf{x})+\sum_{i=1}^{p}u_{i}\cdot r_{i}(\mathbf{x})+\sum_{j=1}^{q}v_{j}\cdot h_{j}(\mathbf{x}).}
+    \strong{KKT-conditions:}
+    \ul{
+    \li{Stationary ##{\nabla_{\mathbf{x}}{\mathcal{L}}(\mathbf{x_*},\mathbf{u_*},\mathbf{v_*})\;=\;\mathbf{0}}}
+    \li{Primal Feasibility: ##{\begin{array}{l}{{r_{i}(x_{\star})\ =\ 0,\ 1\leq i\leq p,}}\\ {{h_{j}(x_{\star})\ \leq\ 0,\ 1\leq j\leq q.}}\end{array}}}
+    \li{Dual Feasibility: ##{v_{\star}\geq 0.}}
+    \li{Complimentary slackness: ##{h_{j}(x_{\star})\cdot v_{\star j}\ =\ 0,\quad\forall\ 1\leq j\leq q.}}
+    }
+}

@@ -1,0 +1,10 @@
+\tag{public}
+
+\date{2025-01-15}
+\title{Sub-Gaussian Norm}
+\taxon{Definition}
+\p{
+    For #{p > 0}, define
+    ##{\lVert X \rVert_{\psi_p} = \inf \left\{K > 0 \mid \mathbb{E} \exp^{\left(\frac{X}{k}\right)^p}\right\}}
+    If #{X} is [[002L]] then this is well defined and makes our space a [[002Q]].
+}

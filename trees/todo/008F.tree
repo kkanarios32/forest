@@ -1,0 +1,14 @@
+\date{2025-07-02T15:11:38Z}
+\import{base-macros}
+\title{Conditioning Trick [FM](lipmanFlowMatchingGenerative2023) }
+\tag{todo}
+
+ \p{ Given data distribution #{q(x)}, we define an approximation #{p(x)} with the form ##{p(x) = \int p(x \mid x_1) q(x_1) \mathrm{d}x_{1}} In order to ensure #{p(x) \approx q(x)}, we pick #{p(x \mid x_{1})} that concentrates around #{x_{1}} i.e. #{p(x \mid x_{1}) \sim N(x \mid x_{1}, \sigma^2 I)} for small #{\sigma}.
+ }
+ \transclude{8XAJ}
+ \transclude{373T}
+ \transclude{93R8}
+ \transclude{DZ1D}
+
+ \p{which is supposedly a "good" approximation of the data distribution #{q}. We can then show that a \em{conditional flow matching loss} has the same gradient as the full \em{flow matching loss} i.e. our vector field should converge to the \em{marginal vector field}, which is a good approximation for #{q}.
+ }

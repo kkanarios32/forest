@@ -1,0 +1,53 @@
+\tag{public}
+
+\date{2025-03-04}
+\author{kellenkanarios}
+\import{base-macros}
+
+\title{Rebuilding My (Neo)Vim Config From Scratch}
+\p{I have been using LazyVim for some time now, but I have now run into issues multiple times where understanding how LazyVim is doing something is far more difficult than if I had written my own setup. I allocated one day for this adventure and really just wanted to make sure I had support for #{\TeX}, python, forester, and C/C++. Due to my (self-imposed) time constraint, I do not have the associated resources linked for each of the things discussed below. At some point, I hope to come back and more thoroughly cover each of the components.
+}
+\section{Sane Defaults}{
+To my surprise, a lot of the features that I had come to take for granted were actually options set up internally by Lazyvim. For example, I was shocked with 8 space indents!! and I could not even copy from one terminal instance to another... Due to this, I went and found all of the options I liked from Lazyvim and added them to my new configuration in \code{configs/options.lua}.
+}
+\section{Installing a Plugin Manager}{
+For this, we will be using the defacto standard \code{lazy.nvim}. This is actually straightforward and kind of "just works". Just follow the installation guide in their documentation.
+}
+\section{Setting up Auto Complete}{
+This is one of the main motivations for me making the switch. It seems \code{nvim-cmp} has finally been replaced with a new \code{blink.cmp}, so that is what we will be using.
+
+\section{Language Server Protocol}{
+It turns out there is a lot that goes into getting LSP setup correctly.
+\ol{
+\li{First we must actually install the language servers. To do this the easiest way, we use the \code{mason.nvim} and \code{mason.nvim-lspconfig} plugins. At some point, I might actually figure out how to set up lsp myself without lspconfig but that point is not now.
+}
+\li{Through \code{nvim-lspconfig}, we can set up each of the servers we want to have LSP support. I just set up clangd, pyright, and texlab.}
+}
+This was a bit ridiculous. The first of many challenges was around import resolution in python. To remedy this, I needed to write a function to find the virtual environment directory and then set the \code{pythonPath} to the venv python binary. Previously, I think I was just using pylsp and installing it as a pip package to each python venv. I much prefer the new way, and I think pyright is overall a much better lsp.
+}
+\section{Forester Completion}{
+  Another necessary completion source for me is the one provided by \code{forester.nvim}. Similar to vimtex, the reference completion support is VERY useful. Obviously, I need completion when I am writing this blog!!! This was a little more involved. The first difficulty was that the completion source provided by the \code{forester.nvim} plugin was for \code{nvim-cmp}. It turns out this is a prevalent enough problem that the author of \code{blink.cmp} wrote an additional plugin \code{blink.compat} to allow for \code{nvim-cmp} completion sources. While this sounds all fine and good, \code{nvim-compat} expects plugins that return the completion source themselves, whereas in \code{forester.nvim} the completion source is just one submodule of a more feature-rich plugin. To get around this, I needed to look into the \code{blink.compat} code and find how they are registering the sources and just do it myself.
+}
+}
+\section{Snippets}{
+  \p{
+  Going all the way back to the [Gilles Castel blog post](https://castel.dev/post/lecture-notes-1/), I have always been partial to snippets that auto-expand. I had them set up prior to Lazyvim but with Lazyvim I had resigned to using friendly-snippets with native nvim snippets. Since I was already redoing everything, this time around I decided not to compromise. Once upon a time (right when it came out I think?) I tried out Luasnips, but it seems that they now have far more extensive features. They are also natively supported by \code{blink.cmp}!! It feels necessary that I plug the [awesome repo](https://github.com/iurimateus/luasnip-latex-snippets.nvim) that ports the original Ultisnips snippets to Luasnip. With this, I was able to easily add my own forester snippets!!!
+  }
+  \p{
+  A fun little thing that I had been hoping to do for awhile and is finally now possible - I can load latex snippets when inside math environments in forester!!!! To do this, I looked into the forester treesitter grammar and found the corresponding nodetypes for math envs. It was then straightforward to detect whether we were in a math env and to load the associated latex snippets.
+  }
+}
+\section{Anki}{
+  \p{
+  There is a very cool add-on to anki called [AnkiConnect](https://git.sr.ht/~foosoft/anki-connect#deck-actions) that has an associated plugin \code{anki.nvim}. Basically, AnkiConnects allows you to make requests to Anki and receive/send useful information from/to your decks. Unfortunately, \code{anki.nvim} built-in commands didn't seem all that useful to me. However, it provided the necessary infrastructure for me to accomplish my desired workflow.
+  }
+  \p{
+  Namely, I made my own command that queries Anki for the deck names, which you can then pick from using telescope pickers. When you select one it will create a new flashcard in a specified flashcard directory under a directory created based on the deck name. You can then send this card to that deck using the existing \code{AnkiSend} command.
+  }
+  \p{I also continued the snippet fun here. When writing Anki cards, you can write latex code between [latex] [/latex] delimiters. I wrote a quick function to detect whether we are in these delimiters and if we are then to load the latex snippets from the previous section. I also added some basic anki filetype plugins to insert things like these delimiters.}
+}
+\section{Formatters and Linters}{
+  \code{compat.nvim}, \code{mason.nvim}, black, isort.
+}
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{nvim}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

@@ -1,0 +1,12 @@
+\tag{public}
+\date{2025-07-09T16:00:10Z}
+\import{base-macros}
+\taxon{Theorem}
+\title{Marginal Generation}
+\p{Given a [conditional vector field](8XAJ) #{v_t(x \mid x_{1})} that [generates](008E) the conditional [probability path](008B) #{p_t(x \mid x_{1})}
+ then the [marginal vector field](373T) #{v_t} generates #{p_t}, where
+ ##{p_t(x) = \int p_t(x \mid x_1) q(x_{1})}
+}
+\proof{
+  This follows from just plugging into [continuity equation](EFN0).
+}

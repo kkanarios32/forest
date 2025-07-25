@@ -1,0 +1,20 @@
+\tag{public}
+
+\date{2025-04-14}
+\import{base-macros}
+\taxon{Definition}
+\title{Riemannian Hessian}  
+\p{
+Let #{ f:{\cal M}\mapsto\mathbb{R} } be [smooth](003K) on the [[0072]] #{ {\cal M} }. The Riemannian Hessian #{ {\rm Hess}\,f(\mathbf{x}):{\rm T}_{\mathbf{x}}{\cal M}\mapsto{\rm T}_{\mathbf{x}}{\cal M} } of #{ f } at #{ \mathbf{x}\in{\cal M} } is a mapping from #{ {\rm T}_{\mathbf{x}}{\cal M} } to #{ {\rm T}_{\mathbf{x}}{\cal M} } with
+
+##{ {\rm Hess}\,f(\mathbf{x})[\mathbf{v}]\ :=\ \widetilde{\nabla}_{\mathbf{v}}\,{\rm grad}\,f(\mathbf{x}). }
+\ul{
+  \li{Here, #{\tilde{\nabla}} is the Riemannian connection.}
+  \li{
+On a Riemannian submanifold embedded in #{\mathbb{R}^n}
+##{\tilde{\nabla}_{\mathbf{u}} V = \mathcal{P}_{T_{\mathbf{x}} \mathcal{M}}(\mathrm{D}V(\mathbf{x})[\mathbf{u}])}
+and
+##{\mathrm{Hess}\,f(\mathbf{x})[\mathbf{v}]\ =\ {\mathcal{P}}_{\mathrm{T}_{\mathbf{x}}{\mathcal{M}}}\,(\mathrm{D}\,\mathrm{grad}\,f(\mathbf{x})[\mathbf{v}])}
+    }
+}
+}

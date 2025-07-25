@@ -51,6 +51,24 @@
   file = {/home/kellen/Downloads/pdfs/storage/2KCKGFYP/Albergo et al. - 2023 - Stochastic Interpolants A Unifying Framework for .pdf}
 }
 
+@misc{alegreConstructingOptimalBehavior2025,
+  title = {Constructing an {{Optimal Behavior Basis}} for the {{Option Keyboard}}},
+  author = {Alegre, Lucas N. and Bazzan, Ana L. C. and Barreto, Andr{\'e} and da Silva, Bruno C.},
+  year = {2025},
+  month = may,
+  number = {arXiv:2505.00787},
+  eprint = {2505.00787},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2505.00787},
+  urldate = {2025-07-22},
+  abstract = {Multi-task reinforcement learning aims to quickly identify solutions for new tasks with minimal or no additional interaction with the environment. Generalized Policy Improvement (GPI) addresses this by combining a set of base policies to produce a new one that is at least as good---though not necessarily optimal---as any individual base policy. Optimality can be ensured, particularly in the linearreward case, via techniques that compute a Convex Coverage Set (CCS). However, these are computationally expensive and do not scale to complex domains. The Option Keyboard (OK) improves upon GPI by producing policies that are at least as good---and often better. It achieves this through a learned meta-policy that dynamically combines base policies. However, its performance critically depends on the choice of base policies. This raises a key question: is there an optimal set of base policies---an optimal behavior basis---that enables zero-shot identification of optimal solutions for any linear tasks? We solve this open problem by introducing a novel method that efficiently constructs such an optimal behavior basis. We show that it significantly reduces the number of base policies needed to ensure optimality in new tasks. We also prove that it is strictly more expressive than a CCS, enabling particular classes of non-linear tasks to be solved optimally. We empirically evaluate our technique in challenging domains and show that it outperforms stateof-the-art approaches, increasingly so as task complexity increases.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/XURMI23D/Alegre et al. - 2025 - Constructing an Optimal Behavior Basis for the Opt.pdf}
+}
+
 @book{altmanConstrainedMarkovDecision2021,
   title = {Constrained {{Markov Decision Processes}}: {{Stochastic Modeling}}},
   shorttitle = {Constrained {{Markov Decision Processes}}},
@@ -65,6 +83,24 @@
   isbn = {978-1-315-14022-3},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/GBXKPARY/Altman - 2021 - Constrained Markov Decision Processes Stochastic Modeling.pdf}
+}
+
+@misc{anandUnsupervisedStateRepresentation2020,
+  title = {Unsupervised {{State Representation Learning}} in {{Atari}}},
+  author = {Anand, Ankesh and Racah, Evan and Ozair, Sherjil and Bengio, Yoshua and C{\^o}t{\'e}, Marc-Alexandre and Hjelm, R. Devon},
+  year = {2020},
+  month = nov,
+  number = {arXiv:1906.08226},
+  eprint = {1906.08226},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1906.08226},
+  urldate = {2025-07-19},
+  abstract = {State representation learning, or the ability to capture latent generative factors of an environment, is crucial for building intelligent agents that can perform a wide variety of tasks. Learning such representations without supervision from rewards is a challenging open problem. We introduce a method that learns state representations by maximizing mutual information across spatially and temporally distinct features of a neural encoder of the observations. We also introduce a new benchmark based on Atari 2600 games where we evaluate representations based on how well they capture the ground truth state variables. We believe this new framework for evaluating representation learning models will be crucial for future representation learning research. Finally, we compare our technique with other state-of-the-art generative and contrastive representation learning methods. The code associated with this work is available at https://github.com/mila-iqia/atari-representation-learning},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/8V3YA5AI/Anand et al. - 2020 - Unsupervised State Representation Learning in Atar.pdf}
 }
 
 @misc{anguloSafePolicyExploration2024,
@@ -92,6 +128,22 @@
   abstract = {Model-based reinforcement learning has proven highly successful. However, learning a model in isolation from its use during planning is problematic in complex environments. To date, the most effective techniques have instead combined valueequivalent model learning with powerful tree-search methods. This approach is exemplified by MuZero, which has achieved state-of-the-art performance in a wide range of domains, from board games to visually rich environments, with discrete and continuous action spaces, in online and offline settings. However, previous instantiations of this approach were limited to the use of deterministic models. This limits their performance in environments that are inherently stochastic, partially observed, or so large and complex that they appear stochastic to a finite agent. In this paper we extend this approach to learn and plan with stochastic models. Specifically, we introduce a new algorithm, Stochastic MuZero, that learns a stochastic model incorporating afterstates, and uses this model to perform a stochastic tree search. Stochastic MuZero matched or exceeded the state of the art in a set of canonical single and multi-agent environments, including 2048 and backgammon, while maintaining the superhuman performance of standard MuZero in the game of Go.},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/TGICFELW/Antonoglou et al. - 2022 - PLANNING IN STOCHASTIC ENVIRONMENTS WITH A LEARNED MODEL.pdf}
+}
+
+@article{bagariaSkillDiscoveryExploration,
+  title = {Skill {{Discovery}} for {{Exploration}} and {{Planning}} Using {{Deep Skill Graphs}}},
+  author = {Bagaria, Akhil and Senthil, Jason and Konidaris, George},
+  abstract = {We introduce a new skill-discovery algorithm that builds a discrete graph representation of large continuous MDPs, where nodes correspond to skill subgoals and the edges to skill policies. The agent constructs this graph during an unsupervised training phase where it interleaves discovering skills and planning using them to gain coverage over ever-increasing portions of the state-space. Given a novel goal at test time, the agent plans with the acquired skill graph to reach a nearby state, then switches to learning to reach the goal. We show that the resulting algorithm, Deep Skill Graphs, outperforms both flat and existing hierarchical reinforcement learning methods on four difficult continuous control tasks.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/UTIVVS2X/Bagaria et al. - Skill Discovery for Exploration and Planning using.pdf}
+}
+
+@article{bagotSuccessorClustersBehavior,
+  title = {Successor {{Clusters}}: {{A Behavior Basis}} for {{Unsupervised Zero-Shot Reinforcement Learning}}},
+  author = {Bagot, Louis and Alegre, Lucas N and Latr{\'e}, Steven and Mets, Kevin},
+  abstract = {In this work, we introduce Successor Clusters (SCs), a novel method for tackling unsupervised zero-shot reinforcement learning (RL) problems. The goal in this setting is to directly identify policies capable of optimizing any given reward functions without requiring further learning after an initial reward-free training phase. Existing state-of-the-art techniques leverage Successor Features (SFs)---functions capable of characterizing a policy's expected discounted sum of a set of d reward features. Importantly, however, the performance of existing techniques depends critically on how well the reward features enable arbitrary reward functions of interest to be linearly approximated. We introduce a novel and principled approach for constructing reward features and prove that they allow for any Lipschitz reward functions to be approximated arbitrarily well. Furthermore, we mathematically derive upper bounds on the corresponding approximation errors. Our method constructs features by clustering the state space via a novel distance metric quantifying the minimal expected number of timesteps needed to transition between any state pairs. Building on these theoretical contributions, we introduce Successor Clusters (SCs), a variant of the successor features framework capable of predicting the time spent by a policy in different regions of the state space. We demonstrate that, after a pre-training phase, our method can approximate and maximize any new reward functions in a zero-shot manner. Importantly, we also formally show that as the number and quality of clusters increase, the set of policies induced by Successor Clusters converges to a set containing the optimal policy for any new task. Moreover, we show that our technique naturally produces interpretable features, enabling applications such as visualizing the sequence of state regions an agent is likely to visit while solving a task. Finally, we empirically demonstrate that our method outperforms stateof-the-art SF-based competitors in challenging continuous control benchmarks, achieving superior zero-shot performance and lower reward approximation error.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/2UVN67K3/Bagot et al. - Successor Clusters A Behavior Basis for Unsupervi.pdf}
 }
 
 @misc{bernsteinOldOptimizerNew2024,
@@ -328,6 +380,24 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/7ALRQ8GJ/Chen et al. - 2024 - DeepZero Scaling up Zeroth-Order Optimization for Deep Model Training.pdf}
+}
+
+@misc{chenLearningPlanHigh2020,
+  title = {Learning to {{Plan}} in {{High Dimensions}} via {{Neural Exploration-Exploitation Trees}}},
+  author = {Chen, Binghong and Dai, Bo and Lin, Qinjie and Ye, Guo and Liu, Han and Song, Le},
+  year = {2020},
+  month = feb,
+  number = {arXiv:1903.00070},
+  eprint = {1903.00070},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1903.00070},
+  urldate = {2025-07-17},
+  abstract = {We propose a meta path planning algorithm named Neural Exploration-Exploitation Trees (NEXT) for learning from prior experience for solving new path planning problems in high dimensional continuous state and action spaces. Compared to more classical sampling-based methods like RRT, our approach achieves much better sample efficiency in high-dimensions and can benefit from prior experience of planning in similar environments. More specifically, NEXT exploits a novel neural architecture which can learn promising search directions from problem structures. The learned prior is then integrated into a UCB-type algorithm to achieve an online balance between exploration and exploitation when solving a new problem. We conduct thorough experiments to show that NEXT accomplishes new planning problems with more compact search trees and significantly outperforms state-of-the-art methods on several benchmarks.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/MGZUR4RP/Chen et al. - 2020 - Learning to Plan in High Dimensions via Neural Exp.pdf}
 }
 
 @article{chenNeuralOrdinaryDifferential,
@@ -681,6 +751,25 @@
   file = {/home/kellen/Downloads/pdfs/storage/2RCAQS2F/Elsayed and Mahmood - 2023 - Utility-based Perturbed Gradient Descent An Optim.pdf}
 }
 
+@misc{eysenbachCLearningLearningAchieve2021,
+  title = {C-{{Learning}}: {{Learning}} to {{Achieve Goals}} via {{Recursive Classification}}},
+  shorttitle = {C-{{Learning}}},
+  author = {Eysenbach, Benjamin and Salakhutdinov, Ruslan and Levine, Sergey},
+  year = {2021},
+  month = apr,
+  number = {arXiv:2011.08909},
+  eprint = {2011.08909},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2011.08909},
+  urldate = {2025-07-22},
+  abstract = {We study the problem of predicting and controlling the future state distribution of an autonomous agent. This problem, which can be viewed as a reframing of goal-conditioned reinforcement learning (RL), is centered around learning a conditional probability density function over future states. Instead of directly estimating this density function, we indirectly estimate this density function by training a classifier to predict whether an observation comes from the future. Via Bayes' rule, predictions from our classifier can be transformed into predictions over future states. Importantly, an off-policy variant of our algorithm allows us to predict the future state distribution of a new policy, without collecting new experience. This variant allows us to optimize functionals of a policy's future state distribution, such as the density of reaching a particular goal state. While conceptually similar to Q-learning, our work lays a principled foundation for goal-conditioned RL as density estimation, providing justification for goal-conditioned methods used in prior work. This foundation makes hypotheses about Q-learning, including the optimal goal-sampling ratio, which we confirm experimentally. Moreover, our proposed method is competitive with prior goal-conditioned RL methods.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/UPPYDNWP/Eysenbach et al. - 2021 - C-Learning Learning to Achieve Goals via Recursiv.pdf}
+}
+
 @misc{eysenbachContrastiveLearningGoalConditioned2023,
   title = {Contrastive {{Learning}} as {{Goal-Conditioned Reinforcement Learning}}},
   author = {Eysenbach, Benjamin and Zhang, Tianjun and Salakhutdinov, Ruslan and Levine, Sergey},
@@ -855,6 +944,14 @@
   keywords = {robotics}
 }
 
+@article{ghoshRepresentationsStableOffPolicy,
+  title = {Representations for {{Stable Off-Policy Reinforcement Learning}}},
+  author = {Ghosh, Dibya and Bellemare, Marc G},
+  abstract = {Reinforcement learning with function approximation can be unstable and even divergent, especially when combined with off-policy learning and Bellman updates. In deep reinforcement learning, these issues have been dealt with empirically by adapting and regularizing the representation, in particular with auxiliary tasks. This suggests that representation learning may provide a means to guarantee stability. In this paper, we formally show that there are indeed nontrivial state representations under which the canonical TD algorithm is stable, even when learning off-policy. We analyze representation learning schemes that are based on the transition matrix of a policy, such as proto-value functions, along three axes: approximation error, stability, and ease of estimation. In the most general case, we show that a Schur basis provides convergence guarantees, but is difficult to estimate from samples. For a fixed reward function, we find that an orthogonal basis of the corresponding Krylov subspace is an even better choice. We conclude by empirically demonstrating that these stable representations can be learned using stochastic gradient descent, opening the door to improved techniques for representation learning with deep networks.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/VSAP7N7L/Ghosh and Bellemare - Representations for Stable Off-Policy Reinforcemen.pdf}
+}
+
 @misc{ghugareNormalizingFlowsAre2025,
   title = {Normalizing {{Flows}} Are {{Capable Models}} for {{RL}}},
   author = {Ghugare, Raj and Eysenbach, Benjamin},
@@ -965,6 +1062,24 @@
   file = {/home/kellen/Downloads/pdfs/storage/FBVZY26U/Gupta et al. - 2024 - Model-based Safe Reinforcement Learning using Variable Horizon Rollouts.pdf}
 }
 
+@misc{gurEnvironmentGenerationZeroShot2022,
+  title = {Environment {{Generation}} for {{Zero-Shot Compositional Reinforcement Learning}}},
+  author = {Gur, Izzeddin and Jaques, Natasha and Miao, Yingjie and Choi, Jongwook and Tiwari, Manoj and Lee, Honglak and Faust, Aleksandra},
+  year = {2022},
+  month = jan,
+  number = {arXiv:2201.08896},
+  eprint = {2201.08896},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2201.08896},
+  urldate = {2025-07-22},
+  abstract = {Many real-world problems are compositional -- solving them requires completing interdependent sub-tasks, either in series or in parallel, that can be represented as a dependency graph. Deep reinforcement learning (RL) agents often struggle to learn such complex tasks due to the long time horizons and sparse rewards. To address this problem, we present Compositional Design of Environments (CoDE), which trains a Generator agent to automatically build a series of compositional tasks tailored to the RL agent's current skill level. This automatic curriculum not only enables the agent to learn more complex tasks than it could have otherwise, but also selects tasks where the agent's performance is weak, enhancing its robustness and ability to generalize zero-shot to unseen tasks at test-time. We analyze why current environment generation techniques are insufficient for the problem of generating compositional tasks, and propose a new algorithm that addresses these issues. Our results assess learning and generalization across multiple compositional tasks, including the real-world problem of learning to navigate and interact with web pages. We learn to generate environments composed of multiple pages or rooms, and train RL agents capable of completing wide-range of complex tasks in those environments. We contribute two new benchmark frameworks for generating compositional tasks, compositional MiniGrid and gMiniWoB for web navigation. CoDE yields 4x higher success rate than the strongest baseline, and demonstrates strong performance of real websites learned on 3500 primitive tasks.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/JFG6VCJ5/Gur et al. - 2022 - Environment Generation for Zero-Shot Compositional.pdf}
+}
+
 @inproceedings{gutmannNoisecontrastiveEstimationNew2010,
   title = {Noise-Contrastive Estimation: {{A}} New Estimation Principle for Unnormalized Statistical Models},
   shorttitle = {Noise-Contrastive Estimation},
@@ -987,6 +1102,24 @@
   abstract = {We consider the task of estimating, from observed data, a probabilistic model that is parameterized by a finite number of parameters. In particular, we are considering the situation where the model probability density function is unnormalized. That is, the model is only specified up to the partition function. The partition function normalizes a model so that it integrates to one for any choice of the parameters. However, it is often impossible to obtain it in closed form. Gibbs distributions, Markov and multi-layer networks are examples of models where analytical normalization is often impossible. Maximum likelihood estimation can then not be used without resorting to numerical approximations which are often computationally expensive. We propose here a new objective function for the estimation of both normalized and unnormalized models. The basic idea is to perform nonlinear logistic regression to discriminate between the observed data and some artificially generated noise. With this approach, the normalizing partition function can be estimated like any other parameter. We prove that the new estimation method leads to a consistent (convergent) estimator of the parameters. For large noise sample sizes, the new estimator is furthermore shown to behave like the maximum likelihood estimator. In the estimation of unnormalized models, there is a trade-off between statistical and computational performance. We show that the new method strikes a competitive trade-off in comparison to other estimation methods for unnormalized models. As an application to real data, we estimate novel two-layer models of natural image statistics with spline nonlinearities.},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/7HQNNPRL/Gutmann et al. - Noise-Contrastive Estimation of Unnormalized Statistical Models, with Applications to Natural Image.pdf}
+}
+
+@misc{haarnojaSoftActorCriticAlgorithms2019,
+  title = {Soft {{Actor-Critic Algorithms}} and {{Applications}}},
+  author = {Haarnoja, Tuomas and Zhou, Aurick and Hartikainen, Kristian and Tucker, George and Ha, Sehoon and Tan, Jie and Kumar, Vikash and Zhu, Henry and Gupta, Abhishek and Abbeel, Pieter and Levine, Sergey},
+  year = {2019},
+  month = jan,
+  number = {arXiv:1812.05905},
+  eprint = {1812.05905},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1812.05905},
+  urldate = {2025-07-15},
+  abstract = {Model-free deep reinforcement learning (RL) algorithms have been successfully applied to a range of challenging sequential decision making and control tasks. However, these methods typically suffer from two major challenges: high sample complexity and brittleness to hyperparameters. Both of these challenges limit the applicability of such methods to real-world domains. In this paper, we describe Soft Actor-Critic (SAC), our recently introduced off-policy actor-critic algorithm based on the maximum entropy RL framework. In this framework, the actor aims to simultaneously maximize expected return and entropy; that is, to succeed at the task while acting as randomly as possible. We extend SAC to incorporate a number of modifications that accelerate training and improve stability with respect to the hyperparameters, including a constrained formulation that automatically tunes the temperature hyperparameter. We systematically evaluate SAC on a range of benchmark tasks, as well as challenging real-world tasks such as locomotion for a quadrupedal robot and robotic manipulation with a dexterous hand. With these improvements, SAC achieves state-of-the-art performance, outperforming prior on-policy and off-policy methods in sample-efficiency and asymptotic performance. Furthermore, we demonstrate that, in contrast to other off-policy algorithms, our approach is very stable, achieving similar performance across different random seeds. These results suggest that SAC is a promising candidate for learning in real-world robotics tasks.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/DDUJWGBE/Haarnoja et al. - 2019 - Soft Actor-Critic Algorithms and Applications.pdf}
 }
 
 @misc{hafnerLearningLatentDynamics2019,
@@ -1092,6 +1225,25 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/AWL8Y6DZ/Hubert et al. - 2021 - Learning and Planning in Complex Action Spaces.pdf}
+}
+
+@misc{hwangStrictSubgoalExecution2025,
+  title = {Strict {{Subgoal Execution}}: {{Reliable Long-Horizon Planning}} in {{Hierarchical Reinforcement Learning}}},
+  shorttitle = {Strict {{Subgoal Execution}}},
+  author = {Hwang, Jaebak and Lee, Sanghyeon and Kim, Jeongmo and Han, Seungyul},
+  year = {2025},
+  month = jun,
+  number = {arXiv:2506.21039},
+  eprint = {2506.21039},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2506.21039},
+  urldate = {2025-07-20},
+  abstract = {Long-horizon goal-conditioned tasks pose fundamental challenges for reinforcement learning (RL), particularly when goals are distant and rewards are sparse. While hierarchical and graph-based methods offer partial solutions, they often suffer from subgoal infeasibility and inefficient planning. We introduce Strict Subgoal Execution (SSE), a graph-based hierarchical RL framework that enforces single-step subgoal reachability by structurally constraining high-level decision-making. To enhance exploration, SSE employs a decoupled exploration policy that systematically traverses underexplored regions of the goal space. Furthermore, a failure-aware path refinement, which refines graph-based planning by dynamically adjusting edge costs according to observed low-level success rates, thereby improving subgoal reliability. Experimental results across diverse long-horizon benchmarks demonstrate that SSE consistently outperforms existing goal-conditioned RL and hierarchical RL approaches in both efficiency and success rate.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/XE9U9G2J/Hwang et al. - 2025 - Strict Subgoal Execution Reliable Long-Horizon Pl.pdf}
 }
 
 @article{jaakkolaConvergenceStochasticIterative,
@@ -1223,6 +1375,14 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/4CIQB3XP/1312.pdf}
+}
+
+@article{kingmaImprovedVariationalInference,
+  title = {Improved {{Variational Inference}} with {{Inverse Autoregressive Flow}}},
+  author = {Kingma, Durk P and Salimans, Tim and Jozefowicz, Rafal and Chen, Xi and Sutskever, Ilya and Welling, Max},
+  abstract = {The framework of normalizing flows provides a general strategy for flexible variational inference of posteriors over latent variables. We propose a new type of normalizing flow, inverse autoregressive flow (IAF), that, in contrast to earlier published flows, scales well to high-dimensional latent spaces. The proposed flow consists of a chain of invertible transformations, where each transformation is based on an autoregressive neural network. In experiments, we show that IAF significantly improves upon diagonal Gaussian approximate posteriors. In addition, we demonstrate that a novel type of variational autoencoder, coupled with IAF, is competitive with neural autoregressive models in terms of attained log-likelihood on natural images, while allowing significantly faster synthesis.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/5GFTEY8S/Kingma et al. - Improved Variational Inference with Inverse Autore.pdf}
 }
 
 @misc{klissarovDeepLaplacianbasedOptions2023,
@@ -1358,6 +1518,24 @@
   langid = {english},
   keywords = {Goal Position,Mobile Robot,Obstacle Avoidance,Path Planning,Voronoi Diagram},
   file = {/home/kellen/Downloads/pdfs/storage/WZKW4AGM/Kunchev et al. - 2006 - Path Planning and Obstacle Avoidance for Autonomous Mobile Robots A Review.pdf}
+}
+
+@misc{lanGeneralizationRepresentationsReinforcement2022,
+  title = {On the {{Generalization}} of {{Representations}} in {{Reinforcement Learning}}},
+  author = {Lan, Charline Le and Tu, Stephen and Oberman, Adam and Agarwal, Rishabh and Bellemare, Marc G.},
+  year = {2022},
+  month = mar,
+  number = {arXiv:2203.00543},
+  eprint = {2203.00543},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2203.00543},
+  urldate = {2025-07-22},
+  abstract = {In reinforcement learning, state representations are used to tractably deal with large problem spaces. State representations serve both to approximate the value function with few parameters, but also to generalize to newly encountered states. Their features may be learned implicitly (as part of a neural network) or explicitly (for example, the successor representation of {\textbackslash}citet\{dayan1993improving\}). While the approximation properties of representations are reasonably well-understood, a precise characterization of how and when these representations generalize is lacking. In this work, we address this gap and provide an informative bound on the generalization error arising from a specific state representation. This bound is based on the notion of effective dimension which measures the degree to which knowing the value at one state informs the value at other states. Our bound applies to any state representation and quantifies the natural tension between representations that generalize well and those that approximate well. We complement our theoretical results with an empirical survey of classic representation learning methods from the literature and results on the Arcade Learning Environment, and find that the generalization behaviour of learned representations is well-explained by their effective dimension.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/NYWNHH5I/Lan et al. - 2022 - On the Generalization of Representations in Reinfo.pdf}
 }
 
 @misc{langTheoreticalAnalysisWeaktoStrong2024,
@@ -1638,6 +1816,13 @@
   file = {/home/kellen/Downloads/pdfs/storage/ZYYI666X/Liu et al. - 2023 - Learning Policies with Zero or Bounded Constraint Violation for Constrained MDPs.pdf;/home/kellen/Downloads/pdfs/storage/QS3LNMDW/2106.html}
 }
 
+@article{liuLeveragingCompositionalStructure,
+  title = {Leveraging {{Compositional Structure}} for {{Reinforcement Learning}}  and {{Sequential Decision Making Problems}}},
+  author = {Liu, Anthony Z},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/TN7EBFWY/Liu - Leveraging Compositional Structure for Reinforceme.pdf}
+}
+
 @misc{liuMuonScalableLLM2025,
   title = {Muon Is {{Scalable}} for {{LLM Training}}},
   author = {Liu, Jingyuan and Su, Jianlin and Yao, Xingcheng and Jiang, Zhejun and Lai, Guokun and Du, Yulun and Qin, Yidao and Xu, Weixin and Lu, Enzhe and Yan, Junjie and Chen, Yanru and Zheng, Huabin and Liu, Yibo and Liu, Shaowei and Yin, Bohong and He, Weiran and Zhu, Han and Wang, Yuzhi and Wang, Jianzhou and Dong, Mengnan and Zhang, Zheng and Kang, Yongsheng and Zhang, Hao and Xu, Xinran and Zhang, Yutao and Wu, Yuxin and Zhou, Xinyu and Yang, Zhilin},
@@ -1889,6 +2074,32 @@
   file = {/home/kellen/Downloads/pdfs/storage/GUALHQEZ/McLeod et al. - 2022 - Continual Auxiliary Task Learning.pdf}
 }
 
+@inproceedings{mohamedCuriosityDrivenExplorationTemporal,
+  title = {Curiosity-{{Driven Exploration}} via {{Temporal Contrastive Learning}}},
+  booktitle = {Workshop on {{Reinforcement Learning Beyond Rewards}} @ {{Reinforcement Learning Conference}} 2025},
+  author = {Mohamed, Faisal and Ji, Catherine and Eysenbach, Benjamin and Berseth, Glen},
+  urldate = {2025-07-07},
+  file = {/home/kellen/Downloads/pdfs/storage/L8AUHEYW/pdf.pdf}
+}
+
+@article{momennejadSuccessorRepresentationHuman2017,
+  title = {The Successor Representation in Human Reinforcement Learning},
+  author = {Momennejad, I. and Russek, E. M. and Cheong, J. H. and Botvinick, M. M. and Daw, N. D. and Gershman, S. J.},
+  year = {2017},
+  month = aug,
+  journal = {Nature Human Behaviour},
+  volume = {1},
+  number = {9},
+  pages = {680--692},
+  publisher = {{Springer Science and Business Media LLC}},
+  issn = {2397-3374},
+  doi = {10.1038/s41562-017-0180-8},
+  urldate = {2025-07-24},
+  copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/XYTKJQUK/Momennejad et al. - 2017 - The successor representation in human reinforcemen.pdf}
+}
+
 @book{montavonNeuralNetworksTricks2012,
   title = {Neural {{Networks}}: {{Tricks}} of the {{Trade}}: {{Second Edition}}},
   shorttitle = {Neural {{Networks}}},
@@ -1947,23 +2158,6 @@
   abstract = {Reinforcement learning (RL) agents are particularly hard to train when rewards are sparse. One common solution is to use intrinsic rewards to encourage agents to explore their environment. However, recent intrinsic exploration methods often use state-based novelty measures which reward low-level exploration and may not scale to domains requiring more abstract skills. Instead, we explore language as a general medium for highlighting relevant abstractions in an environment. Unlike previous work, we evaluate whether language can improve over existing exploration methods by directly extending (and comparing to) competitive intrinsic exploration baselines: AMIGo (Campero et al., 2021) and NovelD (Zhang et al., 2021). These language-based variants outperform their non-linguistic forms by 47--85\% across 13 challenging tasks from the MiniGrid and MiniHack environment suites.},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/BSEUWMD8/Mu et al. - Improving Intrinsic Exploration with Language Abst.pdf}
-}
-
-@misc{myersHorizonGeneralizationReinforcement2025,
-  title = {Horizon {{Generalization}} in {{Reinforcement Learning}}},
-  author = {Myers, Vivek and Ji, Catherine and Eysenbach, Benjamin},
-  year = {2025},
-  month = jan,
-  number = {arXiv:2501.02709},
-  eprint = {2501.02709},
-  primaryclass = {cs},
-  publisher = {arXiv},
-  doi = {10.48550/arXiv.2501.02709},
-  urldate = {2025-06-14},
-  abstract = {We study goal-conditioned RL through the lens of generalization, but not in the traditional sense of random augmentations and domain randomization. Rather, we aim to learn goal-directed policies that generalize with respect to the horizon: after training to reach nearby goals (which are easy to learn), these policies should succeed in reaching distant goals (which are quite challenging to learn). In the same way that invariance is closely linked with generalization is other areas of machine learning (e.g., normalization layers make a network invariant to scale, and therefore generalize to inputs of varying scales), we show that this notion of horizon generalization is closely linked with invariance to planning: a policy navigating towards a goal will select the same actions as if it were navigating to a waypoint en route to that goal. Thus, such a policy trained to reach nearby goals should succeed at reaching arbitrarily-distant goals. Our theoretical analysis proves that both horizon generalization and planning invariance are possible, under some assumptions. We present new experimental results and recall findings from prior work in support of our theoretical results. Taken together, our results open the door to studying how techniques for invariance and generalization developed in other areas of machine learning might be adapted to achieve this alluring property.},
-  archiveprefix = {arXiv},
-  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
-  file = {/home/kellen/Downloads/pdfs/storage/TAKJZ8JS/Myers et al. - 2025 - Horizon Generalization in Reinforcement Learning.pdf;/home/kellen/Downloads/pdfs/storage/4FIJY9TU/2501.html}
 }
 
 @misc{myersLearningTemporalDistances2024,
@@ -2053,6 +2247,25 @@
   file = {/home/kellen/Downloads/pdfs/storage/J2VECPI7/Nachum et al. - 2019 - Why Does Hierarchy (Sometimes) Work So Well in Rei.pdf}
 }
 
+@misc{nairHierarchicalForesightSelfSupervised2019,
+  title = {Hierarchical {{Foresight}}: {{Self-Supervised Learning}} of {{Long-Horizon Tasks}} via {{Visual Subgoal Generation}}},
+  shorttitle = {Hierarchical {{Foresight}}},
+  author = {Nair, Suraj and Finn, Chelsea},
+  year = {2019},
+  month = sep,
+  number = {arXiv:1909.05829},
+  eprint = {1909.05829},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1909.05829},
+  urldate = {2025-07-22},
+  abstract = {Video prediction models combined with planning algorithms have shown promise in enabling robots to learn to perform many vision-based tasks through only selfsupervision, reaching novel goals in cluttered scenes with unseen objects. However, due to the compounding uncertainty in long horizon video prediction and poor scalability of sampling-based planning optimizers, one significant limitation of these approaches is the ability to plan over long horizons to reach distant goals. To that end, we propose a framework for subgoal generation and planning, hierarchical visual foresight (HVF), which generates subgoal images conditioned on a goal image, and uses them for planning. The subgoal images are directly optimized to decompose the task into easy to plan segments, and as a result, we observe that the method naturally identifies semantically meaningful states as subgoals. Across three out of four simulated vision-based manipulation tasks, we find that our method achieves nearly a 200\% performance improvement over planning without subgoals and model-free RL approaches. Further, our experiments illustrate that our approach extends to real, cluttered visual scenes.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/BVG99UBB/Nair and Finn - 2019 - Hierarchical Foresight Self-Supervised Learning o.pdf}
+}
+
 @misc{nasirianyPlanningGoalConditionedPolicies2019,
   title = {Planning with {{Goal-Conditioned Policies}}},
   author = {Nasiriany, Soroush and Pong, Vitchyr H. and Lin, Steven and Levine, Sergey},
@@ -2109,6 +2322,25 @@
   volume = {37},
   pages = {106440--106473},
   publisher = {Curran Associates, Inc.}
+}
+
+@misc{niBridgingStateHistory2024,
+  title = {Bridging {{State}} and {{History Representations}}: {{Understanding Self-Predictive RL}}},
+  shorttitle = {Bridging {{State}} and {{History Representations}}},
+  author = {Ni, Tianwei and Eysenbach, Benjamin and Seyedsalehi, Erfan and Ma, Michel and Gehring, Clement and Mahajan, Aditya and Bacon, Pierre-Luc},
+  year = {2024},
+  month = apr,
+  number = {arXiv:2401.08898},
+  eprint = {2401.08898},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2401.08898},
+  urldate = {2025-07-20},
+  abstract = {Representations are at the core of all deep reinforcement learning (RL) methods for both Markov decision processes (MDPs) and partially observable Markov decision processes (POMDPs). Many representation learning methods and theoretical frameworks have been developed to understand what constitutes an effective representation. However, the relationships between these methods and the shared properties among them remain unclear. In this paper, we show that many of these seemingly distinct methods and frameworks for state and history abstractions are, in fact, based on a common idea of self-predictive abstraction. Furthermore, we provide theoretical insights into the widely adopted objectives and optimization, such as the stop-gradient technique, in learning self-predictive representations. These findings together yield a minimalist algorithm to learn self-predictive representations for states and histories. We validate our theories by applying our algorithm to standard MDPs, MDPs with distractors, and POMDPs with sparse rewards. These findings culminate in a set of preliminary guidelines for RL practitioners.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/S4DXALKU/Ni et al. - 2024 - Bridging State and History Representations Unders.pdf}
 }
 
 @book{nocedalNumericalOptimization2006,
@@ -2244,23 +2476,6 @@
   file = {/home/kellen/Downloads/pdfs/storage/WEHZ63LJ/Park et al. - 2024 - Foundation Policies with Hilbert Representations.pdf;/home/kellen/Downloads/pdfs/storage/YNKYPBF3/Park et al. - 2024 - Foundation Policies with Hilbert Representations.pdf;/home/kellen/Downloads/pdfs/storage/5H2B6U6Y/2402.html}
 }
 
-@misc{parkHorizonReductionMakes2025,
-  title = {Horizon {{Reduction Makes RL Scalable}}},
-  author = {Park, Seohong and Frans, Kevin and Mann, Deepinder and Eysenbach, Benjamin and Kumar, Aviral and Levine, Sergey},
-  year = {2025},
-  month = jun,
-  number = {arXiv:2506.04168},
-  eprint = {2506.04168},
-  primaryclass = {cs},
-  publisher = {arXiv},
-  doi = {10.48550/arXiv.2506.04168},
-  urldate = {2025-06-14},
-  abstract = {In this work, we study the scalability of offline reinforcement learning (RL) algorithms. In principle, a truly scalable offline RL algorithm should be able to solve any given problem, regardless of its complexity, given sufficient data, compute, and model capacity. We investigate if and how current offline RL algorithms match up to this promise on diverse, challenging, previously unsolved tasks, using datasets up to 1000x larger than typical offline RL datasets. We observe that despite scaling up data, many existing offline RL algorithms exhibit poor scaling behavior, saturating well below the maximum performance. We hypothesize that the horizon is the main cause behind the poor scaling of offline RL. We empirically verify this hypothesis through several analysis experiments, showing that long horizons indeed present a fundamental barrier to scaling up offline RL. We then show that various horizon reduction techniques substantially enhance scalability on challenging tasks. Based on our insights, we also introduce a minimal yet scalable method named SHARSA that effectively reduces the horizon. SHARSA achieves the best asymptotic performance and scaling behavior among our evaluation methods, showing that explicitly reducing the horizon unlocks the scalability of offline RL. Code: https://github.com/seohongpark/horizon-reduction},
-  archiveprefix = {arXiv},
-  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
-  file = {/home/kellen/Downloads/pdfs/storage/GZMYP9DB/Park et al. - 2025 - Horizon Reduction Makes RL Scalable.pdf;/home/kellen/Downloads/pdfs/storage/GF47MGGU/2506.html}
-}
-
 @misc{parkHorizonReductionMakes2025a,
   title = {Horizon {{Reduction Makes RL Scalable}}},
   author = {Park, Seohong and Frans, Kevin and Mann, Deepinder and Eysenbach, Benjamin and Kumar, Aviral and Levine, Sergey},
@@ -2353,6 +2568,44 @@
   author = {Pitis, Silviu and Chan, Harris and Zhao, Stephen and Stadie, Bradly},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/XG7ZYYIG/Pitis et al. - Maximum Entropy Gain Exploration for Long Horizon .pdf}
+}
+
+@misc{plataniosJellyBeanWorld2020,
+  title = {Jelly {{Bean World}}: {{A Testbed}} for {{Never-Ending Learning}}},
+  shorttitle = {Jelly {{Bean World}}},
+  author = {Platanios, Emmanouil Antonios and Saparov, Abulhair and Mitchell, Tom},
+  year = {2020},
+  month = feb,
+  number = {arXiv:2002.06306},
+  eprint = {2002.06306},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2002.06306},
+  urldate = {2025-07-19},
+  abstract = {Machine learning has shown growing success in recent years. However, current machine learning systems are highly specialized, trained for particular problems or domains, and typically on a single narrow dataset. Human learning, on the other hand, is highly general and adaptable. Never-ending learning is a machine learning paradigm that aims to bridge this gap, with the goal of encouraging researchers to design machine learning systems that can learn to perform a wider variety of inter-related tasks in more complex environments. To date, there is no environment or testbed to facilitate the development and evaluation of never-ending learning systems. To this end, we propose the Jelly Bean World testbed. The Jelly Bean World allows experimentation over two-dimensional grid worlds which are filled with items and in which agents can navigate. This testbed provides environments that are sufficiently complex and where more generally intelligent algorithms ought to perform better than current state-of-the-art reinforcement learning approaches. It does so by producing non-stationary environments and facilitating experimentation with multi-task, multi-agent, multi-modal, and curriculum learning settings. We hope that the Jelly Bean World will prompt new interest in the development of never-ending learning, and more broadly general intelligence.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Multiagent Systems,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/UJYUJZTP/Platanios et al. - 2020 - Jelly Bean World A Testbed for Never-Ending Learn.pdf}
+}
+
+@misc{podellSDXLImprovingLatent2023,
+  title = {{{SDXL}}: {{Improving Latent Diffusion Models}} for {{High-Resolution Image Synthesis}}},
+  shorttitle = {{{SDXL}}},
+  author = {Podell, Dustin and English, Zion and Lacey, Kyle and Blattmann, Andreas and Dockhorn, Tim and M{\"u}ller, Jonas and Penna, Joe and Rombach, Robin},
+  year = {2023},
+  month = jul,
+  number = {arXiv:2307.01952},
+  eprint = {2307.01952},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2307.01952},
+  urldate = {2025-07-08},
+  abstract = {We present SDXL, a latent diffusion model for text-to-image synthesis. Compared to previous versions of Stable Diffusion, SDXL leverages a three times larger UNet backbone: The increase of model parameters is mainly due to more attention blocks and a larger cross-attention context as SDXL uses a second text encoder. We design multiple novel conditioning schemes and train SDXL on multiple aspect ratios. We also introduce a refinement model which is used to improve the visual fidelity of samples generated by SDXL using a post-hoc image-to-image technique. We demonstrate that SDXL shows drastically improved performance compared to previous versions of Stable Diffusion and achieves results competitive with those of black-box state-of-the-art image generators. In the spirit of promoting open research and fostering transparency in large model training and evaluation, we provide access to code and model weights.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition},
+  file = {/home/kellen/Downloads/pdfs/storage/2UHMH5ZD/Podell et al. - 2023 - SDXL Improving Latent Diffusion Models for High-R.pdf}
 }
 
 @misc{prietoGrokkingEdgeNumerical2025,
@@ -2454,6 +2707,14 @@
   file = {/home/kellen/Downloads/pdfs/storage/EQNAIMY3/Ren et al. - 2021 - ZeRO-Offload Democratizing Billion-Scale Model Training.pdf}
 }
 
+@article{rezendeVariationalInferenceNormalizing,
+  title = {Variational {{Inference}} with {{Normalizing Flows}}},
+  author = {Rezende, Danilo Jimenez and Mohamed, Shakir},
+  abstract = {The choice of approximate posterior distribution is one of the core problems in variational inference. Most applications of variational inference employ simple families of posterior approximations in order to allow for efficient inference, focusing on mean-field or other simple structured approximations. This restriction has a significant impact on the quality of inferences made using variational methods. We introduce a new approach for specifying flexible, arbitrarily complex and scalable approximate posterior distributions. Our approximations are distributions constructed through a normalizing flow, whereby a simple initial density is transformed into a more complex one by applying a sequence of invertible transformations until a desired level of complexity is attained. We use this view of normalizing flows to develop categories of finite and infinitesimal flows and provide a unified view of approaches for constructing rich posterior approximations. We demonstrate that the theoretical advantages of having posteriors that better match the true posterior, combined with the scalability of amortized variational approaches, provides a clear improvement in performance and applicability of variational inference.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/IRPF789A/Rezende and Mohamed - Variational Inference with Normalizing Flows.pdf}
+}
+
 @misc{richensGeneralAgentsNeed2025,
   title = {General Agents Need World Models},
   author = {Richens, Jonathan and Abel, David and Bellot, Alexis and Everitt, Tom},
@@ -2503,6 +2764,24 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/IYUWPP87/Ring - 2021 - Representing Knowledge as Predictions (and State as Knowledge).pdf;/home/kellen/Downloads/pdfs/storage/6JWTCLLF/2112.html}
+}
+
+@misc{rombachHighResolutionImageSynthesis2022,
+  title = {High-{{Resolution Image Synthesis}} with {{Latent Diffusion Models}}},
+  author = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj{\"o}rn},
+  year = {2022},
+  month = apr,
+  number = {arXiv:2112.10752},
+  eprint = {2112.10752},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2112.10752},
+  urldate = {2025-07-08},
+  abstract = {By decomposing the image formation process into a sequential application of denoising autoencoders, diffusion models (DMs) achieve state-of-the-art synthesis results on image data and beyond. Additionally, their formulation allows for a guiding mechanism to control the image generation process without retraining. However, since these models typically operate directly in pixel space, optimization of powerful DMs often consumes hundreds of GPU days and inference is expensive due to sequential evaluations. To enable DM training on limited computational resources while retaining their quality and flexibility, we apply them in the latent space of powerful pretrained autoencoders. In contrast to previous work, training diffusion models on such a representation allows for the first time to reach a near-optimal point between complexity reduction and detail preservation, greatly boosting visual fidelity. By introducing cross-attention layers into the model architecture, we turn diffusion models into powerful and flexible generators for general conditioning inputs such as text or bounding boxes and high-resolution synthesis becomes possible in a convolutional manner. Our latent diffusion models (LDMs) achieve a new state of the art for image inpainting and highly competitive performance on various tasks, including unconditional image generation, semantic scene synthesis, and super-resolution, while significantly reducing computational requirements compared to pixel-based DMs. Code is available at https://github.com/CompVis/latent-diffusion .},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition},
+  file = {/home/kellen/Downloads/pdfs/storage/DNZPZYIK/Rombach et al. - 2022 - High-Resolution Image Synthesis with Latent Diffus.pdf}
 }
 
 @misc{ruderOverviewGradientDescent2017,
@@ -2625,6 +2904,25 @@
   file = {/home/kellen/Downloads/pdfs/storage/MWJ3CB3E/2402.pdf}
 }
 
+@misc{shazeerFastTransformerDecoding2019,
+  title = {Fast {{Transformer Decoding}}: {{One Write-Head}} Is {{All You Need}}},
+  shorttitle = {Fast {{Transformer Decoding}}},
+  author = {Shazeer, Noam},
+  year = {2019},
+  month = nov,
+  number = {arXiv:1911.02150},
+  eprint = {1911.02150},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1911.02150},
+  urldate = {2025-07-14},
+  abstract = {Multi-head attention layers, as used in the Transformer neural sequence model, are a powerful alternative to RNNs for moving information across and between sequences. While training these layers is generally fast and simple, due to parallelizability across the length of the sequence, incremental inference (where such paralleization is impossible) is often slow, due to the memory-bandwidth cost of repeatedly loading the large "keys" and "values" tensors. We propose a variant called multi-query attention, where the keys and values are shared across all of the different attention "heads", greatly reducing the size of these tensors and hence the memory bandwidth requirements of incremental decoding. We verify experimentally that the resulting models can indeed be much faster to decode, and incur only minor quality degradation from the baseline.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning,Computer Science - Neural and Evolutionary Computing},
+  file = {/home/kellen/Downloads/pdfs/storage/BQ6F9K2H/Shazeer - 2019 - Fast Transformer Decoding One Write-Head is All Y.pdf}
+}
+
 @misc{shoeybiMegatronLMTrainingMultiBillion2020,
   title = {Megatron-{{LM}}: {{Training Multi-Billion Parameter Language Models Using Model Parallelism}}},
   shorttitle = {Megatron-{{LM}}},
@@ -2641,6 +2939,24 @@
   langid = {english},
   keywords = {Computer Science - Computation and Language},
   file = {/home/kellen/Downloads/pdfs/storage/JMJ9WPZ9/Shoeybi et al. - 2020 - Megatron-LM Training Multi-Billion Parameter Language Models Using Model Parallelism.pdf}
+}
+
+@misc{sikchiFastAdaptationBehavioral2025,
+  title = {Fast {{Adaptation}} with {{Behavioral Foundation Models}}},
+  author = {Sikchi, Harshit and Tirinzoni, Andrea and Touati, Ahmed and Xu, Yingchen and Kanervisto, Anssi and Niekum, Scott and Zhang, Amy and Lazaric, Alessandro and Pirotta, Matteo},
+  year = {2025},
+  month = apr,
+  number = {arXiv:2504.07896},
+  eprint = {2504.07896},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2504.07896},
+  urldate = {2025-07-18},
+  abstract = {Unsupervised zero-shot reinforcement learning (RL) has emerged as a powerful paradigm for pretraining behavioral foundation models (BFMs), enabling agents to solve a wide range of downstream tasks specified via reward functions in a zero-shot fashion, i.e., without additional test-time learning or planning. This is achieved by learning self-supervised task embeddings alongside corresponding near-optimal behaviors and incorporating an inference procedure to directly retrieve the latent task embedding and associated policy for any given reward function. Despite promising results, zero-shot policies are often suboptimal due to errors induced by the unsupervised training process, the embedding, and the inference procedure. In this paper, we focus on devising fast adaptation strategies to improve the zero-shot performance of BFMs in a few steps of online interaction with the environment while avoiding any performance drop during the adaptation process. Notably, we demonstrate that existing BFMs learn a set of skills containing more performant policies than those identified by their inference procedure, making them well-suited for fast adaptation. Motivated by this observation, we propose both actor-critic and actor-only fast adaptation strategies that search in the low-dimensional task-embedding space of the pre-trained BFM to rapidly improve the performance of its zero-shot policies on any downstream task. Notably, our approach mitigates the initial "unlearning" phase commonly observed when fine-tuning pre-trained RL models. We evaluate our fast adaptation strategies on top of four state-of-the-art zero-shot RL methods in multiple navigation and locomotion domains. Our results show that they achieve 10-40\% improvement over their zero-shot performance in a few tens of episodes, outperforming existing baselines.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics},
+  file = {/home/kellen/Downloads/pdfs/storage/6WYZ9UB7/Sikchi et al. - 2025 - Fast Adaptation with Behavioral Foundation Models.pdf}
 }
 
 @article{silberschatzOperatingSystemConcepts,
@@ -2718,9 +3034,46 @@
   file = {/home/kellen/Downloads/pdfs/storage/UIG2LRFF/Somerstep et al. - 2024 - A statistical framework for weak-to-strong general.pdf}
 }
 
+@article{stachenfeldHippocampusPredictiveMap2017,
+  title = {The Hippocampus as a Predictive Map},
+  author = {Stachenfeld, Kimberly L and Botvinick, Matthew M and Gershman, Samuel J},
+  year = {2017},
+  month = nov,
+  journal = {Nature Neuroscience},
+  volume = {20},
+  number = {11},
+  pages = {1643--1653},
+  publisher = {{Springer Science and Business Media LLC}},
+  issn = {1097-6256, 1546-1726},
+  doi = {10.1038/nn.4650},
+  urldate = {2025-07-24},
+  copyright = {http://www.springer.com/tdm},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/YA7EXQ2B/Stachenfeld et al. - 2017 - The hippocampus as a predictive map.pdf}
+}
+
 @book{StochasticApproximationAlgorithms,
   title = {Stochastic {{Approximation Algorithms}} and {{Applications}}},
   file = {/home/kellen/Downloads/pdfs/storage/6IGQEBVP/Stochastic Approximation Algorithms and Applications.pdf}
+}
+
+@misc{suarezPufferLibMakingReinforcement2024,
+  title = {{{PufferLib}}: {{Making Reinforcement Learning Libraries}} and {{Environments Play Nice}}},
+  shorttitle = {{{PufferLib}}},
+  author = {Suarez, Joseph},
+  year = {2024},
+  month = jun,
+  number = {arXiv:2406.12905},
+  eprint = {2406.12905},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2406.12905},
+  urldate = {2025-07-19},
+  abstract = {You have an environment, a model, and a reinforcement learning library that are designed to work together but don't. PufferLib makes them play nice. The library provides one-line environment wrappers that eliminate common compatibility problems and fast vectorization to accelerate training. With PufferLib, you can use familiar libraries like CleanRL and SB3 to scale from classic benchmarks like Atari and Procgen to complex simulators like NetHack and Neural MMO. We release pip packages and prebuilt images with dependencies for dozens of environments. All of our code is free and open-source software under the MIT license, complete with baselines, documentation, and support at pufferai.github.io.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Multiagent Systems},
+  file = {/home/kellen/Downloads/pdfs/storage/Z64GC96D/Suarez - 2024 - PufferLib Making Reinforcement Learning Libraries.pdf}
 }
 
 @misc{sunOptimizationDeepLearning2019,
@@ -2906,21 +3259,13 @@
   file = {/home/kellen/Downloads/pdfs/storage/U6CCSU6W/Thomas et al. - Safe Reinforcement Learning by Imagining the Near Future.pdf}
 }
 
-@misc{touatiDoesZeroShotReinforcement2023,
-  title = {Does {{Zero-Shot Reinforcement Learning Exist}}?},
+@article{touatiDOESZEROSHOTREINFORCEMENT2023,
+  title = {{{DOES ZERO-SHOT REINFORCEMENT LEARNING EXIST}}?},
   author = {Touati, Ahmed and Rapin, J{\'e}r{\'e}my and Ollivier, Yann},
   year = {2023},
-  month = mar,
-  number = {arXiv:2209.14935},
-  eprint = {2209.14935},
-  primaryclass = {cs},
-  publisher = {arXiv},
-  doi = {10.48550/arXiv.2209.14935},
-  urldate = {2024-09-18},
-  abstract = {A zero-shot RL agent is an agent that can solve any RL task in a given environment, instantly with no additional planning or learning, after an initial reward-free learning phase. This marks a shift from the reward-centric RL paradigm towards "controllable" agents that can follow arbitrary instructions in an environment. Current RL agents can solve families of related tasks at best, or require planning anew for each task. Strategies for approximate zero-shot RL ave been suggested using successor features (SFs) [BBQ+ 18] or forward-backward (FB) representations [TO21], but testing has been limited. After clarifying the relationships between these schemes, we introduce improved losses and new SF models, and test the viability of zero-shot RL schemes systematically on tasks from the Unsupervised RL benchmark [LYL+21]. To disentangle universal representation learning from exploration, we work in an offline setting and repeat the tests on several existing replay buffers. SFs appear to suffer from the choice of the elementary state features. SFs with Laplacian eigenfunctions do well, while SFs based on auto-encoders, inverse curiosity, transition models, low-rank transition matrix, contrastive learning, or diversity (APS), perform unconsistently. In contrast, FB representations jointly learn the elementary and successor features from a single, principled criterion. They perform best and consistently across the board, reaching 85\% of supervised RL performance with a good replay buffer, in a zero-shot manner.},
-  archiveprefix = {arXiv},
-  keywords = {Computer Science - Machine Learning},
-  file = {/home/kellen/Downloads/pdfs/storage/GFV8I99T/Touati et al. - 2023 - Does Zero-Shot Reinforcement Learning Exist.pdf;/home/kellen/Downloads/pdfs/storage/9RA8LX73/2209.html}
+  abstract = {A zero-shot RL agent is an agent that can solve any RL task in a given environment, instantly with no additional planning or learning, after an initial reward-free learning phase. This marks a shift from the reward-centric RL paradigm towards ``controllable'' agents that can follow arbitrary instructions in an environment. Current RL agents can solve families of related tasks at best, or require planning anew for each task. Strategies for approximate zero-shot RL have been suggested using successor features (SFs) (Borsa et al., 2018) or forward-backward (FB) representations (Touati \& Ollivier, 2021), but testing has been limited.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/92ITAA7C/Touati et al. - 2023 - DOES ZERO-SHOT REINFORCEMENT LEARNING EXIST.pdf}
 }
 
 @misc{touatiLearningOneRepresentation2021,

@@ -1,0 +1,9 @@
+\date{2025-07-14T14:24:30Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{RMS Norm}
+\p{The RMS norm is simply the [layer norm](LVV4) without the added bias term and centering i.e. 
+##{\mathrm{RMSNorm}: \mathbb{R}^d \to \mathbb{R}^d, \quad \mathbf{x} \mapsto \frac{\mathbf{x}}{\sqrt{\mathrm{Var}[\mathbf{x}_i] + \epsilon}}*\gamma.}
+This is used to spare memory movement of [layernorm](LVV4), where the bias term #{\beta \in \mathbb{R}^d} and has been found to be empirically almost if not as good.
+}

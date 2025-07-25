@@ -1,0 +1,8 @@
+\date{2025-07-14T16:11:57Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Softmax}
+\p{The softmax function #{\sigma: \mathbb{R}^d \to \mathbb{R}^d} is defined by
+##{\sigma(\mathbf{x})_i = \frac{e^{x_i}}{\sum_{j = 1}^{d} e^{x_j}}}
+}

@@ -1,0 +1,8 @@
+\date{2025-07-12T01:21:21Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Model FLOP Utilization (MFU)}
+\p{Given a promised [FLOP/s](4K5H), the \em{model flop utilization} is given by
+##{\frac{\text{actual FLOP/s}}{\text{promised FLOP/s}}}
+}

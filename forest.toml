@@ -1,5 +1,5 @@
 [forest]
 trees = ["/home/kellen/Projects/forest/trees"]                   # The directories in which your trees are stored
 assets = ["assets"]                  # The directories in which your assets are stored
-home = "0001"
+home = "index"
 url = "https://kellenkanarios.com/"

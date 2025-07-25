@@ -1,0 +1,45 @@
+\title{Wednesday, July 23, 2025}
+\date{2025-07-23T19:02:46Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\p{I primarily focused today on learning. I will be documenting some of the stuff I have done in order to organize it later.}
+\section{Fortify your fundamentals}{
+\proof{
+  We want to compute the quantity #{\nabla_{\theta}\mathbb{E}_{\pi}[v_{\pi}(s)]}. We expand this as
+  ##{\begin{align*}
+    \nabla_{\theta}\mathbb{E}_{\pi}[v_{\pi}(s)] &= \nabla_{\theta} \left(\sum_{a} \pi(a \mid s) Q(s, a)\right) \\
+&= \sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s) Q(s, a) + \pi_{\theta}(a \mid s)\underbrace{\nabla_{\theta}Q(s, a)}_{\text{problem}}
+  .\end{align*}}
+  The gradient #{\nabla_{\theta}Q(s, a)} implicitly relies on #{\theta}. Therefore, we must unroll it i.e.
+  ##{\begin{align*}
+    \nabla_{\theta} Q(s,a) &= \nabla_{\theta} \left[\sum_{r} p(r \mid s, a) r + \gamma \sum_{s'} p(s' \mid s, a) \sum_{a'} \pi(a' \mid s') Q(s', a')\right] \\
+&= \gamma \sum_{s'} p(s' \mid s, a) \nabla_{\theta} \left(\sum_{a'} \pi(a' \mid s') Q(s', a')\right) \\
+&= \gamma \sum_{s'} p(s' \mid s, a) \left[\sum_{a'} \nabla_{\theta} \pi(a' \mid s') Q(s', a') + \pi(a' \mid s') \nabla_{\theta} Q(s', a')\right]
+  .\end{align*}}
+  We define #{p_{\pi}^{k}(s \to s')} to be the probability of transitioning from #{s} to #{s'} in #{k} steps under policy #{\pi}. Then continuously unrolling we observe that 
+  ##{\begin{align*}
+    \nabla_{\theta}\mathbb{E}_{\pi}[v_{\pi}(s)] &= \sum_{k}^{\infty} \sum_{a} \sum_{s'} \gamma^{k} p_{\pi}^k(s \to s') \nabla_{\theta} \pi_{\theta}(a \mid s') Q(s', a) \\
+    &= \sum_{s'} \sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s') Q(s', a) \underbrace{\sum_{k}^{\infty}  \gamma^{k} p_{\pi}^k(s \to s')}_{\eta(s')}
+  ,\end{align*}}
+  where we introduce #{\eta(s')} to be the unnormalized state occupancy measure. We want this as an expectation we can estimate with samples. To do this, we simply multiply and divide by the normalizing constant i.e. for #{\mu(s') = \frac{\eta(s')}{\sum_{s} \eta(s)}}
+  ##{\begin{align*}
+    &= \left(\sum_{s} \eta(s)\right)\sum_{s'} \left(\sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s') Q(s', a)\right) \mu(s') \\
+    &\propto \mathbb{E}_{\mu(s')} \left[\sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s') Q(s', a)\right]
+  .\end{align*}}
+  Now this in itself is a policy gradient, but it is a \em{batched} policy gradient in the sense that it requires summing over all #{a}. To get around this, we use the \em{log trick}. Namely,
+  ##{\begin{align*}
+    \sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s') Q(s', a) &= 
+    \sum_{a} \nabla_{\theta} \pi_{\theta}(a \mid s') Q(s', a) \frac{\pi_{\theta}(a \mid s')}{\pi_{\theta}(a \mid s')} \\
+    &= \sum_{a} \nabla_{\theta} \log \pi_{\theta}(a \mid s') Q(s', a) \pi_{\theta}(a \mid s') \\
+    &= \mathbb{E}_{\pi(a \mid s')} \left[\nabla_{\theta} \log \pi_{\theta}(a \mid s') Q(s', a)\right]
+  .\end{align*}}
+  Putting it all together, 
+  ##{
+    \nabla_{\theta}\mathbb{E}_{\pi}[v_{\pi}(s)] = 
+    \mathbb{E}_{\mu(s'), \pi(a \mid s')} \left[\nabla_{\theta} \log \pi_{\theta}(a \mid s') Q(s', a)\right]
+    }
+  }
+}

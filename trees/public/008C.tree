@@ -1,0 +1,6 @@
+\tag{public}
+
+\date{2025-07-01T22:01:16Z}
+\title{Time-dependent vector field}
+\taxon{Definition}
+\p{We define a \em{time-dependent vector field} as a map #{v: [0,1] \times \mathbb{R}^d \to \mathbb{R}^d}}

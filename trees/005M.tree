@@ -1,9 +1,0 @@
-
-\date{2025-03-23}
-\import{base-macros}
-\taxon{Definition}
-\title{Extensions and Unique Decodability}
-\p{Given a code with #{n = 1}, we define its extension #{e^*}; that maps #{\mathcal{X}^* \to \{0,1\}^* } by concatenation. That is 
-##{e^*(x_{1}, x_{2}, \ldots, x_m) = (e(x_{1}), e(x_{2}), \ldots, e(x_m))}
-A code with encoder #{e} is said to be uniquely decodable if #{e^*} is [non-singular](005U).
-}

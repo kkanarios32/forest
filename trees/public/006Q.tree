@@ -1,0 +1,18 @@
+\tag{public}
+
+\date{2025-03-31}
+\import{base-macros}
+\title{A Dynamic Duo: Tree Search + RL}
+\p{\em{One thing that should be learned [...] is the great power of general purpose methods, of methods that continue to scale with increased computation even as the available computation becomes very great. The two methods that seem to scale arbitrarily in this way are search and learning.} - [[richardsutton]]}
+\section{What is Planning?}{
+  \p{
+    In [[suttonReinforcementLearningIntroduction2018]], they define planning as \em{a computational process that takes a model as input and outputs a policy}. Like everything Sutton writes, I agree with it for the most part. I have struggled with this question for a long time. In the RL community, you often here this vague term "planning" thrown around in all sorts of different situations. I think the key distinction between traditional methods is shown when looking at these methods directly. 
+  }
+  \p{
+    As an example, in [Q-learning](suttonReinforcementLearningIntroduction2018) you interact with the environment and learn via updating your Q-function. You then immediately recover an action via #{a \in \arg\max_{a} Q(s, a)} This does not require that you input a model rather you only input the current state and receive the corresponding action. However, it can be argued that this requires learning a world model [[richensGeneralAgentsNeed2025]].
+  }
+}
+\transclude{006R}
+
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{mcts}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

@@ -1,0 +1,192 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "datetime",
+#     "fitfile",
+#     "garmindb",
+#     "matplotlib",
+#     "numpy",
+#     "seaborn",
+# ]
+# ///
+# Running
+
+import seaborn as sns
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.dates as dates
+from datetime import datetime, date, timedelta
+import sys
+import argparse
+import os
+
+import fitfile
+import numpy as np
+from garmindb import GarminConnectConfigManager
+from garmindb.garmindb import (
+    GarminDb,
+    Attributes,
+    ActivitiesDb,
+    Activities,
+)
+
+
+def set_style():
+    sns.set_context("poster", font_scale=1.5)
+    rc = {
+        "font.family": "sans-serif",
+        "font.sans-serif": "Facebook Sans",
+        "axes.labelsize": 14,
+        "axes.titlesize": 16,
+        "axes.titleweight": 300,
+        "axes.labelweight": 400,
+        "legend.fontsize": 12,
+        "xtick.labelsize": 12,
+        "ytick.labelsize": 12,
+        "figure.dpi": 300,
+        "savefig.bbox": "tight",
+    }
+    palette = sns.color_palette("ch:start=.2,rot=-.3")
+    sns.set_theme(palette=palette, rc=rc, style="ticks")
+    return palette
+
+gc_config = GarminConnectConfigManager()
+db_params_dict = gc_config.get_db_params()
+
+garmin_db = GarminDb(db_params_dict)
+garmin_act_db = ActivitiesDb(db_params_dict)
+measurement_system = Attributes.measurements_type(garmin_db)
+unit_strings = fitfile.units.unit_strings[measurement_system]
+distance_units = {"miles": "m"}[unit_strings[fitfile.units.UnitTypes.distance_long]]
+
+end_ts = datetime.now()
+start_ts = datetime.now() - timedelta(days=7)
+
+activities = Activities.get_for_period(garmin_act_db, start_ts, end_ts)
+
+def hr_spm(ax):
+    start_dates = []
+    moving_times = []
+    spm = []
+    hrs = []
+    i = 0
+    for activity in activities:
+        if (activity.name is not None):
+            avg_hr = activity.avg_hr
+            cadence = activity.avg_cadence
+
+            hrs += [avg_hr]
+            spm += [cadence * 2]
+            start_dates += [activity.start_time]
+
+    host = ax
+    palette = set_style()
+
+    columns = {
+        "avg_hr": {
+            "label": "Average_hr",
+            "trend_marker": "--",
+            "color": palette[0],
+            "data": hrs,
+        },
+        "spm": {
+            "label": "Steps per minute",
+            "trend_marker": "--",
+            "color": palette[2],
+            "data": spm,
+        },
+    }
+
+    plots = []
+    step = 0
+
+
+    for col in columns:
+        ax2 = host.twinx()
+        ax2.set_ylabel(columns[col]["label"])
+        ax2.tick_params(axis="y", labelcolor=columns[col]["color"])
+
+        plot = ax2.scatter(
+            start_dates,
+            columns[col]["data"],
+            color=columns[col]["color"],
+            label=columns[col]["label"],
+        )
+
+        fit_label = "Fit " + columns[col]["label"]
+        x_num = dates.date2num(start_dates)
+        trend = np.polyfit(x_num, hrs, 7)
+        fit = np.poly1d(trend)
+        x_fit = np.linspace(x_num.min(), x_num.max())
+        fit = ax2.plot(
+            dates.num2date(x_fit), fit(x_fit), color=columns[col]["color"], label=fit_label
+        )
+
+        # data
+        plots.append(plot)
+        plots.append(fit)
+
+        ax2.spines["right"].set_position(("outward", step))
+
+        step = step + 60
+
+    plt.title("HR and SPM")
+
+
+def dist(ax):
+    start_dates = []
+    moving_times = []
+    distances = []
+    time1000m = []
+    for activity in activities:
+        if (activity.name is not None):
+            s = activity.distance
+            t = (datetime.combine(date.min, activity.moving_time) - datetime.min).total_seconds() / 60
+            
+            if (5 < t/s < 15) and (s > 0.5):
+                time1000m += [t/s]
+                start_dates += [activity.start_time]
+                moving_times += [t]
+                distances += [s]
+
+    palette = set_style()
+    colormap = sns.color_palette("ch:start=.2,rot=-.3", as_cmap=True)
+
+    scatter = ax.scatter(start_dates, time1000m, c=distances, norm=matplotlib.colors.LogNorm(), cmap=colormap)
+
+    x_num = dates.date2num(start_dates)
+    trend = np.polyfit(x_num, time1000m, 7)
+    fit = np.poly1d(trend)
+    x_fit = np.linspace(x_num.min(), x_num.max())
+    ax.plot(dates.num2date(x_fit), fit(x_fit), "r--")
+
+    # ax1 = ax.gca()
+    # years = plt.matplotlib.dates.YearLocator()
+    # months = plt.matplotlib.dates.MonthLocator()
+    # ax1.xaxis.set_major_locator(years)
+    # ax1.xaxis.set_minor_locator(months)
+
+    ax.set_title("Time per Mile")
+    ax.set_ylabel("Time per mile [min]")
+    ax.set_ylim(5, 15)
+    ax.set_yticks([5, 10, 15])
+    ax.grid(True, which="both", linestyle="--", alpha=0.5)
+    plt.colorbar(scatter, ax=ax, label="Distance [miles]")
+
+
+def main(argv):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dir", help="save directory")
+
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10), sharex=False)
+    dist(ax1)
+    hr_spm(ax2)
+    plt.tight_layout()
+    save_dir = argv[0]
+    os.makedirs(save_dir, exist_ok=True)
+    save_path = os.path.join(save_dir, "running.png")
+    plt.savefig(save_path, dpi=300)
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

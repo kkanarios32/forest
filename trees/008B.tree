@@ -1,5 +1,0 @@
-
-\date{2025-07-01T22:00:12Z}
-\title{Probablity density path}
-\taxon{Definition}
-\p{The \em{probability density path} #{p: [0,1] \times \mathbb{R}^d \to \mathbb{R}_{>0}} is a time dependent probability density function i.e. #{\int p_t(x)\mathrm{d}x = 1}}
