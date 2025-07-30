@@ -1,0 +1,52 @@
+\import{base-macros}
+\date{2025-07-26T01:40:31Z}
+\tag{public}
+\title{[TPE](arpaci2018operating) Scheduling}
+
+\p{Toward the end of the previous section we alluded to the ominuous entity known as the \em{scheduler}. There is only one question that needs answering}
+\iblock{
+  \em{How should we pick what process to run at any given time?}
+}
+\p{It turns out there is no right answer to this question (at least that is my takeaway from these three sections in the book). The reason for this is the conflicting priorities of various metrics. Namely,
+\ol{
+  \li{\strong{turnaround time:} the time to complete a process i.e.
+  ##{T_{\text{completion}} - T_{\text{arrival}}}
+  \li{\strong{fairness:} this is computed according to some arbitrary index. However, the main idea is that worst case jobs should not be neglected}
+  \li{\strong{response time:} how long it takes from issuing the command to it being scheduled.}
+}
+}
+}
+\section{Naive First Attempts}{
+\p{\strong{FIFO:} A naive and fair scheduler is to just serve each job in a \em{first-in-first-out} manner. However this suffers from the \em{convoy effect}. Namely, if we consider the case where the first job is very long. Then subsequent much shorter jobs will have much longer service times than they should.}
+
+\p{\strong{SJF:} To counteract this, we can try the \em{shortest job first}. If all jobs arrive at the same time, then SJF actually provably minimizes turnaround time. However, all jobs do not arrive at the same time and if the same problematic sequence for FIFO arrives sequentially it will also break SJF.}
+\p{\strong{STCF:} Up to this point, we have assumed that all jobs must be run to completion. However, we can relax this assumption and allow the OS to \em{preempt} a job (pausing it and starting a new job). With this, we introduce \em{shortest to completion first}, where we periodically preempt the current running job and then schedule the job with the shortest amount of time remaining until completion.}
+\p{\strong{RR:} While the previous algorithm is optimal with respect to turnaround time, it is not very good with respect to response time. In particular, long jobs may not be serviced for a very long time. The best we can do with respect to response time is just \em{round robin}, where we periodically randomly switch between processes. The intervals between switching are referred to as \em{strides} or \em{time slices} or \em{quantum lengths}.}
+}
+\remark{
+Each time we switch between processes, we incur the cost of a context switch. Choosing larger time slices allows us to \em{amortize} this cost.
+}
+\remark{
+Prior to this, we had been ignoring I/O of the processes. A very simple way to not suffer substantial performance loss due to I/O is to simply divide the process up into its non I/O components and schedule them individually.
+}
+\section{Partial Homework Solutions}{
+\ol{
+  \li{For what types of workloads does SJF deliver the same turnaround as FIFO?}
+  \answer{
+  For workloads that arrive in increasing order of total job time.
+  }
+  \li{For what types of workloads and quantum lengths does SJF deliver the same response times as RR?}
+  \answer{
+  For shorter jobs and longer quantum lengths, RR and SJF should deliver similar response times.
+  }
+  \li{What happens to response time with SJF as job lengths increase?}
+  \answer{
+    Response time degrades because the longest jobs have to wait for each of the shorter jobs to finish. If these shorter jobs become longer than the response time grows linearly(?).
+  }
+  \li{What happens to response time with RR as quantum lengths increase? Can you write an equation that gives the worst-case response time, given #{N} jobs?}
+  \answer{
+    The response time is the average over stride length number of preceding jobs. The formula can be written as
+    ##{\mathrm{RT} = \frac{1}{N} \sum_{i = 1}^{N} (i - 1)S = \frac{S(N - 1) N}{N} = S(N - 1)}
+  }
+}
+}

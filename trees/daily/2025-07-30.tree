@@ -1,0 +1,53 @@
+\title{Wednesday, July 30, 2025}
+\date{2025-07-30T15:10:35Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{Today's Todos}{
+  \p{
+  Today is the day we get Craftax to at least not error out when using GCRL. Less ambitiously,
+  }
+  \ol{
+  \strong{Coding:}
+    \li{Implement goal passing mechanism.}
+    \li{Alternative TrajectoryIDWrapper that does not rely on brax.}
+  }
+  \ol{
+    \strong{Reading:}
+    \li{Original contrastive RL paper}
+    \ul{
+      \li{Understand proof of policy improvement.}
+      \li{Understand CPC objective and mutual information intuition.}
+      \li{Make Anki cards for objectives.}
+    }
+  }
+  \ol{
+    \strong{Learning:}
+    \li{Finish porting all of paging notes to forest.}
+    \li{Make anki cards for memory.}
+    \li{Time permitting:}
+    \ul{
+      \li{Eligibility traces.}
+    }
+  }
+}
+
+\section{Progress on Todos}{
+
+}
+
+
+\section{What did I learn today?}{
+
+}
+
+
+\section{Things to maybe look at later.}{
+
+}
+
+\section{Research Notebook}{
+Rather than a hierarchical controller somehow use different contrastive representations as GVF-like state representation. (Refine tonight).
+}

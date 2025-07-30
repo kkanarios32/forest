@@ -11,6 +11,22 @@ def daily_tree(path, title):
 \\tag{{public}}
 \\title{{Weekly Review {title}}}
 
+\\section{{What went well?}}{{
+
+}}
+
+\\section{{What could be adjusted?}}{{
+
+}}
+
+\\section{{What should I stop doing?}}{{
+
+}}
+
+\\section{{What should I start doing?}}{{
+
+}}
+
 \\section{{The Quantified Me}}{{
 \\figure{{
   \\<html:img>[width]{{100\%}}[src]{{\\route-asset{{{path}/waka.png}}}}{{}}

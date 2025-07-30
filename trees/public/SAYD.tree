@@ -1,0 +1,73 @@
+\import{base-macros}
+\date{2025-07-29T14:48:42Z}
+\tag{public}
+\title{Memory Intro}
+\p{
+We are now moving on from scheduling into the wonderful world of all things memory.
+  }
+\section{Address Spaces}{
+If we think about what we have done so far, we have an assortment of processes that are constantly being switched between. However, each of these process has their own assortment of register states, but more importantly they each have their own state in \em{memory}.
+\ol{
+  \li{For register states, the OS has its own reserved memory, where it can easily store and switch between register states.}
+  \li{For memory, when we switch processes, are we expected to clear out memory for the next process by storing to disk? \strong{NO!}}
+}
+This motivates the idea behind \em{address spaces}. Namely, each process is given its own address space (chunk in memory) to use at its own discretion. This will then ensure that other processes do not overwrite the program state of one another. The address space of a process typically consists of three components
+\ol{
+  \li{Code of the program}
+  \li{Stack: local var, arguments, return values}
+  \li{Heap: dynamically allocated memory}
+}
+\remark{
+As we will see later, every address we see is actually \em{virtual}, meaning it is not the location in physical memory.
+}
+\p{\strong{API:} We only really need two methods, a way to get memory and a way to release memory. These are implemented via \code{malloc} and \code{free}. However, the use of these is usually accompanied with a handful of common errors:}
+\ol{
+  \li{Forget to initialize mem.}
+  \li{Forget to free mem.}
+  \li{Freeing memory early: \em{dangling pointer}.}
+  \li{Freeing the same memory twice: \em{double free}.}
+  \li{Passing something not allocated earlier: \em{invalid free}.}
+}
+\remark{
+When a process dies, the OS reclaims all of that process memory. This means that as long as your program memory is bounded, leakage will not do any sort of catastrophic damage. However, it is still not good practice.
+}
+\remark{
+\code{malloc} and \code{free} are not syscalls. The heap is pre-allocated with some allotment of memory. If the program exceeds this memory then \code{malloc} will call a syscall \code{brk} / \code{sbrk} to increment / decrement heap mem pointer.
+}
+\remark{
+You can actually initialize and use your own heap-like memory through \code{mmap}. This memory is not associated with any particular file and is an \em{anonymous} memory region within your program.
+}
+}
+\section{Address Translation}{
+  \p{The next question is once each program has their own address space, how do we unify the experience for the user.}
+  \ol{
+    \li{We want every process to have the \em{illusion} that is starts at address #{0}}
+    \li{We want every process to have the \em{illusion} of a large address space.}
+  }
+  \p{However, we also do not want to give up the protection / speed of the address space abstraction. The overarching idea is \em{virualizing} the address space. This means that the address the user sees is not the true address in physical memory. How we achieve this will be a longstanding topic for the next few entries of these notes.}
+  \p{\strong{Base and Bounds:} The first approach is \em{base and bounds}. For this approach, the hardware has a dedicated base and bound register to indicate where the address space for a given process begins and ends. It is the OSes job to ensure that these registers are filled with the correct values for the current process.
+  \ul{
+    \li{The hardware must provide protected instructions to allow the OS to modify the base and bound registers.}
+  }
+  }
+  \p{An \em{address translation} is then performed by the hardware by adding the base to the virtual address and checking it remains within the bounds. This is done by the \em{memory management unit} (MMU). A common theme we will see is that hardware support is crucial to achieve good virtualization.}
+  \iblock{
+    \strong{Problem:} \em{to support a large addres space with base and bounds we suffer significant \em{internal fragmentation} i.e. in between the base and bound there is a lot of unused memory.}
+  }
+  \p{To better understand why fragmentation is such an issue: if we have 16kb total memory and each process requests 4kb but only uses 2kb, then we can only maintain 4 processes despite having the memory to service 8! To attempt to remedy this, we will introduce the idea of \em{segmentation}.} 
+}
+\section{Segmentation}{
+\p{Instead of pre-allocating the memory between the heap and stack, why don't we \em{allocate on demand}. To do so, we can treat the code, heap, and stack as their own \em{segments} with their own base and bound registers. An address could then be decomposed as 
+##{\underbrace{0 1}_{\text{segment}}\underbrace{0 1 \cdots 11}_{\text{offset}}}
+This also enables an idea of \em{memory sharing}, where process can share a portion of memory (such as the code) to save memory on the system.
+\ul{
+  \li{Need to add a protection bit to indicate whether a process can modify certain addrs.}
+}
+}
+\remark{
+This limits flexibility in the sense that we have no control over where the middle region was allocated and therefore we cannot grow beyond the initial bound.
+}
+\remark{
+The hardware also has to support the stack growing backwards when it checks the bounds. To do so, it has to perform an additional check based on the segment number.
+}
+}

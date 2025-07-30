@@ -1,5 +1,5 @@
 \date{2025-07-24T21:14:08Z}
-\tag{public}
+\tag{todo}
 \title{Elibility Traces}
 
 \p{As I grow more interested in abandoning batched updates and the replay buffer, the importance of elibility traces grows with me. Due to this, I thought it finally time to re-prove / understand what makes these traces so eligible.}

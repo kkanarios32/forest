@@ -1,0 +1,54 @@
+\import{base-macros}
+\date{2025-07-26T03:42:55Z}
+\tag{public}
+\title{[TPE](arpaci2018operating) Scheduling cont.}
+\p{In the previous section, we discussed algorithms that minimize turnaround time OR response time. Here, we will look at how to find a happy middle ground}
+
+\section{Multi-Level Feedback Queue}{
+\p{The main idea is to maintain multiple queues with varying levels of priority. Each queue will then be scheduled round-robin within priority groups and lower priorities will not be scheduled until all processes of higher priority are completed. This introduces a few problems that we must remedy}
+\iblock{
+  \em{How do we assign priorities?}
+}
+\p{One approach is the idea of \em{allotment}. Essentially, each process is given an alloted amount of time at each priority. Once the process has run for the alloted amount of time at a given priority it moves down to the next priority.
+}
+\p{
+Clearly, this achieves a good response time because it essentially reduces to round robin. This also does not tank performance because, if we recall that STCF is the optimal algorithm for turnaround time, we see that short jobs will still finish relatively quickly because they will spend all of their time at high priority (assuming a high enough allotment).}
+\remark{
+We also saw in the previous section that one way to handle I/O is by breaking it into multiple jobs. However, this can result in gaming an allotment scheduler by I/O-ing right before you reach allotment essentially ensuring your process always remains the highest priority. To deal with this, we can count the total time spent by each of the jobs toward the allotment.
+}
+\iblock{
+  \em{How do we prevent starvation of lower priority queues?}
+}
+\p{It seems the easiest way for this is to just periodically move all processes back to the highest priority.}
+}
+\section{Proportional Share}{
+\p{The key idea here is rather than maintain queues of priorities we instead assign each job a certain \em{proportion} of the CPU time. The obvious question:}
+\iblock{
+  \em{How do we ensure the jobs actually match the desired proportion?}
+}
+The first approach is the concept of \em{ticket currency}. The idea is to give each user a finite amount of tickets and have them allocate them amongs their processes. 
+\remark{
+They also allow \em{ticket transfer} and \em{ticket inflation}, where a process can transfer tickets i.e. client / server, or temporarily increase their number of tickets.
+}
+\remark{
+The benefit of the \em{ticket currency} approach is the simplicity of the implementation. You simply draw a random number in the range of the total number of tickets and select the process with that number.
+}
+\remark{
+The natural question of how to actually assign tickets is very difficult and not solved.
+}
+\p{
+\strong{Deterministic version:} The ambitious observer might wonder if there is a deterministic algorithm to achieve the same effect. Luckily, the answer is actually yes! Rather than randomly sample tickets, we set the \em{stride} to be inversely proportional to the ticket count. We then track the \em{pass} (a running sum for each process that is incremented by the processes stride). To formalize-ish,
+\ol{
+  \li{Choose process with lowest \em{pass}.}
+  \li{Increment the chosen process pass by the process stride.}
+  \li{Repeat.}
+}
+We see that a low stride (high ticket count) results in being scheduled more frequently.
+}
+\remark{
+There is still an advantage of lottery-based scheduling: no global state. If new processes join, it is unclear what to set their initial pass at. 
+}
+\remark{
+On linux, the user can manually set priorities using \code{nice} and setting the \em{niceness} of a process in \closed-open{-20, 20}.
+}
+}

@@ -1,0 +1,62 @@
+\import{base-macros}
+\date{2025-07-29T16:10:32Z}
+\tag{public}
+\title{Free-Space Management}
+\p{We have been talking a lot about how to abstract physical address to provide ease of use for the programmer. However, we have yet to discuss how to actually allocate these physical addresses in the first place. When allocating memory, there are a few issues we need to be careful about
+\ol{
+  \li{\em{External fragmentation}: lots of small unallocated non-contiguous chunks of memory.}
+  \li{\em{Internal fragmentation}: allocated memory that is unused in the process it is allocated for.}
+}
+To start, we make a few simplifying assumptions:
+\ol{
+  \li{After memory has been allocated, it cannot be moved.}
+  \li{The size of memory is fixed.}
+  \li{The user does not specify the size in \code{free}.}
+}
+First, we can quickly deal with the last problem by introducing a \em{header}. The OS stores additional metadata, such as the size of the allocated memory in a header directly preceding the returned pointer in memory.
+\ul{
+  \li{If \code{int* x = malloc(sizeof(int))} then \code{header = (header_t)* x - 1}.}
+  \li{OS needs to find memory for the requested memory + size of the header.}
+}
+}
+\section{Malloc Policies}{
+\p{The general allocation algorithm consists of maintaining some \em{free-list} that contains the address and length of free memory. An allocation is done by some policy over this list. When memory is re-claimed, the list is searched for adjacent memory and if it is found then it is \em{coalesced} into a larger chunk of free memory.}
+\ol{
+  \li{\em{Best fit}: find smallest chunk that is big enough}
+  \ul{
+    \li{leaves lots of small chunks}
+  }
+  \li{\em{Worst fit}: find largest chunk}
+}
+Both of these require searching the entire list, so instead we can introduce some heuristics.
+\ol{
+  \li{\em{First fit}: find first block that can service.}
+  \li{\em{Next fit}: find first block that can service starting from the previous allocation.}
+}
+}
+\section{Segregated Lists}{
+  \p{Outside of the allocation policy, we can make data-structure level optimization. One such optimization is segmentation lists. The idea is to maintain different lists that correspond to different commonly allocated object types.}
+  \ul{
+    \li{Grow list by requesting segments as multiple size of the objects.}
+    \li{Can return to main list when no references.}
+    \li{Can also leave objects pre-iitialized on list to eliminate calls to constructor / destructor.}
+  }
+}
+\section{Buddy Allocation}{
+  \p{Assume memory is size #{2^n}. Search through memory to find smallest block that can service request.}
+\figure{
+\<html:img>[width]{50\%}[src]{\route-asset{assets/img/buddy-algo.png}}{}
+\figcaption{Memory #{2^n}.}
+}
+\p{When block is freed,
+\ol{
+  \li{Check if the buddy is free.}
+  \li{If the buddy is free.}
+  \ul{
+    \li{Coalesce into larger block}
+    \li{Repeat.}
+  }
+}
+Can easily check buddy because address differ by one bit at each level. Just modify the corresponding bit and check the free data structure (bitmap?) if the address is free. If it is then move up and check the next bit.
+}
+}
