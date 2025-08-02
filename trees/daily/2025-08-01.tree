@@ -1,0 +1,55 @@
+\title{Friday, August 1, 2025}
+\date{2025-08-01T12:29:48Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{Today's Todos}{
+  \ol{
+    \strong{Coding}
+    \li{Have contrastive RL run pt 2.}
+  }
+  \ol{
+    \strong{Reading}
+    \li{Finally going to write some stuff up for SAC and make flashcards}
+    \li{Need to understand fully online eligibility traces and make flashcards}
+  }
+  \ol{
+    \strong{Learning}
+    \li{Section 21 TEP + write up in forest.}
+  }
+}
+
+\section{Progress on Todos}{
+\p{I did not even look at contrastive RL stuff today. I do not know why, but I got hyperfixated on the motion planning project}
+\ol{
+  \li{Tried new discount factors + zeroing out bad states + increase reward, etc. saw substantial free gains.}
+  \li{Fixed hierarchical version to stop when near goal.}
+  \li{Began implementing random goals to see if direction sampling is at all meaningful}
+}
+\p{I also made some significant progress on my RLC poster. I spent an ungodly amount of time in tikz, but I think it ended up looking kind of good so far. Unclear still how to get the tree search looking right.}
+\p{Not much RL learning occured. For some reason, SAC and eligibility traces continue to seem incredibly unappealing later in the day.}
+\p{I did read and write up section 21. It was incredibly short but did provide a good overview of all the mechanisms covered so far.}
+}
+
+
+\section{What did I learn today?}{
+\p{I was reminded that the hardware is actually OP af. I did not realize that the entire TLB miss handler can be implemented in hardware, including traversing the TLB, reading the page table, and updating the TLB.}
+}
+
+\section{Research Notebook}{
+\p{I looked into discounting in the search problem a bit more in-depth. I found a few hyperparameters that were critical to reclaiming performance.
+}
+\ol{
+  \li{The discount factor is important lowering from #{0.99 \to 0.8} helps gain a notion of how far the obstacle was when we hit it.}
+  \li{Not using gumbel was \strong{very} important performance when from 50 to 80 percent just by getting rid of forced exploration}
+  \li{Max num considered actions at #{4} was better than #{8}, but I still do not quite understand what this is doing.}
+  \li{Zeroing out values of \em{dangerous states} i.e. arbitrarily high obstacle #{Q}-function gave a 2 percent increase.}
+  }
+  \p{
+  It looks like I am going to have to do a serious re-write / modification of MCTX in order to pre-initialize the tree with our #{Q} values. Currently, MCTX tries all of them to get a reward + new value when we already have a good idea of this info because we learned a #{Q} function and not a value function. Maybe just add #{Q}-values argument to recurrent function?
+  }
+  \p{I just realized that if I am investing the effort to use MCTX, then why are we not leveraging the massive parallelization capabilities? Namely, we could learn multiple candidate policies each run their own tree search and then pick the action with the highest empirical #{Q}-value at the end. We may need to think carefully about how we select possible actions on the non-root nodes.}
+  \p{Another idea that I am currently implementing: why cardinal directions? why not just randomly sample goals and see how that works first.}
+}
