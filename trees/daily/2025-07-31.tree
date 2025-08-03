@@ -1,0 +1,57 @@
+\title{Thursday, July 31, 2025}
+\date{2025-07-31T12:47:12Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{Today's Todos}{
+  \ol{
+    \strong{Research coding:}
+    \li{Get contrastive RL to train on craftax or die trying.}
+  }
+  \ol{
+    \strong{Research other:}
+    \li{Soft actor critic anki + understand proofs.}
+    \li{Eligibility traces anki + understand proofs.}
+  }
+  \ol{
+    \strong{Self Study:}
+    \li{Finish writing up handwritten notes.}
+    \li{Read and take notes on Section 21 in [TPE](arpaci2018operating)}
+  }
+}
+
+\section{Things to maybe look at later.}{
+\ol{
+  \li{Hindsight relabeling.}
+  \li{Noisy nets.}
+}
+}
+
+\section{What did I learn today?}{
+  \p{
+Made a lot of anki cards on a lot of things mainly around deep learning optimization and some fundamental machine learning stuff.
+    }
+  \p{When writing up OS, I made some pretty fundamental break throughs in my understanding of memory management. Namely, they were not kidding when they said that every address is virtual. I have always been incredibly confused with \code{malloc} and its relationship with pages. It turns out it has none! 
+  }
+  \p{
+  \code{malloc} allocates memory within the pages allocated to the heap by the OS. As a matter of fact, the "contiguous" memory \code{malloc} works so hard to try to provide to the user, has no guarantee of being contiguous. If the data crosses into another page, one could not even be in physical memory!!!}
+}
+
+\section{Progress on Todos}{
+  \p{
+I did implement a Q network that I can sample from, but I have not got the whole thing running yet. I still need to deal with the critic loss to use my new format.
+    }
+  \p{
+    I did not look at SAC or eligibilty traces but instead made a plethora of Anki cards on neural net optimization, recalling Adam and looking into the affect of momentum. I also made some figures and have a good idea of what the RLC poster is going to look like.
+    }
+  \p{I did finish writing up the notes. Did not read section 21}
+}
+
+
+
+\section{Research Notebook}{
+\p{A common failure mode of the existing tree search algorithm was that the ant was not willing to be aggressive and would continue to just get stuck staring at the obstacle. I now think this may be because the discount factor was too high. We used a discount of 0.99 with a reward of -50. This is likely not enough to distinguish between the distance from the obstacle. I actually think trying a small discount could dramatically impact performance.}
+\p{In a quick preliminary experiment, it seems that playing with the discount factor does induce a substantial change. It might be time to actually run / set up some hyperparameter sweeps.}
+}

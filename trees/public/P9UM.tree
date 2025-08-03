@@ -1,0 +1,6 @@
+\date{2025-07-31T13:02:33Z}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+\title{Culler's Law}
+\p{\em{"Ram is not always ram"}. Referring to the fact that a physical memory access takes a substantial different amount of time depending on whether it hit in the TLB.}

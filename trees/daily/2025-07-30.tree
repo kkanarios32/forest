@@ -34,20 +34,55 @@
   }
 }
 
-\section{Progress on Todos}{
-
-}
-
 
 \section{What did I learn today?}{
-
+  \p{
+REPPO paper explains limitations of policy gradient algorithms.
+On-policy (MC):
+\ol{
+  \li{Cannot account for small changes in action distribution impact on value function}
+  \li{High variance.}
+}
+Pathwise (DPG-ish):
+\ol{
+  \li{Requires accurate value function estimation.}
+  \li{This usually means off-policy with large replay buffers.}
+}
+  }
+  \p{
+    Data efficient hierarchical RL just finds the goal that is most likely to produce action under new sub-policy.
+    }
 }
 
-
-\section{Things to maybe look at later.}{
-
+\section{Progress on Todos}{
+  \p{
+It turns out I barely looked at the contrastive RL code. Although, I did find a way to get the trajectoryID wrapper to work the same. The number of steps of each episode is just stored in an analagous Gymnax-esque wrapper. I only need to worry about passing goals to the executing policy for now. To do that, I am just taking the inventory and adding 1 to the diamond entry. Still have not got the whole thing to run yet though (changing the architecture seems to be the biggest hastle).
+\ul{
+  \li{Need to one-hot encode actions when passing to architecture.}
+  \li{Implement some kind of (double?) DQN to take actions.}
+}
+  }
+  \p{
+I basically skipped all contrastive RL paper stuff (did not go to library smh). I did skip to the [TD-InfoNCE](zhengContrastiveDifferencePredictive2024) paper though. It is still not clear to me if the learned probability is according to policy #{\pi_g} or the average policy still (need to figure out tomorrow). I came across the REPPO paper which does a great job providing intuition about all the existing methods.
+  }
+  \p{
+    I only got halfway through writing up TLB but also refreshed my memory on some cache stuff.
+    }
 }
 
 \section{Research Notebook}{
+  \p{
 Rather than a hierarchical controller somehow use different contrastive representations as GVF-like state representation. (Refine tonight).
+    }
+  \p{If we use a latent goal space, then the hierarchical controller and the lower level policy can "agree" on some code to describe intention.}
+  \question{
+  Is this just the same as conditioning on a policy?
+  }
+  \iblock{\strong{Key question:} \em{Contrastive learning learns temporal dependence (important), but what if there are "similar" states that our very far in terms of the dynamics, but very close in terms of something else (like state representation)?}}
+  To further refine this, we want to learn the temporal dependence from the current state to any of these states that we deem approximately equal. Need to learn this via 
+  ##{\max_{\phi, \psi} \mathbb{E} \left[\log \frac{e^{\phi(s,a)^{\top} \psi(f(g))}}{\sum_{g'} e^{\phi(s,a)^{\top} \psi(f(g'))}}\right]}
+  Naive first idea for #{f} is projection i.e. #{f_i : g \mapsto g_i}. Higher level controller outputs #{[i, g_i]}.
+  \question{
+    How would we do an analagous off-policy correction as in [data-efficient paper](nachumDataEfficientHierarchicalReinforcement2018)?
+  }
 }

@@ -1,0 +1,21 @@
+\date{2025-07-30T22:36:42Z}
+\tag{todo}
+\import{base-macros}
+\tag{potw}
+\title{REPPO}
+
+\section{TLDR}{
+
+}
+
+\section{What I think the problem is}{
+Previous approaches i.e. on-policy policy gradient methods
+}
+
+\section{Key Contribution / Math Reproduction}{
+
+}
+
+\section{Opiniated Limitations / Important Assumptions}{
+
+}

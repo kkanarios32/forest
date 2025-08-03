@@ -1,0 +1,136 @@
+\import{base-macros}
+\date{2025-07-31T02:18:04Z}
+\tag{public}
+\title{Paging}
+\p{Previously, we have only dealt with memory allocations as variable sized chunks i.e. the amount of memory allocated can be anything. A simple idea to avoid the drastic fragmentation this can induce is to instead divide memory into fixed size chunks. This idea is called \em{paging}, where each chunk is a \em{page}.}
+\iblock{
+  \strong{Main question:} \em{how do we virtualize memory with pages?}
+}
+\p{\strong{Idea:} we decompose the address into a \em{virtual page number} (VPN) and offset i.e. 
+##{\underbrace{01}_{\text{VPN}}\underbrace{110\cdots 01}_{\text{offset}}}
+we then maintain a datastructure to map #{\text{VPN} \mapsto \text{PPN}}, where the PPN is the \em{physical page number} (we divide both virtual and physical memory into pages). We call this data structure a \em{page table}.
+}
+\p{\strong{Problem 1:} The page table can get ridiculously large.}
+\example{
+For now, we consider a linear page table (an array with entry for each VPN). If we support a 32 bit address space with 4kb pages and each entry in the page table is 4 bytes then this is #{2^{32} / 2^{12} * 4 = 2^{22}} bytes of memory for the page table!
+}
+\p{Before, we relied on the MMU to translate between physical and virtual addresses via simple operations like base and bound. However, there is no way the MMU could support this many arbitrary translations. Therefore, the page table itself must be stored in physical memory.}
+\p{In addition to the address translation, the page table also keeps track of the following bits:
+\ol{
+  \li{
+Valid bit: whether this particular VPN has memory allocated to it i.e. mem between stack / heap does not need to be allocated.
+  }
+  \li{
+Protection bit: determines whether the calling program can read / write / execute.
+  }
+  \li{
+Present bit: whether the page currently resides in physical memory.
+  }
+  \li{
+Dirty bit: has the page been modified since being paged in.
+  }
+  \li{
+Reference bit: has the page been accessed (used for eviction policy).
+    }
+}
+}
+\p{\strong{Problem 2:} Every time we want to perform an address translation (very often) we must
+\ol{
+  \li{Compute VPN from address}
+  \li{Access page table entry in physical memory (slow)}
+  \li{Compute address with offset + PPN.}
+  \li{Access corresponding physical page in physical memory.}
+}
+This is very slow!
+}
+\section{TLB}{
+\p{Due to the previously discussed issues, we need a faster way of performing address translation to make paging a feasible option. A common theme: we will throw hardware at it}
+\p{Specifically, we will add an additional cache known as the \em{translation lookaside buffer} that caches address translations. Generally, an address translation proceeds as:
+\ol{
+  \li{Extract VPN}
+  \li{Check if VPN in TLB}
+  \li{If in TLB: get translation}
+  \li{Otherwise: TLB miss -> trap to OS (RISC)}
+}
+}
+\remark{
+We have to be a little careful. The OS code itself is located in memory and is therefore subject to our paging system. We can imagine that on TLB miss the hardware tries to load the TLB miss handler code by checking the TLB, getting the translation, and loading the code. But what if the translation for the TLB miss handler is not in the TLB?!?! To not worry about these things the TLB miss handler gets a permanent spot in physical memory.
+}
+\p{Formally, an entry in the TLB consists of 
+\ol{
+  \li{VPN}
+  \li{PPN}
+  \li{Other bits}
+  \ul{
+    \li{Valid bit: has valid translation (different from PTE valid bit) can be invalid on initialization, eviction, or context switch.}
+    \li{Protection bit: whether the requested access can be performed.}
+  }
+}
+}
+\problem{
+  Each process has different address translations corresponding to the same VPN.
+}
+\solution{
+  Keep additional \em{address space identifier} (ASID) in TLB entry. We also need an ASID register that we set at every process switch to identify the current running process.
+}
+\transclude{P9UM}
+\example{
+In a real software managed TLB, the TLB consisted of the following components:
+\ol{
+  \li{Global bits for globally shared pages,}
+  \li{8 bit ASID,}
+  \li{Coherence bits for cache-coherence,}
+  \li{32-64 TLB entries,}
+  \li{A wired register to indicate how many slots to reserve in the TLB for things like TLB miss handler.}
+}
+}
+\remark{
+Another important tidbit: when using very fast caches, even an access to the TLB is a CPU bottleneck (accessing TLB is longer than accessing cache). To get around this, there are \em{virtually indexed caches} that circumvent the need for performing an address translation.
+}
+}
+\section{Smaller Tables}{
+\p{As previously discussed, as it currently stands, the page table takes up too much memory.}
+\p{\strong{Solution 1:} Just use bigger pages! Unfortunately, this will suffer from severe internal fragmentation (processes not using their allocated memory) and so we would prefer to avoid this solution.}
+\p{\strong{Solution 2:} Paging + segmentation. Instead of a page table for all of memory, keep 3 page tables: one for code, stack, and heap. This only partially resolves the problem.
+\ol{
+  \li{Same problems as segmentation. Variable sized page tables will cause external fragmentation}
+  \li{We can do better. Within each heap, there is still a (smaller) version of the same problem: a bunch of unused allocated PTEs.}
+}
+}
+\p{\strong{Multi-level page tables:} Finally, we have arrived to the idea of a multi-level page table. The idea can be summarized as}
+\ol{
+  \li{Chop page table up into pages.}
+  \li{Do not allocated pages with no valid references (i.e. none of the corresponding are being used).}
+}
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/multilevel-pt.png}}{}
+}
+\p{This has a few advantages:}
+\ol{
+ \li{Fits easily in memory. Allocate one page when an entry is used.} 
+ \li{Proportional to the amount of address space actually in use.}
+}
+\p{The obvious downside is the added complexity. Namely, on every TLB miss we must make two loads of memory (1) the page directory entry and (2) the page table entry.}
+}
+\section{What happens when memory is full?}{
+\p{We reserve space on disk for pages that cannot fit in physical memory. This is referred to as \em{swap space}.}
+\p{We need to add an additional \em{present bit} to the PTE. On a TLB miss, the hardware (or software) will check the page table and see the present bit to indicate whether the page is in physical memory. If not, we must trap to the OS and this is known as a \em{page fault}.}
+\remark{
+The hardware \strong{never} handles page faults because this would require understanding swap space + knowing how to perform I/O with disk.
+}
+\p{Three important cases to consider:}
+\ol{
+  \li{Page is \strong{present} and \strong{valid}.}
+  \ul{
+    \li{Hardware can just grab physical address from PTE.}
+  }
+  \li{Page is not \strong{present} but \strong{valid}.}
+  \ul{
+    \li{Hardware must call page fault handler to retrieve page.}
+  }
+  \li{Page is not \strong{valid}.}
+  \ul{
+    \li{Throw exception and likely terminate process as it is accessing invalid memory.}
+  }
+}
+}

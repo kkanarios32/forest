@@ -32,6 +32,14 @@
   file = {/home/kellen/Downloads/pdfs/storage/Z3QU86C2/Agarwal et al. - Reinforcement Learning Theory and Algorithms.pdf}
 }
 
+@article{aitchisonDNAProximalPolicy,
+  title = {{{DNA}}: {{Proximal Policy Optimization}} with a {{Dual Network Architecture}}},
+  author = {Aitchison, Matthew and Sweetser, Penny},
+  abstract = {This paper explores the problem of simultaneously learning a value function and policy in deep actor-critic reinforcement learning models. We find that the common practice of learning these functions jointly is sub-optimal due to an order-ofmagnitude difference in noise levels between the two tasks. Instead, we show that learning these tasks independently, but with a constrained distillation phase, significantly improves performance. Furthermore, we find that policy gradient noise levels decrease when using a lower variance return estimate. Whereas, value learning noise level decreases with a lower bias estimate. Together these insights inform an extension to Proximal Policy Optimization we call Dual Network Architecture (DNA), which significantly outperforms its predecessor. DNA also exceeds the performance of the popular Rainbow DQN algorithm on four of the five environments tested, even under more difficult stochastic control settings.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/KWHHY5ME/Aitchison and Sweetser - DNA Proximal Policy Optimization with a Dual Netw.pdf}
+}
+
 @misc{albergoStochasticInterpolantsUnifying2023,
   title = {Stochastic {{Interpolants}}: {{A Unifying Framework}} for {{Flows}} and {{Diffusions}}},
   shorttitle = {Stochastic {{Interpolants}}},
@@ -128,6 +136,22 @@
   abstract = {Model-based reinforcement learning has proven highly successful. However, learning a model in isolation from its use during planning is problematic in complex environments. To date, the most effective techniques have instead combined valueequivalent model learning with powerful tree-search methods. This approach is exemplified by MuZero, which has achieved state-of-the-art performance in a wide range of domains, from board games to visually rich environments, with discrete and continuous action spaces, in online and offline settings. However, previous instantiations of this approach were limited to the use of deterministic models. This limits their performance in environments that are inherently stochastic, partially observed, or so large and complex that they appear stochastic to a finite agent. In this paper we extend this approach to learn and plan with stochastic models. Specifically, we introduce a new algorithm, Stochastic MuZero, that learns a stochastic model incorporating afterstates, and uses this model to perform a stochastic tree search. Stochastic MuZero matched or exceeded the state of the art in a set of canonical single and multi-agent environments, including 2048 and backgammon, while maintaining the superhuman performance of standard MuZero in the game of Go.},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/TGICFELW/Antonoglou et al. - 2022 - PLANNING IN STOCHASTIC ENVIRONMENTS WITH A LEARNED MODEL.pdf}
+}
+
+@article{baconOptionCriticArchitecture2017,
+  title = {The {{Option-Critic Architecture}}},
+  author = {Bacon, Pierre-Luc and Harb, Jean and Precup, Doina},
+  year = {2017},
+  month = feb,
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume = {31},
+  number = {1},
+  issn = {2374-3468, 2159-5399},
+  doi = {10.1609/aaai.v31i1.10916},
+  urldate = {2025-07-30},
+  abstract = {Temporal abstraction is key to scaling up learning and planning in reinforcement learning. While planning with temporally extended actions is well understood, creating such abstractions autonomously from data has remained challenging. We tackle this problem in the framework of options [Sutton, Precup \& Singh, 1999; Precup, 2000]. We derive policy gradient theorems for options and propose a new option-critic architecture capable of learning both the internal policies and the termination conditions of options, in tandem with the policy over options, and without the need to provide any additional rewards or subgoals. Experimental results in both discrete and continuous environments showcase the flexibility and efficiency of the framework.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/QMAGDZ5G/Bacon et al. - 2017 - The Option-Critic Architecture.pdf}
 }
 
 @article{bagariaSkillDiscoveryExploration,
@@ -516,6 +540,14 @@
   file = {/home/kellen/Downloads/pdfs/storage/GHJPXQJR/Çinlar - 2011 - Probability and Stochastics.pdf}
 }
 
+@article{cobbePhasicPolicyGradient,
+  title = {Phasic {{Policy Gradient}}},
+  author = {Cobbe, Karl and Hilton, Jacob and Klimov, Oleg and Schulman, John},
+  abstract = {We introduce Phasic Policy Gradient (PPG), a reinforcement learning framework which modifies traditional on-policy actor-critic methods by separating policy and value function training into distinct phases. In prior methods, one must choose between using a shared network or separate networks to represent the policy and value function. Using separate networks avoids interference between objectives, while using a shared network allows useful features to be shared. PPG is able to achieve the best of both worlds by splitting optimization into two phases, one that advances training and one that distills features. PPG also enables the value function to be more aggressively optimized with a higher level of sample reuse. Compared to PPO, we find that PPG significantly improves sample efficiency on the challenging Procgen Benchmark.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/ZDU23RYZ/Cobbe et al. - Phasic Policy Gradient.pdf}
+}
+
 @article{coverELEMENTSINFORMATIONTHEORY,
   title = {{{ELEMENTS OF INFORMATION THEORY}}},
   author = {Cover, Thomas M and Thomas, Joy A},
@@ -794,6 +826,25 @@
   file = {/home/kellen/Downloads/pdfs/storage/2RCAQS2F/Elsayed and Mahmood - 2023 - Utility-based Perturbed Gradient Descent An Optim.pdf}
 }
 
+@misc{espeholtIMPALAScalableDistributed2018,
+  title = {{{IMPALA}}: {{Scalable Distributed Deep-RL}} with {{Importance Weighted Actor-Learner Architectures}}},
+  shorttitle = {{{IMPALA}}},
+  author = {Espeholt, Lasse and Soyer, Hubert and Munos, Remi and Simonyan, Karen and Mnih, Volodymir and Ward, Tom and Doron, Yotam and Firoiu, Vlad and Harley, Tim and Dunning, Iain and Legg, Shane and Kavukcuoglu, Koray},
+  year = {2018},
+  month = jun,
+  number = {arXiv:1802.01561},
+  eprint = {1802.01561},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1802.01561},
+  urldate = {2025-07-31},
+  abstract = {In this work we aim to solve a large collection of tasks using a single reinforcement learning agent with a single set of parameters. A key challenge is to handle the increased amount of data and extended training time. We have developed a new distributed agent IMPALA (Importance Weighted Actor-Learner Architecture) that not only uses resources more efficiently in singlemachine training but also scales to thousands of machines without sacrificing data efficiency or resource utilisation. We achieve stable learning at high throughput by combining decoupled acting and learning with a novel off-policy correction method called V-trace. We demonstrate the effectiveness of IMPALA for multi-task reinforcement learning on DMLab-30 (a set of 30 tasks from the DeepMind Lab environment (Beattie et al., 2016)) and Atari-57 (all available Atari games in Arcade Learning Environment (Bellemare et al., 2013a)). Our results show that IMPALA is able to achieve better performance than previous agents with less data, and crucially exhibits positive transfer between tasks as a result of its multi-task approach. The source code is publicly available at github.com/deepmind/scalable agent.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/UXMHAMDY/Espeholt et al. - 2018 - IMPALA Scalable Distributed Deep-RL with Importan.pdf}
+}
+
 @misc{eysenbachCLearningLearningAchieve2021,
   title = {C-{{Learning}}: {{Learning}} to {{Achieve Goals}} via {{Recursive Classification}}},
   shorttitle = {C-{{Learning}}},
@@ -982,6 +1033,24 @@
   file = {/home/kellen/Downloads/pdfs/storage/I3ZRN2A7/Fujimoto et al. - 2025 - Towards General-Purpose Model-Free Reinforcement L.pdf}
 }
 
+@misc{galliciSimplifyingDeepTemporal2025,
+  title = {Simplifying {{Deep Temporal Difference Learning}}},
+  author = {Gallici, Matteo and Fellows, Mattie and Ellis, Benjamin and Pou, Bartomeu and Masmitja, Ivan and Foerster, Jakob Nicolaus and Martin, Mario},
+  year = {2025},
+  month = apr,
+  number = {arXiv:2407.04811},
+  eprint = {2407.04811},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2407.04811},
+  urldate = {2025-08-01},
+  abstract = {Q-learning played a foundational role in the field reinforcement learning (RL). However, TD algorithms with off-policy data, such as Q-learning, or nonlinear function approximation like deep neural networks require several additional tricks to stabilise training, primarily a large replay buffer and target networks. Unfortunately, the delayed updating of frozen network parameters in the target network harms the sample efficiency and, similarly, the large replay buffer introduces memory and implementation overheads. In this paper, we investigate whether it is possible to accelerate and simplify off-policy TD training while maintaining its stability. Our key theoretical result demonstrates for the first time that regularisation techniques such as LayerNorm can yield provably convergent TD algorithms without the need for a target network or replay buffer, even with off-policy data. Empirically, we find that online, parallelised sampling enabled by vectorised environments stabilises training without the need for a large replay buffer. Motivated by these findings, we propose PQN, our simplified deep online Q-Learning algorithm. Surprisingly, this simple algorithm is competitive with more complex methods like: Rainbow in Atari, PPO-RNN in Craftax, QMix in Smax, and can be up to 50x faster than traditional DQN without sacrificing sample efficiency. In an era where PPO has become the go-to RL algorithm, PQN reestablishes off-policy Q-learning as a viable alternative. We open-source our code at: https://github.com/mttga/purejaxql.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/LLH8RCRZ/Gallici et al. - 2025 - Simplifying Deep Temporal Difference Learning.pdf}
+}
+
 @misc{gaoDiffusionMeetsFlow2024,
   title = {Diffusion {{Meets Flow Matching}}: {{Two Sides}} of the {{Same Coin}}},
   author = {Gao, Ruiqi and Hoogeboom, Emiel and Heek, Jonathan and De Bortoli, Valentin and Murphy, Kevin P. and Salimans, Tim},
@@ -1029,6 +1098,14 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/IW3SLYLD/Ghugare and Eysenbach - 2025 - Normalizing Flows are Capable Models for RL.pdf}
+}
+
+@article{glorotUnderstandingDifficultyTraining,
+  title = {Understanding the Difficulty of Training Deep Feedforward Neural Networks},
+  author = {Glorot, Xavier and Bengio, Yoshua},
+  abstract = {Whereas before 2006 it appears that deep multilayer neural networks were not successfully trained, since then several algorithms have been shown to successfully train them, with experimental results showing the superiority of deeper vs less deep architectures. All these experimental results were obtained with new initialization or training mechanisms. Our objective here is to understand better why standard gradient descent from random initialization is doing so poorly with deep neural networks, to better understand these recent relative successes and help design better algorithms in the future. We first observe the influence of the non-linear activations functions. We find that the logistic sigmoid activation is unsuited for deep networks with random initialization because of its mean value, which can drive especially the top hidden layer into saturation. Surprisingly, we find that saturated units can move out of saturation by themselves, albeit slowly, and explaining the plateaus sometimes seen when training neural networks. We find that a new non-linearity that saturates less can often be beneficial. Finally, we study how activations and gradients vary across layers and during training, with the idea that training may be more difficult when the singular values of the Jacobian associated with each layer are far from 1. Based on these considerations, we propose a new initialization scheme that brings substantially faster convergence.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/VBGFR5LL/Glorot and Bengio - Understanding the difﬁculty of training deep feedf.pdf}
 }
 
 @misc{gomezProperLaplacianRepresentation2024,
@@ -1581,6 +1658,24 @@
   file = {/home/kellen/Downloads/pdfs/storage/S9MJBMRM/Kumar et al. - 2021 - DR3 Value-Based Deep Reinforcement Learning Requires Explicit Regularization.pdf}
 }
 
+@misc{kumarImplicitUnderParameterizationInhibits2021,
+  title = {Implicit {{Under-Parameterization Inhibits Data-Efficient Deep Reinforcement Learning}}},
+  author = {Kumar, Aviral and Agarwal, Rishabh and Ghosh, Dibya and Levine, Sergey},
+  year = {2021},
+  month = oct,
+  number = {arXiv:2010.14498},
+  eprint = {2010.14498},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2010.14498},
+  urldate = {2025-07-30},
+  abstract = {We identify an implicit under-parameterization phenomenon in value-based deep RL methods that use bootstrapping: when value functions, approximated using deep neural networks, are trained with gradient descent using iterated regression onto target values generated by previous instances of the value network, more gradient updates decrease the expressivity of the current value network. We characterize this loss of expressivity via a drop in the rank of the learned value network features, and show that this typically corresponds to a performance drop. We demonstrate this phenomenon on Atari and Gym benchmarks, in both offline and online RL settings. We formally analyze this phenomenon and show that it results from a pathological interaction between bootstrapping and gradient-based optimization. We further show that mitigating implicit under-parameterization by controlling rank collapse can improve performance.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/CMZVG3SM/Kumar et al. - 2021 - Implicit Under-Parameterization Inhibits Data-Effi.pdf}
+}
+
 @misc{kumarNeedBigWorld2024,
   title = {The {{Need}} for a {{Big World Simulator}}: {{A Scientific Challenge}} for {{Continual Learning}}},
   shorttitle = {The {{Need}} for a {{Big World Simulator}}},
@@ -1839,6 +1934,13 @@
   langid = {english},
   keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Performance},
   file = {/home/kellen/Downloads/pdfs/storage/TLNQRMTF/Li et al. - 2021 - The Deep Learning Compiler A Comprehensive Survey.pdf}
+}
+
+@article{liGeneralizedHindsightReinforcement,
+  title = {Generalized {{Hindsight}} for {{Reinforcement Learning}}},
+  author = {Li, Alexander C and Pinto, Lerrel and Abbeel, Pieter},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/T9FHIZUD/Li et al. - Generalized Hindsight for Reinforcement Learning.pdf}
 }
 
 @article{liMinimap2PairwiseAlignment2018,
@@ -2198,6 +2300,14 @@
   file = {/home/kellen/Downloads/pdfs/storage/GUALHQEZ/McLeod et al. - 2022 - Continual Auxiliary Task Learning.pdf}
 }
 
+@article{moallaNoRepresentationNo,
+  title = {No {{Representation}}, {{No Trust}}: {{Connecting Representation}}, {{Collapse}}, and {{Trust Issues}} in {{PPO}}},
+  author = {Moalla, Skander and Miele, Andrea and Pyatko, Daniil and Pascanu, Razvan and Gulcehre, Caglar},
+  abstract = {Reinforcement learning (RL) is inherently rife with non-stationarity since the states and rewards the agent observes during training depend on its changing policy. Therefore, networks in deep RL must be capable of adapting to new observations and fitting new targets. However, previous works have observed that networks trained under non-stationarity exhibit an inability to continue learning, termed loss of plasticity, and eventually a collapse in performance. For off-policy deep value-based RL methods, this phenomenon has been correlated with a decrease in representation rank and the ability to fit random targets, termed capacity loss. Although this correlation has generally been attributed to neural network learning under non-stationarity, the connection to representation dynamics has not been carefully studied in on-policy policy optimization methods. In this work, we empirically study representation dynamics in Proximal Policy Optimization (PPO) on the Atari and MuJoCo environments, revealing that PPO agents are also affected by feature rank deterioration and capacity loss. We show that this is aggravated by stronger non-stationarity, ultimately driving the actor's performance to collapse, regardless of the performance of the critic. We ask why the trust region, specific to methods like PPO, cannot alleviate or prevent the collapse and find a connection between representation collapse and the degradation of the trust region, one exacerbating the other. Finally, we present Proximal Feature Optimization (PFO), a novel auxiliary loss that, along with other interventions, shows that regularizing the representation dynamics mitigates the performance collapse of PPO agents. Code and run histories are available at https://github.com/CLAIRE-Labo/no-representation-no-trust.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/65UW5PT6/Moalla et al. - No Representation, No Trust Connecting Representa.pdf}
+}
+
 @inproceedings{mohamedCuriosityDrivenExplorationTemporal,
   title = {Curiosity-{{Driven Exploration}} via {{Temporal Contrastive Learning}}},
   booktitle = {Workshop on {{Reinforcement Learning Beyond Rewards}} @ {{Reinforcement Learning Conference}} 2025},
@@ -2545,6 +2655,14 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/8ZBPFQEK/Oord et al. - 2019 - Representation Learning with Contrastive Predictive Coding.pdf;/home/kellen/Downloads/pdfs/storage/H9PLPKN6/Oord et al. - 2019 - Representation Learning with Contrastive Predictive Coding.pdf}
+}
+
+@article{osbandEpistemicNeuralNetworks,
+  title = {Epistemic {{Neural Networks}}},
+  author = {Osband, Ian and Wen, Zheng and Asghari, Seyed Mohammad and Dwaracherla, Vikranth and Ibrahimi, Morteza and Lu, Xiuyuan and Roy, Benjamin Van},
+  abstract = {Intelligent agents need to know what they don't know, and this capability can be evaluated through the quality of joint predictions. In principle, ensemble methods can produce effective joint predictions, but the compute costs are prohibitive for large models. We introduce the epinet: an architecture that can supplement any conventional neural network, including large pretrained models, and can be trained with modest incremental computation to estimate uncertainty. With an epinet, conventional neural networks outperform large ensembles of hundreds or more particles, and use orders of magnitude less computation. The epinet does not fit the traditional framework of Bayesian neural networks, so we introduce the epistemic neural network (ENN) as a general interface for models that generate joint predictions.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/X6XUW5KK/Osband et al. - Epistemic Neural Networks.pdf}
 }
 
 @misc{parisottoStabilizingTransformersReinforcement2019,
@@ -2978,6 +3096,24 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/L2GP2CTQ/Ruder - 2017 - An overview of gradient descent optimization algorithms.pdf}
+}
+
+@misc{rudinLearningWalkMinutes2022,
+  title = {Learning to {{Walk}} in {{Minutes Using Massively Parallel Deep Reinforcement Learning}}},
+  author = {Rudin, Nikita and Hoeller, David and Reist, Philipp and Hutter, Marco},
+  year = {2022},
+  month = aug,
+  number = {arXiv:2109.11978},
+  eprint = {2109.11978},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2109.11978},
+  urldate = {2025-08-01},
+  abstract = {In this work, we present and study a training set-up that achieves fast policy generation for real-world robotic tasks by using massive parallelism on a single workstation GPU. We analyze and discuss the impact of different training algorithm components in the massively parallel regime on the final policy performance and training times. In addition, we present a novel game-inspired curriculum that is well suited for training with thousands of simulated robots in parallel. We evaluate the approach by training the quadrupedal robot ANYmal to walk on challenging terrain. The parallel approach allows training policies for flat terrain in under four minutes, and in twenty minutes for uneven terrain. This represents a speedup of multiple orders of magnitude compared to previous work. Finally, we transfer the policies to the real robot to validate the approach. We open-source our training code to help accelerate further research in the field of learned legged locomotion: https://leggedrobotics.github.io/legged\_gym/.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Computer Science - Robotics},
+  file = {/home/kellen/Downloads/pdfs/storage/SJPZIYTA/Rudin et al. - 2022 - Learning to Walk in Minutes Using Massively Parall.pdf}
 }
 
 @misc{sanz-alonsoFirstCourseMonte2024,
@@ -3558,6 +3694,24 @@
   file = {/home/kellen/Downloads/pdfs/storage/U76B4QZ8/Vezhnevets et al. - 2017 - FeUdal Networks for Hierarchical Reinforcement Learning.pdf}
 }
 
+@misc{voelckerRelativeEntropyPathwise2025,
+  title = {Relative {{Entropy Pathwise Policy Optimization}}},
+  author = {Voelcker, Claas and Brunnbauer, Axel and Hussing, Marcel and Nauman, Michal and Abbeel, Pieter and Eaton, Eric and Grosu, Radu and Farahmand, Amir-massoud and Gilitschenski, Igor},
+  year = {2025},
+  month = jul,
+  number = {arXiv:2507.11019},
+  eprint = {2507.11019},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2507.11019},
+  urldate = {2025-07-31},
+  abstract = {Score-function policy gradients (Sutton et al., 1999) have delivered strong results in game-playing, robotics and language-model fine-tuning. Yet its high-variance often undermines training stability. On the other hand, pathwise policy gradients (Silver et al., 2014) alleviate the training variance, but are reliable only when driven by an accurate action-conditioned value function which is notoriously hard to train without relying on past off-policy data. In this paper, we discuss how to construct a value-gradient driven, on-policy algorithm that allow training Q-value models purely from on-policy data, unlocking the possibility of using pathwise policy updates in the context of on-policy learning. We show how to balance stochastic policies for exploration with constrained policy updates for stable training, and evaluate important architectural components that facilitate accurate value function learning. Building on these insights, we propose Relative Entropy Pathwise Policy Optimization (REPPO), an efficient on-policy algorithm that combines the sample-efficiency of pathwise policy gradients with the simplicity and minimal memory footprint of standard on-policy learning. We demonstrate that REPPO provides strong empirical performance at decreased sample requirements, wall-clock time, memory footprint as well as high hyperparameter robustness in a set of experiments on two standard GPU-parallelized benchmarks.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/3ITTK9EI/Voelcker et al. - 2025 - Relative Entropy Pathwise Policy Optimization.pdf}
+}
+
 @inproceedings{wagenerSafeReinforcementLearning2021,
   title = {Safe {{Reinforcement Learning Using Advantage-Based Intervention}}},
   booktitle = {Proceedings of the 38th {{International Conference}} on {{Machine Learning}}},
@@ -3865,24 +4019,6 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning,Computer Science - Robotics},
   file = {/home/kellenkanarios/Downloads/Papers/Hierarchical RL/Zheng et al_2024_Online Intrinsic Rewards for Decision Making Agents from Large Language Model.pdf}
-}
-
-@misc{zhengOnlineIntrinsicRewards2024a,
-  title = {Online {{Intrinsic Rewards}} for {{Decision Making Agents}} from {{Large Language Model Feedback}}},
-  author = {Zheng, Qinqing and Henaff, Mikael and Zhang, Amy and Grover, Aditya and Amos, Brandon},
-  year = {2024},
-  month = dec,
-  number = {arXiv:2410.23022},
-  eprint = {2410.23022},
-  primaryclass = {cs},
-  publisher = {arXiv},
-  doi = {10.48550/arXiv.2410.23022},
-  urldate = {2025-06-27},
-  abstract = {Automatically synthesizing dense rewards from natural language descriptions is a promising paradigm in reinforcement learning (RL), with applications to sparse reward problems, open-ended exploration, and hierarchical skill design. Recent works have made promising steps by exploiting the prior knowledge of large language models (LLMs). However, these approaches suffer from important limitations: they are either not scalable to problems requiring billions of environment samples, due to requiring LLM annotations for each observation, or they require a diverse offline dataset, which may not exist or be impossible to collect. In this work, we address these limitations through a combination of algorithmic and systems-level contributions. We propose ONI, a distributed architecture that simultaneously learns an RL policy and an intrinsic reward function using LLM feedback. Our approach annotates the agent's collected experience via an asynchronous LLM server, which is then distilled into an intrinsic reward model. We explore a range of algorithmic choices for reward modeling with varying complexity, including hashing, classification, and ranking models. By studying their relative tradeoffs, we shed light on questions regarding intrinsic reward design for sparse reward problems. Our approach achieves state-of-the-art performance across a range of challenging, sparse reward tasks from the NetHack Learning Environment in a simple unified process, solely using the agent's gathered experience, without requiring external datasets. We make our code available at https://github.com/facebookresearch/oni.},
-  archiveprefix = {arXiv},
-  langid = {english},
-  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning,Computer Science - Robotics},
-  file = {/home/kellen/Downloads/pdfs/storage/R34D6Q59/Zheng et al. - 2024 - Online Intrinsic Rewards for Decision Making Agent.pdf}
 }
 
 @article{zisselmanExploreGeneralizeZeroShot,

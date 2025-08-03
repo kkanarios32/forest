@@ -29,8 +29,3 @@ One can then learn a \em{task} conditioned policy #{\pi_{\theta}(s \mid \mathbf{
   }
   To learn the distribution #{p(\mathbf{z})}, they utilize the [ELBO](0082).
   }
-  \p{
-  learning a discrimator distribution #{q_{\theta}} such that
-  ##{\max_{\theta} q_{\theta}(\mathbf{z} \mid s_t),}
-  where we can easily learn this via maximum likelihood estimation because we are given #{s_{t + 1} \sim \pi(s_{t} \mid \mathbf{z})}
-}
