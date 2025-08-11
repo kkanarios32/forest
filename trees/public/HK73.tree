@@ -1,0 +1,41 @@
+\import{base-macros}
+\date{2025-08-08T15:29:01Z}
+\tag{public}
+\title{Beyond Physical Memory}
+\p{
+Up to this point, we have reduced our focus to assuming physical memory was sufficiently large memory. In practice, this is rarely the case. To complete our discussion on memory, we must lift this assumption.
+  }
+\section{Mechanisms}{
+\p{In order to handle overflowing memory, we must reserve some space on physical disk to store the additional pages. This space is referred to as \em{swap space}.
+}
+\p{
+To keep track of such memory, the page table entry instead contains a \em{disk address}. The OS knows what to do because of the additional present bit indicating whether the page is in physical memory.}
+}
+\section{Policies}{
+\p{Now that we know we must occasionally \em{page out} some pages from physical memory to swap spaces. The large question remains:}
+\iblock{
+  \em{What page do you evict at any given time?}
+}
+\p{Such a decision is a \em{policy}, and the quality of a policy is often weighed by the \em{average mean access time} (AMAT) given by 
+##{AMAT = (1 - P_{miss})T_P + P_{miss} T_D }
+where #{T_P} is the time to access physical memory and #{T_D} is time to access disk. For large discrepancies in #{T_M} and #{T_D}, we can have a substantial difference in AMAT for even very low #{P_{miss}}.
+}
+\p{The "optimal" policy is one that evicts the page whose next use is farthest away. Unfortunately, this is not feasible to implement as we do not know the future.}
+\remark{
+A desirable and surprisingly not guaranteed property we want in our policy is the \em{stack property}, which guarantess that if the cache size increases our miss rate gets no worse. This is not the case with FIFO and is known as \em{Belady's anomaly}.
+}
+\p{We instead consider the \em{least recently used} (LRU) heuristic. The effectiveness of such a policy can be attributed to the \em{principle of locality}. Namely, in this case, we enforce temporal locality, where resident pages are close in terms of time accessed. }
+\remark{
+In practice, we do not implement pure LRU either. This would require maintaining a separate data structure and modifying at every memory access. Instead, we utilize the \em{clock algorithm}, where a reference bit is set to #{1} each time an access occurs. The algorithm then proceeds by looping through all pages 
+\ol{
+  \li{If reference bit is #{1}, set to #{0} and proceed to next page.}
+  \li{If reference bit is #{0} evict the current page.}
+}
+}
+\remark{
+LRU is by no means optimal and in the looping workload (where we loop access one more page than the page table size) we miss 100 percent of the time.
+}
+}
+\section{Case studies}{
+
+}

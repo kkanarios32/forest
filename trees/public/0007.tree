@@ -2,10 +2,11 @@
 
 \date{2024-10-30}
 \author{kellenkanarios}
-\title{Notes on [[billingsleyProbabilityMeasure1995]]}
+\title{Notebook: [[billingsleyProbabilityMeasure1995]]}
 \import{base-macros}
 \tag{prob}
 \tag{note}
+\tag{top}
 
 \p{For these notes, I will attempt to refresh my knowledge of measure-theoretic probability along with learning stochastic processes for the first time. I will be following [Probability and Stochastics](https://link.springer.com/book/10.1007/978-0-387-87859-1) by Cinlar. Unfortunately, there are no solutions to Exercises, but it is by far the best written book I have found.}
 
