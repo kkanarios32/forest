@@ -1,0 +1,29 @@
+\import{base-macros}
+\date{2025-08-14T23:31:25Z}
+\tag{public}
+\tag{margin}
+\title{Rapidly Exploring Random Trees}
+\p{Rapidly exploring random trees (RRT) is a very simple, elegant and widely used algorithm for motion planning. The algorithm proceeds as follows:}
+\section{The Algorithm}{
+\iblock{
+  For #{k = 1} to #{K} do
+ \ol{
+  \li{#{x_{rand} \gets \mathsf{RANDOM\_STATE}()}}
+  \li{#{x_{near} \gets \mathsf{NEAREST\_NEIGHBOR}(x_{rand}, \mathcal{T})}}
+  \li{#{u \gets \mathsf{SELECT\_INPUT}(x_{near})}}
+  \li{#{x_{new} \gets \mathsf{NEW\_STATE}(x_{near}, u, \Delta t)}}
+  \li{#{\mathcal{T}.add\_vertex(x_{new})}}
+  \li{#{\mathcal{T}.add\_edge((x_{near}, u, x_{new}))}}
+ }
+ return #{\mathcal{T}}
+}
+
+\remark{
+Given some dynamics model #{\dot{x} = f(x, u)}, #{\mathsf{NEW\_STATE}} is some approximate integration, such as Euler integration i.e.
+##{x_{new} = x_{near} + f(x_{near}, u) \Delta t}
+Preferable to use higher-order method like Runge-Kutta.
+}
+\remark{
+#{\mathsf{SELECT\_INPUT}} is determined by whether the system is holonomic or non-holomonic. If the agent is holonomic, then #{u} will just be the control corresponding to the difference in the two states.
+}
+}

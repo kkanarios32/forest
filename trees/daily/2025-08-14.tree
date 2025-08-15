@@ -1,0 +1,37 @@
+\title{Thursday, August 14, 2025}
+\date{2025-08-15T03:49:44Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{Today's Todos}{
+  \ol{
+    \strong{Research}
+    \li{Batched tree search implementation}
+    \strong{Learning}
+    \li{Write up multi-thread intro + thread api}
+    \strong{Reading}
+    \li{Eligibility Traces}
+  }
+}
+
+\section{Progress on Todos}{
+\p{I did get the batched tree search working, but it is not the prettiest thing in the world.}
+\p{Did not open the OS book today...}
+\p{The day eligibility traces gets done...}
+}
+
+
+\section{What did I learn today?}{
+  \p{
+I finally did do a brief write up on [RRT](QQC1). The algorithm is actually quite trivial, but I think that it could maybe be applied in goal space with a goal conditioned policy?
+    }
+}
+
+\section{Research Notebook}{
+\p{16 parallel trees with cardinal direction actions finally achieves 100 percent success rate. With random goals sampled uniformly on the sphere equidistant as the goal, we achieve 97 percent success rate. Interestingly, when you increase the number of trees to 32 this goes down to 92 percent? I also tried biasing sampling towards the goal, but this make performance worse, meaning that we actually need to include more random samples.
+}
+\p{
+I think this is actually more parallelizable in a multi-core setup written in C++, so to get it running on actual hardware this is a most likely necessary first step. I think a CPU-based implementation will also enable more advanced and useful techniques, such as progressive widening.}
+}

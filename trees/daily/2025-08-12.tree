@@ -1,0 +1,29 @@
+\title{Tuesday, August 12, 2025}
+\date{2025-08-12T15:39:21Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{Today's Todos}{
+  \ol{
+    \strong{Research}
+    \li{Random goals.}
+    \strong{Learning}
+    \li{Eligibility traces.}
+    \strong{Study}
+    \li{Finish and write up thread intro section.}
+  }
+}
+
+\section{Progress on Todos}{
+  \p{I implemented the random goals, but it does not work as well as cardinal directions. I believe scaling up and parallelizing could fix this.}
+  \p{Did not look at eligibility traces because I am lazy.}
+  \p{I did read and take notes on the thread intro section.}
+}
+
+\section{Research Notebook}{
+Use an attention mechanism via \em{straight through estimator}
+##{\mathbf{1}_{\{w > 0.5\}} + w - w.detach()}
+Also need to figure out the diversity regularization.
+}

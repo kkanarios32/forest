@@ -9,7 +9,25 @@ Up to this point, we have reduced our focus to assuming physical memory was suff
 \p{In order to handle overflowing memory, we must reserve some space on physical disk to store the additional pages. This space is referred to as \em{swap space}.
 }
 \p{
-To keep track of such memory, the page table entry instead contains a \em{disk address}. The OS knows what to do because of the additional present bit indicating whether the page is in physical memory.}
+To keep track of such memory, the page table entry instead contains a \em{disk address}. The OS knows what to do because of the additional present bit indicating whether the page is in physical memory. If not, we must trap to the OS and this is known as a \em{page fault}.}
+}
+\remark{
+The hardware \strong{never} handles page faults because this would require understanding swap space + knowing how to perform I/O with disk.
+}
+\p{Three important cases to consider:}
+\ol{
+  \li{Page is \strong{present} and \strong{valid}.}
+  \ul{
+    \li{Hardware can just grab physical address from PTE.}
+  }
+  \li{Page is not \strong{present} but \strong{valid}.}
+  \ul{
+    \li{Hardware must call page fault handler to retrieve page.}
+  }
+  \li{Page is not \strong{valid}.}
+  \ul{
+    \li{Throw exception and likely terminate process as it is accessing invalid memory.}
+  }
 }
 \section{Policies}{
 \p{Now that we know we must occasionally \em{page out} some pages from physical memory to swap spaces. The large question remains:}
@@ -36,6 +54,34 @@ In practice, we do not implement pure LRU either. This would require maintaining
 LRU is by no means optimal and in the looping workload (where we loop access one more page than the page table size) we miss 100 percent of the time.
 }
 }
-\section{Case studies}{
-
+\section{Case studies: Useful Tricks}{
+\example{
+\strong{What happens when you dereference a nullptr?} First, we check the TLB for the VPN 0. We miss and then check the page table. The page will be marked invalid, and we will trap to the OS.
+}
+\p{LRU is a \em{global policy}, meaning that it does not distinguish the memory use by process. Therefore, memory hog processes can hog memory. To deal with this, one approach is \em{segmented FIFO}, where they maintain a FIFO queue for each process. If the queue exceeds the \em{resident set size} then the first-in page is evicted. They maintain two lists: \em{clean page free list} and \em{dirty page list}. 
+\ol{
+  \li{If a page is evicted but free it is put on the clean page free list.}
+  \li{Otherwise, it is put on the dirty page list.}
+}
+If the original process faults on a page still on the dirty page list it reclaims that page and avoids the I/O.
+}
+\p{\em{on-demand zeroing}
+\ul{
+  \li{When heap memory is allocated a lot of it goes unused.}
+  \li{Do not need to zero allocated memory until it is used}
+}
+\em{copy on write}
+\ul{
+  \li{We do not need to copy pages across address spaces unless they are modified.}
+  \li{i.e. \code{fork()}, shared libraries, etc.}
+  \li{Both VPNs map to same PPN.}
+  \li{PTE has additional bits to trap to OS on write.}
+}
+\em{Page clustering}
+\ul{
+  \li{Cluster small page I/O together and perform one write all at once.}
+  \li{Collect large batch from global dirty list.}
+}
+}
+\p{A common convention for ease of implementation is also to include the kernel in each process address space. This can be made even more efficiently via \em{copy on write}, where each process will just refer to the same kernel code in physical memory.}
 }

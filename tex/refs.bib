@@ -138,6 +138,43 @@
   file = {/home/kellen/Downloads/pdfs/storage/TGICFELW/Antonoglou et al. - 2022 - PLANNING IN STOCHASTIC ENVIRONMENTS WITH A LEARNED MODEL.pdf}
 }
 
+@misc{athalyePixelsPredicatesLearning2025,
+  title = {From {{Pixels}} to {{Predicates}}: {{Learning Symbolic World Models}} via {{Pretrained Vision-Language Models}}},
+  shorttitle = {From {{Pixels}} to {{Predicates}}},
+  author = {Athalye, Ashay and Kumar, Nishanth and Silver, Tom and Liang, Yichao and Wang, Jiuguang and {Lozano-P{\'e}rez}, Tom{\'a}s and Kaelbling, Leslie Pack},
+  year = {2025},
+  month = jun,
+  number = {arXiv:2501.00296},
+  eprint = {2501.00296},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2501.00296},
+  urldate = {2025-08-12},
+  abstract = {Our aim is to learn to solve long-horizon decision-making problems in complex robotics domains given low-level skills and a handful of short-horizon demonstrations containing sequences of images. To this end, we focus on learning abstract symbolic world models that facilitate zero-shot generalization to novel goals via planning. A critical component of such models is the set of symbolic predicates that define properties of and relationships between objects. In this work, we leverage pretrained vision-language models (VLMs) to propose a large set of visual predicates potentially relevant for decision-making, and to evaluate those predicates directly from camera images. At training time, we pass the proposed predicates and demonstrations into an optimization-based model-learning algorithm to obtain an abstract symbolic world model that is defined in terms of a compact subset of the proposed predicates. At test time, given a novel goal in a novel setting, we use the VLM to construct a symbolic description of the current world state, and then use a search-based planning algorithm to find a sequence of low-level skills that achieves the goal. We demonstrate empirically across experiments in both simulation and the real world that our method can generalize aggressively, applying its learned world model to solve problems with a wide variety of object types, arrangements, numbers of objects, and visual backgrounds, as well as novel goals and much longer horizons than those seen at training time.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Computer Science - Robotics},
+  file = {/home/kellen/Downloads/pdfs/storage/RICVZIEQ/Athalye et al. - 2025 - From Pixels to Predicates Learning Symbolic World.pdf}
+}
+
+@misc{atharDifferentiableSoftMaskedAttention2022,
+  title = {Differentiable {{Soft-Masked Attention}}},
+  author = {Athar, Ali and Luiten, Jonathon and Hermans, Alexander and Ramanan, Deva and Leibe, Bastian},
+  year = {2022},
+  month = aug,
+  number = {arXiv:2206.00182},
+  eprint = {2206.00182},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2206.00182},
+  urldate = {2025-08-12},
+  abstract = {Transformers have become prevalent in computer vision due to their performance and flexibility in modelling complex operations. Of particular significance is the 'cross-attention' operation, which allows a vector representation (e.g. of an object in an image) to be learned by attending to an arbitrarily sized set of input features. Recently, "Masked Attention" was proposed in which a given object representation only attends to those image pixel features for which the segmentation mask of that object is active. This specialization of attention proved beneficial for various image and video segmentation tasks. In this paper, we propose another specialization of attention which enables attending over `soft-masks' (those with continuous mask probabilities instead of binary values), and is also differentiable through these mask probabilities, thus allowing the mask used for attention to be learned within the network without requiring direct loss supervision. This can be useful for several applications. Specifically, we employ our "Differentiable Soft-Masked Attention" for the task of Weakly-Supervised Video Object Segmentation (VOS), where we develop a transformer-based network for VOS which only requires a single annotated image frame for training, but can also benefit from cycle consistency training on a video with just one annotated frame. Although there is no loss for masks in unlabeled frames, the network is still able to segment objects in those frames due to our novel attention formulation. Code: https://github.com/Ali2500/HODOR/blob/main/hodor/modelling/encoder/soft\_masked\_attention.py},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition},
+  file = {/home/kellen/Downloads/pdfs/storage/D5332UIX/Athar et al. - 2022 - Differentiable Soft-Masked Attention.pdf}
+}
+
 @article{baconOptionCriticArchitecture2017,
   title = {The {{Option-Critic Architecture}}},
   author = {Bacon, Pierre-Luc and Harb, Jean and Precup, Doina},
@@ -336,6 +373,24 @@
   file = {/home/kellenkanarios/Downloads/Papers/Safe-RL/Cao et al_2024_Offline Goal-Conditioned Reinforcement Learning for Safety-Critical Tasks with.pdf;/home/kellen/Downloads/pdfs/storage/MIF9JL6P/2403.html}
 }
 
+@misc{carvalhoComposingTaskKnowledge2023,
+  title = {Composing {{Task Knowledge}} with {{Modular Successor Feature Approximators}}},
+  author = {Carvalho, Wilka and Filos, Angelos and Lewis, Richard L. and {lee}, Honglak and Singh, Satinder},
+  year = {2023},
+  month = aug,
+  number = {arXiv:2301.12305},
+  eprint = {2301.12305},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2301.12305},
+  urldate = {2025-08-12},
+  abstract = {Recently, the Successor Features and Generalized Policy Improvement (SF\&GPI) framework has been proposed as a method for learning, composing, and transferring predictive knowledge and behavior. SF\&GPI works by having an agent learn predictive representations (SFs) that can be combined for transfer to new tasks with GPI. However, to be effective this approach requires state features that are useful to predict, and these state-features are typically hand-designed. In this work, we present a novel neural network architecture, ``Modular Successor Feature Approximators'' (MSFA), where modules both discover what is useful to predict, and learn their own predictive representations. We show that MSFA is able to better generalize compared to baseline architectures for learning SFs and modular architectures for learning state representations.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/BGZJ6IYS/Carvalho et al. - 2023 - Composing Task Knowledge with Modular Successor Fe.pdf}
+}
+
 @misc{carvalhoPredictiveRepresentationsBuilding2024,
   title = {Predictive Representations: Building Blocks of Intelligence},
   shorttitle = {Predictive Representations},
@@ -504,6 +559,24 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/D4MGLIU6/Chua et al. - 2024 - Learning Successor Features the Simple Way.pdf}
+}
+
+@misc{chunduruAttentionOptionCritic2022,
+  title = {Attention {{Option-Critic}}},
+  author = {Chunduru, Raviteja and Precup, Doina},
+  year = {2022},
+  month = jan,
+  number = {arXiv:2201.02628},
+  eprint = {2201.02628},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2201.02628},
+  urldate = {2025-08-12},
+  abstract = {Temporal abstraction in reinforcement learning is the ability of an agent to learn and use high-level behaviors, called options. The option-critic architecture provides a gradient-based end-to-end learning method to construct options. We propose an attention-based extension to this framework, which enables the agent to learn to focus different options on different aspects of the observation space. We show that this leads to behaviorally diverse options which are also capable of state abstraction, and prevents the degeneracy problems of option domination and frequent option switching that occur in option-critic, while achieving a similar sample complexity. We also demonstrate the more efficient, interpretable, and reusable nature of the learned options in comparison with option-critic, through different transfer learning tasks. Experimental results in a relatively simple four-rooms environment and the more complex ALE (Arcade Learning Environment) showcase the efficacy of our approach.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/BLGNH8XU/Chunduru and Precup - 2022 - Attention Option-Critic.pdf}
 }
 
 @misc{chungParsevalRegularizationContinual2024,
@@ -1296,6 +1369,24 @@
   file = {/home/kellen/Downloads/pdfs/storage/AB366M9X/Hazan - 2023 - Introduction to Online Convex Optimization.pdf}
 }
 
+@misc{heDeepResidualLearning2015,
+  title = {Deep {{Residual Learning}} for {{Image Recognition}}},
+  author = {He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+  year = {2015},
+  month = dec,
+  number = {arXiv:1512.03385},
+  eprint = {1512.03385},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1512.03385},
+  urldate = {2025-08-14},
+  abstract = {Deeper neural networks are more difficult to train. We present a residual learning framework to ease the training of networks that are substantially deeper than those used previously. We explicitly reformulate the layers as learning residual functions with reference to the layer inputs, instead of learning unreferenced functions. We provide comprehensive empirical evidence showing that these residual networks are easier to optimize, and can gain accuracy from considerably increased depth. On the ImageNet dataset we evaluate residual nets with a depth of up to 152 layers---8{\texttimes} deeper than VGG nets [41] but still having lower complexity. An ensemble of these residual nets achieves 3.57\% error on the ImageNet test set. This result won the 1st place on the ILSVRC 2015 classification task. We also present analysis on CIFAR-10 with 100 and 1000 layers.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition},
+  file = {/home/kellen/Downloads/pdfs/storage/QSX67JD9/He et al. - 2015 - Deep Residual Learning for Image Recognition.pdf}
+}
+
 @misc{hesselPodracerArchitecturesScalable2021,
   title = {Podracer Architectures for Scalable {{Reinforcement Learning}}},
   author = {Hessel, Matteo and Kroiss, Manuel and Clark, Aidan and Kemaev, Iurii and Quan, John and Keck, Thomas and Viola, Fabio and van Hasselt, Hado},
@@ -1339,6 +1430,18 @@
   abstract = {Operating in the real-world often requires agents to learn about a complex environment and apply this understanding to achieve a breadth of goals. This problem, known as goal-conditioned reinforcement learning (GCRL), becomes especially challenging for long-horizon goals. Current methods have tackled this problem by augmenting goal-conditioned policies with graph-based planning algorithms. However, they struggle to scale to large, high-dimensional state spaces and assume access to exploration mechanisms for efficiently collecting training data. In this work, we introduce Successor Feature Landmarks (SFL), a framework for exploring large, high-dimensional environments so as to obtain a policy that is proficient for any goal. SFL leverages the ability of successor features (SF) to capture transition dynamics, using it to drive exploration by estimating state-novelty and to enable high-level planning by abstracting the state-space as a non-parametric landmarkbased graph. We further exploit SF to directly compute a goal-conditioned policy for inter-landmark traversal, which we use to execute plans to ``frontier'' landmarks at the edge of the explored state space. We show in our experiments on MiniGrid and ViZDoom that SFL enables efficient exploration of large, high-dimensional state spaces and outperforms state-of-the-art baselines on long-horizon GCRL tasks1.},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/A5JJMGPW/Hoang et al. - Successor Feature Landmarks for Long-Horizon Goal-.pdf}
+}
+
+@misc{HttpsArxivorgPdf,
+  title = {{{https://arxiv.org/pdf/2507.14748}}},
+  urldate = {2025-08-11},
+  howpublished = {https://arxiv.org/pdf/2507.14748}
+}
+
+@misc{HttpsOpenreviewnetPdfid6OxKvduBUP,
+  title = {{{https://openreview.net/pdf?id=6OxKvduBUP}}},
+  urldate = {2025-08-08},
+  howpublished = {https://openreview.net/pdf?id=6OxKvduBUP}
 }
 
 @article{huangOccupancybasedPolicyGradient,
@@ -1519,6 +1622,24 @@
   isbn = {978-981-9928-81-1 978-981-9928-82-8},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/9CDPYJ3A/Khanfer - 2023 - Measure Theory and Integration.pdf}
+}
+
+@article{kimMonteCarloTree2020,
+  title = {Monte {{Carlo Tree Search}} in {{Continuous Spaces Using Voronoi Optimistic Optimization}} with {{Regret Bounds}}},
+  author = {Kim, Beomjoon and Lee, Kyungjae and Lim, Sungbin and Kaelbling, Leslie and {Lozano-Perez}, Tomas},
+  year = {2020},
+  month = apr,
+  journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume = {34},
+  number = {06},
+  pages = {9916--9924},
+  issn = {2374-3468, 2159-5399},
+  doi = {10.1609/aaai.v34i06.6546},
+  urldate = {2025-08-12},
+  abstract = {Many important applications, including robotics, data-center management, and process control, require planning action sequences in domains with continuous state and action spaces and discontinuous objective functions. Monte Carlo tree search (MCTS) is an effective strategy for planning in discrete action spaces. We provide a novel MCTS algorithm (VOOT) for deterministic environments with continuous action spaces, which, in turn, is based on a novel black-box function-optimization algorithm (VOO) to efficiently sample actions. The VOO algorithm uses Voronoi partitioning to guide sampling, and is particularly efficient in high-dimensional spaces. The VOOT algorithm has an instance of VOO at each node in the tree. We provide regret bounds for both algorithms and demonstrate their empirical effectiveness in several high-dimensional problems including two difficult robotics planning problems.},
+  copyright = {https://www.aaai.org},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/MRXUMG4R/Kim et al. - 2020 - Monte Carlo Tree Search in Continuous Spaces Using.pdf}
 }
 
 @misc{kimUnsupervisedtoOnlineReinforcementLearning2024,
@@ -1963,6 +2084,25 @@
   file = {/home/kellen/Downloads/pdfs/storage/U4V4YFWK/Li - 2018 - Minimap2 pairwise alignment for nucleotide sequen.pdf}
 }
 
+@inproceedings{limVoronoiProgressiveWidening2021,
+  title = {Voronoi {{Progressive Widening}}: {{Efficient Online Solvers}} for {{Continuous State}}, {{Action}}, and {{Observation POMDPs}}},
+  shorttitle = {Voronoi {{Progressive Widening}}},
+  booktitle = {2021 60th {{IEEE Conference}} on {{Decision}} and {{Control}} ({{CDC}})},
+  author = {Lim, Michael H. and Tomlin, Claire J. and Sunberg, Zachary N.},
+  year = {2021},
+  month = dec,
+  pages = {4493--4500},
+  publisher = {IEEE},
+  address = {Austin, TX, USA},
+  doi = {10.1109/CDC45484.2021.9683490},
+  urldate = {2025-08-12},
+  abstract = {This paper introduces Voronoi Progressive Widening (VPW), a generalization of Voronoi optimistic optimization (VOO) and action progressive widening to partially observable Markov decision processes (POMDPs). Tree search algorithms can use VPW to effectively handle continuous or hybrid action spaces by efficiently balancing local and global action searching. This paper proposes two VPW-based algorithms and analyzes them from theoretical and simulation perspectives. Voronoi Optimistic Weighted Sparse Sampling (VOWSS) is a theoretical tool that justifies VPW-based online solvers, and it is the first algorithm with global convergence guarantees for continuous state, action, and observation POMDPs. Voronoi Optimistic Monte Carlo Planning with Observation Weighting (VOMCPOW) is a versatile and efficient algorithm that consistently outperforms state-of-the-art POMDP algorithms in several simulation experiments.},
+  copyright = {https://doi.org/10.15223/policy-029},
+  isbn = {978-1-66543-659-5},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/BUTBN8ZE/Lim et al. - 2021 - Voronoi Progressive Widening Efficient Online Sol.pdf}
+}
+
 @misc{lipmanFlowMatchingGenerative2023,
   title = {Flow {{Matching}} for {{Generative Modeling}}},
   author = {Lipman, Yaron and Chen, Ricky T. Q. and {Ben-Hamu}, Heli and Nickel, Maximilian and Le, Matt},
@@ -2200,23 +2340,6 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Machine Learning,Computer Science - Robotics,Computer Science - Systems and Control,Electrical Engineering and Systems Science - Systems and Control},
   file = {/home/kellen/Downloads/pdfs/storage/PZ39TCLF/Massiani et al. - 2023 - Safe Value Functions.pdf;/home/kellen/Downloads/pdfs/storage/6P779RDU/2105.html}
-}
-
-@article{massianiSafeValueFunctions2023a,
-  title = {Safe {{Value Functions}}},
-  author = {Massiani, Pierre-Fran{\c c}ois and Heim, Steve and Solowjow, Friedrich and Trimpe, Sebastian},
-  year = {2023},
-  month = may,
-  journal = {IEEE Transactions on Automatic Control},
-  volume = {68},
-  number = {5},
-  pages = {2743--2757},
-  issn = {0018-9286, 1558-2523, 2334-3303},
-  doi = {10.1109/TAC.2022.3200948},
-  urldate = {2025-06-14},
-  abstract = {Safety constraints and optimality are important but sometimes conflicting criteria for controllers. Although these criteria are often solved separately with different tools to maintain formal guarantees, it is also common practice in reinforcement learning to simply modify reward functions by penalizing failures, with the penalty treated as a mere heuristic. We rigorously examine the relationship of both safety and optimality to penalties, and formalize sufficient conditions for safe value functions (SVFs): value functions that are both optimal for a given task, and enforce safety constraints. We reveal this structure by examining when rewards preserve viability under optimal control, and show that there always exists a finite penalty that induces a safe value function. This penalty is not unique, but upper-unbounded: larger penalties do not harm optimality. Although it is often not possible to compute the minimum required penalty, we reveal clear structure of how the penalty, rewards, discount factor, and dynamics interact. This insight suggests practical, theory-guided heuristics to design reward functions for control problems where safety is important.},
-  copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html},
-  langid = {english}
 }
 
 @misc{matthewsCraftaxLightningFastBenchmark2024,
@@ -3274,6 +3397,24 @@
   file = {/home/kellen/Downloads/pdfs/storage/BQ6F9K2H/Shazeer - 2019 - Fast Transformer Decoding One Write-Head is All Y.pdf}
 }
 
+@misc{shenDifferentiableGPUParallelizedTask2025,
+  title = {Differentiable {{GPU-Parallelized Task}} and {{Motion Planning}}},
+  author = {Shen, William and Garrett, Caelan and Kumar, Nishanth and Goyal, Ankit and Hermans, Tucker and Kaelbling, Leslie Pack and {Lozano-P{\'e}rez}, Tom{\'a}s and Ramos, Fabio},
+  year = {2025},
+  month = apr,
+  number = {arXiv:2411.11833},
+  eprint = {2411.11833},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2411.11833},
+  urldate = {2025-08-12},
+  abstract = {Planning long-horizon robot manipulation requires making discrete decisions about which objects to interact with and continuous decisions about how to interact with them. A robot planner must select grasps, placements, and motions that are feasible and safe. This class of problems falls under Task and Motion Planning (TAMP) and poses significant computational challenges in terms of algorithm runtime and solution quality, particularly when the solution space is highly constrained. To address these challenges, we propose a new bilevel TAMP algorithm that leverages GPU parallelism to efficiently explore thousands of candidate continuous solutions simultaneously. Our approach uses GPU parallelism to sample an initial batch of solution seeds for a plan skeleton and to apply differentiable optimization on this batch to satisfy plan constraints and minimize solution cost with respect to soft objectives. We demonstrate that our algorithm can effectively solve highly constrained problems with non-convex constraints in just seconds, substantially outperforming serial TAMP approaches, and validate our approach on multiple real-world robots. Project website and code: https://cutamp.github.io},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Robotics},
+  file = {/home/kellen/Downloads/pdfs/storage/3IGMFF6X/Shen et al. - 2025 - Differentiable GPU-Parallelized Task and Motion Pl.pdf}
+}
+
 @misc{shoeybiMegatronLMTrainingMultiBillion2020,
   title = {Megatron-{{LM}}: {{Training Multi-Billion Parameter Language Models Using Model Parallelism}}},
   shorttitle = {Megatron-{{LM}}},
@@ -3836,6 +3977,25 @@
   langid = {english},
   keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/RKQR98C3/Xie et al. - 2022 - An Explanation of In-context Learning as Implicit Bayesian Inference.pdf}
+}
+
+@misc{xuShowAttendTell2016,
+  title = {Show, {{Attend}} and {{Tell}}: {{Neural Image Caption Generation}} with {{Visual Attention}}},
+  shorttitle = {Show, {{Attend}} and {{Tell}}},
+  author = {Xu, Kelvin and Ba, Jimmy and Kiros, Ryan and Cho, Kyunghyun and Courville, Aaron and Salakhutdinov, Ruslan and Zemel, Richard and Bengio, Yoshua},
+  year = {2016},
+  month = apr,
+  number = {arXiv:1502.03044},
+  eprint = {1502.03044},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1502.03044},
+  urldate = {2025-08-14},
+  abstract = {Inspired by recent work in machine translation and object detection, we introduce an attention based model that automatically learns to describe the content of images. We describe how we can train this model in a deterministic manner using standard backpropagation techniques and stochastically by maximizing a variational lower bound. We also show through visualization how the model is able to automatically learn to fix its gaze on salient objects while generating the corresponding words in the output sequence. We validate the use of attention with state-of-theart performance on three benchmark datasets: Flickr8k, Flickr30k and MS COCO.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/YLGFC3KG/Xu et al. - 2016 - Show, Attend and Tell Neural Image Caption Genera.pdf}
 }
 
 @inproceedings{yangRepresentationMattersOffline2021,
