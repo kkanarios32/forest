@@ -992,6 +992,13 @@
   file = {/home/kellen/Downloads/pdfs/storage/PYCTKQX2/Eysenbach - Probabilistic Reinforcement Learning Using Data to Define Desired Outcomes and Inferring How to Get.pdf}
 }
 
+@article{eysenbachSearchReplayBuffer,
+  title = {Search on the {{Replay Buffer}}: {{Bridging Planning}} and {{Reinforcement Learning}}},
+  author = {Eysenbach, Ben and Salakhutdinov, Russ R and Levine, Sergey},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/86XW8TYT/Eysenbach et al. - Search on the Replay Buffer Bridging Planning and.pdf}
+}
+
 @misc{farebrotherTemporalDifferenceFlows2025,
   title = {Temporal {{Difference Flows}}},
   author = {Farebrother, Jesse and Pirotta, Matteo and Tirinzoni, Andrea and Munos, R{\'e}mi and Lazaric, Alessandro and Touati, Ahmed},
@@ -1487,6 +1494,22 @@
   file = {/home/kellen/Downloads/pdfs/storage/AWL8Y6DZ/Hubert et al. - 2021 - Learning and Planning in Complex Action Spaces.pdf}
 }
 
+@article{huObstacleAvoidanceUAS2022,
+  title = {Obstacle {{Avoidance}} for {{UAS}} in {{Continuous Action Space Using Deep Reinforcement Learning}}},
+  author = {Hu, Jueming and Yang, Xuxi and Wang, Weichang and Wei, Peng and Ying, Lei and Liu, Yongming},
+  year = {2022},
+  journal = {IEEE Access},
+  volume = {10},
+  pages = {90623--90634},
+  issn = {2169-3536},
+  doi = {10.1109/ACCESS.2022.3201962},
+  urldate = {2025-08-17},
+  abstract = {Obstacle avoidance for small unmanned aircraft is vital for the safety of future urban air mobility (UAM) and Unmanned Aircraft System (UAS) Traffic Management (UTM). There are a variety of techniques for real-time robust drone guidance, but numerous of them solve in discretized airspace and control, which would require an additional path smoothing step to provide flexible commands for UAS. To deliver safe and computationally efficient guidance for UAS operations, we explore the use of a deep reinforcement learning algorithm based on Proximal Policy Optimization (PPO) to lead autonomous UAS to their destinations while bypassing obstacles through continuous control. The proposed scenario state representation and reward function can map the continuous state space to continuous control for both heading angle and speed. To verify the effectiveness of the proposed learning framework, we conducted numerical experiments with static and moving obstacles. Uncertainties associated with the environments and safety operation bounds are investigated in detail. Results show that the proposed model is able to provide accurate and robust guidance and resolve conflict with a success rate of over 99\%.},
+  copyright = {https://creativecommons.org/licenses/by/4.0/legalcode},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/Y4IXUWGV/Hu et al. - 2022 - Obstacle Avoidance for UAS in Continuous Action Sp.pdf}
+}
+
 @misc{hwangStrictSubgoalExecution2025,
   title = {Strict {{Subgoal Execution}}: {{Reliable Long-Horizon Planning}} in {{Hierarchical Reinforcement Learning}}},
   shorttitle = {Strict {{Subgoal Execution}}},
@@ -1832,6 +1855,24 @@
   langid = {english},
   keywords = {Goal Position,Mobile Robot,Obstacle Avoidance,Path Planning,Voronoi Diagram},
   file = {/home/kellen/Downloads/pdfs/storage/WZKW4AGM/Kunchev et al. - 2006 - Path Planning and Obstacle Avoidance for Autonomous Mobile Robots A Review.pdf}
+}
+
+@misc{kurzerParallelizationMonteCarlo2020,
+  title = {Parallelization of {{Monte Carlo Tree Search}} in {{Continuous Domains}}},
+  author = {Kurzer, Karl and H{\"o}rtnagl, Christoph and Z{\"o}llner, J. Marius},
+  year = {2020},
+  month = mar,
+  number = {arXiv:2003.13741},
+  eprint = {2003.13741},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2003.13741},
+  urldate = {2025-08-15},
+  abstract = {Monte Carlo Tree Search (MCTS) has proven to be capable of solving challenging tasks in domains such as Go, chess and Atari. Previous research has developed parallel versions of MCTS, exploiting today's multiprocessing architectures. These studies focused on versions of MCTS for the discrete case. Our work builds upon existing parallelization strategies and extends them to continuous domains. In particular, leaf parallelization and root parallelization are studied and two final selection strategies that are required to handle continuous states in root parallelization are proposed. The evaluation of the resulting parallelized continuous MCTS is conducted using a challenging cooperative multi-agent system trajectory planning task in the domain of automated vehicles.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/I5KPRN32/Kurzer et al. - 2020 - Parallelization of Monte Carlo Tree Search in Cont.pdf}
 }
 
 @misc{lanGeneralizationRepresentationsReinforcement2022,
@@ -2217,6 +2258,25 @@
   file = {/home/kellen/Downloads/pdfs/storage/U8KGMTC6/Liu et al. - 2024 - A Single Goal is All You Need Skills and Exploration Emerge from Contrastive RL without Rewards, De.pdf}
 }
 
+@misc{liuWatchUnobservedSimple2020,
+  title = {Watch the {{Unobserved}}: {{A Simple Approach}} to {{Parallelizing Monte Carlo Tree Search}}},
+  shorttitle = {Watch the {{Unobserved}}},
+  author = {Liu, Anji and Chen, Jianshu and Yu, Mingze and Zhai, Yu and Zhou, Xuewen and Liu, Ji},
+  year = {2020},
+  month = feb,
+  number = {arXiv:1810.11755},
+  eprint = {1810.11755},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1810.11755},
+  urldate = {2025-08-15},
+  abstract = {Monte Carlo Tree Search (MCTS) algorithms have achieved great success on many challenging benchmarks (e.g., Computer Go). However, they generally require a large number of rollouts, making their applications costly. Furthermore, it is also extremely challenging to parallelize MCTS due to its inherent sequential nature: each rollout heavily relies on the statistics (e.g., node visitation counts) estimated from previous simulations to achieve an effective exploration-exploitation tradeoff. In spite of these difficulties, we develop an algorithm, WU-UCT1, to effectively parallelize MCTS, which achieves linear speedup and exhibits only limited performance loss with an increasing number of workers. The key idea in WU-UCT is a set of statistics that we introduce to track the number of on-going yet incomplete simulation queries (named as unobserved samples). These statistics are used to modify the UCT tree policy in the selection steps in a principled manner to retain effective exploration-exploitation tradeoff when we parallelize the most time-consuming expansion and simulation steps. Experiments on a proprietary benchmark and the Atari Game benchmark demonstrate the linear speedup and the superior performance of WU-UCT comparing to existing techniques.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/LYEYYXXW/Liu et al. - 2020 - Watch the Unobserved A Simple Approach to Paralle.pdf}
+}
+
 @misc{lowreyPlanOnlineLearn2019,
   title = {Plan {{Online}}, {{Learn Offline}}: {{Efficient Learning}} and {{Exploration}} via {{Model-Based Control}}},
   shorttitle = {Plan {{Online}}, {{Learn Offline}}},
@@ -2233,6 +2293,14 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/IRAHSQC4/Lowrey et al. - 2019 - Plan Online, Learn Offline Efficient Learning and Exploration via Model-Based Control.pdf;/home/kellen/Downloads/pdfs/storage/4MIV3P2X/1811.html}
+}
+
+@article{lyleE|ectAuxiliaryTasks,
+  title = {On {{The E}}↵ect of {{Auxiliary Tasks}} on {{Representation Dynamics}}},
+  author = {Lyle, Clare and Rowland, Mark and Ostrovski, Georg and Dabney, Will},
+  abstract = {While auxiliary tasks play a key role in shaping the representations learnt by reinforcement learning agents, much is still unknown about the mechanisms through which this is achieved. This work develops our understanding of the relationship between auxiliary tasks, environment structure, and representations by analysing the dynamics of temporal di↵erence algorithms. Through this approach, we establish a connection between the spectral decomposition of the transition operator and the representations induced by a variety of auxiliary tasks. We then leverage insights from these theoretical results to inform the selection of auxiliary tasks for deep reinforcement learning agents in sparsereward environments.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/VU8D5K3I/Lyle et al. - On The E↵ect of Auxiliary Tasks on Representation .pdf}
 }
 
 @misc{machadoTemporalAbstractionReinforcement2023,
@@ -2421,6 +2489,23 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/GUALHQEZ/McLeod et al. - 2022 - Continual Auxiliary Task Learning.pdf}
+}
+
+@inproceedings{mirsoleimaniParallelMonteCarlo2015,
+  title = {Parallel {{Monte Carlo Tree Search}} from {{Multi-core}} to {{Many-core Processors}}},
+  booktitle = {2015 {{IEEE Trustcom}}/{{BigDataSE}}/{{ISPA}}},
+  author = {Mirsoleimani, S. Ali and Plaat, Aske and Herik, Jaap Van Den and Vermaseren, Jos},
+  year = {2015},
+  month = aug,
+  pages = {77--83},
+  publisher = {IEEE},
+  address = {Helsinki, Finland},
+  doi = {10.1109/Trustcom.2015.615},
+  urldate = {2025-08-16},
+  abstract = {In recent years there has been much interest in the MCTS algorithm, a new, adaptive, randomized optimization algorithm. In fields as diverse as Artificial Intelligence, Operations Research, and High Energy Physics, research has established that MCTS can find good solutions without domain dependent heuristics. However, practice shows that reaching high performance on large parallel machines is not so successful as expected. So far, the reasons are not well understood. This paper investigates the scalability of two popular parallelization approaches (tree parallelization and root parallelization) of the MCTS algorithm, using the Intel Xeon Phi highly multi-threaded shared-memory system. Moreover, we compare the results on a Xeon CPU and a Xeon Phi to understand the scalability of the parallel MCTS algorithms, and to understand their absolute performance. We find that tree parallelization can achieve near perfect speedup for up to 16 threads on the Xeon CPU and up to 64 threads on the Xeon Phi. For root parallelization we find that the effect of locks is small. Moreover, we establish the overall parallel speedup of the two parallelization methods of the MCTS algorithm is fundamentally limited on the Xeon Phi for games such as Hex or Go. The limiting factor is not, as might be expected, the parallel algorithm, or its implementation, but the high level of sequential calculations in each thread, for which no vectorization method is known.},
+  isbn = {978-1-4673-7952-6},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/ZJQAPH35/Mirsoleimani et al. - 2015 - Parallel Monte Carlo Tree Search from Multi-core t.pdf}
 }
 
 @article{moallaNoRepresentationNo,
@@ -3340,6 +3425,24 @@
   file = {/home/kellen/Downloads/pdfs/storage/WN9MVGSS/Seo et al. - State Entropy Maximization with Random Encoders fo.pdf}
 }
 
+@misc{shahRapidExplorationOpenWorld2023,
+  title = {Rapid {{Exploration}} for {{Open-World Navigation}} with {{Latent Goal Models}}},
+  author = {Shah, Dhruv and Eysenbach, Benjamin and Kahn, Gregory and Rhinehart, Nicholas and Levine, Sergey},
+  year = {2023},
+  month = oct,
+  number = {arXiv:2104.05859},
+  eprint = {2104.05859},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2104.05859},
+  urldate = {2025-08-16},
+  abstract = {We describe a robotic learning system for autonomous exploration and navigation in diverse, open-world environments. At the core of our method is a learned latent variable model of distances and actions, along with a non-parametric topological memory of images. We use an information bottleneck to regularize the learned policy, giving us (i) a compact visual representation of goals, (ii) improved generalization capabilities, and (iii) a mechanism for sampling feasible goals for exploration. Trained on a large offline dataset of prior experience, the model acquires a representation of visual goals that is robust to task-irrelevant distractors. We demonstrate our method on a mobile ground robot in open-world exploration scenarios. Given an image of a goal that is up to 80 meters away, our method leverages its representation to explore and discover the goal in under 20 minutes, even amidst previously-unseen obstacles and weather conditions.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics},
+  file = {/home/kellen/Downloads/pdfs/storage/USH5JHD3/Shah et al. - 2023 - Rapid Exploration for Open-World Navigation with L.pdf}
+}
+
 @misc{shaoDeepSeekMathPushingLimits2024,
   title = {{{DeepSeekMath}}: {{Pushing}} the {{Limits}} of {{Mathematical Reasoning}} in {{Open Language Models}}},
   shorttitle = {{{DeepSeekMath}}},
@@ -3542,6 +3645,25 @@
   copyright = {http://www.springer.com/tdm},
   langid = {english},
   file = {/home/kellen/Downloads/pdfs/storage/YA7EXQ2B/Stachenfeld et al. - 2017 - The hippocampus as a predictive map.pdf}
+}
+
+@article{steinmetzMoreTreesLarger2021,
+  title = {More {{Trees}} or {{Larger Trees}}: {{Parallelizing Monte Carlo Tree Search}}},
+  shorttitle = {More {{Trees}} or {{Larger Trees}}},
+  author = {Steinmetz, Erik and Gini, Maria},
+  year = {2021},
+  month = sep,
+  journal = {IEEE Transactions on Games},
+  volume = {13},
+  number = {3},
+  pages = {315--320},
+  issn = {2475-1502, 2475-1510},
+  doi = {10.1109/TG.2020.3048331},
+  urldate = {2025-08-16},
+  abstract = {Monte Carlo tree search (MCTS) is being effectively used in many domains, but acquiring good results from building larger trees takes time that can in many cases be impractical. In this article, we show that parallelizing the tree building process using multiple independent trees (root parallelization) can improve results when limited time is available, and compare these results to other parallelization techniques and to results obtained from running for an extended time. We obtained our results using MCTS in the domain of computer Go, which has the most mature implementations. Compared to previous studies, our results are more precise and statistically significant.},
+  copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/VDT83T8J/Steinmetz and Gini - 2021 - More Trees or Larger Trees Parallelizing Monte Ca.pdf}
 }
 
 @book{StochasticApproximationAlgorithms,
@@ -3813,6 +3935,25 @@
   file = {/home/kellen/Downloads/pdfs/storage/58WIJRVR/Tsitsiklis and Van Roy - 1997 - An analysis of temporal-difference learning with function approximation.pdf}
 }
 
+@misc{uwacuHASRRTRRTbasedMotion2025,
+  title = {{{HAS-RRT}}: {{RRT-based Motion Planning}} Using {{Topological Guidance}}},
+  shorttitle = {{{HAS-RRT}}},
+  author = {Uwacu, Diane and Yammanuru, Ananya and Nallamotu, Keerthana and Chalasani, Vasu and Morales, Marco and Amato, Nancy M.},
+  year = {2025},
+  month = apr,
+  number = {arXiv:2309.10801},
+  eprint = {2309.10801},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2309.10801},
+  urldate = {2025-08-16},
+  abstract = {We present a hierarchical RRT-based motion planning strategy, Hierarchical Annotated-Skeleton Guided RRT (HAS-RRT), guided by a workspace skeleton, to solve motion planning problems. HAS-RRT provides up to a 91\% runtime reduction and builds a tree at least 30\% smaller than competitors while still finding competitive-cost paths. This is because our strategy prioritizes paths indicated by the workspace guidance to efficiently find a valid motion plan for the robot. Existing methods either rely too heavily on workspace guidance or have difficulty finding narrow passages. By taking advantage of the assumptions that the workspace skeleton provides, HAS-RRT is able to build a smaller tree and find a path faster than its competitors. Additionally, we show that HAS-RRT is robust to the quality of workspace guidance provided and that, in a worst-case scenario where the workspace skeleton provides no additional insight, our method performs comparably to an unguided method.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Robotics},
+  file = {/home/kellen/Downloads/pdfs/storage/W66W22ZL/Uwacu et al. - 2025 - HAS-RRT RRT-based Motion Planning using Topologic.pdf}
+}
+
 @article{vershyninHighDimensionalProbability,
   title = {High-{{Dimensional Probability}}},
   author = {Vershynin, Roman},
@@ -3851,6 +3992,15 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/pdfs/storage/3ITTK9EI/Voelcker et al. - 2025 - Relative Entropy Pathwise Policy Optimization.pdf}
+}
+
+@article{voelckerWhenDoesSelfPrediction2024,
+  title = {When Does {{Self-Prediction}} Help? {{Understanding Auxiliary Tasks}} in {{Reinforcement Learning}}},
+  author = {Voelcker, Claas and Kastner, Tyler and Gilitschenski, Igor and Farahmand, Amir-massoud},
+  year = {2024},
+  abstract = {We investigate the impact of auxiliary learning tasks such as observation reconstruction and latent self-prediction on the representation learning problem in reinforcement learning. We also study how they interact with distractions and observation functions in the MDP. We provide a theoretical analysis of the learning dynamics of observation reconstruction, latent self-prediction, and TD learning in the presence of distractions and observation functions under linear model assumptions. With this formalization, we are able to explain why latent-self prediction is a helpful auxiliary task, while observation reconstruction can provide more useful features when used in isolation. Our empirical analysis shows that the insights obtained from our learning dynamics framework predicts the behavior of these loss functions beyond the linear model assumption in non-linear neural networks. This reinforces the usefulness of the linear model framework not only for theoretical analysis, but also practical benefit for applied problems.},
+  langid = {english},
+  file = {/home/kellen/Downloads/pdfs/storage/3W6F2LV4/Voelcker et al. - 2024 - When does Self-Prediction help Understanding Auxi.pdf}
 }
 
 @inproceedings{wagenerSafeReinforcementLearning2021,
@@ -4075,6 +4225,24 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Systems and Control,Electrical Engineering and Systems Science - Systems and Control},
   file = {/home/kellen/Downloads/pdfs/storage/GLQ2NBB3/Zhang et al. - 2024 - Constrained Reinforcement Learning with Smoothed Log Barrier Function.pdf}
+}
+
+@misc{zhangDevelopmentApplicationMonte2024,
+  title = {Development and {{Application}} of a {{Monte Carlo Tree Search Algorithm}} for {{Simulating Da Vinci Code Game Strategies}}},
+  author = {Zhang, Ye and Zhu, Mengran and Gui, Kailin and Yu, Jiayue and Hao, Yong and Sun, Haozhan},
+  year = {2024},
+  month = mar,
+  number = {arXiv:2403.10720},
+  eprint = {2403.10720},
+  primaryclass = {cs},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2403.10720},
+  urldate = {2025-08-16},
+  abstract = {In this study, we explore the efficiency of the Monte Carlo Tree Search (MCTS), a prominent decision-making algorithm renowned for its effectiveness in complex decision environments, contingent upon the volume of simulations conducted. Notwithstanding its broad applicability, the algorithm's performance can be adversely impacted in certain scenarios, particularly within the domain of game strategy development. This research posits that the inherent branch divergence within the Da Vinci Code board game significantly impedes parallelism when executed on Graphics Processing Units (GPUs). To investigate this hypothesis, we implemented and meticulously evaluated two variants of the MCTS algorithm, specifically designed to assess the impact of branch divergence on computational performance. Our comparative analysis reveals a linear improvement in performance with the CPU-based implementation, in stark contrast to the GPU implementation, which exhibits a non-linear enhancement pattern and discernible performance troughs. These findings contribute to a deeper understanding of the MCTS algorithm's behavior in divergent branch scenarios, highlighting critical considerations for optimizing game strategy algorithms on parallel computing architectures.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence},
+  file = {/home/kellen/Downloads/pdfs/storage/FFWGD7C9/Zhang et al. - 2024 - Development and Application of a Monte Carlo Tree .pdf}
 }
 
 @misc{zhangRevisitingZerothOrderOptimization2024,

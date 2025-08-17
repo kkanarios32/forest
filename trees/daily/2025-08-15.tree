@@ -1,0 +1,18 @@
+\title{Friday, August 15, 2025}
+\date{2025-08-15T16:29:12Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{Today's Todos}{
+  Forgot to do this.
+}
+
+\section{What did I learn today?}{
+\p{I finally made some concentration inequality flash cards in anki.}
+}
+
+\section{Research Notebook}{
+According to paper 1024 cores can run #{10}m simulations per second.
+}

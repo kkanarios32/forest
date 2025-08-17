@@ -1,6 +1,5 @@
 \date{2025-07-24T01:44:31Z}
 \tag{public}
-\tag{margin}
 \import{base-macros}
 \taxon{Theorem}
 \title{Policy Gradient Theorem}

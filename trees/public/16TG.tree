@@ -1,0 +1,29 @@
+\import{base-macros}
+\date{2025-08-16T20:42:04Z}
+\tag{public}
+\title{Concurrency Intro}
+\p{Each \em{thread} contains its own program counter (PC) and a private set of registers. They do \strong{NOT} contain their own address space like a process.}
+\p{Similar to the process control block (PCB), in order to perform a context switch each process needs a \em{thread control block}(TCB).}
+\p{Additionally, the process needs one stack \strong{per-thread}. This does ruin our neatly partitioned address space. However, it is generally OK because each individual stack is not too large.}
+\p{\strong{Why do we use threads?}}
+\ol{
+  \li{\em{Intra-process parallelism}: within a process, there are often highly parallelizable components. However, we do not want to have to divide the program into processes and perform the much more expensive context switch.}
+  \li{\em{Avoid blocking I/O}: even if you do not want to parallelize your program you can still use a thread to avoid blocking I/O by just having that thread blocked while you continue doing other work.}
+}
+\example{
+Suppose we have the following sequence of instructions (pseudo-assembly)
+\pre\verb<<<|
+  mov addr reg
+  add 1 reg
+  mov reg addr
+<<<
+If you have two threads running this and hope the end result is that you increment the corresponding variable by two, then you might be in for some disappointment. This is a \em{non-atomic} operation because conceivably 
+\ol{
+ \li{thread 1 could store the value of the register} 
+ \li{thread 2 could store the value of the register}
+ \li{thread 1 increments}
+ \li{thread 2 increments}
+ \li{end result is only \strong{1} increment}
+}
+This is a \em{race condition} and code that is accessed by multiple threads is the \em{critical section}.
+}

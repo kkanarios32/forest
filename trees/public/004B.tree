@@ -133,7 +133,7 @@ Denoted #{U \to V \to W}.
 \transclude{005N}
 \remark{[Prefix free](005N) codes are [uniquely decodable](005M). To show unique-decodability, you simply have to provide a way to decode and show it is unique. For [prefix-free](005N), greedily decoding suffices.}
 \figure{
-\<html:img>[width]{300px}[src]{img/types-of-codes.png}{}
+\<html:img>[width]{300px}[src]{\route-asset{assets/img/types-of-codes.png}}{}
 \figcaption{Taxonomy of codes from \ref{coverELEMENTSINFORMATIONTHEORY}.}
 }
 \remark{

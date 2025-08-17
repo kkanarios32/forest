@@ -1,25 +1,25 @@
 \date{2024-12-28}
 \title{Stack vs. Heap}
-\tag{todo}
+\tag{margin}
+\tag{public}
 \import{base-macros}
 
-\p{\#{[CS](004H)}. I often hear this question come up amongst performance-driven developers, and for the longest time I could never get a straight answer as to why the stack was so much better? After a long foray into the inner workings of how memory allocation is actually done, I think I finally have an answer. I do not want to forget this, so I am doing a quick write up here.}
+\p{I often hear this question come up amongst performance-driven developers, and for the longest time I could never get a straight answer as to why the stack was so much better? After a long foray into the inner workings of how memory allocation is actually done, I think I finally have an answer. I do not want to forget this, so I am doing a quick write up here.}
 
 \section{Why stack is faster.}{
-This all comes down to memory allocation. Prior to actually running the program, the operating system allocates some amount of memory for both the stack and the heap (I think around 2-4MB?).
+This all comes down to what happens during each memory allocation. Prior to actually running the program, the operating system allocates some amount of memory for both the stack and the heap (I think around 2-4MB?). When you allocate memory on the stack i.e. \code{int x = 1;}
 \ul{
     \li{Stack just increments stack pointer.}
-    \li{Heap searches through [bins](https://gee.cs.oswego.edu/dl/html/malloc.html). 
-    \ul{
-        %TODO: Understand this algorithm
-        \li{Apparently malloc is implemented via the [buddy algorithm](https://en.wikipedia.org/wiki/Buddy_memory_allocation)}
-    }
-    }
-    \li{Real speedup is when heap runs out of pre-allocated memory.
-    \ul{
+    \li{Writes value to new address pointed to by stack pointer.}
+}
+When you allocate memory on the heap i.e. \code{int *x = malloc(sizeof(int))}, we must instead choose how best to fulfill the request, which is a whole research direction in itself.
+\ul{
+    \li{One such implementation is the [buddy algorithm](https://en.wikipedia.org/wiki/Buddy_memory_allocation)}
+}
+However, \code{malloc} itself is not a system call and therefore is not terribly slow. A real issue occurs when we run out of pre-allocated heap memory. This requires invoking a system call like \code{sbrk} to increment the size of the allocated memory for the heap.
+\ul{
       \li{If no available pages, OS must evict and write to disk...}
       \li{Formally, this is known as "heap growth".}
-      }
-    }
 }
+Generally, if you know how much memory you need it is good practice to just allocated all up front to minimize any potential system calls. With this, the performance difference is not too drastic \startverb :) \stopverb
 }

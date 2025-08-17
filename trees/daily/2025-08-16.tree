@@ -1,0 +1,20 @@
+\title{Saturday, August 16, 2025}
+\date{2025-08-17T03:57:58Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{Progress on Todos}{
+\p{I did a whole lot of nothing today. Need to lock into a GTD system. Feel like a lot of pseudo-work but nothing really getting done. Will fix for semester.}
+}
+
+
+\section{What did I learn today?}{
+  \p{
+I did a math-crisis deep dive into SVD today. I found this [great post](https://gregorygundersen.com/blog/2018/12/10/svd/). 
+    }
+  \p{
+    Going through anki, I feel like I finally understand what is going on in the multi-level page table. When a process is allocated a \em{data page} i.e. a page to actually store data, in an #{n}-level page table, you must allocate #{n} pages in addition to the data page.
+    }
+}
