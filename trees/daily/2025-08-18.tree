@@ -1,0 +1,52 @@
+\title{Monday, August 18, 2025}
+\date{2025-08-18T15:22:45Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{Today's Todos}{
+  \ol{
+    \li{As much of contrastive RL blog as possible.}
+    \li{Soft actor critic note + anki.}
+    \li{Eligibility traces}
+    \ol{
+      \li{Sutton 12.1}
+      \li{Sutton 12.3}
+      \li{Sutton 12.4}
+    }
+    \li{Ideally finish slides for presentation tomorrow.}
+    \li{Ideally have interview questions done.}
+  }
+}
+
+\section{Progress on Todos}{
+\p{I did not do much of anything for the blog in terms of writing, but I did make significant progress in understanding...}
+\p{I finished sutton 12.1, 12.3.}
+\p{I finished the presentation slides.}
+}
+
+
+\section{What did I learn today?}{
+\p{Variational lower bound can be used in mutual information maximization because the mutual information #{I(X; Z) = H(Z) - H(Z \mid X)}, we use [ELBO](0082) to learn #{p(z \mid x)}. We then can use #{p(z \mid x)} to sample latent #{z}'s.}
+}
+
+\section{Research Notebook}{
+\p{If we use nodes as learned representations, when would this be useful?}
+\ol{
+  \li{Stochastic enviroments? i.e. when the actions can lead to multiple different states we want to reduce dimensionality.}
+  \li{In all cases maybe. Can think of "ground truth" as (x, y) representations. For image observations, learn and discretize over latent space.}
+}
+\p{How can we combine latent planning with [RRT](QQC1)?}
+\ol{
+  \li{All states are in latent space, randomly sample as in RRT and then just take an interpolated point from the nearest latent neighbor to the sampled latent state.}
+  \li{How do we collision check?}
+  \ol{
+    \li{Idea 1: For small number of obstacles: check their latent representations}
+  }
+  \li{How do we recover actions?}
+  \ol{
+    \li{Idea 1: Latent inverse dynamics model?}
+  }
+}
+}
