@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Relative Entropy Pathwise Policy Optimization}
+\date{2025-07}
+\author/literal{Claas Voelcker}\author/literal{Axel Brunnbauer}\author/literal{Marcel Hussing}\author/literal{Michal Nauman}\author/literal{Pieter Abbeel}\author/literal{Eric Eaton}\author/literal{Radu Grosu}\author/literal{Amir-massoud Farahmand}\author/literal{Igor Gilitschenski}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2507.11019}
+\meta{external}{https://arxiv.org/abs/2507.11019}
+
+\meta{bibtex}{\startverb
+@misc{voelckerRelativeEntropyPathwise2025,
+ title = {Relative {{Entropy Pathwise Policy Optimization}}},
+ author = {Voelcker, Claas and Brunnbauer, Axel and Hussing, Marcel and Nauman, Michal and Abbeel, Pieter and Eaton, Eric and Grosu, Radu and Farahmand, Amir-massoud and Gilitschenski, Igor},
+ year = {2025},
+ doi = {10.48550/arXiv.2507.11019},
+ urldate = {2025-07-31},
+ number = {arXiv:2507.11019},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/3ITTK9EI/Voelcker et al. - 2025 - Relative Entropy Pathwise Policy Optimization.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Score-function policy gradients (Sutton et al., 1999) have delivered strong results in game-playing, robotics and language-model fine-tuning. Yet its high-variance often undermines training stability. On the other hand, pathwise policy gradients (Silver et al., 2014) alleviate the training variance, but are reliable only when driven by an accurate action-conditioned value function which is notoriously hard to train without relying on past off-policy data. In this paper, we discuss how to construct a value-gradient driven, on-policy algorithm that allow training Q-value models purely from on-policy data, unlocking the possibility of using pathwise policy updates in the context of on-policy learning. We show how to balance stochastic policies for exploration with constrained policy updates for stable training, and evaluate important architectural components that facilitate accurate value function learning. Building on these insights, we propose Relative Entropy Pathwise Policy Optimization (REPPO), an efficient on-policy algorithm that combines the sample-efficiency of pathwise policy gradients with the simplicity and minimal memory footprint of standard on-policy learning. We demonstrate that REPPO provides strong empirical performance at decreased sample requirements, wall-clock time, memory footprint as well as high hyperparameter robustness in a set of experiments on two standard GPU-parallelized benchmarks.},
+ primaryclass = {cs},
+ eprint = {2507.11019},
+ month = {July}
+}
+\stopverb}

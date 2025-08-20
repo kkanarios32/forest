@@ -1,0 +1,26 @@
+% ["refs"]
+\title{Voronoi Progressive Widening: Efficient Online Solvers for Continuous State, Action, and Observation POMDPs}
+\date{2021-12}
+\author/literal{Michael H. Lim}\author/literal{Claire J. Tomlin}\author/literal{Zachary N. Sunberg}
+\taxon{Reference}
+\meta{doi}{10.1109/CDC45484.2021.9683490}
+\meta{bibtex}{\startverb
+@inproceedings{limVoronoiProgressiveWidening2021,
+ title = {Voronoi {{Progressive Widening}}: {{Efficient Online Solvers}} for {{Continuous State}}, {{Action}}, and {{Observation POMDPs}}},
+ author = {Lim, Michael H. and Tomlin, Claire J. and Sunberg, Zachary N.},
+ year = {2021},
+ isbn = {978-1-66543-659-5},
+ doi = {10.1109/CDC45484.2021.9683490},
+ urldate = {2025-08-12},
+ booktitle = {2021 60th {{IEEE Conference}} on {{Decision}} and {{Control}} ({{CDC}})},
+ pages = {4493--4500},
+ publisher = {IEEE},
+ address = {Austin, TX, USA},
+ file = {/home/kellen/Downloads/pdfs/storage/BUTBN8ZE/Lim et al. - 2021 - Voronoi Progressive Widening Efficient Online Sol.pdf},
+ langid = {english},
+ copyright = {https://doi.org/10.15223/policy-029},
+ abstract = {This paper introduces Voronoi Progressive Widening (VPW), a generalization of Voronoi optimistic optimization (VOO) and action progressive widening to partially observable Markov decision processes (POMDPs). Tree search algorithms can use VPW to effectively handle continuous or hybrid action spaces by efficiently balancing local and global action searching. This paper proposes two VPW-based algorithms and analyzes them from theoretical and simulation perspectives. Voronoi Optimistic Weighted Sparse Sampling (VOWSS) is a theoretical tool that justifies VPW-based online solvers, and it is the first algorithm with global convergence guarantees for continuous state, action, and observation POMDPs. Voronoi Optimistic Monte Carlo Planning with Observation Weighting (VOMCPOW) is a versatile and efficient algorithm that consistently outperforms state-of-the-art POMDP algorithms in several simulation experiments.},
+ month = {December},
+ shorttitle = {Voronoi {{Progressive Widening}}}
+}
+\stopverb}

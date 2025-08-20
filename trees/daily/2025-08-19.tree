@@ -1,0 +1,40 @@
+\title{Tuesday, August 19, 2025}
+\date{2025-08-19T15:41:33Z}
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+
+\section{Today's Todos}{
+  \ol{
+    \li{Interview questions}
+    \li{Understand [nachumHRL](nachumNearOptimalRepresentationLearning2019)}
+  }
+}
+
+\section{Progress on Todos}{
+
+}
+
+
+\section{What did I learn today?}{
+
+}
+
+
+\section{Things to maybe look at later.}{
+
+}
+
+\section{Research Notebook}{
+\p{[Data efficient RL](nachumDataEfficientHierarchicalReinforcement2018): 
+o approximately maximize this quantity in practice, we compute this log probability for a number of
+goals #{\tilde{g}_t} , and choose the maximal goal to re-label the experience. In our implementation, we calculate
+the quantity on eight candidate goals sampled randomly from a Gaussian centered at #{s_{t + c} − s_t} . We
+also include the original goal gt and a goal corresponding to the difference st+c − st in the candidate
+set, to have a total of 10 candidates.
+##{
+\log \mu^{lo}(a_{t:t+c-1}|s_{t:t+c-1}, \tilde{g}_{t:t+c-1}) \propto -\frac{1}{2} \sum_{i=t}^{t+c-1} ||a_i - \mu^{lo}(s_i, \tilde{g}_i)||_2^2 + \text{const.}
+}
+}
+}

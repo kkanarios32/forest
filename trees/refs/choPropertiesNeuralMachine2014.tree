@@ -1,0 +1,23 @@
+% ["refs"]
+\title{On the Properties of Neural Machine Translation: Encoder–Decoder Approaches}
+\date{2014}
+\author/literal{Kyunghyun Cho}\author/literal{Bart Van Merrienboer}\author/literal{Dzmitry Bahdanau}\author/literal{Yoshua Bengio}
+\taxon{Reference}
+\meta{doi}{10.3115/v1/W14-4012}
+\meta{bibtex}{\startverb
+@inproceedings{choPropertiesNeuralMachine2014,
+ title = {On the {{Properties}} of {{Neural Machine Translation}}: {{Encoder}}--{{Decoder Approaches}}},
+ author = {Cho, Kyunghyun and Van Merrienboer, Bart and Bahdanau, Dzmitry and Bengio, Yoshua},
+ year = {2014},
+ doi = {10.3115/v1/W14-4012},
+ urldate = {2025-08-17},
+ booktitle = {Proceedings of {{SSST-8}}, {{Eighth Workshop}} on {{Syntax}}, {{Semantics}} and {{Structure}} in {{Statistical Translation}}},
+ pages = {103--111},
+ publisher = {Association for Computational Linguistics},
+ address = {Doha, Qatar},
+ file = {/home/kellen/Downloads/pdfs/storage/RSNG6X9F/Cho et al. - 2014 - On the Properties of Neural Machine Translation E.pdf},
+ langid = {english},
+ abstract = {Neural machine translation is a relatively new approach to statistical machine translation based purely on neural networks. The neural machine translation models often consist of an encoder and a decoder. The encoder extracts a fixed-length representation from a variable-length input sentence, and the decoder generates a correct translation from this representation. In this paper, we focus on analyzing the properties of the neural machine translation using two models; RNN Encoder--Decoder and a newly proposed gated recursive convolutional neural network. We show that the neural machine translation performs relatively well on short sentences without unknown words, but its performance degrades rapidly as the length of the sentence and the number of unknown words increase. Furthermore, we find that the proposed gated recursive convolutional network learns a grammatical structure of a sentence automatically.},
+ shorttitle = {On the {{Properties}} of {{Neural Machine Translation}}}
+}
+\stopverb}

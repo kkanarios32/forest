@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Watch the Unobserved: A Simple Approach to Parallelizing Monte Carlo Tree Search}
+\date{2020-02}
+\author/literal{Anji Liu}\author/literal{Jianshu Chen}\author/literal{Mingze Yu}\author/literal{Yu Zhai}\author/literal{Xuewen Zhou}\author/literal{Ji Liu}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1810.11755}
+\meta{external}{https://arxiv.org/abs/1810.11755}
+
+\meta{bibtex}{\startverb
+@misc{liuWatchUnobservedSimple2020,
+ title = {Watch the {{Unobserved}}: {{A Simple Approach}} to {{Parallelizing Monte Carlo Tree Search}}},
+ author = {Liu, Anji and Chen, Jianshu and Yu, Mingze and Zhai, Yu and Zhou, Xuewen and Liu, Ji},
+ year = {2020},
+ doi = {10.48550/arXiv.1810.11755},
+ urldate = {2025-08-15},
+ number = {arXiv:1810.11755},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/LYEYYXXW/Liu et al. - 2020 - Watch the Unobserved A Simple Approach to Paralle.pdf},
+ keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Monte Carlo Tree Search (MCTS) algorithms have achieved great success on many challenging benchmarks (e.g., Computer Go). However, they generally require a large number of rollouts, making their applications costly. Furthermore, it is also extremely challenging to parallelize MCTS due to its inherent sequential nature: each rollout heavily relies on the statistics (e.g., node visitation counts) estimated from previous simulations to achieve an effective exploration-exploitation tradeoff. In spite of these difficulties, we develop an algorithm, WU-UCT1, to effectively parallelize MCTS, which achieves linear speedup and exhibits only limited performance loss with an increasing number of workers. The key idea in WU-UCT is a set of statistics that we introduce to track the number of on-going yet incomplete simulation queries (named as unobserved samples). These statistics are used to modify the UCT tree policy in the selection steps in a principled manner to retain effective exploration-exploitation tradeoff when we parallelize the most time-consuming expansion and simulation steps. Experiments on a proprietary benchmark and the Atari Game benchmark demonstrate the linear speedup and the superior performance of WU-UCT comparing to existing techniques.},
+ primaryclass = {cs},
+ eprint = {1810.11755},
+ month = {February},
+ shorttitle = {Watch the {{Unobserved}}}
+}
+\stopverb}

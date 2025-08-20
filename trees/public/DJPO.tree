@@ -3,3 +3,59 @@
 \title{Elibility Traces}
 
 \p{As I grow more interested in abandoning batched updates and the replay buffer, the importance of elibility traces grows with me. Due to this, I thought it finally time to re-prove / understand what makes these traces so eligible.}
+\p{The reference followed is [Sutton and Barto](suttonReinforcementLearningIntroduction2018) (Ch 12.).}
+
+\p{The eligibility trace vector is given by
+##{
+\begin{align*}
+ \mathbf{z}_{-1} &= 0 \\
+ \mathbf{z}_t &= \gamma \lambda \mathbf{z}_{t - 1} + \nabla \hat{v}(S_t; \mathbf{w}_t)
+.\end{align*}
+}
+Recall the temporal difference error is given by
+##{\begin{align*}
+  \mathbf{\delta}_t = r_{t + 1} + \gamma \hat{v}(s_{t + 1}; \mathbf{w}_t) - \hat{v}(s_t; \mathbf{w}_t)
+.\end{align*}}
+For TD(#{\lambda}), the incremental update is given by
+##{\begin{align*}
+  \mathbf{w}_{t + 1} = \mathbf{w}_t + \alpha \mathbf{\delta}_{t} \mathbf{z}_t
+.\end{align*}}
+}
+\p{We can rewrite the #{\lambda}-return recursively in terms of reward and itself as follows:
+##{\begin{align*}
+  G_t^{\lambda} &= (1 - \lambda) \sum_{n=1}^{\infty} \lambda^{n-1}G_{t:t+n} \\
+  G_t^{\lambda} &= (1 - \lambda) \sum_{n=1}^{\infty} \lambda^{n-1}(R_{t + 1} + \gamma G_{t+1:t+n}) \\
+  G_t^{\lambda} &= R_{t + 1} + \gamma (1 - \lambda) \left[\hat{v}(S_{t + 1}; \mathbf{w}_t) + \sum_{n=2}^{\infty} \lambda^{n-1} G_{t+1:t+n}\right] \\
+  G_t^{\lambda} &= R_{t + 1} + (1 - \lambda)\gamma \hat{v}(S_{t + 1}; \mathbf{w}_t) + \gamma \lambda G_{t + 1}^{\lambda}
+.\end{align*}}
+}
+\p{Now we will show that the prediction error of TD(#{\lambda}) can be re-written as the sum of TD-errors. The prediction error is written as
+##{PE = G_t^{\lambda} - \hat{v}(S_t, \mathbf{w}_t)}
+Rewriting the #{\lambda}-return as above
+##{
+\begin{align*}
+ PE &= R_{t + 1} + \gamma \hat{v}(S_{t + 1} ; \mathbf{w}_t) + \gamma \lambda G_{t + 1}^{\lambda} - \gamma \lambda \hat{v}(S_{t + 1}, \mathbf{w}_t) - \hat{v}(S_t; \mathbf{w}_t) 
+ &= (R_{t + 1} + \gamma \hat{v}(S_{t + 1} ; \mathbf{w}_t) - \hat{v}(S_t, \mathbf{w}_t)) + \gamma \lambda G_{t + 1}^{\lambda} - \gamma \lambda \hat{v}(S_{t + 1}; \mathbf{w}_t)
+ &= \mathbf{\delta}_t  + \gamma \lambda G_{t + 1}^{\lambda} - \gamma \lambda \hat{v}(S_{t + 1}; \mathbf{w}_t)
+.\end{align*}
+}
+\p{
+We now are left with #{\gamma \lambda (G_{t + 1}^{\lambda} - \hat{v}(S_{t + 1}, \mathbf{w}_t))}, where we can proceed in the same manner recursively, such that
+##{PE = \sum_{t=1}^{\infty} (\gamma \lambda)^{t - 1} \delta_t}
+It is easy to see the same thing goes through for the finite time slice #{\lambda}-return i.e.
+##{G_{t:t + k}^{\lambda} - \hat{v}(S_t, \mathbf{w}_{t - 1}) = \sum_{i = t}^{t + k} (\gamma \lambda)^{i - t} \delta_i}
+}
+\p{
+  Going back to the eligibility trace update, if we instead do not apply each elibgibility trace update but apply the sum of all the updates for the same fixed #{\mathbf{w}_t}, then we get that the total update is
+##{
+  \begin{align*}
+   \mathbf{w}_{t+1} &= \sum_{t=1}^{\infty} \alpha \delta_t \mathbf{z}_t \\
+   &= \sum_{t=1}^{\infty} \alpha \delta_t \sum_{i=0}^{t} (\lambda \gamma)^{i} \nabla \hat{v}(S_i, \mathbf{w}_t)
+  .\end{align*}
+  }
+}
+\p{
+This is exactly equivalent to if we compute all of the eligibility traces without updating i.e.
+##{\sum_{t = 1}^{\infty} \alpha \delta_t \mathbf{z}_t = }
+}
+}

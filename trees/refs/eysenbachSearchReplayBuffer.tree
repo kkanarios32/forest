@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Search on the Replay Buffer: Bridging Planning and Reinforcement Learning}
+\author/literal{Ben Eysenbach}\author/literal{Russ R Salakhutdinov}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{eysenbachSearchReplayBuffer,
+ title = {Search on the {{Replay Buffer}}: {{Bridging Planning}} and {{Reinforcement Learning}}},
+ author = {Eysenbach, Ben and Salakhutdinov, Russ R and Levine, Sergey},
+ file = {/home/kellen/Downloads/pdfs/storage/86XW8TYT/Eysenbach et al. - Search on the Replay Buffer Bridging Planning and.pdf},
+ langid = {english}
+}
+\stopverb}

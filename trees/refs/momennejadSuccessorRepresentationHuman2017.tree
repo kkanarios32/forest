@@ -1,0 +1,25 @@
+% ["refs"]
+\title{The successor representation in human reinforcement learning}
+\date{2017-08}
+\author/literal{I. Momennejad}\author/literal{E. M. Russek}\author/literal{J. H. Cheong}\author/literal{M. M. Botvinick}\author/literal{N. D. Daw}\author/literal{S. J. Gershman}
+\taxon{Reference}
+\meta{doi}{10.1038/s41562-017-0180-8}
+\meta{bibtex}{\startverb
+@article{momennejadSuccessorRepresentationHuman2017,
+ title = {The Successor Representation in Human Reinforcement Learning},
+ author = {Momennejad, I. and Russek, E. M. and Cheong, J. H. and Botvinick, M. M. and Daw, N. D. and Gershman, S. J.},
+ year = {2017},
+ doi = {10.1038/s41562-017-0180-8},
+ urldate = {2025-07-24},
+ journal = {Nature Human Behaviour},
+ volume = {1},
+ number = {9},
+ pages = {680--692},
+ publisher = {{Springer Science and Business Media LLC}},
+ file = {/home/kellen/Downloads/pdfs/storage/XYTKJQUK/Momennejad et al. - 2017 - The successor representation in human reinforcemen.pdf},
+ langid = {english},
+ copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining},
+ issn = {2397-3374},
+ month = {August}
+}
+\stopverb}

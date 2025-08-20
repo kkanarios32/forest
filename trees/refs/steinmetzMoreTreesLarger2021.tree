@@ -1,0 +1,26 @@
+% ["refs"]
+\title{More Trees or Larger Trees: Parallelizing Monte Carlo Tree Search}
+\date{2021-09}
+\author/literal{Erik Steinmetz}\author/literal{Maria Gini}
+\taxon{Reference}
+\meta{doi}{10.1109/TG.2020.3048331}
+\meta{bibtex}{\startverb
+@article{steinmetzMoreTreesLarger2021,
+ title = {More {{Trees}} or {{Larger Trees}}: {{Parallelizing Monte Carlo Tree Search}}},
+ author = {Steinmetz, Erik and Gini, Maria},
+ year = {2021},
+ doi = {10.1109/TG.2020.3048331},
+ urldate = {2025-08-16},
+ journal = {IEEE Transactions on Games},
+ volume = {13},
+ number = {3},
+ pages = {315--320},
+ file = {/home/kellen/Downloads/pdfs/storage/VDT83T8J/Steinmetz and Gini - 2021 - More Trees or Larger Trees Parallelizing Monte Ca.pdf},
+ langid = {english},
+ copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html},
+ abstract = {Monte Carlo tree search (MCTS) is being effectively used in many domains, but acquiring good results from building larger trees takes time that can in many cases be impractical. In this article, we show that parallelizing the tree building process using multiple independent trees (root parallelization) can improve results when limited time is available, and compare these results to other parallelization techniques and to results obtained from running for an extended time. We obtained our results using MCTS in the domain of computer Go, which has the most mature implementations. Compared to previous studies, our results are more precise and statistically significant.},
+ issn = {2475-1502, 2475-1510},
+ month = {September},
+ shorttitle = {More {{Trees}} or {{Larger Trees}}}
+}
+\stopverb}

@@ -1,0 +1,25 @@
+% ["refs"]
+\title{Monte Carlo Tree Search in Continuous Spaces Using Voronoi Optimistic Optimization with Regret Bounds}
+\date{2020-04}
+\author/literal{Beomjoon Kim}\author/literal{Kyungjae Lee}\author/literal{Sungbin Lim}\author/literal{Leslie Kaelbling}\author/literal{Tomas Lozano-Perez}
+\taxon{Reference}
+\meta{doi}{10.1609/aaai.v34i06.6546}
+\meta{bibtex}{\startverb
+@article{kimMonteCarloTree2020,
+ title = {Monte {{Carlo Tree Search}} in {{Continuous Spaces Using Voronoi Optimistic Optimization}} with {{Regret Bounds}}},
+ author = {Kim, Beomjoon and Lee, Kyungjae and Lim, Sungbin and Kaelbling, Leslie and {Lozano-Perez}, Tomas},
+ year = {2020},
+ doi = {10.1609/aaai.v34i06.6546},
+ urldate = {2025-08-12},
+ journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+ volume = {34},
+ number = {06},
+ pages = {9916--9924},
+ file = {/home/kellen/Downloads/pdfs/storage/MRXUMG4R/Kim et al. - 2020 - Monte Carlo Tree Search in Continuous Spaces Using.pdf},
+ langid = {english},
+ copyright = {https://www.aaai.org},
+ abstract = {Many important applications, including robotics, data-center management, and process control, require planning action sequences in domains with continuous state and action spaces and discontinuous objective functions. Monte Carlo tree search (MCTS) is an effective strategy for planning in discrete action spaces. We provide a novel MCTS algorithm (VOOT) for deterministic environments with continuous action spaces, which, in turn, is based on a novel black-box function-optimization algorithm (VOO) to efficiently sample actions. The VOO algorithm uses Voronoi partitioning to guide sampling, and is particularly efficient in high-dimensional spaces. The VOOT algorithm has an instance of VOO at each node in the tree. We provide regret bounds for both algorithms and demonstrate their empirical effectiveness in several high-dimensional problems including two difficult robotics planning problems.},
+ issn = {2374-3468, 2159-5399},
+ month = {April}
+}
+\stopverb}

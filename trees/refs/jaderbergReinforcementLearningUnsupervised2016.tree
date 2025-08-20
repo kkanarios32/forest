@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Reinforcement Learning with Unsupervised Auxiliary Tasks}
+\date{2016-11}
+\author/literal{Max Jaderberg}\author/literal{Volodymyr Mnih}\author/literal{Wojciech Marian Czarnecki}\author/literal{Tom Schaul}\author/literal{Joel Z. Leibo}\author/literal{David Silver}\author/literal{Koray Kavukcuoglu}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1611.05397}
+\meta{external}{https://arxiv.org/abs/1611.05397}
+
+\meta{bibtex}{\startverb
+@misc{jaderbergReinforcementLearningUnsupervised2016,
+ title = {Reinforcement {{Learning}} with {{Unsupervised Auxiliary Tasks}}},
+ author = {Jaderberg, Max and Mnih, Volodymyr and Czarnecki, Wojciech Marian and Schaul, Tom and Leibo, Joel Z. and Silver, David and Kavukcuoglu, Koray},
+ year = {2016},
+ doi = {10.48550/arXiv.1611.05397},
+ urldate = {2025-07-29},
+ number = {arXiv:1611.05397},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/FVV6U4DP/Jaderberg et al. - 2016 - Reinforcement Learning with Unsupervised Auxiliary.pdf},
+ keywords = {Computer Science - Machine Learning,Computer Science - Neural and Evolutionary Computing},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Deep reinforcement learning agents have achieved state-of-the-art results by directly maximising cumulative reward. However, environments contain a much wider variety of possible training signals. In this paper, we introduce an agent that also maximises many other pseudo-reward functions simultaneously by reinforcement learning. All of these tasks share a common representation that, like unsupervised learning, continues to develop in the absence of extrinsic rewards. We also introduce a novel mechanism for focusing this representation upon extrinsic rewards, so that learning can rapidly adapt to the most relevant aspects of the actual task. Our agent significantly outperforms the previous state-of-theart on Atari, averaging 880\% expert human performance, and a challenging suite of first-person, three-dimensional Labyrinth tasks leading to a mean speedup in learning of 10{\texttimes} and averaging 87\% expert human performance on Labyrinth.},
+ primaryclass = {cs},
+ eprint = {1611.05397},
+ month = {November}
+}
+\stopverb}

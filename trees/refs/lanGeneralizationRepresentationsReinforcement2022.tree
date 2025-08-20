@@ -1,0 +1,27 @@
+% ["refs"]
+\title{On the Generalization of Representations in Reinforcement Learning}
+\date{2022-03}
+\author/literal{Charline Le Lan}\author/literal{Stephen Tu}\author/literal{Adam Oberman}\author/literal{Rishabh Agarwal}\author/literal{Marc G. Bellemare}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2203.00543}
+\meta{external}{https://arxiv.org/abs/2203.00543}
+
+\meta{bibtex}{\startverb
+@misc{lanGeneralizationRepresentationsReinforcement2022,
+ title = {On the {{Generalization}} of {{Representations}} in {{Reinforcement Learning}}},
+ author = {Lan, Charline Le and Tu, Stephen and Oberman, Adam and Agarwal, Rishabh and Bellemare, Marc G.},
+ year = {2022},
+ doi = {10.48550/arXiv.2203.00543},
+ urldate = {2025-07-22},
+ number = {arXiv:2203.00543},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/NYWNHH5I/Lan et al. - 2022 - On the Generalization of Representations in Reinfo.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In reinforcement learning, state representations are used to tractably deal with large problem spaces. State representations serve both to approximate the value function with few parameters, but also to generalize to newly encountered states. Their features may be learned implicitly (as part of a neural network) or explicitly (for example, the successor representation of {\textbackslash}citet\{dayan1993improving\}). While the approximation properties of representations are reasonably well-understood, a precise characterization of how and when these representations generalize is lacking. In this work, we address this gap and provide an informative bound on the generalization error arising from a specific state representation. This bound is based on the notion of effective dimension which measures the degree to which knowing the value at one state informs the value at other states. Our bound applies to any state representation and quantifies the natural tension between representations that generalize well and those that approximate well. We complement our theoretical results with an empirical survey of classic representation learning methods from the literature and results on the Arcade Learning Environment, and find that the generalization behaviour of learned representations is well-explained by their effective dimension.},
+ primaryclass = {cs},
+ eprint = {2203.00543},
+ month = {March}
+}
+\stopverb}

@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Self-Supervised Exploration via Disagreement}
+\date{2019-06}
+\author/literal{Deepak Pathak}\author/literal{Dhiraj Gandhi}\author/literal{Abhinav Gupta}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1906.04161}
+\meta{external}{https://arxiv.org/abs/1906.04161}
+
+\meta{bibtex}{\startverb
+@misc{pathakSelfSupervisedExplorationDisagreement2019,
+ title = {Self-{{Supervised Exploration}} via {{Disagreement}}},
+ author = {Pathak, Deepak and Gandhi, Dhiraj and Gupta, Abhinav},
+ year = {2019},
+ doi = {10.48550/arXiv.1906.04161},
+ urldate = {2025-07-29},
+ number = {arXiv:1906.04161},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/DE6URAGU/Pathak et al. - 2019 - Self-Supervised Exploration via Disagreement.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Efficient exploration is a long-standing problem in sensorimotor learning. Major advances have been demonstrated in noise-free, non-stochastic domains such as video games and simulation. However, most of these formulations either get stuck in environments with stochastic dynamics or are too inefficient to be scalable to real robotics setups. In this paper, we propose a formulation for exploration inspired by the work in active learning literature. Specifically, we train an ensemble of dynamics models and incentivize the agent to explore such that the disagreement of those ensembles is maximized. This allows the agent to learn skills by exploring in a self-supervised manner without any external reward. Notably, we further leverage the disagreement objective to optimize the agent's policy in a differentiable manner, without using reinforcement learning, which results in a sample-efficient exploration. We demonstrate the efficacy of this formulation across a variety of benchmark environments including stochastic-Atari, Mujoco and Unity. Finally, we implement our differentiable exploration on a real robot which learns to interact with objects completely from scratch. Project videos and code are at https://pathak22.github. io/exploration-by-disagreement/.},
+ primaryclass = {cs},
+ eprint = {1906.04161},
+ month = {June}
+}
+\stopverb}

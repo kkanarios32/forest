@@ -1,0 +1,12 @@
+% ["refs"]
+\title{https://arxiv.org/pdf/2507.14748}
+\taxon{Reference}
+\meta{external}{https://arxiv.org/pdf/2507.14748}
+
+\meta{bibtex}{\startverb
+@misc{HttpsArxivorgPdf,
+ title = {{{https://arxiv.org/pdf/2507.14748}}},
+ urldate = {2025-08-11},
+ howpublished = {https://arxiv.org/pdf/2507.14748}
+}
+\stopverb}

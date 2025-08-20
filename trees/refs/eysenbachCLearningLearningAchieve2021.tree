@@ -1,0 +1,28 @@
+% ["refs"]
+\title{C-Learning: Learning to Achieve Goals via Recursive Classification}
+\date{2021-04}
+\author/literal{Benjamin Eysenbach}\author/literal{Ruslan Salakhutdinov}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2011.08909}
+\meta{external}{https://arxiv.org/abs/2011.08909}
+
+\meta{bibtex}{\startverb
+@misc{eysenbachCLearningLearningAchieve2021,
+ title = {C-{{Learning}}: {{Learning}} to {{Achieve Goals}} via {{Recursive Classification}}},
+ author = {Eysenbach, Benjamin and Salakhutdinov, Ruslan and Levine, Sergey},
+ year = {2021},
+ doi = {10.48550/arXiv.2011.08909},
+ urldate = {2025-07-22},
+ number = {arXiv:2011.08909},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/UPPYDNWP/Eysenbach et al. - 2021 - C-Learning Learning to Achieve Goals via Recursiv.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {We study the problem of predicting and controlling the future state distribution of an autonomous agent. This problem, which can be viewed as a reframing of goal-conditioned reinforcement learning (RL), is centered around learning a conditional probability density function over future states. Instead of directly estimating this density function, we indirectly estimate this density function by training a classifier to predict whether an observation comes from the future. Via Bayes' rule, predictions from our classifier can be transformed into predictions over future states. Importantly, an off-policy variant of our algorithm allows us to predict the future state distribution of a new policy, without collecting new experience. This variant allows us to optimize functionals of a policy's future state distribution, such as the density of reaching a particular goal state. While conceptually similar to Q-learning, our work lays a principled foundation for goal-conditioned RL as density estimation, providing justification for goal-conditioned methods used in prior work. This foundation makes hypotheses about Q-learning, including the optimal goal-sampling ratio, which we confirm experimentally. Moreover, our proposed method is competitive with prior goal-conditioned RL methods.},
+ primaryclass = {cs},
+ eprint = {2011.08909},
+ month = {April},
+ shorttitle = {C-{{Learning}}}
+}
+\stopverb}

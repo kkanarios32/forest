@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Rainbow: Combining Improvements in Deep Reinforcement Learning}
+\date{2017-10}
+\author/literal{Matteo Hessel}\author/literal{Joseph Modayil}\author/literal{Hado van Hasselt}\author/literal{Tom Schaul}\author/literal{Georg Ostrovski}\author/literal{Will Dabney}\author/literal{Dan Horgan}\author/literal{Bilal Piot}\author/literal{Mohammad Azar}\author/literal{David Silver}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1710.02298}
+\meta{external}{https://arxiv.org/abs/1710.02298}
+
+\meta{bibtex}{\startverb
+@misc{hesselRainbowCombiningImprovements2017,
+ title = {Rainbow: {{Combining Improvements}} in {{Deep Reinforcement Learning}}},
+ author = {Hessel, Matteo and Modayil, Joseph and van Hasselt, Hado and Schaul, Tom and Ostrovski, Georg and Dabney, Will and Horgan, Dan and Piot, Bilal and Azar, Mohammad and Silver, David},
+ year = {2017},
+ doi = {10.48550/arXiv.1710.02298},
+ urldate = {2025-07-25},
+ number = {arXiv:1710.02298},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/GBD4VUX6/Hessel et al. - 2017 - Rainbow Combining Improvements in Deep Reinforcem.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {The deep reinforcement learning community has made several independent improvements to the DQN algorithm. However, it is unclear which of these extensions are complementary and can be fruitfully combined. This paper examines six extensions to the DQN algorithm and empirically studies their combination. Our experiments show that the combination provides state-of-the-art performance on the Atari 2600 benchmark, both in terms of data efficiency and final performance. We also provide results from a detailed ablation study that shows the contribution of each component to overall performance.},
+ primaryclass = {cs},
+ eprint = {1710.02298},
+ month = {October},
+ shorttitle = {Rainbow}
+}
+\stopverb}

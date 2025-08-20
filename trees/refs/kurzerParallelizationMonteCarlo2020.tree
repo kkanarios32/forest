@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Parallelization of Monte Carlo Tree Search in Continuous Domains}
+\date{2020-03}
+\author/literal{Karl Kurzer}\author/literal{Christoph Hörtnagl}\author/literal{J. Marius Zöllner}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2003.13741}
+\meta{external}{https://arxiv.org/abs/2003.13741}
+
+\meta{bibtex}{\startverb
+@misc{kurzerParallelizationMonteCarlo2020,
+ title = {Parallelization of {{Monte Carlo Tree Search}} in {{Continuous Domains}}},
+ author = {Kurzer, Karl and H{\"o}rtnagl, Christoph and Z{\"o}llner, J. Marius},
+ year = {2020},
+ doi = {10.48550/arXiv.2003.13741},
+ urldate = {2025-08-15},
+ number = {arXiv:2003.13741},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/I5KPRN32/Kurzer et al. - 2020 - Parallelization of Monte Carlo Tree Search in Cont.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Monte Carlo Tree Search (MCTS) has proven to be capable of solving challenging tasks in domains such as Go, chess and Atari. Previous research has developed parallel versions of MCTS, exploiting today's multiprocessing architectures. These studies focused on versions of MCTS for the discrete case. Our work builds upon existing parallelization strategies and extends them to continuous domains. In particular, leaf parallelization and root parallelization are studied and two final selection strategies that are required to handle continuous states in root parallelization are proposed. The evaluation of the resulting parallelized continuous MCTS is conducted using a challenging cooperative multi-agent system trajectory planning task in the domain of automated vehicles.},
+ primaryclass = {cs},
+ eprint = {2003.13741},
+ month = {March}
+}
+\stopverb}

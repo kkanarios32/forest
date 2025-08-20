@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Strict Subgoal Execution: Reliable Long-Horizon Planning in Hierarchical Reinforcement Learning}
+\date{2025-06}
+\author/literal{Jaebak Hwang}\author/literal{Sanghyeon Lee}\author/literal{Jeongmo Kim}\author/literal{Seungyul Han}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2506.21039}
+\meta{external}{https://arxiv.org/abs/2506.21039}
+
+\meta{bibtex}{\startverb
+@misc{hwangStrictSubgoalExecution2025,
+ title = {Strict {{Subgoal Execution}}: {{Reliable Long-Horizon Planning}} in {{Hierarchical Reinforcement Learning}}},
+ author = {Hwang, Jaebak and Lee, Sanghyeon and Kim, Jeongmo and Han, Seungyul},
+ year = {2025},
+ doi = {10.48550/arXiv.2506.21039},
+ urldate = {2025-07-20},
+ number = {arXiv:2506.21039},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/XE9U9G2J/Hwang et al. - 2025 - Strict Subgoal Execution Reliable Long-Horizon Pl.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Long-horizon goal-conditioned tasks pose fundamental challenges for reinforcement learning (RL), particularly when goals are distant and rewards are sparse. While hierarchical and graph-based methods offer partial solutions, they often suffer from subgoal infeasibility and inefficient planning. We introduce Strict Subgoal Execution (SSE), a graph-based hierarchical RL framework that enforces single-step subgoal reachability by structurally constraining high-level decision-making. To enhance exploration, SSE employs a decoupled exploration policy that systematically traverses underexplored regions of the goal space. Furthermore, a failure-aware path refinement, which refines graph-based planning by dynamically adjusting edge costs according to observed low-level success rates, thereby improving subgoal reliability. Experimental results across diverse long-horizon benchmarks demonstrate that SSE consistently outperforms existing goal-conditioned RL and hierarchical RL approaches in both efficiency and success rate.},
+ primaryclass = {cs},
+ eprint = {2506.21039},
+ month = {June},
+ shorttitle = {Strict {{Subgoal Execution}}}
+}
+\stopverb}

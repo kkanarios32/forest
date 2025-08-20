@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Distributional Reinforcement Learning with Quantile Regression}
+\date{2017-10}
+\author/literal{Will Dabney}\author/literal{Mark Rowland}\author/literal{Marc G. Bellemare}\author/literal{Rémi Munos}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1710.10044}
+\meta{external}{https://arxiv.org/abs/1710.10044}
+
+\meta{bibtex}{\startverb
+@misc{dabneyDistributionalReinforcementLearning2017,
+ title = {Distributional {{Reinforcement Learning}} with {{Quantile Regression}}},
+ author = {Dabney, Will and Rowland, Mark and Bellemare, Marc G. and Munos, R{\'e}mi},
+ year = {2017},
+ doi = {10.48550/arXiv.1710.10044},
+ urldate = {2025-07-25},
+ number = {arXiv:1710.10044},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/76H6ZSMI/Dabney et al. - 2017 - Distributional Reinforcement Learning with Quantil.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In reinforcement learning an agent interacts with the environment by taking actions and observing the next state and reward. When sampled probabilistically, these state transitions, rewards, and actions can all induce randomness in the observed long-term return. Traditionally, reinforcement learning algorithms average over this randomness to estimate the value function. In this paper, we build on recent work advocating a distributional approach to reinforcement learning in which the distribution over returns is modeled explicitly instead of only estimating the mean. That is, we examine methods of learning the value distribution instead of the value function. We give results that close a number of gaps between the theoretical and algorithmic results given by Bellemare, Dabney, and Munos (2017). First, we extend existing results to the approximate distribution setting. Second, we present a novel distributional reinforcement learning algorithm consistent with our theoretical formulation. Finally, we evaluate this new algorithm on the Atari 2600 games, observing that it significantly outperforms many of the recent improvements on DQN, including the related distributional algorithm C51.},
+ primaryclass = {cs},
+ eprint = {1710.10044},
+ month = {October}
+}
+\stopverb}

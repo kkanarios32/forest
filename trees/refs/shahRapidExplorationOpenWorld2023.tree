@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Rapid Exploration for Open-World Navigation with Latent Goal Models}
+\date{2023-10}
+\author/literal{Dhruv Shah}\author/literal{Benjamin Eysenbach}\author/literal{Gregory Kahn}\author/literal{Nicholas Rhinehart}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2104.05859}
+\meta{external}{https://arxiv.org/abs/2104.05859}
+
+\meta{bibtex}{\startverb
+@misc{shahRapidExplorationOpenWorld2023,
+ title = {Rapid {{Exploration}} for {{Open-World Navigation}} with {{Latent Goal Models}}},
+ author = {Shah, Dhruv and Eysenbach, Benjamin and Kahn, Gregory and Rhinehart, Nicholas and Levine, Sergey},
+ year = {2023},
+ doi = {10.48550/arXiv.2104.05859},
+ urldate = {2025-08-16},
+ number = {arXiv:2104.05859},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/USH5JHD3/Shah et al. - 2023 - Rapid Exploration for Open-World Navigation with L.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {We describe a robotic learning system for autonomous exploration and navigation in diverse, open-world environments. At the core of our method is a learned latent variable model of distances and actions, along with a non-parametric topological memory of images. We use an information bottleneck to regularize the learned policy, giving us (i) a compact visual representation of goals, (ii) improved generalization capabilities, and (iii) a mechanism for sampling feasible goals for exploration. Trained on a large offline dataset of prior experience, the model acquires a representation of visual goals that is robust to task-irrelevant distractors. We demonstrate our method on a mobile ground robot in open-world exploration scenarios. Given an image of a goal that is up to 80 meters away, our method leverages its representation to explore and discover the goal in under 20 minutes, even amidst previously-unseen obstacles and weather conditions.},
+ primaryclass = {cs},
+ eprint = {2104.05859},
+ month = {October}
+}
+\stopverb}

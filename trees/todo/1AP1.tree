@@ -1,0 +1,8 @@
+\date{2025-08-18T20:05:12Z}
+\title{Voronoi Cell}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\p{A \em{voronoi cell} #{C_i} is the subset of the configuration space #{\mathcal{C}} for which #{\mathbf{x}_i} is the closest point i.e.
+##{C_i \equiv \{\mathbf{x} \in \mathcal{C} \,|\, i = \arg\min_{i=1,\ldots,n} d(\mathbf{x},\mathbf{x}_i)\}}
+}

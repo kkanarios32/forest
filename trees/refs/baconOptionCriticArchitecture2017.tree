@@ -1,0 +1,23 @@
+% ["refs"]
+\title{The Option-Critic Architecture}
+\date{2017-02}
+\author/literal{Pierre-Luc Bacon}\author/literal{Jean Harb}\author/literal{Doina Precup}
+\taxon{Reference}
+\meta{doi}{10.1609/aaai.v31i1.10916}
+\meta{bibtex}{\startverb
+@article{baconOptionCriticArchitecture2017,
+ title = {The {{Option-Critic Architecture}}},
+ author = {Bacon, Pierre-Luc and Harb, Jean and Precup, Doina},
+ year = {2017},
+ doi = {10.1609/aaai.v31i1.10916},
+ urldate = {2025-07-30},
+ journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+ volume = {31},
+ number = {1},
+ file = {/home/kellen/Downloads/pdfs/storage/QMAGDZ5G/Bacon et al. - 2017 - The Option-Critic Architecture.pdf},
+ langid = {english},
+ abstract = {Temporal abstraction is key to scaling up learning and planning in reinforcement learning. While planning with temporally extended actions is well understood, creating such abstractions autonomously from data has remained challenging. We tackle this problem in the framework of options [Sutton, Precup \& Singh, 1999; Precup, 2000]. We derive policy gradient theorems for options and propose a new option-critic architecture capable of learning both the internal policies and the termination conditions of options, in tandem with the policy over options, and without the need to provide any additional rewards or subgoals. Experimental results in both discrete and continuous environments showcase the flexibility and efficiency of the framework.},
+ issn = {2374-3468, 2159-5399},
+ month = {February}
+}
+\stopverb}

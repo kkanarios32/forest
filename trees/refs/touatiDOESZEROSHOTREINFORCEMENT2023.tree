@@ -1,0 +1,15 @@
+% ["refs"]
+\title{DOES ZERO-SHOT REINFORCEMENT LEARNING EXIST?}
+\date{2023}
+\author/literal{Ahmed Touati}\author/literal{Jérémy Rapin}\author/literal{Yann Ollivier}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{touatiDOESZEROSHOTREINFORCEMENT2023,
+ title = {{{DOES ZERO-SHOT REINFORCEMENT LEARNING EXIST}}?},
+ author = {Touati, Ahmed and Rapin, J{\'e}r{\'e}my and Ollivier, Yann},
+ year = {2023},
+ file = {/home/kellen/Downloads/pdfs/storage/92ITAA7C/Touati et al. - 2023 - DOES ZERO-SHOT REINFORCEMENT LEARNING EXIST.pdf},
+ langid = {english},
+ abstract = {A zero-shot RL agent is an agent that can solve any RL task in a given environment, instantly with no additional planning or learning, after an initial reward-free learning phase. This marks a shift from the reward-centric RL paradigm towards ``controllable'' agents that can follow arbitrary instructions in an environment. Current RL agents can solve families of related tasks at best, or require planning anew for each task. Strategies for approximate zero-shot RL have been suggested using successor features (SFs) (Borsa et al., 2018) or forward-backward (FB) representations (Touati \& Ollivier, 2021), but testing has been limited.}
+}
+\stopverb}

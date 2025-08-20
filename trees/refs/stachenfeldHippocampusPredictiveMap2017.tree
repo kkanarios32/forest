@@ -1,0 +1,25 @@
+% ["refs"]
+\title{The hippocampus as a predictive map}
+\date{2017-11}
+\author/literal{Kimberly L Stachenfeld}\author/literal{Matthew M Botvinick}\author/literal{Samuel J Gershman}
+\taxon{Reference}
+\meta{doi}{10.1038/nn.4650}
+\meta{bibtex}{\startverb
+@article{stachenfeldHippocampusPredictiveMap2017,
+ title = {The Hippocampus as a Predictive Map},
+ author = {Stachenfeld, Kimberly L and Botvinick, Matthew M and Gershman, Samuel J},
+ year = {2017},
+ doi = {10.1038/nn.4650},
+ urldate = {2025-07-24},
+ journal = {Nature Neuroscience},
+ volume = {20},
+ number = {11},
+ pages = {1643--1653},
+ publisher = {{Springer Science and Business Media LLC}},
+ file = {/home/kellen/Downloads/pdfs/storage/YA7EXQ2B/Stachenfeld et al. - 2017 - The hippocampus as a predictive map.pdf},
+ langid = {english},
+ copyright = {http://www.springer.com/tdm},
+ issn = {1097-6256, 1546-1726},
+ month = {November}
+}
+\stopverb}

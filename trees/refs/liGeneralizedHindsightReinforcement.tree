@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Generalized Hindsight for Reinforcement Learning}
+\author/literal{Alexander C Li}\author/literal{Lerrel Pinto}\author/literal{Pieter Abbeel}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{liGeneralizedHindsightReinforcement,
+ title = {Generalized {{Hindsight}} for {{Reinforcement Learning}}},
+ author = {Li, Alexander C and Pinto, Lerrel and Abbeel, Pieter},
+ file = {/home/kellen/Downloads/pdfs/storage/T9FHIZUD/Li et al. - Generalized Hindsight for Reinforcement Learning.pdf},
+ langid = {english}
+}
+\stopverb}

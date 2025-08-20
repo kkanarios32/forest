@@ -1,0 +1,15 @@
+% ["refs"]
+\title{When does Self-Prediction help? Understanding Auxiliary Tasks in Reinforcement Learning}
+\date{2024}
+\author/literal{Claas Voelcker}\author/literal{Tyler Kastner}\author/literal{Igor Gilitschenski}\author/literal{Amir-massoud Farahmand}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{voelckerWhenDoesSelfPrediction2024,
+ title = {When Does {{Self-Prediction}} Help? {{Understanding Auxiliary Tasks}} in {{Reinforcement Learning}}},
+ author = {Voelcker, Claas and Kastner, Tyler and Gilitschenski, Igor and Farahmand, Amir-massoud},
+ year = {2024},
+ file = {/home/kellen/Downloads/pdfs/storage/3W6F2LV4/Voelcker et al. - 2024 - When does Self-Prediction help Understanding Auxi.pdf},
+ langid = {english},
+ abstract = {We investigate the impact of auxiliary learning tasks such as observation reconstruction and latent self-prediction on the representation learning problem in reinforcement learning. We also study how they interact with distractions and observation functions in the MDP. We provide a theoretical analysis of the learning dynamics of observation reconstruction, latent self-prediction, and TD learning in the presence of distractions and observation functions under linear model assumptions. With this formalization, we are able to explain why latent-self prediction is a helpful auxiliary task, while observation reconstruction can provide more useful features when used in isolation. Our empirical analysis shows that the insights obtained from our learning dynamics framework predicts the behavior of these loss functions beyond the linear model assumption in non-linear neural networks. This reinforces the usefulness of the linear model framework not only for theoretical analysis, but also practical benefit for applied problems.}
+}
+\stopverb}

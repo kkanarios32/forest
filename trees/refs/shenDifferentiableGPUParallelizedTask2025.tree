@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Differentiable GPU-Parallelized Task and Motion Planning}
+\date{2025-04}
+\author/literal{William Shen}\author/literal{Caelan Garrett}\author/literal{Nishanth Kumar}\author/literal{Ankit Goyal}\author/literal{Tucker Hermans}\author/literal{Leslie Pack Kaelbling}\author/literal{Tomás Lozano-Pérez}\author/literal{Fabio Ramos}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2411.11833}
+\meta{external}{https://arxiv.org/abs/2411.11833}
+
+\meta{bibtex}{\startverb
+@misc{shenDifferentiableGPUParallelizedTask2025,
+ title = {Differentiable {{GPU-Parallelized Task}} and {{Motion Planning}}},
+ author = {Shen, William and Garrett, Caelan and Kumar, Nishanth and Goyal, Ankit and Hermans, Tucker and Kaelbling, Leslie Pack and {Lozano-P{\'e}rez}, Tom{\'a}s and Ramos, Fabio},
+ year = {2025},
+ doi = {10.48550/arXiv.2411.11833},
+ urldate = {2025-08-12},
+ number = {arXiv:2411.11833},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/3IGMFF6X/Shen et al. - 2025 - Differentiable GPU-Parallelized Task and Motion Pl.pdf},
+ keywords = {Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Planning long-horizon robot manipulation requires making discrete decisions about which objects to interact with and continuous decisions about how to interact with them. A robot planner must select grasps, placements, and motions that are feasible and safe. This class of problems falls under Task and Motion Planning (TAMP) and poses significant computational challenges in terms of algorithm runtime and solution quality, particularly when the solution space is highly constrained. To address these challenges, we propose a new bilevel TAMP algorithm that leverages GPU parallelism to efficiently explore thousands of candidate continuous solutions simultaneously. Our approach uses GPU parallelism to sample an initial batch of solution seeds for a plan skeleton and to apply differentiable optimization on this batch to satisfy plan constraints and minimize solution cost with respect to soft objectives. We demonstrate that our algorithm can effectively solve highly constrained problems with non-convex constraints in just seconds, substantially outperforming serial TAMP approaches, and validate our approach on multiple real-world robots. Project website and code: https://cutamp.github.io},
+ primaryclass = {cs},
+ eprint = {2411.11833},
+ month = {April}
+}
+\stopverb}

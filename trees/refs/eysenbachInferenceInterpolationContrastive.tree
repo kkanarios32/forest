@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Inference via Interpolation: Contrastive Representations Provably Enable Planning and Inference}
+\author/literal{Benjamin Eysenbach}\author/literal{Ruslan Salakhutdinov}\author/literal{Vivek Myers}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{eysenbachInferenceInterpolationContrastive,
+ title = {Inference via {{Interpolation}}: {{Contrastive Representations Provably Enable Planning}} and {{Inference}}},
+ author = {Eysenbach, Benjamin and Salakhutdinov, Ruslan and Myers, Vivek and Levine, Sergey},
+ file = {/home/kellen/Downloads/pdfs/storage/I2BK8VV6/Eysenbach et al. - Inference via Interpolation Contrastive Represent.pdf},
+ langid = {english}
+}
+\stopverb}

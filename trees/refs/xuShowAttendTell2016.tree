@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Show, Attend and Tell: Neural Image Caption Generation with Visual Attention}
+\date{2016-04}
+\author/literal{Kelvin Xu}\author/literal{Jimmy Ba}\author/literal{Ryan Kiros}\author/literal{Kyunghyun Cho}\author/literal{Aaron Courville}\author/literal{Ruslan Salakhutdinov}\author/literal{Richard Zemel}\author/literal{Yoshua Bengio}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1502.03044}
+\meta{external}{https://arxiv.org/abs/1502.03044}
+
+\meta{bibtex}{\startverb
+@misc{xuShowAttendTell2016,
+ title = {Show, {{Attend}} and {{Tell}}: {{Neural Image Caption Generation}} with {{Visual Attention}}},
+ author = {Xu, Kelvin and Ba, Jimmy and Kiros, Ryan and Cho, Kyunghyun and Courville, Aaron and Salakhutdinov, Ruslan and Zemel, Richard and Bengio, Yoshua},
+ year = {2016},
+ doi = {10.48550/arXiv.1502.03044},
+ urldate = {2025-08-14},
+ number = {arXiv:1502.03044},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/YLGFC3KG/Xu et al. - 2016 - Show, Attend and Tell Neural Image Caption Genera.pdf},
+ keywords = {Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Inspired by recent work in machine translation and object detection, we introduce an attention based model that automatically learns to describe the content of images. We describe how we can train this model in a deterministic manner using standard backpropagation techniques and stochastically by maximizing a variational lower bound. We also show through visualization how the model is able to automatically learn to fix its gaze on salient objects while generating the corresponding words in the output sequence. We validate the use of attention with state-of-theart performance on three benchmark datasets: Flickr8k, Flickr30k and MS COCO.},
+ primaryclass = {cs},
+ eprint = {1502.03044},
+ month = {April},
+ shorttitle = {Show, {{Attend}} and {{Tell}}}
+}
+\stopverb}

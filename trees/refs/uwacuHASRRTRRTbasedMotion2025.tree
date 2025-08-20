@@ -1,0 +1,28 @@
+% ["refs"]
+\title{HAS-RRT: RRT-based Motion Planning using Topological Guidance}
+\date{2025-04}
+\author/literal{Diane Uwacu}\author/literal{Ananya Yammanuru}\author/literal{Keerthana Nallamotu}\author/literal{Vasu Chalasani}\author/literal{Marco Morales}\author/literal{Nancy M. Amato}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2309.10801}
+\meta{external}{https://arxiv.org/abs/2309.10801}
+
+\meta{bibtex}{\startverb
+@misc{uwacuHASRRTRRTbasedMotion2025,
+ title = {{{HAS-RRT}}: {{RRT-based Motion Planning}} Using {{Topological Guidance}}},
+ author = {Uwacu, Diane and Yammanuru, Ananya and Nallamotu, Keerthana and Chalasani, Vasu and Morales, Marco and Amato, Nancy M.},
+ year = {2025},
+ doi = {10.48550/arXiv.2309.10801},
+ urldate = {2025-08-16},
+ number = {arXiv:2309.10801},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/W66W22ZL/Uwacu et al. - 2025 - HAS-RRT RRT-based Motion Planning using Topologic.pdf},
+ keywords = {Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {We present a hierarchical RRT-based motion planning strategy, Hierarchical Annotated-Skeleton Guided RRT (HAS-RRT), guided by a workspace skeleton, to solve motion planning problems. HAS-RRT provides up to a 91\% runtime reduction and builds a tree at least 30\% smaller than competitors while still finding competitive-cost paths. This is because our strategy prioritizes paths indicated by the workspace guidance to efficiently find a valid motion plan for the robot. Existing methods either rely too heavily on workspace guidance or have difficulty finding narrow passages. By taking advantage of the assumptions that the workspace skeleton provides, HAS-RRT is able to build a smaller tree and find a path faster than its competitors. Additionally, we show that HAS-RRT is robust to the quality of workspace guidance provided and that, in a worst-case scenario where the workspace skeleton provides no additional insight, our method performs comparably to an unguided method.},
+ primaryclass = {cs},
+ eprint = {2309.10801},
+ month = {April},
+ shorttitle = {{{HAS-RRT}}}
+}
+\stopverb}

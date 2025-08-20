@@ -1,0 +1,23 @@
+% ["refs"]
+\title{Obstacle Avoidance for UAS in Continuous Action Space Using Deep Reinforcement Learning}
+\date{2022}
+\author/literal{Jueming Hu}\author/literal{Xuxi Yang}\author/literal{Weichang Wang}\author/literal{Peng Wei}\author/literal{Lei Ying}\author/literal{Yongming Liu}
+\taxon{Reference}
+\meta{doi}{10.1109/ACCESS.2022.3201962}
+\meta{bibtex}{\startverb
+@article{huObstacleAvoidanceUAS2022,
+ title = {Obstacle {{Avoidance}} for {{UAS}} in {{Continuous Action Space Using Deep Reinforcement Learning}}},
+ author = {Hu, Jueming and Yang, Xuxi and Wang, Weichang and Wei, Peng and Ying, Lei and Liu, Yongming},
+ year = {2022},
+ doi = {10.1109/ACCESS.2022.3201962},
+ urldate = {2025-08-17},
+ journal = {IEEE Access},
+ volume = {10},
+ pages = {90623--90634},
+ file = {/home/kellen/Downloads/pdfs/storage/Y4IXUWGV/Hu et al. - 2022 - Obstacle Avoidance for UAS in Continuous Action Sp.pdf},
+ langid = {english},
+ copyright = {https://creativecommons.org/licenses/by/4.0/legalcode},
+ abstract = {Obstacle avoidance for small unmanned aircraft is vital for the safety of future urban air mobility (UAM) and Unmanned Aircraft System (UAS) Traffic Management (UTM). There are a variety of techniques for real-time robust drone guidance, but numerous of them solve in discretized airspace and control, which would require an additional path smoothing step to provide flexible commands for UAS. To deliver safe and computationally efficient guidance for UAS operations, we explore the use of a deep reinforcement learning algorithm based on Proximal Policy Optimization (PPO) to lead autonomous UAS to their destinations while bypassing obstacles through continuous control. The proposed scenario state representation and reward function can map the continuous state space to continuous control for both heading angle and speed. To verify the effectiveness of the proposed learning framework, we conducted numerical experiments with static and moving obstacles. Uncertainties associated with the environments and safety operation bounds are investigated in detail. Results show that the proposed model is able to provide accurate and robust guidance and resolve conflict with a success rate of over 99\%.},
+ issn = {2169-3536}
+}
+\stopverb}

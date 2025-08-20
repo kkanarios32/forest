@@ -1,0 +1,12 @@
+% ["refs"]
+\title{https://openreview.net/pdf?id=6OxKvduBUP}
+\taxon{Reference}
+\meta{external}{https://openreview.net/pdf?id=6OxKvduBUP}
+
+\meta{bibtex}{\startverb
+@misc{HttpsOpenreviewnetPdfid6OxKvduBUP,
+ title = {{{https://openreview.net/pdf?id=6OxKvduBUP}}},
+ urldate = {2025-08-08},
+ howpublished = {https://openreview.net/pdf?id=6OxKvduBUP}
+}
+\stopverb}

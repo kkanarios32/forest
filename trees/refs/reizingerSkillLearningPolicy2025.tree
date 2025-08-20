@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Skill Learning via Policy Diversity Yields Identifiable Representations for Reinforcement Learning}
+\date{2025-07}
+\author/literal{Patrik Reizinger}\author/literal{Bálint Mucsányi}\author/literal{Siyuan Guo}\author/literal{Benjamin Eysenbach}\author/literal{Bernhard Schölkopf}\author/literal{Wieland Brendel}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2507.14748}
+\meta{external}{https://arxiv.org/abs/2507.14748}
+
+\meta{bibtex}{\startverb
+@misc{reizingerSkillLearningPolicy2025,
+ title = {Skill {{Learning}} via {{Policy Diversity Yields Identifiable Representations}} for {{Reinforcement Learning}}},
+ author = {Reizinger, Patrik and Mucs{\'a}nyi, B{\'a}lint and Guo, Siyuan and Eysenbach, Benjamin and Sch{\"o}lkopf, Bernhard and Brendel, Wieland},
+ year = {2025},
+ doi = {10.48550/arXiv.2507.14748},
+ urldate = {2025-07-25},
+ number = {arXiv:2507.14748},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/H2T2DXSX/Reizinger et al. - 2025 - Skill Learning via Policy Diversity Yields Identif.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Self-supervised feature learning and pretraining methods in reinforcement learning (RL) often rely on information-theoretic principles, termed mutual information skill learning (MISL). These methods aim to learn a representation of the environment while also incentivizing exploration thereof. However, the role of the representation and mutual information parametrization in MISL is not yet well understood theoretically. Our work investigates MISL through the lens of identifiable representation learning by focusing on the Contrastive Successor Features (CSF) method. We prove that CSF can provably recover the environment's ground-truth features up to a linear transformation due to the inner product parametrization of the features and skill diversity in a discriminative sense. This first identifiability guarantee for representation learning in RL also helps explain the implications of different mutual information objectives and the downsides of entropy regularizers. We empirically validate our claims in MuJoCo and DeepMind Control and show how CSF provably recovers the ground-truth features both from states and pixels.},
+ primaryclass = {cs},
+ eprint = {2507.14748},
+ month = {July}
+}
+\stopverb}

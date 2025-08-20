@@ -1,0 +1,13 @@
+% ["refs"]
+\title{On The Effect of Auxiliary Tasks on Representation Dynamics}
+\author/literal{Clare Lyle}\author/literal{Mark Rowland}\author/literal{Georg Ostrovski}\author/literal{Will Dabney}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{lyleEffectAuxiliaryTasks,
+ title = {On {{The Effect}} of {{Auxiliary Tasks}} on {{Representation Dynamics}}},
+ author = {Lyle, Clare and Rowland, Mark and Ostrovski, Georg and Dabney, Will},
+ file = {/home/kellen/Downloads/pdfs/storage/VU8D5K3I/Lyle et al. - On The E↵ect of Auxiliary Tasks on Representation .pdf},
+ langid = {english},
+ abstract = {While auxiliary tasks play a key role in shaping the representations learnt by reinforcement learning agents, much is still unknown about the mechanisms through which this is achieved. This work develops our understanding of the relationship between auxiliary tasks, environment structure, and representations by analysing the dynamics of temporal di↵erence algorithms. Through this approach, we establish a connection between the spectral decomposition of the transition operator and the representations induced by a variety of auxiliary tasks. We then leverage insights from these theoretical results to inform the selection of auxiliary tasks for deep reinforcement learning agents in sparsereward environments.}
+}
+\stopverb}

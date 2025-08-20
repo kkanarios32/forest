@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Constructing an Optimal Behavior Basis for the Option Keyboard}
+\date{2025-05}
+\author/literal{Lucas N. Alegre}\author/literal{Ana L. C. Bazzan}\author/literal{André Barreto}\author/literal{Bruno C. da Silva}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2505.00787}
+\meta{external}{https://arxiv.org/abs/2505.00787}
+
+\meta{bibtex}{\startverb
+@misc{alegreConstructingOptimalBehavior2025,
+ title = {Constructing an {{Optimal Behavior Basis}} for the {{Option Keyboard}}},
+ author = {Alegre, Lucas N. and Bazzan, Ana L. C. and Barreto, Andr{\'e} and da Silva, Bruno C.},
+ year = {2025},
+ doi = {10.48550/arXiv.2505.00787},
+ urldate = {2025-07-22},
+ number = {arXiv:2505.00787},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/XURMI23D/Alegre et al. - 2025 - Constructing an Optimal Behavior Basis for the Opt.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Multi-task reinforcement learning aims to quickly identify solutions for new tasks with minimal or no additional interaction with the environment. Generalized Policy Improvement (GPI) addresses this by combining a set of base policies to produce a new one that is at least as good---though not necessarily optimal---as any individual base policy. Optimality can be ensured, particularly in the linearreward case, via techniques that compute a Convex Coverage Set (CCS). However, these are computationally expensive and do not scale to complex domains. The Option Keyboard (OK) improves upon GPI by producing policies that are at least as good---and often better. It achieves this through a learned meta-policy that dynamically combines base policies. However, its performance critically depends on the choice of base policies. This raises a key question: is there an optimal set of base policies---an optimal behavior basis---that enables zero-shot identification of optimal solutions for any linear tasks? We solve this open problem by introducing a novel method that efficiently constructs such an optimal behavior basis. We show that it significantly reduces the number of base policies needed to ensure optimality in new tasks. We also prove that it is strictly more expressive than a CCS, enabling particular classes of non-linear tasks to be solved optimally. We empirically evaluate our technique in challenging domains and show that it outperforms stateof-the-art approaches, increasingly so as task complexity increases.},
+ primaryclass = {cs},
+ eprint = {2505.00787},
+ month = {May}
+}
+\stopverb}

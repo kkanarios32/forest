@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Efficient Exploration via State Marginal Matching}
+\date{2020-02}
+\author/literal{Lisa Lee}\author/literal{Benjamin Eysenbach}\author/literal{Emilio Parisotto}\author/literal{Eric Xing}\author/literal{Sergey Levine}\author/literal{Ruslan Salakhutdinov}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1906.05274}
+\meta{external}{https://arxiv.org/abs/1906.05274}
+
+\meta{bibtex}{\startverb
+@misc{leeEfficientExplorationState2020,
+ title = {Efficient {{Exploration}} via {{State Marginal Matching}}},
+ author = {Lee, Lisa and Eysenbach, Benjamin and Parisotto, Emilio and Xing, Eric and Levine, Sergey and Salakhutdinov, Ruslan},
+ year = {2020},
+ doi = {10.48550/arXiv.1906.05274},
+ urldate = {2025-07-29},
+ number = {arXiv:1906.05274},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/GQKR7KZV/Lee et al. - 2020 - Efficient Exploration via State Marginal Matching.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Exploration is critical to a reinforcement learning agent's performance in its given environment. Prior exploration methods are often based on using heuristic auxiliary predictions to guide policy behavior, lacking a mathematically-grounded objective with clear properties. In contrast, we recast exploration as a problem of State Marginal Matching (SMM), where we aim to learn a policy for which the state marginal distribution matches a given target state distribution. The target distribution is a uniform distribution in most cases, but can incorporate prior knowledge if available. In effect, SMM amortizes the cost of learning to explore in a given environment. The SMM objective can be viewed as a two-player, zero-sum game between a state density model and a parametric policy, an idea that we use to build an algorithm for optimizing the SMM objective. Using this formalism, we further demonstrate that prior work approximately maximizes the SMM objective, offering an explanation for the success of these methods. On both simulated and real-world tasks, we demonstrate that agents that directly optimize the SMM objective explore faster and adapt more quickly to new tasks as compared to prior exploration methods.},
+ primaryclass = {cs},
+ eprint = {1906.05274},
+ month = {February}
+}
+\stopverb}

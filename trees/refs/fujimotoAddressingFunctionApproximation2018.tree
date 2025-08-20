@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Addressing Function Approximation Error in Actor-Critic Methods}
+\date{2018-10}
+\author/literal{Scott Fujimoto}\author/literal{Herke van Hoof}\author/literal{David Meger}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1802.09477}
+\meta{external}{https://arxiv.org/abs/1802.09477}
+
+\meta{bibtex}{\startverb
+@misc{fujimotoAddressingFunctionApproximation2018,
+ title = {Addressing {{Function Approximation Error}} in {{Actor-Critic Methods}}},
+ author = {Fujimoto, Scott and van Hoof, Herke and Meger, David},
+ year = {2018},
+ doi = {10.48550/arXiv.1802.09477},
+ urldate = {2025-07-25},
+ number = {arXiv:1802.09477},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/XWWM3VFV/Fujimoto et al. - 2018 - Addressing Function Approximation Error in Actor-C.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In value-based reinforcement learning methods such as deep Q-learning, function approximation errors are known to lead to overestimated value estimates and suboptimal policies. We show that this problem persists in an actor-critic setting and propose novel mechanisms to minimize its effects on both the actor and the critic. Our algorithm builds on Double Q-learning, by taking the minimum value between a pair of critics to limit overestimation. We draw the connection between target networks and overestimation bias, and suggest delaying policy updates to reduce per-update error and further improve performance. We evaluate our method on the suite of OpenAI gym tasks, outperforming the state of the art in every environment tested.},
+ primaryclass = {cs},
+ eprint = {1802.09477},
+ month = {October}
+}
+\stopverb}

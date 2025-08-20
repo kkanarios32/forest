@@ -4,90 +4,34 @@
 \title{Contrastive Learning}
 \import{latex-preamble}
 \import{base-macros}
-\p{Prior to understanding contrastive reinforcement learning, it is important to have an at least rudimentary understanding of contrastive learning. Historically, contrastive learning has been used to learn representations. The fundamental idea behind contrastive learning is to encourage the representations of similar outputs to be similar in representation space.}
-\p{\strong{Supervised setting:} For now, assume we are in the supervised setting (we have access to lables). Suppose that we are learning a representation in #{\mathbb{R}^d}. Our model is a classifier on dogs and cats. If we have two dogs #{y_1} and #{y_2} then we want the learned representation map ##{\phi: \{\text{dogs}, \text{cats}\} \to \mathbb{R}^d} to be such that #{\phi(y_1)} and #{\phi(y_2)} are "close" in #{\mathbb{R}^d}. Now the notion of "close" is to be determined by the user. An example could be to minimize the inner product between their representation maps i.e. we could learn a feature map parametrized by #{\theta} with the following objective ##{\max_{\theta}\ \langle \phi_{\theta}(y_1), \phi_{\theta}(y_2) \rangle.} Similarly, we want dissimilar outputs to be far apart in representation space. If #{y_3} is a cat, then we can introduce a regularization to encourage this i.e.
-##{\max_{\theta}\ \langle \phi_{\theta}(y_1), \phi_{\theta}(y_2) \rangle - \sum_{i \in \{1, 2\}} \langle \phi_{\theta}(y_i), \phi_{\theta}(y_3) \rangle.} 
+\p{Recall the longstanding objective of machine learning i.e. given data #{\mathcal{X}} find the distribution #{p(x)} that generated the data #{\mathcal{X}}. The most fundamental approach is \em{maximum likelihood estimation}. Namely, we want to maximize the \em{log-likelhood} of the data
+##{\max_{\theta} \sum_{x \in \mathcal{X}} \log p_{\theta}(x) }
 }
-\p{ \strong{Unsupervised setting:} Now suppose that we get rid of labels and are just given #{n} dog samples #{\mathcal{D}} from some distribution #{p_{\mathcal{D}}}. We now want to be able to learn #{p_{\theta}} to somehow estimate this distribution. An approach is to learn to distinguish the sample dogs given from random noise. To do so, we generate #{n} random images #{\mathcal{R}} according to some distribution #{p_{\mathcal{R}}}. We can now return to the supervised learning setting, where we treat #{\mathcal{D}} and #{\mathcal{R}} as two classes. If we recall standard supervised learning practice, given a sample #{x}, we then want to find ##{p(\mathcal{D} \mid x) = 1 - p(\mathcal{R} \mid X).} 
-As an explicit example, we will use logistic regression. Namely, we will model #{p(x) = p(\mathcal{D} \mid x)} as ##{p_{\theta}(x) = \frac{1}{1 + e^{-G_{\theta}(x)}}.} However, #{p_{\theta}(x)} is estimating #{p(\mathcal{D} \mid x)}, where we care about #{p(x \mid \mathcal{D})}. To estimate the correct quantity, we need to leverage our knowledge of the noise distribution. Recall that if #{p_{\theta}(x) = p(\mathcal{D} \mid x)} then #{G_{\theta}(x) = \log \frac{p(x \mid \mathcal{D})}{p(x \mid \mathcal{R})}}. Since we generated the samples from #{\mathcal{R}}, we have the explicit distribution i.e. #{p(x \mid \mathcal{R}) = p_{\mathcal{R}}(x)}. Therefore, we can restrict #{G_{\theta}} to explicitly learn #{p(x \mid \mathcal{D})} by considering ##{G_{\theta}(x) = \log p_{\theta}(x \mid \mathcal{D}) - \log p_{\mathcal{R}}(x),} considering the cross entropy loss we get the [NCE loss](000E)
+\section{NCE}{
+\p{Suppose we are given #{N} dog samples #{\mathcal{D}} from some distribution #{p_d(x)}. We want to learn #{\theta} so that #{p_{\theta}(x) \approx p_d(x)}. The idea is to learn to distinguish the dogs from our dataset and random samples according to some noisy distribution #{g(x)}. We can now return to the supervised learning setting, where we treat #{\mathcal{D}} and #{\mathcal{R}} as two classes. If we recall standard supervised learning practice, given a sample #{x}, we can easily estimate ##{p(x \text{ is a dog}) = 1 - p(x \text{ is random noise})} 
+via binary classification.
+}
+\p{
+Explicitly, we will use logistic regression with the parametrization ##{p_{\theta}(x) = \frac{1}{1 + e^{-G_{\theta}(x)}}.} However, solving the logistic regression problem will yield #{p_{\theta^*}(x) \approx p(x \text{ is a dog})}. Recall that we want to estimate #{p_d(x)} which is the distribution over the "dog manifold".
+}
+\p{ To estimate the correct quantity, we need to leverage our knowledge of the noise distribution. Recall that if #{p_{\theta}(x) = p(\mathcal{D} \mid x)} then #{G_{\theta}(x) = \log \frac{p(x \mid \mathcal{D})}{p(x \mid \mathcal{R})}}. Since we generated the samples from #{\mathcal{R}}, we have the explicit distribution i.e. #{p(x \mid \mathcal{R}) = p_{\mathcal{R}}(x)}. Therefore, we can restrict #{G_{\theta}} to explicitly learn #{p(x \mid \mathcal{D})} by considering ##{G_{\theta}(x) = \log p_{\theta}(x \mid \mathcal{D}) - \log p_{\mathcal{R}}(x),} considering the cross entropy loss we get the [NCE loss](000E)
 }
 \transclude{000E}
 
-\p{In [[gutmannNoisecontrastiveEstimationNew2010]], they show under mild conditions that the estimator #{p_{\theta}(x \mid D) \to p_{\mathcal{D}}(x)} in probability as the number of samples in the loss goes to infinity. Equivalently, the estimator is [consistent](000F).}
+\p{In the [NCE paper](gutmannNoisecontrastiveEstimationNew2010), they show under mild conditions that the estimator #{p_{\theta}(x \mid D) \to p_{\mathcal{D}}(x)} in probability as the number of samples in the loss goes to infinity. Equivalently, the estimator is [consistent](000F).}
+}
 
-\p{\strong{Time series:} Before we get to contrastive RL, it is a natural question to wonder how does this apply to temporal sequences? Concretely, we want to make predictions about the future given the current "context". However, we want to do so in an unsupervised way, meaning we are only given trajectories not a notion of what it means for a trajectory to be good. Naively, one can try to do this in a supervised manner. For a #{k} step prediction, this would just be your model predicting what will happen in #{k} steps then seeing if it matches what occured #{k} steps in the future in the sample trajectory. However, if your sample space #{\mathcal{X}} is very high-dimensional, modeling this relationship can require an exorbinant amount of trajectories.}
-
-\p{Fast forwarding to contrastive RL, current work is primarily considered with a particular contrastive objective.}
-
+\section{Temporally Contrastive Learning in Time Series}{
+    \p{
+Before we get to contrastive RL, it is a natural question to wonder how does this apply to temporal sequences? Concretely, we want to make predictions about the future given the current "context". However, we want to do so in an unsupervised way, meaning we are only given trajectories not a notion of what it means for a trajectory to be good. Naively, one can try to do this in a supervised manner.
+    }
+\p{
+For a #{k} step prediction, this would just be your model predicting what will happen in #{k} steps then seeing if it matches what occured #{k} steps in the future in the sample trajectory. However, if your sample space #{\mathcal{X}} is very high-dimensional, modeling this relationship can require an exorbinant amount of trajectories.}
+\p{This is a central question in the [InfoNCE paper](oordRepresentationLearningContrastive2019), where they propose the following loss:}
 \transclude{000B}
+}
 
 \p{Now we need to unpack this very ominous loss. To start, what are #{x_k} and #{c_t}?}
 
 \transclude{000C}
-
-##{
-\operatorname*{max}_{f(u,v)}\mathbb{E}_{(u,v^{+})\sim p(u,v)}\left[\log\sigma(\underbrace{f(u,{\green v^{+}})}_{\phi(u)^{T}\psi({\green v^{+}})})+\log(1-\sigma(\underbrace{f(u,{\red v^{-}})}_{\phi(u)^{T}\psi({\red v^{-}})}))\right]
-}
-
-##{
-\begin{align*}
-&\operatorname*{max}_{f}\mathbb{E}_{(s,a)\sim p(s,a),s_{f}^{-}\sim p(s_{f})}\left[\mathcal{L}(s,a,s_{f}^{+},s_{f}^{-})\right] \\
-\end{align*}
-}
-
-##{
-\mathcal{L}_1(\theta) = \log\sigma(f_{\theta}(s_1,a_1,{\color{green} s_{8}})) + \log(1-\sigma(f_{\theta}(s_1,a_1, {\color{red} s_3})))
-}
-
-##{
-\begin{align*}
-\widehat{\mathcal{L}}(\theta) &= \frac{1}{n} \sum_{i = 1}^{n} \mathcal{L}_i \\
-&= \frac{1}{n} \sum_{i = 1}^{n} \Big[\log\sigma(f_{\theta}(s_i,a_i,{\color{green} s_{f}^{+}})) + \log(1-\sigma(f_{\theta}(s_i,a_i, {\color{red} s_{f}^{-}})))\Big]
-\end{align*}
-}
-
-##{
-\mathcal{L}(\theta) = \mathbb{E}_{x \sim p_X, y \sim p_Y}\Big[\log\sigma(f_{\theta}(x)) + \log(1-\sigma(f_{\theta}(y)))\Big]
-}
-
-##{f^*(s, a, s_g) = \log\left(\frac{p^{\pi(\cdot \mid \cdot)}(s_g \mid s, a)}{p(s_g)}\right)}
-
-\proof{
-    We want to maximize
-##{
-    \begin{align*}
-\mathcal{L}(\theta) &= \mathbb{E}_{x \sim p_X, y \sim p_Y}\Big[\log\sigma(f_{\theta}(x)) + \log(1-\sigma(f_{\theta}(y)))\Big] \\
-&= \int \log\sigma(f_{\theta}(x)) P_X(x) + \int \log(1-\sigma(f_{\theta}(y))) P_Y(y) \\
-&= \int \log\sigma(f_{\theta}(z)) P_X(z) + \log(1-\sigma(f_{\theta}(z))) P_Y(z)
-    \end{align*}
-    }
-    Since we are maximizing #{f(s)}, we can just maximize the integrand i.e.
-##{
-      \begin{align*}
-        \frac{\mathrm{d}}{\mathrm{d}f(z)} \Big[\log\sigma(f_{\theta}(z)) P_X(z) + \log(1-\sigma(f_{\theta}(z))) P_Y(z)\Big] = 0
-      \end{align*}
-    }
-    Solving,
-    ##{
-        \begin{align*}
-          P_X(z)\big(1 - \sigma(f(z))\big) - P_Y(z)\sigma(f(z)) = 0 &\iff \sigma(f(z)) = \frac{P_X(z)}{P_X(z) + P_Y(z)} \\
-          &\iff f(z) = \log\left(\frac{P_X(z)}{P_Y(z)}\right)
-        \end{align*}
-      }
-  }
-
-  \proof{
-The first step is to prove that the average Q-values are close to the task-conditioned Q-values. Below, we will use #{R_{c}(\tau)\triangleq\sum_{\ell=0}^{\infty}\gamma^{\ell}r_{\ell}(s_{\ell},a_{\ell})}:
-
-##{
-\begin{align*}
-\left|Q^{\beta(\cdot|\cdot,a)}(s,a,e)-Q^{\beta(\cdot|\cdot,\epsilon^{\prime})}(s,a,e)\right|&=\left|\int\beta(\tau\mid s,a,e)R_{e}(\tau)d\tau-\int\beta(\tau\mid s,a,e^{\prime})R_{e}(\tau)d\tau\right|\\ 
-&=\left|\int\beta(\tau\mid s,a,e)-\beta(\tau\mid s,a,e^{\prime})R_{e}(\tau)d\tau\right| \\
-&=\left|\int\beta(\tau\mid s,a,e)\left(1-\frac{\beta(\tau\mid s,a,e^{\prime})}{\beta(\tau\mid s,a,e)}\right)R_{e}(\tau)d\tau\right| \\
-&\leq\int\left|\beta(\tau\mid s,a,e)\left(1-\frac{\beta(\tau\mid s,a,e^{\prime})}{\beta(\tau\mid s,a,e)}\right)\right|d\tau\cdot\operatorname*{max}_{\tau}|R_{e}(\tau)d\tau| \\
-&\leq\int\beta(\tau\mid s,a,e)\left|1-\frac{\beta(\tau\mid s,a,e^{\prime})}{\beta(\tau\mid s,a,e)}\right|d\tau\cdot 1 \\
-&=\mathbb{E}_{\beta(\tau|s,a,e)}\left[\left|1-{\frac{\beta(\tau\mid s,a,e^{\prime})}{\beta(\tau\mid s,a,e)}}\right|\right] \\
-&\leq \epsilon.
-\end{align*}
-  }
-}
+\transclude{P658}

@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Attention Option-Critic}
+\date{2022-01}
+\author/literal{Raviteja Chunduru}\author/literal{Doina Precup}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2201.02628}
+\meta{external}{https://arxiv.org/abs/2201.02628}
+
+\meta{bibtex}{\startverb
+@misc{chunduruAttentionOptionCritic2022,
+ title = {Attention {{Option-Critic}}},
+ author = {Chunduru, Raviteja and Precup, Doina},
+ year = {2022},
+ doi = {10.48550/arXiv.2201.02628},
+ urldate = {2025-08-12},
+ number = {arXiv:2201.02628},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/BLGNH8XU/Chunduru and Precup - 2022 - Attention Option-Critic.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Temporal abstraction in reinforcement learning is the ability of an agent to learn and use high-level behaviors, called options. The option-critic architecture provides a gradient-based end-to-end learning method to construct options. We propose an attention-based extension to this framework, which enables the agent to learn to focus different options on different aspects of the observation space. We show that this leads to behaviorally diverse options which are also capable of state abstraction, and prevents the degeneracy problems of option domination and frequent option switching that occur in option-critic, while achieving a similar sample complexity. We also demonstrate the more efficient, interpretable, and reusable nature of the learned options in comparison with option-critic, through different transfer learning tasks. Experimental results in a relatively simple four-rooms environment and the more complex ALE (Arcade Learning Environment) showcase the efficacy of our approach.},
+ primaryclass = {cs},
+ eprint = {2201.02628},
+ month = {January}
+}
+\stopverb}

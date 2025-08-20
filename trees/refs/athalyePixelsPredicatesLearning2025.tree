@@ -1,0 +1,28 @@
+% ["refs"]
+\title{From Pixels to Predicates: Learning Symbolic World Models via Pretrained Vision-Language Models}
+\date{2025-06}
+\author/literal{Ashay Athalye}\author/literal{Nishanth Kumar}\author/literal{Tom Silver}\author/literal{Yichao Liang}\author/literal{Jiuguang Wang}\author/literal{Tomás Lozano-Pérez}\author/literal{Leslie Pack Kaelbling}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2501.00296}
+\meta{external}{https://arxiv.org/abs/2501.00296}
+
+\meta{bibtex}{\startverb
+@misc{athalyePixelsPredicatesLearning2025,
+ title = {From {{Pixels}} to {{Predicates}}: {{Learning Symbolic World Models}} via {{Pretrained Vision-Language Models}}},
+ author = {Athalye, Ashay and Kumar, Nishanth and Silver, Tom and Liang, Yichao and Wang, Jiuguang and {Lozano-P{\'e}rez}, Tom{\'a}s and Kaelbling, Leslie Pack},
+ year = {2025},
+ doi = {10.48550/arXiv.2501.00296},
+ urldate = {2025-08-12},
+ number = {arXiv:2501.00296},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/RICVZIEQ/Athalye et al. - 2025 - From Pixels to Predicates Learning Symbolic World.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Our aim is to learn to solve long-horizon decision-making problems in complex robotics domains given low-level skills and a handful of short-horizon demonstrations containing sequences of images. To this end, we focus on learning abstract symbolic world models that facilitate zero-shot generalization to novel goals via planning. A critical component of such models is the set of symbolic predicates that define properties of and relationships between objects. In this work, we leverage pretrained vision-language models (VLMs) to propose a large set of visual predicates potentially relevant for decision-making, and to evaluate those predicates directly from camera images. At training time, we pass the proposed predicates and demonstrations into an optimization-based model-learning algorithm to obtain an abstract symbolic world model that is defined in terms of a compact subset of the proposed predicates. At test time, given a novel goal in a novel setting, we use the VLM to construct a symbolic description of the current world state, and then use a search-based planning algorithm to find a sequence of low-level skills that achieves the goal. We demonstrate empirically across experiments in both simulation and the real world that our method can generalize aggressively, applying its learned world model to solve problems with a wide variety of object types, arrangements, numbers of objects, and visual backgrounds, as well as novel goals and much longer horizons than those seen at training time.},
+ primaryclass = {cs},
+ eprint = {2501.00296},
+ month = {June},
+ shorttitle = {From {{Pixels}} to {{Predicates}}}
+}
+\stopverb}

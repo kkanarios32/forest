@@ -1,0 +1,28 @@
+% ["refs"]
+\title{IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-Learner Architectures}
+\date{2018-06}
+\author/literal{Lasse Espeholt}\author/literal{Hubert Soyer}\author/literal{Remi Munos}\author/literal{Karen Simonyan}\author/literal{Volodymir Mnih}\author/literal{Tom Ward}\author/literal{Yotam Doron}\author/literal{Vlad Firoiu}\author/literal{Tim Harley}\author/literal{Iain Dunning}\author/literal{Shane Legg}\author/literal{Koray Kavukcuoglu}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1802.01561}
+\meta{external}{https://arxiv.org/abs/1802.01561}
+
+\meta{bibtex}{\startverb
+@misc{espeholtIMPALAScalableDistributed2018,
+ title = {{{IMPALA}}: {{Scalable Distributed Deep-RL}} with {{Importance Weighted Actor-Learner Architectures}}},
+ author = {Espeholt, Lasse and Soyer, Hubert and Munos, Remi and Simonyan, Karen and Mnih, Volodymir and Ward, Tom and Doron, Yotam and Firoiu, Vlad and Harley, Tim and Dunning, Iain and Legg, Shane and Kavukcuoglu, Koray},
+ year = {2018},
+ doi = {10.48550/arXiv.1802.01561},
+ urldate = {2025-07-31},
+ number = {arXiv:1802.01561},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/UXMHAMDY/Espeholt et al. - 2018 - IMPALA Scalable Distributed Deep-RL with Importan.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In this work we aim to solve a large collection of tasks using a single reinforcement learning agent with a single set of parameters. A key challenge is to handle the increased amount of data and extended training time. We have developed a new distributed agent IMPALA (Importance Weighted Actor-Learner Architecture) that not only uses resources more efficiently in singlemachine training but also scales to thousands of machines without sacrificing data efficiency or resource utilisation. We achieve stable learning at high throughput by combining decoupled acting and learning with a novel off-policy correction method called V-trace. We demonstrate the effectiveness of IMPALA for multi-task reinforcement learning on DMLab-30 (a set of 30 tasks from the DeepMind Lab environment (Beattie et al., 2016)) and Atari-57 (all available Atari games in Arcade Learning Environment (Bellemare et al., 2013a)). Our results show that IMPALA is able to achieve better performance than previous agents with less data, and crucially exhibits positive transfer between tasks as a result of its multi-task approach. The source code is publicly available at github.com/deepmind/scalable agent.},
+ primaryclass = {cs},
+ eprint = {1802.01561},
+ month = {June},
+ shorttitle = {{{IMPALA}}}
+}
+\stopverb}

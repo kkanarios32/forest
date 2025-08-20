@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Differentiable Soft-Masked Attention}
+\date{2022-08}
+\author/literal{Ali Athar}\author/literal{Jonathon Luiten}\author/literal{Alexander Hermans}\author/literal{Deva Ramanan}\author/literal{Bastian Leibe}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2206.00182}
+\meta{external}{https://arxiv.org/abs/2206.00182}
+
+\meta{bibtex}{\startverb
+@misc{atharDifferentiableSoftMaskedAttention2022,
+ title = {Differentiable {{Soft-Masked Attention}}},
+ author = {Athar, Ali and Luiten, Jonathon and Hermans, Alexander and Ramanan, Deva and Leibe, Bastian},
+ year = {2022},
+ doi = {10.48550/arXiv.2206.00182},
+ urldate = {2025-08-12},
+ number = {arXiv:2206.00182},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/D5332UIX/Athar et al. - 2022 - Differentiable Soft-Masked Attention.pdf},
+ keywords = {Computer Science - Computer Vision and Pattern Recognition},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Transformers have become prevalent in computer vision due to their performance and flexibility in modelling complex operations. Of particular significance is the 'cross-attention' operation, which allows a vector representation (e.g. of an object in an image) to be learned by attending to an arbitrarily sized set of input features. Recently, "Masked Attention" was proposed in which a given object representation only attends to those image pixel features for which the segmentation mask of that object is active. This specialization of attention proved beneficial for various image and video segmentation tasks. In this paper, we propose another specialization of attention which enables attending over `soft-masks' (those with continuous mask probabilities instead of binary values), and is also differentiable through these mask probabilities, thus allowing the mask used for attention to be learned within the network without requiring direct loss supervision. This can be useful for several applications. Specifically, we employ our "Differentiable Soft-Masked Attention" for the task of Weakly-Supervised Video Object Segmentation (VOS), where we develop a transformer-based network for VOS which only requires a single annotated image frame for training, but can also benefit from cycle consistency training on a video with just one annotated frame. Although there is no loss for masks in unlabeled frames, the network is still able to segment objects in those frames due to our novel attention formulation. Code: https://github.com/Ali2500/HODOR/blob/main/hodor/modelling/encoder/soft\_masked\_attention.py},
+ primaryclass = {cs},
+ eprint = {2206.00182},
+ month = {August}
+}
+\stopverb}

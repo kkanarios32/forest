@@ -1,0 +1,24 @@
+% ["refs"]
+\title{Parallel Monte Carlo Tree Search from Multi-core to Many-core Processors}
+\date{2015-08}
+\author/literal{S. Ali Mirsoleimani}\author/literal{Aske Plaat}\author/literal{Jaap Van Den Herik}\author/literal{Jos Vermaseren}
+\taxon{Reference}
+\meta{doi}{10.1109/Trustcom.2015.615}
+\meta{bibtex}{\startverb
+@inproceedings{mirsoleimaniParallelMonteCarlo2015,
+ title = {Parallel {{Monte Carlo Tree Search}} from {{Multi-core}} to {{Many-core Processors}}},
+ author = {Mirsoleimani, S. Ali and Plaat, Aske and Herik, Jaap Van Den and Vermaseren, Jos},
+ year = {2015},
+ isbn = {978-1-4673-7952-6},
+ doi = {10.1109/Trustcom.2015.615},
+ urldate = {2025-08-16},
+ booktitle = {2015 {{IEEE Trustcom}}/{{BigDataSE}}/{{ISPA}}},
+ pages = {77--83},
+ publisher = {IEEE},
+ address = {Helsinki, Finland},
+ file = {/home/kellen/Downloads/pdfs/storage/ZJQAPH35/Mirsoleimani et al. - 2015 - Parallel Monte Carlo Tree Search from Multi-core t.pdf},
+ langid = {english},
+ abstract = {In recent years there has been much interest in the MCTS algorithm, a new, adaptive, randomized optimization algorithm. In fields as diverse as Artificial Intelligence, Operations Research, and High Energy Physics, research has established that MCTS can find good solutions without domain dependent heuristics. However, practice shows that reaching high performance on large parallel machines is not so successful as expected. So far, the reasons are not well understood. This paper investigates the scalability of two popular parallelization approaches (tree parallelization and root parallelization) of the MCTS algorithm, using the Intel Xeon Phi highly multi-threaded shared-memory system. Moreover, we compare the results on a Xeon CPU and a Xeon Phi to understand the scalability of the parallel MCTS algorithms, and to understand their absolute performance. We find that tree parallelization can achieve near perfect speedup for up to 16 threads on the Xeon CPU and up to 64 threads on the Xeon Phi. For root parallelization we find that the effect of locks is small. Moreover, we establish the overall parallel speedup of the two parallelization methods of the MCTS algorithm is fundamentally limited on the Xeon Phi for games such as Hex or Go. The limiting factor is not, as might be expected, the parallel algorithm, or its implementation, but the high level of sequential calculations in each thread, for which no vectorization method is known.},
+ month = {August}
+}
+\stopverb}

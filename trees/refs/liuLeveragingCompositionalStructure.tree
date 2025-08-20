@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Leveraging Compositional Structure for Reinforcement Learning and Sequential Decision Making Problems}
+\author/literal{Anthony Z Liu}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{liuLeveragingCompositionalStructure,
+ title = {Leveraging {{Compositional Structure}} for {{Reinforcement Learning}}  and {{Sequential Decision Making Problems}}},
+ author = {Liu, Anthony Z},
+ file = {/home/kellen/Downloads/pdfs/storage/TN7EBFWY/Liu - Leveraging Compositional Structure for Reinforceme.pdf},
+ langid = {english}
+}
+\stopverb}

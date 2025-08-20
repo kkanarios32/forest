@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Development and Application of a Monte Carlo Tree Search Algorithm for Simulating Da Vinci Code Game Strategies}
+\date{2024-03}
+\author/literal{Ye Zhang}\author/literal{Mengran Zhu}\author/literal{Kailin Gui}\author/literal{Jiayue Yu}\author/literal{Yong Hao}\author/literal{Haozhan Sun}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2403.10720}
+\meta{external}{https://arxiv.org/abs/2403.10720}
+
+\meta{bibtex}{\startverb
+@misc{zhangDevelopmentApplicationMonte2024,
+ title = {Development and {{Application}} of a {{Monte Carlo Tree Search Algorithm}} for {{Simulating Da Vinci Code Game Strategies}}},
+ author = {Zhang, Ye and Zhu, Mengran and Gui, Kailin and Yu, Jiayue and Hao, Yong and Sun, Haozhan},
+ year = {2024},
+ doi = {10.48550/arXiv.2403.10720},
+ urldate = {2025-08-16},
+ number = {arXiv:2403.10720},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/FFWGD7C9/Zhang et al. - 2024 - Development and Application of a Monte Carlo Tree .pdf},
+ keywords = {Computer Science - Artificial Intelligence},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In this study, we explore the efficiency of the Monte Carlo Tree Search (MCTS), a prominent decision-making algorithm renowned for its effectiveness in complex decision environments, contingent upon the volume of simulations conducted. Notwithstanding its broad applicability, the algorithm's performance can be adversely impacted in certain scenarios, particularly within the domain of game strategy development. This research posits that the inherent branch divergence within the Da Vinci Code board game significantly impedes parallelism when executed on Graphics Processing Units (GPUs). To investigate this hypothesis, we implemented and meticulously evaluated two variants of the MCTS algorithm, specifically designed to assess the impact of branch divergence on computational performance. Our comparative analysis reveals a linear improvement in performance with the CPU-based implementation, in stark contrast to the GPU implementation, which exhibits a non-linear enhancement pattern and discernible performance troughs. These findings contribute to a deeper understanding of the MCTS algorithm's behavior in divergent branch scenarios, highlighting critical considerations for optimizing game strategy algorithms on parallel computing architectures.},
+ primaryclass = {cs},
+ eprint = {2403.10720},
+ month = {March}
+}
+\stopverb}

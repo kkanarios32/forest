@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Bridging State and History Representations: Understanding Self-Predictive RL}
+\date{2024-04}
+\author/literal{Tianwei Ni}\author/literal{Benjamin Eysenbach}\author/literal{Erfan Seyedsalehi}\author/literal{Michel Ma}\author/literal{Clement Gehring}\author/literal{Aditya Mahajan}\author/literal{Pierre-Luc Bacon}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2401.08898}
+\meta{external}{https://arxiv.org/abs/2401.08898}
+
+\meta{bibtex}{\startverb
+@misc{niBridgingStateHistory2024,
+ title = {Bridging {{State}} and {{History Representations}}: {{Understanding Self-Predictive RL}}},
+ author = {Ni, Tianwei and Eysenbach, Benjamin and Seyedsalehi, Erfan and Ma, Michel and Gehring, Clement and Mahajan, Aditya and Bacon, Pierre-Luc},
+ year = {2024},
+ doi = {10.48550/arXiv.2401.08898},
+ urldate = {2025-07-20},
+ number = {arXiv:2401.08898},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/S4DXALKU/Ni et al. - 2024 - Bridging State and History Representations Unders.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Representations are at the core of all deep reinforcement learning (RL) methods for both Markov decision processes (MDPs) and partially observable Markov decision processes (POMDPs). Many representation learning methods and theoretical frameworks have been developed to understand what constitutes an effective representation. However, the relationships between these methods and the shared properties among them remain unclear. In this paper, we show that many of these seemingly distinct methods and frameworks for state and history abstractions are, in fact, based on a common idea of self-predictive abstraction. Furthermore, we provide theoretical insights into the widely adopted objectives and optimization, such as the stop-gradient technique, in learning self-predictive representations. These findings together yield a minimalist algorithm to learn self-predictive representations for states and histories. We validate our theories by applying our algorithm to standard MDPs, MDPs with distractors, and POMDPs with sparse rewards. These findings culminate in a set of preliminary guidelines for RL practitioners.},
+ primaryclass = {cs},
+ eprint = {2401.08898},
+ month = {April},
+ shorttitle = {Bridging {{State}} and {{History Representations}}}
+}
+\stopverb}

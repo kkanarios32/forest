@@ -1,0 +1,28 @@
+% ["refs"]
+\title{FastTD3: Simple, Fast, and Capable Reinforcement Learning for Humanoid Control}
+\date{2025-06}
+\author/literal{Younggyo Seo}\author/literal{Carmelo Sferrazza}\author/literal{Haoran Geng}\author/literal{Michal Nauman}\author/literal{Zhao-Heng Yin}\author/literal{Pieter Abbeel}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2505.22642}
+\meta{external}{https://arxiv.org/abs/2505.22642}
+
+\meta{bibtex}{\startverb
+@misc{seoFastTD3SimpleFast2025,
+ title = {{{FastTD3}}: {{Simple}}, {{Fast}}, and {{Capable Reinforcement Learning}} for {{Humanoid Control}}},
+ author = {Seo, Younggyo and Sferrazza, Carmelo and Geng, Haoran and Nauman, Michal and Yin, Zhao-Heng and Abbeel, Pieter},
+ year = {2025},
+ doi = {10.48550/arXiv.2505.22642},
+ urldate = {2025-07-25},
+ number = {arXiv:2505.22642},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/HGMK5ING/Seo et al. - 2025 - FastTD3 Simple, Fast, and Capable Reinforcement L.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Reinforcement learning (RL) has driven significant progress in robotics, but its complexity and long training times remain major bottlenecks. In this report, we introduce FastTD3, a simple, fast, and capable RL algorithm that significantly speeds up training for humanoid robots in popular suites such as HumanoidBench, IsaacLab, and MuJoCo Playground. Our recipe is remarkably simple: we train an off-policy TD3 agent with several modifications -- parallel simulation, large-batch updates, a distributional critic, and carefully tuned hyperparameters. FastTD3 solves a range of HumanoidBench tasks in under 3 hours on a single A100 GPU, while remaining stable during training. We also provide a lightweight and easy-touse implementation of FastTD3 to accelerate RL research in robotics.},
+ primaryclass = {cs},
+ eprint = {2505.22642},
+ month = {June},
+ shorttitle = {{{FastTD3}}}
+}
+\stopverb}

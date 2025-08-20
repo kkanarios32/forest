@@ -1,0 +1,13 @@
+% ["refs"]
+\title{Contrastive Value Learning: Implicit Models for Simple Offline RL}
+\author/literal{Bogdan Mazoure}\author/literal{Benjamin Eysenbach}\author/literal{Ofir Nachum}\author/literal{Jonathan Tompson}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{mazoureContrastiveValueLearning,
+ title = {Contrastive {{Value Learning}}: {{Implicit Models}} for {{Simple Offline RL}}},
+ author = {Mazoure, Bogdan and Eysenbach, Benjamin and Nachum, Ofir and Tompson, Jonathan},
+ file = {/home/kellen/Downloads/pdfs/storage/7NVHDGQM/Mazoure et al. - Contrastive Value Learning Implicit Models for Si.pdf},
+ langid = {english},
+ abstract = {Model-based reinforcement learning (RL) methods are appealing in the offline setting because they allow an agent to reason about the consequences of actions without interacting with the environment. While conventional model-based methods learn a 1-step model, predicting the immediate next state, these methods must be plugged into larger planning or RL systems to yield a policy. Can we model the environment dynamics in a different way, such that the learned model directly indicates the value of each action? In this paper, we propose Contrastive Value Learning (CVL), which learns an implicit, multi-step dynamics model. This model can be learned without access to reward functions, but nonetheless can be used to directly estimate the value of each action, without requiring any TD learning. Because this model represents the multi-step transitions implicitly, it avoids having to predict high-dimensional observations and thus scales to high-dimensional tasks. Our experiments demonstrate that CVL outperforms prior offline RL methods on complex robotics benchmarks.}
+}
+\stopverb}
