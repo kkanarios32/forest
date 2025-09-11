@@ -1,6 +1,6 @@
 \date{2025-07-24T21:14:08Z}
 \tag{todo}
-\title{Elibility Traces}
+\title{Eligibility Traces}
 
 \p{As I grow more interested in abandoning batched updates and the replay buffer, the importance of elibility traces grows with me. Due to this, I thought it finally time to re-prove / understand what makes these traces so eligible.}
 \p{The reference followed is [Sutton and Barto](suttonReinforcementLearningIntroduction2018) (Ch 12.).}
@@ -49,13 +49,17 @@ It is easy to see the same thing goes through for the finite time slice #{\lambd
   Going back to the eligibility trace update, if we instead do not apply each elibgibility trace update but apply the sum of all the updates for the same fixed #{\mathbf{w}_t}, then we get that the total update is
 ##{
   \begin{align*}
-   \mathbf{w}_{t+1} &= \sum_{t=1}^{\infty} \alpha \delta_t \mathbf{z}_t \\
-   &= \sum_{t=1}^{\infty} \alpha \delta_t \sum_{i=0}^{t} (\lambda \gamma)^{i} \nabla \hat{v}(S_i, \mathbf{w}_t)
+   \mathbf{w}_{t+1} &= \sum_{t=1}^{T} \alpha \delta_t \mathbf{z}_t \\
+   &= \sum_{t=1}^{T} \alpha \delta_t \sum_{i=0}^{t} (\lambda \gamma)^{i} \nabla \hat{v}(S_i, \mathbf{w}_t) \\
+   &= \sum_{t=1}^{T} \alpha (r_t + \gamma \hat{v}(S_{t+1}, \mathbf{w}_t) - \hat{v}(S_t, \mathbf{w}_t)) \underbrace{\sum_{i=0}^{t} (\lambda \gamma)^{i} \nabla \hat{v}(S_i, \mathbf{w}_t)}_{X_t}
   .\end{align*}
   }
+  Then
+  ##{\begin{align*}
+   &= \sum_{t=1}^{T} \alpha r_t X_t + \gamma \hat{v}(S_{t+1}, \mathbf{w}_t) X_t - \hat{v}(S_t, \mathbf{w}_t) X_t
+  .\end{align*}}
 }
 \p{
-This is exactly equivalent to if we compute all of the eligibility traces without updating i.e.
-##{\sum_{t = 1}^{\infty} \alpha \delta_t \mathbf{z}_t = }
+  This shows that the \em{backward-view} and \em{forward-view} are "equivalent". The forward-view in practice makes an update at each step, so it is typically better.
 }
 }

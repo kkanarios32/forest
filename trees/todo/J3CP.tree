@@ -1,0 +1,48 @@
+\date{2025-08-31T22:07:55Z}
+\title{Reinforcement Learning #{\iff} Linear Programming}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+\tag{public}
+\tag{margin}
+\section{Linear Program}{
+    For this note, we will consider a \em{maximization} linear program. Namely, an optimization problem of the following form
+    ##{
+        \begin{align*}
+        \max_{\mathbf{x}} \quad &\mathbf{c}^{\top} \mathbf{x} \\
+        \text{s.t.} \quad &A\mathbf{x} \leq b
+        .\end{align*}
+        }
+        In the spirit of \em{lagrange multipliers}, we can also get a \em{dual formulation}. To do so, we add a multiplier #{y_i} for each constraint i.e. 
+        ##{y_i \mathbf{a}_i^T \mathbf{x} \leq y_i b_i}
+        we then consider the summed constraint (which ends up being tight enough),
+        ##{\mathbf{y}^T A \mathbf{x} \leq \mathbf{y}^T\mathbf{b}}
+        To relate this back to our primal problem, we enforce the additional constraint that ##{\mathbf{y}^T A = \mathbf{c}^T \iff A \mathbf{y} = \mathbf{c} }. The reason for this is that for a feasible #{\mathbf{y}}, we have
+        ##{\mathbf{y}^T A \mathbf{x} = \mathbf{c}^T \mathbf{x} \leq \mathbf{y}^T \mathbf{b},  }
+        so that #{\mathbf{y}^T \mathbf{b}} is an upper bound for our primal objective #{\mathbf{c}^T \mathbf{x} }. Intuitively, to recover #{\mathbf{c}^T \mathbf{x}^* }, we can just minimize over #{\mathbf{y}}, resulting in the following \em{dual} program
+        ##{
+            \begin{align*}
+             \min_{\mathbf{y}} \quad &\mathbf{b}^T\mathbf{y} \\   
+             \text{s.t.} \quad &A \mathbf{y} = \mathbf{c} \\ 
+             & \mathbf{y} \geq 0
+            .\end{align*}
+            }
+}
+\section{RL as Linear Program}{
+    Let #{\rho(s) \in \mathbb{R}^{|\mathcal{S}|} } be the initial state distribution. Then consider the following LP 
+    ##{\begin{align*}
+\begin{array}{ll} \displaystyle \max_{V \in \mathbb{R}^{|\mathcal{S}|}} & \displaystyle \sum_{s \in \mathcal{S}} \rho(s) V(s) \\ \text{s.t.} & V(s) \leq r(s,a) + \gamma \sum_{s'} P(s' \mid s,a) \, V(s'), \qquad \forall s,a. \end{array}
+    \end{align*}}
+    Translating this into our standard form, we have
+    \ol{
+        \li{#{\mathbf{c} \in \mathbb{R}^{|\mathcal{S}|}} with #{c_s = \rho(s)}}
+      \li{#{A \in \mathbb{R}^{|\mathcal{S}| \times |\mathcal{A}| \times |\mathcal{S}|}} with #{A_{(s,a),s'} = -\delta_{s,s'} + \gamma P(s'|s,a).
+}}
+    }
+    Substituting this in for the dual formulation gives us
+    ##{\begin{align*}
+& \min_{y(s,a) \geq 0} & & \sum_{s,a} r(s,a) \, y(s,a) \\ & \text{s.t.} & & \sum_{a} y(s,a) - \gamma \sum_{s',a'} P(s \mid s',a') \, y(s',a') = \rho(s), \qquad \forall s
+    \end{align*}}
+    Here #{\mathbf{y}} can be seen as the \em{discounted occupancy measure}. This allows us to recover a randomized optimal policy via
+    ##{\mathbb{P}(\pi^*(s) = a) = \frac{y(s, a)}{\sum_{a} y(s,a)}}
+}

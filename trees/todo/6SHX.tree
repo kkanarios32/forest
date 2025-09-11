@@ -1,0 +1,9 @@
+\date{2025-08-31T22:08:01Z}
+\title{Langevin dynamics}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+
+\p{
+    ##{\mathbf{x}_{i+1} \leftarrow \mathbf{x}_i + \epsilon \nabla_{\mathbf{x}} \log p(\mathbf{x}) + \sqrt{2\epsilon} \ \mathbf{z}_i, \quad i = 0, 1, \cdots, K}
+}
