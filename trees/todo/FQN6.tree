@@ -1,0 +1,60 @@
+\date{2025-09-10T14:29:51Z}
+\title{The Automated Interpretability Agent}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+\tag{action-perception}
+
+\p{Presentation given by Tamar Rott Shaham.}
+\section{Interpreting the role of a single neuron}{
+    \p{This is done in [Network dissection](https://arxiv.org/abs/1704.05796)
+}
+    \p{
+\strong{Idea 1:} find neuron with maximum activation for subsets of image. Need subset dataset.         
+    }
+    \p{\strong{Problem:} How do you do this for all of the neurons in your network? This is not scalable!}
+    \p{Approach 1: use segmentation network to segment images and use these as subsets. This requires the concepts to be detectabl by a segmentation model.}
+
+    \p{This is done in [MILAN](https://arxiv.org/abs/2201.11114)}
+    \p{Approach 2: train a "captioner" model i.e. an LSTM to generate captions for parts of images. Can also get labels using clips as done in [CLIP-dissect](https://arxiv.org/abs/2204.10965)}
+    \p{Problem with these approaches is they are one-shot i.e. we train the model to produce labels and use those in one-shot. We instead want a "loop" that allows us to refine labeler. Namely}
+    \ol{
+      \li{Train model to label something like "human faces"}
+      \li{Find sensitive neuron to images labeled "human faces" by the labeler.}
+      \li{Remove the neuron and see if the model becomes unable to detect human faces.}
+      \li{If this isn't the case then we need to refine the labeler.}
+    }
+    \p{How can we automate this process?}
+}
+\section{Automating scientific explorations of neural networks}{
+    \p{ We want to be able to }
+    \ol{
+        \li{Analyze any model.}
+        \li{Answer any interpretability question.}
+    }
+    \p{Observation: LLMs can draw via code see \em{Sparks of AGI}.}
+    \p{[ViperGPT](https://arxiv.org/abs/2303.08128): Given an image reasoning task, an LLM can write code to solve the image reasoning task}
+    \example{
+        \p{
+        Given a picture of kids with some amount of muffins, answer the question
+            }
+        \p{
+    How many muffins can each kid have for it to be fair?
+        }
+        \p{The LLM writes code to identify children / muffins in the image, counting them, and dividing number of muffins by number of kids.}
+    }
+    \p{[MAIA](https://arxiv.org/abs/2404.14394) API:
+    }
+    \ul{
+        \li{takes image, language description along with model and specific neuron i.e. "neuron 0 layer 4" and it will get the activation for the subset of the image focusing on the language description. }
+        \li{Can also take a dataset, or generate new images to test hypothesis.}
+        \li{Can go image to text}
+    }
+    \p{End to end user can ask "what function does neuron 122 perform" and [MAIA](https://arxiv.org/abs/2404.14394) will be able to answer.}
+    \p{How do we know the description is correct? One approach is "synthetic neurons". Provide the value of the neuron as the confidence score from SAM for a given language concept description.}
+    \p{Another approach: take the description given by MAIA, then generate images from the prompts along with "negatives" that have nothing to do with the label of MAIA. Then look at the activation value for each of the examples.}
+}
+\section{Auditing and editing neural networks based on interpretations}{
+\p{For classifiers, can check the bias in the logit neurons. For one example, found beer detection class had a bias toward the gender of the person in the image i.e. low probability for females with beer glass.}
+\p{Can identify and remove biased neurons. Re-train only selective neurons on biased dataset and can match performance of classifier trained on unbiased dataset.}
+}

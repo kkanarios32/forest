@@ -1,0 +1,36 @@
+\date{2025-09-08T14:29:03Z}
+\title{Image/Video Diffusion Models}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{action-perception}
+
+\p{This is a crash course in image/video diffusion models as part of CSE 598}
+\section{Images}{
+\p{Classic denoising is \strong{TOO} slow for images}
+\p{Idea: compress images into latent representation space. Then learn diffusion model on latent space. This is the idea in \em{Stable Diffusion}}
+\ol{
+  \li{How do we scale? Use Transformers! Diffusion Transformer (DiT)}
+  \li{Still too slow. Enter flow matching.}
+}
+\p{(1) + (2) = Stable Diffusion 3.}
+\remark{
+Use U-net for image to image architectures.
+}
+}
+\section{Videos}{
+\p{Much higher dimensionality! 30 frames = 900x FLOPS}
+\remark{
+*If you are doing naive self-attention.
+}
+\p{Spatial / temporal decomposition. \em{Align your latents}.}
+\p{Stable video diffusion}
+\ol{
+  \li{Start with image model, add temporal layers}
+  \li{Synthetically label videos}
+  \li{Fine-tune on high quality videos}
+}
+\p{Instead of spatial / temporal decomposition, you can compress in space / time via 3d autoencoder. C-ViVit encoder, Phenaki.}
+}
+\section{Takeaways}{
+\p{In diffusion, \strong{YOU} add the noise. In GAN, whats being decoded is not determined by you.}
+}

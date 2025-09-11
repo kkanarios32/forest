@@ -1,0 +1,31 @@
+\date{2025-09-08T14:58:41Z}
+\title{Whole-Body Conditioned Egocentric Video Prediction}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{action-perception}
+
+\p{Presentation on PEVA. Related work COSMOS.}
+
+\p{Observation: you can only completely predict changes caused by your own actions. You cannot necessarily predict changes caused by the world.
+##{\text{Prediction} = \text{change via your actions} + \text{change via the world}}
+}
+\p{Problem formulation: given history frames, actions predict what is going to happen in pixel space.}
+\p{Challenges:}
+\ol{
+  \li{There is a strong contextual dependence for both action and vision. Depending on context, you may hold / see things in a different way.}
+  \li{Human actions are harder than global condition. Language vs. high DoF control.}
+}
+\p{Auto-Regressive diffusion model. Spatial-attention on image space, causal attention on temporal space.}
+\p{Need architecture, so that actions only interact with \strong{next} image.}
+\p{Adaptive layer-norm.
+##{(1 + \Delta \gamma(c)) \cdot \mathrm{LN}(x) + \Delta \beta(c)}
+Adaptive per-frame layer-norm.
+##{(1 + \Delta \gamma(c_t)) \cdot \mathrm{LN}(x_t) + \Delta \beta(c_t)}
+}
+
+\p{Using PEVA for control. Other approaches}
+\ol{
+  \li{Diffusion forcing}
+  \li{NWM (CDiT)}
+}
+\p{Visual geometrially grounded transformer (VGGT).}

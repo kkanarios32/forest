@@ -1,0 +1,11 @@
+\date{2025-09-08T18:37:52Z}
+\title{}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Action and Perception}
+\p{Here I will be keeping track of all random notes I took during the course \em{Action and Perception} taught by Stella Yu.}
+
+\query\datalog{
+   ?X -: 
+   {\rel/has-tag ?X '{action-perception}}
+}
