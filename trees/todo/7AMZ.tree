@@ -1,0 +1,72 @@
+\date{2025-09-17T14:31:32Z}
+\title{Humanoid Robot Learning}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{action-perception}
+\section{Benchmarking Humanoid Intelligence}{
+    \p{Locomotion tasks: can humanoids move around? Vary terrain, avoid obstacles.}
+    \p{Loco-manipulation tasks: can humanoids interact with the environment?}
+    \p{[HumanoidBench](https://humanoid-bench.github.io/)}
+    \p{Other manipulation / locomotion benchmarks are too trivial to see drastic performance between algorithms.}
+    \p{Learning algorithms struggle with large action space}
+    \p{Action space - number of degrees of freedom. Humanoid w/o hands - 19dof, w/ hands 61dof.}
+    \p{Idea: decouple dof. Problem want whole body control.}
+    \p{Idea: hierarchical learning via domain knowledge. learn to position hands. Extended to library of skills in 
+[Skillblender](https://arxiv.org/abs/2506.09366).}
+}
+\section{Scaling sim-to-real learning for humanoids}{
+\p{Robot / environment:}
+\ul{
+    \li{ identify what you can (system identification). }
+    \li{what you cannot identify randomize!}
+}
+\p{Reward}
+\ul{
+  \li{stay away from things you cannot identify.}
+}
+\p{Simulator: training on cpu takes forever (enter IsaacGym, Mujoco Playground).}
+\p{Mujoco Playground limitations}
+\ul{
+  \li{JIT compilation can be slow}
+  \li{Computation time scales with the number of potential contacts}
+  \li{MJX warp is now supported (100x speedup)}
+}
+}
+\section{Where can we do better?}{
+    \p{
+    [Fast TD3](https://younggyo.me/fast_td3/)
+    }
+    \p{FastTD3 vs. TD3}
+    \ol{
+    \li{Massively parallel environments}
+    \li{Large-batch training}
+    \li{Distributional RL}
+    \ul{
+      \li{Discretize value space and output distribution over values}
+      \li{Trained with cross entropy loss}
+    }
+    }
+    [Body Tranformer](https://arxiv.org/abs/2408.06316),
+    \ol{
+      \li{Inductive bias}
+      \li{Computationally efficient}
+      \li{Multi-frequency reasoning}
+      \li{Localized credit assignment}
+    }
+    \p{Idea: construct graph to connect certain parts of body via embodiment graph. Have attention layers that only attend to neighbors on the graph via the mask being a graph mask.}
+    \p{Mask is sparse, allowing much more computationally efficient attention computation.}
+}
+\section{A Generalizable Robot Learning Pipeline}{
+    \p{Future directions:}
+    \ol{
+\li{Vision-based policies}
+\li{Real2sim}
+\li{Learning from videos}
+    }
+\p{The pipeline}
+\ol{
+  \li{Learn low-level skills}
+  \li{Learn to compose skills}
+  \li{Finetune with RL}
+}
+}

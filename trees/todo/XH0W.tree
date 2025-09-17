@@ -1,0 +1,91 @@
+\date{2025-09-15T14:31:52Z}
+\title{Scalable Architectures for Robot Learning}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{action-perception}
+
+\p{Autonomous driving: very perception heavy problem}
+\ol{
+  \li{Learning for perception}
+}
+\p{Locomotion: vry controls-heavy problem}
+\ol{
+  \li{Learning for control}
+}
+\p{Manipulation: perception + controls}
+\ol{
+  \li{End-to-end visuomotor policy learning}
+}
+\p{Specialist models are brittle i.e. sensitive to differences in lighting or camera angle.}
+\p{More data -> generalist models}
+\section{Robotics as multi-modal sequence modeling}{
+\p{Predict "action chunks" i.e. a sequence of actions (roughly 1sec into the future)}
+\p{Use imitation learning:
+##{\max_{\theta} \sum_{(a,o,T)} \pi_{\theta}(a \mid o, T)}
+where #{T} is the task identifier.
+}
+\p{Datasets: DROID, Open-X embodiment.}
+\p{Vision-Language-Action model: given images, text description output actions dx, dy, dz.}
+\ol{
+  \li{Scalable training}
+  \li{Flexible inputs + outpus}
+  \li{Internet scale pre-training}
+}
+\p{How do we output actions? Discretization via uniform bins.}
+\p{OpenVLA:}
+\ol{
+  \li{Two stream encoder for spatial (DinoV2) and semantic (CLIP) features.}
+}
+\remark{
+\p{RMA: in-context locomotion policies.}
+}
+\remark{
+\p{Models get worse with history. Its own actions are out of distribution, causing it to quickly see out of distribution data.}
+}
+\remark{
+\p{Simulation currently is only good for simulating rigid objects.}
+}
+\remark{
+\p{VLAs are still capable of outputting language. Can use this to produce chain of thought output to explain the action. People have found this increases generalization capabilities (see Embodied Chain of Thought Learning).}
+}
+}
+\section{Robotics-specific modeling considerations}{
+\p{Two main considerations}
+\ol{
+  \li{Action tokenization}
+  \li{Speed}
+}
+\p{OpenVLA models degrade as you increase the control frequency.}
+\ol{
+  \li{Training in naive way, resort to "token-copying".}
+}
+\p{Idea: compress actions. Discrete cosine transform.}
+\p{FAST:}
+\ol{
+  \li{Apply DCT}
+  \li{Quantize}
+  \li{Flatten}
+  \li{BPE}
+}
+\p{Autoregressive decoding is slow AF:}
+\ul{
+  \li{Use sepcialized decoding head.}
+  \li{Diffusion to get the whole chunk at once.}
+  \ul{
+    \li{10 vs. 60 autoregressive steps}
+    \li{300m vs 3b params during inference.}
+    \li{Model trains 5x slower}
+  }
+}
+\p{Train and inference via doing BOTH at the same time.}
+\ul{
+  \li{Freeze action expert gradients to VLM.}
+  \li{Train VLM via autoregressive predictions.}
+  \li{\em{Knowledge insulating VLAs}}
+}
+}
+\section{How to get started with (scalable) robotics research.}{
+    \p{Droid, OpenX}
+    \p{OpenPI}
+    \p{RoboArena}
+}
