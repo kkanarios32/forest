@@ -1,0 +1,47 @@
+\date{2025-09-22T14:38:30Z}
+\title{Towards Physically Grounded Digital Twins and Beyond}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{action-perception}
+
+\section{Building Digital Twin}{
+\p{3D-reconstruction is not \strong{actionable} i.e. we can reconstruct a room with a cup but if you try to lift the cup the whole image moves (cup is attached to counter).}
+
+\p{[Drawer](https://arxiv.org/abs/2504.15278)}
+\ol{
+\li{Anchor gaussians around the zero level-set}
+\li{Scene decomposition. Identify interactable and actionable objects}
+\li{Use LLM for reasoning over objects i.e. density, types of joints}
+\li{Recover invisible regions via differentiable rendering + generative modeling}
+}
+}
+
+\section{Learning From Humans}{
+\p{Real-to-sim-to-real: record environment -> build simulation of environment -> train in simulator -> deploy in real world.}
+\p{Ideas:}
+\ol{
+  \li{Object state as an anchor}
+  \ul{
+    \li{Get rid of human.}
+    \li{Find corresponding actions that match object states in trajectory.}
+  }
+  \li{Still not robust for precise movements.}
+  \li{Test-time alignment}
+  \ul{
+    \li{Unroll in real world}
+    \li{Replay in simulation}
+    \li{Align}
+  }
+}
+\p{RL -> Imitation Learning}
+\ol{
+  \li{Do imitation learning on noisy trajectories.}
+  \li{Use noisy robot \strong{and} human trajectories}
+  \li{Use classifier to try to predict whether trajectory is human or robot}
+  \ul{
+    \li{Noise here is the end noise in the diffusion training phase.}
+    \li{Only use indistinguishable trajectories.}
+  }
+}
+\p{Upshot is that they can "augment" robot data with human data in the diffusion training phase by including human trajectories when sampling high noise.}
+}
