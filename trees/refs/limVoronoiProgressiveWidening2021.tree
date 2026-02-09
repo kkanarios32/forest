@@ -9,7 +9,7 @@
  title = {Voronoi {{Progressive Widening}}: {{Efficient Online Solvers}} for {{Continuous State}}, {{Action}}, and {{Observation POMDPs}}},
  author = {Lim, Michael H. and Tomlin, Claire J. and Sunberg, Zachary N.},
  year = {2021},
- isbn = {978-1-66543-659-5},
+ isbn = {978-1-6654-3659-5},
  doi = {10.1109/CDC45484.2021.9683490},
  urldate = {2025-08-12},
  booktitle = {2021 60th {{IEEE Conference}} on {{Decision}} and {{Control}} ({{CDC}})},

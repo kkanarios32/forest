@@ -1,0 +1,21 @@
+% ["refs"]
+\title{Introduction to nonparametric estimation}
+\date{2009}
+\author/literal{Alexandre B. Tsybakov}\author/literal{Vladimir Zaiats}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{tsybakovIntroductionNonparametricEstimation2009,
+ title = {Introduction to Nonparametric Estimation},
+ author = {Tsybakov, Alexandre B. and Zaiats, Vladimir},
+ year = {2009},
+ isbn = {978-0-387-79052-7},
+ edition = {English ed.},
+ series = {Springer Series in Statistics},
+ publisher = {Springer},
+ address = {New York},
+ file = {/home/kellen/Downloads/pdfs/storage/Y9APEZZR/Tsybakov and Zaiats - 2009 - Introduction to nonparametric estimation.pdf},
+ lccn = {519.5},
+ langid = {english},
+ abstract = {"Methods of nonparametric estimation are located at the core of modern statistical science. The aim of this book is to give a short but mathematically self-contained introduction to the theory of nonparametric estimation. The emphasis is on the construction of optimal estimators; therefore the concepts of minimax optimality and adaptivity, as well as the oracle approach, occupy the central place in the book." "This is a concise text developed from lecture notes and ready to be used for a course on the graduate level. The main idea is to introduce the fundamental concepts of the theory while maintaining the exposition suitable for a first approach in the field. Therefore, the results are not always given in the most general form but rather under assumptions that lead to shorter or more elegant proofs." "The book has three chapters. Chapter 1 presents basic nonparametric regression and density estimators and analyzes their properties. Chapter 2 is devoted to a detailed treatment of minimax lower bounds. Chapter 3 develops more advanced topics: Pinsker's theorem, oracle inequalities, Stein shrinkage, and sharp minimax adaptivity."--Jacket}
+}
+\stopverb}

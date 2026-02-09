@@ -1,0 +1,13 @@
+% ["refs"]
+\title{Sparse multidimensional scaling using landmark points}
+\author/literal{Vin Silva}\author/literal{Joshua B Tenenbaum}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{desilvaSparseMultidimensionalScaling,
+ title = {Sparse Multidimensional Scaling Using Landmark Points},
+ author = {{de Silva}, Vin and Tenenbaum, Joshua B},
+ file = {/home/kellen/Downloads/pdfs/storage/9D4VQ648/de Silva and Tenenbaum - Sparse multidimensional scaling using landmark points.pdf},
+ langid = {english},
+ abstract = {In this paper, we discuss a computationally efficient approximation to the classical multidimensional scaling (MDS) algorithm, called Landmark MDS (LMDS), for use when the number of data points is very large. The first step of the algorithm is to run classical MDS to embed a chosen subset of the data, referred to as the `landmark points', in a low-dimensional space. Each remaining data point can be located within this space given knowledge of its distances to the landmark points. We give an elementary and explicit theoretical analysis of this procedure, and demonstrate with examples that LMDS is effective in practical use.}
+}
+\stopverb}

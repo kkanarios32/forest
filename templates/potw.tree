@@ -3,17 +3,16 @@
 \tag{public}
 
 \section{TLDR}{
-
+\p{What problem does this paper aim to address?}
+\p{What are the technical challenges that motivated this paper?}
 }
 
-\section{What I think the problem is}{
-
+\section{Contributions}{
+\p{What is the core contribution / insight?}
+\p{How was the method evaluated / why does this show progress toward the problem?}
 }
 
-\section{Key Contribution / Math Reproduction}{
-
-}
-
-\section{Opiniated Limitations / Important Assumptions}{
-
+\section{Limitations}{
+\p{Were any assumptions made that were necessary for results?}
+\p{Can you think of any instances, where the method may struggle?}
 }

@@ -1,0 +1,13 @@
+% ["refs"]
+\title{https://cs.brown.edu/people/gdk/pubs/cips.pdf}
+\taxon{Reference}
+\meta{external}{https://cs.brown.edu/people/gdk/pubs/cips.pdf}
+
+\meta{bibtex}{\startverb
+@misc{HttpsCsbrowneduPeople,
+ title = {{{https://cs.brown.edu/people/gdk/pubs/cips.pdf}}},
+ urldate = {2025-09-17},
+ howpublished = {https://cs.brown.edu/people/gdk/pubs/cips.pdf},
+ file = {/home/kellen/Downloads/pdfs/storage/4IKGZPYS/httpscs.brown.edupeoplegdkpubscips.pdf.pdf}
+}
+\stopverb}

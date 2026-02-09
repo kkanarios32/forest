@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Parallel Transport Unfolding: A Connection-based Manifold Learning Approach}
+\date{2018-11}
+\author/literal{Max Budninskiy}\author/literal{Glorian Yin}\author/literal{Leman Feng}\author/literal{Yiying Tong}\author/literal{Mathieu Desbrun}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1806.09039}
+\meta{external}{https://arxiv.org/abs/1806.09039}
+
+\meta{bibtex}{\startverb
+@misc{budninskiyParallelTransportUnfolding2018,
+ title = {Parallel {{Transport Unfolding}}: {{A Connection-based Manifold Learning Approach}}},
+ author = {Budninskiy, Max and Yin, Glorian and Feng, Leman and Tong, Yiying and Desbrun, Mathieu},
+ year = {2018},
+ doi = {10.48550/arXiv.1806.09039},
+ urldate = {2025-08-20},
+ number = {arXiv:1806.09039},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/H57P7YTU/Budninskiy et al. - 2018 - Parallel Transport Unfolding A Connection-based M.pdf},
+ keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Manifold learning offers nonlinear dimensionality reduction of high-dimensional datasets. In this paper, we bring geometry processing to bear on manifold learning by introducing a new approach based on metric connection for generating a quasi-isometric, low-dimensional mapping from a sparse and irregular sampling of an arbitrary manifold embedded in a high-dimensional space. Geodesic distances of discrete paths over the input pointset are evaluated through ``parallel transport unfolding'' (PTU) to offer robustness to poor sampling and arbitrary topology. Our new geometric procedure exhibits the same strong resilience to noise as one of the staples of manifold learning, the Isomap algorithm, as it also exploits all pairwise geodesic distances to compute a low-dimensional embedding. While Isomap is limited to geodesically-convex sampled domains, parallel transport unfolding does not suffer from this crippling limitation, resulting in an improved robustness to irregularity and voids in the sampling. Moreover, it involves only simple linear algebra, significantly improves the accuracy of all pairwise geodesic distance approximations, and has the same computational complexity as Isomap. Finally, we show that our connection-based distance estimation can be used for faster variants of Isomap such as L-Isomap.},
+ primaryclass = {cs},
+ eprint = {1806.09039},
+ month = {November},
+ shorttitle = {Parallel {{Transport Unfolding}}}
+}
+\stopverb}

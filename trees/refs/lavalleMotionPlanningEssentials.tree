@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Motion Planning: The Essentials}
+\author/literal{Steven M LaValle}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{lavalleMotionPlanningEssentials,
+ title = {Motion {{Planning}}: {{The Essentials}}},
+ author = {LaValle, Steven M},
+ file = {/home/kellen/Downloads/pdfs/storage/W2ZDP58C/LaValle - Motion Planning The Essentials.pdf},
+ langid = {english}
+}
+\stopverb}

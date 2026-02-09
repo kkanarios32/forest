@@ -8,6 +8,7 @@
 \section{Today's Todos}{
   \ol{
     \li{Finish variational inference tutorial.}
+    \li{Write up overview of computer architecture implementation.}
   }
 }
 
@@ -28,5 +29,3 @@
 \section{Research Notebook}{
 
 }
-
-

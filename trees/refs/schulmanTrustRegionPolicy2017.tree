@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Trust Region Policy Optimization}
+\date{2017-04}
+\author/literal{John Schulman}\author/literal{Sergey Levine}\author/literal{Philipp Moritz}\author/literal{Michael I. Jordan}\author/literal{Pieter Abbeel}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1502.05477}
+\meta{external}{https://arxiv.org/abs/1502.05477}
+
+\meta{bibtex}{\startverb
+@misc{schulmanTrustRegionPolicy2017,
+ title = {Trust {{Region Policy Optimization}}},
+ author = {Schulman, John and Levine, Sergey and Moritz, Philipp and Jordan, Michael I. and Abbeel, Pieter},
+ year = {2017},
+ doi = {10.48550/arXiv.1502.05477},
+ urldate = {2025-09-03},
+ number = {arXiv:1502.05477},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/7BR6739N/Schulman et al. - 2017 - Trust Region Policy Optimization.pdf},
+ keywords = {Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {We describe an iterative procedure for optimizing policies, with guaranteed monotonic improvement. By making several approximations to the theoretically-justified procedure, we develop a practical algorithm, called Trust Region Policy Optimization (TRPO). This algorithm is similar to natural policy gradient methods and is effective for optimizing large nonlinear policies such as neural networks. Our experiments demonstrate its robust performance on a wide variety of tasks: learning simulated robotic swimming, hopping, and walking gaits; and playing Atari games using images of the screen as input. Despite its approximations that deviate from the theory, TRPO tends to give monotonic improvement, with little tuning of hyperparameters.},
+ primaryclass = {cs},
+ eprint = {1502.05477},
+ month = {April}
+}
+\stopverb}

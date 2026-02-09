@@ -1,0 +1,21 @@
+% ["refs"]
+\title{Probabilistic Machine Learning: Advanced Topics}
+\date{2023}
+\author/literal{Kevin P. Murphy}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{murphyProbabilisticMachineLearning2023,
+ title = {Probabilistic {{Machine Learning}}: {{Advanced Topics}}},
+ author = {Murphy, Kevin P.},
+ year = {2023},
+ isbn = {978-0-262-37600-6},
+ edition = {1st ed},
+ series = {Adaptive {{Computation}} and {{Machine Learning Series}}},
+ publisher = {MIT Press},
+ address = {Cambridge},
+ file = {/home/kellen/Downloads/pdfs/storage/72UF8RI2/Murphy - 2023 - Probabilistic Machine Learning Advanced Topics.pdf},
+ langid = {english},
+ abstract = {Intro -- Copyright -- Preface -- 1 Introduction -- I Fundamentals -- 2 Probability -- 2.1 Introduction -- 2.1.1 Probability space -- 2.1.2 Discrete random variables -- 2.1.3 Continuous random variables -- 2.1.4 Probability axioms -- 2.1.5 Conditional probability -- 2.1.6 Bayes' rule -- 2.2 Some common probability distributions -- 2.2.1 Discrete distributions -- 2.2.2 Continuous distributions on {$\mathbb{R}$} -- 2.2.3 Continuous distributions on {$\mathbb{R}$}+ -- 2.2.4 Continuous distributions on [0, 1] -- 2.2.5 Multivariate continuous distributions -- 2.3 Gaussian joint distributions -- 2.3.1 The multivariate normal -- 2.3.2 Linear Gaussian systems -- 2.3.3 A general calculus for linear Gaussian systems -- 2.4 The exponential family -- 2.4.1 Definition -- 2.4.2 Examples -- 2.4.3 Log partition function is cumulant generating function -- 2.4.4 Canonical (natural) vs mean (moment) parameters -- 2.4.5 MLE for the exponential family -- 2.4.6 Exponential dispersion family -- 2.4.7 Maximum entropy derivation of the exponential family -- 2.5 Transformations of random variables -- 2.5.1 Invertible transformations (bijections) -- 2.5.2 Monte Carlo approximation -- 2.5.3 Probability integral transform -- 2.6 Markov chains -- 2.6.1 Parameterization -- 2.6.2 Application: language modeling -- 2.6.3 Parameter estimation -- 2.6.4 Stationary distribution of a Markov chain -- 2.7 Divergence measures between probability distributions -- 2.7.1 f-divergence -- 2.7.2 Integral probability metrics -- 2.7.3 Maximum mean discrepancy (MMD) -- 2.7.4 Total variation distance -- 2.7.5 Density ratio estimation using binary classifiers -- 3 Statistics -- 3.1 Introduction -- 3.2 Bayesian statistics -- 3.2.1 Tossing coins -- 3.2.2 Modeling more complex data -- 3.2.3 Selecting the prior -- 3.2.4 Computational issues -- 3.2.5 Exchangeability and de Finetti's theorem -- 3.3 Frequentist statistics},
+ shorttitle = {Probabilistic {{Machine Learning}}}
+}
+\stopverb}

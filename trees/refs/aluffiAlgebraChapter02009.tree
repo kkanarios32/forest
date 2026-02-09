@@ -1,0 +1,22 @@
+% ["refs"]
+\title{Algebra: Chapter 0}
+\date{2009}
+\author/literal{Paolo Aluffi}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{aluffiAlgebraChapter02009,
+ title = {Algebra: Chapter 0},
+ author = {Aluffi, Paolo},
+ year = {2009},
+ isbn = {978-0-8218-4781-7},
+ series = {Graduate Studies in Mathematics},
+ number = {v. 104},
+ publisher = {American Mathematical Society},
+ address = {Providence, R.I},
+ file = {/home/kellen/Downloads/pdfs/storage/TXS4CGH4/Aluffi - 2009 - Algebra chapter 0.pdf},
+ keywords = {Algebra,Textbooks},
+ lccn = {QA154.3 .A527 2009},
+ langid = {english},
+ shorttitle = {Algebra}
+}
+\stopverb}

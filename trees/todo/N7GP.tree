@@ -1,0 +1,119 @@
+\date{2026-02-08T16:48:15Z}
+\title{Notebook: Computer Architecture}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{note}
+\tag{top}
+\tag{todo}
+
+\section{Parallel Computing Models}{
+
+}
+
+\section{Cache Coherence and Memory Consistency}{
+\section{Lecture 6}{
+Single writer invariant - when there is one processor with permission to write. No other processor can read or write.
+
+Data value invariant - all cores see the same order of data value updates.
+
+\strong{Snoop-based protocols:}
+\p{Invalid state: The cache does not have the data} 
+\ul{
+  \li{Assume small number of processors all connected via shared bus.}
+  \li{Valid invalid coherence}
+  \ul{
+    \li{Allows multiple readers, but must write through to bus.}
+    \li{Caches snoop bus traffic.}
+    \li{Assume write-through cache.}
+    \li{Assume no-write-allocate cache - when you have a write miss you do not bring into cache.}
+  }
+  \li{Cache controller FSM:}
+  \ol{
+    \li{Invalid state + load -> Bus Rd to get read permission transition to valid state.}
+    \li{Invalid state + store -> No }
+    \li{Valid state + store -> Bus Wr to notify other caches.}
+  }
+  \figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/img/snoop-fsm.png}}{}
+  \figcaption{FSM for snoop-based protocols.}
+  }
+}
+}
+\strong{Write-update coherence:}
+\p{When someone writes snoop bus, update my state to reflect value.}
+\problem{Value has to reach everyone in the system. OK for bus based system with small number of cores, but really bad for larger systems.}
+\problem{
+  Cache pollution. Messes up LRU policy when other cache is using block that YOU are not using.
+  }
+\strong{Supporting Write-back caches:}
+\p{Split valid state into two, add notion of ownership to valid-invalid.}
+\ol{
+  \li{Shared state - block is clean, have read permission, multiple processors can read from it.}
+  \li{Modified state - block is dirty, exclusive read and write permission, have to write back to memory when evicted.}
+}
+\strong{MSI Protocol:}
+\p{Three states}
+\ol{
+  \li{Invalid - cache does not have a copy.}
+  \li{Shared - cache has a read only copy; clean}
+  \li{Modified - cache has the only copy; writable; dirty}
+}
+\p{Five bus messages}
+\ol{
+  \li{BusRd}
+  \li{BusRdX - Read and get exclusive permission.}
+  \li{BusInv - Invalidate other caches on write hit.}
+  \li{BusWB - When evicting dirty block.}
+  \li{BusReply - Send value instead of other core reading memory.}
+}
+\figure{
+\<html:img>[width]{100/%}[src]{\route-asset{assets/img/msi-protocol.png}}{}
+\figcaption{MSI state machine.}
+}
+}
+\remark{
+Moving from shared to modified state must write back to memory because data must be clean in shared state.
+}
+\strong{MESI Protocol:}
+\p{Add an exclusive (E) state to MSI.}
+\p{If you are the only copy but it is still clean, you can have read / write permission but do not need to enter modified state.}
+\p{Modified is dirty, exclusive is clean. Eviction -> no write back in exclusive.}
+\p{When write in exclusive, you transition to modified WITHOUT bus transaction}
+\p{Very useful for thread-private data.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-protocol.png}}{}
+\figcaption{MESI state machine.}
+}
+\section{Lecture 7: Bus-based SMPs}{
+\strong{MOESI Protocol:}
+\p{Add an Owned (O) state to MESI.}
+\p{Owned is shared but dirty. Owner is responsible for writing back on eviction.}
+\p{If dataset already in cache, no need to repeatedly update memory when dataset stays in cache.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/moesi-protocol.png}}{}
+\figcaption{MOESI venn diagram.}
+}
+\strong{DEC Firefly Protocol:}
+\p{Exclusive, Shared, Dirty}
+\p{Shared state is write-through, updates everyones value because there are lots of consumers.}
+\p{Exclusive and dirty state is write-back. No need to keep updating memory when you are only owner.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/dec-protocol.png}}{}
+\figcaption{DEC state machine.}
+}
+\p{SL stands for shared line, implemented via wired OR. Quick way to know if the address being transmitted is shared with other processor.}
+}
+\section{Implementing Snoopy Coherent SMPs}{
+\p{Snoop-based SMP, cache controller needs to monitor bus side and cpu side. (What does this mean?)}
+\p{Need arbitration to determine which core responds to request.}
+\p{\strong{The Inclusion Property:} Any lower-level cache is a superset of the higher-level cache i.e. L1 is included in L2.
+}
+\p{Hits in L1 do not propagate to LRU policy in L2. Can cause weird behavior -> violate inclusivity. To preserve inclusivity, need to either not evict if in L1 or kick out of both.}
+\p{Inclusive means for snoop-based protocol only need to check L2.}
+\p{\strong{Shared vs. Private cache:} Share L2 cache across processors. Useful if all processors in same process -> can share data structures. Can collaboratively load into cache. Can dynamically partition cache; get better utilization. Fairness is an issue. Increased hit latency is an issue. Need more bandwidth.}
+\p{\strong{TLB:} Each CPU has private TLB. Page faults happen rarely -> handled by OS via TLB shootdown.}
+\remark{
+Physical addresses are used for coherence protocols, so that we can distinguish addresses easily.
+}
+}
+}

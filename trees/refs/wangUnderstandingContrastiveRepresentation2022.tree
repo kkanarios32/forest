@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere}
+\date{2022-08}
+\author/literal{Tongzhou Wang}\author/literal{Phillip Isola}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2005.10242}
+\meta{external}{https://arxiv.org/abs/2005.10242}
+
+\meta{bibtex}{\startverb
+@misc{wangUnderstandingContrastiveRepresentation2022,
+ title = {Understanding {{Contrastive Representation Learning}} through {{Alignment}} and {{Uniformity}} on the {{Hypersphere}}},
+ author = {Wang, Tongzhou and Isola, Phillip},
+ year = {2022},
+ doi = {10.48550/arXiv.2005.10242},
+ urldate = {2025-08-18},
+ number = {arXiv:2005.10242},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/CQUWATA2/Wang and Isola - 2022 - Understanding Contrastive Representation Learning .pdf},
+ keywords = {Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Contrastive representation learning has been outstandingly successful in practice. In this work, we identify two key properties related to the contrastive loss: (1) alignment (closeness) of features from positive pairs, and (2) uniformity of the induced distribution of the (normalized) features on the hypersphere. We prove that, asymptotically, the contrastive loss optimizes these properties, and analyze their positive effects on downstream tasks. Empirically, we introduce an optimizable metric to quantify each property. Extensive experiments on standard vision and language datasets confirm the strong agreement between both metrics and downstream task performance. Directly optimizing for these two metrics leads to representations with comparable or better performance at downstream tasks than contrastive learning. Project Page: ssnl.github.io/hypersphere.},
+ primaryclass = {cs},
+ eprint = {2005.10242},
+ month = {August}
+}
+\stopverb}

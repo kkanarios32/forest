@@ -1,0 +1,45 @@
+\date{2026-02-03T16:43:13Z}
+\title{Grokking Variational Autoencoders}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+\tag{blog}
+
+\p{These will be my notes for the first two chapters of the book [[kingmaIntroductionVariationalAutoencoders2019]].}
+
+\section{Motivation}{
+ We have some data #{\mathbf{x} \sim p(\mathbf{x})}. We want to learn #{p(\mathbf{x})} via some approximation #{p_{\theta}(\mathbf{x})}. The problem is that #{p(\mathbf{x})} can be arbitrarily complex. Namely, if we want to take some standard parametrization i.e. #{\mathbf{\theta} = (\mathbf{\mu}, \log \Sigma)  } then there is no #{\mathbf{\theta} } that is sufficiently expressive. However, if we instead assume there exists some joint distribution #{p(\mathbf{x}, \mathbf{z})} that factors nicely i.e.
+ ##{p(\mathbf{x}, \mathbf{z}) = p(\mathbf{x} \mid \mathbf{z}) p(\mathbf{z})}
+ then even for discrete #{\mathbf{z}}
+ ##{p(\mathbf{x}) = \sum_{n=1}^{N} p(z = n) p(\mathbf{x} \mid z = n)}
+ is remarkably more expressive. Intuitively, #{\mathbf{z}} can correspond to all sorts of things, such as class number in a classification problem. Taking #{\mathbf{z}} as a discrete categorial RV and #{p(\mathbf{x} \mid \mathbf{z})} as normal gives a Gaussian Mixture Model.
+}
+\problem{
+    For continuous #{\mathbf{z}} computing the marginal #{p(\mathbf{x}) = \int p(\mathbf{x}, \mathbf{z}) d \mathbf{z}} is still intractable. In particular,
+    ##{p(\mathbf{x}) = \frac{p(\mathbf{x}, \mathbf{z})}{p(\mathbf{z} \mid \mathbf{x})}}
+    i.e. there is a one-to-one correspondence between the tractability of #{p(\mathbf{x})} and #{p(\mathbf{z} \mid \mathbf{x})}.
+}
+\solution{
+    We can actually learn #{p(\mathbf{z} \mid \mathbf{x})} via the [[0082]]. 
+}
+
+\section{}{
+##{
+    \begin{align*}
+\mathrm{KL}(q(\mathbf{z}) \mid \mid p(\mathbf{z} \mid \mathbf{x})) &= \mathbb{E}_{q(\mathbf{z})}\left[\log \frac{q(\mathbf{z})}{p(\mathbf{z} \mid \mathbf{x})}\right] \\
+&= \mathbb{E}_{q(\mathbf{z})}\left[\log \frac{q(\mathbf{z}) p(\mathbf{x})}{p(\mathbf{z}, \mathbf{x})}\right] \\
+&= \mathbb{E}_{q(\mathbf{z})}\left[\log \frac{q(\mathbf{z})}{p(\mathbf{z}, \mathbf{x})}\right] + \mathbb{E}_{q(\mathbf{z})} \left[\log p(\mathbf{x})\right] \\
+&= \mathrm{KL}(q(\mathbf{z}) \mid \mid p(\mathbf{z}, \mathbf{x})) + \underbrace{\log p(\mathbf{x})}_{\text{Independent of } \mathbf{z}}
+.\end{align*}
+    }
+##{
+\begin{align*}
+    \mathrm{ELBO} &= -\mathrm{KL}(q(\mathbf{z}) \mid \mid p(\mathbf{z}, \mathbf{x})) \\
+    &= \mathbb{E}_{q(\mathbf{z})}\left[\log p(\mathbf{x} \mid \mathbf{z})\right] - \mathrm{KL}(q(\mathbf{z}) \mid \mid p(\mathbf{z}))
+.\end{align*}
+}
+##{\begin{align*}
+&= \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\left[\log \frac{p_{\theta}(\mathbf{x}, \mathbf{z})}{q_{\phi}(\mathbf{z} \mid \mathbf{x})}\right] + \text{KL}(q_{\phi}(\mathbf{z} \mid \mathbf{x}) || p_{\theta}(\mathbf{z} \mid \mathbf{x}))
+&= \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})} \left[ \log p_{\theta}(\mathbf{x}, \mathbf{z}) \right] - \mathbb{E}_{q_{\phi}(\mathbf{z} \mid \mathbf{x})} \left[ \log q_{\phi}(\mathbf{z} \mid \mathbf{x}) \right]
+.\end{align*}}
+}

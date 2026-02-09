@@ -1,0 +1,29 @@
+% ["refs"]
+\title{An Introduction to Variational Autoencoders}
+\date{2019}
+\author/literal{Diederik P. Kingma}\author/literal{Max Welling}
+\taxon{Reference}
+\meta{doi}{10.1561/2200000056}
+\meta{external}{https://arxiv.org/abs/1906.02691}
+
+\meta{bibtex}{\startverb
+@article{kingmaIntroductionVariationalAutoencoders2019,
+ title = {An {{Introduction}} to {{Variational Autoencoders}}},
+ author = {Kingma, Diederik P. and Welling, Max},
+ year = {2019},
+ doi = {10.1561/2200000056},
+ urldate = {2025-09-11},
+ journal = {Foundations and Trends{\textregistered} in Machine Learning},
+ volume = {12},
+ number = {4},
+ pages = {307--392},
+ file = {/home/kellen/Downloads/pdfs/storage/AV3P473C/Kingma and Welling - 2019 - An Introduction to Variational Autoencoders.pdf},
+ keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Variational autoencoders provide a principled framework for learning deep latent-variable models and corresponding inference models. In this work, we provide an introduction to variational autoencoders and some important extensions.},
+ issn = {1935-8237, 1935-8245},
+ primaryclass = {cs},
+ eprint = {1906.02691}
+}
+\stopverb}

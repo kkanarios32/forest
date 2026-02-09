@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Graph approximations to geodesics on embedded manifolds}
+\author/literal{Mira Bernstein}\author/literal{Vin Silva}\author/literal{John C Langford}\author/literal{Joshua B Tenenbaum}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{bernsteinGraphApproximationsGeodesics,
+ title = {Graph Approximations to Geodesics on Embedded Manifolds},
+ author = {Bernstein, Mira and {de Silva}, Vin and Langford, John C and Tenenbaum, Joshua B},
+ file = {/home/kellen/Downloads/pdfs/storage/8875QR4P/Bernstein et al. - Graph approximations to geodesics on embedded mani.pdf},
+ langid = {english}
+}
+\stopverb}

@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Contrastive Representations for Temporal Reasoning}
+\date{2025-08}
+\author/literal{Alicja Ziarko}\author/literal{Michal Bortkiewicz}\author/literal{Michal Zawalski}\author/literal{Benjamin Eysenbach}\author/literal{Piotr Milos}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2508.13113}
+\meta{external}{https://arxiv.org/abs/2508.13113}
+
+\meta{bibtex}{\startverb
+@misc{ziarkoContrastiveRepresentationsTemporal2025,
+ title = {Contrastive {{Representations}} for {{Temporal Reasoning}}},
+ author = {Ziarko, Alicja and Bortkiewicz, Michal and Zawalski, Michal and Eysenbach, Benjamin and Milos, Piotr},
+ year = {2025},
+ doi = {10.48550/arXiv.2508.13113},
+ urldate = {2025-09-03},
+ number = {arXiv:2508.13113},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/LJDFZX57/Ziarko et al. - 2025 - Contrastive Representations for Temporal Reasoning.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In classical AI, perception relies on learning state-based representations, while planning --- temporal reasoning over action sequences --- is typically achieved through search. We study whether such reasoning can instead emerge from representations that capture both perceptual and temporal structure. We show that standard temporal contrastive learning, despite its popularity, often fails to capture temporal structure due to its reliance on spurious features. To address this, we introduce Contrastive Representations for Temporal Reasoning (CRTR), a method that uses a negative sampling scheme to provably remove these spurious features and facilitate temporal reasoning. CRTR achieves strong results on domains with complex temporal structure, such as Sokoban and Rubik's Cube. In particular, for the Rubik's Cube, CRTR learns representations that generalize across all initial states and allow it to solve the puzzle using fewer search steps than BestFS --- though with longer solutions. To our knowledge, this is the first method that efficiently solves arbitrary Cube states using only learned representations, without relying on an external search algorithm.},
+ primaryclass = {cs},
+ eprint = {2508.13113},
+ month = {August}
+}
+\stopverb}

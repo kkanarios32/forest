@@ -12,20 +12,6 @@
   }
 }
 
-\section{Progress on Todos}{
-
-}
-
-
-\section{What did I learn today?}{
-
-}
-
-
-\section{Things to maybe look at later.}{
-
-}
-
 \section{Research Notebook}{
 \p{[Data efficient RL](nachumDataEfficientHierarchicalReinforcement2018): 
 o approximately maximize this quantity in practice, we compute this log probability for a number of
