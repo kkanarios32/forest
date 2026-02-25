@@ -6,6 +6,20 @@
 \tag{top}
 \tag{todo}
 
+\section{Introduction}{
+\p{\strong{Dennard Scaling:} }
+##{P = C(\frac{V}{\alpha})^2 f}
+\ul{
+  \li{Power per transistor scales as #{\frac{1}{\alpha^2}}}
+  \li{#{V} cannot go down because must keep #{V_{dd} / V_{th} > 3}}
+}
+\p{\strong{Post Denard:}}
+\ul{
+  \li{Can no longer decrease #{V}}
+  \li{Power per transistor scales at #{\frac{1}{\alpha}}}
+  \li{Power density scales as #{\alpha}}
+}
+}
 \section{Parallel Computing Models}{
 
 }
@@ -117,3 +131,4 @@ Physical addresses are used for coherence protocols, so that we can distinguish 
 }
 }
 }
+\transclude{4HWF}

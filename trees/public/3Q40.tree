@@ -1,0 +1,27 @@
+\import{base-macros}
+\date{2025-12-28T15:46:13Z}
+\tag{public}
+\title{Binary classification}
+\ul{
+  \li{A \em{classifier} is a function mapping from #{\mathcal{X}} to #{\{-1, 1\}  }.}
+  \li{The nearest neighbor classifier maps some #{\mathbf{x}} to the label of its nearest neighbor.}
+  \li{The #{k}-nearest neighbor classifier takes the majority of the #{k}-nearest neighbors}
+  \ol{
+    \li{What is the effect of #{k}?}
+    \li{#{k} affects smoothness and therefore the tradeoff between overfitting and underfitting.}
+  }
+}
+\p{To introduce the algorithms that follow, we must first introduce the bayes-optimal classifier. To do so, they formulate this as a problem of representing the joint distribution of #{(X,Y)}, where #{Y} is the class label and #{X} is the observation. They propose two decompositions:}
+\ol{
+  \li{Class posterior #{P_{Y|x}} and data marginal #{P_X}}
+  \li{Class conditional #{P_{X|y}} and class prior #{P_Y}}
+}
+
+\section{Naive Bayes}{
+}
+\section{Logistic Regression}{
+
+}
+\section{Linear Regression}{
+
+}
