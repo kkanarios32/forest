@@ -129,7 +129,46 @@ release(lock):
   <<<
   }
   \section{Transactional Memory}{
-  
+    \problem{We want as fine-grained locks as possible to allow freedom in optimization across instructions. However, writing fine-grained lock programs is difficult. Is there a way to get the performance of fine-grained locks with the programming easibility of coarse-grained locks?}
+    \solution{Speculative lock elision. Namely, execute both "transactions" in parallel and then check whether they conflict.}
+    \p{The first question is how do we actually detect a conflict? To do so, we must define a conflict.}
+    \p{\strong{Conflict:} When two transactions access the same memory and one of them is a write.}
+    \ul{
+      \li{Keep track of read write sets.}
+      \li{If any of the read sets intersects with the write set, then conflict.}
+    }
+    \p{With read write sets, there are still two ways we can actually check for conflicts: (1) eagerly (2) lazily. Conceputally, lazily is much easier}
+    \p{\strong{Lazily:}}
+    \ul{
+      \li{Build whole read write set then, at the end, check for any conflicts. If conflict, rollback.}
+    }
+    \p{Now we must briefly discuss how to actually rollback. This is known as \strong{version management}. We must only define what to do on \code{ld} and \code{st}}
+    \ol{
+      \li{Store: put into "write table"}
+      \li{Load: check if it is in write table. If so, read value. Otherwise, read from memory.}
+    }
+    Now there are two operations of version management: commit and abort.
+    \ol{
+      \li{Commit: write all writes to memory (\strong{slow})}
+      \li{Abort: clear write table (\strong{fast})}
+    }
+    \p{\strong{Eager:}. Namely, to utilize the coherence protocol. }
+    \ol{
+      \li{Store: Add to write set, check if in any other write or read set. If so, abort.}
+      \li{Load: Just read from memory.}
+    }
+    \p{For version management,}
+    \ul{
+      \li{Commit: If not aborted, clear read and write sets (\strong{fast})}
+      \li{Abort: Done before any conflicts, so no need to do anything but clear read and write sets.}
+    }
+    \p{The main downside of eager detection is the high overhead to check for conflict every memory operation. To get around this, we can invoke some hardware support. Namely, the coherence protocol}
+    \ul{
+      \li{Add r/w bits to each cache line. Set them when read / written to during transactional operation.}
+      \li{If cache line is invalidated by coherence protocol, then there is a conflict and we abort.}
+    }
+    \problem{If transaction uses more cache lines than can be stored in the cache, then we have some overflow that cannot be tracked.}
+    \solution{Hybrid approach can be used to resort to STM on overflow.}
   }
 }
 
@@ -239,4 +278,181 @@ Physical addresses are used for coherence protocols, so that we can distinguish 
 }
 }
 }
-\transclude{4HWF}
+\section{Lecture 8: Directory-Based Coherence}{
+  \p{
+    This comparison between directory and snooping protocols highlights the fundamental trade- off between them. A directory protocol achieves greater scalability (i.e., because it requires less bandwidth) at the cost of a level of indirection (i.e., having three steps, instead of two steps, for some transactions). This additional level of indirection increases the latency of some coherence transactions.
+    }
+  \problem{With lots of cores, we cannot connect them all via a shared bus.}
+  \solution{Point-to-point interconnect via some topology i.e. mesh, cube, torus, etc.}
+  \problem{Broadcast is very expensive.}
+  \solution{Use directory-based protocols.}
+  \p{\strong{Directory:} 2d table for each address with metadata typically core owner or list of sharers.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/directory-write.png}}{}
+\figcaption{4 hop protocol for directory write.}
+}
+\p{\strong{Distributed vs. Centralized:} Centralized directory is still not very scalable.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/distributed-directory.png}}{}
+\figcaption{Distributed directory.}
+}
+}
+\p{Each processor (not core!) has own DRAM and directory responsible for tracking the addresses in its own DRAM. Each nodes local memory is accessible by all the nodes. Union of all memory is the total shared memory, where each physical address UNIQUELY identifies which node it is in.}
+\p{\strong{Home node:} the node that has the physical address of the desired memory. Depends on which address we are interested in.}
+\p{\strong{Reducing size of directory:}}
+\ul{
+  \li{Each entry in directory is size of cache block (64-128 bytes).}
+  \li{For 256 node, 8 bits for node id.}
+  \li{Need 256 * 8 bits = 256 bytes for list of sharers.}
+  \ul{
+    \li{Idea 1: one-hot encoding = 256 / 8 = 32 bytes -> 50\% of memory used for metadata.}
+  }
+  \li{Common case is that there are roughly at most 4 sharers.}
+  \ul{
+    \li{In the uncommon case, just broadcast to everyone.}
+  }
+}
+\remark{
+"Common case" is application specific. Most sharing patterns even with high amount of parallelism only share between small number of cores.
+}
+\p{\strong{Sparse directories:}}
+\ul{
+  \li{
+  Keep directory cache, where if an address is not in the cache it is not used by anyone. Evict -> invalidate.
+    }
+  \li{When evicting clean blocks, need to tell directory or the list will be messed up.}
+}
+\p{\strong{Transient states:} States in-between when a transaction is completed. Existing states are \em{stable}. #{\mathrm{MI}^{A}} denotes transitions from modified to invalid if the request is acknowledged.}
+\p{\strong{Race conditions:}}
+\example{
+L has dirty copy, wants to write back to H. R concurrently sends a read to H. #{\mathrm{S}^{D}} is waiting for data.
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/example-race.png}}{}
+\figcaption{Example race condition.}
+}
+}
+\section{Lecture 10}{
+\remark{
+Do not use NACKs because they lead to starvation.
+}
+\section{Considerations}{
+\p{
+\strong{Bounded Number Msgs / Transaction:} Cruise missile invalidation is more scalable because each cluster must only send a single invalidation ack. Traditionally, each core must send an invalidation which can cause congestion.
+}
+\remark{
+In terms of latency, coarse-vector has lower latency as only a two hop protocol.
+}
+\p{
+\strong{Required number of lanes:} Need to separate requests from responses to avoid deadlocks.
+}
+}
+
+\section{Optimizations}{
+   \p{ \strong{Pre-fetching:} Fetch data before requested, to reduce latency in coherence protocol. }
+   \p{ \strong{Upgrade Miss:} Read and subsequent write causes in migratory sharing can cause read miss then write miss
+   \ul{
+     \li{Detect migratory M state}
+     \li{Read miss transition to migratory E state}
+   }
+   }
+   \remark{
+   Same optimization is very bad for producer-consumer sharing. Instead, upon read miss, downgrade instead of invalidate.
+   \ul{
+     \li{Can keep track of prior readers and forward data upon downgrade.}
+   }
+   }
+}
+
+\section{Memory Consistency}{
+  \p{\strong{Sequential consistency:} Enforce that instructions are executed in the order they are written.}
+  \p{\strong{Relaxed consistency:} Programmer specifies regions, where memory operations can be reordered.}
+  \ul{
+    \li{Implemented via "fence" instruction.}
+    \li{Fence is implemeted via counter that is incremented when data op is issued, and decrement when completed.}
+  }
+  \remark{
+  "Rules" must be enforced on multiple levels of programming hierarchy. Language specification between language and compiler. ISA between compiler and processor. Its possible that a language ensures sequential consistency but not the hardware.
+  }
+  \p{\strong{Released consistency:} in C++, use \code{std::atomic} to ensure that any loads / stores between programs is correctly ordered.}
+  \ul{
+    \li{Inserts \code{fence} before all access to variable.}
+  }
+  \p{\strong{Data races:} Any pair of access where we are not able to establish a happens before relationship (possible using combination of other happens before).}
+  \remark{
+  Data race is only dependent on \strong{execution}. Competing for same lock is \strong{NOT} data race because given one acquires the lock it \em{happens before} the other.
+  }
+  \remark{
+  Sequential consistency does not provide guarantess between threads.
+  }
+  \problem{Writing data-race free programs is hard! How can we assume every access is a synchronization access without significantly affecting performance?}
+  \p{\strong{SC Preserving Compilers:} }
+  \ol{
+    \li{Restrict compilers to never reorder \strong{shared} accesses.}
+  }
+  \p{Optimizations that break SC:}
+  \ol{
+    \li{Common subexpression elimination.}
+    \ul{
+      \li{Can perform via "monitor" that checks the coherence bit has been changed between expressions.}
+    }
+  }
+  \p{\strong{SC Preserving Hardware:} Two problems}
+  \ol{
+    \li{Loads must wait for store buffer drain}
+    \li{Stores must retire in order.}
+  }
+  \solution{Treat all pages as local / safe. Extend page protection to thread-level i.e. it is unsafe for non-owning threads to access pages.}
+  \p{\strong{TSO:} Allow \code{ld} to be hoisted above \code{st}.}
+  \remark{
+  As a reminder, the reason we want to allow memory re-ordering is to allow subsequent instructions to not have to wait on store cache miss. To do so, we make use of store buffer.
+  }
+  \p{\strong{RMO:} relaxed memory ordering. Allow everything to be re-ordered.}
+  \ul{
+    \li{\code{ld} then \code{st}: no performance gain does not matter}
+    \li{\code{st} then \code{st}: to preserve total ordering just need slightly larger store buffer.}
+    \li{\code{ld} then \code{ld}: can load specutively to obtain same performance while preserving ordering}
+  }
+  \remark{
+  Under TSO, Dekker's algorithm still violated. Need fences.
+  }
+  \p{\strong{IBM 370 Variant:} To ensure store atomicity, do not allow store forwarding.}
+  \p{\strong{Relaxing RMO}: In RMO, still need to use fences to ensure DRF. Release consistency - re-order fences.}
+  \ol{
+    \li{Full fence - cannot move instructions after fence before fence \strong{OR} instructions before fence after fence}
+    \li{Half fence - only one direction.}
+    \ul{
+      \li{Expanding critical section is fine}
+      \li{Lock just needs to prevent moving operations up}
+      \li{Release has to prevent moving operations down.}
+    }
+  }
+}
+}}
+\section{Review}{
+  \p{\strong{Weak vs. Strong Scaling:} Strong scaling is improving performance for fixed program and input. Weak scaling is scaling as data increases.}
+\p{\strong{Locks:}}
+\ul{
+  \li{Understand connection between locks and coherence protocol.}
+}
+\p{\strong{Snooping:}}
+\ul{
+  \li{Bus that snoops}
+  \li{Valid invalid}
+  \li{MSI}
+  \li{MESI}
+  \li{MOESI}
+  \li{Purpose of additional states.}
+}
+\p{\strong{Design choice:}}
+\ul{
+  \li{Should cache be shared}
+  \li{Should cache be inclusive}
+}
+\p{\strong{Directory protocol:}}
+\ul{
+  \li{Why directory over snoop.}
+  \li{Broadcasting expensive with lots of cores.}
+  \li{Data structure implementation. Broadcast everywhere for overflow.}
+  \li{Race conditions.}
+}
+}
