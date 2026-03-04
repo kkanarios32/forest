@@ -2,12 +2,9 @@
 \import{base-macros}
 \tag{blog}
 \tag{upcoming}
-\xmlns:html{http://www.w3.org/1999/xhtml}
 
 
 
 \hr
 
 \<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
-
-

@@ -171,6 +171,7 @@ release(lock):
     \solution{Hybrid approach can be used to resort to STM on overflow.}
   }
 }
+}
 
 \section{Cache Coherence and Memory Consistency}{
 \section{Lecture 6}{
@@ -275,7 +276,6 @@ Moving from shared to modified state must write back to memory because data must
 \p{\strong{TLB:} Each CPU has private TLB. Page faults happen rarely -> handled by OS via TLB shootdown.}
 \remark{
 Physical addresses are used for coherence protocols, so that we can distinguish addresses easily.
-}
 }
 }
 \section{Lecture 8: Directory-Based Coherence}{
@@ -427,7 +427,8 @@ In terms of latency, coarse-vector has lower latency as only a two hop protocol.
     }
   }
 }
-}}
+}
+}
 \section{Review}{
   \p{\strong{Weak vs. Strong Scaling:} Strong scaling is improving performance for fixed program and input. Weak scaling is scaling as data increases.}
 \p{\strong{Locks:}}
