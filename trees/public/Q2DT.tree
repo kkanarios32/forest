@@ -1,0 +1,110 @@
+\import{base-macros}
+\date{2026-03-09T14:04:37Z}
+\tag{public}
+\title{Locks}
+  \p{\strong{Naive lock:}}
+  \ul{
+    \li{Test and set
+    \pre\verb<<<|
+acquire(lock_ptr):
+  while (true):
+  // Perform “test-and-set”
+  // UNLOCKED = 0, LOCKED = 1
+  test_and_set(old, lock_ptr)
+  if (old == UNLOCKED):
+    break // lock acquired!
+    // keep spinning, back to top of while loop
+release(lock_ptr):
+  store[lock_ptr] <- UNLOCKED
+    <<<
+  \problem{Major coherence traffic! Every core must acquire write permissions and invalidate everyone else on each \code{test_and_set}}
+  }
+  \li{Test and test and set
+    \pre\verb<<<|
+acquire(lock_ptr):
+  while (true):
+  // Perform “test”
+  load [lock_ptr] -> original_value
+  if (original_value == UNLOCKED):
+    // Perform “test-and-set”
+    test_and_set(old, lock_ptr)
+    if (old == UNLOCKED):
+      break // lock acquired!
+      // keep spinning, back to top of while loop
+release(lock_ptr):
+  store[lock_ptr] <- UNLOCKED
+    <<<
+    \remark{
+    Spinning is a read only operation now.
+    }
+    \problem{Every time lock is released must invalidate and every core will read and try to write.}
+  }
+  }
+  \p{\strong{Ticket Lock:}}
+    \pre\verb<<<|
+acquire(lock_ptr):
+  my_ticket = fetch_and_increment(lock_ptr->next_ticket)
+  while(lock_ptr->now_serving != my_ticket); // spin   
+
+release(lock_ptr):
+  lock_ptr->now_serving = lock_ptr->now_serving + 1
+    <<<
+    \ul{
+      \li{Still have #{O(n)} coherence traffic on release.}
+    }
+  \p{\strong{Array-based lock}}
+  \ul{
+    \li{Give each waiter its own "slot" to wait on.}
+    \li{Only need to set next slot to "go-ahead"}
+    \li{Constant coherence traffic.}
+  }
+  \problem{#{O(n)} memory for the locks. Padding to #{64}b can get expensive.}
+  \p{\strong{MCS Lock:}}
+  \ul{
+    \li{Lock is a pointer to a node}
+    \li{Each thread has own node}
+    \pre\verb<<<|
+acquire(lock):
+  I->next = null;
+  predecessor = fetch_and_store(lock,I)
+  if predecessor != nil //some node holds lock
+    I->must_wait = true
+    predecessor->next = I //predecessor must wake us
+    repeat while I->must_wait //spin till lock is free
+release(lock):
+  if (I->next == null) //no known successor
+    if compare_and_swap(lock,I,nil) //make sure…
+      return //CAS succeeded; lock freed
+    repeat while I->next = nil //spin to learn successor
+  I->next->must_wait = false //wake successor
+    <<<
+  }
+\section{Barriers}{
+ \strong{Naive barrier implementation} 
+  \pre\verb<<<|
+  global (shared) count : integer := P
+
+  procedure central_barrier
+    if fetch_and_decrement(&count) == 1
+      count := P
+    else
+      repeat until count == P
+  <<<
+  \problem{When \code{count == p} one thread can reach the next barrier and decrement count again. Then all other threads will be stuck.}
+  \solution{
+    Each thread gets local "sense" variable.
+  \pre\verb<<<|
+  global (shared) count : integer := P
+  global (shared) sense : bool := true
+  global (private) local_sense : bool = false
+
+  procedure central_barrier
+    local_sense = !local_sense
+    if fetch_and_decrement(&count) == 1
+      count := P
+      sense = local_sense
+    else
+      repeat until sense == local_sense
+  <<<
+}
+}
