@@ -1,0 +1,41 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Sunday, March 15, 2026}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 2, Section 1}
+\em{Remember how long thou hast already put off these things, and how often a certain day and hour as it were, having been set unto thee by the gods, thou hast neglected it. It is high time for thee to understand the true nature both of the world, whereof thou art a part; and of that Lord and Governor of the world, from whom, as a channel from the spring, thou thyself didst flow: and that there is but a certain limit of time appointed unto thee, which if thou shalt not make use of to calm and allay the many distempers of thy soul, it will pass away and thou with it, and never after return.}
+}
+\p{\strong{Translation:} The time is now!}
+}
+
+\section{Today's Todos}{
+  \ol{
+    \li{Two leetcodes problems.}
+    \ul{
+      \li{IsPalindrome}
+      \li{IsSubsequence}
+    }
+    \li{}
+    \li{Must set up TPU profiling workflow over SSH.}
+  }
+}
+
+\section{Progress on Todos}{
+
+}
+
+\section{What did I learn today?}{
+
+}
+
+\section{Things to maybe look at later.}{
+
+}
+
+\section{Research Notebook}{
+
+}
