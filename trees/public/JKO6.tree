@@ -1,0 +1,40 @@
+\import{base-macros}
+\date{2026-03-16T19:15:46Z}
+\tag{public}
+\title{Lecture 12}
+
+\p{Hardware vs. software managed cache.}
+\ul{
+  \li{GPU cache is software managed i.e. program must actually manage shared memory within block.}
+}
+\question{Why this memory hierarchy?}
+\answer{Reduces hardware complexity i.e. no need for coherency protocol by restricting L1 to local within threads. L2 is coherent because there is only one L2.}
+
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/warp-scheduler.png}}{}
+\figcaption{How instructions are scheduled within block.}
+}
+
+\section{How to think about performance?}{
+\p{\strong{Peak compute vs. peak bandwidth:} Program will either be compute or bandwidth constrained. Want to maximize utilization of both.}
+\p{\em{Arithmetic intensity} is how many operations you do per 1 byte from memory.}
+\p{Compute bound:
+  ##{\frac{\text{ops}}{\text{bytes accessed}} > \frac{\text{compute bandwidth}}{\text{memory bandwidth}}}
+}
+\p{Memory bound:
+  ##{\frac{\text{ops}}{\text{bytes accessed}} < \frac{\text{compute bandwidth}}{\text{memory bandwidth}}}}
+\remark{
+Most computation is bandwidth bound. To remedy this, people are developing \em{high bandwidth memory} i.e. 2.5d or 3d connection to DRAM to increase bandwidth. (still not keeping up with GPU compute innovation).
+}
+}
+\p{Simple principles for achieving high performance}
+\ol{
+  \li{Fusion: do not read / write intermediate operations to memory.}
+  \li{Blocking / tiling: can reuse row / columns for multiple outputs to do more operations per byte loaded from memory. Need to assume cache is large enough to store additional memory.}
+  \li{Caching or recomputation: if compute bound can cache results that are reused. if bandwidth bound, then recompute intermediate values instead of loading.}
+  \li{Pipeline: overlapping computation to reduce latency.}
+  \li{Hardware: i.e. tensor cores.}
+}
+\remark{
+DSM: An SM-to-SM network, so that you do not need to write then read from global memory between blocks.
+}
