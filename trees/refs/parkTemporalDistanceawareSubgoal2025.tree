@@ -1,0 +1,23 @@
+% ["refs"]
+\title{Temporal Distance-aware Subgoal Generation for Offline Hierarchical Reinforcement Learning}
+\date{2025-11}
+\author/literal{Taegeon Park}\author/literal{Seungho Baek}\author/literal{Jongchan Park}\author/literal{Seungjun Oh}\author/literal{Yusung Kim}
+\taxon{Reference}
+\meta{doi}{10.1145/3746252.3761326}
+\meta{bibtex}{\startverb
+@inproceedings{parkTemporalDistanceawareSubgoal2025,
+ title = {Temporal {{Distance-aware Subgoal Generation}} for {{Offline Hierarchical Reinforcement Learning}}},
+ author = {Park, Taegeon and Baek, Seungho and Park, Jongchan and Oh, Seungjun and Kim, Yusung},
+ year = {2025},
+ isbn = {979-8-4007-2040-6},
+ doi = {10.1145/3746252.3761326},
+ urldate = {2026-01-22},
+ booktitle = {Proceedings of the 34th {{ACM International Conference}} on {{Information}} and {{Knowledge Management}}},
+ pages = {2305--2314},
+ publisher = {ACM},
+ address = {Seoul Republic of Korea},
+ file = {/home/kellen/Downloads/pdfs/storage/W2QD2APE/Park et al. - 2025 - Temporal Distance-aware Subgoal Generation for Offline Hierarchical Reinforcement Learning.pdf},
+ langid = {english},
+ month = {November}
+}
+\stopverb}

@@ -1,0 +1,53 @@
+\date{2026-03-16T01:32:28Z}
+\tag{todo}
+\author{kellenkanarios}
+\import{base-macros}
+\tag{blog}
+\tag{upcoming}
+\title{TPU FlexAttention: A Worklog}
+
+\section{Setting up TPU VM}{
+This is SHOCKINGLY difficult to do. I've ultimately ended up with the following to create / connect / delete a TPU VM:
+\pre\verb<<<|
+alias gtpu="gcloud compute tpus tpu-vm create $TPU_NAME \
+  --project=$PROJECT_ID \
+  --zone=$ZONE \
+  --accelerator-type=$ACCELERATOR_TYPE \
+  --version=$VERSION \
+  --command='curl -LsSf https://astral.sh/uv/0.10.9/install.sh | sh'
+"
+alias sshtpu="gcloud compute tpus tpu-vm ssh $TPU_NAME --zone=$ZONE"
+alias tpudel="gcloud compute tpus tpu-vm delete $TPU_NAME \
+    --project=$PROJECT_ID \
+    --zone=$ZONE"
+<<<
+To actually move files between the TPU VM and my local machine, I've had to use the following:
+\pre\verb<<<|
+tpup() {
+  local src="$1"
+  gcloud compute tpus tpu-vm scp --recurse "./$src" "${TPU_NAME}:${PROJECT_ID}/$src" --zone="$ZONE"
+}
+
+tpudwn() {
+  local src="$1"
+  gcloud compute tpus tpu-vm scp --recurse "${TPU_NAME}:${PROJECT_ID}/$src" "./$src"  --zone="$ZONE"
+}
+<<<
+}
+\section{Jax Tracing Mental Model}{
+
+}
+\section{Learning Pallas}{
+
+}
+\section{Background Reading}{
+\ol{
+  \li{[[dongFlexAttentionProgramming2024]]}
+  \li{[[daoFlashAttentionFastMemoryEfficient2022]]}
+}
+}
+
+
+\hr
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

@@ -1,0 +1,28 @@
+% ["refs"]
+\title{VIP: Towards Universal Visual Reward and Representation via Value-Implicit Pre-Training}
+\date{2023-03}
+\author/literal{Yecheng Jason Ma}\author/literal{Shagun Sodhani}\author/literal{Dinesh Jayaraman}\author/literal{Osbert Bastani}\author/literal{Vikash Kumar}\author/literal{Amy Zhang}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2210.00030}
+\meta{external}{https://arxiv.org/abs/2210.00030}
+
+\meta{bibtex}{\startverb
+@misc{maVIPUniversalVisual2023,
+ title = {{{VIP}}: {{Towards Universal Visual Reward}} and {{Representation}} via {{Value-Implicit Pre-Training}}},
+ author = {Ma, Yecheng Jason and Sodhani, Shagun and Jayaraman, Dinesh and Bastani, Osbert and Kumar, Vikash and Zhang, Amy},
+ year = {2023},
+ doi = {10.48550/arXiv.2210.00030},
+ urldate = {2026-02-11},
+ number = {arXiv:2210.00030},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/REEWKCVK/Ma et al. - 2023 - VIP Towards Universal Visual Reward and Representation via Value-Implicit Pre-Training.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Reward and representation learning are two long-standing challenges for learning an expanding set of robot manipulation skills from sensory observations. Given the inherent cost and scarcity of in-domain, task-specific robot data, learning from large, diverse, offline human videos has emerged as a promising path towards acquiring a generally useful visual representation for control; however, how these human videos can be used for general-purpose reward learning remains an open question. We introduce Value-Implicit Pre-training (VIP), a self-supervised pre-trained visual representation capable of generating dense and smooth reward functions for unseen robotic tasks. VIP casts representation learning from human videos as an offline goal-conditioned reinforcement learning problem and derives a selfsupervised goal-conditioned value-function objective that does not depend on actions, enabling pre-training on unlabeled human videos. Theoretically, VIP can be understood as a novel implicit time contrastive objective that generates a temporally smooth embedding, enabling the value function to be implicitly defined via the embedding distance, which can then be used to construct the reward function for any goal-image specified downstream task. Trained on large-scale Ego4D human videos and without any fine-tuning on in-domain, task-specific data, VIP can provide dense visual reward for an extensive set of simulated and real-robot tasks, enabling diverse reward-based visual control methods and outperforming all prior pre-trained representations. Notably, VIP can enable simple, few-shot offline RL on a suite of real-world robot tasks with as few as 20 trajectories.},
+ primaryclass = {cs},
+ eprint = {2210.00030},
+ month = {March},
+ shorttitle = {{{VIP}}}
+}
+\stopverb}

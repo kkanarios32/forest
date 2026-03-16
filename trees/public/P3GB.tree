@@ -1,0 +1,62 @@
+\date{2026-03-15T15:23:47Z}
+\tag{public}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+\tag{note}
+\tag{top}
+
+\title{Notebook: Inside the Machine}
+\p{Notes on the book \em{Inside the Machine} by Jon Stokes.}
+
+\section{Chapter 1}{
+\p{For speed, we introduce the first notion of NUMA i.e. registers. Here the registers or stored in the register file, which is located very close to the ALUs.}
+\p{Due to limited surface area of the CPU, we can only have so many registers. This necessitates the introduction of main memory or RAM. Data is transferred from main memory to the CPU via the \em{memory bus}.}
+\p{This leads to the logical classification of instructions into two categories: arithmetic operations and memory operations.}
+\p{To ease programmability, there are \em{general purpose registers} that function as both integer values and correspond to memory addresses. This is useful for \em{register-relative addressing}, where we can offset all memory accesses by some register value.}
+\p{To support both values and registers, we need to distinguish as ''immediate types'' vs. ''register types''. We will see why when we actually make a instruction set that must correspond to binary.}
+}
+\section{Chapter 2}{
+\p{\strong{The Fetch-Execute Loop:}}
+\ol{
+  \li{\em{Fetch} instruction from memory}
+  \ul{
+    \li{This entails reading the instruction and loading it into the \em{instruction register}.}
+    \li{Also we increment the program counter.}
+  }
+  \li{\em{Decode} instruction}
+  \ul{
+    \li{This entails extracting the \em{opcode} from the instruction register.}
+    \li{We also extract the \em{operands} from the instruction register.}
+    \li{We also extract the \em{destination} from the instruction register.}
+  }
+  \li{\em{Execute} instruction}
+  \ul{
+    \li{If the instruction is an arithmetic operation, we use the ALU.}
+    \li{If the instruction is a memory operation, we use the load/store unit.}
+  }
+}
+\remark{
+These instructions do not take arbirary amounts of time to execute. They depend on the \em{clock cycle}. This is inputted via the motherboard and determines when to read the values stored in the current state.
+}
+\p{\strong{Branch Instructions:} There are two types conditional and unconditional.}
+\ol{
+  \li{Unconditional: The program counter is set to the destination address.}
+  \li{Conditional: The program counter is set to the destination address if the condition is true.}
+  \ul{
+    \li{To support conditional branching, normally need to have some other sort of hardware. In the example given in this chapter, they keep a \em{processor status word} register that stores the output of the previous arithmetic instruction.}
+    \li{Many different types of conditional branching instructions based on the value in the PSW.}
+  }
+}
+\p{Branch instructions are added as a third case in the execute phase i.e.}
+\ul{
+  \li{If the instruction is a branch instruction, check the condition and branch.}
+}
+\remark{
+If the program uses relative addressing, then the OS must load the base register of the code block to add to the branch destination register.
+}
+\problem{\strong{How does a computer boot:} If a computer must fetch instructions, then what does it do at the beginning when there is no program running?}
+\solution{
+  When you power on a computer, it is hard-wired to fetch an initial instruction from a pre-determined address. This memory address is also hardcoded and unchanged and contains the code for the BIOS. The BIOS is then responsible for making sure everything is working correctly before \code{jump} to the bootloader, which then loads the OS.
+}
+}

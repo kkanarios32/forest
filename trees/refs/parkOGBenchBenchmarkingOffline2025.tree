@@ -1,0 +1,28 @@
+% ["refs"]
+\title{OGBench: Benchmarking Offline Goal-Conditioned RL}
+\date{2025-02}
+\author/literal{Seohong Park}\author/literal{Kevin Frans}\author/literal{Benjamin Eysenbach}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2410.20092}
+\meta{external}{https://arxiv.org/abs/2410.20092}
+
+\meta{bibtex}{\startverb
+@misc{parkOGBenchBenchmarkingOffline2025,
+ title = {{{OGBench}}: {{Benchmarking Offline Goal-Conditioned RL}}},
+ author = {Park, Seohong and Frans, Kevin and Eysenbach, Benjamin and Levine, Sergey},
+ year = {2025},
+ doi = {10.48550/arXiv.2410.20092},
+ urldate = {2026-01-22},
+ number = {arXiv:2410.20092},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/W6WBZVXQ/Park et al. - 2025 - OGBench Benchmarking Offline Goal-Conditioned RL.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Offline goal-conditioned reinforcement learning (GCRL) is a major problem in reinforcement learning (RL) because it provides a simple, unsupervised, and domain-agnostic way to acquire diverse behaviors and representations from unlabeled data without rewards. Despite the importance of this setting, we lack a standard benchmark that can systematically evaluate the capabilities of offline GCRL algorithms. In this work, we propose OGBench, a new, high-quality benchmark for algorithms research in offline goal-conditioned RL. OGBench consists of 8 types of environments, 85 datasets, and reference implementations of 6 representative offline GCRL algorithms. We have designed these challenging and realistic environments and datasets to directly probe different capabilities of algorithms, such as stitching, long-horizon reasoning, and the ability to handle high-dimensional inputs and stochasticity. While representative algorithms may rank similarly on prior benchmarks, our experiments reveal stark strengths and weaknesses in these different capabilities, providing a strong foundation for building new algorithms. Project page: https://seohong.me/projects/ogbench},
+ primaryclass = {cs},
+ eprint = {2410.20092},
+ month = {February},
+ shorttitle = {{{OGBench}}}
+}
+\stopverb}

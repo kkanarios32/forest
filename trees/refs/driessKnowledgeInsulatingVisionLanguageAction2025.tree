@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Knowledge Insulating Vision-Language-Action Models: Train Fast, Run Fast, Generalize Better}
+\date{2025-05}
+\author/literal{Danny Driess}\author/literal{Jost Tobias Springenberg}\author/literal{Brian Ichter}\author/literal{Lili Yu}\author/literal{Adrian Li-Bell}\author/literal{Karl Pertsch}\author/literal{Allen Z. Ren}\author/literal{Homer Walke}\author/literal{Quan Vuong}\author/literal{Lucy Xiaoyang Shi}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2505.23705}
+\meta{external}{https://arxiv.org/abs/2505.23705}
+
+\meta{bibtex}{\startverb
+@misc{driessKnowledgeInsulatingVisionLanguageAction2025,
+ title = {Knowledge {{Insulating Vision-Language-Action Models}}: {{Train Fast}}, {{Run Fast}}, {{Generalize Better}}},
+ author = {Driess, Danny and Springenberg, Jost Tobias and Ichter, Brian and Yu, Lili and {Li-Bell}, Adrian and Pertsch, Karl and Ren, Allen Z. and Walke, Homer and Vuong, Quan and Shi, Lucy Xiaoyang and Levine, Sergey},
+ year = {2025},
+ doi = {10.48550/arXiv.2505.23705},
+ urldate = {2026-01-20},
+ number = {arXiv:2505.23705},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/73242RCK/Driess et al. - 2025 - Knowledge Insulating Vision-Language-Action Models Train Fast, Run Fast, Generalize Better.pdf},
+ keywords = {Computer Science - Machine Learning,Computer Science - Robotics},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Vision-language-action (VLA) models provide a powerful approach to training control policies for physical systems, such as robots, by combining end-to-end learning with transfer of semantic knowledge from web-scale vision-language model (VLM) training. However, the constraints of real-time control are often at odds with the design of VLMs: the most powerful VLMs have tens or hundreds of billions of parameters, presenting an obstacle to real-time inference, and operate on discrete tokens rather than the continuous-valued outputs that are required for controlling robots. To address this challenge, recent VLA models have used specialized modules for efficient continuous control, such as action experts or continuous output heads, which typically require adding new untrained parameters to the pretrained VLM backbone. While these modules improve real-time and control capabilities, it remains an open question whether they preserve or degrade the semantic knowledge contained in the pretrained VLM, and what effect they have on the VLA training dynamics. In this paper, we study this question in the context of VLAs that include a continuous diffusion or flow matching action expert, showing that naively including such experts significantly harms both training speed and knowledge transfer. We provide an extensive analysis of various design choices, their impact on performance and knowledge transfer, and propose a technique for insulating the VLM backbone during VLA training that mitigates this issue. Videos are available at https://pi.website/research/knowledge\_insulation.},
+ primaryclass = {cs},
+ eprint = {2505.23705},
+ month = {May},
+ shorttitle = {Knowledge {{Insulating Vision-Language-Action Models}}}
+}
+\stopverb}

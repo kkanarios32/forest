@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Flex Attention: A Programming Model for Generating Optimized Attention Kernels}
+\date{2024-12}
+\author/literal{Juechu Dong}\author/literal{Boyuan Feng}\author/literal{Driss Guessous}\author/literal{Yanbo Liang}\author/literal{Horace He}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2412.05496}
+\meta{external}{https://arxiv.org/abs/2412.05496}
+
+\meta{bibtex}{\startverb
+@misc{dongFlexAttentionProgramming2024,
+ title = {Flex {{Attention}}: {{A Programming Model}} for {{Generating Optimized Attention Kernels}}},
+ author = {Dong, Juechu and Feng, Boyuan and Guessous, Driss and Liang, Yanbo and He, Horace},
+ year = {2024},
+ doi = {10.48550/arXiv.2412.05496},
+ urldate = {2026-03-14},
+ number = {arXiv:2412.05496},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/L8YG24J9/Dong et al. - 2024 - Flex Attention A Programming Model for Generating Optimized Attention Kernels.pdf},
+ keywords = {Computer Science - Machine Learning,Computer Science - Performance,Computer Science - Programming Languages},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Over the past 7 years, attention has become one of the most important primitives in deep learning. The primary approach to optimize attention is FlashAttention, which fuses the operation together, drastically improving both the runtime and the memory consumption. However, the importance of FlashAttention combined with its monolithic nature poses a problem for researchers aiming to try new attention variants --- a ``software lottery''. This problem is exacerbated by the difficulty of writing efficient fused attention kernels, resisting traditional compiler-based approaches. We introduce FlexAttention, a novel compiler-driven programming model that allows implementing the majority of attention variants in a few lines of idiomatic PyTorch code. We demonstrate that many existing attention variants (e.g. Alibi, Document Masking, PagedAttention, etc.) can be implemented via FlexAttention, and that we achieve competitive performance compared to these handwritten kernels. Finally, we demonstrate how FlexAttention allows for easy composition of attention variants, solving the combinatorial explosion of attention variants.},
+ primaryclass = {cs},
+ eprint = {2412.05496},
+ month = {December},
+ shorttitle = {Flex {{Attention}}}
+}
+\stopverb}
