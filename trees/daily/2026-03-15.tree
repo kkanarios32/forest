@@ -19,23 +19,10 @@
       \li{IsPalindrome}
       \li{IsSubsequence}
     }
-    \li{}
     \li{Must set up TPU profiling workflow over SSH.}
   }
 }
 
 \section{Progress on Todos}{
-
-}
-
-\section{What did I learn today?}{
-
-}
-
-\section{Things to maybe look at later.}{
-
-}
-
-\section{Research Notebook}{
-
+I completed the two leetcode problems. I set up copying over SSH to my TPU and have started a [worklog](FAO7) for the project. 
 }
