@@ -35,3 +35,14 @@
 \section{Things to maybe look at later.}{
 I need to re-look at the matrix multiplication math in the GPU lecture from today and write in down in my notes.
 }
+
+\section{Tomorrow's Todos}{
+ \ol{
+   \li{Leetcode: 3Sum, minimum size subarray sum}
+   \li{Read chapter 3 of inside the machine.}
+   \li{Profile a Pallas matmul.}
+   \ul{
+     \li{If this goes well, maybe look into how to lower \code{flex_attention} to jitted with inserted jitted \code{score_mod} and \code{mask_mod}.}
+   }
+ }
+}
