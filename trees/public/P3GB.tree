@@ -60,3 +60,34 @@ If the program uses relative addressing, then the OS must load the base register
   When you power on a computer, it is hard-wired to fetch an initial instruction from a pre-determined address. This memory address is also hardcoded and unchanged and contains the code for the BIOS. The BIOS is then responsible for making sure everything is working correctly before \code{jump} to the bootloader, which then loads the OS.
 }
 }
+\section{Chapter 3: Pipelined Execution}{
+\p{Previously, we discussed the fetch-execute loop. However, it is actually the case that the store / write part of execute is treated as a different stage, yielding}
+\ol{
+  \li{\em{Fetch} instruction from memory}
+  \li{\em{Decode} instruction}
+  \li{\em{Execute} instruction}
+  \ul{
+    \li{Now a read / add}
+  }
+  \li{\em{Write} result to memory}
+}
+\remark{
+Each of these represents one \em{phase} in the pipeline. However, these by no means take the same amount of time.
+}
+\p{We have previously been determining the clock cycle as the time to complete an entire instruction i.e. to complete the whole pipeline. However, with overlapping instructions we now can shrink the clock cycle to the time it takes to complete the slowest phase of the pipeline. Dividing the pipeline into roughly equal stages is important to ensure that no one stage is idle during the majority of the cycle.}
+\remark{
+Pipelining does not increase the speed of execution of a single instruction. However, it does increase the program execution time. Taking this to the limit, we would want an extremely fine pipeline i.e. large depth, so that no stage is ever idle. Explicitly, for #{n} stages a full pipeline will complete #{n} instructions every cycle. However, there is a tradeoff due to the clock cycle constraints as deepening your pipeline can cause longer per-instruction execution time.
+}
+\p{\strong{Metrics:}}
+\ol{
+  \li{Completion rate: number of instructions completed per nanosecond.}
+  \ul{
+    \li{Program execution time is #{\frac{\text{number of instructions per program}}{\text{avg completion rate per instruction}} }
+  }
+  }
+  \li{Instruction throughput: number of instructions processor finishes executing per clock cycle.}
+}
+\p{Each metric also has the maximum theoretically achieved and the average.}
+\p{The main thing preventing us from achieving our maximum theoretical throughput is \em{pipeline stalls}. Namely, for some reason we cannot execute a certain stage of the pipeline at a certain time i.e. we are waiting for a value to be loaded in from memory.}
+\p{The \em{instruction latency} is the number of cycles it takes to complete an instruction. In a single cycle processor, this is 1. Or the minimal latency is the sum of the cycles for each stage of the pipeline. Though, this is hardly the true latency in practice.}
+}

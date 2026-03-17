@@ -1,0 +1,43 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Tuesday, March 17, 2026}
+\date{2026-03-17T13:06:51Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 6, Section 49}
+\em{That which is not good for the bee-hive, cannot be good for the bee.}
+}
+\p{\strong{Translation:}}
+}
+
+\section{Today's Todos}{
+ \ol{
+   \li{Leetcode: 3Sum, minimum size subarray sum}
+   \li{Read chapter 3 of inside the machine.}
+   \li{Profile a Pallas matmul.}
+   \ul{
+     \li{If this goes well, maybe look into how to lower \code{flex_attention} to jitted with inserted jitted \code{score_mod} and \code{mask_mod}.}
+   }
+ }
+}
+
+\section{Progress on Todos}{
+\ol{
+  \li{Did Leetcode 3Sum, did not think to sort array first, so it took forever and did not get to do another problem.}
+}
+}
+
+\section{What did I learn today?}{
+
+}
+
+\section{Things to maybe look at later.}{
+
+}
+
+\section{Tomorrow's Todos}{
+
+}

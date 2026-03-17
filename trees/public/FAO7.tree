@@ -9,19 +9,38 @@
 \section{Setting up TPU VM}{
 This is SHOCKINGLY difficult to do. I've ultimately ended up with the following to create / connect / delete a TPU VM:
 \pre\verb<<<|
-alias gtpu="gcloud compute tpus tpu-vm create $TPU_NAME \
-  --project=$PROJECT_ID \
-  --zone=$ZONE \
-  --accelerator-type=$ACCELERATOR_TYPE \
-  --version=$VERSION \
-  --command='curl -LsSf https://astral.sh/uv/0.10.9/install.sh | sh'
-"
-alias sshtpu="gcloud compute tpus tpu-vm ssh $TPU_NAME --zone=$ZONE"
-alias tpudel="gcloud compute tpus tpu-vm delete $TPU_NAME \
-    --project=$PROJECT_ID \
-    --zone=$ZONE"
+gtpu() {
+  gcloud compute tpus tpu-vm create "$TPU_NAME" \
+    --project="$PROJECT_ID" \
+    --zone="$ZONE" \
+    --accelerator-type="$ACCELERATOR_TYPE" \
+    --version="$VERSION" \
+    --metadata startup-script='#! /bin/bash
+      curl -LsSf https://astral.sh/uv/0.10.9/install.sh | sh
+      EOF'
+}
+  
+tpustop() {
+  gcloud compute tpus tpu-vm stop "$TPU_NAME" \
+    --zone="$ZONE"
+}
+
+tpustart() {
+  gcloud compute tpus tpu-vm start "$TPU_NAME" \
+    --zone="$ZONE"
+}
+
+sshtpu() {
+  gcloud compute tpus tpu-vm ssh "$TPU_NAME" --zone="$ZONE"
+}
+
+tpudel() {
+  gcloud compute tpus tpu-vm delete "$TPU_NAME" \
+    --project="$PROJECT_ID" \
+    --zone="$ZONE"
+}
 <<<
-To actually move files between the TPU VM and my local machine, I've had to use the following:
+and to move files between the TPU VM and my local machine:
 \pre\verb<<<|
 tpup() {
   local src="$1"
@@ -32,6 +51,7 @@ tpudwn() {
   local src="$1"
   gcloud compute tpus tpu-vm scp --recurse "${TPU_NAME}:${PROJECT_ID}/$src" "./$src"  --zone="$ZONE"
 }
+
 <<<
 }
 \section{Jax Tracing Mental Model}{
