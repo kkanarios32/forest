@@ -351,32 +351,86 @@ In terms of latency, coarse-vector has lower latency as only a two hop protocol.
 }
 }
 \section{Data Level Parallelism}{
-\p{\strong{Motivation:} Looping over data is not just performing the same instructions over and over. There are many additional instructions that are executed like maintaining and incrementing loop variable, etc.}
-\p{\strong{Idea:} extend architecture to perform the same instructions with different data.}
-\remark{
-Different than superscalar because we are not just adding ALUs and executing different instructions but only fetch and decoding once and executing the same operation.
-}
-\p{Main advantage only one fetch and decode for #{n} operations. Also vector load and store very efficient.}
-\question{How to do this?}
-\solution{Vector data type with vector ISA i.e. specify bits per data type and store register file size / num bits.}
-\remark{
-Need array to be divisible by vector size to achieve perfect speedup.
-}
-\remark{
-Vector pipelines cannot do data forwarding because you would need #{O(n^2)} connections to every ALU.
-}
-\remark{
-Microcode can decompose wider instructions into smaller ones to support backward compatibility.
-}
-\p{\strong{Vector predication:} allow a mask to only apply operation where mask is true.}
-\question{How to use vectory operations?}
-\solution{Few ways:
-\ol{
-  \li{Intrinsic functions.}
-  \li{Vector data types.}
-  \li{External libraries.}
-  \li{Compiler (automatic vectorization).}
-}
-}
-\problem{Aliasing: modifying vector that operating on can cause race conditions.}
+  \section{Lecture 11}{
+  \p{\strong{Motivation:} Looping over data is not just performing the same instructions over and over. There are many additional instructions that are executed like maintaining and incrementing loop variable, etc.}
+  \p{\strong{Idea:} extend architecture to perform the same instructions with different data.}
+  \remark{
+  Different than superscalar because we are not just adding ALUs and executing different instructions but only fetch and decoding once and executing the same operation.
+  }
+  \p{Main advantage only one fetch and decode for #{n} operations. Also vector load and store very efficient.}
+  \question{How to do this?}
+  \solution{Vector data type with vector ISA i.e. specify bits per data type and store register file size / num bits.}
+  \remark{
+  Need array to be divisible by vector size to achieve perfect speedup.
+  }
+  \remark{
+  Vector pipelines cannot do data forwarding because you would need #{O(n^2)} connections to every ALU.
+  }
+  \remark{
+  Microcode can decompose wider instructions into smaller ones to support backward compatibility.
+  }
+  \p{\strong{Vector predication:} allow a mask to only apply operation where mask is true.}
+  \question{How to use vectory operations?}
+  \solution{Few ways:
+  \ol{
+    \li{Intrinsic functions.}
+    \li{Vector data types.}
+    \li{External libraries.}
+    \li{Compiler (automatic vectorization).}
+  }
+  }
+  \problem{Aliasing: modifying vector that operating on can cause race conditions.}
+  }
+  \section{Lecture 11}{
+    \p{GPU is connect to \em{GDDR} optimized for memory bandwidth.}
+    \p{\strong{CPUs}: \em{Run a given thread as fast as possible.}}
+    \ul{
+      \li{Large caches}
+      \li{Sophisticated control}
+      \li{Powerful ALU}
+    }
+    \p{\strong{GPUs}: \em{Get as high as throughput as possible. (at expense of individual thread)}}
+    \ul{
+      \li{Smaller caches to boost memory throughput.}
+      \li{Simple control: no branch prediction, no data forwarding.}
+      \li{Energy efficient ALU. Heavily pipelined for high throughput.}
+    }
+    \remark{
+      Need massive number of threads to get high throughput on GPU. Not good for single-threaded complex workloads.
+    }
+    \p{The equivalent of a core in a GPU is a \em{Streaming Multiprocessor.}}
+    \question{When to use GPU vs. CPU?}
+    \answer{CPU for sequential parts where latency matters. GPU for parallel parts where throughput wins.}
+    \p{\strong{Load balance:} the total amount of time a parallel job takes to finish is bottlenecked by the slowest thread.}
+    \p{\strong{Memory bandwidth constraint:} memory contention in accessing critical data causes serialization. Want to overlap copmutation and communication.}
+    \p{On GPU, similar to vector instruction set i.e. one instruction for all threads on a GPU. However, now each is own thread and has own register values. Their output is NOT local to the thread. SIMT instead of SIMD.}
+    \p{\strong{Advantages of SIMT over SIMD:}}
+    \ol{
+      \li{Allows for control flow divergence. Threads that branch execute dummy instructions until other threads complete.}
+      \li{Allows hardware and compiler to perform different "groupings" i.e. warps.}
+    }
+    \remark{
+    To avoid wasted computation in warp divergence, can have compiler group threads on same conditional path together. (see warp specialization)
+    }
+    \question{How to handle stalls? No caches / fancy logic to avoid stalls.}
+    \solution{Fast context switching. Keep switching between active threads when one stalls. Threads == warps. Enough warps means always active.}
+    \p{In a CPU, context switching can take thousands of cycles. The main reason for this is that we need to write register values back to memory.}
+    \question{How to make context switching fast?}
+    \solution{Each SM has extremely large register file. Stores registers for multiple warps at any given time. Context switching is just picking a new warp whose registers are already loaded.}
+    \p{\strong{Cuda hierarchy:}}
+    \ol{
+      \li{Kernel}
+      \li{Blocks}
+      \ul{
+        \li{Shared memory}
+      }
+      \li{Warps}
+      \ul{
+        \li{32 threads}
+      }
+    }
+    \remark{
+    Physical size of shared memory places a constrain on the number of threads in a GPU.
+    }
+  }
 }

@@ -23,17 +23,15 @@
 }
 
 \section{Progress on Todos}{
-
+\ol{
+  \li{Finished 167 and 11. Almost done with two pointers section.}
+  \li{Read first two chapters of inside the machine. Took notes at [[P3GB]].}
+  \li{Watched video computer architecture lecture and attended the lecture today and took notes.}
+  \li{Could not profile the Pallas matmul because all the TPUs were being used?}
+  \li{Graded the first problem of ECE 567 homework.}
 }
-
-\section{What did I learn today?}{
-
 }
 
 \section{Things to maybe look at later.}{
-
-}
-
-\section{Research Notebook}{
-
+I need to re-look at the matrix multiplication math in the GPU lecture from today and write in down in my notes.
 }
