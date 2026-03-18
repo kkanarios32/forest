@@ -470,3 +470,57 @@ DSM: An SM-to-SM network, so that you do not need to write then read from global
 }
 }
 }
+\section{Lecture 13}{
+  \section{Global Memory}{
+\p{\strong{Memory Coalescing:}}
+\ul{
+  \li{Global memory high latency (400 -800) cycles.}
+  \li{Coalesce adjacent memory accesses across threads.}
+  \ul{
+    \li{Need accesses to lie in same L1 cache line.}
+  }
+}
+\remark{
+If addresses span across multiple cache lines, then the hardware has to serialize the accesses.
+}
+\remark{
+Permuting accesses does not affect utilization as long as they remain within a cache line.
+}
+\question{Do you always want to cache?}
+\answer{No. if you are memory constrained and your program has no spatial locality it is wasting memory}
+\question{Why do you need to load entire cache line for cache architecture?}
+\answer{TODO}
+\p{CUDA provides the capability to disable L1 caching. One benefit is for misaligned data the extra loaded data is only the size of the smaller granularity rather than the whole cache line.}
+}
+\section{Shared Memory}{
+\p{Shared memory has much lower latency (a few cycles).}
+\p{Uses:}
+\ul{
+  \li{Avoid non-coalesced memory accesses.}
+}
+\p{\strong{Bank conflict:} In any given cycle, can only service one request per bank per cycle. If two accesses to same bank, then they will be serialized.}
+\remark{
+If they access the exact same word within a bank then the word can be broadcast to all threads. Or if they access, contiguous regions within a bank(?).
+}
+\question{How to avoid bank conflicts?}
+\answer{Change address patterns to access different banks. Or pad.}
+}
+\p{\strong{Takeaways:}}
+\ol{
+  \li{Strive for perfect coalescing.}
+  \ul{
+    \li{Structure of array vs. array of structures.}
+  }
+  \li{Use shared memory to avoid global memory.}
+}
+\p{\strong{Latency bound:} both memory and instruction throughput are far from optimal.}
+\p{Hide latency by switching between warps.}
+\p{\strong{Occupancy:} number of active warps vs. maximum allowed warps.}
+\section{CPU-GPU Interaction}{
+\p{Host device transfer much lower bandwidth than global memory -> minimize this transfer.}
+\ul{
+  \li{Transfer large chunks of data at a time to GPU.}
+}
+\p{\strong{Streams and Async:} Can concurrently perform kernel and memory copy. Must pin memory on CPU to avoid paging out.}
+}
+}
