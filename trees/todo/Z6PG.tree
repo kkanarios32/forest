@@ -1,0 +1,45 @@
+\date{2026-03-18T13:09:31Z}
+\title{The SIMT Core: Instruction and Register Data Flow}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\tag{gpu}
+
+\p{The unit of scheduling in a GPU is a \em{warp} i.e. a group of ~32 threads. Each functional unit has as many lanes as there are threads in a warp.}
+
+\section{Execution Masking}{
+    \p{Recall that when encountering control flow, they serialize the threads that diverge.}
+    \question{How do they actually do this?}
+    \answer{They use a stack that contains a data structure with the following entries:
+    \ol{
+      \li{Next PC: pointing to the next instruction to execute.}
+      \li{RPC: Reconvergence point pointer. Used to force threads back to executing together.}
+      \li{Active mask: a bit mask of the active threads.}
+    }
+    }
+    \remark{
+    To reduce the maximum depth of the stack, entries are added by maximum number of active threads.
+    }
+    \problem{This can cause a deadlock!}
+    \figure{
+    \<html:img>[width]{100\%}[src]{\route-asset{assets/img/simt-deadlock.png}}{}
+    \figcaption{Example program that causes a deadlock.}
+    }
+    \p{In the above figure, the thread that exits the loop will be added to the stack as it diverges and never be able to release the lock.}
+    \p{To get around this, NVIDIA actually abandons the stack and instead uses a barrier-based approach. Namely, they track each divergence point via a 32-bit mask that indicates which threads participate in a given barrier. They can then arbitrarily switch between branches.}
+}
+
+\section{Warp Scheduling}{
+\p{First they discuss a \em{one-loop} approximation, which basically just means that you only have access to the current instruction and no information about dependencies.}
+\p{For the two loop approximation, we can check an instruction against a warp's outstanding register dependencies.}
+\problem{Would need to check all active warps and their operands against scoreboard to see dependencies. Cores allow 64 warps + 4 operands, which would require 256 lanes to scoreboard.}
+\solution{Keep small number of entries of register dependencies for each warp. Then check against instruction when it is added into the instruction cache. Bit vector corresponding to dependencies is copied alongside instruction. The bit vector is updated when warp has written back and an instruction is not eligible to be scheduled until the bit vector is clean.}
+\p{In the two-loop architecture, the ﬁrst loop selects a warp that has space in the instruction buﬀer, looks up its program counter and performs an instruction cache access to obtain the next instruction. The second loop selects an instruction in the instruction buﬀer that has no outstanding dependencies and issues it to the execution units.}
+\p{Another problem is \em{bank conflicts}. Namely, each warp has 32 threads accessing ~2-4 registers. We cannot read from the same bank in the same cycle, so they use an \em{operand collector unit} to get all the instructions and distribute the corresponding register values appropriately.}
+\remark{
+Bank conflicts cannot be accounted for directly by the programmer. However, you can minimize them by reducing \em{register pressure} i.e. if each thread uses less registers they are less likely to conflict.
+}
+\remark{
+Shared memory is also banked, but CAN be controlled by the programmer. Namely, you do not want access to the same bank across threads in a warp.
+}
+}

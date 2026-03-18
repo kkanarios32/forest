@@ -1,0 +1,10 @@
+\date{2026-03-18T14:47:12Z}
+\title{GPU Memory System}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+
+\section{First Level Memory Structures}{
+\p{As alluded to at the end of the [previous note](Z6PG), shared memory has the potential for \em{bank conflicts}.}
+\p{They have a \em{tag unit} and an \em{arbiter}, where the tag unit is responsible for determining which bank is being accessed, and the arbiter is responsible for decomposing the instruction into accepted and rejected instruction, replaying the conflicting accesses at a later point.}
+}

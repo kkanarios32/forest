@@ -10,7 +10,7 @@
 \strong{Book 6, Section 49}
 \em{That which is not good for the bee-hive, cannot be good for the bee.}
 }
-\p{\strong{Translation:}}
+\p{\strong{Translation:} Pretty straightforward one here. Acting in self-interest at the expense of others ultimately not in your best interest.}
 }
 
 \section{Today's Todos}{
@@ -27,17 +27,14 @@
 \section{Progress on Todos}{
 \ol{
   \li{Did Leetcode 3Sum, did not think to sort array first, so it took forever and did not get to do another problem.}
+  \li{Read chapter 3 of inside the machine took notes at [[P3GB]].}
+  \li{Cannot profile because I still cannot get access to a TPU. But I did set up a little profiling script. Hopefully it works when I actually get access.}
 }
-}
-
-\section{What did I learn today?}{
-
-}
-
-\section{Things to maybe look at later.}{
-
 }
 
 \section{Tomorrow's Todos}{
-
+\ol{
+  \li{Inside the machine: read chapter 4 + maybe chapter 5.}
+  \li{Make waypoint slides for computer architecture project.}
+}
 }
