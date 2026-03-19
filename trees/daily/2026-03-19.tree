@@ -1,0 +1,58 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Thursday, March 19, 2026}
+\date{2026-03-19T19:43:16Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 7, Section 34}
+\em{Thou must continually ponder and consider with thyself, what manner of men they be, and for their minds and understandings what is their present estate, whose good word and testimony thou dost desire. For then neither wilt thou see cause to complain of them that offend against their wills; or find any want of their applause, if once thou dost but penetrate into the true force and ground both of their opinions, and of their desires. 'No soul (saith he) is willingly bereft of the truth,' and by consequent, neither of justice, or temperance, or kindness, and mildness; nor of anything that is of the same kind. It is most needful that thou shouldst always remember this. For so shalt thou be far more gentle and moderate towards all men.}
+}
+\p{\strong{Translation:}}
+}
+
+\section{Today's Todos}{
+  \ol{
+    \li{Leetcode: subarray sum impl + longest substring(?).}
+    \li{Read chapter 4 of Inside the machine.}
+    \li{Make waypoint slides for computer architecture project.}
+    \ol{
+     \li{Start with slide on flash attention. improvements how it works.}
+     \li{Introduce flex attention via attention variant that does not compile to flash attention.}
+     \li{Show API that inserts mask and score into triton -> introduce pallas equivalent.}
+     \li{Goal: equivalent JAX lowering to pallas.}
+     \li{Currently: benchmarking how pallas is slower than jax implementation.}
+    }
+    \li{Try switching cost in OGBench project.}
+  }
+}
+
+\section{Progress on Todos}{
+\ol{
+  \li{Finished waypoint slides for computer architecture project.}
+  \ul{
+    \li{Learned a lot about what we actually want for the project.}
+    \li{Have a tiled pure JAX attention implementation that is faster than TPU flash attention right now.}
+    \li{Need to look and see how the JAX implementation is actually being compiled and see if we add the score / mask mod if it breaks the compilation.}
+  }
+  \li{Tried swtiching cost in OGBench project.}
+  \ul{
+    \li{Seems to overfit to not switching and no longer learns the correct skills.}
+    \li{Just collapses to only using one skill.}
+  }
+}
+}
+
+\section{What did I learn today?}{
+
+}
+
+\section{Things to maybe look at later.}{
+
+}
+
+\section{Tomorrow's Todos}{
+
+}
