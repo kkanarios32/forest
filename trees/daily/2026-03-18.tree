@@ -15,23 +15,38 @@
 
 \section{Today's Todos}{
 \ol{
+  \li{Leetcode: subarray sum.}
+  \li{Read GPU chapters for computer archtitecture.}
   \li{Inside the machine: read chapter 4 + maybe chapter 5.}
   \li{Make waypoint slides for computer architecture project.}
 }
 }
 
 \section{Progress on Todos}{
-
+\ol{
+  \li{Did leetcode subarray sum.}
+  \li{I read the chapter and took notes at [[Z6PG]] and [[FYHJ]]. Messed up the quiz and got 1.75 / 2 \startverb:(\stopverb}
+  \li{I did not make any slides, but I finally was able to get profiling working on TPU.}
+  \ul{
+    \li{Weird 0 percent memory usage, need to find out why.}
+  }
+  \li{Attended computer architecture lecture and took notes at [[N7GP]].}
+  \li{Finished grading second question on 567 homework.}
 }
-
-\section{What did I learn today?}{
-
-}
-
-\section{Things to maybe look at later.}{
-
 }
 
 \section{Tomorrow's Todos}{
-
+  \ol{
+    \li{Leetcode: subarray sum impl + longest substring(?).}
+    \li{Read chapter 4 of Inside the machine.}
+    \li{Make waypoint slides for computer architecture project.}
+    \ol{
+     \li{Start with slide on flash attention. improvements how it works.}
+     \li{Introduce flex attention via attention variant that does not compile to flash attention.}
+     \li{Show API that inserts mask and score into triton -> introduce pallas equivalent.}
+     \li{Goal: equivalent JAX lowering to pallas.}
+     \li{Currently: benchmarking how pallas is slower than jax implementation.}
+    }
+    \li{Try switching cost in OGBench project.}
+  }
 }
