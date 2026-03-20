@@ -31,13 +31,15 @@
 
 \section{Progress on Todos}{
 \ol{
+  \li{Finished subarray sum impl + longest substring.}
+  \li{Read chapter 4 of Inside the machine. Notes available at [[P3GB]].}
   \li{Finished waypoint slides for computer architecture project.}
   \ul{
     \li{Learned a lot about what we actually want for the project.}
     \li{Have a tiled pure JAX attention implementation that is faster than TPU flash attention right now.}
     \li{Need to look and see how the JAX implementation is actually being compiled and see if we add the score / mask mod if it breaks the compilation.}
   }
-  \li{Tried swtiching cost in OGBench project.}
+  \li{Tried switching cost in OGBench project.}
   \ul{
     \li{Seems to overfit to not switching and no longer learns the correct skills.}
     \li{Just collapses to only using one skill.}
@@ -45,14 +47,12 @@
 }
 }
 
-\section{What did I learn today?}{
-
-}
-
-\section{Things to maybe look at later.}{
-
-}
-
 \section{Tomorrow's Todos}{
-
+  \ul{
+    \li{Leetcode: substring with concatenation.}
+    \li{Read chapter 5 of Inside the machine.}
+    \li{Grade quizzes.}
+    \li{Grade homework 4.}
+    \li{Stretch: make some progress on coherency project in Murphi.}
+  }
 }
