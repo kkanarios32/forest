@@ -143,3 +143,16 @@ To actually perform this mapping, processor have a \em{microcode engine} that is
 
 }
 }
+\section{Chapter 5: The Intel Pentium and Pentium Pro}{
+  \section{The Original Pentium}{
+    \p{\strong{Caches:} To alleviate the latency of accessing main memory, processors have smaller (faster) memory located closer to the chip known as a \em{cache}. }
+    \ul{
+      \li{Caches are organized in a \em{cache hierarchy}. The first level is the \em{L1 cache}, which is the fastest cache. The second level is the \em{L2 cache}, which is slower than the L1 cache. The third level is the \em{L3 cache}, which is even slower than the L2 cache.}
+      \li{Furthermore, the L1 cache is normally split in half for data and instructions.}
+    }
+    \p{\strong{Branch Unit:} The branch unit contains a \em{branch execution unit} and a \em{branch prediction unit}.}
+    \ul{
+      \li{To reduce stalling, we can perform \em{speculative execution}, where based on the prediction of the BPU, we execute the subsequent instructions. Then we only write back once we have confirmed the correct prediction of the branch.}
+    }
+  }
+}
