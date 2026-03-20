@@ -2,6 +2,7 @@
 \title{Humanoid Robot Learning}
 \import{base-macros}
 \author{kellenkanarios}
+\tag{public}
 \tag{action-perception}
 \section{Benchmarking Humanoid Intelligence}{
     \p{Locomotion tasks: can humanoids move around? Vary terrain, avoid obstacles.}

@@ -2,6 +2,7 @@
 \title{Scalable Architectures for Robot Learning}
 \import{base-macros}
 \author{kellenkanarios}
+\tag{public}
 \tag{action-perception}
 
 \p{Autonomous driving: very perception heavy problem}

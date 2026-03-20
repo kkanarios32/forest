@@ -2,6 +2,7 @@
 \title{Image/Video Diffusion Models}
 \import{base-macros}
 \author{kellenkanarios}
+\tag{public}
 \tag{action-perception}
 
 \p{This is a crash course in image/video diffusion models as part of CSE 598}

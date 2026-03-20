@@ -2,6 +2,7 @@
 \title{Whole-Body Conditioned Egocentric Video Prediction}
 \import{base-macros}
 \author{kellenkanarios}
+\tag{public}
 \tag{action-perception}
 
 \p{Presentation on PEVA. Related work COSMOS.}
