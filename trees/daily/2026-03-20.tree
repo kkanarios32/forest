@@ -24,17 +24,18 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{I did not do substring with concatenation but instead did 4 hashmap problems.}
+  \li{I read the first half of chapter 5. The second half was quite dense.}
+  \li{I did grade the quizzes but did not grade the homework yet.}
 }
-
-\section{What did I learn today?}{
-
-}
-
-\section{Things to maybe look at later.}{
-
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Leetcode: substring with concatenation.}
+  \li{Finish chapter 5 of Inside the machine.}
+  \li{Grade homework.}
+  \li{Watch TPU lectures and take notes.}
+}
 }

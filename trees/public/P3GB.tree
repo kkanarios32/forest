@@ -154,5 +154,24 @@ To actually perform this mapping, processor have a \em{microcode engine} that is
     \ul{
       \li{To reduce stalling, we can perform \em{speculative execution}, where based on the prediction of the BPU, we execute the subsequent instructions. Then we only write back once we have confirmed the correct prediction of the branch.}
     }
+    \p{There is \em{static} and \em{dynamic} branch prediction, where the former is program-agnostic i.e. always predict the branch is taken. This is fine for certain loop-heavy programs but in general pretty bad.}
+    \p{The \em{dynamic} branch prediction makes use of the \em{branch history table} and the \em{branch target buffer}. The BHT stores how often previous branches are taken and then the BTB tells you which address those branches actually jump to in order to speculatively execute. Apparently, BTB misses are very costly.}
+    \p{The Pentium combines these by using static prediction if no entry is found and dynamic otherwise.}
+    \p{The modified pipeline for the Pentium is as follows:}
+    \ol{
+      \li{\em{Fetch / Prefetch:} fetch instruction from instruction cache.}
+      \li{\em{Decode 1:}.}
+      \ul{
+        \li{decode instruction to Pentium's internal format}
+        \li{branch prediction also happens here.}
+      }
+      \li{\em{Decode 2:}}
+      \ul{
+        \li{If instruction is not a simple instruction, then it is converted via the microcode ROM into microops to be performed by CPU.}
+      }
+      \li{\em{Execute:} execute instruction.}
+      \li{\em{Write:} write result to memory.}
+    }
+    \p{\strong{The Pentium Backend:}}
   }
 }
