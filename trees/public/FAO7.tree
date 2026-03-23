@@ -6,6 +6,8 @@
 \tag{upcoming}
 \title{TPU FlexAttention: A Worklog}
 
+\transclude{5DFA}
+
 \section{Setting up TPU VM}{
 This is SHOCKINGLY difficult to do. I've ultimately ended up with the following to create / connect / delete a TPU VM:
 \pre\verb<<<|
@@ -53,12 +55,6 @@ tpudwn() {
 }
 
 <<<
-}
-\section{Jax Tracing Mental Model}{
-
-}
-\section{Learning Pallas}{
-
 }
 \section{Background Reading}{
 \ol{

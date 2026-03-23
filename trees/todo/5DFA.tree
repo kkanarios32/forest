@@ -1,0 +1,149 @@
+\date{2026-03-23T13:47:52Z}
+\title{TPUs and JAX}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+
+\section{Introduction to JAX AI Stack}{
+\p{Three main transformations}
+\ul{
+  \li{\code{jit()}, \code{grad()}, \code{vmap()}}
+  \li{Compile, differentiate, and vectorize}
+}
+\p{\strong{Distributed training}}
+\ol{
+    \li{Data parallelism}
+    \ul{
+    \li{Data sharding: data is split across multiple devices i.e. 32 samples and 8 devices results in 4 unique samples per device.}
+    \li{Parameter replication: on each device, we need to replcicate the model parameters to run the forward pass for the unique samples.}
+    \li{Gradient aggregation: backward pass we need to perform an \em{all-reduce} to sum and average the gradients across devices. This is automatically done by \code{@nnx.jit}.}
+    }
+    \li{Tensor parallelism}
+    \ul{
+      \li{Large weight matrices split across devices. Can train larger models that exceed memory of single device.}
+      \li{Devices exchange partial activations to compute layer outputs.}
+    }
+}
+\remark{
+\code{nnx.with_partitioning} wraps initialization to bind \code{PartitionSpec} that defines sharding.
+}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/tpu-ironwood.png}}{}
+\figcaption{TPU Ironwood Architecture}
+}
+\section{Scaling Ironwood}{
+    \p{\strong{Torus Cube}:}
+    \ul{
+      \li{64 ironwood chips}
+      \li{Each chip connects to 6 neighbors via high-speed Inter-Chip Interconnect}
+      \li{Form a 3d torus, providing three axes for parallel bandwidth.}
+    }
+    \p{\strong{Optical Circuit Switching}:}
+    \ul{
+      \li{Multiple cubes are linked by an OCS network to build pods.}
+      \li{If a cube fails, the OCS optically bypasses and swaps in a spare.}
+      \li{OCS allows for slices without system shutdown (?)}
+    }
+}
+}
+\section{TPU Architecture}{
+    \section{Execution Units}{
+    \p{\strong{TensorCores}}
+    \figure{
+    \<html:img>[width]{100\%}[src]{\route-asset{assets/img/tensorcore.png}}{}
+    \figcaption{The TensorCore architecture}
+    }
+    \ul{
+      \li{\em{Vector register file} each register is 8x128 vector registers with 8 horizontal lanes and 128 vertical lanes. There are typically 64 of these registers.}
+    }
+    \p{\strong{The Vector Processing Unit}}
+    \ul{
+      \li{2D SIMD execution, where each of 1024 \em{sites} execute same program in lockstep.}
+      \li{Each site contains 4 ALUs, enabling 4096 FLOPs.}
+      \li{Fed a 8x128 VREG in one cycle.}
+    }
+    \p{\strong{Matrix Multiplication Unit} (MXU).}
+    \ul{
+      \li{256x256 totaling 65,536 \em{multiply accumulate} units i.e. each unit can multiply and add in one cycle.}
+      \remark{
+      Can only do 256x256 matrix multiplication, so the order is 
+      \ol{
+        \li{Tiling the matrix to load from HBM to VMEM}
+        \li{Compiler tiles from VMEM to 256x256 tiles to load into MXU.}
+      }
+      }
+    }
+    \figure{
+    \<html:img>[width]{30\%}[src]{\route-asset{assets/img/mxu.png}}{}
+    \figcaption{Note the input are offset so that the result from the first column can be accumulated int the second column. Can compute matmul in #{2n - 1} cycles.}
+    }
+    }
+}
+\section{XLA Compilation}{
+\p{\strong{Overview:}}
+\ul{
+  \li{Dispatch / Cache: caches compilation based on input argument signatures i.e. shapes, dtypes, sharding. If shapes change will need to \strong{recompile}.}
+  \li{XLA transformation: Python -> JaxPR -> StableHLO, performing fusion and other simplifications to reduce memory overhead (?).}
+  \li{TPU specific: Further reduced to LLO IR, then \em{very large instruction word} (VLIW) scheduling to map dot products to MXU.}
+}
+\remark{
+As soon as python code is traced into jaxpr it is thrown away. Only HLO is input to XLA compiler.
+}
+\p{\strong{Compilation (Pipeline):}}
+\ol{
+  \li{Tracing: Python / JAX -> Jaxpr}
+  \ul{
+    \li{\code{jax.make_jaxpr(fun)(*args)}}
+    \li{Abstract execution. JAX executes python code using abstract tracer objects instead of real arrays.}
+    \li{Recording the FLow. Every operation and its intermediate result is recorded into JAXpr.}
+    \li{Sequence used to construct a grap, which the XLA compiler will later optimize.}
+    \li{Python code is executed once during tracing but excluded from final graph.}
+    \li{Each JAX primitive registers functions for}
+    \ul{
+        \li{Lowering to StableHLO}  
+        \li{How it is transformed under \code{grad} and \code{vmap}.}
+    }
+  }
+  \li{Lowering: Jaxpr -> HLO}
+  \ul{
+    \li{\code{fn_lowered = jax.jit(fun).lower(*args)}}
+    \li{\code{stable_hlo = fn_lowered.as_text()}}
+    \li{\code{hlo = fn_lowered.compiler_ir('hlo')}}
+    \li{Multiple ML frameworks lower to StableHLO.}
+    \ul{
+      \li{Hardware agnostic.}
+      \li{Backwards compatible.}
+    }
+  }
+  \li{Compile: HLO -> Optimized HLO -> LLO IR -> VLIW -> Executables}
+  \ul{
+    \li{\code{compiled = fn_lowered.compile()}}
+    \li{\code{compiled.runtime_executable()} returns a \code{LoadedExecutable}.}
+    \li{Useful(?) \code{compiled.cost_analysis()}.}
+    \li{HLO:}
+    \ul{
+      \li{Input for XLA compiler.}
+      \li{Directed acyclic graph of copmutational operations.}
+      \li{All array dimensions are known at compile time.}
+      \li{Limited opcodes i.e. Add, Multiply, Transpose, Dot, etc.}
+    }
+  }
+}
+\p{\strong{XLA Shapes and Memory Layout}}
+\ul{
+  \li{Every data type defined by data type and fixed dimensions, determined at compile time.}
+  \li{Minor-to-major order i.e. fastest changing to slowesting changin.}
+  \li{Tiling: arrays are split into smaller blocks to fit into VREG. Want to arrange data to efficiently fit VREG.}
+}
+\figure{
+\<html:img>[width]{60\%}[src]{\route-asset{assets/img/xla-mem-layout.png}}{}
+\figcaption{How memory is laid out based on XLA.}
+}
+\p{\strong{Execution:}}
+\ul{
+  \li{Move tensors from CPU to HBM. Sharding is taken care of by PJIT if on TPU pod.}
+  \li{Async: Immediately returns a \code{Future} JAX array while the hardware executes VLIW microcode asynchronously.}
+  \li{Buffer management: Returns pointer to TPU memory. All handled lazily. Not copied back to CPU until \code{jax.block_until_ready()}.}
+}
+
+}
