@@ -1,0 +1,16 @@
+\date{2026-03-22T17:40:52Z}
+\tag{public}
+
+\title{Putting the engineer in my engineering degree}
+\p{Here I will be learning not only how a computer actually works, but how to actually leverage this knowledge to write more performant code. Along the way, I also intend to learn good coding practice and become all around a more capable engineer to differentiate myself from my results-oriented graduate student counterparts.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/low-level-roadmap.png}}{}
+\figcaption{Reading map for background.}
+}
+\p{I will also be keeping track of miscellaneous notes here that I deem relevant and things I want to look at in the future.}
+
+\p{\strong{Completed / In Progress}}
+\ol{
+ \li{[Inside the Machine](P3GB)} 
+ \li{[Three Easy Pieces](0084)}
+}

@@ -23,17 +23,14 @@
 }
 
 \section{Progress on Todos}{
-
-}
-
-\section{What did I learn today?}{
-
-}
-
-\section{Things to maybe look at later.}{
-
+Did absolutely nothing. Lifting before work is NOT a good idea. Plus I also had long run, so I think Saturday's may be off days for the foreseeable future.
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Leetcode: substring with concatenation.}
+  \li{Finish chapter 5 of Inside the machine.}
+  \li{Grade homework.}
+  \li{Watch TPU lectures and take notes.}
+}
 }

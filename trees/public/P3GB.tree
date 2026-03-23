@@ -173,5 +173,44 @@ To actually perform this mapping, processor have a \em{microcode engine} that is
       \li{\em{Write:} write result to memory.}
     }
     \p{\strong{The Pentium Backend:}}
+    \ul{
+      \li{Two integer ALUs. Responsible for the address calculations.}
+      \li{One floating point ALU.}
+      \ul{
+        \li{Register file is arranged in a \em{stack}.}
+        \li{Can arbitrarily access elements on the stack, but for floating point operations one register must be at top of stack.}
+        \li{Had instruction to swap with top of stack. On all modern x86 can be executed in 0 cycles. But still need to decode.}
+      }
+    }
+    \remark{
+    An estimated 30\% of the Pentium's transistors are used for legacy support, mainly going towards the microcode ROM.
+    }
+  }
+  \section{The Pentium Pro}{
+  \p{To support out of order execution while preserving the illusion of sequential execution, we must add a \em{issue buffer} and a \em{completion buffer}. The reorder buffer is where we store a larger set of instructions than just two, reordering them so that we can execute multiple conflict-free instructions in parallel. When an instruction is selected we say it is \em{issued}.}
+  \p{However, to ensure that we match the intent of the programmer, we must store the intermediate results of these instructions internally in registers not visible to the programmer. We then write these to the correct registers once all results are available. When the results of an instruction are written back we say it is \em{committed}.}
+  }
+
+  \figure{
+  \<html:img>[width]{70\%}[src]{\route-asset{assets/img/pentium-pro.png}}{}
+  \figcaption{}
+  }
+  \p{The Pentium Pro has the \em{reservation station} to issue instructions. Three instructions can dispatch into the reservations station at any given cycle and up to five instructions can be issued to be executed by the reservation station}
+  \p{To commit instructions, the Pentium Pro has the \em{reorder buffer}. The reorder buffer must ensure that instructions are commited in program order. Hence why it is at both the front and back of the pipeline. The reorder buffer keeps track of all relevant information i.e. instruction status, operands, register needs, position in program, etc.}
+  \ul{
+    \li{Also assists in register renaming.}
+    \li{Each of the 40 ROB entries has a data field that can be used as rename registers.}
+    \li{Speculated instructions are also added to the ROB but contain an additional indication that they are speculated. If the BPU mispredicts, they are cleared from the ROB.}
+  }
+  \p{\strong{CISC vs. RISC:} x86 is a CISC instruction set, meaning it contains more complex instructions. Namely, arithmetic instructions can be overloaded with memory locations directly instead of having to manually perform the loads and stores beforehand. Additionally, they allow support for complex types like strings. }
+  \problem{The drawback is that this introduces a large processor burden i.e. we have to implement this functionality directly into the processor. }
+  \solution{
+    Once it became apparent that RISC was the future, Intel and AMD shifted to \em{instruction translation}. This means that they supported x86 by translating the CISC instructions to a more RISC-like instruction set internally supported by the processor. These are called \em{micro-operations}
+  }
+  \remark{
+  Many CISC instructions translate to only one or two micro-ops. Therefore, they separate their decoders into simple and complex decoders, where the simple decoders are specific to just these operations.
+  }
+  \remark{
+  All of this decoding / translation resulted in 40\% of the Pentium pro's transistors being used for supporting backward compatibility......
   }
 }
