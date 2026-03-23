@@ -23,17 +23,16 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{Read chapter 5 of Inside the machine.}
+  \li{Did 3 leetcode problems. Not substring with concatenation though.}
 }
-
-\section{What did I learn today?}{
-
-}
-
-\section{Things to maybe look at later.}{
-
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Grade homework.}
+  \li{Watch TPU lectures and take notes.}
+  \li{Must start Murphi homework.}
+}
 }
