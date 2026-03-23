@@ -469,7 +469,6 @@ Most computation is bandwidth bound. To remedy this, people are developing \em{h
 DSM: An SM-to-SM network, so that you do not need to write then read from global memory between blocks.
 }
 }
-}
 \section{Lecture 13}{
   \section{Global Memory}{
 \p{\strong{Memory Coalescing:}}
@@ -522,5 +521,32 @@ If they access the exact same word within a bank then the word can be broadcast 
   \li{Transfer large chunks of data at a time to GPU.}
 }
 \p{\strong{Streams and Async:} Can concurrently perform kernel and memory copy. Must pin memory on CPU to avoid paging out.}
+}
+}
+\section{Lecture 14}{
+  \p{\strong{Latency vs. Throughput:} even if each thread has higher latency more threads can increase throughput. Main idea behind GPUs.}
+  \p{Instruction level parallelism:}
+  \ul{
+    \li{Single instruction issue. Has limited utilization due to waiting on dependencies}
+    \li{Superscalar: issue multiple instructions but must only issue independent instructions simultaneously. When no independent instructions, very poor utilization.}
+    \li{Predicated issue: issue both branches of conditional. Wastes energy.}
+  }
+  \p{Chip multiprocessor: allows ideal instruction level parallelism "for free".}
+  \ul{
+    \li{Coarse grained: keep superscalar only context switch for long latencies (i.e. L2 misses). Preserves single thread latency.}
+    \li{Fine grained: Round robin between threads. Increases single thread latency. Better utilization.}
+    \li{Simultaneous multithreading: superscalar instruction dispatching but each instruction can come from any thread.}
+    \ul{
+      \li{Heuristics: count number of instructions from each thread}
+      \li{Modern is called \em{hyper threading}.}
+      \li{Not as useful anymore because it causes chip to run too hot.}
+      \li{Cache interference: need to fit all threads working sets in cache.}
+    }
+  }
+  \section{ASIC Accelerators}{
+    \p{ \em{Application Specific Integrated Circuits. (ASIC)}}
+    \p{\strong{Intuition:} If you want to perform a \em{multipy accumulate} then both the multiplication and the addition have to go through the \strong{entire} pipeline. If you instead build a more powerful ALU capable of performing this multiply accumulate then it can be done in a single instruction.}
+  }
+  \p{\strong{Cost of operations:} 32b vs 8b addition has order of magnitude difference in energy consumption.}
 }
 }
