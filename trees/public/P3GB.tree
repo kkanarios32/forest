@@ -214,3 +214,6 @@ To actually perform this mapping, processor have a \em{microcode engine} that is
   All of this decoding / translation resulted in 40\% of the Pentium pro's transistors being used for supporting backward compatibility......
   }
 }
+\section{Chapter 6}{
+
+}

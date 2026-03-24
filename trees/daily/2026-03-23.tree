@@ -10,7 +10,7 @@
 \strong{Book 4, Section 15}
 \em{Now much time and leisure doth he gain, who is not curious to know what his neighbour hath said, or hath done, or hath attempted, but only what he doth himself, that it may be just and holy? or to express it in Agathos' words, Not to look about upon the evil conditions of others, but to run on straight in the line, without any loose and extravagant agitation.}
 }
-\p{\strong{Translation:} stop worrying about what others are doing and just focus on whether you are acting correctly.}
+\p{\strong{Translation:} stop worrying about what others are doing and just focus on yourself.}
 }
 
 \section{Today's Todos}{
@@ -27,11 +27,18 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{I did leetcode. I did substring concatenation with suboptimal complexity (only passed 172/182). I also fixed and implemented max consecutive.}
+  \li{I watched the first TPU lecture. The notes are available at [[5DFA]].}
+  \li{I started the murphi homework, but it is quite difficult. I need to go over protocol in coherence textbook tomorrow.}
+  \li{I went to the lecture and the notes are available at [[N7GP]].}
+}
 }
 
 \section{Tomorrow's Todos}{
 \ul{
   \li{Rewrite substring concatenation with optimal complexity.}
+  \li{Go over coherence protocol in textbook and implement MSI in murphi.}
+  \li{Finish inside machine chapter 6.}
 }
 }

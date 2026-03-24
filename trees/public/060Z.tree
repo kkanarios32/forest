@@ -1,3 +1,128 @@
+\import{base-macros}
 \date{2026-03-23T18:14:06Z}
 \tag{public}
 \title{Pallas}
+
+\section{Why Custom Kernels?}{
+  \example{
+  In attention kernel, we perform #{QK^T} in VMEM then copy back to HBM, then copy back to VMEM and do the softmax. Instead we want to \em{fuse} this into one kernel.
+  }
+  \figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/img/attn-fusion.png}}{}
+  \figcaption{Summary of XLA fusions for attention kernel.}
+  }
+  \ul{
+    \li{Logit & Max fusion:} 
+    \ul{
+      \li{34.45\% flop utilization} 
+      \ul{
+        \li{Use MXU to get over 350TFLOP/s.}
+      }
+      \li{18.74\% HBM bandwidth utilization.}  
+      \li{3.55\% On-chip read utilization}
+    }
+    \li{Softmax denom:}
+    \ul{
+      \li{0.32\% flop utilization.}
+      \li{0.0\% HBM bandwidth utilization.}
+      \ul{
+        \li{Keeps 1024x1024 logit matrix resident in VMEM.}  
+      }
+      \li{22.61\% On-chip read utilization}
+      \ul{
+        \li{Uses VPU to compute softmax which consumes data from VMEM at 6.6 TB/s.}
+      }
+    }
+    \li{Attention output:}
+    \ul{
+      \li{35.82\% flop utilization.}
+      \li{19.49\% HBM bandwidth utilization.}
+      \li{7.39\% On-chip read utilization.}
+    }
+  }
+  \p{\strong{HBM Bottleneck:} The default XLA attention does not fuse the softmax with the logit computation, requiring the entire logit matrix to be written back to HBM.}
+  \p{\strong{Vector Unit Limitations:} MXU can be left idle while VPU is performing copmlex exponential and sum operations.}
+  \p{\strong{VMEM Residency and Loop Control:} Pallas allows you to control data movement, so that we can explicitly enforce \em{online softmax} rather than writing back to HBM.}
+  \p{\strong{Temporal Control via LLO:} Pallas also allows control over the \em{temporal flow}, preventing the compiler from reordering your manual optimizations.}
+}
+\section{Pallas Fundamentals}{
+\em{Ignore the HLO pass.}
+\p{\strong{Writing a kernel:}}
+\ul{
+  \li{Inside the kernel, data has already been moved from HBM to VMEM.
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/pallas-mem-api.png}}{}
+}
+  }
+  \li{If data exceeds VMEM, we need to \em{tile} with \code{BlockSpec}.}
+  \li{Also need to \em{pipeline} i.e. while doing computation on a given block, we need to be moving the next block from HBM to VMEM.
+  \figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/img/pallas-pipeline-api.png}}{}
+  }
+  }
+  \li{By default, pipelining is done for you, but there are other APIs to control this(?)}
+  \ul{
+    \li{For-Loop scheduler.}
+    \li{Asynchronous overlap.}
+    \li{Buffer reuse. Uses same VMEM buffer across iterations.}
+  }
+}
+  \figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/img/pipelined-matmul.png}}{}
+  }
+  \p{\strong{Two-level Tiling:}}
+  \ul{
+    \li{Macro-tiling: this is done by Pallas / user. You define the larger software blocks i.e. 1024x1024 to hide latency DMA transfers. Pallas manages pipeling.}
+    \li{Micro-tiling: this is done by compiler / hardware. Translates larger block into hardware native VREG 8x128.
+    }
+  }
+  \p{\strong{VPU Pipelining:}}
+  \ul{
+    \li{VLOAD: fetching inputs for \strong{chunk (8x128)(N + 1)th} from VMEM and move to VRegs}
+    \li{VALU: Perform elementwise operations for \strong{current (Nth)} chunk }
+    \li{VSTORE: write completed result for \strong{previous (N - 1)th} chunk from VRegs back to VMEM.}
+  }
+}
+\section{Flash Attention}{
+\p{\strong{Online softmax:}}
+\ul{
+  \li{Each block does a local softmax calculation.}
+  \li{Tracks a shared maximum and adjusts results.}
+}
+\p{Can Now fuse score calculation, softmax, and value aggregation into single pass.}
+\p{No longer need to store NxN attention matrix in HBM.}
+\p{Can break #{Q, K, V} into small blocks that fit in VMEM.}
+\p{Kernel available [here](https://github.com/jax-ml/jax/blob/main/jax/experimental/pallas/ops/tpu/flash_attention.py).}
+\ul{
+  \li{Dynamic scaling #{(\alpha)}: Computes #{e^{m_{prev} - m_{next}}} to track change in maximum logit across blocks for numerical stability.}
+  \li{Re-scale accumulation: Multiplies by #{\alpha} to the previously accumulated sums before adding current block output to accurately rescale all past results.}
+  \li{Additive updates: partial results (current softmax and outputs) are added to running totals via fast multiply and addition ops.}
+  \li{Delayed normalization: only divide by normalization once at the very end of the loop because division is slow.}
+}
+\p{\strong{Block-size tuning:} to maximize compute-to-load ratio need biggest block sizes that fit into VMEM.}
+}
+\section{Splash Attention}{
+\p{With certain masks (i.e. causal) can skip alot of computation for parts of the attention matrix that are being masked out.}
+\ul{
+  \li{Finer blocks -> can skip more but then have poorer utilization.}
+}
+\p{\strong{Pre-processing Mask Info:}}
+\ul{
+  \li{Sparsity pruning: Divide mask into blocks and discard all inactive blocks (all zeros).}
+  \li{Data compression: see how many unique mask patterns are needed to describe the remaining active blocks.}
+  \li{Execution map and pre-fetching: (active_rows, mask_next) generated to map the computation order and tell the MXU which mask pattern to prefetch for zero-latency application.}
+}
+\p{\strong{Metadata structures:}}
+\ul{
+  \li{Block filtering (block_mask): categorizes QK blocks as zero, non-zero, partial.}
+  \li{Coordinate mapping (active_ros/cols): provides the hardware with (Q, KV) grid indices, ensuring efficient loading of active blocks from HBM.}
+  \li{Mask pipelining (mask_next): tells the hardware which mask pattern to prefetch.}
+  \li{SMEM-resident metadata: computed once per mask and stored in SMEM. Enable high-speed access to sparse execution map without need to re-transfer from HBM.}
+}
+\p{\strong{Pallas Call}}
+\ul{
+  \li{Grid definition: defined by (num_q_heads, grid_size). Grid size is set dynamically using the sparese meta data \code{fwd_mask_info.num_active_blocks[0]}.}
+  \li{SMEM Inputs: \code{num_scalar_prefetch} instructs hardware to prefetch critical scalar/metadata inputs into SMEM before thread begins computing.}
+  \li{VMEM Inputs: (Q, K, V) that must be moved from HBM to VMEM for kernel to execute.}
+}
+}

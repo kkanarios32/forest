@@ -46,39 +46,7 @@
     }
 }
 }
-\section{TPU Architecture}{
-    \section{Execution Units}{
-    \p{\strong{TensorCores}}
-    \figure{
-    \<html:img>[width]{100\%}[src]{\route-asset{assets/img/tensorcore.png}}{}
-    \figcaption{The TensorCore architecture}
-    }
-    \ul{
-      \li{\em{Vector register file} each register is 8x128 vector registers with 8 horizontal lanes and 128 vertical lanes. There are typically 64 of these registers.}
-    }
-    \p{\strong{The Vector Processing Unit}}
-    \ul{
-      \li{2D SIMD execution, where each of 1024 \em{sites} execute same program in lockstep.}
-      \li{Each site contains 4 ALUs, enabling 4096 FLOPs.}
-      \li{Fed a 8x128 VREG in one cycle.}
-    }
-    \p{\strong{Matrix Multiplication Unit} (MXU).}
-    \ul{
-      \li{256x256 totaling 65,536 \em{multiply accumulate} units i.e. each unit can multiply and add in one cycle.}
-      \remark{
-      Can only do 256x256 matrix multiplication, so the order is 
-      \ol{
-        \li{Tiling the matrix to load from HBM to VMEM}
-        \li{Compiler tiles from VMEM to 256x256 tiles to load into MXU.}
-      }
-      }
-    }
-    \figure{
-    \<html:img>[width]{30\%}[src]{\route-asset{assets/img/mxu.png}}{}
-    \figcaption{Note the input are offset so that the result from the first column can be accumulated int the second column. Can compute matmul in #{2n - 1} cycles.}
-    }
-    }
-}
+\transclude{NZZ7}
 \section{XLA Compilation}{
 \p{\strong{Overview:}}
 \ul{
