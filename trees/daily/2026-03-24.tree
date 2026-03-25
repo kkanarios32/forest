@@ -25,9 +25,13 @@
 \section{Progress on Todos}{
 \ul{
   \li{Finished TPU lecture 2. Notes available at [[060Z]]. Went to meeting.}
+  \li{I went over coherence protocol in textbook and implemented MSI in murphi. Not sure it is correct. Have begun write up at [[HHZO]].}
 }
 }
 
 \section{Tomorrow's Todos}{
-
+  \li{Rewrite substring concatenation with optimal complexity.}
+  \li{Finish inside machine chapter 6.}
+  \li{Finish MSI write up + start MESI.}
+  \li{Get research training infrastructure up and running.}
 }
