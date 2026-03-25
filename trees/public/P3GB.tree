@@ -215,5 +215,114 @@ To actually perform this mapping, processor have a \em{microcode engine} that is
   }
 }
 \section{Chapter 6}{
-
+\p{We now explore a RISC architecture in the line of PowerPC.}
+\section{PowerPC 601}{
+  \p{\strong{Frontend:}}
+  \p{Standard 4-stage pipeline.}
+  \p{Instruction queue dispatching 3 instructions per cycle.}
+  \ul{
+  \li{Used primarily for branch detection.}
+  \ul{
+    \li{Identifies unconditional branches or resolves conditional branches whose condition output is already available.}
+    \li{If taken, deletes branch instruction and loads instructions starting from branch location.}
+    \li{This is called \em{branch folding}.}
+    \li{Untaken branches "fall out" of the instruction queue, which is known as \em{fall through}.}
+  }
+  \li{No ROB equivalent. Static scheduling.}
+  }
+  \p{\strong{Backend:}}
+  \ul{
+    \li{One integer ALU. Handles address calculations and regular arithmetic ops.}
+    \li{One floating point ALU.}
+    \ul{
+      \li{For floating point dominant applications, integer ALU acts as address computer, accelerating pipeline.}
+      \li{Single cycle fused multiply-add.}
+    }
+  }
+  \remark{
+  Able to compete with two integer ALU architectures because simpler logic allowed 4x L1 cache (32kb vs. 8kb).
+  }
+  }
+  \section{PowerPC 603 and 603e}{
+ \p{\strong{Frontend:}} 
+ \ul{
+   \li{Has \em{dispatch bus} only connect to BU, so that branch instructions do not take up dispatch bandwidth.}
+   \li{Can dispatch up to 2 non-branch instructions per cycle.}
+   \li{Adds \em{commit unit} and \em{completion queue} analogous to the commit buffer and ROB we have seen previously.}
+   \ul{
+     \li{Dynamic scheduling + instruction window.}
+   }
+ }
+ \p{\strong{Backend:}}
+ \ul{
+   \li{Added two execution units.}
+   \ol{
+     \li{System unit. For misc integer operations.}
+     \li{Load/store unit. For address calcluations.}
+     \li{Improved integer workload performance by decreasing the responsibility of integer ALU.}
+   }
+   \li{FPU took significant hits.}
+   \ol{
+    \li{Can only execute three instructions every four cycles (mandatory bubble).} 
+    \li{Double precision operations (including \code{fmadd}) take two cycles in execute stage -> one double precision multiply every two cycles.}
+   }
+ }
+  }
+  \section{PowerPC 604}{
+  \p{\strong{Frontend:}}
+  \ul{
+   \li{Splits decode / dispatch + writeback into two stages} 
+   \ul{
+     \li{Enables shorter clock cycles.}
+   }
+   \li{Can dispatch up to 6 instructions per cycle.}
+   \li{Dynamic branch prediction.}
+   \ul{
+     \li{512 entry BHT with two bits per entry.}
+     \li{64 entry \em{branch address cache} equivalent to BTB.}
+   }
+    \li{Add Condition register unit.}
+    \ul{
+      \li{Shares dispatch bus and other(?) resources with BU.}
+    }
+  }
+  \p{\strong{Backend:}}
+  \ul{
+    \li{Two simple integer units and one complex integer unit.}
+    \li{Fully pipeline floating point unit.}
+  }
+  \p{Frontend Pipeline:}
+  \ul{
+    \li{Instructions fetched from L1 instruction cache into instruction queue.}
+    \li{Folds branches that can be folded.}
+    \li{Dispatch up to 4 instructions from bottom of instruction queu.}
+    \li{During dispatch, rename registers and a ROB entry are assigned to each dispatched instruction.}
+    \li{An instruction \strong{cannot} be dispatched if it needs an occupied execution unit.}
+  }
+  \p{Issue phase:}
+  \ul{
+    \li{Each execution unit has own reservation station.}
+    \li{Within each reservation station, instructions are issued in order FIFO. But there is \strong{no guarantee} across reservation stations.}
+    \ul{
+      \li{Reservation stations are used so that instructions waiting on operands do not block following instructions that may be ready.}
+    }
+    \li{Four rules of dispatching:}
+    \ol{
+      \li{in-order rule: instructions are dispatched in order and are not executed out of order until they executed on their respective units.}
+      \li{execution unit availability: the execution unit's reservation station must have room. if it does not need to go to reservation station then the execution unit must be available.}
+      \li{completion buffer availability rule: must be room to add entry to ROB (completion buffer) so that we can ensure program order on commit.}
+      \li{register renaming rule: must be enough rename registers to temporarily restore results before committing..}
+    }
+  }
+  \p{Completion phase: put instructions back in program order according to ROB entries.}
+  \remark{
+  604 has small ROB and fewer reservation stations because it has a shallow pipeline, meaning that it can afford to stall. Tradeoff is lower clock speed.
+  \ul{
+    \li{ROB tracks all issued instructions.}
+    \li{Reservation stations hold all instructions waiting on operands.}
+    \li{Size must cover number of instructions simultaneously "in flight".}
+    \li{In flight instructions #{\approx} depth #{\times} width.}
+  }
+  }
+  }
 }
