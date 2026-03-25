@@ -5,17 +5,11 @@
 \tag{public}
 \tag{action-perception}
 
-\p{Autonomous driving: very perception heavy problem}
+\p{We have the following taxonomy for robot learning:}
 \ol{
-  \li{Learning for perception}
-}
-\p{Locomotion: vry controls-heavy problem}
-\ol{
-  \li{Learning for control}
-}
-\p{Manipulation: perception + controls}
-\ol{
-  \li{End-to-end visuomotor policy learning}
+  \li{\strong{Autonomous driving:} very perception heavy problem -> Learning for perception}
+  \li{\strong{Locomotion:} very controls-heavy problem -> Learning for control}
+  \li{\strong{Manipulation:} perception + controls -> End-to-end visuomotor policy learning}
 }
 \p{Specialist models are brittle i.e. sensitive to differences in lighting or camera angle.}
 \p{More data -> generalist models}
@@ -25,16 +19,16 @@
 ##{\max_{\theta} \sum_{(a,o,T)} \pi_{\theta}(a \mid o, T)}
 where #{T} is the task identifier.
 }
-\p{Datasets: DROID, Open-X embodiment.}
-\p{Vision-Language-Action model: given images, text description output actions dx, dy, dz.}
+\p{\strong{Datasets:} DROID, Open-X embodiment.}
+\p{\strong{Vision-Language-Action model:} given images, text description output actions dx, dy, dz.}
 \ol{
   \li{Scalable training}
   \li{Flexible inputs + outpus}
   \li{Internet scale pre-training}
 }
 \p{How do we output actions? Discretization via uniform bins.}
-\p{OpenVLA:}
-\ol{
+\p{\strong{OpenVLA:}}
+\ul{
   \li{Two stream encoder for spatial (DinoV2) and semantic (CLIP) features.}
 }
 \remark{
@@ -57,7 +51,7 @@ where #{T} is the task identifier.
   \li{Speed}
 }
 \p{OpenVLA models degrade as you increase the control frequency.}
-\ol{
+\ul{
   \li{Training in naive way, resort to "token-copying".}
 }
 \p{Idea: compress actions. Discrete cosine transform.}
@@ -85,8 +79,12 @@ where #{T} is the task identifier.
   \li{\em{Knowledge insulating VLAs}}
 }
 }
-\section{How to get started with (scalable) robotics research.}{
-    \p{Droid, OpenX}
-    \p{OpenPI}
-    \p{RoboArena}
+\question{How to get started with (scalable) robotics research.}
+\answer{
+  All sorts of resources:
+  \ol{
+    \li{Droid, OpenX}
+    \li{OpenPI}
+    \li{RoboArena}
+  }
 }

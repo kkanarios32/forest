@@ -7,6 +7,7 @@
 \title{TPU FlexAttention: A Worklog}
 
 \transclude{5DFA}
+\transclude{060Z}
 
 \section{Setting up TPU VM}{
 This is SHOCKINGLY difficult to do. I've ultimately ended up with the following to create / connect / delete a TPU VM:

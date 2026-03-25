@@ -6,6 +6,10 @@
 \tag{blog}
 \p{Here are the notes of a selected few of the talks in the course \em{Action and Perception} taught by Stella Yu.}
 
+\put\transclude/expanded{false}
+\put\transclude/toc{false}
+\put\transclude/metadata{true}
+
 \query\datalog{
    ?X -: 
    {\rel/has-tag ?X '{action-perception}}

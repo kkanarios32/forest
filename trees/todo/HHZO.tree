@@ -1,0 +1,167 @@
+\date{2026-03-24T17:35:14Z}
+\title{Implementing MESI in Murphi}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+\tag{blog}
+\p{This will also serve as a bit of notes from [A Primer on Memory Consistency and Cache Coherence](https://pages.cs.wisc.edu/~markhill/papers/primer2020_2nd_edition.pdf)}
+
+\put\transclude/toc{false}
+\put\transclude/metadata{false}
+
+\section{Murphi}{
+\p{Syntactical things I need to remember from Murphi docs. Most things are straightforward, but there are a few things to note:}
+\ul{
+  \li{Declarations}
+  \ul{
+    \li{A \em{declaration} is a variable or a collection of variables that are used in the rules.}
+    \li{Constants 
+    \pre\verb<<<|
+const
+  ProcCount: 3;          -- number processors
+    <<<
+    }
+    \li{Types 
+    \pre\verb<<<|
+type
+  Proc: scalarset(ProcCount);   -- unordered range of processors
+    <<<
+    }
+    \li{Variable
+    \pre\verb<<<|
+var
+  HomeNode:  HomeState;
+    <<<
+    }
+  \li{Procedures
+    \pre\verb<<<|
+Procedure ProcReceive(msg:Message; p:Proc);
+Procedure HomeReceive(msg:Message);
+    <<<}
+  }
+  \li{Rules.}
+  \ul{
+    \li{A \em{rule} is a transition from one state to another}
+    \li{Each rule can optionally have an initial condition required to be fired}
+    \li{We can easily define rules for all the processors or collection of #{n} things with \code{ruleset}.}
+    \li{For our use case, rules are used to define}
+    \ol{
+      \li{Controller actions
+      \pre\verb<<<|
+ruleset n:Proc Do
+  alias p:Procs[n] Do
+
+  ruleset v:Value Do
+    rule "store new value"
+      (p.state = P_Modified)
+    ==>
+      p.val := v;
+      LastWrite := v;
+    endrule;
+  endruleset;
+      <<<
+      }
+      \li{Receiving a request from the network
+      \pre\verb<<<|
+ruleset n:Node do
+  choose midx:Net[n] do
+    alias chan:Net[n] do
+    alias msg:chan[midx] do
+    alias box:InBox[n] do
+
+    -- Pick a random message in the network and deliver it
+    rule "receive-net"
+      (isundefined(box[msg.vc].mtype))
+    ==>
+
+      if IsMember(n, Home)
+      then
+        HomeReceive(msg);
+      else
+        ProcReceive(msg, n);
+      endif;
+      <<<
+      }
+      \li{Retrying stalled requests
+      \pre\verb<<<|
+  ruleset vc:VCType do
+    rule "receive-blocked-vc"
+      (! isundefined(InBox[n][vc].mtype))
+    ==>
+      if IsMember(n, Home)
+      then
+        HomeReceive(InBox[n][vc]);
+      else
+        ProcReceive(InBox[n][vc], n);
+      endif;
+
+      if msg_processed
+      then
+        -- Message has been handled, forget it
+        undefine InBox[n][vc];
+      endif;
+
+    endrule;
+  endruleset;
+      <<<
+      }
+    }
+  }
+  \li{Startstates}
+  \ul{
+    \li{A \em{startstate} is the intial configuration for all our declarations.}
+    \li{Must assign a value to every global variable
+    \pre\verb<<<|
+startstate
+
+  For v:Value do
+    -- home node initialization
+    HomeNode.state := H_Invalid;
+    undefine HomeNode.owner;
+    undefine HomeNode.sharers;
+    HomeNode.val := v;
+  endfor;
+  LastWrite := HomeNode.val;
+
+  -- processor initialization
+  for i:Proc do
+    Procs[i].state := P_Invalid;
+    undefine Procs[i].val;
+    Procs[i].ack := 0;
+  endfor;
+
+  -- network initialization
+  undefine Net;
+endstartstate;
+    <<<
+    }
+  }
+  \li{Invariants}
+  \ul{
+    \li{An \em{invariant} is something that Murphi checks to ensure is true at all possible configurations of the system.
+    \pre\verb<<<|
+invariant "Invalid implies empty owner"
+  HomeNode.state = H_Invalid
+    ->
+      IsUndefined(HomeNode.owner);
+    <<<
+    } 
+  }
+}
+\p{\strong{Overview straight from the docs}. Repeat forever:
+}
+\ol{
+  \li{Find all rules whose conditions are true in the current state.
+       (i.e. conditional expressions are true, given the current values
+       of the global variables).}
+    \li{Choose one arbitrarily and execute the action, yielding a new state.}
+}
+}
+
+\section{Starting with MSI}{
+We will start with MSI, given by the following table:
+\figure{
+\<html:img>[width]{44\%}[src]{\route-asset{assets/img/cache-msi.png}}{}
+\<html:img>[width]{55\%}[src]{\route-asset{assets/img/directory-msi.png}}{}
+}
+}
