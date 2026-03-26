@@ -6,6 +6,22 @@
 \tag{upcoming}
 \title{TPU FlexAttention: A Worklog}
 
+
+\section{Resources}{
+\ul{
+  \li{[How to scale your model](https://jax-ml.github.io/scaling-book/tpus/)}
+  \li{[Attention Gym](https://github.com/meta-pytorch/attention-gym)}
+  \li{[FlaxAttention](https://github.com/zinccat/flaxattention)}
+  \li{[vLLM TPU inference](https://github.com/vllm-project/tpu-inference/blob/main/tpu_inference/kernels/ragged_paged_attention/v3/kernel.py)}
+  \li{[CMU LLM Systems](https://llmsystem.github.io/llmsystem2026spring/docs/Syllabus/)}
+  \li{[Splash Attention](https://github.com/jax-ml/jax/blob/main/jax/experimental/pallas/ops/tpu/splash_attention/splash_attention_kernel.py#L499)}
+  \li{[[dongFlexAttentionProgramming2024]]}
+  \li{[[daoFlashAttentionFastMemoryEfficient2022]]}
+}
+}
+
+\put\transclude/expanded{false}
+
 \transclude{5DFA}
 \transclude{060Z}
 
@@ -57,13 +73,6 @@ tpudwn() {
 
 <<<
 }
-\section{Background Reading}{
-\ol{
-  \li{[[dongFlexAttentionProgramming2024]]}
-  \li{[[daoFlashAttentionFastMemoryEfficient2022]]}
-}
-}
-
 
 \hr
 
