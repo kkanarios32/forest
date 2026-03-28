@@ -325,4 +325,25 @@ To actually perform this mapping, processor have a \em{microcode engine} that is
   }
   }
   }
+  \remark{
+  \strong{The 604e.} In the 604e, they doubled the L1 cache size to 64kb and added a \em{condition register unit}. Freed up integer unit and branch unit from computing these conditional operations.
+  }
+  \section{PowerPC 750}{
+  \p{Same four stage pipeline as the 603/603e. Main differences:}
+  \ol{
+    \li{Two integer units vs. one.}
+    \li{Three cycle single precision floating point.}
+    \li{Six entry instruction queue, fetching up to 4 instructions per cycle.}
+  }
+  \p{The smaller instruction window of 750 vs. 604 is not a problem because the pipeline is shorter as discussed previously.}
+  \p{The 750 has most of its performance gain from a clever trick in branch prediction. Namely, in traditional branch prediction, there is a branch history table (BHT) and branch target buffer (BTB). The branch target buffer just stores the address of the instruction to jump to if the branch is taken. However, it must still \strong{re-fetch} this instruction to execute. The 750 uses a \em{branch target instruction cache}(BTIC) that stores the actual instruction to be executed on branch, avoiding re-fetching.}
+  }
+  \p{The main drawback of the 750 is that it did not support a SIMD instruction set.}
+  \section{PowerPC 7400}{
+    \p{The 7400 added a \em{vector permute unit}(VPU) and \em{vector ALU}(VALU) to support a SIMD instruction set. Also added}
+    \ul{
+      \li{Full double precision floating point unit.}
+      \li{8 entry instruction queue.}
+    }
+  }
 }
