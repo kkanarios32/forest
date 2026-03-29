@@ -23,9 +23,18 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{Did not finish writing up the MSI section. Found at is due Wednesday..}
+  \li{I did finish Chapter 6 of Inside the Machine.}
+  \li{I did make anki deck for computer architecture questions from getcracked and additional anki deck for GPU stuff. Now I need to actually study them lol.}
+  \li{Did not look at this.}
+}
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Finish writing up the MSI section of [[HHZO]] and understanding all transitions. Hopefully start working on MESI.}
+  \li{Finish Chapter 7 of Inside the Machine.}
+  \li{Leetcode: finally finish substring concatenation.}
+}
 }
