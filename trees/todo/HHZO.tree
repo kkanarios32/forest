@@ -6,140 +6,27 @@
 \tag{blog}
 \p{This will also serve as a bit of notes from [A Primer on Memory Consistency and Cache Coherence](https://pages.cs.wisc.edu/~markhill/papers/primer2020_2nd_edition.pdf)}
 
-\put\transclude/toc{false}
 \put\transclude/metadata{false}
 
 \section{Murphi}{
 \p{Syntactical things I need to remember from Murphi docs. Most things are straightforward, but there are a few things to note:}
   \p{\strong{Declarations.} A \em{declaration} is a variable or a collection of variables that are used in the rules.}
-  \ul{
-    \li{Constants 
-    \pre\verb<<<|
-const
-  ProcCount: 3;          -- number processors
-    <<<
-    }
-    \li{Types 
-    \pre\verb<<<|
-type
-  Proc: scalarset(ProcCount);   -- unordered range of processors
-    <<<
-    }
-    \li{Variable
-    \pre\verb<<<|
-var
-  HomeNode:  HomeState;
-    <<<
-    }
-  \li{Procedures
-    \pre\verb<<<|
-Procedure ProcReceive(msg:Message; p:Proc);
-Procedure HomeReceive(msg:Message);
-    <<<}
-  }
   \p{\strong{Rules}. A \em{rule} is a transition from one state to another}
   \ul{
     \li{Each rule can optionally have an initial condition required to be fired}
     \li{We can easily define rules for all the processors or collection of #{n} things with \code{ruleset}.}
     \li{For our use case, rules are used to define}
     \ol{
-      \li{Controller actions
-      \pre\verb<<<|
-ruleset n:Proc Do
-  alias p:Procs[n] Do
-
-  ruleset v:Value Do
-    rule "store new value"
-      (p.state = P_Modified)
-    ==>
-      p.val := v;
-      LastWrite := v;
-    endrule;
-  endruleset;
-      <<<
-      }
-      \li{Receiving a request from the network
-      \pre\verb<<<|
-ruleset n:Node do
-  choose midx:Net[n] do
-    alias chan:Net[n] do
-    alias msg:chan[midx] do
-    alias box:InBox[n] do
-
-    -- Pick a random message in the network and deliver it
-    rule "receive-net"
-      (isundefined(box[msg.vc].mtype))
-    ==>
-
-      if IsMember(n, Home)
-      then
-        HomeReceive(msg);
-      else
-        ProcReceive(msg, n);
-      endif;
-      <<<
-      }
-      \li{Retrying stalled requests
-      \pre\verb<<<|
-  ruleset vc:VCType do
-    rule "receive-blocked-vc"
-      (! isundefined(InBox[n][vc].mtype))
-    ==>
-      if IsMember(n, Home)
-      then
-        HomeReceive(InBox[n][vc]);
-      else
-        ProcReceive(InBox[n][vc], n);
-      endif;
-
-      if msg_processed
-      then
-        -- Message has been handled, forget it
-        undefine InBox[n][vc];
-      endif;
-
-    endrule;
-  endruleset;
-      <<<
-      }
+      \li{Controller actions}
+      \li{Receiving a request from the network}
+      \li{Retrying stalled requests}
     }
   }
   \p{\strong{Startstates.} A \em{startstate} is the intial configuration for all our declarations.}
   \ul{
-    \li{Must assign a value to every global variable
-    \pre\verb<<<|
-startstate
-
-  For v:Value do
-    -- home node initialization
-    HomeNode.state := H_Invalid;
-    undefine HomeNode.owner;
-    undefine HomeNode.sharers;
-    HomeNode.val := v;
-  endfor;
-  LastWrite := HomeNode.val;
-
-  -- processor initialization
-  for i:Proc do
-    Procs[i].state := P_Invalid;
-    undefine Procs[i].val;
-    Procs[i].ack := 0;
-  endfor;
-
-  -- network initialization
-  undefine Net;
-endstartstate;
-    <<<
-    }
+    \li{Must assign a value to every global variable}
   }
   \p{\strong{Invariants}. An \em{invariant} is something that Murphi checks to ensure is true at all possible configurations of the system.}
-    \pre\verb<<<|
-invariant "Invalid implies empty owner"
-  HomeNode.state = H_Invalid
-    ->
-      IsUndefined(HomeNode.owner);
-    <<<
-}
 \p{\strong{Overview straight from the docs}. Repeat forever:
 }
 \ol{
@@ -148,10 +35,19 @@ invariant "Invalid implies empty owner"
        of the global variables).}
     \li{Choose one arbitrarily and execute the action, yielding a new state.}
 }
+}
 
 \section{Starting with MSI}{
 \p{The first thing we need to do is understand all the things that can go awry.}
 \p{First in the valid-invalid protocol example we were given they only have two virtual channels. However, we need 3 channels to handle, request messages, \strong{forwarded} messages, and response messages.}
+\p{Let us briefly understand why this is the case. Detecting a deadlock is equivalent to detecting a cycle in a dependency graph, so it is sufficient to show a cyclic dependency.}
+\ul{
+  \li{If we issue a \code{GetS} this goes to the directory, giving us an edge N1 -> D.}
+  \li{Then the directory issues a \code{Fwd-GetS} to the ownder, giving us the chain N1 -> D -> N2}
+  \li{The owner then needs to send data to the requester, giving us the chain N1 -> D -> N2 -> N1.}
+  \li{Namely, the data must go through the same channel as all of the requests depending on it.}
+}
+\p{To avoid this, we partition into 3 channels:}
 \ul{
   \li{Request: GetS, GetM, PutM}
   \li{Forwarded: Fwd-GetS, Fwd-GetM, PutAck, Inv}
@@ -178,6 +74,7 @@ invariant "Invalid implies empty owner"
 \figure{
 \<html:img>[width]{100\%}[src]{\route-asset{assets/img/cache-msi.png}}{}
 }
+\p{Notably, we are missing some of the messages in the figures below. We can handle these based on the \code{AckCount}}
 \pre\verb<<<|
   ProcState:
     Record
@@ -196,7 +93,6 @@ invariant "Invalid implies empty owner"
       ack: AckCount;  -- tracks InvAck count
     End;
 <<<
-\p{Notably, we are missing some of the messages in the figures below. We can handle these based on the \code{AckCount}}
 \remark{
 The \code{load}, \code{store}, and \code{replacement} all only alter the states of the coherence protocol for the permanent states. Therefore, to simulate the system it is sufficient to only implement the rules that initiate these state transitions i.e. evict in modified state or load from invalid state.
 }
@@ -213,7 +109,7 @@ We actually end up adding a second transient state to the directory controller #
 When implementing the \code{PutM} rule to downgrade from modified to invalid. We must \strong{NOT} get rid of the data until we have been acknowledged, so that we can still service forward requests. This is a transition to #{MI^A}. However, we can still receive the \code{PutAck} causing us to transition to #{I} before servicing the \code{Fwd-GetM} request. This is lost data.
 }
 \solution{
-  We must add a #{M^D} state to the directory controller. In this state, if we get a \code{PutM} request from a node that is not our current owner we stall and wait for data to arrive. It is unclear to me the best way to do this without this state.
+  We must add a #{M^D} state to the directory controller. In this state, if we get a \code{PutM} request from a node that is not our current owner we stall and wait for data to arrive. For #{M^D} to transition to #{M}, we must send the data back to the directory even though we are doing a three-hop, so that the directory knows the data has also been forwarded to the new owner. It is unclear to me the best way to do this without this state.
 }
 \problem{
  \p{The above solution causes a deadlock, where two processors both store miss and one load misses. The "winning processor" of the store will be the second one. The first one will get the data from the directory transitioning from #{IM^{AD} \to IM^{A}}, but the second one will then trigger a \code{Fwd-GetM} overwriting the first.}
@@ -223,4 +119,23 @@ The load miss transitions to #{IS^D}. However, when it receives an \code{Inv} it
 }
 }
 \solution{We need to add another transient state not included in the figure. Namely, we add #{II^{A}} that says we were in #{IS^{A}}, but we got invalidated and now we are waiting for our \code{PutAck} before we transition to #{I}.}
+\remark{
+When the home directory is in #{M} and we get a \code{GetS} we cannot clear owner as directed by figure. Otherwise in #{S^D}, we will not be able to tell if the \code{PutM} is from the owner and stall, so we only remove the owner once we have received the data.
+}
+}
+\section{Moving to MESI}{
+Aside from the modifications discussed above, the rest was straightforward and we now are ready to move on to MESI.
+\p{ \strong{Cache controller.} We will start with MESI cache controller, given by the following table:
+}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-cache.png}}{}
+}
+\p{\strong{Design choice 1.} Since we allow immediate upgrade to #{M}, without forwarding, if E upgrades to M, then the value in the directory sent to the next \code{GetS / GetM} would not have updated value. It seems we must either
+\ol{
+  \li{not allow E to silently upgrade to M and then we do not need forwarding, or}
+  \li{allow E to silently upgrade to M and treat E as M basically and forward everything.}
+}
+Notably, neither of these have to write back on \code{PutE}, but we will go with 1 because that is how it is indicated in the figure.
+}
+\p{\strong{Design Choice 2.} In order to indicate that the directory received the first \code{GetS} we introduce a \code{ExclusiveData} message. Upon receiving, \code{ExclusiveData} in #{IS^D} we transition to #{E}.}
 }
