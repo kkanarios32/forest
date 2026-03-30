@@ -22,9 +22,18 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{Finished the MSI Murphi code and section of [[HHZO]]. Briefly looked at MESI.}
+  \li{Finished Chapter 7 of Inside the Machine.}
+  \li{Did not do leetcode still...}
+}
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Finish Chapter 9 of Inside the Machine.}
+  \li{Finish the MESI Murphi code and section of [[HHZO]].}
+  \li{Stretch: leetcode finally finish substring concatenation.}
+  \li{Stretch: start getting FlexAttention to Pallas running.}
+}
 }
