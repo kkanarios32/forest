@@ -208,7 +208,7 @@ The \code{load}, \code{store}, and \code{replacement} all only alter the states 
 \remark{
 We actually end up adding a second transient state to the directory controller #{M^D}. This is to handle the \code{PutM}, \code{GetM} race described below.
 }
-\section{Weird Race Conditions}{
+\strong{Weird Race Conditions}
 \problem{
 When implementing the \code{PutM} rule to downgrade from modified to invalid. We must \strong{NOT} get rid of the data until we have been acknowledged, so that we can still service forward requests. This is a transition to #{MI^A}. However, we can still receive the \code{PutAck} causing us to transition to #{I} before servicing the \code{Fwd-GetM} request. This is lost data.
 }
@@ -223,5 +223,4 @@ The load miss transitions to #{IS^D}. However, when it receives an \code{Inv} it
 }
 }
 \solution{We need to add another transient state not included in the figure. Namely, we add #{II^{A}} that says we were in #{IS^{A}}, but we got invalidated and now we are waiting for our \code{PutAck} before we transition to #{I}.}
-}
 }

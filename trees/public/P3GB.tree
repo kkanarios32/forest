@@ -390,3 +390,31 @@ To actually perform this mapping, processor have a \em{microcode engine} that is
   }
 }
 }
+\section{Chapter 9: 64bit Computing}{
+\p{\em{What is 64 bit computing?} #{n}-bit computing refers to how many bits a register can hold.}
+\ul{
+  \li{64 bit means they hold 64 bits.}
+  \li{64 bit instructions means the operands are 64 bits.}
+}
+\remark{
+This means that the instruction size has not actually changed in size. The PC does change because the virtual address space has increased (we will see later).
+}
+\remark{
+Only affects integer and addressing units. Floating point and vector units retain same width #{> 64}.
+}
+\p{\strong{Benefits:}}
+\ul{
+  \li{Increased \em{dynamic range} i.e. representation went from #{2^32} to #{2^64}.}
+  \ul{
+    \li{\em{Overflow} or \em{underflow} is when the largest positive or negative number exceed the dynamic range.}
+  }
+  \li{64-bit address space.}
+  \ul{
+    \li{x86-64 has 40-bit virtual address space, but idea is it allows efficient usage of much more physical ram.}
+    \li{One drawback of this is that pointers now take up twice as much cache space.}
+  }
+}
+\remark{
+It is not always beneficial to have 64-bit integers. If you do not need the extra range, then this is wasted cache space. Due to this, the default size of integers is typically 32 bits. To extend, you need to add a prefix (1 byte), which adds < 10\% code size.
+}
+}
