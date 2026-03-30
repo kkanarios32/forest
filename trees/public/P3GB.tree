@@ -347,3 +347,46 @@ To actually perform this mapping, processor have a \em{microcode engine} that is
     }
   }
 }
+\section{Chapter 7: Pentium 4 vs. Motorola G4e Approaches and Considerations}{
+\p{In this chapter, they compare two designs: the Pentium 4 vs. the G4e.}
+\section{The G4e}{
+  \p{\strong{The approach:} \em{wide and shallow}. Optimizing for instruction level parallelism.}
+  \p{Seven stage pipeline.}
+  \ol{
+    \li{Additional second fetching stage.}
+    \li{Issue stage.}
+    \ul{
+      \li{Recall that instructions are issued in order. This can lead to stalls if none of the reservation stations / execution units are available.}
+      \li{To fix, they add \em{general issue queue}, \em{vector issue queue} and \em{float issue queue}, which can accept and issue 3,2, and 1 instructions per cycle respectively.}
+      \li{Issue queue differ from reservation station because it issues to a coarser group of execution units rather than per ALU i.e. GIQ issues to any of integer ALUs or SLU.}
+    }
+    \li{Complete stage.}
+  }
+}
+\section{The Pentium 4}{
+  \p{\strong{The approach:} \em{narrow and deep}. Optimizing for clock speed.}
+  \p{The calling card of the Pentium 4 is the \strong{incredibly deep} pipeline. They have 20 stages, allowing incredibly fast clock speed (for marketing purposes).}
+  \p{\strong{Tradeoffs and considerations:}}
+  \ul{
+    \li{In order to keep fast backend fed, need very deep buffers (126 instructions) i.e. large instruction window.}
+  }
+  \p{\strong{Trace cache:}}
+  \ul{
+    \li{Could not keep deep pipeline full because decoding was taking too long.}
+    \li{Decoding x86 requires breaking into micro-ops. Few cycles each time.}
+    \li{Instruction cache is now in L2 cache.}
+    \li{The \em{trace cache} is in L1 cache, and it stores already decoded micro-ops traces that are ready to be executed.}
+    \li{Trace cache fetch is after decode but is indexed directly during branch prediction.}
+    \li{The trace cache operates in two modes: execution mode and build mode. When there is a trace hit it feeds the trace directly to the execution logic. When there is a miss, it must fetch the instruction from the L2 cache and build the trace after decoding.}
+    \li{Trace cache allows storing speculative branches.}
+    \ul{
+      \li{Normal instruction fetching stops fetching cache when a branch is detected.}
+      \li{Trace cache allows storing speculative micro-ops after branch to fully utilize 6 micro-op cache line.}
+    }
+  }
+  \problem{Long (100s) of micro-ops instructions can pollute the trace cache.}
+  \solution{
+    Tag these long instructions. When we encounter a tag, the trace cache instead stores a pointer to the microcode ROM which then retrieves and dispatches the corresponding micro-ops without needing to store them in the cache.
+  }
+}
+}

@@ -2,7 +2,7 @@
 \tag{public}
 
 \title{Putting the engineer in my engineering degree}
-\p{Here I will be learning not only how a computer actually works, but how to actually leverage this knowledge to write more performant code. Along the way, I also intend to learn good coding practice and become all around a more capable engineer to differentiate myself from my results-oriented graduate student counterparts.}
+\p{Here I will be learning not only how a computer actually works, but how to actually leverage this knowledge to write more performant code. Along the way, I also intend to learn good coding practice and become all around a more capable engineer to differentiate myself from the hardware unaware.}
 \figure{
 \<html:img>[width]{100\%}[src]{\route-asset{assets/img/low-level-roadmap.png}}{}
 \figcaption{Reading map for background.}

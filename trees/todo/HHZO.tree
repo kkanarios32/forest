@@ -11,10 +11,8 @@
 
 \section{Murphi}{
 \p{Syntactical things I need to remember from Murphi docs. Most things are straightforward, but there are a few things to note:}
-\ul{
-  \li{Declarations}
+  \p{\strong{Declarations.} A \em{declaration} is a variable or a collection of variables that are used in the rules.}
   \ul{
-    \li{A \em{declaration} is a variable or a collection of variables that are used in the rules.}
     \li{Constants 
     \pre\verb<<<|
 const
@@ -39,9 +37,8 @@ Procedure ProcReceive(msg:Message; p:Proc);
 Procedure HomeReceive(msg:Message);
     <<<}
   }
-  \li{Rules.}
+  \p{\strong{Rules}. A \em{rule} is a transition from one state to another}
   \ul{
-    \li{A \em{rule} is a transition from one state to another}
     \li{Each rule can optionally have an initial condition required to be fired}
     \li{We can easily define rules for all the processors or collection of #{n} things with \code{ruleset}.}
     \li{For our use case, rules are used to define}
@@ -107,9 +104,8 @@ ruleset n:Node do
       }
     }
   }
-  \li{Startstates}
+  \p{\strong{Startstates.} A \em{startstate} is the intial configuration for all our declarations.}
   \ul{
-    \li{A \em{startstate} is the intial configuration for all our declarations.}
     \li{Must assign a value to every global variable
     \pre\verb<<<|
 startstate
@@ -136,17 +132,13 @@ endstartstate;
     <<<
     }
   }
-  \li{Invariants}
-  \ul{
-    \li{An \em{invariant} is something that Murphi checks to ensure is true at all possible configurations of the system.
+  \p{\strong{Invariants}. An \em{invariant} is something that Murphi checks to ensure is true at all possible configurations of the system.}
     \pre\verb<<<|
 invariant "Invalid implies empty owner"
   HomeNode.state = H_Invalid
     ->
       IsUndefined(HomeNode.owner);
     <<<
-    } 
-  }
 }
 \p{\strong{Overview straight from the docs}. Repeat forever:
 }
@@ -156,12 +148,80 @@ invariant "Invalid implies empty owner"
        of the global variables).}
     \li{Choose one arbitrarily and execute the action, yielding a new state.}
 }
-}
 
 \section{Starting with MSI}{
-We will start with MSI, given by the following table:
+\p{The first thing we need to do is understand all the things that can go awry.}
+\p{First in the valid-invalid protocol example we were given they only have two virtual channels. However, we need 3 channels to handle, request messages, \strong{forwarded} messages, and response messages.}
+\ul{
+  \li{Request: GetS, GetM, PutM}
+  \li{Forwarded: Fwd-GetS, Fwd-GetM, PutAck, Inv}
+  \li{Response: InvAck, Data}
+}
+\p{We directly enumerate these in our \code{MessageType} as }
+\pre\verb<<<|
+  MessageType: enum {
+    GetS,           -- request for shared copy
+    GetM,           -- request for modified (exclusive) copy
+    PutS,           -- evict shared copy
+    PutM,           -- evict modified copy (w/ data)
+
+    FwdGetS,        -- forwarded GetS to owner
+    FwdGetM,        -- forwarded GetM to owner
+    Inv,            -- invalidation request
+
+    Data,           -- data response
+    InvAck,         -- invalidation acknowledgment
+    PutAck          -- put acknowledgment
+  };
+<<<
+\strong{Cache controller.} We will start with MSI cache controller, given by the following table:
 \figure{
-\<html:img>[width]{44\%}[src]{\route-asset{assets/img/cache-msi.png}}{}
-\<html:img>[width]{55\%}[src]{\route-asset{assets/img/directory-msi.png}}{}
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/cache-msi.png}}{}
+}
+\pre\verb<<<|
+  ProcState:
+    Record
+      state: enum { 
+        P_Invalid, P_Shared, P_Modified,       --stable states
+        PT_IS_D,      --sent GetS, waiting for Data
+        PT_IS_DI,     --sent GetS, got Inv, waiting for Data then go to I
+        PT_IM_AD,     --sent GetM (from I), waiting for Data and InvAcks
+        PT_SM_AD,     --sent GetM (from S), waiting for Data and InvAcks
+        PT_IM_A,      --got Data for GetM, waiting for remaining InvAcks
+        PT_MI_A,      --sent PutM, waiting for PutAck
+        PT_SI_A,      --sent PutS, waiting for PutAck
+        PT_II_A       --waiting for PutAck, already invalidated
+      };
+      val: Value;
+      ack: AckCount;  -- tracks InvAck count
+    End;
+<<<
+\p{Notably, we are missing some of the messages in the figures below. We can handle these based on the \code{AckCount}}
+\remark{
+The \code{load}, \code{store}, and \code{replacement} all only alter the states of the coherence protocol for the permanent states. Therefore, to simulate the system it is sufficient to only implement the rules that initiate these state transitions i.e. evict in modified state or load from invalid state.
+}
+\strong{Directory controller.} Now for the directory controller:
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/directory-msi.png}}{}
+\figcaption{}
+}
+\remark{
+We actually end up adding a second transient state to the directory controller #{M^D}. This is to handle the \code{PutM}, \code{GetM} race described below.
+}
+\section{Weird Race Conditions}{
+\problem{
+When implementing the \code{PutM} rule to downgrade from modified to invalid. We must \strong{NOT} get rid of the data until we have been acknowledged, so that we can still service forward requests. This is a transition to #{MI^A}. However, we can still receive the \code{PutAck} causing us to transition to #{I} before servicing the \code{Fwd-GetM} request. This is lost data.
+}
+\solution{
+  We must add a #{M^D} state to the directory controller. In this state, if we get a \code{PutM} request from a node that is not our current owner we stall and wait for data to arrive. It is unclear to me the best way to do this without this state.
+}
+\problem{
+ \p{The above solution causes a deadlock, where two processors both store miss and one load misses. The "winning processor" of the store will be the second one. The first one will get the data from the directory transitioning from #{IM^{AD} \to IM^{A}}, but the second one will then trigger a \code{Fwd-GetM} overwriting the first.}
+
+\p{
+The load miss transitions to #{IS^D}. However, when it receives an \code{Inv} it stalls according to the above figure. This blocks the \code{Fwd-GetM} from reaching the other winning processor because they are on the same VC. Thus, we have a deadlock where the owner never gets the data.
+}
+}
+\solution{We need to add another transient state not included in the figure. Namely, we add #{II^{A}} that says we were in #{IS^{A}}, but we got invalidated and now we are waiting for our \code{PutAck} before we transition to #{I}.}
 }
 }
