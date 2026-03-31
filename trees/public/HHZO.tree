@@ -1,8 +1,8 @@
 \date{2026-03-24T17:35:14Z}
-\title{Implementing MESI in Murphi}
+\title{Implementing Directory-based MESI in Murphi}
 \import{base-macros}
 \author{kellenkanarios}
-\tag{todo}
+\tag{public}
 \tag{blog}
 \p{This will also serve as a bit of notes from [A Primer on Memory Consistency and Cache Coherence](https://pages.cs.wisc.edu/~markhill/papers/primer2020_2nd_edition.pdf)}
 
@@ -138,4 +138,38 @@ Aside from the modifications discussed above, the rest was straightforward and w
 Notably, neither of these have to write back on \code{PutE}, but we will go with 1 because that is how it is indicated in the figure.
 }
 \p{\strong{Design Choice 2.} In order to indicate that the directory received the first \code{GetS} we introduce a \code{ExclusiveData} message. Upon receiving, \code{ExclusiveData} in #{IS^D} we transition to #{E}.}
+\remark{
+Once we have sent the \code{PutE}, or the \code{PutM} #{EI^A} and #{MI^A} are functionally the same. I include both for completeness but verified that transitioning directly to #{MI^A} from #{E} works the same.
+}
+\p{\strong{Directory controller.} We start with the analagous table.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-directory.png}}{}
+}
+\p{Similar to the cache controller, we also add a #{E^D} state for completion that can be absorbed into #{M^D} introduced in the MSI protocol.}
+\p{\strong{Weird Races.}}
+\problem{First processor does \code{GetS} and is in #{IS^D} but the Home directory sends it exclusive data and is now in #{E}. Then second processor does \code{GetM} and Home issues \code{Fwd-GetM} to processor one, which arrives before data.}
+\solution{Need to stall on \code{Fwd-GetM} and \code{Fwd-GetS} in #{IS^D} until data arrives}
+\problem{An even crazier race happens when we get invalidated before the \code{Fwd-GetM} or \code{Fwd-GetS} arrive. Due to our previous design decision, we transition to #{II^A}, where if we receive a \code{PutAck} we transition to invalid. This then loses the needed forward data.}
+\example{
+  The timeline:
+  \ol{
+    \li{\code{Proc_1} performs a load miss → #{IS^D}}
+    \li{\code{Home} receives first \code{GetS} from \code{Proc_1} → #{E} and sends \code{ExclusiveData} to \code{Proc_1}}
+    \li{\code{Proc_2} issues \code{GetM} → #{IM^AD}}
+    \li{\code{Home} sends \code{Inv} to \code{Proc_1}}
+    \li{\code{Home} forwards \code{Fwd-GetM} to \code{Proc_1}}
+    \li{\code{Proc_1} receives \code{Inv} → #{II^D}}
+    \li{\code{Proc_1} receives \code{ExclusiveData} → #{I}}
+  }
+  Data is lost
+}
+\solution{
+  We once again have to use the \code{ExclusiveData} message. We can then see that we got \code{ExclusiveData} in #{II^D} and transition to #{E} instead of #{I}. #{E} will then correctly handle the \code{Fwd-GetM} or \code{Fwd-GetS}.
+}
+
+\p{We are left with the following state diagrams for the cache and directory controllers respectively}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/cache_controller.png}}{}
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/directory_controller.png}}{}
+}
 }
