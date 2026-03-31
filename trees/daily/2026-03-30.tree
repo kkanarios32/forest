@@ -23,9 +23,22 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{Finished Chapter 9 of Inside the Machine.}
+  \li{Finished the MESI Murphi code and section of [[HHZO]].}
+  \li{Didn't start either of the stretch goals.}
+}
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Chapter 11 of Inside the Machine.}
+  \li{Setup minimal TPU FlexAttention profiling.}
+  \ul{
+    \li{Look at FlaxAttention and see if you can inject \code{mask_mod}, \code{score_mod} easily.}
+    \li{If so, see if you can get attention from attention gym to run.}
+  }
+  \li{Write up [Contrastive RL Blog](0005) and make corresponding slides for RL Course.}
+  \li{Debug skill-learning code so it successfully solves maze given enough skills.}
+}
 }
