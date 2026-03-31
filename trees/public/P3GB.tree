@@ -418,3 +418,83 @@ Only affects integer and addressing units. Floating point and vector units retai
 It is not always beneficial to have 64-bit integers. If you do not need the extra range, then this is wasted cache space. Due to this, the default size of integers is typically 32 bits. To extend, you need to add a prefix (1 byte), which adds < 10\% code size.
 }
 }
+\section{Chapter 11: Caches}{
+\problem{CPU clock cycle is decreasing much more rapidly than the clock cycle of the memory.}
+\example{
+If you are a really fast factory, regardless of how big the truck is that is carrying your materials you must still wait the entire duration of the first delivery.
+}
+\remark{
+A \em{cache} is like having a nearby warehouse that you can quickly get more materials if you run out. Obviously, the bigger the better.
+}
+\p{\strong{Cache hierarchy:}}
+\ul{
+  \li{Main memory}
+  \ul{
+    \li{Access time: 10-60 ns.}
+    \li{Size: 64mb - 1gb.}
+  }
+  \li{\em{Level 1 cache}: smallest cache. Holds the most frequently used data.}
+  \ul{
+    \li{Fast access time is due to being \em{static ram}.}
+    \li{Each cell has 4-6 transistors vs. 1 transistor for DRAM.}
+    \li{Access time: 2-8 ns.}
+    \li{Size: 8-128 kb.}
+  }
+  \li{\em{Level 2 cache}: drop off from L1 cache to main memory can be 50 stalled cycles, so we add a larger slower second level cache.}
+  \ul{
+    \li{Access time: 5-12 ns.}
+    \li{Size: 0.5-8 mb.}
+  }
+}
+\example{
+\strong{A Bytes Journey Through Memory.} First, we check the L1 cache if the corresponding cache line is not there it is a \em{cache miss}. Then, we check the L2 cache once again if the cache line is not there we have another \em{cache miss}. We then check main memory to see if the \em{page} is there. If the page is not there, then we have a page fault and must go to disk.
+}
+\p{\strong{Cache misses:} There are four types of cache misses.}
+\ol{
+  \li{\em{Compulsory miss:} miss because data was never in the cache.}
+  \li{\em{Conflict miss:} miss because the data was evicted from the cache due to a conflict.}
+  \li{\em{Coherence miss:} miss because the data was invalidated due to a write to the cache from another core.}
+  \li{\em{Capacity miss:} miss because the cache was full and the data was evicted according to the eviction policy.}
+}
+\p{\strong{Spatial locality.} \em{if the CPU needs this data, then it will probably need nearby data in the future}.}
+\ul{
+  \li{We make use of spatial locality by using a \em{cache line} i.e. when some data is accessed, we load some fixed size surrounding data as well.}
+  \li{The sole data that we wanted is called the \em{critical word}.}
+  \li{RAM and caches are organized by these cache lines.}
+}
+\p{\strong{Temporal locality.} \em{if the CPU needs this data, then it will probably use it again in the future}.}
+\remark{
+Temporal locality implies spatial locality but not vice versa. Namely, if nearby data is reused often, then it will still be kept by temporal locality.
+}
+\remark{
+The locality for code and data can be very different i.e. re-running same code with different data will have high temporal locality for code but not data. This is why we split the L1 cache into the instruction and data components.
+}
+\section{Checking for data}{
+\p{The \em{cache tag} is a bit vector that is used to identify the cache line that the data is stored in.}
+\p{\strong{Tag RAM:} In the cache, there is a separate \em{tag array} that stores all of the tags of the resident data in the cache along with metadata regarding dirty, valid, coherent, etc. We separate into Tag RAM to make the check as fast as possible. Tag entries are small allowing a lot of reads in parallel.}
+\p{\strong{Associativity:} Once we know that a tag is present and valid, we need to find the corresponding data in the cache.}
+\ul{
+  \li{\em{Fully associative:} any tag can go anywhere in the cache.}
+  \li{\em{Direct mapped:} every tag can only go to one specific location in the cache.}
+  \li{\em{#{n}-way set associative:} divide cache into sets of size #{n}. Each tag goes to one set #{n} entries.}
+}
+}
+\section{Other Considerations}{
+  \p{\strong{Replacement policy:} most common is \em{least recently used}. However, this takes too much time to compute in practice, so they often do \em{pseudo-LRU} (something like clock algorithm).}
+  \p{\strong{Block sizes:} for best spatial locality, you want the largest block size possible. However, this has a few drawbacks}
+  \ul{
+    \li{Cache size: bringing large block requires evicting resident blocks, losing temporal locality.}
+    \li{More prone to cache pollution: most of the data you bring in will not be used.}
+    \li{Memory bandwidth: larger block size requires more bandwidth.}
+  }
+  \p{\strong{Write-through vs. Write-back:} on a store, we have modified the data at a specific address. However, if we only update the cache, when it is evicted and we later try to load we will have the wrong value. Need to ensure main memory is coherent.}
+  \ul{
+    \li{\em{Write-through:} on every store, we write back to main memory.}
+    \li{\em{Write-back:} we only write back to main memory on eviction.}
+    \ul{
+      \li{Need dirty bit to know if we need to write back.}
+    }
+    \li{Tradeoff: complextiy vs. less memory traffic.}
+  }
+}
+}
