@@ -1,0 +1,31 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Wednesday, April 1, 2026}
+\date{2026-04-02T02:48:16Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 8, Section 57}
+\em{The motion of the mind is not as the motion of a dart. For the mind when it is wary and cautelous, and by way of diligent circumspection turneth herself many ways, may then as well be said to go straight on to the object, as when it useth no such circumspection.}
+}
+\p{\strong{Translation:} careful reasoning is still a direct path.}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Finish slides on contrastive RL.}
+  \li{Fix training code / try loss discussed in meeting.}
+}
+}
+
+\section{Progress on Todos}{
+\ul{
+  \li{Finished slides on contrastive RL.}
+}
+}
+
+\section{Tomorrow's Todos}{
+
+}
