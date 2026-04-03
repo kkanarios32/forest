@@ -1,0 +1,44 @@
+\import{base-macros}
+\date{2026-04-03T19:03:56Z}
+\tag{public}
+\title{Intel's Pentium M, Core Duo, and Core 2 Duo}
+\remark{
+A processor often is asscoiated with three names. The \em{brand name}, the \em{microarchitecture brand name}, and the \em{microarchitecture code name}.
+}
+\p{Clock speed scaling hit a \em{power wall}}
+\ul{
+  \li{The \em{power density} is the number of watts disipated per unit area.}
+  \li{The \em{dynamic power density} is the amount of power dissipated per unit area due to switching of a chip's transistor}
+  \ul{
+    \li{High clock speeds means more rapidly switching transistors.}
+    \li{You can also increase via cramming more transistors into same area.}
+  }
+  \li{The \em{static power density} is the amount of power dissipated per unit area due to leakage current.}
+  \ul{
+    \li{Transistors leak more when they are smaller -> more transistors more leakage.}
+  }
+}
+\p{Power wall necessitated \strong{low power design}.}
+\section{The Pentium M}{
+\p{\strong{Fetch:} Widened fetch buffer to 64 bytes to now decode up to 4 16-byte instructions at a time.}
+\p{\strong{Decoding:} Utilize \em{micro-op fusion}, where an x86 instruction that takes 2 micro-ops can be translated into a fused micro-op and sent to instruction queue. In the instruction queue, they can be serialized or executed in parallel.}
+\ul{
+  \li{A store on x86 is two micro-ops: a store-address micro-op and store-data micro-op. Address micro-op can be sent to \em{store-address execution unit}, where as the store-data micro-op is sent to the \em{store-data execution unit}. Both located in the LSU. The Pentium M fuses these into a shared entry in the micro-op queue until they are issued.}
+  \li{A \em{read-modify} instruction the load micro-op and second micro-op are fused and tracked together. These must be executed serially.}
+}
+\p{\strong{Branch Prediction:} They add a \em{loop detector} to identify loop exit conditions.}
+\ul{
+  \li{Keep special counters to see how many times a loop iterates.}
+  \li{If loops iterate same number of times, can predict with 100\% accuracy.}
+}
+\p{Also have an \em{indirect predictor}.}
+\ul{
+  \li{Works like branch history table but instead stores each branch's favorite target address.}
+}
+\p{\strong{Stack Execution Unit:} x86 ISA has stack instructions like \code{push} and \code{pop}. They update dedicate \em{stack pointer register} \code{ESP}, traditionally carried out by dedicated micro-op.}
+\ul{
+  \li{No longer use integer execution unit.}
+  \li{Dedicated stack execution unit with own adder to avoid using the integer ALU.}
+  \li{Never issue \code{ESP} related instructions to back-end.}
+}
+}

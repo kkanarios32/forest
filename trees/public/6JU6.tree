@@ -1,0 +1,55 @@
+\import{base-macros}
+\date{2026-04-03T18:33:45Z}
+\tag{public}
+
+\title{Chapter 4: Superscalar Architecture}
+\p{With Moore's law and the unlocked capability of more transistors, each processor could have multiple ALUs on chip performing more than a single scalar operation. Hence the name \em{superscalar}.}
+\p{To extend the fetch-execute loop, the decode stage becomes a \em{decode / dispatch} stage, where the processor must decide which instructions can be run in parallel.}
+\p{An \em{execution unit} is any circuitry responsible for executing a single instruction. This could be a single ALU, a single load/store unit, or a combination of both.}
+\p{Arithmetic operations are things like addition, subtraction, multiplication, and division. Namely, operations that can be performed on any type of number} 
+\p{Logical operations are things like AND, OR, and NOT. Namely, operations that can be performed on integer values, or the contents of special registers like PSW.}
+\remark{
+From now on, we will be using the term \em{ALU} to refer to exeucution unit for either arithmetic or logical operations i.e. \em{float point units}(FPU) OR \em{integer logic units}(ILU). 
+} 
+\p{The \em{load store unit} is responsible for loading and storing data from memory. It is also responsible for performing the memory address calculations with a lightweight addition unit.}
+\p{The \em{branch execution unit} is responsible for performing the branch instructions. In the simple case currently considered, it reads the PSW and decides whether to take the branch.}
+\section{History of Superscalar Architecture}{
+\p{Superscalar processor still responsible for implementing the ISA. How the hardware implements an ISA is referred to as the \em{microarchitecture}.}
+\remark{
+To actually perform this mapping, processor have a \em{microcode engine} that is a mini-CPU inside the CPU. It has small memory to hold the microcode programs and an execution unit to execute them. Its task is to translate the ISA instructions into machine code to run on the actual hardware. Intuitively, it is like an emulator.
+}
+\p{Microcode engines take up space in the processor. Especially for CISC instruction sets which require larger microcode programs. Therefore, in RISC they got rid of the microcode engine and instead rely on compilers.}
+}
+\section{Challenges to Pipelining and Superscalar Architecture}{
+  \p{\strong{Data hazard:} Operation depends on the result of a previous operation.}
+  \ul{
+    \li{One trick to avoid this is using \em{forwarding}, where the result of a previous operation is used as the input to the next operation rather than waiting for it to complete storing the result.}
+    \li{Another trick is to use \em{register renaming}. The programming model often specifies fewer registers than available in hardware. Therefore, we can use the extra registers as temps to store intermediate computation
+    \example{
+      Say we have the following code:
+      \pre\verb<<<|
+      add r1, r2, r3
+      add r4, r5, r2
+      <<<
+      We can use the extra registers to store the intermediate result of the second addition and then write back to r2 after the first one completes.
+    }
+    }
+  }
+  \p{\strong{Structural hazard:} when the processor does not have enough resources to execute an instruction.}
+  \ul{
+    \li{In the superscalar architecture, we need our register file to allow for simultaneous writes. Otherwise, we will not be able to execute simultaneous write instructions.}
+  }
+  \remark{
+  To connect each register to each ALU, would require a riduculous amount of wiring. Therefore, we need to use a \em{register file} to connect the registers to the ALUs. The register file allows reading a single specified register for each read port and write to a specific register for each write port. So for an #{n} ALU chip, you would need #{2n} read ports and #{n} write ports. 
+  }
+  \problem{The die space of a register file scales quadratically with number of ports.}
+  \solution{
+    They often use different register files for different execution units, so each register file only needs ports for its execution units. This also decreases access time due to decreasing the size.
+  }
+  \p{\strong{Control hazard:} when the processor has to decide what instruction to fetch next at a branch instruction.}
+  \ul{
+   \li{To avoid stall, modern processor use \em{branch prediction}.} 
+   \li{Another cause of slowdown is actually the \em{instruction load latency}. To avoid this, we can use \em{instruction caching} (TBD).}
+  }
+
+}
