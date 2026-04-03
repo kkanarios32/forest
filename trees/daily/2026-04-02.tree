@@ -1,0 +1,38 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Thursday, April 2, 2026}
+\date{2026-04-02T20:51:15Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 4, Section 19}
+\em{Whatsoever is expedient unto thee, O World, is expedient unto me; nothing can either be 'unseasonable unto me, or out of date, which unto thee is seasonable. Whatsoever thy seasons bear, shall ever by me be esteemed as happy fruit, and increase. O Nature! from thee are all things, in thee all things subsist, and to thee all tend. Could he say of Athens, Thou lovely city of Cecrops; and shalt not thou say of the world, Thou lovely city of God?}
+}
+\p{\strong{Translation:}}
+}
+
+\section{Today's Todos}{
+  \ul{
+    \li{Get results for research meeting.}
+    \li{Meet with Aditya.}
+    \li{Watch TPU lecture and take notes.}
+  }
+
+}
+
+\section{Progress on Todos}{
+\ul{
+  \li{Things actually kinda worked in research.}
+  \li{Met with Aditya. Not sure how to apply CSF to our setting.}
+  \li{Worked on resume.}
+}
+}
+
+\section{Tomorrow's Todos}{
+  \ul{
+    \li{Chapter 12 of Inside the Machine.}
+    \li{TPU FlexAttention.}
+  }
+}
