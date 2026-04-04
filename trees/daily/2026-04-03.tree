@@ -1,0 +1,39 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Friday, April 3, 2026}
+\date{2026-04-04T01:44:20Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 9, Section 27}
+\em{Within a while the earth shall cover us all, and then she herself shall have her change. And then the course will be, from one period of eternity unto another, and so a perpetual eternity. Now can any man that shall consider with himself in his mind the several rollings or successions of so many changes and alterations, and the swiftness of all these rulings; can he otherwise but contemn in his heart and despise all worldly things? The cause of the universe is as it were a strong torrent, it carrieth all away.}
+}
+\p{\strong{Translation:}}
+}
+
+\section{Today's Todos}{
+  \ul{
+    \li{Chapter 12 of Inside the Machine.}
+    \li{TPU FlexAttention.}
+  }
+}
+
+\section{Progress on Todos}{
+\ul{
+  \li{Read first part of Chapter 12 of Inside the Machine and refactored notes to look better.}
+  \li{Did not do TPU FlexAttention, but I did finish my resume!}
+}
+}
+
+\section{Tomorrow's Todos}{
+\ul{
+  \li{Finish Chapter 12 of Inside the Machine.}
+  \li{TPU FlexAttention.}
+  \ul{
+    \li{Understand how to split up work.}
+    \li{How does inference / backward pass differ?}
+  }
+}
+}
