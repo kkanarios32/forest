@@ -2,7 +2,7 @@
 \title{KV-cache}
 \import{base-macros}
 \author{kellenkanarios}
-\tag{todo}
+\tag{public}
 
 \figure{
 \<html:img>[width]{80\%}[src]{\route-asset{assets/img/kv-cache.gif}}{}

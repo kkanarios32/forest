@@ -42,3 +42,62 @@ A processor often is asscoiated with three names. The \em{brand name}, the \em{m
   \li{Never issue \code{ESP} related instructions to back-end.}
 }
 }
+\section{The Core Duo}{
+\p{Up until now, all of the components we have described (along with the L1 cache) comprise to make up a single \em{core}.}
+\ul{
+  \li{Namely, each core consists of a front-end, a back-end, and an L1 cache.}
+}
+\p{The core duo is a \em{multicore} processor.}
+\ul{
+  \li{Traditional multiprocessors were cores on separate chips.}
+  \li{\em{Chip multiprocessing} is when two cores are physically placed on the same die.}
+  \ul{
+    \li{Major advantage is that cores can share a lower level cache like L2.}
+  }
+}
+\p{The core duo made a few additions to micro-op fusion.}
+\ul{
+  \li{Each decoder is capable of micro-op fusion, enabling up to 3 fused instructions to be put in micro-op queue at a time.}
+  \li{Can now fuse vector SSE instructions.}
+  \li{Also indirect branching, compare / test immediate, etc.}
+}
+\p{Also improved loop detector on predicting loop exit conditions for loops with lower iteration count.}
+}
+\section{The Core 2 Duo}{
+\p{\strong{Summary:} \em{more is always better}.}
+\ul{
+  \li{Wider decode / dispatch / issue stages.}
+  \li{Added bigger everything: reorder buffer, reservation stations, decode logic, etc.}
+}
+\p{Bigger is not always better. This required a few innovations. On the frontend,}
+\ul{
+  \li{\em{Macro fusion}: fuse pairs of x86 instructions together. Increases total maximum decode bandwidth to 5 x86 instructions at a time without needing extra backend resources (ROB or RS entries).}
+}
+\p{On the backend, the main innovation was single cycle vector operations.}
+\ul{
+  \li{Previous cores, all had 80 bit data bus to the vector ALU.}
+  \li{This required process 128 bit SSE instructions 64 bits at a time in 2 total cycles.}
+  \li{Core 2 duo adds 128 bit data bus allowing single cycle vector operations.}
+  \li{This also results in SSE instructions being a single micro-op.}
+}
+\p{\strong{Memory disambiguation:} to take advantage, we need to exectute more memory instructions simultaneously.}
+\ul{
+  \li{Memory requires reading from L1 cache, which is farther than register file. Need way to have memory operations not stall pipeline.}
+  \li{Memory order buffer is typically FIFO, but how can we reorder non-conflicting memory instructions?}
+  \li{When a store and load access the same address, they are said to \em{alias}.}
+  \ol{
+    \li{Stores must always commit in program order relative to other stores.}
+    \li{No load can commit ahead of an aliased store-data micro-op.}
+    \li{No load can commit ahead of a store-data micro-op with an unknown target address.}
+  }
+  \li{Rule (3) results in a lot of \em{false aliasing}, where the unknown address is not an alias.}
+  \ul{
+    \li{To get around this, use idea similar to \em{speculative execution}.}
+    \li{This is known as \em{memory disambiguation}.}
+    \li{Flush pipeline and re-execute load on violation.}
+  }
+}
+\remark{
+A load is only a single micro-op beacause copmuting the address and accessing the memory are \em{inherently serial}. Store is two micro-ops because we can compute the store address and read the register file in parallel.
+}
+}

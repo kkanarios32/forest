@@ -1,0 +1,35 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Saturday, April 4, 2026}
+\date{2026-04-04T17:24:22Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 6, Section 52}
+\em{To them that are sick of the jaundice, honey seems bitter; and to them that are bitten by a mad dog, the water terrible; and to children, a little ball seems a fine thing. And why then should I be angry? or do I think that error and false opinion is less powerful to make men transgress, than either choler, being immoderate and excessive, to cause the jaundice; or poison, to cause rage?}
+}
+\p{\strong{Translation:}}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Finish Chapter 12 of Inside the Machine.}
+  \li{TPU FlexAttention.}
+  \ul{
+    \li{Understand how to split up work.}
+    \li{How does inference / backward pass differ?}
+  }
+}
+}
+
+\section{Progress on Todos}{
+\ul{
+  \li{Finished Chapter 12 of Inside the Machine. Might be done with the book now.}
+}
+}
+
+\section{Tomorrow's Todos}{
+
+}
