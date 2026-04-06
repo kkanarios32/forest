@@ -31,5 +31,20 @@
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Leet: at least attempt minimum window substring for 45min}
+  \li{TPU FlexAttention}
+  \ul{
+    \li{Set up benchmarking TPU flash attention.}
+    \li{STRETCH: See if I can get alibi score mod working and how to bench.}
+  }
+  \li{Print out all SWE needs to know about memory paper.}
+  \ul{
+    \li{Maybe read some of it?}
+  }
+  \li{STRETCH: Setup RL class homework.}
+  \ul{
+    \li{More feasible just setup RLHF autograder.}
+  }
+}
 }
