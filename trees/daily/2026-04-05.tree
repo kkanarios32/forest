@@ -1,0 +1,35 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Sunday, April 5, 2026}
+\date{2026-04-06T00:28:42Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 12, Section 16}
+\em{When a man has presented the appearance of having done wrong, [say] How then do I know if this is a wrongful act? And even if he has done wrong, how do I know that he has not condemned himself? and so this is like tearing his own face. Consider that he, who would not have the bad man do wrong, is like the man who would not have the fig-tree to bear juice in the figs and infants to cry and the horse to neigh, and whatever else must of necessity be. For what must a man do who has such a character? If then thou art irritable, cure this man’s disposition.}
+}
+\p{\strong{Translation:} Really hammering home the theme that human behavior is no different than any other external behavior in the world and so you should not treat it any differently.}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Must do TPU FlexAttention.}
+  \ul{
+    \li{At least identify how to split up work.}
+    \li{Try to code something.}
+  }
+}
+}
+
+\section{Progress on Todos}{
+\ul{
+  \li{Have a rough game plan for TPU FlexAttention.}
+  \li{Advisor needed me to revise slides again for CRL. But finally done now.}
+}
+}
+
+\section{Tomorrow's Todos}{
+
+}
