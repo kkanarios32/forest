@@ -1,0 +1,41 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Monday, April 6, 2026}
+\date{2026-04-06T14:30:40Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 9, Section 31}
+\em{To comprehend the whole world together in thy mind, and the whole course of this present age to represent it unto thyself, and to fix thy thoughts upon the sudden change of every particular object. How short the time is from the generation of anything, unto the dissolution of the same; but how immense and infinite both that which was before the generation, and that which after the generation of it shall be. All things that thou seest, will soon be perished, and they that see their corruptions, will soon vanish away themselves. He that dieth a hundred years old, and he that dieth young, shall come all to one.}
+}
+\p{\strong{Translation:} feels a little too much like "we are all going to die anyway" mentality.}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Leet: at least attempt minimum window substring for 45min}
+  \li{TPU FlexAttention}
+  \ul{
+    \li{Set up benchmarking TPU flash attention.}
+    \li{STRETCH: See if I can get alibi score mod working and how to bench.}
+  }
+  \li{Print out all SWE needs to know about memory paper.}
+  \ul{
+    \li{Maybe read some of it?}
+  }
+  \li{STRETCH: Setup RL class homework.}
+  \ul{
+    \li{More feasible just setup RLHF autograder.}
+  }
+}
+}
+
+\section{Progress on Todos}{
+
+}
+
+\section{Tomorrow's Todos}{
+
+}
