@@ -1,0 +1,50 @@
+\import{base-macros}
+\date{2026-04-06T18:54:24Z}
+\tag{public}
+\title{Processing in Memory for ML}
+\p{Notes on guest lecture by Yufeng Gu titled \em{Architecture and System Co-Design for Scalable Large Language Model Inference}}
+\p{TFLOPs increasing much faster than DRAM bandwidth -> Hardware scaling is hitting the \em{memory wall}.}
+\p{Data center power consumption also increasing #{\approx} 10\% a year.}
+\p{\strong{GPUs are under low utilization for LLM inference}}
+\ul{
+  \li{Prefix stage: parallel}
+  \li{Decoding stage: sequential -> bottleneck!}
+}
+\p{As batch size increases, the [[TJLA]] dominates memory usage.}
+\ul{
+  \li{KV cache size grows with context length.}
+  \li{Tradeoff between context length and batch size.}
+}
+\remark{
+Unlike fully-connected cannot batch self-attention because it depends on the individual prompts.
+}
+\p{\strong{Recall:} operational intensity is ##{\frac{\text{compute throughput}}{\text{memory bandwidth}}}}
+\p{\strong{Inference much lower operational intensity than GEMM!}}
+\ul{
+  \li{Inference only doing matrix #{\times} row}
+  \li{If embedding dim is #{D}, then this is only #{D} ops / byte.}
+}
+\p{Processing in memory (PIM) enables faster memory bandwidth.}
+\problem{Has lower memory capacity (fewer GB) due to added processing units (PU).
+}
+\solution{Use Compute eXpress Link (CXL) to do memory expansion to get high memory bandwidth + expend memory capacity.}
+\remark{
+Put high use operations i.e. vector multiplication, element-wise multiplication in PIM module (99\% usage). Put more complicated operations on PNM accelerator. TODO: ISAs for each specified on slides (not available yet).
+}
+\remark{
+CENT supports inter and intra-device communication via connecting communication controller to shared buffer and CXL port.
+}
+\p{\strong{Communcation primitives:} multicast and gather}
+\ul{
+  \li{Multicast: send to all CXL devices.}
+  \li{Gather: receive data sequentially from all CXL devices.}
+  \li{Multicsat-gather -> tensor parallel.}
+}
+\p{\em{Peer-to-peer:} can also support pipeline parallelism.}
+\remark{
+For fast communication, use tensor parallelism i.e. if connected via NVLink. If slower communication use pipeline parallelism. Can mix.
+}
+
+\remark{
+Longer context -> better performance for PIM (TODO: why?). HBM + PIM does not scale. Cannot arbitrarily add PIM.
+}
