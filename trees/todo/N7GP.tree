@@ -549,4 +549,5 @@ If they access the exact same word within a bank then the word can be broadcast 
   }
   \p{\strong{Cost of operations:} 32b vs 8b addition has order of magnitude difference in energy consumption.}
 }
+\transclude{2BGU}
 }

@@ -1,9 +1,10 @@
+\import{base-macros}
 \date{2026-04-07T02:00:00Z}
 \tag{public}
 
 \title{Everything a SWE needs to know about memory}
 \p{This is a collection of notes on the paper.}
 
-\section{}{
+\section{How does memory work}{
 
 }
