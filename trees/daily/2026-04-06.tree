@@ -43,5 +43,17 @@
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Leet: valid sudoku.}
+  \li{Reading: Section 2 of what every SWE needs to know about memory.}
+  \li{TPU FlexAttention}
+  \ul{
+    \li{Get data on block sizes for TPU.}
+    \li{Implement score mod and get running with alibi on TPU.}
+  }
+  \li{OGCRL}
+  \ul{
+    \li{Try all easy experiments and get plots / results.}
+  }
+}
 }
