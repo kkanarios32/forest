@@ -33,7 +33,13 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{I attempted minimum window substring and got the right idea.}
+  \ul{
+    \li{Worked with minor changes.}
+  }
+  \li{I did set up some benchmarking and have a pretty good idea of what I want to do.}
+}
 }
 
 \section{Tomorrow's Todos}{

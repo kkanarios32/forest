@@ -54,16 +54,16 @@
   }
 
   \proof{
-The first step is to prove that the average Q-values are close to the task-conditioned Q-values. Below, we will use #{R_{c}(\tau)\triangleq\sum_{\ell=0}^{\infty}\gamma^{\ell}r_{\ell}(s_{\ell},a_{\ell})}:
+The first step is to prove that the average Q-values are close to the task-conditioned Q-values. Below, we will use #{R_{g}(\tau)\triangleq\sum_{t=0}^{\tau}\gamma^{\ell}r_{g}(s_{t},a_{t})}:
 
 ##{
 \begin{align*}
-\left|Q^{\beta(\cdot|\cdot,a)}(s,a,e)-Q^{\beta(\cdot|\cdot,\epsilon^{\prime})}(s,a,e)\right|&=\left|\int\beta(\tau\mid s,a,e)R_{e}(\tau)d\tau-\int\beta(\tau\mid s,a,e^{\prime})R_{e}(\tau)d\tau\right|\\ 
-&=\left|\int\beta(\tau\mid s,a,e)-\beta(\tau\mid s,a,e^{\prime})R_{e}(\tau)d\tau\right| \\
-&=\left|\int\beta(\tau\mid s,a,e)\left(1-\frac{\beta(\tau\mid s,a,e^{\prime})}{\beta(\tau\mid s,a,e)}\right)R_{e}(\tau)d\tau\right| \\
-&\leq\int\left|\beta(\tau\mid s,a,e)\left(1-\frac{\beta(\tau\mid s,a,e^{\prime})}{\beta(\tau\mid s,a,e)}\right)\right|d\tau\cdot\operatorname*{max}_{\tau}|R_{e}(\tau)d\tau| \\
-&\leq\int\beta(\tau\mid s,a,e)\left|1-\frac{\beta(\tau\mid s,a,e^{\prime})}{\beta(\tau\mid s,a,e)}\right|d\tau\cdot 1 \\
-&=\mathbb{E}_{\beta(\tau|s,a,e)}\left[\left|1-{\frac{\beta(\tau\mid s,a,e^{\prime})}{\beta(\tau\mid s,a,e)}}\right|\right] \\
+\left|Q^{\pi(\cdot|\cdot, g)}(s,a,g)-Q^{\\pi(\cdot|\cdot,g^{\prime})}(s,a,e)\right|&=\left|\int\pi(\tau\mid s,a,g)R_{g}(\tau)d\tau-\int\pi(\tau\mid s,a,g^{\prime})R_{g}(\tau)d\tau\right|\\ 
+&=\left|\int\pi(\tau\mid s,a,g)-\pi(\tau\mid s,a,g^{\prime})R_{g}(\tau)d\tau\right| \\
+&=\left|\int\pi(\tau\mid s,a,g)\left(1-\frac{\pi(\tau\mid s,a,g^{\prime})}{\pi(\tau\mid s,a,g)}\right)R_{g}(\tau)d\tau\right| \\
+&\leq\int\left|\pi(\tau\mid s,a,g)\left(1-\frac{\pi(\tau\mid s,a,g^{\prime})}{\pi(\tau\mid s,a,g)}\right)\right|d\tau\cdot\operatorname*{max}_{\tau}|R_{g}(\tau)d\tau| \\
+&\leq\int\pi(\tau\mid s,a,g)\left|1-\frac{\pi(\tau\mid s,a,g^{\prime})}{\pi(\tau\mid s,a,g)}\right|d\tau\cdot 1 \\
+&=\mathbb{E}_{\pi(\tau|s,a,g)}\left[\left|1-{\frac{\pi(\tau\mid s,a,g^{\prime})}{\pi(\tau\mid s,a,g)}}\right|\right] \\
 &\leq \epsilon.
 \end{align*}
   }

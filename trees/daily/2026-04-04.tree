@@ -10,7 +10,7 @@
 \strong{Book 6, Section 52}
 \em{To them that are sick of the jaundice, honey seems bitter; and to them that are bitten by a mad dog, the water terrible; and to children, a little ball seems a fine thing. And why then should I be angry? or do I think that error and false opinion is less powerful to make men transgress, than either choler, being immoderate and excessive, to cause the jaundice; or poison, to cause rage?}
 }
-\p{\strong{Translation:}}
+\p{\strong{Translation:} Do not get upset at people with false opinions as it is akin to getting mad at a man with rabies for fearing water.}
 }
 
 \section{Today's Todos}{
@@ -27,9 +27,16 @@
 \section{Progress on Todos}{
 \ul{
   \li{Finished Chapter 12 of Inside the Machine. Might be done with the book now.}
+  \li{Spent all day fixing slides for contrastive RL. turns out notation was not mathematically correct, but I did get better understanding from it.}
 }
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Must do TPU FlexAttention.}
+  \ul{
+    \li{At least identify how to split up work.}
+    \li{Try to code something.}
+  }
+}
 }
