@@ -21,7 +21,7 @@ We are given a joint distribution #{p(X, Z; \theta)}, where #{X} and #{Z} are ra
 }
 Why is this the case? Because then (for well-behaved #{\ell_{\theta}})
 ##{\theta_{t + 1} = \theta_{t} - \alpha \nabla_{\theta_{t}}\ell_{\theta_{t}}(x_i, z_i) \to \theta^*}
-i.e. SGD is a reasonable thing to do, where the gradient is for a \strong{single} sample of #{x_i} and #{z_i} which we have readily available from our dataset #{\mathcal{D}} and our distribution #{q} that we can sample from. This idea comes up a lot in optimization, such as the #{\log} trick in the original [policy gradient](003Y).
+i.e. SGD is a reasonable thing to do, where the gradient is for a \strong{single} sample of #{x_i} and #{z_i} which we have readily available from our dataset #{\mathcal{D}} and our distribution #{q} that we can sample from. This idea comes up a lot in optimization, such as the #{\log} trick in the original policy gradient.
 }
 \p{Similar to the #{\log} trick, the \em{Evidence Lower Bound} (ELBO) comes from a simple multiply and divide trick. Namely,
 ##{\begin{align*}

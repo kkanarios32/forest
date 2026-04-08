@@ -1,0 +1,45 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Research Notebook, April 8, 2026}
+\date{2026-04-08T13:10:01Z}
+
+\section{Questions}{
+
+}
+
+\section{Experiments}{
+\strong{Current setup}:
+\ol{
+  \li{Skill loss:}
+  \ul{
+    \li{Sample #{z} via Gumbel softmax.}
+    \li{Fix #{z} for #{k} steps and take actor loss as ##{\sum_{n=1}^{k} \log (a_n^* \mid s_n, z)}}
+    \li{We have switching loss, but it seems to only be harming in the two skill case.}
+  }
+  \li{Actor loss:}
+  \ul{
+    \li{Sample #{z} with linearly annealing temperature paramater.}
+    \li{Then do same BC loss as above.}
+  }
+}
+\strong{Without switching loss:}
+\ul{
+  \li{We are able to get the CW / CCW skills when we add the #{k}-step loss back. [wandb](https://wandb.ai/kellen-research/InfoLandmarks/runs/mapt5gjl?nw=nwuserkanarioskellen).}
+  \li{Weird crashing behavior at end though.}
+}
+\strong{Information bottleneck:} I have switched to an information bottleneck loss.
+\ul{
+  \li{We want to maximize information between #{z} and action sequence #{(a_{1}, \ldots, a_k)}}
+  \li{Subject to constraint on information between #{z} and #{(s_{0}, g)}}
+}
+Still does not really work, but more stable than before -> converges to skills and stays at them.
+\ul{
+  \li{ I think that the loop environment might not be a good test and have instead added the canonical four rooms environment to see what the skills correspond to. }
+}
+}
+
+\section{Next Steps}{
+
+}
