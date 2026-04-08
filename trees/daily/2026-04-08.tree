@@ -1,0 +1,36 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Wednesday, April 8, 2026}
+\date{2026-04-08T11:53:22Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 10, Section 17}
+\em{So live as indifferent to the world and all worldly objects, as one who liveth by himself alone upon some desert hill. For whether here, or there, if the whole world be but as one town, it matters not much for the place. Let them behold and see a man, that is a man indeed, living according to the true nature of man. If they cannot bear with me, let them kill me. For better were it to die, than so to live as they would have thee.}
+}
+\p{\strong{Translation:} Without worldly objects, wherever you live is the same. When you've made it living alone on a desert hill should be the same as NYC.}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Leet: spiral matrix.}
+  \li{OGCRL:}
+  \ul{
+    \li{Add back #{k}-step rollouts make BC loss use fixed z.}
+    \li{If works, try for bigger maze.}
+  }
+  \li{Print + read: Section 2 of what every SWE needs to know about memory.}
+  \li{Make CRL HW.}
+  \li{Make autograder for RLHF HW.}
+}
+}
+
+\section{Progress on Todos}{
+
+}
+
+\section{Tomorrow's Todos}{
+
+}
