@@ -1,0 +1,118 @@
+\import{base-macros}
+\date{2026-04-08T19:08:32Z}
+\tag{public}
+\title{On-Chip Interconnection Networks}
+
+\p{\strong{Metrics:}}
+\ul{
+  \li{Performance: latency and throughput.}
+  \ul{
+    \li{Measure latency via random sampling source and destination and averaging.}
+    \li{No traffic = \em{zero load latency.}}
+    \li{As you increas traffic, once latency increases exponentially we have reached \em{saturation throughput}.}
+    \li{\em{Bisection bandwidth} is the bandwidth between two equal size partitions of the network.}
+  }
+  \li{Cost: area and power.}
+}
+
+\section{Interfaces}{
+\question{What do we need to connect?}
+\answer{We need to connect each core (includes L1) and L2 banks (can be shared between cores or private).}
+\remark{
+Each L2 has a cache controller (manages coherence) and a memory controller (connects to DRAM).
+}
+\p{TODO: Miss State Handling Register (MSHR)}
+\p{TODO: Transaction Status Handling Register (TSHR)}
+}
+
+\section{Topologies}{
+\p{\strong{Crossbar:} 2D grid connecting each core to each other.}
+\ul{
+  \li{Each core one input and one output port.}
+  \li{Requires serialization if two cores try to send data to the same core.}
+}
+
+\p{\strong{Bidirectional ring:} connect each node to two neighbors.}
+\ul{
+  \li{Very simple.}
+  \li{Not scalable. Requires worst case #{\frac{n}{2}} hops.}
+}
+
+\p{The above are examples of \em{direct topologies}.}
+\ul{
+  \li{Each router associated with terminl node}
+}
+\p{An \em{indirect topology} may have router with no associated terminal node.}
+\ul{
+  \li{i.e. a router can route between two rings}
+}
+\p{\strong{Torus:} #{k}-ary #{n}-cube. #{k} connections in each dimension with #{n} dimensions.}
+\ul{
+  \li{Cube has ends of dimension connected.}
+  \li{Mesh does not have ends of dimension connected.}
+  \li{Can have #{i,j,k}-ary i.e. different number of connections per dimension.}
+}
+\remark{
+A ring is an #{k}-ary #{1}-cube.
+}
+\remark{
+Mesh is more popular because crossing wires complicates design and increases manufacturing cost.
+}
+\p{Torus has good \em{path diversity}: number of ways to connect any two nodes.}
+
+\p{\strong{Butterfly:} #{k}-ary #{n}-fly. #{k^n} network nodes.}
+\ul{
+  \li{Indirect network.}
+  \li{#{n}-stages. Each stage selects which half of nodes to stay in, reducing to selected half at each stage.}
+}
+\figure{
+\<html:img>[width]{70\%}[src]{\route-asset{assets/img/butterfly-interconnect.png}}{}
+\figcaption{Routing #{0} to #{2} on #{2}-ary #{3}-fly}
+}
+\problem{\strong{Zero} path diversity.}
+\solution{Add extra \em{shuffle stages}}
+\p{\strong{Clos network:} #{(m,n,r)} network, has #{m} middle stage switches, #{n} input/output ports, #{r} number of input/output switches.}
+\ul{
+  \li{High path diversity.}
+}
+\p{\strong{Fat tree:} tree with higher bandwidth root note.}
+\ul{
+  \li{Increases path diversity by duplicating root node.}
+}
+}
+
+\section{Implementation}{
+\p{\em{Folding:} equalize path lengths.}
+\ul{
+  \li{Could increase average latency.}
+}
+\p{\em{Concentration:} allocate more cores per router.}
+\ul{
+  \li{Decreases throughput per node.}
+  \li{Programs with high locality do not do much communication -> concentration a good idea.}
+}
+\remark{
+Hop count does not necessarily equal latency. If each hop takes long time, then few hops could have higher latency.
+}
+}
+\section{Routing}{
+\p{\strong{Greedy:} shortest path.}
+\p{\strong{Uniform:} randomly pick direction.}
+\p{\strong{Adaptive:} send packet in direction with lowest local channel load.}
+\example{
+Tornado traffic: node #{i} sends to #{(i + 3) \mathrm{mod} 8}.
+\ul{
+  \li{Greedy: send all counterclockwise.}
+  \ul{
+    \li{Does not use bi-directional bandwidth}
+    \li{#{\frac{1}{3}} utilization}
+  }
+  \li{Uniform: randomly clockwise / counterclockwise.}
+  \ul{
+    \li{#{\frac{2}{3}} utilization}
+    \li{Increased hop count}
+  }
+  \li{Adaptive: send #{\frac{5}{8}} counterclockwise.}
+}
+}
+}
