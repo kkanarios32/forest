@@ -1,0 +1,66 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Tuesday, April 7, 2026}
+\date{2026-04-07T11:45:30Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 8, Section 47}
+\em{Keep thyself to the first bare and naked apprehensions of things, as they present themselves unto thee, and add not unto them. It is reported unto thee, that such a one speaketh ill of thee. Well; that he speaketh ill of thee, so much is reported. But that thou art hurt thereby, is not reported: that is the addition of opinion, which thou must exclude. I see that my child is sick. That he is sick, I see, but that he is in danger of his life also, I see it not. Thus thou must use to keep thyself to the first motions and apprehensions of things, as they present themselves outwardly; and add not unto them from within thyself through mere conceit and opinion. Or rather add unto them: hut as one that understandeth the true nature of all things that happen in the world.}
+}
+\p{\strong{Translation:} Do not let your interpretations distort reality. See things for what actually happened not how they affect you.}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Leet: valid sudoku.}
+  \li{Reading: Section 2 of what every SWE needs to know about memory.}
+  \li{TPU FlexAttention}
+  \ul{
+    \li{Get data on block sizes for TPU.}
+    \li{Implement score mod and get running with alibi on TPU.}
+  }
+  \li{OGCRL}
+  \ul{
+    \li{Try all easy experiments and get plots / results.}
+  }
+  \li{Misc:}
+  \ul{
+    \li{Setup research notebook workflow.}
+  }
+}
+}
+
+\section{Progress on Todos}{
+\ul{
+  \li{Leet: did valid sudoku. Feel a little better about leetcode again.}
+  \li{TPU FlexAttention:}
+  \ul{
+    \li{Got sweep script running and data for different block sizes / sequence lengths.}
+  }
+  \li{OGCRL:}
+  \ul{
+   \li{Tried moving summation outside, etc.} 
+   \li{Found out that the learned switching cost was doing nothing except going straight to zero due to same loss.}
+   \li{Fixed learning to try to match switch rate to \code{desired_switch_rate}.}
+   \li{In the two skill case, policies seem to be forced to be disjoint.}
+   \li{Need to try adding back #{k}-step rollouts to force some consistency.}
+  }
+}
+}
+
+\section{Tomorrow's Todos}{
+\ul{
+  \li{Leet: spiral matrix.}
+  \li{OGCRL:}
+  \ul{
+    \li{Add back #{k}-step rollouts make BC loss use fixed z.}
+    \li{If works, try for bigger maze.}
+  }
+  \li{Print + read: Section 2 of what every SWE needs to know about memory.}
+  \li{Make CRL HW.}
+  \li{Make autograder for RLHF HW.}
+}
+}
