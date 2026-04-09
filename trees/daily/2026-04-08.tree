@@ -28,9 +28,26 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{Leet: Did spiral matrix.}
+  \li{OGCRL:}
+  \ul{
+    \li{Tried everything. Nothing worked.}
+    \li{Trying new IB loss on new env.}
+  }
+  \li{Printed but did not read.}
+  \li{Did not make CRL HW.}
+  \li{Made autograder for RLHF HW.}
+}
 }
 
 \section{Tomorrow's Todos}{
+  \ul{
+    \li{Leet: rotate matrix.}
+    \li{Read: Section 2 of what every SWE needs to know about memory}
+    \li{Try IB loss on new env.}
+    \li{Make CRL HW.}
+    \li{Time permitting: score_mod in flex attention.}
+  }
 
 }
