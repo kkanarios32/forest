@@ -5,11 +5,7 @@
 \title{Research Notebook, April 8, 2026}
 \date{2026-04-08T13:10:01Z}
 
-\section{Questions}{
-
-}
-
-\section{Experiments}{
+\section{Things Tried}{
 \strong{Current setup}:
 \ol{
   \li{Skill loss:}
@@ -36,10 +32,14 @@
 }
 Still does not really work, but more stable than before -> converges to skills and stays at them.
 \ul{
-  \li{ I think that the loop environment might not be a good test and have instead added the canonical four rooms environment to see what the skills correspond to. }
+  \li{I think that the loop environment might not be a good test and have instead added the canonical four rooms environment to see what the skills correspond to. }
 }
 }
 
-\section{Next Steps}{
-
+\section{Things to try next}{
+See how different losses behave in the four room environment.
+\ul{
+  \li{See old loss.}
+  \li{See information bottleneck loss.}
+}
 }
