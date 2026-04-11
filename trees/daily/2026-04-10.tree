@@ -1,0 +1,45 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Friday, April 10, 2026}
+\date{2026-04-11T01:27:14Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 3, Section 14}
+\em{As physicians and chirurgeons have always their instruments ready at hand for all sudden cures; so have thou always thy dogmata in a readiness for the knowledge of things, both divine and human: and whatsoever thou dost, even in the smallest things that thou dost, thou must ever remember that mutual relation, and connection that is between these two things divine, and things human. For without relation unto God, thou shalt never speed in any worldly actions; nor on the other side in any divine, without some respect had to things human.}
+}
+\p{\strong{Translation:}}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Score mod in flex attention.}
+  \li{Read: Section 2 of what every SWE needs to know about memory}
+  \li{Leet: rotate matrix.}
+  \li{Read InfoBot paper.}
+}
+}
+
+\section{Progress on Todos}{
+\ul{
+  \li{Did leet rotate matrix and zero row / col.}
+  \ul{
+    \li{Did not see transpose / reverse pattern in rotate.}
+    \li{My zero row / col super slow.}
+  }
+  \li{Did a little bit of infobot.}
+  \li{Read section 2.1 of SWE memory.}
+}
+}
+
+\section{Tomorrow's Todos}{
+\ul{
+  \li{Finish score_mod in flex attention.}
+  \ul{
+    \li{First task: make score forward and backward for non-pallas and make sure it matches when using soft capping.}
+  }
+  \li{Finish section 2 of SWE memory.}
+}
+}
