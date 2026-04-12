@@ -1,0 +1,42 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Saturday, April 11, 2026}
+\date{2026-04-12T02:55:38Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 4, Section 5}
+\em{As generation is, so also death, a secret of nature's wisdom: a mixture of elements, resolved into the same elements again, a thing surely which no man ought to be ashamed of: in a series of other fatal events and consequences, which a rational creature is subject unto, not improper or incongruous, nor contrary to the natural and proper constitution of man himself.}
+}
+\p{\strong{Translation:} don't be ashamed of death?}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Finish score_mod in flex attention.}
+  \ul{
+    \li{First task: make score forward and backward for non-pallas and make sure it matches when using soft capping.}
+  }
+  \li{Finish section 2 of SWE memory.}
+}
+}
+
+\section{Progress on Todos}{
+\ul{
+  \li{Finished setion 2 of SWE memory.}
+  \li{Birthday stuff made score_mod impossible.}
+}
+}
+
+\section{Tomorrow's Todos}{
+\ul{
+  \li{Finish score_mod in flex attention.}
+  \ul{
+    \li{First task: make score forward and backward for non-pallas and make sure it matches when using soft capping.}
+  }
+  \li{Finish up to section 3.3 of SWE memory.}
+  \li{Leet: Game of life.}
+}
+}
