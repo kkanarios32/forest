@@ -5,6 +5,12 @@
 \title{Everything a SWE needs to know about memory}
 \p{This is a collection of notes on the paper.}
 
-\section{How does memory work}{
+\section{RAM}{
+There are two types of \em{random access memory}
+(RAM): \em{dynamic RAM} (DRAM) and \em{static RAM} (SRAM).
+
+\p{\strong{SRAM:} stores value with 6 transistors (no capacitors).}
+}
+\section{CPU Cache}{
 
 }
