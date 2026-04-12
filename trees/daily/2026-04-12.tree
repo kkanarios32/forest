@@ -1,0 +1,33 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Sunday, April 12, 2026}
+\date{2026-04-12T15:30:04Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 5, Section 25}
+\em{How hast thou carried thyself hitherto towards the Gods? towards thy parents? towards thy brethren? towards thy wife? towards thy children? towards thy masters? thy foster-fathers? thy friends? thy domestics? thy servants? Is it so with thee, that hitherto thou hast neither by word or deed wronged any of them? Remember withal through how many things thou hast already passed, and how many thou hast been able to endure; so that now the legend of thy life is full, and thy charge is accomplished. Again, how many truly good things have certainly by thee been discerned? how many pleasures, how many pains hast thou passed over with contempt? how many things eternally glorious hast thou despised? towards how many perverse unreasonable men hast thou carried thyself kindly, and discreetly?}
+}
+\p{\strong{Translation:} be proud of what you have done so far but keep it up.}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Finish score_mod in flex attention.}
+  \ul{
+    \li{First task: make score forward and backward for non-pallas and make sure it matches when using soft capping.}
+  }
+  \li{Finish up to section 3.3 of SWE memory.}
+  \li{Leet: Game of life.}
+}
+}
+
+\section{Progress on Todos}{
+
+}
+
+\section{Tomorrow's Todos}{
+
+}
