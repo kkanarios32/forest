@@ -97,8 +97,21 @@ Hop count does not necessarily equal latency. If each hop takes long time, then 
 }
 \section{Routing}{
 \p{\strong{Greedy:} shortest path.}
+\ul{
+  \li{(-) Overload central / common paths. Creates bottlenecks.}
+  \li{Worst case throughput: bad. too much congestion}
+}
 \p{\strong{Uniform:} randomly pick direction.}
+\ul{
+\li{(+) Avoids overloading paths.}  
+\li{(-) Inneficient / unpredictable.}
+\li{Worst case throughput: unpredictable. often low.}
+}
 \p{\strong{Adaptive:} send packet in direction with lowest local channel load.}
+\ul{
+  \li{(+) dynamically balances load and avoids bottlenecks.}
+  \li{Worst case throughput: best. avoids congestion.}
+}
 \example{
 Tornado traffic: node #{i} sends to #{(i + 3) \mathrm{mod} 8}.
 \ul{
@@ -109,10 +122,40 @@ Tornado traffic: node #{i} sends to #{(i + 3) \mathrm{mod} 8}.
   }
   \li{Uniform: randomly clockwise / counterclockwise.}
   \ul{
-    \li{#{\frac{2}{3}} utilization}
-    \li{Increased hop count}
+    \li{#{\frac{2}{3}} utilization in counterclockwise}
+    \li{#{\frac{2}{5} utilization in clockwise}}
+    \li{#{\frac{2}{5}} worst case.}
   }
   \li{Adaptive: send #{\frac{5}{8}} counterclockwise.}
 }
 }
+\problem{\strong{Routing Deadlock}. Packet might pass through link that has full buffer}
+\solution{\em{Dimension order routing}. Must completely travel in direction of one dimension before moving along another dimension.}
+\remark{
+Dimension order routing is \em{oblivious} i.e. unaware of the current state of the network.
 }
+\problem{Dimension order routing hs no path diversity}
+\solution{\em{Valiant's Routing Algorithm}: Randomly select intermediate waypoint. Follow dimension order routing to intermediate node, then from intermediate node to end point.
+\ul{
+  \li{To guarantee minimal path, respect to sub-quadrant formed by starting and end point.}
+}
+}
+\remark{
+Not violating deadlock property because intermediate point removes intermediate packet from network and later injects it.
+}
+\p{\strong{Beyond oblivious routing.} Use local state information to avoid routing to congested areas.}
+\problem{Local information can cause livelock.}
+\p{\em{Backpressure} can notify network that there is congestion in a direction i.e. if a future link in a direction is congested eventually my next link will be congested and I can see that.}
+\p{Two options to deal with deadlocks.}
+\ol{
+  \li{Eliminate turns that can lead to deadlocks -> deadlocks not possible.}
+  \li{Allow all turns -> detect deadlocks.}
+  \ul{
+    \li{Each node keeps track of how long each packet in buffer.}
+    \li{Keep cheap slow backup channel. When detect deadlock, leak packets into slow network.}
+    \li{Slow network uses DOR to avoid deadlocks.}
+    \li{Instead of physical network, use \em{escape virtual channel}.}
+  }
+}
+}
+
