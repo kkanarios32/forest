@@ -25,9 +25,20 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{Finished up to section 3.3 of SWE memory.}
+  \li{Caught up on all of anki (> 100 cards).}
+}
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Finish score_mod in flex attention.}
+  \ul{
+    \li{First task: make score forward and backward for non-pallas and make sure it matches when using soft capping.}
+  }
+  \li{Finish 3.3 of SWE memory.}
+  \li{Leet: Game of life.}
+  \li{Comments on project.}
+}
 }
