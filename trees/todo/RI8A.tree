@@ -1,0 +1,108 @@
+\date{2026-04-13T16:41:42Z}
+\title{On Chip Networks}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+
+\p{These are notes on the readings for \em{On-Chip Networks} by Natalie Enright Jerger, Tushar Krishna, and Li-Shiuan Peh.}
+
+\section{Interface with System Architecture}{
+  \p{We focus on \em{shared-memory chip multiprocessors} (CMPs).}
+  \ul{
+    \li{Introduce non-uniform memory access (NUMA) latencies.}
+  }
+  \figure{
+  \<html:img>[width]{80\%}[src]{\route-asset{assets/img/cmp-architecture.png}}{}
+  \figcaption{CMP architecture with 64 nodes}
+  }
+  \remark{
+  Each node has an L2 cache that can be shared or private. It is also common that there is a L3 cache shared by all nodes.
+  }
+  \remark{
+  To avoid the latency of a directory-based coherence system, directory caches are used.
+  }
+  \remark{
+  Recall that coherence protocol can cause deadlocks. To avoid this, each \em{message class} must be split into separate channels. Here, any message that can cause another message must be in a different class.
+  }
+  \p{\strong{Private L2 Caches:} a private L2 cache w/ another shared L2 cache.}
+  \ul{
+    \li{On miss, the private L2 cache is checked first.}
+    \li{If the private L2 cache misses, forwarded to shared L2 cache that holds its directory or access off chip memory.}
+    \li{(+) Reduced latency for L2 cache hits.}
+    \li{(-) Replication of shared data across private caches.}
+    \li{(+) Less interconnect traffic between caches.}
+    \ul{
+      \li{Shared L1 missed go on network.}
+    }
+    \li{(-) More interconnect traffic off-chip.}
+    \ul{
+      \li{Lower utilization means more misses requiring off-chip traffic.}
+    }
+  }
+  \figure{
+  \<html:img>[width]{49\%}[src]{\route-asset{assets/img/priv-l2-hit.png}}{}
+  \<html:img>[width]{49\%}[src]{\route-asset{assets/img/priv-l2-miss.png}}{}
+  \figcaption{Private L2 cache hit and miss}
+  }
+  \p{\strong{Shared L2 Cache:} One L2 cache shared across all nodes. }
+  \ul{
+    \li{Each tile still has one slice of the L2 cache.}
+    \ul{
+      \li{Part of global L2 address space.}
+      \li{Each address maps to specific home tile.}
+    }
+    \li{(+) Much better utilization.}
+    \ul{
+      \li{Only one copy of data across all nodes that share the cache.}
+    }
+    \li{(-) Much higher network traffic.}
+    \ul{
+      \li{Every L1 miss goes to network.}
+    }
+  }
+  \figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/img/shared-l2-miss.png}}{}
+  \figcaption{Shared L2 cache miss}
+  }
+  \p{\strong{Difference in directory protocols:} based on cache design choice, we must implement the directory protocol.}
+  \ul{
+    \li{For shared L2 cache, the directory home node for an address is the cache bank the address maps to in shared L2.}
+    \ul{
+      \li{In the above image, the directory is in the tile marked A}
+    }
+    \li{For private L2 cache, no constraints on the directory design.}
+    \ul{
+      \li{Any subset of tiles can have directories.}
+      \li{One global directory for all tiles.}
+    }
+  }
+  \p{ There is also a design choice for the memory controller. It can either share a router with the core / cache in a tile. }
+  \ul{
+    \li{For shared router, need policy to determine who gets to inject onto network.}
+    \li{For private router, no contention for bandwidth to network.}
+    \li{Currently, memory controller is placed on perimeter close to I/O pads.}
+  }
+  \p{Interface responsible for formatting network messages on cache misses.}
+  \ul{
+  \li{\em{Miss status handling register:} on miss, set to what request it is waiting on.}
+  \ul{
+    \li{i.e. on read miss, set to read pending.}
+    \li{When a reply is received, matched against MSHR and completed.}
+  }
+  \li{\em{Transaction status handling register:} handle outstanding memory transaction requests.}
+  \ul{
+    \li{Entry placed in TSHR by directory cache when waiting for response from off-chip memory.}
+  }
+  }
+  \remark{
+  An alternative design to having hardware manage shared memory is \em{message passing}. Here, the programmer explicitly sends / requests data from another process and software is responsible for decoding the message.
+  }
+}
+
+\section{Topology}{
+
+}
+
+\section{Routing}{
+
+}
