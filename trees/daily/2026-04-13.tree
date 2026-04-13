@@ -1,0 +1,34 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Monday, April 13, 2026}
+\date{2026-04-13T12:37:25Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 8, Section 33}
+\em{As almost all her other faculties and properties the nature of the universe hath imparted unto every reasonable creature, so this in particular we have received from her, that as whatsoever doth oppose itself unto her, and doth withstand her in her purposes and intentions, she doth, though against its will and intention, bring it about to herself, to serve herself of it in the execution of her own destinated ends; and so by this though not intended co-operation of it with herself makes it part of herself whether it will or no. So may every reasonable creature, what crosses and impediments soever it meets with in the course of this mortal life, it may use them as fit and proper objects, to the furtherance of whatsoever it intended and absolutely proposed unto itself as its natural end and happiness.}
+}
+\p{\strong{Translation:} Like nature, use any impediments or obstacles to further your own goals. The struggle is the progress.}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Finish score_mod in flex attention.}
+  \ul{
+    \li{First task: make score forward and backward for non-pallas and make sure it matches when using soft capping.}
+  }
+  \li{Finish 3.3 of SWE memory.}
+  \li{Leet: Game of life.}
+  \li{Comments on project.}
+}
+}
+
+\section{Progress on Todos}{
+
+}
+
+\section{Tomorrow's Todos}{
+
+}
