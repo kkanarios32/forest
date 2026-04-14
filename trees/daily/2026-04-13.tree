@@ -26,9 +26,21 @@
 }
 
 \section{Progress on Todos}{
+  \ul{
+    \li{Made progress on score_mod in flex attention.}
+    \ul{
+      \li{Made score reference forward and backward for non-pallas and made sure it matches when using soft capping.}
+    }
+    \li{Read on-chip networks ch 2. instead.}
+    \li{Finished comments on project.}
+  }
 
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Have score_mod Pallas kernel done before meeting w/ Kelly.}
+  \li{Read on-chip networks ch 3.}
+  \li{Try IB loss on large maze and see what happens.}
+}
 }
