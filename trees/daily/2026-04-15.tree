@@ -1,0 +1,37 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Wednesday, April 15, 2026}
+\date{2026-04-15T12:57:40Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 12, Section 18}
+\em{These three things thou must have always in a readiness: first concerning thine own actions, whether thou doest nothing either idly, or otherwise, than justice and equity do require: and concerning those things that happen unto thee externally, that either they happen unto thee by chance, or by providence; of which two to accuse either, is equally against reason. Secondly, what like unto our bodies are whilest yet rude and imperfect, until they be animated: and from their animation, until their expiration: of what things they are compounded, and into what things they shall be dissolved. Thirdly, how vain all things will appear unto thee when, from on high as it were, looking down thou shalt contemplate all things upon earth, and the wonderful mutability, that they are subject unto: considering withal, the infinite both greatness and variety of things aerial and things celestial that are round about it. And that as often as thou shalt behold them, thou shalt still see the same: as the same things, so the same shortness of continuance of all those things. And, behold, these be the things that we are so proud and puffed up for.}
+}
+\p{\strong{Translation:} Three points
+\ol{
+  \li{Once again control your actions; accept things that happen beyond your control.}
+  \li{Once again that you are temporary.}
+  \li{Once again if you take a step back, you will see our individual worries are insignficant in the grand scheme of things.}
+}
+}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Finish on-chip networks ch 3. + quiz.}
+  \li{Finish on-chip networks ch 4. + quiz.}
+  \li{Maybe look at paged attention TPU.}
+  \li{Otherwise, try two policy implementation.}
+}
+}
+
+\section{Progress on Todos}{
+
+}
+
+\section{Tomorrow's Todos}{
+
+}
