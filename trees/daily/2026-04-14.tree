@@ -1,0 +1,39 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Tuesday, April 14, 2026}
+\date{2026-04-14T22:35:09Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 9, Section 4}
+\em{He that sinneth, sinneth unto himself. He that is unjust, hurts himself, in that he makes himself worse than he was before. Not he only that committeth, but he also that omitteth something, is oftentimes unjust.}
+}
+\p{\strong{Translation:} deviating from what is right hurts you as much as anyone else.}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Have score_mod Pallas kernel done before meeting w/ Kelly.}
+  \li{Read on-chip networks ch 3.}
+  \li{Try IB loss on large maze and see what happens.}
+}
+}
+
+\section{Progress on Todos}{
+\ul{
+  \li{Finished(?) score_mod Pallas kernel.}
+  \li{Read part of on-chip networks ch 3.}
+  \li{Tried IB loss reduces to primitive actions. Cannot solve large maze.}
+}
+}
+
+\section{Tomorrow's Todos}{
+\ul{
+  \li{Finish on-chip networks ch 3. + quiz.}
+  \li{Finish on-chip networks ch 4. + quiz.}
+  \li{Maybe look at paged attention TPU.}
+  \li{Otherwise, try two policy implementation.}
+}
+}
