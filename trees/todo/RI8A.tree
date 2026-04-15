@@ -100,6 +100,68 @@
 }
 
 \section{Topology}{
+\p{The implementation complexity cost of a topology is determined by two factors:}  
+\ol{
+  \li{The number of links at each node (node degree).}
+  \li{The ease of laying out a topology on a chip}
+  \ul{
+    \li{Wire lengths.}
+    \li{Number of metal layers.}
+  }
+}
+\p{\strong{Traffic-Independent Metrics:}}
+\ul{
+  \li{\em{Degree:} number of links at each node.}
+  \li{\em{Bisection bandwidth:} bandwidth across a cut that partitions the network into two parts.}
+  \ul{
+    \li{If multiple exist, it is the minimum bandwidth.}
+    \li{Useful for worst case performance.}
+    \li{Less useful for on-chip networks than off-chip because global on-chip wiring is more abundant.}
+    \li{In a ring network, this is 2. You must make cut at two links.}
+    \li{In a torus network, this is 4. You must make cut at four links.}
+  }
+  \li{\em{Diameter:} maximum distance between any two nodes in the topology.}
+}
+\p{\strong{Traffic-Dependent Metrics:}}
+\ul{
+  \li{\em{Hop count:} number of hops from a node to another node.}
+  \ul{
+    \li{Maximum hop count is the diameter.}
+    \li{Average hop count is useful proxy for latency.}
+  }
+  \li{\em{Maximum channel load:} proxy for maximum bandwidth.}
+  \ol{
+    \li{Find link with highest congestion for given traffic pattern.}
+    \li{Determine load relative to injection bandwidth.}
+    \li{#{\text{Maximum channel load} = \frac{1}{\text{Maximum injection bandwidth}}}}
+  }
+  \li{\em{Path diversity:} number of different shortest paths.}
+}
+
+\p{A \em{direct network} is one where each terminal node has is associated with a router.}
+\ul{
+  \li{Direct topologies are referred to as #{k}-ary #{n}-cubes, where #{k} is the number of nodes along a dimension and #{n} is the number of dimensions.}
+}
+\remark{
+Most designs use direct networks because it is best to co-locate in area-constrained environments.
+}
+\p{\em{Torus vs. Mesh:} Mesh networks do not have wrap-around connections to end of edge. Often expensive to make these connections physically.}
+\ul{
+  \li{(Torus) all nodes have same degree}
+  \li{(Mesh) Nodes along edge have lower degree than nodes in the center.}
+  \ul{
+    \li{Causes higher demand for nodes in center channels.}
+  }
+  \li{(Torus) Hop count is ##{H_{avg} = \begin{cases} \frac{nk}{4}, &k\ \text{even} \\ n(\frac{k}{4} - \frac{1}{4k}) &k\ \text{odd}\end{cases}}}
+  \li{(Mesh) Hop count is ##{H_{avg} = \begin{cases} \frac{nk}{3}, &k\ \text{even} \\ n(\frac{k}{3} - \frac{1}{3k}) &k\ \text{odd}\end{cases}}}
+  \li{(Torus) Maximum channel load is #{\frac{k}{8}}}
+  \li{(Mesh) Maximum channel load is #{\frac{k}{4}}}
+}
+
+\p{An \em{indirect network} connects terminal nodes via intermediate stages of switch nodes.}
+\example{
+A butterfly network is an indirect network, where a #{k}-ary #{n}-fly has #{k}^n terminal nodes and #{n} stages of #{k \times k} intermediate switch nodes.
+}
 
 }
 
