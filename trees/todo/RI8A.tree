@@ -160,9 +160,109 @@ Most designs use direct networks because it is best to co-locate in area-constra
 
 \p{An \em{indirect network} connects terminal nodes via intermediate stages of switch nodes.}
 \example{
+The simplest indirect network is a \em{crossbar}. A crossbar connects #{n} inputs to #{m} outputs via #{n \times m} switch nodes. It is \em{non-blocking} (can always connect sender to unique receiver).
+}
+\example{
 A butterfly network is an indirect network, where a #{k}-ary #{n}-fly has #{k}^n terminal nodes and #{n} stages of #{k \times k} intermediate switch nodes.
+\ul{
+  \li{Hop count: #{n - 1}}
+  \li{Uniformly distributed traffic -> max channel load of #{1}.}
+  \li{Much lower channel load for non-uniform traffic.}
+  \li{No path diversity.}
+}
+}
+\p{\strong{Clos network:} a triple #{(m, n, r)}, where #{m} is the number of middle stage switches, #{n} is number of input output ports, and #{r} is the number of first/last stage switches.}
+\ul{
+  \li{Non-blocking for #{m \geq 2n - 1}}
+  \li{Number of nodes is #{N = nr}}
+}
+\remark{
+Clos network scales as #{N^{1.5}} versus #{N^2} for a crossbar switch while still preserving non-blocking.
+}
+\proof{
+  There are #{rmn} input switches, #{mr^2} middle switches and #{rmn} output switches. Thus, the total switches are
+  ##{S = 2rmn + mr^2.}
+  Recall that #{r = \frac{N}{n}}. Therefore,
+  ##{S = 2Nm + m\frac{N}{n}^2.}
+  We get to choose #{r} and #{n}. Thus, we can take #{n = \sqrt{N}} which gives
+  ##{S = 2mN + 2m\sqrt{N}.}
+  We can take #{m \geq 2n - 1 = O(n) = O(\sqrt{N}) } to still preserve non-blocking and gives
+  ##{S = O(N^{1.5}).}
+}
+\remark{
+To save resources, you can \em{fold} a clos network by combining the input and output tiles. To do so, you make the #{n} inputs and #{m} outputs bidirectional. #{m} inputs coming in are then outputs to be routed back to the #{n} inputs and vice versa.
+}
+\remark{
+Folding a clos network, becomes a \em{fat tree} which is a tree with increased wiring resources toward the top.
+}
+\remark{
+Each switch in fat tree has logical degree of #{4}. However, as you progress up the tree the traffic doubles, requiring doubling the width of the links to preserve bisection bandwidth. 
 }
 
+\p{An alternative to these general topologies is custom topologies for specific applications}
+\ul{
+  \li{\em{Splitting:} begin with large crossbar. Split into smaller switches until design constraint is satisfied.}
+  \li{\em{Merging:} start with large number of switches and merge them.}
+}
+
+\p{\em{Hierarchical topology.} There also need not be a one-to-one correspondence between input and output nodes. We can have one topology within clusters and one across clusters.}
+
+\p{\strong{Implementation.} What are the actual design considerations when implementing a topology.}
+\ol{
+  \li{Links.}
+  \ul{
+    \li{Thicker wires with larger spacing -> lower resistance, increase speed + energy efficiency.}
+  }
+  \li{Routers.}
+  \ul{
+    \li{Node degree determines overhead.}
+    \li{Each port has buffering + state logic + link to next ode.}
+    \li{Rings: poor performance but way less overhead}
+    \li{Crossbar area grows as square of number of ports.}
+  }
+  \li{Floorplan.}
+  \ul{
+    \li{Torus needs to be folded to equalize wire lengths, making final lengths twice as long.}
+    \li{Not needed for a mesh.}
+    \li{Torus requires twice as many links as mesh}
+    \ul{
+      \li{May require narrower links than mesh -> lowering per-link bandwidth.}
+    }
+  }
+}
+\p{\strong{Revisiting metrics.}}
+\ul{
+  \li{Link complexity: how the number of links scales as a funcition of the number of nodes.}
+  \ul{
+    \li{Area. Links require real estate.}
+    \li{Power. Every link costs energy.}
+    \li{Complexity. more wires means harder layout.}
+  }
+  \li{Node degree is a proxy for router complexity because it implies greater port count}
+  \ul{
+    \li{Adding a port entails additional input buffer, ports to crossbar, etc.}
+    \li{Link complexity does not correlate directly with node degree.}
+    \ul{
+      \li{Depends on link width.}
+      \li{Same number of wires across 2-port and 3-port router have roughly equal link complexity.}
+    }
+  }
+  \li{Hop count is not perfect proxy for network latency.}
+  \ul{
+    \li{Depends on router pipeline depth and link propagation.}
+    \li{More hops with shorter pipeline and link delay can be faster than fewer hops.}
+    \li{Pipeline depth not typically known in advance.}
+  }
+  \li{Maximum channel load is proxy for network performance / throughput.}
+  \ul{
+    \li{Higher load -> greater congestion.}
+    \li{Highly dependent on traffic pattern.}
+  }
+  \li{Bisection bandwidth proxy for bandwidth of network.}
+  \ul{
+    \li{Load on bisection links determines peak achievable throughput.}
+  }
+}
 }
 
 \section{Routing}{
