@@ -29,9 +29,17 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{Finished on-chip networks ch 3. + quiz.}
+  \li{Finished on-chip networks ch 4. + quiz.}
+}
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Anki cards for on-chip networks.}
+  \li{Finish on-chip networks ch 5.}
+  \li{Try two policy implementation.}
+  \li{Maybe look at paged attention TPU.}
+}
 }
