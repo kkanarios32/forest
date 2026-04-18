@@ -1,0 +1,38 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Friday, April 17, 2026}
+\date{2026-04-17T17:34:26Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 3, Section 1}
+\em{A man must not only consider how daily his life wasteth and decreaseth, but this also, that if he live long, he cannot be certain, whether his understanding shall continue so able and sufficient, for either discreet consideration, in matter of businesses; or for contemplation: it being the thing, whereon true knowledge of things both divine and human, doth depend. For if once he shall begin to dote, his respiration, nutrition, his imaginative, and appetitive, and other natural faculties, may still continue the same: he shall find no want of them. But how to make that right use of himself that he should, how to observe exactly in all things that which is right and just, how to redress and rectify all wrong, or sudden apprehensions and imaginations, and even of this particular, whether he should live any longer or no, to consider duly; for all such things, wherein the best strength and vigour of the mind is most requisite; his power and ability will be past and gone. Thou must hasten therefore; not only because thou art every day nearer unto death than other, but also because that intellective faculty in thee, whereby thou art enabled to know the true nature of things, and to order all thy actions by that knowledge, doth daily waste and decay: or, may fail thee before thou die.}
+}
+\p{\strong{Translation:} not really relevant. your ability to think can decay faster than you die, so use it to make good choices now.}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Figure out what I need to do for paged attention.}
+  \ul{
+    \li{Start benchmarking.}
+    \li{Compare score_mod with softcapping to splash attention.}
+    \li{See how splash attention does in the inferencing regime vs. paged attention.}
+    \ul{
+      \li{i.e. batch size of 4-8.}
+    }
+  }
+  \li{Read chapter 5 of on-chip networks.}
+  \li{Make anki cards one unified / tagged deck.}
+}
+}
+
+\section{Progress on Todos}{
+
+}
+
+\section{Tomorrow's Todos}{
+
+}
