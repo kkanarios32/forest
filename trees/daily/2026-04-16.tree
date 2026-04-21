@@ -23,9 +23,30 @@
 }
 
 \section{Progress on Todos}{
-
+  Five hours of meetings today....
+\ul{
+  \li{Anki cards on context switching (got derailed).}
+  \li{Tried two policy implementation and works well!}
+  \li{Briefly discussed paged attention TPU.}
+  \ul{
+    \li{Might need to do our own implementation.}
+    \li{Key insight in inference is that we have to parallelize over KV and reduce to get parallelism.}
+  }
+}
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Figure out what I need to do for paged attention.}
+  \ul{
+    \li{Start benchmarking.}
+    \li{Compare score_mod with softcapping to splash attention.}
+    \li{See how splash attention does in the inferencing regime vs. paged attention.}
+    \ul{
+      \li{i.e. batch size of 4-8.}
+    }
+  }
+  \li{Read chapter 5 of on-chip networks.}
+  \li{Make anki cards one unified / tagged deck.}
+}
 }

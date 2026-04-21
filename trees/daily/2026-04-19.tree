@@ -30,9 +30,15 @@
 }
 
 \section{Progress on Todos}{
-
+\ul{
+  \li{Made the anki deck.}
+  \li{Otherwise finished the poster for 570.}
+}
 }
 
 \section{Tomorrow's Todos}{
-
+\ul{
+  \li{Complete refactor of FlexAttention using their implementation.}
+  \li{Read chapter 5 of on-chip networks.}
+}
 }

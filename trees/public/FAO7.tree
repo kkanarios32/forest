@@ -18,12 +18,52 @@
   \li{[[dongFlexAttentionProgramming2024]]}
   \li{[[daoFlashAttentionFastMemoryEfficient2022]]}
 }
+\p{\strong{Notes:}}
+\ul{
+  \li{[[5DFA]]} 
+  \li{[[060Z]]}
+}
 }
 
-\put\transclude/expanded{false}
 
-\transclude{5DFA}
-\transclude{060Z}
+\pre\verb<<<|
+Chip
+├── TensorCore (×2 on most generations)
+│   ├── MXU (×4 on v4/v5p, ×2 on v3)       ← matmul
+│   │   └── 128×128 systolic array (256×256 on v6e+)
+│   ├── VPU (×1)                              ← elementwise, activations
+│   │   └── 8×128 ALU grid = 4096 ALUs (×4 per cell on v5)
+│   ├── XLU (×2)                              ← cross-lane reduction/permute
+│   ├── Scalar Unit (×1, single-threaded)     ← control flow, DMA dispatch
+│   ├── VREGs (64 on v5p, 32 on v4)          ← 8×128 each
+│   ├── VMEM (~16-128MB, per-core)
+│   └── SMEM (tens to hundreds of KB, per-core)
+└── CMEM / VMEM_SHARED (128MB, shared across both TensorCores)
+<<<
+\pre\verb<<<|
+HBM
+ │
+ ├─── DMA ──────────────────────→ VMEM (per-core, vector scratchpad)
+ │                                  │
+ │                                  ├──→ VREGs ──→ VPU  (elementwise)
+ │                                  │       └──→ MXU  (matmul)
+ │                                  │              └──→ Accumulators
+ │                                  │                      │
+ │                                  └──────────────────────┘
+ │                                    (results written back)
+ │
+ ├─── DMA ──────────────────────→ SMEM (per-core, scalar scratchpad)
+ │                                  │
+ │                                  └──→ SREGs ──→ Scalar Unit
+ │                                                    │
+ │                                      (dispatches DMA, computes
+ │                                       addresses, control flow)
+ │
+ └─── (shared) ─────────────────→ CMEM (cross-core, feeds into
+                                        either TensorCore's VMEM path)
+<<<
+
+\put\transclude/expanded{false}
 
 \section{Setting up TPU VM}{
 This is SHOCKINGLY difficult to do. I've ultimately ended up with the following to create / connect / delete a TPU VM:
