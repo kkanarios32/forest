@@ -1,0 +1,41 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Monday, May 4, 2026}
+\date{2026-05-05T01:06:13Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 9, Section 35}
+\em{Will this querulousness, this murmuring, this complaining and dissembling never be at an end? What then is it, that troubleth thee? Doth any new thing happen unto thee? What doest thou so wonder at? At the cause, or the matter? Behold either by itself, is either of that weight and moment indeed? And besides these, there is not anything. But thy duty towards the Gods also, it is time thou shouldst acquit thyself of it with more goodness and simplicity.}
+}
+\p{\strong{Translation:} Break down your complaints into the cause of the problem and the problem itself. Anything else is unnecessary, and these two things are often not worth complaining about.}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Deep dive into FlexAttention TPU code.}
+  \li{Catch up on 200+ anki cards.}
+  \li{Leetcode: Game of life.}
+}
+}
+
+\section{Progress on Todos}{
+\ul{
+  \li{Spent a good amount of time on FlexAttention TPU code.}
+  \ul{
+    \li{Roughly understand what I need to do.}
+  }
+  \li{Finished anki cards. A lot of duplicate / bad cards.}
+  \li{Somehow absolutely bodied this question in 1 submission < 15 minutes.}
+}
+}
+
+\section{Tomorrow's Todos}{
+\ul{
+  \li{Actually get \code{score_mod} running with sample score_mods.}
+  \li{Start chapter 3 of What Every Programmer Should Know About Memory. Go for 1-2 hours. See how much I get done.}
+  \li{Leetcode: summary ranges + maybe merge intervals if summary ranges is easy.}
+}
+}
