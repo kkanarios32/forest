@@ -1,0 +1,22 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Segmented Page Tables}
+\date{2026-05-06T01:27:44Z}
+
+\p{
+The motivation. Imagine a 32-bit virtual address space with 4 KB pages. A flat page table needs one entry per page, so 2^20 entries — around 4 MB per process just for the table, even if the process only uses a tiny fraction of its address space. For 64-bit machines this becomes absurd. Most of those entries would be empty, so paying for them is wasteful.
+}
+\p{
+The idea. Instead of one giant page table, split the virtual address space into a small number of segments (code, data, stack, heap, etc.), and give each segment its own page table sized only to what that segment actually uses. A virtual address is then interpreted as three fields: a segment number, a page number within that segment, and an offset within the page. Translation works in two steps. The hardware uses the segment number to index a segment table, which gives the base address (and length) of that segment's page table. Then it uses the page number to index that page table to find the physical frame, and finally tacks on the offset. Empty or unused segments don't need a page table at all, so you only pay for memory you actually use, and segments can carry their own protection bits (read-only code, no-execute stack, etc.).
+}
+\p{
+The problems. The big one is that page tables are now variable-sized objects that still have to live in contiguous physical memory. The stack segment's page table might be small, the heap's might be large and grow over time. Allocating, growing, and freeing these variably-sized tables in kernel memory leads to external fragmentation — exactly the headache that pure segmentation has at the user level, just pushed down into the page-table layer. If the heap segment grows beyond what its current page table can describe, you have to allocate a bigger contiguous chunk and copy.
+}
+\p{
+There are secondary issues too. Translation now costs two memory references (segment table, then page table) before reaching the actual data, which hurts unless you have a TLB to cache results. The segment count is usually small and fixed by the architecture, which is awkward for programs whose memory layout doesn't match neatly — a sprawling memory-mapped region or a JIT that wants many small protection domains doesn't fit cleanly into "code/data/stack/heap." And segmentation tends to leak into the programming model in ways most people would rather avoid; x86 famously carried segment registers around for decades.
+}
+\p{
+The fix that won. Multi-level (hierarchical) page tables. Instead of variable-sized per-segment tables, you page the page table itself, in fixed-size chunks. The top-level table has entries pointing to second-level tables, which point to third-level, and so on. Unused subtrees just have a null entry at the higher level, so you still get the "don't pay for empty regions" benefit, but every piece of the structure is page-sized, so fragmentation goes away and growth is trivial. This is what essentially every modern architecture uses (x86-64's 4- or 5-level tables, ARM64's similar structure), with the TLB papering over the cost of the multiple lookups.
+   }

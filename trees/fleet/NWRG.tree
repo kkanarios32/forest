@@ -1,0 +1,16 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{GPU Register Scoreboard}
+\date{2026-05-05T16:55:23Z}
+
+\p{
+The basic problem. When instructions execute out of order or with variable latency, the hardware needs to know: "is the register I want to read actually ready, or is some earlier instruction still computing it?" If you read too early, you get stale data. The mechanism that tracks readiness is called a scoreboard.
+The simplest scoreboard is just a bit per architectural register: 1 = busy (some in-flight instruction will write this), 0 = ready. When an instruction issues, it sets the busy bit on its destination. When it writes back, it clears the bit. Before any instruction can read its sources, it checks those bits. That's it — a tiny table, one bit per register.
+Why "O(1) per instruction" on a GPU. A GPU instruction looks at a small fixed number of source registers (say 2 or 3), and for each one it does a single table lookup into the scoreboard: "is bit set?" That's constant work regardless of how many other instructions are in flight. The scoreboard is centralized state — everyone reads from the same table.
+Why CPUs pay "O(N²)" instead. This is where the passage gets at something deeper. A modern out-of-order CPU doesn't use a simple per-register busy bit. It uses something more aggressive called register renaming with a wakeup/select mechanism in the issue queue. The issue queue holds N in-flight instructions waiting to execute, and each one is watching for its operands to become available. When an instruction finishes, it broadcasts "tag T is now ready" to all N entries in the queue simultaneously, and every entry compares that tag against its own waiting tags via a CAM (content-addressable memory).
+That broadcast-and-compare is the O(N²) cost the passage is pointing at: N producers each potentially broadcasting to N consumers, with comparators at every entry. It's expensive in area, power, and timing — and it's a big reason CPU issue queues are small (tens of entries) while GPU instruction windows can be much larger.
+Why GPUs can get away with the simpler scheme. GPUs lean on thread-level parallelism instead of instruction-level parallelism. If a warp's next instruction is waiting on a register, the scheduler just picks a different warp that's ready and runs that. There's no need for the elaborate wakeup machinery because you're not trying to extract parallelism from within a single thread's instruction stream — you've got dozens of other warps sitting around. So a cheap scoreboard ("is this warp ready? yes/no") plus a warp scheduler beats an expensive CAM-based issue queue.
+The tradeoff in one line. CPUs spend a lot of silicon to find parallelism in one thread; GPUs spend almost none because they have many threads. The scoreboard difference is a direct consequence of that philosophy.
+}
