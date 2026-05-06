@@ -1,0 +1,47 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Tuesday, May 5, 2026}
+\date{2026-05-06T01:48:06Z}
+
+\section{Daily Meditations}{
+\iblock{
+\strong{Book 4, Section 14}
+\em{Not as though thou hadst thousands of years to live. Death hangs over thee: whilst yet thou livest, whilst thou mayest, be good.}
+}
+\p{\strong{Translation:}}
+}
+
+\section{Today's Todos}{
+\ul{
+  \li{Actually get \code{score_mod} running with sample score_mods.}
+  \li{Start chapter 3 of What Every Programmer Should Know About Memory. Go for 1-2 hours. See how much I get done.}
+  \li{Leetcode: summary ranges + maybe merge intervals if summary ranges is easy.}
+}
+}
+
+\section{Progress on Todos}{
+  Today did not go as planned.
+\ul{
+ \li{Did not get \code{score_mod} running because I thought we had a meeting.} 
+ \ul{
+   \li{Finished presentation on progress and TODOs instead.}
+ }
+ \li{Did not read because we instead had a separate ~90min meeting on different project.}
+}
+}
+
+\section{Tomorrow's Todos}{
+Have to switch to RL tomorrow, so FlexAttention on hold.
+\ul{
+  \li{Reproduce old results having skills solve maze.}
+  \ul{
+    \li{Get rid of new encoder stuff most likely.}
+  }
+  \li{Get comparison with one hot action distribution.}
+  \li{Make progress toward continuous pointmaze.}
+  \li{Start chapter 3 of What Every Programmer Should Know About Memory. Go for 1-2 hours. See how much I get done.}
+  \li{Leetcode: summary ranges + maybe merge intervals if summary ranges is easy.}
+}
+}
