@@ -2,6 +2,14 @@
 \date{2025-08-16T19:36:34Z}
 \tag{public}
 \title{Concurrency}
+
+\p{Threads, the hazards that come with sharing state between them, and the primitives that make sharing safe.}
+
+\section{Threads and shared state}{
 \transclude{16TG}
+}
+
+\section{Synchronization primitives}{
 \transclude{Q2DT}
 \transclude{9QUX}
+}

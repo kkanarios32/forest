@@ -1,9 +1,32 @@
+\import{base-macros}
 \date{2025-08-16T19:54:12Z}
 \tag{public}
 \title{Processes}
 
-\transclude{007V}
-\transclude{007Y}
+\p{The process abstraction, the syscalls for working with processes on Unix, the hardware-software contract that makes time-sharing safe, and the scheduling policies that decide who runs when.}
+
+\section{The abstraction}{
+\transclude{FCHM}
+\transclude{JJ45}
+\transclude{JE53}
+}
+
+\section{Unix process syscalls}{
+\transclude{O1S9}
+\transclude{J6VZ}
+\transclude{YHJR}
+\transclude{9V3H}
+}
+
+\section{Limited direct execution}{
 \transclude{VE8C}
+}
+
+\section{Scheduling}{
 \transclude{B8GC}
-\transclude{HN3M}
+}
+
+\section{Exercises}{
+\transclude{CDF3}
+\transclude{VTZ8}
+}

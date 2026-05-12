@@ -1,8 +1,22 @@
+\import{base-macros}
 \date{2025-08-16T19:55:49Z}
 \tag{public}
-\title{[TEP](arpaci2018operating) Memory}
+\title{Memory}
 
+\p{The address-space abstraction, the translation schemes that implement it, the algorithms that manage free space within a process, and what happens when physical memory is not enough.}
+
+\section{Address translation}{
 \transclude{SAYD}
-\transclude{67X5}
+}
+
+\section{Paging}{
 \transclude{SB61}
+}
+
+\section{Page replacement}{
 \transclude{HK73}
+}
+
+\section{Free-space management}{
+\transclude{67X5}
+}
