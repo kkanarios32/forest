@@ -1,0 +1,14 @@
+\import{base-macros}
+\date{2026-05-12T19:11:51Z}
+\tag{public}
+\title{Array-based lock}
+
+\p{Each waiter is assigned its own slot in an array and spins only on that slot. Release just flips the next slot to "go-ahead", so the cache line touched by release is the one read by exactly one other thread. Coherence traffic per release is constant rather than #{O(n)}, at the cost of one slot per waiter.}
+
+\ul{
+  \li{Give each waiter its own "slot" to wait on.}
+  \li{Only need to set the next slot to "go-ahead" on release.}
+  \li{Constant coherence traffic.}
+}
+
+\problem{#{O(n)} memory for the lock array, and padding each slot to #{64}b (one cache line) to avoid false sharing makes that cost real.}

@@ -1,0 +1,22 @@
+\import{base-macros}
+\date{2026-05-12T19:11:49Z}
+\tag{public}
+\title{Test-and-set lock}
+
+\p{The simplest spin lock. The acquire loop spins on an atomic \code{test_and_set}: it writes \code{LOCKED} and reads the previous value in one step. If the previous value was \code{UNLOCKED}, the caller has the lock; otherwise it tries again.}
+
+\pre\verb<<<|
+acquire(lock_ptr):
+  while (true):
+    // Perform "test-and-set"
+    // UNLOCKED = 0, LOCKED = 1
+    test_and_set(old, lock_ptr)
+    if (old == UNLOCKED):
+      break // lock acquired!
+    // keep spinning, back to top of while loop
+
+release(lock_ptr):
+  store[lock_ptr] <- UNLOCKED
+<<<
+
+\problem{Major coherence traffic. Every spinning core must acquire write permissions and invalidate everyone else on each \code{test_and_set}, so contention scales badly with the number of waiters.}

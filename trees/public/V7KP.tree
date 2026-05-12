@@ -1,0 +1,17 @@
+\import{base-macros}
+\date{2026-05-12T19:11:50Z}
+\tag{public}
+\title{Ticket lock}
+
+\p{A fair spin lock based on two counters. Each arriving thread takes a "ticket" by atomically incrementing \code{next_ticket} and then spins until \code{now_serving} equals its ticket. Release simply increments \code{now_serving}. Threads acquire the lock in FIFO order, which prevents starvation but does not by itself reduce contention.}
+
+\pre\verb<<<|
+acquire(lock_ptr):
+  my_ticket = fetch_and_increment(lock_ptr->next_ticket)
+  while (lock_ptr->now_serving != my_ticket); // spin
+
+release(lock_ptr):
+  lock_ptr->now_serving = lock_ptr->now_serving + 1
+<<<
+
+\problem{Still #{O(n)} coherence traffic on release: incrementing \code{now_serving} invalidates the line on every waiter, and they all reload it to recheck their ticket.}

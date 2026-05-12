@@ -1,0 +1,25 @@
+\import{base-macros}
+\date{2026-05-12T19:11:49Z}
+\tag{public}
+\title{Test-and-test-and-set lock}
+
+\p{A refinement of the [[MJ5L]] that reduces coherence traffic during the spin. Threads first perform a plain load to check whether the lock looks free, and only attempt the atomic \code{test_and_set} when it does. Spinning is then read-only, so cores can share the cache line.}
+
+\pre\verb<<<|
+acquire(lock_ptr):
+  while (true):
+    // Perform "test"
+    load [lock_ptr] -> original_value
+    if (original_value == UNLOCKED):
+      // Perform "test-and-set"
+      test_and_set(old, lock_ptr)
+      if (old == UNLOCKED):
+        break // lock acquired!
+    // keep spinning, back to top of while loop
+
+release(lock_ptr):
+  store[lock_ptr] <- UNLOCKED
+<<<
+
+\remark{Spinning is a read-only operation now.}
+\problem{When the lock is released, the line must be invalidated on every waiter, and they all simultaneously read and try to write. The contention is shifted from steady state to release time but is still #{O(n)} in the number of waiters.}

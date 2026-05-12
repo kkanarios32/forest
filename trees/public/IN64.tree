@@ -1,0 +1,23 @@
+\import{base-macros}
+\date{2026-05-12T19:11:51Z}
+\tag{public}
+\title{MCS lock}
+
+\p{A scalable, list-based queue lock. The lock variable is a pointer to the tail of a linked list of per-thread nodes. Each thread enqueues its own node and spins on a flag in its own cache line. The releaser wakes only its direct successor, so coherence traffic per handoff is constant and memory cost is proportional only to threads currently waiting, not to the lock's fanout.}
+
+\pre\verb<<<|
+acquire(lock):
+  I->next = null
+  predecessor = fetch_and_store(lock, I)
+  if predecessor != nil:                   // some node holds the lock
+    I->must_wait = true
+    predecessor->next = I                  // predecessor must wake us
+    repeat while I->must_wait              // spin till lock is free
+
+release(lock):
+  if (I->next == null):                    // no known successor
+    if compare_and_swap(lock, I, nil):     // make sure...
+      return                               // CAS succeeded; lock freed
+    repeat while I->next == nil            // spin to learn successor
+  I->next->must_wait = false               // wake successor
+<<<

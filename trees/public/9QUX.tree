@@ -1,0 +1,38 @@
+\import{base-macros}
+\date{2026-05-12T19:11:52Z}
+\tag{public}
+\title{Barriers}
+
+\p{A barrier holds threads at a synchronization point until all #{P} participants have arrived, then releases them simultaneously. The naive implementation uses a shared counter that each arriving thread decrements; the last arrival resets the counter and the rest spin until it returns to #{P}.}
+
+\subtree{
+  \title{Naive central barrier}
+  \pre\verb<<<|
+global (shared) count : integer := P
+
+procedure central_barrier
+  if fetch_and_decrement(&count) == 1
+    count := P
+  else
+    repeat until count == P
+<<<
+  \problem{When \code{count == P}, a fast thread can reach the next barrier and decrement \code{count} again before the slow threads observe the reset. The slow threads then spin forever waiting for a value that has already passed.}
+}
+
+\subtree{
+  \title{Sense-reversing barrier}
+  \p{The fix is to give each thread a private \code{local_sense} that flips on each barrier. The global \code{sense} flag is flipped by the last arrival, and waiters spin on \code{sense == local_sense}, so a fresh barrier cannot be confused with a stale one.}
+  \pre\verb<<<|
+global (shared) count : integer := P
+global (shared) sense : bool := true
+global (private) local_sense : bool := false
+
+procedure central_barrier
+  local_sense = !local_sense
+  if fetch_and_decrement(&count) == 1
+    count := P
+    sense = local_sense
+  else
+    repeat until sense == local_sense
+<<<
+}
