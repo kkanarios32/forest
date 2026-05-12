@@ -1,0 +1,20 @@
+\import{base-macros}
+\date{2026-05-12T19:30:44Z}
+\tag{public}
+\title{Multi-level page table}
+
+\p{A page table that is itself paged: instead of one linear array of PTEs, the table is split into page-sized chunks indexed by a top-level \em{page directory}. Subtrees of the address space that are entirely unused get a single null entry at the top level — no second-level page is allocated for them.}
+
+\figure{
+  \<html:img>[width]{80\%}[src]{\route-asset{assets/img/multilevel-pt.png}}{}
+}
+
+\p{Advantages over a linear [[WALE]]:}
+\ol{
+  \li{Fits easily in memory — only allocate a second-level page when an entry in it is used.}
+  \li{Memory cost is proportional to the amount of address space actually in use.}
+}
+
+\problem{On a [[FGOK]] miss, the walk now costs \em{two} memory loads — page directory entry first, then the PTE.}
+
+\remark{Real architectures push this further (x86-64 uses 4 or 5 levels) and lean on the TLB to absorb the walk cost.}

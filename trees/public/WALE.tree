@@ -1,0 +1,22 @@
+\import{base-macros}
+\date{2026-05-12T19:30:43Z}
+\tag{public}
+\title{Page table}
+
+\p{The per-process data structure that maps each \em{virtual page number} (VPN) to a \em{physical page number} (PPN). A virtual address is split into a VPN and an offset within the page; the page table translates the VPN, the offset is appended unchanged.}
+##{\underbrace{01}_{\text{VPN}}\underbrace{110\cdots 01}_{\text{offset}}}
+
+\p{Each page-table entry (PTE) carries more than just a PPN:}
+\ol{
+  \li{\strong{Valid bit}: whether this VPN has memory allocated. Gaps between stack and heap need not be allocated.}
+  \li{\strong{Protection bits}: read/write/execute permissions.}
+  \li{\strong{Present bit}: whether the page currently resides in physical memory (vs. swap).}
+  \li{\strong{Dirty bit}: has the page been modified since being paged in.}
+  \li{\strong{Reference bit}: has the page been accessed (used by eviction policy).}
+}
+
+\problem{The table gets very large. For a 32-bit address space with 4KB pages and 4-byte PTEs, a linear page table costs #{2^{32}/2^{12} \cdot 4 = 2^{22}} bytes — 4MB \em{per process}.}
+
+\problem{Translation requires accessing the table in memory, which is slow on every memory reference. Mitigated by the [[FGOK]].}
+
+\p{The size problem is mitigated by [[VX1M]], which only allocates the parts of the table that are actually used.}
