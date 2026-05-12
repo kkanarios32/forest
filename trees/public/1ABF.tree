@@ -1,0 +1,15 @@
+\import{base-macros}
+\date{2026-05-12T19:29:20Z}
+\tag{public}
+\title{Malloc placement policies}
+
+\p{Given a \em{free list} of unallocated memory chunks and a request of size #{n}, which chunk do you carve the allocation out of? Different answers trade off fragmentation against search time.}
+
+\ol{
+  \li{\em{Best fit}: find the smallest chunk #{\geq n}. Minimizes wasted space per allocation but tends to leave many small unusable fragments behind, and requires scanning the whole list.}
+  \li{\em{Worst fit}: find the largest chunk. Aims to leave usefully-sized leftovers but also requires a full scan.}
+  \li{\em{First fit}: take the first chunk that fits. Fast (early exit) but biases small fragments toward the start of the list.}
+  \li{\em{Next fit}: like first fit, but resume the search from where the previous allocation ended. Spreads small fragments more evenly.}
+}
+
+\p{On free, the allocator searches the list for adjacent free chunks and \em{coalesces} them into a larger chunk. The size of each allocation is stored in a \em{header} immediately preceding the returned pointer so \code{free} doesn't need a size argument.}

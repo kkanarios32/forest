@@ -1,0 +1,14 @@
+\import{base-macros}
+\date{2026-05-12T19:29:20Z}
+\tag{public}
+\title{Segregated lists}
+
+\p{A data-structure-level optimization for allocators that maintains separate free lists per common object size. Instead of one global free list scanned by [[1ABF]], you keep a list per size class. Allocations of that size pop straight off the matching list — no search.}
+
+\ul{
+  \li{Grow a per-size list by requesting larger segments from the main allocator and chopping them up.}
+  \li{Drain back to the main list when no references remain.}
+  \li{Optionally leave objects pre-initialized on the list to skip constructor/destructor calls.}
+}
+
+\remark{This is the structure behind kernel slab allocators and many object-pool patterns. It works when the workload allocates many objects of a few common sizes.}

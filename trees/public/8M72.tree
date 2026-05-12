@@ -1,0 +1,15 @@
+\import{base-macros}
+\date{2026-05-12T19:29:21Z}
+\tag{public}
+\title{Buddy allocation}
+
+\p{An allocator for memory of total size #{2^n} that maintains a binary-tree of free blocks at every power-of-two size. To service a request, walk down to the smallest block #{\geq} requested size; if no block of that size exists, split a larger one (and its "buddy" becomes free). On free, check whether the freed block's buddy is also free, and if so, coalesce upward — recursively.}
+
+\figure{
+  \<html:img>[width]{50\%}[src]{\route-asset{assets/img/buddy-algo.png}}{}
+  \figcaption{Memory of size #{2^n} organized as a buddy system.}
+}
+
+\p{The key trick is that buddies differ by exactly one bit in their address at each level. To check whether a block's buddy is free, flip that bit and consult a bitmap. To coalesce upward, mask off the bit and recurse.}
+
+\remark{Internal fragmentation is bounded by 2× the request size (you may have to round up to the next power of two), but external fragmentation is essentially eliminated within the buddy region.}
