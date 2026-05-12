@@ -9,7 +9,7 @@
   \li{\strong{ALU} — \em{arithmetic logic unit}, performs arithmetic (add, sub, mul, div) and logical (AND, OR, NOT) operations on integers and on special registers like the PSW. Typically split into integer logic units (ILU) and floating-point units (FPU).}
   \li{\strong{Load-store unit} — performs memory loads and stores. Carries a small address-calculation adder for address-mode resolution.}
   \li{\strong{Branch execution unit} — evaluates branch conditions (often by reading the PSW) and signals whether the branch is taken.}
-  \li{\strong{Vector / SIMD units} — operate on wide registers (SSE, AVX, AltiVec) for data-parallel work.}
+  \li{\strong{Vector / [SIMD](Q7ZD) units} — operate on wide registers (SSE, AVX, AltiVec) for data-parallel work.}
 }
 
 \remark{Per the convention in \em{Inside the Machine}, "ALU" often refers to any execution unit for arithmetic or logical operations — including integer logic units (ILU) and floating-point units (FPU).}

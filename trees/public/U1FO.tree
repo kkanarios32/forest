@@ -1,0 +1,19 @@
+\import{base-macros}
+\date{2026-05-12T22:59:13Z}
+\tag{public}
+\title{Memory coalescing}
+
+\p{The hardware optimization on GPUs that combines simultaneous memory accesses by threads in a [[X9VZ]] into a single transaction — when the accessed addresses fall in the same cache line.}
+
+\p{Global memory latency on a GPU is 400–800 cycles. Coalescing is the primary way to keep the SM fed:}
+\ul{
+  \li{If all 32 threads in a warp access addresses within one cache line: one memory transaction, full bandwidth.}
+  \li{If addresses span multiple cache lines: the hardware serializes into multiple transactions; bandwidth drops proportionally.}
+}
+
+\remark{Address permutations within a cache line don't hurt utilization — coalescing is about which lines are touched, not which exact bytes.}
+
+\p{Coalescing is why memory layout matters so much for GPU code. The standard idiom is \em{structure-of-arrays} (SoA) instead of \em{array-of-structures} (AoS): threads accessing the same field of consecutive records hit consecutive bytes, which coalesce; threads accessing the same struct don't.}
+
+\question{Should you always cache on the GPU?}
+\answer{No. If you're memory-bound and have no [[PMP9]], cache is wasted on data you won't reuse. CUDA exposes the option to disable L1 caching for these cases, which lets misaligned loads transfer only the bytes needed instead of full cache lines.}

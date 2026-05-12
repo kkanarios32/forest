@@ -13,7 +13,7 @@
 }
 \p{\strong{The Vector Processing Unit}}
 \ul{
-  \li{2D SIMD execution, where each of 1024 \em{sites} execute same program in lockstep.}
+  \li{2D [SIMD](Q7ZD) execution, where each of 1024 \em{sites} execute same program in lockstep.}
   \li{Each site contains 4 ALUs, enabling 4096 FLOPs.}
   \li{Fed a 8x128 VREG in one cycle.}
 }

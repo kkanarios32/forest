@@ -15,7 +15,7 @@
   \p{ \strong{Goal:} Squeeze the most out of the hardware. }
 \ol{
   \li{\strong{Kernels}}
-  \p{Basic idea is that the GPU needs to perform computation, but the data cannot fit on the GPU. GPU is the \em{factory} memory is the \em{warehouse}
+  \p{Basic idea is that the [GPU](82U4) needs to perform computation, but the data cannot fit on the GPU. GPU is the \em{factory} memory is the \em{warehouse}
   }
   \iblock{
     \em{How do we best organize computation to maximize utilization of GPUs by minimizing data movement?}

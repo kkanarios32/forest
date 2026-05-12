@@ -1,0 +1,44 @@
+\import{base-macros}
+\date{2026-05-12T22:59:12Z}
+\tag{public}
+\title{GPU architecture and SIMT}
+
+\p{A GPU sacrifices single-thread latency for aggregate throughput. The opposite design point from a CPU:}
+
+\table{
+\tr{\td{}\td{\strong{CPU}}\td{\strong{GPU}}}
+\tr{\td{Caches}\td{Large}\td{Small (boost memory throughput)}}
+\tr{\td{Control}\td{Sophisticated (branch prediction, OoO)}\td{Simple (no branch prediction, no forwarding)}}
+\tr{\td{ALUs}\td{Powerful}\td{Energy-efficient, heavily pipelined}}
+\tr{\td{Optimizes for}\td{Single-thread latency}\td{Aggregate throughput}}
+}
+
+\p{The GPU equivalent of a core is a \em{streaming multiprocessor} (SM). Each SM executes the same instruction across many threads in lockstep — but with a key difference from [[Q7ZD]]:}
+
+\section{SIMT vs SIMD}{
+\p{\em{Single instruction, multiple threads}. The SM issues one instruction per cycle to a group of threads (a [[X9VZ]]), but each thread keeps its own program counter and register state.}
+
+\p{Advantages over SIMD:}
+\ol{
+  \li{\em{Control-flow divergence}. Threads on different branches of a conditional execute dummy instructions on the inactive path until reconvergence. The compiler / hardware mask the inactive lanes; the programmer doesn't have to vectorize manually.}
+  \li{\em{Grouping flexibility}. Hardware (or the compiler) can re-group threads into warps based on actual control flow — see "warp specialization".}
+}
+}
+
+\section{Hiding stalls}{
+\question{How do GPUs deal with cache misses given they don't have OoO machinery?}
+\answer{Fast context-switching between warps. When a warp stalls on memory, the SM switches to another runnable warp with already-resident state. Enough warps means the SM is always busy.}
+
+\p{In a CPU, [[OKCI|context switching]] is expensive — registers must be saved to memory. On a GPU, each SM has an enormous register file that holds the registers of all resident warps simultaneously, so a context switch is just changing which warp the scheduler picks.}
+}
+
+\section{CUDA hierarchy}{
+\ol{
+  \li{\strong{Kernel} — the launched function.}
+  \li{\strong{Blocks} — groups of threads sharing fast on-chip \em{shared memory} ([[8GZN]]).}
+  \li{\strong{Warps} — 32 threads issued together in lockstep ([[X9VZ]]).}
+}
+\remark{The physical size of shared memory constrains the number of resident threads per SM.}
+}
+
+\remark{Use GPUs for parallel parts where throughput dominates. Use CPUs for sequential parts where latency dominates.}

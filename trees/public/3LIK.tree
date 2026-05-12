@@ -49,7 +49,7 @@
 \section{PowerPC 750}{
   \p{Same 4-stage pipeline as the 603e. Two integer units instead of one; 3-cycle single-precision FP; 6-entry instruction queue, up to 4 fetched per cycle.}
   \p{The 750's signature trick: a \em{branch target instruction cache} (BTIC). A traditional BTB stores the \em{address} of the branch target — you still have to re-fetch that instruction. The BTIC caches the actual first instructions at the target, eliminating the re-fetch latency. This makes [[1LCS]] dramatically more useful.}
-  \remark{Did not support a SIMD instruction set.}
+  \remark{Did not support a [SIMD](Q7ZD) instruction set.}
 }
 
 \section{PowerPC 7400}{
