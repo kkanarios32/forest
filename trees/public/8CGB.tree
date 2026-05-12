@@ -12,4 +12,4 @@
   \li{\em{Capacity miss} — the cache filled up and the data was evicted by [[UG51]]. The working set doesn't fit.}
 }
 
-\p{Distinguishing them matters because they have different mitigations: conflict misses respond to associativity changes, capacity misses respond to size, coherence misses respond to cache-coherence protocol design, and compulsory misses respond to prefetching.}
+\p{Distinguishing them matters because they have different mitigations: conflict misses respond to associativity changes, capacity misses respond to size, coherence misses respond to [cache-coherence protocol](GA7N) design, and compulsory misses respond to prefetching.}

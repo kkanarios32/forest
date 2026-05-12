@@ -1,0 +1,23 @@
+\import{base-macros}
+\date{2026-05-12T22:47:53Z}
+\tag{public}
+\title{MESI protocol}
+
+\p{[[EYXU]] augmented with an \em{Exclusive} state. The four states:}
+\ol{
+  \li{\strong{Modified (M)} — only copy, dirty, writable.}
+  \li{\strong{Exclusive (E)} — only copy, clean, writable.}
+  \li{\strong{Shared (S)} — clean, possibly held by other caches, read-only.}
+  \li{\strong{Invalid (I)} — no valid copy.}
+}
+
+\p{The crucial addition is that a line transitioning S → M needs a bus transaction (other sharers must invalidate), but a line transitioning E → M is \em{silent}: nobody else has a copy, so nobody needs to be told. Eviction from E also skips the writeback (E is clean), saving memory traffic.}
+
+\p{MESI is dramatically better than MSI for thread-private data: a thread that reads then writes its private variable goes I → E → M with only one bus transaction, instead of I → S → M with two.}
+
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-protocol.png}}{}
+\figcaption{MESI state machine.}
+}
+
+\p{The next refinement is [[AI2B]], which adds an \em{Owned} state for shared-but-dirty lines.}

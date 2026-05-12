@@ -1,0 +1,28 @@
+\import{base-macros}
+\date{2026-05-12T22:47:53Z}
+\tag{public}
+\title{MSI protocol}
+
+\p{The minimal [[GA7N]] state machine that supports write-back caches. Each cache line is in one of three states:}
+\ol{
+  \li{\strong{Invalid (I)} — this cache does not hold a valid copy.}
+  \li{\strong{Shared (S)} — clean copy, read permission, possibly held by other caches.}
+  \li{\strong{Modified (M)} — only copy, exclusive read+write permission, dirty (must be written back on eviction).}
+}
+
+\p{Bus messages used:}
+\ul{
+  \li{\code{BusRd} — request a shared copy.}
+  \li{\code{BusRdX} — request exclusive ownership for a write.}
+  \li{\code{BusInv} — invalidate other caches on a write hit.}
+  \li{\code{BusWB} — write back a dirty block on eviction.}
+  \li{\code{BusReply} — supply the value to a requester instead of memory.}
+}
+
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/msi-protocol.png}}{}
+\figcaption{MSI state machine.}
+}
+
+\remark{S → M requires either a \code{BusInv} or \code{BusRdX} so that other sharers invalidate. The \em{move from S to M is not silent}.}
+\remark{[[30XT]] adds a fourth state (Exclusive) to optimize the common case of thread-private data — a line read by exactly one core can be upgraded to writable without a bus transaction.}

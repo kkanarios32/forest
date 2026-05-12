@@ -1,0 +1,17 @@
+\import{base-macros}
+\date{2026-05-12T22:47:54Z}
+\tag{public}
+\title{MOESI protocol}
+
+\p{[[30XT]] extended with an \em{Owned} state — shared but dirty. The owning cache holds a writable-by-only-it copy, while other caches may hold clean read-only copies. The owner is responsible for writing back on eviction.}
+
+\p{The point: if a dataset is heavily shared but rarely changes, MESI would require write-back to memory each time it transitions out of M to S. MOESI lets a dirty line stay dirty in the cache while other caches read clean copies of it, deferring the writeback until the owner actually evicts.}
+
+\p{This is most useful when you have producer-consumer or migratory sharing patterns where one core repeatedly writes and others repeatedly read.}
+
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/moesi-protocol.png}}{}
+\figcaption{MOESI venn diagram.}
+}
+
+\remark{\em{DEC Firefly} is a contemporary alternative that uses write-update for the Shared state — every write broadcasts to all sharers via wired-OR signaling — and write-back for Exclusive and Dirty. Good for small bus systems with high update frequency; bad for large systems where the broadcast cost dominates.}

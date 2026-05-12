@@ -1,0 +1,19 @@
+\import{base-macros}
+\date{2026-05-12T22:47:52Z}
+\tag{public}
+\title{Snoop-based coherence}
+
+\p{A [[GA7N]] family where every cache watches (\em{snoops}) a shared bus. When one cache issues a coherence transaction (e.g. requests permission to read or write a line), every other cache sees it and updates its local state accordingly. No central directory needed; the bus itself is the coordination mechanism.}
+
+\p{The simplest snoop-based protocol is \em{valid-invalid}:}
+\ul{
+  \li{Invalid + load → BusRd to gain read permission; transition to valid.}
+  \li{Invalid + store → no transition (write-through assumed; the bus carries the write).}
+  \li{Valid + store → BusWr to notify other caches; they invalidate.}
+}
+
+\p{\strong{Write-update coherence}, the variant where stores update other caches' copies instead of invalidating them, works for very small bus-based systems but does not scale: every write reaches everyone, and copies of data the snooper isn't using pollute its [[UG51]].}
+
+\p{Snoop-based coherence relies on a shared physical bus, which limits it to roughly 8 cores. Beyond that, switch to [[KIT8]].}
+
+\remark{Snoop-based SMPs use the \em{[[4W5G]]} so that snooping at L2 suffices — every L1 line is also tracked at L2.}

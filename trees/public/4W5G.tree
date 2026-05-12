@@ -1,0 +1,13 @@
+\import{base-macros}
+\date{2026-05-12T22:47:55Z}
+\tag{public}
+\title{Inclusion property}
+
+\p{A cache hierarchy property: every line held in a higher-level cache (closer to the core, e.g. L1) must also be present in the next-level cache (L2). The hierarchy contains its own contents at every level — L2 ⊇ L1.}
+
+\p{Why it matters for [[8C2H]]: with inclusion, a snoop only needs to consult L2. If a snoop hits in L2, then either the line is also in L1 (and L2 forwards the snoop) or it's not (and L1 doesn't need to look). This means L1 doesn't need a snoop port.}
+
+\problem{L1 hits don't update LRU metadata at L2 — so L2 might evict a line that L1 is actively using, violating inclusion.}
+\solution{Either (a) refuse to evict an L2 line that's still in L1, or (b) when evicting from L2, also evict from L1.}
+
+\remark{Inclusive caches waste capacity (every line is duplicated). Non-inclusive and exclusive variants trade some snoop simplicity for better effective capacity.}

@@ -1,0 +1,44 @@
+\import{base-macros}
+\date{2026-05-12T22:47:55Z}
+\tag{public}
+\title{Directory-based coherence}
+
+\p{A scalable [[GA7N]] organization for systems too large for a shared bus. Each memory address has a \em{home node}; the home node maintains a \em{directory} entry listing which caches currently hold copies and in what state. Coherence transactions are point-to-point messages routed via the directory rather than broadcasts.}
+
+\p{Compared to [[8C2H]], directory protocols trade a level of indirection (3 hops instead of 2 for some transactions) for vastly reduced bandwidth — making them viable at hundreds of cores.}
+
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/directory-write.png}}{}
+\figcaption{4-hop directory write protocol.}
+}
+
+\section{Directory organization}{
+\p{\strong{Centralized vs. distributed.} A single central directory is a bottleneck; production systems distribute it. Each processor's local DRAM has its own directory tracking the addresses physically present in that DRAM. Every physical address uniquely identifies its home node.}
+
+\p{\strong{Reducing directory size.} The naive directory is a sharer list per cache line:}
+\ul{
+  \li{One-hot bitmap (256 nodes → 32 bytes per entry): 50\% of memory consumed by metadata.}
+  \li{Limited-sharer encoding: most workloads have ≤4 sharers; track those exactly, fall back to broadcast for the uncommon case.}
+  \li{\strong{Sparse directories.} Cache the directory entries themselves. An entry missing from the directory cache means nobody has a copy. On eviction from the directory cache, invalidate the corresponding lines.}
+}
+}
+
+\section{Transient states and races}{
+\p{Because directory transactions take multiple hops, intermediate states are visible — \em{transient states} like #{\mathrm{MI}^{A}} (modified-to-invalid, waiting on acknowledgment). Concurrent transactions race; the protocol must handle every combination correctly.}
+
+\example{
+L has a dirty copy and wants to write back to H. R concurrently sends a read to H. R's state #{\mathrm{S}^{D}} means "shared, waiting for data".
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/example-race.png}}{}
+}
+}
+
+\remark{Never use NACKs in a directory protocol — they cause starvation.}
+\remark{See [[HHZO]] for a worked implementation in Murphi, including the channel-separation arguments that prevent protocol-level deadlock.}
+}
+
+\section{Optimizations}{
+\p{\strong{Prefetching.} Fetch data before requested to hide coherence latency.}
+\p{\strong{Upgrade-miss detection.} In migratory sharing (read then write), a naive read-miss followed by write-miss costs two coherence transactions. Detect the pattern and transition straight to a "migratory E" state on read.}
+\remark{The same optimization \em{hurts} producer-consumer sharing. There, the right move on read-miss is to downgrade the previous holder rather than invalidate, so subsequent readers can fetch from the prior writer.}
+}

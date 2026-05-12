@@ -12,4 +12,4 @@
 
 \remark{Real CPUs run write-back at L1 and L2. Write-through is occasionally used for specific lines (e.g. memory-mapped device registers where every write must hit the device immediately).}
 
-\p{Write-back is one of the constraints behind cache-coherence protocols on multicore chips: every core must agree on which one currently owns a dirty line.}
+\p{Write-back is one of the constraints behind [cache-coherence protocols](GA7N) on multicore chips: every core must agree on which one currently owns a dirty line.}

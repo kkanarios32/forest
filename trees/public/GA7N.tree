@@ -1,0 +1,18 @@
+\import{base-macros}
+\date{2026-05-12T22:47:51Z}
+\tag{public}
+\title{Cache coherence}
+
+\p{In a [[JRP0]] system where every core has its own [[KBYI]], the same memory address can live in multiple caches simultaneously. A \em{cache coherence} protocol is the mechanism that keeps those copies consistent — propagating writes, invalidating stale copies, and preserving two invariants:}
+\ol{
+  \li{\strong{Single-writer invariant}: at any moment, at most one core has permission to write a given line. No other core can read or write it concurrently.}
+  \li{\strong{Data-value invariant}: all cores see the same order of updates to a given line.}
+}
+
+\p{Two organizational families:}
+\ul{
+  \li{[[8C2H]] — every cache watches a shared bus and reacts to other cores' traffic. Scales to ~8 cores.}
+  \li{[[KIT8]] — a structure tracks who has a copy of each line; coherence messages are point-to-point. Scales to hundreds of cores at the cost of an extra hop.}
+}
+
+\p{The concrete state machines are protocols like [[EYXU]], [[30XT]], [[AI2B]], and DEC Firefly, each adding states to handle more cases or to optimize specific sharing patterns. A worked implementation of directory-based MESI in Murphi lives in [[HHZO]].}
