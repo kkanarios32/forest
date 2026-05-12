@@ -3,7 +3,7 @@
 \tag{public}
 \title{Context switch}
 
-\p{The operation of saving the full execution state of one process (or thread) and restoring another's so the CPU can resume it as if it had never been interrupted. On a trap into the kernel, the hardware stashes the user-visible state (PC, condition codes, stack pointer) into a known location, and the OS saves the remaining general-purpose registers as part of the switching code.}
+\p{The operation of saving the full execution state of one process (or [thread](63U3)) and restoring another's so the CPU can resume it as if it had never been interrupted. On a trap into the kernel, the hardware stashes the user-visible state (PC, condition codes, stack pointer) into a known location, and the OS saves the remaining general-purpose registers as part of the switching code.}
 
 \p{Two flavors of state are involved:}
 \ol{

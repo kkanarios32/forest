@@ -39,4 +39,4 @@ struct proc {
 };
 <<<
 
-\remark{Threads need an analogous \em{thread control block}; see [[16TG]].}
+\remark{[[63U3]]s need an analogous \em{thread control block}; see [[16TG]].}

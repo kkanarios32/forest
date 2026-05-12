@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T19:42:46Z}
+\tag{public}
+\title{Thread}
+
+\p{An independent unit of execution within a [[FCHM]]. Each thread has its own program counter, register set, and stack — but shares the surrounding address space, file descriptors, and other process-level resources with its siblings.}
+
+\p{To support a [context switch](OKCI) between threads, the OS keeps a \em{thread control block} (TCB) per thread — the per-thread analog of [[JE53]]. Each thread also gets its own stack within the process's address space.}
+
+\p{Why threads instead of processes:}
+\ol{
+  \li{\em{Intra-process parallelism}: parallelizable work within one program, without paying the [context switch](OKCI) cost of separate processes.}
+  \li{\em{Avoiding blocking I/O}: one thread blocks waiting on I/O while others keep running.}
+}
+
+\remark{Sharing an [address space](7MH4) is exactly what makes threads cheap to communicate between and exactly what makes them dangerous — see [[VOQN]] and [[KG2K]].}

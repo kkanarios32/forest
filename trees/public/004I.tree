@@ -11,7 +11,7 @@
     \li{When a process is started by the OS, it allocates a virtual [address space](7MH4) for the process.}
     \li{Within this virtual address space, malloc allocates memory on the heap. Namely, just returning a pointer (technically virtual address) to a block of memory of the desired size.}
     \ul{\li{
-      Malloc is an OS system call and therefore stops execution of all threads. 
+      Malloc is an OS system call and therefore stops execution of all [threads](63U3).
       }
       \li{To get around this, they pre-allocate their own intra-thread memory (a large contiguous chunk) then allocate memory within this chunk throughout the program.}
     }
