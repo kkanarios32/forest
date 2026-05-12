@@ -30,7 +30,7 @@ A \em{cache} is like having a nearby warehouse that you can quickly get more mat
   }
 }
 \example{
-\strong{A Bytes Journey Through Memory.} First, we check the L1 cache if the corresponding cache line is not there it is a \em{cache miss}. Then, we check the L2 cache once again if the cache line is not there we have another \em{cache miss}. We then check main memory to see if the \em{page} is there. If the page is not there, then we have a page fault and must go to disk.
+\strong{A Bytes Journey Through Memory.} First, we check the L1 cache if the corresponding cache line is not there it is a \em{cache miss}. Then, we check the L2 cache once again if the cache line is not there we have another \em{cache miss}. We then check main memory to see if the \em{page} is there. If the page is not there, then we have a [page fault](CXFM) and must go to disk.
 }
 \p{\strong{Cache misses:} There are four types of cache misses.}
 \ol{
@@ -63,7 +63,7 @@ The locality for code and data can be very different i.e. re-running same code w
 }
 }
 \section{Other Considerations}{
-  \p{\strong{Replacement policy:} most common is \em{least recently used}. However, this takes too much time to compute in practice, so they often do \em{pseudo-LRU} (something like clock algorithm).}
+  \p{\strong{Replacement policy:} most common is [least recently used](7WG2). However, this takes too much time to compute in practice, so they often do \em{pseudo-LRU} (something like the [clock algorithm](7WG2)).}
   \p{\strong{Block sizes:} for best spatial locality, you want the largest block size possible. However, this has a few drawbacks}
   \ul{
     \li{Cache size: bringing large block requires evicting resident blocks, losing temporal locality.}

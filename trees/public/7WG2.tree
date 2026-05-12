@@ -1,0 +1,19 @@
+\import{base-macros}
+\date{2026-05-12T19:32:07Z}
+\tag{public}
+\title{LRU and the clock algorithm}
+
+\p{\em{Least recently used} is the standard heuristic for picking a page to evict: throw out the one that has been untouched the longest. It works because of the \em{principle of locality} — recently-used pages are likely to be used again soon (temporal locality).}
+
+\p{Pure LRU requires updating a data structure on every memory access, which is too expensive. The \em{clock algorithm} approximates it cheaply:}
+\ol{
+  \li{Maintain a \em{reference bit} per page, set by hardware on access.}
+  \li{Loop a pointer around the pages. If the reference bit is 1, clear it and advance.}
+  \li{If the reference bit is 0, evict that page.}
+}
+
+\remark{LRU is not optimal. The pathological case is the looping workload: if the working set is one page larger than the cache, LRU misses 100\% of the time.}
+
+\p{The quality of any replacement policy is measured by its \em{average memory access time}:}
+##{AMAT = (1 - P_{miss}) T_P + P_{miss} T_D}
+\p{where #{T_P} is physical-memory access time and #{T_D} is disk access time. The disk gap is so large that even tiny miss rates dominate AMAT.}

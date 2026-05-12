@@ -1,0 +1,10 @@
+\import{base-macros}
+\date{2026-05-12T19:32:08Z}
+\tag{public}
+\title{Belady's anomaly}
+
+\p{A desirable property of a page-replacement policy is the \em{stack property}: increasing the cache size never makes the miss rate worse. Surprisingly, not every reasonable-looking policy has it.}
+
+\p{FIFO eviction violates the stack property — on certain access sequences, growing the cache strictly \em{increases} the number of misses. This is \em{Belady's anomaly}. It is what motivates [[7WG2]]-style policies, which do have the stack property because they only depend on relative access recency.}
+
+\p{The optimal eviction policy (offline) is to evict the page whose next use is farthest in the future. Unimplementable in practice (you don't know the future), but useful as a theoretical upper bound to compare against.}

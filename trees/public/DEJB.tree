@@ -1,0 +1,13 @@
+\import{base-macros}
+\date{2026-05-12T19:32:08Z}
+\tag{public}
+\title{Copy-on-write}
+
+\p{An optimization where two address spaces share the same physical page until one writes to it. Both processes have PTEs pointing at the same PPN, but with the write bit cleared. The first write traps to the OS, which allocates a fresh page, copies the contents, points the writing process's PTE at the new page (with writes re-enabled), and resumes.}
+
+\p{Used pervasively:}
+\ul{
+  \li{\code{fork()} — the child shares the parent's pages until either modifies one. Avoids the cost of copying an entire address space the child often immediately overwrites with \code{exec()}.}
+  \li{Shared libraries — many processes map the same library text pages.}
+  \li{Kernel mapped into every process — same physical kernel code seen from every address space.}
+}

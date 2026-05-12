@@ -1,0 +1,23 @@
+\import{base-macros}
+\date{2026-05-12T19:32:06Z}
+\tag{public}
+\title{Page fault and swap space}
+
+\p{Physical memory is finite, so the OS reserves a region of disk — \em{swap space} — to hold pages that don't fit. Pages currently on disk have their \em{present bit} cleared in the [[WALE]] entry; the PTE instead holds a disk address.}
+
+\p{When a process touches a virtual address whose page is not present, the hardware traps to the OS. This is a \em{page fault}. The handler:}
+\ol{
+  \li{Looks at the PTE: if invalid, the access is illegal — terminate the process.}
+  \li{If valid but not present: read the page in from swap, update the PTE, retry the access.}
+}
+
+\remark{The hardware never handles page faults itself — that would require it to understand disk I/O and the OS's swap layout. Page-fault handling is always in software.}
+
+\p{The three cases on every memory access:}
+\ol{
+  \li{\strong{Present + valid}: hardware reads the PPN from the PTE and proceeds.}
+  \li{\strong{Not present + valid}: hardware invokes the page-fault handler to retrieve from swap.}
+  \li{\strong{Not valid}: hardware raises an exception; the OS typically kills the process.}
+}
+
+\example{\strong{What happens when you dereference a nullptr?} The TLB misses on VPN 0, the page-table walk finds the PTE marked invalid, and the hardware traps to the OS — which delivers SIGSEGV.}

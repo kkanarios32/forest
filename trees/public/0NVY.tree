@@ -3,7 +3,7 @@
 \tag{public}
 \title{Trap table}
 
-\p{A hardware-readable table installed by the OS at boot that maps each kind of exceptional control-flow event (syscall, interrupt, page fault, illegal instruction, ...) to the address of an OS handler. When the CPU takes a trap, it consults this table to decide where to jump, switches into kernel mode, and runs the handler.}
+\p{A hardware-readable table installed by the OS at boot that maps each kind of exceptional control-flow event ([syscall](A5S6), interrupt, [page fault](CXFM), illegal instruction, ...) to the address of an OS handler. When the CPU takes a trap, it consults this table to decide where to jump, switches into kernel mode, and runs the handler.}
 
 \p{The table is what makes it safe to expose privileged operations to user mode: user code never gets to pick the destination of a mode-switch, only the trap number. The OS controls every entry point, the CPU enforces the indirection.}
 
