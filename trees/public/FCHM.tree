@@ -1,0 +1,23 @@
+\import{base-macros}
+\date{2026-05-12T19:34:12Z}
+\tag{public}
+\title{Process}
+
+\p{A running program, plus all the state the OS needs to pause it and resume it later. A process consists of:}
+\ol{
+  \li{\strong{Memory}: an [[7MH4]] holding the program's code, stack, and heap.}
+  \li{\strong{Registers}: general-purpose registers carrying current computation, plus special-purpose registers:}
+  \ul{
+    \li{\strong{Program counter (PC)}: the next instruction to run.}
+    \li{\strong{Stack pointer and frame pointer}: where the process sits on its stack.}
+  }
+}
+
+\p{A process moves between three \strong{states}:}
+\ul{
+  \li{\em{running}: currently on a CPU.}
+  \li{\em{ready}: runnable, waiting for the [[B8GC]] to give it a CPU.}
+  \li{\em{blocked}: waiting on I/O or another event, not runnable.}
+}
+
+\remark{Threads (see [[16TG]]) share an address space within a process but each have their own PC, register set, and stack.}

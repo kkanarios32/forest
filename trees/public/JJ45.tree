@@ -1,0 +1,17 @@
+\import{base-macros}
+\date{2026-05-12T19:34:12Z}
+\tag{public}
+\title{Process API}
+
+\p{The minimum operations any OS must expose for working with [[FCHM]]es:}
+\ol{
+  \li{\strong{Create}: load a program from disk, set up its address space (stack, heap, code), and jump to \code{main}. The OS also initializes \code{argc}/\code{argv}.}
+  \li{\strong{Destroy}: kill a misbehaving or unwanted process.}
+  \li{\strong{Wait}: block until another process completes — useful for ordering dependent work.}
+  \li{\strong{Miscellaneous control}: e.g. suspend / resume.}
+  \li{\strong{Status}: report on running processes.}
+}
+
+\remark{The stack is allocated up front. The heap starts small and grows via \code{malloc}, which calls into the OS (\code{brk}/\code{sbrk}) when it runs out of headroom.}
+
+\p{On Unix, the concrete realization of this API uses \code{fork()}, \code{wait()}, and \code{exec()} — covered separately.}
