@@ -1,0 +1,14 @@
+\import{base-macros}
+\date{2026-05-12T19:23:42Z}
+\tag{public}
+\title{Context switch}
+
+\p{The operation of saving the full execution state of one process (or thread) and restoring another's so the CPU can resume it as if it had never been interrupted. On a trap into the kernel, the hardware stashes the user-visible state (PC, condition codes, stack pointer) into a known location, and the OS saves the remaining general-purpose registers as part of the switching code.}
+
+\p{Two flavors of state are involved:}
+\ol{
+  \li{\strong{User registers}: the current program's context (general-purpose registers, stack vars).}
+  \li{\strong{Kernel registers}: meta-information used to resume the trap correctly (PC at trap, syscall number, etc.).}
+}
+
+\p{Context switches are not free — they incur the cost of cache and TLB pollution in addition to the direct cost of saving/restoring state. This is the cost amortized by larger scheduling quanta and a recurring concern for any [[5P43]] system.}

@@ -32,7 +32,7 @@ As we will see later, every address we see is actually \em{virtual}, meaning it 
 When a process dies, the OS reclaims all of that process memory. This means that as long as your program memory is bounded, leakage will not do any sort of catastrophic damage. However, it is still not good practice.
 }
 \remark{
-\code{malloc} and \code{free} are not syscalls. The heap is pre-allocated with some allotment of memory. If the program exceeds this memory then \code{malloc} will call a syscall \code{brk} / \code{sbrk} to increment / decrement heap mem pointer.
+\code{malloc} and \code{free} are not [syscalls](A5S6). The heap is pre-allocated with some allotment of memory. If the program exceeds this memory then \code{malloc} will call a [syscall](A5S6) \code{brk} / \code{sbrk} to increment / decrement heap mem pointer.
 }
 \remark{
 You can actually initialize and use your own heap-like memory through \code{mmap}. This memory is not associated with any particular file and is an \em{anonymous} memory region within your program.

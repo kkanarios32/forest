@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T19:23:43Z}
+\tag{public}
+\title{Boot sequence}
+
+\p{The fixed series of steps a machine performs from power-on until a usable operating system is running. Each stage runs from a known location and hands off control to the next.}
+
+\ol{
+  \li{Power signal resets the CPU to a known state.}
+  \li{The CPU fetches from a hard-wired address — the BIOS (or UEFI firmware). The BIOS runs basic hardware checks (POST).}
+  \li{The BIOS loads and jumps to the bootloader (e.g. GRUB) from a known location on disk.}
+  \li{The bootloader places the kernel image at the correct address and jumps to its entry point.}
+  \li{The kernel performs early setup: installs the [[0NVY]] (a special privileged instruction), starts the timer interrupt, sets up memory management, and finally enters user space.}
+}
+
+\remark{The hardware is hard-wired only to find the BIOS. Everything past that is software the user can replace, which is why dual-booting and custom bootloaders work.}

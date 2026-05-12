@@ -1,0 +1,20 @@
+\import{base-macros}
+\date{2026-05-12T19:23:43Z}
+\tag{public}
+\title{Syscall mechanism}
+
+\p{A syscall is a user-mode-initiated request for a privileged service from the kernel. Because user code cannot jump into kernel code directly, the mechanism is built around a single trap instruction plus a pre-agreed register convention identifying which service to perform.}
+
+\p{The end-to-end sequence:}
+\ol{
+  \li{User code places the syscall number in a pre-defined register and invokes the trap instruction.}
+  \li{Hardware saves enough state to resume the process and switches to kernel mode.}
+  \li{Hardware jumps to the OS-installed handler via the [[0NVY]].}
+  \li{The handler reads the syscall number from the agreed register and dispatches to the corresponding OS routine.}
+  \li{The OS validates the request, performs the work, and arranges return values per the calling convention.}
+  \li{The OS restores user state and returns the process to user mode.}
+}
+
+\remark{Because the register convention is fixed by ABI, the user-mode side of a syscall is typically hand-written in assembly within libc.}
+\remark{Interrupts work via a similar trap-handler mechanism, but are initiated by hardware (timer, device) rather than user code.}
+\remark{The kernel must validate any pointers or arguments the user supplies — user code cannot be trusted not to ask the kernel to read kernel memory on its behalf.}

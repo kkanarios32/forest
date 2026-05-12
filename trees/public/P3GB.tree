@@ -56,7 +56,7 @@ If the program uses relative addressing, then the OS must load the base register
 }
 \problem{\strong{How does a computer boot:} If a computer must fetch instructions, then what does it do at the beginning when there is no program running?}
 \solution{
-  When you power on a computer, it is hard-wired to fetch an initial instruction from a pre-determined address. This memory address is also hardcoded and unchanged and contains the code for the BIOS. The BIOS is then responsible for making sure everything is working correctly before \code{jump} to the bootloader, which then loads the OS.
+  See [[XSFO]]. When you power on a computer, it is hard-wired to fetch an initial instruction from a pre-determined address. This memory address is also hardcoded and unchanged and contains the code for the BIOS. The BIOS is then responsible for making sure everything is working correctly before \code{jump} to the bootloader, which then loads the OS.
 }
 }
 \section{Chapter 3: Pipelined Execution}{

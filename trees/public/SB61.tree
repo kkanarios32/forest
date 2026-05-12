@@ -62,7 +62,7 @@ We have to be a little careful. The OS code itself is located in memory and is t
   \li{PPN}
   \li{Other bits}
   \ul{
-    \li{Valid bit: has valid translation (different from PTE valid bit) can be invalid on initialization, eviction, or context switch.}
+    \li{Valid bit: has valid translation (different from PTE valid bit) can be invalid on initialization, eviction, or [context switch](OKCI).}
     \li{Protection bit: whether the requested access can be performed.}
   }
 }

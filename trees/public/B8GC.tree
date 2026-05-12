@@ -24,7 +24,7 @@
 \p{\strong{RR:} While the previous algorithm is optimal with respect to turnaround time, it is not very good with respect to response time. In particular, long jobs may not be serviced for a very long time. The best we can do with respect to response time is just \em{round robin}, where we periodically randomly switch between processes. The intervals between switching are referred to as \em{strides} or \em{time slices} or \em{quantum lengths}.}
 }
 \remark{
-Each time we switch between processes, we incur the cost of a context switch. Choosing larger time slices allows us to \em{amortize} this cost.
+Each time we switch between processes, we incur the cost of a [context switch](OKCI). Choosing larger time slices allows us to \em{amortize} this cost.
 }
 \remark{
 Prior to this, we had been ignoring I/O of the processes. A very simple way to not suffer substantial performance loss due to I/O is to simply divide the process up into its non I/O components and schedule them individually.
