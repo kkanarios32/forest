@@ -3,7 +3,7 @@
 \tag{public}
 \title{Butterfly network}
 
-\p{A multistage [[95AC|indirect network]]. A #{k}-ary #{n}-fly has #{k^n} terminal nodes connected through #{n} stages of #{k \times k} crossbar switches. At each stage, the routing decision selects which of #{k} sub-groups to enter; after #{n} stages, every terminal can reach every other.}
+\p{A multistage [indirect network](95AC). A #{k}-ary #{n}-fly has #{k^n} terminal nodes connected through #{n} stages of #{k \times k} crossbar switches. At each stage, the routing decision selects which of #{k} sub-groups to enter; after #{n} stages, every terminal can reach every other.}
 
 \figure{
 \<html:img>[width]{70\%}[src]{\route-asset{assets/img/butterfly-interconnect.png}}{}

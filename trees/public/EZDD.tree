@@ -3,11 +3,11 @@
 \tag{public}
 \title{Network backpressure}
 
-\p{A signaling mechanism that lets a downstream router tell upstream "I am congested — slow down" before its buffers actually overflow. With backpressure information, [[VTS4|adaptive routing]] can route around remote congestion, not just local.}
+\p{A signaling mechanism that lets a downstream router tell upstream "I am congested — slow down" before its buffers actually overflow. With backpressure information, [adaptive routing](VTS4) can route around remote congestion, not just local.}
 
 \p{The mechanism propagates: a congested link signals back to its sender, which then knows its next link will fill, which signals further back. Useful information flows in the opposite direction of the data.}
 
 \problem{Acting only on local state can cause livelock — packets bounce between hotspots, never converging.}
 \p{Backpressure breaks the livelock by giving local routers global-ish information without an actual global view.}
 
-\remark{Backpressure is mechanism; [[VTS4|adaptive routing]] is policy. The two together are what real high-radix on-chip networks use.}
+\remark{Backpressure is mechanism; [adaptive routing](VTS4) is policy. The two together are what real high-radix on-chip networks use.}

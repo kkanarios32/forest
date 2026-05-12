@@ -3,7 +3,7 @@
 \tag{public}
 \title{Ring topology}
 
-\p{A [[95AC|direct network]] where each node connects to two neighbors, forming a closed loop. Bidirectional rings allow either direction of travel; unidirectional rings allow only one. The simplest topology to implement and reason about.}
+\p{A [direct network](95AC) where each node connects to two neighbors, forming a closed loop. Bidirectional rings allow either direction of travel; unidirectional rings allow only one. The simplest topology to implement and reason about.}
 
 \p{In the #{k}-ary #{n}-cube family, a ring is a #{k}-ary 1-cube.}
 

@@ -3,7 +3,7 @@
 \tag{public}
 \title{Clos network}
 
-\p{A three-stage [[95AC|indirect network]] parameterized by #{(m, n, r)}: #{r} input switches and #{r} output switches each of size #{n \times m}, with #{m} middle-stage switches each #{r \times r}. Total terminal nodes #{N = nr}. Non-blocking when #{m \geq 2n - 1}.}
+\p{A three-stage [indirect network](95AC) parameterized by #{(m, n, r)}: #{r} input switches and #{r} output switches each of size #{n \times m}, with #{m} middle-stage switches each #{r \times r}. Total terminal nodes #{N = nr}. Non-blocking when #{m \geq 2n - 1}.}
 
 \ul{
   \li{Number of total switching elements scales as #{N^{1.5}} versus #{N^2} for a flat [[YV5J]] while preserving non-blocking.}

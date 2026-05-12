@@ -3,7 +3,7 @@
 \tag{public}
 \title{Network routing strategies}
 
-\p{Given a [[OMZU|topology]] and a packet's source and destination, which path through the network does it take? Three classes of answer:}
+\p{Given a [topology](OMZU) and a packet's source and destination, which path through the network does it take? Three classes of answer:}
 
 \ul{
   \li{\em{Greedy} (shortest-path) — always pick the shortest available route.

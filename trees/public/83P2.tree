@@ -8,7 +8,7 @@
 \p{The dimension order prevents \em{routing deadlock}: cycles in the channel dependency graph are impossible because no packet ever requests a channel in a "lower" dimension once it has started using a higher one. The dependency graph is therefore acyclic, and the standard cycle-equals-deadlock argument applies.}
 
 \ul{
-  \li{(+) Provably deadlock-free without [[DWV1|virtual channels]].}
+  \li{(+) Provably deadlock-free without [virtual channels](DWV1).}
   \li{(-) Zero path diversity. Hot spots can't be routed around.}
   \li{(-) Unaware of current network state — \em{oblivious}.}
 }

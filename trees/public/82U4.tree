@@ -29,7 +29,7 @@
 \question{How do GPUs deal with cache misses given they don't have OoO machinery?}
 \answer{Fast context-switching between warps. When a warp stalls on memory, the SM switches to another runnable warp with already-resident state. Enough warps means the SM is always busy.}
 
-\p{In a CPU, [[OKCI|context switching]] is expensive — registers must be saved to memory. On a GPU, each SM has an enormous register file that holds the registers of all resident warps simultaneously, so a context switch is just changing which warp the scheduler picks.}
+\p{In a CPU, [context switching](OKCI) is expensive — registers must be saved to memory. On a GPU, each SM has an enormous register file that holds the registers of all resident warps simultaneously, so a context switch is just changing which warp the scheduler picks.}
 }
 
 \section{CUDA hierarchy}{
