@@ -2,7 +2,7 @@
 \date{2025-08-16T20:42:04Z}
 \tag{public}
 \title{Concurrency Intro}
-\p{Each \em{thread} contains its own program counter (PC) and a private set of registers. They do \strong{NOT} contain their own address space like a process.}
+\p{Each \em{thread} contains its own program counter (PC) and a private set of registers. They do \strong{NOT} contain their own [address space](7MH4) like a process.}
 \p{Similar to the process control block (PCB), in order to perform a [context switch](OKCI) each process needs a \em{thread control block}(TCB).}
 \p{Additionally, the process needs one stack \strong{per-thread}. This does ruin our neatly partitioned address space. However, it is generally OK because each individual stack is not too large.}
 \p{\strong{Why do we use threads?}}

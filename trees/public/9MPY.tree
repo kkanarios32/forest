@@ -1,0 +1,12 @@
+\import{base-macros}
+\date{2026-05-12T19:27:15Z}
+\tag{public}
+\title{Base and bounds}
+
+\p{The simplest hardware mechanism for [[7MH4]] translation. The CPU has two dedicated registers per process — a \em{base} pointing to the start of the process's region in physical memory and a \em{bound} marking the end. Translation is just \code{phys = base + virt}, with a check that the result stays below \code{bound}. The unit performing this translation in hardware is the \em{memory management unit} (MMU).}
+
+\p{The hardware must expose privileged instructions for the OS to set base and bound on a [context switch](OKCI), and trap on out-of-bound accesses.}
+
+\problem{To support a large address space, base-and-bounds suffers significant \em{internal fragmentation} — the unused gap between the stack and heap is allocated but wasted. With 16KB total memory and 4KB-but-mostly-empty processes, you can run 4 processes when you'd really have room for 8.}
+
+\p{[[REKW]] is the natural next step — give each region (code, stack, heap) its own base and bound so the gaps don't have to be allocated.}

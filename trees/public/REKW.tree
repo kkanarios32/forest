@@ -1,0 +1,14 @@
+\import{base-macros}
+\date{2026-05-12T19:27:15Z}
+\tag{public}
+\title{Segmentation}
+
+\p{An [[7MH4]]-translation scheme that gives each logical region of a process (code, heap, stack, ...) its own base and bound. Instead of allocating a single contiguous chunk with empty space between regions, the OS allocates each segment separately and on demand. A virtual address is split into a segment number and an offset within that segment:}
+##{\underbrace{0 1}_{\text{segment}}\underbrace{0 1 \cdots 11}_{\text{offset}}}
+
+\p{The hardware uses the segment number to index a segment table, retrieves that segment's base and bound, and adds the offset. Per-segment protection bits make read-only code and no-execute data straightforward.}
+
+\p{Segmentation also enables \em{memory sharing} — two processes can map the same physical segment (e.g. shared code) into both their address spaces.}
+
+\remark{The stack grows downward, so the bounds check has to be direction-aware based on the segment number.}
+\remark{Segmentation does not solve fragmentation; it pushes it from internal (per-process) to external (per-system). Variable-sized segments leave variably-sized holes in physical memory. The fix that eventually won is [[SB61]].}

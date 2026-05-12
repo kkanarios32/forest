@@ -1,0 +1,21 @@
+\import{base-macros}
+\date{2026-05-12T19:27:14Z}
+\tag{public}
+\title{Address space}
+
+\p{The chunk of memory the OS gives a process to use at its own discretion. Each process has its own address space, so that one process cannot read or overwrite another's program state. An address space typically contains three regions:}
+\ol{
+  \li{\strong{Code}: the program text.}
+  \li{\strong{Stack}: local variables, function arguments, return values.}
+  \li{\strong{Heap}: dynamically allocated memory.}
+}
+
+\p{Every address a process sees is \em{virtual} — not the location in physical memory. The hardware translates virtual addresses to physical ones at access time. Approaches to that translation include [[9MPY]], [[REKW]], and [[SB61]].}
+
+\remark{The \em{API} the user sees is tiny: a way to get memory and a way to release it, exposed as \code{malloc} and \code{free}. The common bugs are forgetting to initialize, forgetting to free, freeing too early (dangling pointer), freeing twice (double free), and freeing memory not from \code{malloc} (invalid free).}
+
+\remark{\code{malloc} and \code{free} are library calls, not [syscalls](A5S6). The heap is pre-allocated; \code{malloc} extends it by invoking \code{brk}/\code{sbrk} when it runs out.}
+
+\remark{When a process dies, the OS reclaims its memory, so a bounded leak is not catastrophic — just bad practice.}
+
+\remark{You can also acquire an anonymous heap-like region directly via \code{mmap}.}

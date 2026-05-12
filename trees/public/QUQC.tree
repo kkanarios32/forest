@@ -3,7 +3,7 @@
 \tag{public}
 \title{User mode vs kernel mode}
 
-\p{Two privilege levels supported by the CPU. \em{User mode} restricts the running process to a limited set of instructions and a limited view of memory — usually just its own address space. \em{Kernel mode} runs the OS with full access to all instructions and all of physical memory.}
+\p{Two privilege levels supported by the CPU. \em{User mode} restricts the running process to a limited set of instructions and a limited view of memory — usually just its own [address space](7MH4). \em{Kernel mode} runs the OS with full access to all instructions and all of physical memory.}
 
 \p{Switching between modes is mediated by hardware via a [[0NVY]] populated at boot. The OS sets up the table; the CPU enforces it. A process cannot promote itself to kernel mode arbitrarily — it must invoke a [[A5S6]], which traps to a fixed entry point in the OS.}
 
