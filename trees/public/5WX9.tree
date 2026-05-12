@@ -1,0 +1,20 @@
+\import{base-macros}
+\date{2026-05-12T22:53:43Z}
+\tag{public}
+\title{Butterfly network}
+
+\p{A multistage [[95AC|indirect network]]. A #{k}-ary #{n}-fly has #{k^n} terminal nodes connected through #{n} stages of #{k \times k} crossbar switches. At each stage, the routing decision selects which of #{k} sub-groups to enter; after #{n} stages, every terminal can reach every other.}
+
+\figure{
+\<html:img>[width]{70\%}[src]{\route-asset{assets/img/butterfly-interconnect.png}}{}
+\figcaption{Routing 0 to 2 on a 2-ary 3-fly.}
+}
+
+\ul{
+  \li{Hop count #{n - 1}.}
+  \li{Under uniform random traffic, maximum channel load is 1 (perfectly balanced).}
+  \li{Channel load drops further for non-uniform traffic that respects the natural partitioning.}
+}
+
+\problem{\strong{Zero path diversity.} There is exactly one path between any source and destination. A single hot link wedges traffic.}
+\solution{Add \em{shuffle stages} that permute paths after each routing stage, so the same source-destination pair can be reached by multiple routes.}

@@ -1,0 +1,33 @@
+\import{base-macros}
+\date{2026-05-12T22:53:39Z}
+\tag{public}
+\title{On-chip network metrics}
+
+\p{The measurements used to compare network topologies and traffic patterns.}
+
+\section{Traffic-independent}{
+\ul{
+  \li{\em{Degree}: number of links at each node. A proxy for router complexity — each port costs a buffer, crossbar input, state machine.}
+  \li{\em{Bisection bandwidth}: bandwidth across a cut that splits the network into two equal-sized halves. The minimum over all such cuts. A proxy for peak achievable throughput, especially for uniformly random traffic.}
+  \li{\em{Diameter}: maximum hop distance between any two nodes. The worst-case hop count.}
+}
+\remark{Bisection bandwidth is less useful for on-chip networks than off-chip because global on-chip wiring is plentiful.}
+\remark{Ring bisection is 2 (two cuts to bisect); torus bisection is 4.}
+}
+
+\section{Traffic-dependent}{
+\ul{
+  \li{\em{Hop count}: hops between two specific nodes. The average over a traffic distribution is a useful proxy for latency.}
+  \li{\em{Maximum channel load}: the most-loaded link's load relative to per-node injection bandwidth, for a given traffic pattern. The proxy for sustained throughput.}
+  \li{\em{Path diversity}: number of distinct shortest paths between two nodes. Higher path diversity allows adaptive routing to spread load.}
+}
+}
+
+\section{Performance regimes}{
+\ul{
+  \li{\em{Zero-load latency}: average hop count with no contention.}
+  \li{\em{Saturation throughput}: the injection rate at which latency curves upward exponentially.}
+}
+}
+
+\remark{Hop count is not the same as latency. Per-hop pipeline depth and link propagation matter — more short hops can beat fewer slow ones. Router pipeline depth isn't always known in advance.}

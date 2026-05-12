@@ -1,0 +1,19 @@
+\import{base-macros}
+\date{2026-05-12T22:53:41Z}
+\tag{public}
+\title{Ring topology}
+
+\p{A [[95AC|direct network]] where each node connects to two neighbors, forming a closed loop. Bidirectional rings allow either direction of travel; unidirectional rings allow only one. The simplest topology to implement and reason about.}
+
+\p{In the #{k}-ary #{n}-cube family, a ring is a #{k}-ary 1-cube.}
+
+\ul{
+  \li{Degree 2 (every node).}
+  \li{Diameter #{\lfloor k/2 \rfloor} for a bidirectional #{k}-node ring.}
+  \li{Bisection bandwidth 2 — cut the ring at exactly two links.}
+  \li{Hardware overhead very low: routers have two ports.}
+}
+
+\problem{Worst-case hop count is #{O(k)}. Doesn't scale beyond a small number of nodes.}
+
+\remark{Despite the poor scaling, rings are common in commercial CPUs (Intel's L3 ring bus on Sandy/Ivy Bridge) because they're cheap and 8–16 cores is enough.}

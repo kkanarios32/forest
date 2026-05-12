@@ -1,0 +1,13 @@
+\import{base-macros}
+\date{2026-05-12T22:53:40Z}
+\tag{public}
+\title{Direct vs indirect networks}
+
+\p{Two organizational families for on-chip networks.}
+
+\ul{
+  \li{\em{Direct} — every terminal node (core, memory controller) is associated with a router. Most on-chip designs are direct because area is precious and there's no point spending a router with no compute attached. The "#{k}-ary #{n}-cube" family ([[UEA0]], [[9SA2]], [[DDKT]]) is direct.}
+  \li{\em{Indirect} — routers may exist that connect only to other routers, with no terminal attached. [[5WX9]] and [[YKAN]] are indirect; a router in their middle stages just shuffles bits between input and output stages.}
+}
+
+\remark{Indirect networks can shorten the diameter for the same node count, but they pay for extra silicon area for routers that don't serve traffic locally. Often the right call off-chip; usually the wrong call on-chip.}

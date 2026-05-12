@@ -1,0 +1,22 @@
+\import{base-macros}
+\date{2026-05-12T22:53:44Z}
+\tag{public}
+\title{Clos network}
+
+\p{A three-stage [[95AC|indirect network]] parameterized by #{(m, n, r)}: #{r} input switches and #{r} output switches each of size #{n \times m}, with #{m} middle-stage switches each #{r \times r}. Total terminal nodes #{N = nr}. Non-blocking when #{m \geq 2n - 1}.}
+
+\ul{
+  \li{Number of total switching elements scales as #{N^{1.5}} versus #{N^2} for a flat [[YV5J]] while preserving non-blocking.}
+  \li{Path diversity is #{m} — multiple distinct paths between any source and destination.}
+}
+
+\proof{
+There are #{rmn} input-switch elements, #{mr^2} middle-switch elements, and #{rmn} output-switch elements:
+##{S = 2rmn + mr^2.}
+With #{r = N/n}:
+##{S = 2Nm + m(N/n)^2.}
+Choosing #{n = \sqrt{N}} and #{m \geq 2n - 1 = O(\sqrt{N})}:
+##{S = 2mN + 2m\sqrt{N} = O(N^{1.5}).}
+}
+
+\remark{A \em{folded} Clos network — input and output stages combined, making #{n} input ports and #{m} output ports bidirectional — is structurally the same as a [[DFC7]].}

@@ -1,0 +1,39 @@
+\import{base-macros}
+\date{2026-05-12T22:53:45Z}
+\tag{public}
+\title{Network routing strategies}
+
+\p{Given a [[OMZU|topology]] and a packet's source and destination, which path through the network does it take? Three classes of answer:}
+
+\ul{
+  \li{\em{Greedy} (shortest-path) — always pick the shortest available route.
+    \ul{
+      \li{(+) Minimizes latency under light load.}
+      \li{(-) Overloads central links; worst-case throughput poor.}
+    }
+  }
+  \li{\em{Uniform / oblivious random} — pick a direction at random.
+    \ul{
+      \li{(+) Spreads load; avoids systematic hotspots.}
+      \li{(-) Wastes bandwidth on non-minimal paths; latency unpredictable.}
+    }
+  }
+  \li{\em{Adaptive} — at each hop, pick the outgoing link with the lowest local congestion.
+    \ul{
+      \li{(+) Dynamically balances load; best worst-case throughput.}
+      \li{(-) Routers need congestion state; risk of livelock without care.}
+    }
+  }
+}
+
+\example{
+\strong{Tornado traffic} on an 8-node bidirectional ring: node #{i} sends to #{(i+3) \bmod 8}.
+\ul{
+  \li{Greedy: all packets travel counter-clockwise. Bidirectional bandwidth wasted; #{\frac{1}{3}} utilization.}
+  \li{Uniform: randomly clockwise/counter-clockwise. Counter-clockwise gets #{\frac{2}{3}} utilization, clockwise #{\frac{2}{5}}; worst-case #{\frac{2}{5}}.}
+  \li{Adaptive: sends #{\frac{5}{8}} counter-clockwise to match traffic exactly. Best.}
+}
+}
+
+\remark{Adaptive routing tends to need [[EZDD]] signaling to know where congestion is, and care to avoid livelock when many adaptive decisions chase each other.}
+\remark{Oblivious strategies like [[83P2]] and [[XLDA]] give deterministic guarantees (deadlock-free, bounded path length) at the cost of giving up the load-balancing of true adaptive routing.}

@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T22:53:46Z}
+\tag{public}
+\title{Dimension-order routing}
+
+\p{An oblivious [[VTS4]] for #{k}-ary #{n}-cube networks ([[9SA2]], [[DDKT]]): always exhaust the offset in one dimension completely before changing to the next. E.g. in 2D mesh routing, route X-then-Y — never turn back to X after starting Y.}
+
+\p{The dimension order prevents \em{routing deadlock}: cycles in the channel dependency graph are impossible because no packet ever requests a channel in a "lower" dimension once it has started using a higher one. The dependency graph is therefore acyclic, and the standard cycle-equals-deadlock argument applies.}
+
+\ul{
+  \li{(+) Provably deadlock-free without [[DWV1|virtual channels]].}
+  \li{(-) Zero path diversity. Hot spots can't be routed around.}
+  \li{(-) Unaware of current network state — \em{oblivious}.}
+}
+
+\p{The standard remedy for the path-diversity problem is [[XLDA]], which keeps the deadlock-freedom of dimension-order routing while spreading load with a randomized intermediate hop.}

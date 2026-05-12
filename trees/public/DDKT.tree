@@ -1,0 +1,25 @@
+\import{base-macros}
+\date{2026-05-12T22:53:43Z}
+\tag{public}
+\title{Torus topology}
+
+\p{A [[9SA2]] with wrap-around links connecting the ends of each dimension. In the #{k}-ary #{n}-cube classification, a #{k}-ary #{n}-cube. Uniform node degree (every node has degree #{2n}), uniform load distribution, half the hop count of a mesh.}
+
+\ul{
+  \li{Every node has degree #{2n}.}
+  \li{Average hop count for even #{k}: ##{H_{avg} = \frac{nk}{4}}}
+  \li{Maximum channel load for uniform random traffic: #{k/8} — half that of a [[9SA2]].}
+  \li{Good \em{path diversity}: many shortest paths between any two nodes.}
+}
+
+\problem{Wrap-around links are physically long. To equalize wire delays, the torus must be \em{folded}, doubling effective wire lengths and link area. The wrap-around also doubles the link count versus a mesh of the same dimensions.}
+
+\remark{Despite the theoretical advantage, mesh wins on real chips. Tori show up in HPC interconnects (Cray) where the wires can run on dedicated cables.}
+
+\p{Variants:}
+\ul{
+  \li{\em{#{k}-ary #{n}-cube}: #{k} nodes along each of #{n} dimensions, all ends wrapped.}
+  \li{\em{Asymmetric}: #{(i, j, k)}-ary — different node count per dimension.}
+  \li{\em{Mesh}: same as torus but \em{without} wrap-around.}
+  \li{\em{Ring}: #{k}-ary 1-cube.}
+}

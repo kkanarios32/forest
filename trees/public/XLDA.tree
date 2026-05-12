@@ -1,0 +1,18 @@
+\import{base-macros}
+\date{2026-05-12T22:53:46Z}
+\tag{public}
+\title{Valiant's routing algorithm}
+
+\p{An oblivious [[VTS4]] that achieves provably optimal worst-case throughput by introducing randomness in path selection:}
+\ol{
+  \li{For a packet going from #{s} to #{d}, randomly pick an intermediate node #{w}.}
+  \li{Route #{s \to w} using [[83P2]].}
+  \li{Eject the packet at #{w}, then re-inject it.}
+  \li{Route #{w \to d} using [[83P2]].}
+}
+
+\p{To preserve deadlock-freedom, the intermediate node must remove the packet from the network before re-injecting — otherwise the channel dependencies of the two halves could interlock.}
+
+\remark{Restricting #{w} to lie in the sub-quadrant defined by #{s} and #{d} keeps paths near-minimal while still spreading load — the practical compromise between guaranteed throughput and added latency.}
+
+\remark{Valiant's algorithm trades average-case latency (paths are longer) for worst-case throughput (any traffic pattern looks roughly uniform once randomized). The right call for adversarial workloads; overkill for uniform traffic.}

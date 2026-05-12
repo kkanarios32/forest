@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T22:53:44Z}
+\tag{public}
+\title{Fat tree}
+
+\p{A tree topology with bandwidth that doubles at every level toward the root. Each interior switch has logical degree 4, but as you climb the tree, link width doubles to absorb the combined traffic of its subtree — preserving bisection bandwidth.}
+
+\p{Structurally, a fat tree is a folded [[YKAN]]: the input and output stages of a Clos are merged into a single bidirectional stage at each level of the tree, and the middle stage becomes the higher levels of the tree.}
+
+\ul{
+  \li{Each switch has logical degree 4 (2 down, 2 up — with link doubling).}
+  \li{Bisection bandwidth scales linearly with the number of leaves.}
+  \li{Path diversity grows toward the root.}
+}
+
+\remark{Fat trees are the dominant topology for off-chip HPC interconnects (InfiniBand fat-tree clusters). Less common on-chip because the doubling links are hard to lay out on a 2D die.}

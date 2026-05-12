@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T22:53:41Z}
+\tag{public}
+\title{Crossbar}
+
+\p{The simplest [[95AC|indirect network]]: an #{n \times m} grid of switch points connecting #{n} inputs to #{m} outputs. Any input can be connected to any free output simultaneously — \em{non-blocking}.}
+
+\ul{
+  \li{One hop per transit (minimum possible).}
+  \li{Serializes if multiple senders target the same receiver.}
+  \li{Switch area grows as #{O(n \cdot m)} — the dominant cost as systems grow.}
+}
+
+\remark{Crossbar router area scales as the \em{square} of the port count, which is why high-radix routers are dramatically more expensive than low-radix ones.}
+
+\p{Crossbars are common as the inner switch of larger structured networks ([[YKAN]], [[DFC7]]) — large flat crossbars are impractical at scale, but small crossbars are cheap.}

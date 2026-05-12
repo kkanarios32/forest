@@ -39,7 +39,7 @@
 
 \section{Starting with MSI}{
 \p{The first thing we need to do is understand all the things that can go awry.}
-\p{First in the valid-invalid protocol example we were given they only have two virtual channels. However, we need 3 channels to handle, request messages, \strong{forwarded} messages, and response messages.}
+\p{First in the valid-invalid protocol example we were given they only have two [virtual channels](DWV1). However, we need 3 channels to handle, request messages, \strong{forwarded} messages, and response messages.}
 \p{Let us briefly understand why this is the case. Detecting a deadlock is equivalent to detecting a cycle in a dependency graph, so it is sufficient to show a cyclic dependency.}
 \ul{
   \li{If we issue a \code{GetS} this goes to the directory, giving us an edge N1 -> D.}

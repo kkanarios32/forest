@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T22:53:42Z}
+\tag{public}
+\title{Mesh topology}
+
+\p{A 2D grid of nodes with neighbors connected on the four compass directions, no wrap-around. The dominant on-chip topology in commercial designs (Xeon Phi, recent server x86 chips) because it lays out naturally on a 2D die.}
+
+\ul{
+  \li{Interior nodes degree 4; edge nodes degree 3; corners degree 2.}
+  \li{Average hop count for an even-#{k} mesh: ##{H_{avg} = \frac{nk}{3}}}
+  \li{Maximum channel load for uniform random traffic: #{k/4} — twice that of a [[DDKT]].}
+}
+
+\problem{Non-uniform node degree. Edge nodes carry less traffic than they could, while interior nodes bottleneck on traffic flowing through them.}
+
+\remark{Mesh dominates [[DDKT]] in practice despite the topology metrics being worse, because torus wrap-around wires are physically long and force expensive folding to equalize link lengths. Manufacturing wins over theoretical performance.}
