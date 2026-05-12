@@ -1,0 +1,38 @@
+\import{base-macros}
+\date{2026-05-12T22:52:10Z}
+\tag{public}
+\title{Relaxed consistency}
+
+\p{A memory model weaker than [[OW4D]] that allows the hardware (and compiler) to reorder memory operations for performance, with explicit \em{fence} instructions where the programmer wants to forbid reordering.}
+
+\p{A fence is implemented with a counter — incremented on issue of each memory op, decremented on completion. The fence stalls dispatch until the counter reaches zero.}
+
+\section{Common relaxations}{
+\ul{
+  \li{\strong{TSO (Total Store Order)} — loads may be hoisted above prior stores. The motivation: a store can sit in the store buffer waiting for cache, while subsequent loads (which don't touch the buffered address) proceed. x86 implements TSO.}
+  \li{\strong{RMO (Relaxed Memory Order)} — anything may be reordered. Stronger reorderings still need to be justified per case:
+    \ul{
+      \li{Load → store: no performance gain to reorder; leave alone.}
+      \li{Store → store: keep ordering with a slightly larger store buffer.}
+      \li{Load → load: speculate the second load while waiting for the first; reorder is invisible if the speculation is verified.}
+    }
+  }
+  \li{\strong{IBM 370 variant} — TSO + no store forwarding (preserves global store atomicity).}
+}
+}
+
+\remark{Under TSO, Dekker's algorithm is still broken without fences — the classic example where TSO is too weak for naive software synchronization.}
+
+\section{Release consistency}{
+\p{In RMO you still need fences to ensure data-race freedom. Release consistency \em{relaxes the fences themselves}:}
+\ol{
+  \li{\strong{Full fence} — no instruction may cross in either direction.}
+  \li{\strong{Half fence (acquire/release)}:
+    \ul{
+      \li{Acquire — operations after may not move above.}
+      \li{Release — operations before may not move below.}
+    }
+    Expanding a critical section is fine; entering it (acquire) must not let subsequent ops sneak above; exiting (release) must not let prior ops sneak below.}
+}
+\p{C++ \code{std::atomic} compiles to half-fences in the right places, which is why it is the standard primitive for portable lock-free code.}
+}

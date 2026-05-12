@@ -1,0 +1,13 @@
+\import{base-macros}
+\date{2026-05-12T22:52:09Z}
+\tag{public}
+\title{Sequential consistency}
+
+\p{The strongest practical memory model. The result of any execution is the same as if the operations of all threads were executed in some \em{single sequential order}, and the operations of each thread appear in that order in the same sequence as the program specifies.}
+
+\p{Equivalent operational definition: imagine a single switch that, at each step, selects one thread to run its next operation. Any valid execution is the result of some sequence of such selections. There is no reordering across threads, no reordering within a thread, and no buffering that becomes visible to other threads.}
+
+\p{Sequential consistency is what most programmers reason about by default — and what real hardware does not provide, because it forbids almost every optimization that makes a CPU fast. [[BCFG]] is what we get in exchange.}
+
+\remark{SC does not provide guarantees \em{between} threads beyond ordering. Two threads racing on the same variable are still racing — SC just promises a consistent global timeline.}
+\remark{Enforcing SC purely in hardware requires loads to wait for the store buffer to drain and stores to retire strictly in order. Both kill performance. \em{SC-preserving compilers} try to push the constraint to compile time by refusing to reorder shared accesses.}

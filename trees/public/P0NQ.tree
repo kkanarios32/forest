@@ -1,0 +1,15 @@
+\import{base-macros}
+\date{2026-05-12T22:52:11Z}
+\tag{public}
+\title{Data race}
+
+\p{Two accesses to the same memory location, from different threads, where at least one is a write and there is no \em{happens-before} relationship between them. The happens-before relation is what synchronization primitives like [[Q2DT]] and atomics induce — when one access happens before another, they are not racing.}
+
+\remark{Competing for the same lock is \em{not} a data race. Whichever thread acquires first \em{happens before} the next; the access inside each critical section is sequentially ordered.}
+
+\p{Data-race freedom (DRF) is the implicit contract behind every relaxed memory model: if your program has no data races, [[BCFG]] hardware behaves as if it were [[OW4D]]. Conversely, in the presence of a data race, the result is undefined by the language and the model.}
+
+\problem{Writing data-race-free programs is hard. Treating every shared access as a synchronization point destroys performance.}
+\p{\strong{SC-preserving compilers} approach: forbid the compiler from reordering shared accesses, leaving the hardware free to do TSO-style reordering. The optimization most disrupted is common-subexpression elimination across shared accesses — solved by inserting a "monitor" check on the coherence bit between expressions.}
+
+\p{\strong{Hardware approach.} Treat all pages as local/safe by default and extend page protection bits to the thread level: a non-owning thread accessing the page triggers a fault, exposing the data race at runtime.}
