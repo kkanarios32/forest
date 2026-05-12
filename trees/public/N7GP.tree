@@ -1,0 +1,61 @@
+\import{base-macros}
+\date{2026-02-08T16:48:15Z}
+\tag{public}
+\tag{note}
+\tag{top}
+\author{kellenkanarios}
+\title{Notebook: Computer Architecture}
+\p{Concept-level notes on multicore architecture, the cache-coherence stack, memory consistency, on-chip networks, and data-level parallelism. Mostly distilled from an EECS course; cross-references into [[P3GB]] (Inside the Machine) for single-core/uniprocessor topics.}
+
+\section{Foundation}{
+\transclude{S0TN}
+\transclude{Y8JE}
+}
+
+\section{Parallel computing primitives}{
+\transclude{Q2DT}
+}
+
+\section{Cache coherence}{
+\transclude{GA7N}
+\p{Worked instance: [[HHZO]] implements directory-based MESI in Murphi.}
+}
+
+\section{Memory consistency}{
+\transclude{OW4D}
+\transclude{BCFG}
+\transclude{P0NQ}
+}
+
+\section{On-chip networks}{
+\transclude{667T}
+}
+
+\section{Data-level parallelism}{
+\transclude{Q7ZD}
+\transclude{82U4}
+\transclude{X9VZ}
+\transclude{U1FO}
+\transclude{8GZN}
+
+\section{ASIC accelerators}{
+\p{\em{Application-Specific Integrated Circuits} fuse multiple operations into hardware that a general-purpose pipeline would have to schedule sequentially. The motivating intuition: if you frequently \em{multiply-accumulate}, the multiply and the add each traverse the entire pipeline separately. A dedicated multiply-accumulate ALU does both in one cycle.}
+\p{The cost-of-operation gap is large — 32-bit vs 8-bit addition has roughly an order of magnitude difference in energy per op. ASICs win by matching width to need.}
+}
+
+\section{Processing in memory}{
+\transclude{2BGU}
+}
+}
+
+\section{Review}{
+\ul{
+  \li{\strong{Strong vs weak scaling.} Strong scaling improves performance for fixed program and input. Weak scaling holds per-thread work fixed as data and threads grow.}
+  \li{\strong{Locks ([[Q2DT]]).} Understand the connection between lock implementations and coherence traffic.}
+  \li{\strong{Snooping ([[8C2H]]).} Bus, valid-invalid, [[EYXU]], [[30XT]], [[AI2B]] — what each added state is for.}
+  \li{\strong{Cache design.} Should L2 be shared? Should the hierarchy be [[4W5G|inclusive]]?}
+  \li{\strong{Directory protocol ([[KIT8]]).} Why directory over snoop; broadcast cost; transient states; race conditions.}
+  \li{\strong{Memory consistency ([[OW4D]], [[BCFG]]).} Where fences are needed; how relaxed orderings expose hardware speedups; the [[P0NQ|DRF]] contract.}
+  \li{\strong{On-chip networks ([[667T]]).} Topology choices on a 2D die; routing strategy implications; deadlock-avoidance via [[83P2]] or [[DWV1|virtual channels]].}
+}
+}
