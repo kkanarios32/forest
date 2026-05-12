@@ -1,0 +1,12 @@
+\import{base-macros}
+\date{2026-05-12T19:47:01Z}
+\tag{public}
+\title{Microarchitecture}
+
+\p{The internal organization of a CPU that implements a given \em{instruction set architecture} (ISA). Two chips can present identical ISAs to software while having radically different microarchitectures — e.g. Intel and AMD both implement x86, but their pipelines, branch predictors, and execution units differ.}
+
+\p{The bridge between the two is the \em{microcode engine}: a mini-CPU inside the CPU. It holds small programs in a microcode ROM and runs them when a complex instruction needs to be translated into the simpler primitives the hardware actually executes. Conceptually, it's an emulator.}
+
+\remark{[[L896]]-style ISAs need large microcode engines to implement their complex instructions. RISC designs minimize the microcode engine, pushing translation to the compiler instead.}
+
+\p{The translated primitives are \em{[[WEW2]]} — a finer-grained, more uniform instruction stream that the actual hardware schedules. The translation step is the main reason an x86 chip's pipeline starts with such complex decode logic.}

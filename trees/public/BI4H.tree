@@ -1,0 +1,20 @@
+\import{base-macros}
+\date{2026-05-12T19:47:07Z}
+\tag{public}
+\title{Reorder buffer}
+
+\p{The structure that lets an [[U0NY]] CPU look in-order to the programmer. The ROB holds every in-flight instruction in original program order, regardless of the order they actually executed. When the oldest entry has its result ready and all earlier entries have already committed, the ROB \em{commits} it — writing its result to architectural state and freeing the slot.}
+
+\p{Each ROB entry typically tracks:}
+\ul{
+  \li{Instruction identity and program order position.}
+  \li{Operand register names (and renamed sources).}
+  \li{Status — pending, executing, complete, speculated.}
+  \li{The instruction's result, held in a data field that doubles as a [[5CT9]] register.}
+}
+
+\p{Speculatively-issued instructions also enter the ROB but are tagged. On a branch misprediction, all speculative entries past the mispredicted branch are squashed.}
+
+\p{The Pentium Pro introduced this design with a 40-entry ROB. The ROB sits at both ends of the pipeline — dispatch enters it, retirement leaves it — which is what makes the rest of the back-end free to issue and execute out of order.}
+
+\remark{ROB size, [[FQ9N]] count, and pipeline depth set each other's bounds. A shallow pipeline can afford a small ROB; a deep one (Pentium 4 had 126) needs a large one to keep the back-end fed.}

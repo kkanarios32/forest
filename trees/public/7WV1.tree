@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T19:47:04Z}
+\tag{public}
+\title{Structural hazard}
+
+\p{Two simultaneous instructions need the same hardware resource, and there's only one of it. The classic example is a single-port [[ETWN]] facing two writes in one cycle, or two memory-accessing instructions facing a single load-store unit.}
+
+\p{Mitigations cost area:}
+\ul{
+  \li{Duplicate the resource (extra ALU, more register-file write ports).}
+  \li{Pipeline the resource (multi-cycle dividers that accept a new input each cycle).}
+  \li{Stall — accept the cost in throughput.}
+}
+
+\problem{Register file area scales \em{quadratically} in port count, so duplicating ports for many ALUs gets expensive quickly.}
+\solution{Per-unit register files (one for integer, one for FP, one for vector) with fewer ports each. Discussed under [[ETWN]].}

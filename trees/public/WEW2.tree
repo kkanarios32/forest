@@ -1,0 +1,17 @@
+\import{base-macros}
+\date{2026-05-12T19:47:09Z}
+\tag{public}
+\title{Micro-operations}
+
+\p{The hardware-internal instruction stream that an x86 chip actually schedules. Each user-visible x86 instruction is decoded into one or more micro-ops, which are simpler, more uniform, RISC-like primitives that the back-end can execute, reorder, and rename freely.}
+
+\p{Many common x86 instructions translate to just one or two micro-ops, so decoders are split into \em{simple} and \em{complex} variants — the simple decoders are specific to single-micro-op instructions and run in parallel with the complex one.}
+
+\p{Optimizations that operate on the micro-op stream:}
+\ul{
+  \li{\em{Micro-op fusion} (Pentium M) — two related micro-ops that the back-end tracks together while sharing a slot in the issue queue. A store decomposes into a store-address and store-data pair, which are fused; a read-modify decomposes into a load + ALU op that fuse and execute serially.}
+  \li{\em{Macro fusion} (Core 2 Duo) — fuse a pair of \em{x86 instructions} (e.g. compare + branch) before decode, so a single micro-op represents both. Increases peak decode bandwidth without growing ROB or RS pressure.}
+  \li{\em{[[3DIC]]} (Pentium 4) — cache decoded micro-op sequences for hot code so decoding doesn't have to happen on every iteration.}
+}
+
+\remark{Micro-ops exist because [[L896]]-style ISAs need to be translated to something the hardware can schedule cleanly. Pure RISC chips don't need them.}

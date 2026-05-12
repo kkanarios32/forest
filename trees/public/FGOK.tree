@@ -10,7 +10,7 @@
   \li{Extract VPN from the virtual address.}
   \li{Check whether the VPN is in the TLB.}
   \li{TLB hit: read PPN from the entry, append offset, access memory.}
-  \li{TLB miss: walk the page table (in hardware on CISC, by trapping to OS on RISC), insert the translation into the TLB, retry.}
+  \li{TLB miss: walk the page table (in hardware on [CISC](L896), by trapping to OS on [RISC](L896)), insert the translation into the TLB, retry.}
 }
 
 \p{A TLB entry holds the VPN, the PPN, a valid bit (separate from the PTE valid bit — invalid on init, eviction, [context switch](OKCI)), and protection bits.}

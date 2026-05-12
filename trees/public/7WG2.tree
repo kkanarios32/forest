@@ -3,7 +3,7 @@
 \tag{public}
 \title{LRU and the clock algorithm}
 
-\p{\em{Least recently used} is the standard heuristic for picking a page to evict: throw out the one that has been untouched the longest. It works because of the \em{principle of locality} — recently-used pages are likely to be used again soon (temporal locality).}
+\p{\em{Least recently used} is the standard heuristic for picking a page to evict: throw out the one that has been untouched the longest. It works because of the \em{principle of locality} — recently-used pages are likely to be used again soon ([temporal locality](9RWN)).}
 
 \p{Pure LRU requires updating a data structure on every memory access, which is too expensive. The \em{clock algorithm} approximates it cheaply:}
 \ol{

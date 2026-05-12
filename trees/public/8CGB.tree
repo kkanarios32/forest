@@ -1,0 +1,15 @@
+\import{base-macros}
+\date{2026-05-12T19:47:11Z}
+\tag{public}
+\title{Cache miss types}
+
+\p{A cache miss happens when the requested data isn't in cache and has to be fetched from a slower tier. Misses fall into four categories — the "four Cs" of cache misses:}
+
+\ol{
+  \li{\em{Compulsory miss} — the data was never in cache. Cold-start misses are unavoidable for a given cache size and working set.}
+  \li{\em{Conflict miss} — the data was evicted because of an associativity collision. A different access mapped to the same set kicked it out. Reduced by higher [[C74U]].}
+  \li{\em{Coherence miss} — the data was invalidated because another core wrote to it. Specific to shared-memory multicore systems.}
+  \li{\em{Capacity miss} — the cache filled up and the data was evicted by [[UG51]]. The working set doesn't fit.}
+}
+
+\p{Distinguishing them matters because they have different mitigations: conflict misses respond to associativity changes, capacity misses respond to size, coherence misses respond to cache-coherence protocol design, and compulsory misses respond to prefetching.}

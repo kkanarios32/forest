@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T19:47:08Z}
+\tag{public}
+\title{Out-of-order execution}
+
+\p{Execute instructions in whatever order their operands become available, then commit them back in program order. The programmer's model still sees sequential execution; the hardware reorders aggressively underneath to keep [[DA6Q]] busy across [[ITFA]]s and memory latency.}
+
+\p{Two structures make this work:}
+\ul{
+  \li{[[FQ9N]]s — hold instructions waiting on operands, so a stalled instruction doesn't block independent ones behind it.}
+  \li{[[BI4H]] — preserves program order so commits look sequential and mispredicted [[IIF9]] paths can be unwound.}
+}
+
+\p{Combined with [[5CT9]] to break false dependencies, the back-end of a modern CPU is essentially a dynamic scheduler that uses the program order only as a hint about what to retire next.}
+
+\example{An out-of-order pipeline can issue a load early (because its address operands are ready), execute several unrelated ALU ops while waiting for the memory, then have all four instructions ready to commit in program order. The illusion of sequential execution is preserved; the parallelism is real.}

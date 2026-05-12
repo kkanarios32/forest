@@ -1,0 +1,22 @@
+\import{base-macros}
+\date{2026-05-12T19:47:10Z}
+\tag{public}
+\title{Cache hierarchy}
+
+\p{Multiple tiers of progressively-larger, progressively-slower storage between the CPU's registers and main memory. Each tier holds the most-recently-used contents of the next slower tier, exploiting [[PMP9]] and [[9RWN]] in the workload.}
+
+\p{Approximate tiers on a modern x86 chip:}
+\ul{
+  \li{\em{Registers} — ns, dozens of bytes per core.}
+  \li{\em{L1 cache} — 2–8 ns, 8–128 KB per core. Often split into instruction and data L1s.}
+  \ul{
+    \li{Built from static RAM (4–6 transistors per cell), which is fast but area-expensive vs. DRAM's single-transistor cell.}
+  }
+  \li{\em{L2 cache} — 5–12 ns, 0.5–8 MB. Closes the latency gap between L1 and DRAM.}
+  \li{\em{L3 cache} — slower, shared across cores.}
+  \li{\em{Main memory} — 10–60 ns, GBs.}
+}
+
+\example{\strong{A byte's journey.} L1 checked first; on miss, L2; on miss, main memory; on miss in main memory, [[CXFM]] to disk.}
+
+\remark{L1 is split into instruction and data caches because the locality profiles of code and data are very different — re-running the same code over different data has high temporal locality for code but low for data.}

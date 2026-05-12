@@ -1,126 +1,69 @@
+\import{base-macros}
 \date{2026-03-15T15:23:47Z}
 \tag{public}
-\import{base-macros}
-\author{kellenkanarios}
 \tag{note}
 \tag{top}
-
+\author{kellenkanarios}
 \title{Notebook: Inside the Machine}
-\p{Notes on the book \em{Inside the Machine} by Jon Stokes.}
+\p{Notes on the book \em{Inside the Machine} by Jon Stokes, restructured as a concept hierarchy.}
 
-\section{Chapter 1}{
-\p{For speed, we introduce the first notion of NUMA i.e. registers. Here the registers or stored in the register file, which is located very close to the ALUs.}
-\p{Due to limited surface area of the CPU, we can only have so many registers. This necessitates the introduction of main memory or RAM. Data is transferred from main memory to the CPU via the \em{memory bus}.}
-\p{This leads to the logical classification of instructions into two categories: arithmetic operations and memory operations.}
-\p{To ease programmability, there are \em{general purpose registers} that function as both integer values and correspond to memory addresses. This is useful for \em{register-relative addressing}, where we can offset all memory accesses by some register value.}
-\p{To support both values and registers, we need to distinguish as ''immediate types'' vs. ''register types''. We will see why when we actually make a instruction set that must correspond to binary.}
+\section{CPU basics}{
+\transclude{ETWN}
+\transclude{VZDH}
+\transclude{IJ7Q}
+\transclude{XSFO}
 }
-\section{Chapter 2}{
-\p{\strong{The Fetch-Execute Loop:}}
-\ol{
-  \li{\em{Fetch} instruction from memory}
-  \ul{
-    \li{This entails reading the instruction and loading it into the \em{instruction register}.}
-    \li{Also we increment the program counter.}
-  }
-  \li{\em{Decode} instruction}
-  \ul{
-    \li{This entails extracting the \em{opcode} from the instruction register.}
-    \li{We also extract the \em{operands} from the instruction register.}
-    \li{We also extract the \em{destination} from the instruction register.}
-  }
-  \li{\em{Execute} instruction}
-  \ul{
-    \li{If the instruction is an arithmetic operation, we use the ALU.}
-    \li{If the instruction is a memory operation, we use the load/store unit.}
-  }
-}
-\remark{
-These instructions do not take arbirary amounts of time to execute. They depend on the \em{clock cycle}. This is inputted via the motherboard and determines when to read the values stored in the current state.
-}
-\p{\strong{Branch Instructions:} There are two types conditional and unconditional.}
-\ol{
-  \li{Unconditional: The program counter is set to the destination address.}
-  \li{Conditional: The program counter is set to the destination address if the condition is true.}
-  \ul{
-    \li{To support conditional branching, normally need to have some other sort of hardware. In the example given in this chapter, they keep a \em{processor status word} register that stores the output of the previous arithmetic instruction.}
-    \li{Many different types of conditional branching instructions based on the value in the PSW.}
-  }
-}
-\p{Branch instructions are added as a third case in the execute phase i.e.}
-\ul{
-  \li{If the instruction is a branch instruction, check the condition and branch.}
-}
-\remark{
-If the program uses relative addressing, then the OS must load the base register of the code block to add to the branch destination register.
-}
-\problem{\strong{How does a computer boot:} If a computer must fetch instructions, then what does it do at the beginning when there is no program running?}
-\solution{
-  See [[XSFO]]. When you power on a computer, it is hard-wired to fetch an initial instruction from a pre-determined address. This memory address is also hardcoded and unchanged and contains the code for the BIOS. The BIOS is then responsible for making sure everything is working correctly before \code{jump} to the bootloader, which then loads the OS.
-}
-}
-\section{Chapter 3: Pipelined Execution}{
-\p{Previously, we discussed the fetch-execute loop. However, it is actually the case that the store / write part of execute is treated as a different stage, yielding}
-\ol{
-  \li{\em{Fetch} instruction from memory}
-  \li{\em{Decode} instruction}
-  \li{\em{Execute} instruction}
-  \ul{
-    \li{Now a read / add}
-  }
-  \li{\em{Write} result to memory}
-}
-\remark{
-Each of these represents one \em{phase} in the pipeline. However, these by no means take the same amount of time.
-}
-\p{We have previously been determining the clock cycle as the time to complete an entire instruction i.e. to complete the whole pipeline. However, with overlapping instructions we now can shrink the clock cycle to the time it takes to complete the slowest phase of the pipeline. Dividing the pipeline into roughly equal stages is important to ensure that no one stage is idle during the majority of the cycle.}
-\remark{
-Pipelining does not increase the speed of execution of a single instruction. However, it does increase the program execution time. Taking this to the limit, we would want an extremely fine pipeline i.e. large depth, so that no stage is ever idle. Explicitly, for #{n} stages a full pipeline will complete #{n} instructions every cycle. However, there is a tradeoff due to the clock cycle constraints as deepening your pipeline can cause longer per-instruction execution time.
-}
-\p{\strong{Metrics:}}
-\ol{
-  \li{Completion rate: number of instructions completed per nanosecond.}
-  \ul{
-    \li{Program execution time is #{\frac{\text{number of instructions per program}}{\text{avg completion rate per instruction}} }
-  }
-  }
-  \li{Instruction throughput: number of instructions processor finishes executing per clock cycle.}
-}
-\p{Each metric also has the maximum theoretically achieved and the average.}
-\p{The main thing preventing us from achieving our maximum theoretical throughput is \em{pipeline stalls}. Namely, for some reason we cannot execute a certain stage of the pipeline at a certain time i.e. we are waiting for a value to be loaded in from memory.}
-\p{The \em{instruction latency} is the number of cycles it takes to complete an instruction. In a single cycle processor, this is 1. Or the minimal latency is the sum of the cycles for each stage of the pipeline. Though, this is hardly the true latency in practice.}
-}
+
+\section{Pipelining and superscalar execution}{
+\transclude{COV5}
 \transclude{6JU6}
+}
+
+\section{Branch prediction and speculation}{
+\transclude{1LCS}
+\transclude{IIF9}
+}
+
+\section{Out-of-order execution}{
+\transclude{U0NY}
+\transclude{BI4H}
+\transclude{FQ9N}
+}
+
+\section{Instruction set architecture}{
+\transclude{L896}
+\transclude{WEW2}
+\transclude{3DIC}
+}
+
+\section{Caches}{
+\transclude{M91V}
+}
+
+\section{Power and multicore}{
+\transclude{XQMQ}
+\transclude{JRP0}
+}
+
+\section{Machine implementations}{
 \transclude{7XOX}
 \transclude{3LIK}
 \transclude{037I}
-\section{Chapter 9: 64bit Computing}{
-\p{\em{What is 64 bit computing?} #{n}-bit computing refers to how many bits a register can hold.}
-\ul{
-  \li{64 bit means they hold 64 bits.}
-  \li{64 bit instructions means the operands are 64 bits.}
+\transclude{DKZ3}
 }
-\remark{
-This means that the instruction size has not actually changed in size. The PC does change because the virtual address space has increased (we will see later).
-}
-\remark{
-Only affects integer and addressing units. Floating point and vector units retain same width #{> 64}.
-}
+
+\section{64-bit computing}{
+\p{#{n}-bit computing refers to how many bits a register can hold. 64-bit means registers hold 64 bits, 64-bit instructions means their operands are 64 bits wide.}
+\remark{Instruction encoding size hasn't actually changed — the PC widened because the virtual address space did.}
+\remark{Only integer and addressing units widened. Floating point and vector units already operated on wider registers.}
+
 \p{\strong{Benefits:}}
 \ul{
-  \li{Increased \em{dynamic range} i.e. representation went from #{2^32} to #{2^64}.}
+  \li{Increased \em{dynamic range} — values can range over #{2^{64}} instead of #{2^{32}}. Overflow/underflow happens at the extremes of the representable range.}
+  \li{64-bit address space. x86-64 currently implements 40-bit virtual addresses but the architecture allows far more.}
   \ul{
-    \li{\em{Overflow} or \em{underflow} is when the largest positive or negative number exceed the dynamic range.}
-  }
-  \li{64-bit address space.}
-  \ul{
-    \li{x86-64 has 40-bit virtual address space, but idea is it allows efficient usage of much more physical ram.}
-    \li{One drawback of this is that pointers now take up twice as much cache space.}
+    \li{Drawback: pointers now take up twice the cache space.}
   }
 }
-\remark{
-It is not always beneficial to have 64-bit integers. If you do not need the extra range, then this is wasted cache space. Due to this, the default size of integers is typically 32 bits. To extend, you need to add a prefix (1 byte), which adds < 10\% code size.
+\remark{It is not always beneficial to use 64-bit integers. If you don't need the range, the wider type wastes cache space. The default integer size on x86-64 is still 32 bits; widening requires a one-byte prefix, adding less than 10\% to code size.}
 }
-}
-\transclude{M91V}
-\transclude{DKZ3}

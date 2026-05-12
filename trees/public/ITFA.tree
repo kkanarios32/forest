@@ -1,0 +1,12 @@
+\import{base-macros}
+\date{2026-05-12T19:47:02Z}
+\tag{public}
+\title{Data hazard}
+
+\p{When one instruction's result is the next instruction's input, a naive [[COV5]] would have to stall: the second instruction can't execute until the first has written back. Data hazards are the most pervasive source of stalls in a CPU.}
+
+\p{Two standard mitigations:}
+\ul{
+  \li{[[USSP]] — route the producer's output directly into the consumer's input, before the writeback stage commits it. The consumer sees the result one cycle earlier.}
+  \li{[[5CT9]] — false dependencies, where two instructions write to the same architectural register but operate on independent values, can be broken by mapping the architectural register to two different physical registers.}
+}

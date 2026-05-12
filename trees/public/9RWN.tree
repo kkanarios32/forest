@@ -1,0 +1,10 @@
+\import{base-macros}
+\date{2026-05-12T19:47:12Z}
+\tag{public}
+\title{Temporal locality}
+
+\p{If a program accesses memory address #{x}, it is likely to access #{x} again soon. Loop variables, frequently-called functions, and re-used data structures all exhibit it.}
+
+\p{Caches exploit temporal locality by retaining recently-accessed lines until something more important takes their slot. The [[UG51]] is what decides "more important" — typically [[7WG2]]-ish.}
+
+\p{Temporal locality implies spatial locality (re-touching a byte tends to re-touch its neighbors) but not vice versa: a sequential scan has spatial locality with no temporal locality.}

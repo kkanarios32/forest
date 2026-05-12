@@ -1,0 +1,15 @@
+\import{base-macros}
+\date{2026-05-12T19:45:45Z}
+\tag{public}
+\title{Register file}
+
+\p{The CPU's nearest tier of storage — the first NUMA level. Registers sit physically next to the ALUs and are addressed by name in the instruction encoding rather than by memory address. Their count is limited by the chip's surface area, which is why main memory exists at all.}
+
+\p{The register file is the structure that holds the architecturally-visible registers. To support a superscalar machine, the file needs enough read and write ports to feed every ALU simultaneously: for an #{n}-ALU chip with two operands per op, that's #{2n} read ports and #{n} write ports.}
+
+\problem{Die area for a register file scales \em{quadratically} in the number of ports.}
+\solution{Split it. Different execution units (integer, floating-point, vector) get their own smaller register files. Fewer ports per file, faster access, less area.}
+
+\p{Beyond the architecturally-named registers, modern chips keep many extra \em{rename} registers used by [[5CT9]] to break false data dependencies.}
+
+\remark{Instructions distinguish "immediate types" from "register types" so the decoder knows whether a field encodes a register name or a literal value.}

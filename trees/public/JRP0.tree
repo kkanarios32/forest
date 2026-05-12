@@ -1,0 +1,12 @@
+\import{base-macros}
+\date{2026-05-12T19:47:15Z}
+\tag{public}
+\title{Multicore}
+
+\p{Multiple independent CPU cores on the same chip. A core, for this purpose, is the bundle of front-end, back-end, [[DA6Q]]s, and L1 [[KBYI]] that runs one architectural thread of execution.}
+
+\p{Traditional multiprocessor systems put each core on its own physical chip; \em{chip multiprocessing} (CMP) puts multiple cores on the same die. The key advantage is shared lower-level caches — typically an L2 or L3 shared across all cores on the chip — which speeds up inter-core communication and amortizes silicon.}
+
+\remark{The shift to multicore was forced by the [[XQMQ]] more than chosen for its own merits. The software cost is real: shared-memory parallelism requires correctness work that single-threaded code didn't.}
+
+\p{Multicore is what makes [[5P43]] a hardware problem, not just a scheduling problem: real simultaneous execution on different physical cores means software has to handle [[VOQN]]s with real synchronization primitives like [[Q2DT]].}

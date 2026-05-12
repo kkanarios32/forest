@@ -1,0 +1,17 @@
+\import{base-macros}
+\date{2026-05-12T19:47:10Z}
+\tag{public}
+\title{Trace cache}
+
+\p{An L1-level cache of \em{decoded} [[WEW2]] sequences. Instead of caching raw x86 instructions that have to be decoded on every fetch, a trace cache stores micro-op traces ready for the back-end. Introduced in the Pentium 4 to keep its very deep pipeline fed when normal x86 decoding couldn't run fast enough.}
+
+\p{The trace cache operates in two modes:}
+\ul{
+  \li{\em{Execution mode}: on a trace hit, feed the cached micro-ops directly to the back-end. Decode is bypassed entirely.}
+  \li{\em{Build mode}: on a trace miss, fetch the instructions from L2, decode them, and assemble a new trace while feeding it forward.}
+}
+
+\p{The trace cache is indexed during [[1LCS]], so speculative paths beyond a branch can be stored in the same trace and fed forward without restarting fetch. This lets a single cache line hold six micro-ops that may include a speculated branch target.}
+
+\problem{Long x86 instructions that decode to hundreds of micro-ops would blow out the trace cache.}
+\solution{Tag those instructions. When the trace cache encounters a tag, it stores a pointer to the microcode ROM rather than the micro-ops themselves, and the ROM streams them on demand.}

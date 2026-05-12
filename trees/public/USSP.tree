@@ -1,0 +1,8 @@
+\import{base-macros}
+\date{2026-05-12T19:47:03Z}
+\tag{public}
+\title{Forwarding}
+
+\p{A [[ITFA]] mitigation: the producing instruction's result is routed from the output of the execute stage directly to the input of the next instruction's execute stage, bypassing the register-file write and read. The dependent consumer can execute one cycle later instead of waiting for writeback.}
+
+\p{Conceptually, the pipeline grows wiring rather than stages. The result is "forwarded" from where it appears to where it's needed.}

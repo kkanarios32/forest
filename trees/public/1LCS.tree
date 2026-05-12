@@ -1,0 +1,24 @@
+\import{base-macros}
+\date{2026-05-12T19:47:05Z}
+\tag{public}
+\title{Branch prediction}
+
+\p{The mechanism that lets the front-end of a pipelined CPU keep fetching past a [[IJ7Q]] before the branch has actually resolved. The fetcher consults a predictor; if the prediction is right, the [[COV5]] runs at full throughput; if wrong, the speculatively-issued instructions are squashed.}
+
+\section{Static prediction}{
+\p{Program-agnostic rules: e.g. "always predict taken", "always predict not-taken", or "predict backward branches taken, forward branches not-taken". Cheap, but accuracy is poor outside of loop-heavy code.}
+}
+
+\section{Dynamic prediction}{
+\p{Driven by per-branch history kept in two hardware tables:}
+\ul{
+  \li{\em{Branch history table} (BHT) — indexed by branch address, holds a small counter (typically 2-bit saturating) tracking how often the branch was taken.}
+  \li{\em{Branch target buffer} (BTB) — holds the target address each branch was observed to jump to. A BTB miss is expensive: even if you correctly predict "taken", you still don't know where to fetch from.}
+}
+
+\p{Per-branch prediction allows a counter to learn pattern-specific behavior — e.g. a loop counter takes the back-edge #{N - 1} times then falls through.}
+}
+
+\p{The Pentium famously combined the two: static prediction on a BHT miss, dynamic prediction otherwise. Later machines added refinements — PowerPC 750 added a [[3DIC]]-like \em{branch target instruction cache} (BTIC) that stores the first few instructions at the target, eliminating the re-fetch latency. The Pentium M added a \em{loop detector} for loops that always iterate the same number of times.}
+
+\remark{See [[IIF9]] for what happens once a prediction has been made.}

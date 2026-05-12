@@ -1,0 +1,17 @@
+\import{base-macros}
+\date{2026-05-12T19:47:08Z}
+\tag{public}
+\title{CISC vs RISC}
+
+\p{Two design philosophies for an instruction set architecture.}
+
+\ul{
+  \li{\em{Complex instruction set computing} (CISC) — many specialized instructions, including ones that combine memory access with arithmetic or operate on complex types (strings, decimal numbers). One instruction often does the work of several. x86 is the canonical example.}
+  \li{\em{Reduced instruction set computing} (RISC) — a small set of simple, uniform instructions; explicit load and store; arithmetic only on registers. Each instruction does little but maps cleanly to hardware. PowerPC, MIPS, ARM are RISC.}
+}
+
+\problem{CISC needs a fat [[87GH]] engine to translate its complex instructions into hardware-executable primitives. That's silicon area, power, and design complexity that doesn't directly add throughput.}
+
+\solution{Once RISC clearly won as a hardware model, x86 vendors adopted \em{instruction translation}: a CISC front-end decodes x86 into RISC-like [[WEW2]] internally. The chip is RISC on the inside, CISC on the outside.}
+
+\remark{The cost of legacy is real. The original Pentium spent roughly 30\% of its transistors on legacy support (mostly the microcode ROM). The Pentium Pro spent 40\% on backward compatibility. Modern x86 chips have absorbed this overhead because they can — transistor budgets grew faster than the legacy tax.}

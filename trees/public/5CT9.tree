@@ -1,0 +1,15 @@
+\import{base-macros}
+\date{2026-05-12T19:47:03Z}
+\tag{public}
+\title{Register renaming}
+
+\p{A [[ITFA]] mitigation: dynamically remap architectural register names to a larger pool of physical registers. False data dependencies — where two instructions write to the same architectural register but use independent values — get broken because the hardware can map each write to a different physical register.}
+
+\example{Consider:
+\pre\verb<<<|
+add r1, r2, r3      // r2 := r1 + r3
+add r4, r5, r2      // r2 := r4 + r5   (reuses r2 for an independent value)
+<<<
+The second \code{add} only depends on \code{r2} as a \em{destination}, not as a source. Without renaming, it would have to wait for the first instruction's writeback to avoid clobbering. With renaming, the second write goes to a fresh physical register, and the two instructions can proceed in parallel.}
+
+\p{The programming model exposes only the architecturally-named registers; the [[ETWN]] hides a larger pool of rename registers underneath. This is one of the central tricks that makes out-of-order execution viable.}

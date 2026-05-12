@@ -1,0 +1,22 @@
+\import{base-macros}
+\date{2026-05-12T19:47:07Z}
+\tag{public}
+\title{Reservation station}
+
+\p{A buffer in front of an [[DA6Q]] (or group of them) that holds dispatched instructions waiting on their operands. Once all operands arrive — either by writeback or by [[USSP]] — the instruction is \em{issued} to its execution unit. Reservation stations exist so that an instruction waiting on a slow operand doesn't block dispatch of unrelated instructions behind it.}
+
+\p{Two organizational choices:}
+\ul{
+  \li{One reservation station per execution unit (Pentium Pro). Smaller, simpler.}
+  \li{One shared station feeding multiple units (also seen on Pentium Pro, where it issues up to five micro-ops per cycle).}
+}
+
+\p{Within a single station, instructions issue in FIFO order. Across stations, there is no guarantee — that's what \em{out-of-order} execution actually means.}
+
+\p{Dispatching an instruction into a reservation station has four prerequisites:}
+\ol{
+  \li{In-order rule: instructions dispatch in program order (they execute out of order, not dispatch).}
+  \li{Execution unit availability: the matching reservation station has room.}
+  \li{Completion buffer availability: the [[BI4H]] has room to track the new in-flight instruction.}
+  \li{Register-rename availability: enough rename registers exist to hold the new instruction's destination.}
+}

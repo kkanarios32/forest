@@ -1,0 +1,10 @@
+\import{base-macros}
+\date{2026-05-12T19:47:13Z}
+\tag{public}
+\title{Cache replacement policy}
+
+\p{Within a [[C74U]] set, when a new line arrives and the set is full, which existing line gets evicted? Same question as [[7WG2]] for pages, different timescales.}
+
+\p{The hot policy is \em{least recently used} — but pure LRU requires tracking a per-line ordering and updating it on every hit, which is too expensive at L1 latencies. Real caches use \em{pseudo-LRU} — a tree of single bits per set that approximates LRU with a fraction of the bookkeeping. The clock algorithm is one well-known pseudo-LRU scheme.}
+
+\remark{Block (cache line) size is part of the same tradeoff. Larger blocks improve [[PMP9]] but cause cache pollution (you fetch bytes you don't use) and eat memory bandwidth. The sweet spot is around 64 bytes on modern x86.}

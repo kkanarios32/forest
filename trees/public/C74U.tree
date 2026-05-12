@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T19:47:13Z}
+\tag{public}
+\title{Cache associativity}
+
+\p{The rule that decides which slots in the cache an address is allowed to occupy. Three points on the spectrum:}
+
+\ul{
+  \li{\em{Direct mapped} — every address maps to exactly one slot. Fast (only one tag to check) but suffers \em{conflict misses}: two hot addresses that map to the same slot evict each other.}
+  \li{\em{Fully associative} — any address can live in any slot. No conflict misses but tag check is expensive (compare against every entry in parallel).}
+  \li{\em{#{n}-way set associative} — middle ground. The cache is divided into \em{sets} of #{n} slots; an address maps to a specific set but can occupy any of its #{n} slots. The hot setting on real caches is somewhere between 4-way and 16-way.}
+}
+
+\p{Higher associativity reduces conflict misses but increases tag-check hardware and power. The \em{cache tag} of an address is the bits that aren't used to pick the set — they're stored alongside the data and compared on every access.}
+
+\remark{The tag array is stored separately from the data array (\em{tag RAM}) so the tag comparison can happen in parallel with the data lookup. Tags are small, allowing many in-flight comparisons.}

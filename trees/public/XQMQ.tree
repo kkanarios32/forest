@@ -1,0 +1,13 @@
+\import{base-macros}
+\date{2026-05-12T19:47:15Z}
+\tag{public}
+\title{Power wall}
+
+\p{The hard limit on per-core clock speed that emerged in the early 2000s, ending the era of frequency scaling. Power dissipation has two components on a chip:}
+
+\ul{
+  \li{\em{Dynamic power density} — watts per unit area dissipated by transistor switching. Scales with clock frequency: faster switching, more energy per second. You can also drive it up by cramming more transistors into the same area.}
+  \li{\em{Static power density} — watts per unit area dissipated by leakage current through "off" transistors. Smaller transistors leak more, so denser chips leak more even when idle.}
+}
+
+\p{By the mid-2000s, single-core frequency scaling was thermally unsustainable. The industry pivoted to \em{low-power design} and \em{[[JRP0]]} — get more throughput from many slower cores instead of one faster one. Pentium M and the Core series were the first generations explicitly designed under this constraint.}

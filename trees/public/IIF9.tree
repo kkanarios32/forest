@@ -1,0 +1,10 @@
+\import{base-macros}
+\date{2026-05-12T19:47:06Z}
+\tag{public}
+\title{Speculative execution}
+
+\p{Run instructions before knowing whether they should actually be run, on the assumption that you'll usually be right. Used after [[1LCS]] to keep the pipeline busy past a [[IJ7Q]]: instructions on the predicted path enter the pipeline, execute, and stash their results in non-architectural state. Only when the branch resolves are speculated results "committed" to architectural state — or, if the prediction was wrong, discarded.}
+
+\p{Speculative state lives in the [[BI4H]] (and the [[5CT9]] rename registers). Entries are tagged as speculative; on misprediction the speculative entries are flushed.}
+
+\remark{Modern speculative execution drives a lot of CPU complexity — and a lot of CPU security work. Spectre-class side channels exploit the fact that speculative execution can leave traces in caches even after the speculative results are discarded.}

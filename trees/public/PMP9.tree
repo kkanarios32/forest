@@ -1,0 +1,12 @@
+\import{base-macros}
+\date{2026-05-12T19:47:12Z}
+\tag{public}
+\title{Spatial locality}
+
+\p{The empirical observation that if a program accesses memory address #{x}, it is likely to access addresses near #{x} soon. Sequential array traversal, struct field access, and instruction fetch all exhibit it.}
+
+\p{Caches exploit spatial locality by loading whole \em{cache lines} (typically 64 bytes) on every miss, not just the single requested byte. The byte that triggered the load is the \em{critical word}; the surrounding bytes come along for free under the assumption you'll want them.}
+
+\remark{RAM and caches are organized in cache-line granularity throughout. Bandwidth is sized for whole-line transfers; tags are per-line, not per-byte.}
+
+\p{The complement is [[9RWN]] — repeated access to the same data over time. Temporal locality implies spatial locality (you re-touch nearby bytes when you re-touch the original), but not vice versa.}

@@ -1,0 +1,15 @@
+\import{base-macros}
+\date{2026-05-12T19:47:14Z}
+\tag{public}
+\title{Write-through vs write-back}
+
+\p{When a cached line is modified, when do you propagate the change to the next tier?}
+
+\ul{
+  \li{\em{Write-through} — every store updates both the cache and main memory. Simple, but generates memory traffic on every write.}
+  \li{\em{Write-back} — stores update only the cache. The line is marked \em{dirty} via a per-line bit; the next-tier copy is updated only when the line is evicted. Less memory traffic but the cache is now the sole authoritative source until eviction, which complicates correctness.}
+}
+
+\remark{Real CPUs run write-back at L1 and L2. Write-through is occasionally used for specific lines (e.g. memory-mapped device registers where every write must hit the device immediately).}
+
+\p{Write-back is one of the constraints behind cache-coherence protocols on multicore chips: every core must agree on which one currently owns a dirty line.}
