@@ -1,0 +1,38 @@
+\import{base-macros}
+\date{2026-05-12T19:37:43Z}
+\tag{public}
+\title{exec()}
+
+\p{Replaces the calling [[FCHM]]'s program with a new executable. \code{exec()} does not return on success — the original code, data, stack, and heap are discarded and the new program runs in their place. The PID is unchanged.}
+
+\p{What \code{exec()} does internally:}
+\ol{
+  \li{Loads the new executable's code and static data, overwriting the current.}
+  \li{Re-initializes stack and heap.}
+  \li{Jumps to the new program's entry point with arguments passed as \code{argv}.}
+}
+
+\p{The canonical Unix pattern is \code{fork()} then \code{exec()} — the shell uses this to launch a command without becoming that command:}
+\pre\verb<<<|
+int main()
+  while (true) {
+    command = getcommand();
+    int rc = fork();
+    if (rc < 0)
+      printf("error with fork");
+    else if (rc == 0)
+      exec(command);            // child becomes the command
+    else
+      int rc = wait(NULL);      // parent waits for it
+  }
+<<<
+
+\p{Redirection is implemented by opening a file in the child between \code{fork()} and \code{exec()}, attached to \code{STDOUT_FILENO}:}
+\pre\verb<<<|
+if (rc == 0)
+  close(STDOUT_FILENO);
+  open("output.txt");
+  exec(command);
+<<<
+
+\remark{The many variants — \code{execl}, \code{execle}, \code{execlp}, \code{execv}, \code{execvp}, \code{execvP} — differ in how they take arguments (list vs. vector), whether they use the \code{PATH} environment variable, and whether they take an explicit environment.}

@@ -1,0 +1,12 @@
+\import{base-macros}
+\date{2026-05-12T19:37:42Z}
+\tag{public}
+\title{wait()}
+
+\p{Blocks the calling [[FCHM]] until one of its children terminates. The OS marks the child's PCB \code{ZOMBIE} on exit, keeping enough state (exit status, resource usage) for the parent to retrieve via \code{wait()}; only when the parent collects it is the child fully reaped.}
+
+\p{\code{wait()} returns the PID of the child that died. Variant \code{waitpid(pid, ...)} blocks on a specific child — useful when a parent has multiple children and only one is interesting.}
+
+\p{Used to enforce ordering between parent and child code paths after [[O1S9]], or to know when an [[YHJR]]'d program finishes.}
+
+\remark{Calling \code{wait()} with no children to wait on returns \code{-1}.}

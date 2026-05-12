@@ -7,7 +7,7 @@
 
 \p{Used pervasively:}
 \ul{
-  \li{\code{fork()} — the child shares the parent's pages until either modifies one. Avoids the cost of copying an entire address space the child often immediately overwrites with \code{exec()}.}
+  \li{[[O1S9]] — the child shares the parent's pages until either modifies one. Avoids the cost of copying an entire address space the child often immediately overwrites with [[YHJR]].}
   \li{Shared libraries — many processes map the same library text pages.}
   \li{Kernel mapped into every process — same physical kernel code seen from every address space.}
 }

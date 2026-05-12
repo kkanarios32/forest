@@ -1,0 +1,10 @@
+\import{base-macros}
+\date{2026-05-12T19:37:43Z}
+\tag{public}
+\title{Unix signals}
+
+\p{An asynchronous notification delivered to a [[FCHM]]. A process sends a signal with \code{kill(pid, signum)} (the name is misleading — most signals don't kill); the recipient can install a handler with \code{signal(signum, handler)} to "catch" it, otherwise the default action runs (often termination).}
+
+\p{Signals are the OS's mechanism for events the recipient didn't ask to be told about: \code{SIGINT} from Ctrl-C, \code{SIGSEGV} from a [[CXFM]] on an invalid page, \code{SIGCHLD} when a child exits, \code{SIGTERM} from an administrative kill.}
+
+\p{Who can signal whom depends on the \em{user} owning the process — a user can signal their own processes; the \em{superuser} can signal any process.}
