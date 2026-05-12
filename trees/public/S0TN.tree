@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T22:46:40Z}
+\tag{public}
+\title{Dennard scaling}
+
+\p{The observation that as transistor dimensions shrink by a factor #{\alpha}, you can also drop voltage by #{\alpha}, keeping power per transistor constant:}
+##{P = C \left(\frac{V}{\alpha}\right)^2 f}
+\p{In the Dennard era, every process shrink got more transistors at the same power budget — the foundation of decades of frequency scaling.}
+
+\p{\strong{Post-Dennard.} Below ~65nm, voltage can no longer be scaled because the supply-to-threshold ratio #{V_{dd}/V_{th}} must stay above ~3 for transistors to switch reliably. The consequences:}
+\ul{
+  \li{Power per transistor scales only as #{1/\alpha}, not #{1/\alpha^2}.}
+  \li{Power density therefore scales as #{\alpha} — denser chips dissipate more per unit area.}
+}
+
+\p{This is the same constraint that drove the [[XQMQ]] in commercial CPUs: single-core frequency scaling stopped working, and the industry pivoted to multicore and energy-efficient architectures.}

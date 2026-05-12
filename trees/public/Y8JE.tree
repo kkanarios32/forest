@@ -1,0 +1,28 @@
+\import{base-macros}
+\date{2026-05-12T22:46:41Z}
+\tag{public}
+\title{Transactional memory}
+
+\p{An alternative to fine-grained [[Q2DT]]: mark code regions as \em{transactions} that should appear atomic, execute them speculatively in parallel, and detect conflicts after the fact. Aims at the performance of fine-grained locking with the programming ergonomics of coarse-grained locking.}
+
+\section{Conflict detection}{
+\p{Two transactions \em{conflict} if they access the same memory location and at least one of them is a write. The implementation tracks per-transaction read and write sets.}
+
+\ul{
+  \li{\strong{Lazy detection.} Build the entire read/write set as the transaction runs; check for conflicts only at commit time. If conflict, roll back.}
+  \li{\strong{Eager detection.} Check on every access against other transactions' sets; abort immediately on conflict.}
+}
+
+\p{Eager detection can piggyback on the cache coherence protocol: add read/write bits to each cache line, set them during a transaction, and let a coherence invalidation signal a conflict.}
+}
+
+\section{Version management (rollback)}{
+\p{Two operations: \em{commit} and \em{abort}. Implementations:}
+\ol{
+  \li{\strong{Lazy:} stores go to a "write table" rather than memory; loads check the table first, falling back to memory. Commit writes the table back (slow); abort just clears the table (fast).}
+  \li{\strong{Eager (coherence-backed):} stores write through but track read/write sets per cache line. Commit clears the sets (fast); abort clears the sets (also fast — work already on overwrite if not aborted before commit).}
+}
+}
+
+\problem{If a transaction touches more cache lines than the cache holds, the tracking overflows.}
+\solution{Fall back to software transactional memory (STM) on overflow — a hybrid scheme that keeps hardware fast-path for common cases.}
