@@ -1,0 +1,17 @@
+\import{base-macros}
+\date{2026-05-12T19:40:17Z}
+\tag{public}
+\title{Stride scheduling}
+
+\p{A deterministic proportional-share scheduler. Each job has a \em{stride} inversely proportional to its ticket count (the more tickets, the smaller the stride) and a running \em{pass} counter that accumulates its stride every time it's scheduled.}
+
+\p{The decision is:}
+\ol{
+  \li{Pick the job with the lowest \em{pass}.}
+  \li{Run it for one quantum.}
+  \li{Increment its pass by its stride.}
+}
+
+\p{A job with twice as many tickets has half the stride, so its pass grows half as fast, so it gets scheduled twice as often. Same long-run behavior as [[AM8U]], but with zero variance.}
+
+\problem{New jobs need an initial pass value. Setting it to 0 lets them dominate; setting it to the global minimum lets them merge in cleanly but requires tracking that minimum.}

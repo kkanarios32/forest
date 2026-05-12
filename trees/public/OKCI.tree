@@ -11,4 +11,4 @@
   \li{\strong{Kernel registers}: meta-information used to resume the trap correctly (PC at trap, syscall number, etc.).}
 }
 
-\p{Context switches are not free — they incur the cost of cache and [TLB](FGOK) pollution in addition to the direct cost of saving/restoring state. This is the cost amortized by larger scheduling quanta and a recurring concern for any [[5P43]] system.}
+\p{Context switches are not free — they incur the cost of cache and [TLB](FGOK) pollution in addition to the direct cost of saving/restoring state. This is the cost amortized by larger [scheduling](B8GC) quanta and a recurring concern for any [[5P43]] system.}

@@ -1,0 +1,19 @@
+\import{base-macros}
+\date{2026-05-12T19:40:16Z}
+\tag{public}
+\title{Lottery scheduling}
+
+\p{A proportional-share scheduler. Each runnable job holds some number of \em{tickets}, drawn from a fixed total. On each scheduling decision, the scheduler picks a random ticket and runs the job that owns it. Over time, a job receives CPU time proportional to its share of the tickets.}
+
+\p{The implementation is trivial: one random number per decision, plus a sum table. No global state about historical CPU usage is needed.}
+
+\p{Mechanisms layered on top:}
+\ul{
+  \li{\em{Ticket currency} — give each user a fixed number of tickets to split among their processes however they like.}
+  \li{\em{Ticket transfer} — a client process can hand tickets to a server to boost its priority while servicing the request.}
+  \li{\em{Ticket inflation} — a process can grow its share temporarily, with bounds set by trust.}
+}
+
+\remark{The unsolved problem is \em{how} to assign tickets in the first place. The mechanism is simple; the policy is not.}
+
+\p{A deterministic version of the same idea is [[HCJ7]], which avoids the variance of random sampling at the cost of needing global state.}

@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-12T19:40:15Z}
+\tag{public}
+\title{Round-robin scheduling}
+
+\p{Cycle through all runnable jobs, giving each a fixed time slice — the \em{stride}, \em{time slice}, or \em{quantum length} — before preempting and moving to the next. The best you can do at minimizing \em{response time}: every job sees the CPU within at most #{N} quanta where #{N} is the runnable-job count.}
+
+\p{The quantum length is a tradeoff:}
+\ul{
+  \li{Short quantum: better response time, more frequent [context switches](OKCI), worse cache locality.}
+  \li{Long quantum: amortizes context-switch cost, worse response time.}
+}
+
+\p{Worst-case response time for #{N} jobs at quantum #{S} is #{S(N-1)}.}
+
+\remark{Round-robin minimizes response time but is poor for turnaround time relative to [[7R07]]. A scheduler that wants both has to combine ideas — see [[4WG5]].}

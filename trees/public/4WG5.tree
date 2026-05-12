@@ -1,0 +1,21 @@
+\import{base-macros}
+\date{2026-05-12T19:40:16Z}
+\tag{public}
+\title{Multi-level feedback queue}
+
+\p{A practical scheduler that approximates [[7R07]]'s turnaround properties and [[NEL8]]'s response properties without requiring foreknowledge of job lengths. Maintain multiple priority queues; within a queue, schedule round-robin. Never service a lower-priority queue while a higher-priority queue has a runnable job.}
+
+\p{The priority of a job is not assigned by the user — it is \em{learned} from behavior:}
+\ul{
+  \li{New jobs enter at the top priority.}
+  \li{Each priority level has an \em{allotment} — the total CPU time a job may consume before being demoted.}
+  \li{Once a job exhausts its allotment at a level, it drops to the next level.}
+}
+
+\p{Short jobs that finish quickly never leave the top queue (good turnaround). Interactive jobs that yield often stay at the top (good response time). CPU-bound jobs sink to the bottom and get scheduled when nothing better is runnable.}
+
+\problem{Gaming the allotment: a job can issue I/O just before its allotment expires to avoid demotion, since I/O time doesn't count.}
+\solution{Charge the job's allotment for total time at the priority level, including time spent blocked.}
+
+\problem{Starvation of low-priority queues if higher queues never empty.}
+\solution{Periodically reset all jobs to the top priority. Cheap and effective.}

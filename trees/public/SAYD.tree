@@ -3,7 +3,7 @@
 \tag{public}
 \title{Memory Intro}
 
-\p{We are now moving on from scheduling into the wonderful world of all things memory. The starting point is the \em{address space} abstraction — each process is handed its own private virtual memory and the OS, with hardware help, manages the mapping from virtual to physical addresses.}
+\p{We are now moving on from [scheduling](B8GC) into the wonderful world of all things memory. The starting point is the \em{address space} abstraction — each process is handed its own private virtual memory and the OS, with hardware help, manages the mapping from virtual to physical addresses.}
 
 \p{The progression of translation schemes covered in TPE:}
 \ol{

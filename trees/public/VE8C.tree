@@ -12,7 +12,7 @@
   }
 }
 
-\p{The first question is answered by hardware [[QUQC]] enforced via the [[0NVY]], with a controlled [[A5S6]] as the only path from one to the other. The second is answered by periodic timer interrupts that trap to the OS, which performs a [[OKCI]] and runs the scheduler.}
+\p{The first question is answered by hardware [[QUQC]] enforced via the [[0NVY]], with a controlled [[A5S6]] as the only path from one to the other. The second is answered by periodic timer interrupts that trap to the OS, which performs a [[OKCI]] and runs the [scheduler](B8GC).}
 
 \p{The whole stack is bootstrapped during the [[XSFO]], when the kernel installs the trap table and starts the timer before handing control to user space.}
 

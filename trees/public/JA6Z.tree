@@ -1,0 +1,8 @@
+\import{base-macros}
+\date{2026-05-12T19:40:13Z}
+\tag{public}
+\title{FIFO scheduling}
+
+\p{First-in, first-out. Jobs are run to completion in the order they arrive. Trivially fair under any reasonable notion of fairness, but suffers from the \em{convoy effect}: a single long-running job at the head delays every shorter job behind it, inflating average turnaround time.}
+
+\problem{If the first arriving job is much longer than the rest, all subsequent jobs wait at least its full duration before getting any CPU.}
