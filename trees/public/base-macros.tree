@@ -204,3 +204,6 @@
 }
 
 \def\citek[uid]{\let\escape[x]{\x}[\escape{[\uid]}](\uid)}
+
+\def\tdtask[id][body]{\li{\body}}
+\def\tdtaskx[id][body]{\li{\<html:s>{\body}}}

@@ -14,6 +14,9 @@
 
 \p{When a process touches a virtual address whose page isn't in physical memory, the page table's \em{present bit} is unset; the hardware traps to the OS as a \em{page fault}, and the OS retrieves the page from swap. The eviction policies that decide what to swap out are covered by [[HK73]].}
 
+\p{The two-level decomposition did not arrive fully formed. The [[HBFS]] design tried to give each named segment of the address space its own variable-sized page table; the fragmentation that produced is what motivated the move to fixed-size paged page tables.}
+
 \transclude{WALE}
 \transclude{FGOK}
+\transclude{HBFS}
 \transclude{VX1M}

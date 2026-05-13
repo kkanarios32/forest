@@ -29,4 +29,4 @@
 
 \problem{Aliasing: modifying a vector you're also reading from causes a race within the operation.}
 
-\remark{SIMD is hardware-driven data parallelism. The GPU descendant is [SIMT](82U4), which softens many of SIMD's rigidities.}
+\remark{SIMD is hardware-driven data parallelism. The GPU descendant is [[7F19]], which softens many of SIMD's rigidities by giving each lane its own program counter and active mask.}

@@ -1,0 +1,21 @@
+\import{base-macros}
+\date{2026-05-13}
+\author{kellenkanarios}
+\title{Memory fence}
+\taxon{Definition}
+\tag{public}
+
+\p{An instruction that forces an ordering constraint between memory operations on either side of it. Fences exist because [[BCFG]] hardware reorders accesses aggressively for performance, and the programmer occasionally needs a point in the instruction stream past which prior accesses must be globally visible before subsequent ones may issue. A fence is the explicit knob for "wait until the world catches up here."}
+
+\p{The x86 family carries three:}
+\ul{
+  \li{\strong{\code{sfence}} — store fence. All prior stores must drain from the [[UNB6]] before any later store may issue. Used to publish a buffer whose writes must be visible to consumers in order.}
+  \li{\strong{\code{lfence}} — load fence. All prior loads must complete before any later load issues. Less commonly needed under TSO, but useful as a speculation barrier (Spectre mitigation cases) and on architectures with load-load reordering.}
+  \li{\strong{\code{mfence}} — full fence. Drains the entire store buffer and serializes all prior memory operations against all subsequent ones. The hammer.}
+}
+
+\p{What a fence actually does in hardware is force the store buffer to drain (or wait for it to drain) rather than just waiting for [[BI4H]] commit. This is the distinction worth keeping straight: ROB commit makes a store architecturally real but invisible to other cores; the fence is what makes it visible. The cost is whatever latency the cache hierarchy adds — fences are expensive precisely because they undo the latency-hiding the [[UNB6]] exists to provide.}
+
+\p{Under [[OW4D]] every memory operation behaves as if a full fence sat on either side of it, which is why SC is fast to reason about and slow to implement. Real-world consistency models pick relaxations and require fences only at the points the programmer marks as ordering-sensitive — \em{acquire} and \em{release} half-fences (see release consistency in [[BCFG]]) are the common compromise.}
+
+\remark{A fence does not flush caches or invalidate anything — coherence traffic does that. A fence only constrains the issue order observed by the rest of the system.}

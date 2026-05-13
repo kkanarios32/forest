@@ -5,7 +5,7 @@
 \tag{top}
 \author{kellenkanarios}
 \title{Notebook: Computer Architecture}
-\p{[test](GA7N) Concept-level notes on multicore architecture, the cache-coherence stack, memory consistency, on-chip networks, and data-level parallelism. Mostly distilled from an EECS course; cross-references into [[P3GB]] (Inside the Machine) for single-core/uniprocessor topics.}
+\p{Concept-level notes on multicore architecture, the cache-coherence stack, memory consistency, on-chip networks, and data-level parallelism. Mostly distilled from an EECS course; cross-references into [[P3GB]] (Inside the Machine) for single-core/uniprocessor topics.}
 
 \section{Foundation}{
 \transclude{S0TN}
@@ -24,17 +24,24 @@
 \section{Memory consistency}{
 \transclude{OW4D}
 \transclude{BCFG}
+\transclude{UNB6}
+\transclude{GXCN}
+\transclude{R03A}
 \transclude{P0NQ}
 }
 
-\section{On-chip networks}{
-\transclude{667T}
+\section{ILP vs TLP}{
+\transclude{JAZI}
+\transclude{G4ML}
+\transclude{RJEB}
 }
 
 \section{Data-level parallelism}{
 \transclude{Q7ZD}
 \transclude{82U4}
+\transclude{7F19}
 \transclude{X9VZ}
+\transclude{XPAA}
 \transclude{U1FO}
 \transclude{8GZN}
 
@@ -48,14 +55,4 @@
 }
 }
 
-\section{Review}{
-\ul{
-  \li{\strong{Strong vs weak scaling.} Strong scaling improves performance for fixed program and input. Weak scaling holds per-thread work fixed as data and threads grow.}
-  \li{\strong{Locks ([[Q2DT]]).} Understand the connection between lock implementations and coherence traffic.}
-  \li{\strong{Snooping ([[8C2H]]).} Bus, valid-invalid, [[EYXU]], [[30XT]], [[AI2B]] — what each added state is for.}
-  \li{\strong{Cache design.} Should L2 be shared? Should the hierarchy be [inclusive](4W5G)?}
-  \li{\strong{Directory protocol ([[KIT8]]).} Why directory over snoop; broadcast cost; transient states; race conditions.}
-  \li{\strong{Memory consistency ([[OW4D]], [[BCFG]]).} Where fences are needed; how relaxed orderings expose hardware speedups; the [DRF](P0NQ) contract.}
-  \li{\strong{On-chip networks ([[667T]]).} Topology choices on a 2D die; routing strategy implications; deadlock-avoidance via [[83P2]] or [virtual channels](DWV1).}
-}
-}
+\transclude{667T}

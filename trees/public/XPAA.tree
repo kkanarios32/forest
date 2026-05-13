@@ -1,0 +1,16 @@
+\import{base-macros}
+\date{2026-05-13}
+\author{kellenkanarios}
+\title{GPU register scoreboard}
+\taxon{Definition}
+\tag{public}
+
+\p{The readiness-tracking structure that lets a GPU issue instructions out of program order without any of the CAM machinery a CPU needs. A scoreboard is a small table — typically one busy bit per architectural register — that records whether some in-flight instruction is still computing a value that something else might want to read.}
+
+\p{The protocol is trivial. When an instruction issues, it sets the busy bit on its destination register. When it writes back, it clears the bit. Before any instruction can read its sources, the hardware checks the corresponding bits: if any source is busy, the instruction (or its entire warp) waits. The check is a single table lookup per source, so the per-instruction cost is #{O(1)} regardless of how many other instructions are in flight.}
+
+\p{This is enough because GPUs lean on [[G4ML]] rather than [[JAZI]]. When a warp's next instruction reads a busy register, the [[82U4]] scheduler does not stall — it picks a different ready warp from the dozens of resident warps and runs that one instead. The scoreboard's job is only to answer "is this warp ready? yes/no," which is far cheaper than the broadcast/compare a CPU [[UJPD]] does to find dependency satisfaction in a single thread's instruction window.}
+
+\p{The size difference falls out of this. CPU issue queues hold tens of entries; GPU instruction windows can hold many warps' worth of in-flight work, because every additional warp costs a row in the scoreboard and a register-file allocation, not a quadratic CAM expansion. See [[RJEB]] for why the design fork sits where it does.}
+
+\remark{The scoreboard's simplicity is what lets GPUs spend their transistor budget on ALUs and the [[ETWN]] instead of control logic. It is one of the most visible places where the [[G4ML]] design choice cashes out as silicon savings.}

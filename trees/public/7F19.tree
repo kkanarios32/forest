@@ -1,0 +1,24 @@
+\import{base-macros}
+\date{2026-05-13}
+\author{kellenkanarios}
+\title{SIMT}
+\taxon{Definition}
+\tag{public}
+
+\p{\em{Single instruction, multiple threads}. A GPU [[82U4]] streaming multiprocessor issues one instruction per cycle to a group of threads — a [[X9VZ]] — but each thread within the group keeps its own program counter and register state. The hardware enforces lockstep execution within the warp while preserving the \em{illusion} of independent threads to the programmer.}
+
+\p{SIMT is the GPU's answer to a question the [[Q7ZD]] world struggled with: how do you get the throughput of wide vector execution without forcing the programmer to manually vectorize? Two mechanisms make this work.}
+
+\section{Control-flow divergence}{
+\p{When threads in a warp take different branches of a conditional, the warp does not split into smaller warps. Instead, the active mask selects which lanes execute each branch; lanes on the inactive side run \em{dummy} instructions until the warp reconverges at the post-conditional join point. The programmer writes ordinary scalar code with \code{if}/\code{else}, and the hardware silently masks the inactive lanes.}
+
+\p{This is the chief ergonomic win over SIMD: the compiler does not have to prove that all lanes will take the same path. The cost is that divergent code pays for both sides — a 32-wide warp where 16 threads take the if-branch and 16 take the else-branch executes both branches sequentially with half the lanes idle each time.}
+}
+
+\section{Grouping flexibility}{
+\p{Threads are assigned to warps based on warp-ID, but the hardware and compiler are free to regroup. \em{Warp specialization} re-bundles threads with similar control-flow trajectories into the same warp so that future branches stay non-divergent. This is a class of optimization that pure SIMD cannot express — a SIMD ISA fixes the lane assignment at compile time.}
+}
+
+\p{The hardware cost of SIMT relative to SIMD is the per-thread PC and register state. The benefit is that a single binary runs efficiently across a wide range of dynamic control flow, which is why the model has dominated GPU programming since CUDA. The scoreboard mechanism described in [[XPAA]] operates per-warp rather than per-thread precisely because SIMT treats the warp as the unit of issue.}
+
+\remark{SIMT is sometimes described as "SIMD with a per-lane PC," which captures the implementation but understates the programming-model impact: vectorization becomes a runtime, not a compile-time, decision.}

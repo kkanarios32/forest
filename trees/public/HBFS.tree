@@ -1,0 +1,18 @@
+\import{base-macros}
+\date{2026-05-13}
+\author{kellenkanarios}
+\title{Segmented page tables}
+\taxon{Definition}
+\tag{public}
+
+\p{An early translation scheme that splits the virtual address space into a small number of named \em{segments} (code, data, stack, heap, ...) and gives each segment its own [[WALE]] sized only to the range of addresses that segment actually uses. The virtual address is interpreted as a triple: segment number, page number within the segment, and offset within the page.}
+
+\p{Translation is a two-step walk. The segment number indexes a segment table, which yields the base and length of that segment's page table. The page number then indexes that page table to find the physical frame, and the offset is appended. Empty or unused segments need no page table at all, so a process pays for memory it actually uses — the same motivation that drives every non-flat translation scheme.}
+
+\p{The mechanism has appealing side benefits. Each segment carries its own protection bits, so the architecture can enforce no-execute on the stack or read-only on the code segment at the segment-table level without per-page complexity. Translation overhead is bounded by the segment count, which is typically very small.}
+
+\p{The problems are what killed it. Page tables are now variable-sized objects that still have to live in contiguous physical memory. The stack segment's page table might be small; the heap's might be large and grow over time. Allocating, growing, and freeing variably-sized tables in kernel memory produces external fragmentation — exactly the headache pure segmentation has at the user level, now pushed down a layer. If the heap outgrows its current page table, the kernel has to allocate a larger contiguous chunk and copy.}
+
+\p{Secondary issues compound. Translation costs two memory references (segment table, then page table) before reaching data, which hurts without a [[FGOK]]. The segment count is fixed by the architecture, which is awkward for programs whose layout does not fit "code/data/stack/heap" — a sprawling memory-mapped region or a JIT wanting many small protection domains has nowhere to go. And segmentation tends to leak into the programming model: x86 carried segment registers around for decades after they had stopped being useful.}
+
+\p{The fix that won is the [[VX1M]] — page the page table itself, in fixed-size chunks, and recover the "only pay for what you use" property without variable-sized contiguous allocations. Every modern architecture descends from that decision.}

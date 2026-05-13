@@ -10,7 +10,6 @@
   \li{\strong{Fairness}: every job makes progress; nobody starves.}
 }
 
-\section{Algorithms covered}{
 \transclude{JA6Z}
 \transclude{VJ4F}
 \transclude{7R07}
@@ -18,7 +17,6 @@
 \transclude{4WG5}
 \transclude{AM8U}
 \transclude{HCJ7}
-}
 
 \remark{Each [context switch](OKCI) is not free. Choosing a longer time slice amortizes that cost at the price of response time.}
 \remark{I/O-bound jobs are commonly handled by splitting a job into its non-I/O segments and scheduling them individually — turning one long-but-mostly-blocked job into many short, runnable ones.}

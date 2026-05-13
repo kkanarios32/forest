@@ -1,0 +1,19 @@
+\import{base-macros}
+\date{2026-05-13}
+\author{kellenkanarios}
+\title{ILP vs TLP}
+\tag{public}
+
+\p{The two strategies a microarchitecture can use to keep arithmetic units busy in the face of memory latency and dependencies. [[JAZI]] mines parallelism from within a single instruction stream; [[G4ML]] mines it across many. Every modern design is a position on this axis, and the position determines the rest of the microarchitecture.}
+
+\p{The choice is not really a choice — it is forced by the workload. ILP works only when the single thread has independent work to find; once dependency chains and branch mispredictions saturate the issue window, no amount of silicon spent on reorder buffers, wakeup logic, or speculation buys more throughput. TLP works only when many independent threads exist; throwing more warps at a single sequential dependency chain accomplishes nothing.}
+
+\p{The downstream consequences split everything else:}
+\ul{
+  \li{\strong{Control overhead.} ILP machines spend most of their area on [[U0NY]] machinery — [[BI4H]], [[FQ9N]]s, [[5CT9]], CAM-based [wakeup-select](UJPD). TLP machines spend almost none; the schedule is "pick any ready thread."}
+  \li{\strong{Caches.} ILP needs large caches because a single stalled thread blocks the whole pipeline. TLP can afford small caches because the latency is hidden by switching threads.}
+  \li{\strong{Register file.} ILP keeps one (renamed) register set hot. TLP keeps every resident thread's register set hot simultaneously — GPU register files are an order of magnitude larger than CPU register files for this reason.}
+  \li{\strong{Readiness tracking.} ILP pays O(N²) for CAM-based [wakeup-select](UJPD) across N in-flight instructions; TLP pays O(1) per instruction via a per-register [scoreboard](XPAA).}
+}
+
+\p{The slogan: CPUs spend a lot of silicon to find parallelism in one thread; GPUs spend almost none because they have many threads. Everything downstream — pipeline depth, cache hierarchy, scheduling policy, energy per operation — falls out of which side of this axis the chip sits on.}

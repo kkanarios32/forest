@@ -3,13 +3,13 @@
 \tag{public}
 \title{Relaxed consistency}
 
-\p{A memory model weaker than [[OW4D]] that allows the hardware (and compiler) to reorder memory operations for performance, with explicit \em{fence} instructions where the programmer wants to forbid reordering.}
+\p{A memory model weaker than [[OW4D]] that allows the hardware (and compiler) to reorder memory operations for performance, with explicit [[R03A]] instructions where the programmer wants to forbid reordering.}
 
-\p{A fence is implemented with a counter — incremented on issue of each memory op, decremented on completion. The fence stalls dispatch until the counter reaches zero.}
+\p{A fence is implemented with a counter — incremented on issue of each memory op, decremented on completion. The fence stalls dispatch until the counter reaches zero, which forces the [[UNB6]] to drain before later accesses may proceed.}
 
 \section{Common relaxations}{
 \ul{
-  \li{\strong{TSO (Total Store Order)} — loads may be hoisted above prior stores. The motivation: a store can sit in the store buffer waiting for cache, while subsequent loads (which don't touch the buffered address) proceed. x86 implements TSO.}
+  \li{\strong{TSO (Total Store Order)} — loads may be hoisted above prior stores. The motivation: a store can sit in the [[UNB6]] waiting for cache, while subsequent loads (which don't touch the buffered address) proceed. Same-core reads of the buffered store still get the right value through [[GXCN]]; cross-core reads see the old value until drain. x86 implements TSO.}
   \li{\strong{RMO (Relaxed Memory Order)} — anything may be reordered. Stronger reorderings still need to be justified per case:
     \ul{
       \li{Load → store: no performance gain to reorder; leave alone.}
@@ -17,7 +17,7 @@
       \li{Load → load: speculate the second load while waiting for the first; reorder is invisible if the speculation is verified.}
     }
   }
-  \li{\strong{IBM 370 variant} — TSO + no store forwarding (preserves global store atomicity).}
+  \li{\strong{IBM 370 variant} — TSO + no [[GXCN]] (preserves global store atomicity at the cost of same-core stall-on-self-read).}
 }
 }
 

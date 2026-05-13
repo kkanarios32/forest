@@ -10,4 +10,4 @@
 \p{Sequential consistency is what most programmers reason about by default — and what real hardware does not provide, because it forbids almost every optimization that makes a CPU fast. [[BCFG]] is what we get in exchange.}
 
 \remark{SC does not provide guarantees \em{between} threads beyond ordering. Two threads racing on the same variable are still racing — SC just promises a consistent global timeline.}
-\remark{Enforcing SC purely in hardware requires loads to wait for the store buffer to drain and stores to retire strictly in order. Both kill performance. \em{SC-preserving compilers} try to push the constraint to compile time by refusing to reorder shared accesses.}
+\remark{Enforcing SC purely in hardware requires loads to wait for the [[UNB6]] to drain and stores to retire strictly in order. Both kill performance. \em{SC-preserving compilers} try to push the constraint to compile time by refusing to reorder shared accesses.}

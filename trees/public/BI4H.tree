@@ -1,9 +1,11 @@
 \import{base-macros}
-\date{2026-05-12T19:47:07Z}
+\date{2026-05-13}
 \tag{public}
 \title{Reorder buffer}
 
 \p{The structure that lets an [[U0NY]] CPU look in-order to the programmer. The ROB holds every in-flight instruction in original program order, regardless of the order they actually executed. When the oldest entry has its result ready and all earlier entries have already committed, the ROB \em{commits} it — writing its result to architectural state and freeing the slot.}
+
+\p{For stores, commit is only half the story. The ROB entry is freed and the instruction is architecturally real, but the value has not yet reached the cache — it is handed off to the [[UNB6]] for asynchronous drain. This is what keeps the ROB from stalling behind every cache miss: once a store is known to be non-speculative, the front-end can move on.}
 
 \p{Each ROB entry typically tracks:}
 \ul{

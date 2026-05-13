@@ -1,0 +1,14 @@
+\import{base-macros}
+\date{2026-05-13}
+\author{kellenkanarios}
+\title{Store-to-load forwarding}
+\taxon{Definition}
+\tag{public}
+
+\p{The mechanism by which a younger load on the same core observes the value of an older store that is still sitting in the [[UNB6]] and has not yet drained to L1. The load-store unit checks the store buffer for any in-flight store to the same address; if one exists, the load's data comes directly from the buffer entry rather than from the cache, satisfying the same-core sequential semantics that the program expects.}
+
+\p{Forwarding is the reason the [commit/drain split](UNB6) does not break the single-core illusion. Within one thread, a store followed by a load to the same address must read the just-stored value — and would, on a machine without a store buffer, because the cache is the single source of truth. With a store buffer, the cache is briefly stale relative to architectural state; forwarding patches that hole.}
+
+\p{The structural consequence shows up in [[BCFG]]: under TSO, store-load reordering across cores is permitted precisely because forwarding makes same-core reads see the new value, while cross-core reads continue to see the old one until drain. This asymmetry is the entire point of TSO's relaxation — the store buffer can hide latency from the issuing thread without forcing other threads to wait.}
+
+\remark{Address matching in the store buffer is partial: most implementations check enough low-order bits to detect a hit but fall back to a stall (or a re-execution) on aliasing or partial-overlap cases. Reliable wide-then-narrow forwarding is one of the harder corners of memory disambiguation.}

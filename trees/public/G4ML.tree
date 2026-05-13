@@ -1,0 +1,18 @@
+\import{base-macros}
+\date{2026-05-13}
+\author{kellenkanarios}
+\title{Thread-level parallelism}
+\taxon{Definition}
+\tag{public}
+
+\p{Parallelism extracted by running \em{multiple independent threads} concurrently and switching between them whenever any one of them stalls. Where [[JAZI]] mines a single instruction stream for hidden concurrency, TLP gives up on that ambition and instead assumes that enough independent work exists in the program (or workload) that some thread is always ready to make progress.}
+
+\p{TLP makes the per-thread microarchitecture cheap. There is no need for a deep issue window, aggressive speculation, or CAM-based [wakeup-select](UJPD): if the current thread can't proceed, the scheduler picks another. The cost shifts from per-instruction machinery to context-holding — registers, program counters, and stack pointers for every resident thread must live somewhere fast.}
+
+\p{Two dominant implementation styles:}
+\ul{
+  \li{\strong{Coarse-grained TLP.} Conventional multicore CPUs and SMT: a handful of threads share a core, switched on long-latency events or interleaved cycle-by-cycle.}
+  \li{\strong{Massive TLP.} GPUs keep dozens of warps resident per [[82U4]] SM and switch on any stall. The [[XPAA]] is the readiness check that makes this cheap.}
+}
+
+\p{TLP fails when the workload genuinely has only one thread of useful work, or when the threads contend on shared state (locks, [[GA7N]] traffic). It wins overwhelmingly on data-parallel kernels where the threads are independent by construction.}

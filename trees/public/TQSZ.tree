@@ -5,18 +5,20 @@
 
 \p{The address-space abstraction, the translation schemes that implement it, the algorithms that manage free space within a process, and what happens when physical memory is not enough.}
 
-\section{Address translation}{
+\p{We are now moving on from [scheduling](B8GC) into the wonderful world of all things memory. The starting point is the \em{address space} abstraction — each process is handed its own private virtual memory and the OS, with hardware help, manages the mapping from virtual to physical addresses.}
+
+\p{The progression of translation schemes covered in TPE:}
+\ol{
+  \li{[[9MPY]] — one base+bound pair per process. Simple but wasteful.}
+  \li{[[REKW]] — per-region base+bound. Removes internal fragmentation, introduces external fragmentation.}
+  \li{[[SB61]] — fixed-size translation units. Eliminates external fragmentation at the cost of a translation table.}
+}
+
+\transclude{7MH4}
+\transclude{9MPY}
+\transclude{REKW}
+
 \transclude{SAYD}
-}
-
-\section{Paging}{
 \transclude{SB61}
-}
-
-\section{Page replacement}{
 \transclude{HK73}
-}
-
-\section{Free-space management}{
 \transclude{67X5}
-}

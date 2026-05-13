@@ -1,0 +1,14 @@
+\import{base-macros}
+\date{2026-05-13}
+\author{kellenkanarios}
+\title{Issue queue wakeup-select}
+\taxon{Definition}
+\tag{public}
+
+\p{The mechanism by which a modern out-of-order CPU notices that a previously-stalled instruction now has all its operands ready. The issue queue holds the N in-flight instructions whose operands are not yet available; each entry watches a small set of physical register tags (the operands it is waiting for). When a producer finishes, it broadcasts "tag T is ready" to every entry, and each entry compares that tag against its own waiting tags through a content-addressable memory (CAM). Entries whose last operand arrives become eligible to issue this cycle; a separate \em{select} stage picks which of the now-ready entries actually fires.}
+
+\p{The cost is the reason CPU issue queues are small. Each entry runs a CAM lookup against each broadcast tag, so an N-entry queue with N producers per cycle scales as #{O(N^2)} in comparators, wires, and power. The select stage compounds this — priority encoders across N entries are themselves a quadratic-area structure on the critical timing path. The cumulative wakeup-select latency is what bounds clock frequency once N grows past a few tens.}
+
+\p{This is the structural reason CPU out-of-order windows stay in the tens-to-low-hundreds of entries even as transistor budgets grow. Wider doesn't help: timing closure on the CAM degrades faster than the additional ILP repays. GPUs sidestep the whole problem by leaning on [[G4ML]] — a cheap per-register [scoreboard](XPAA) plus a warp scheduler covers stalls without any broadcast/compare structure.}
+
+\remark{Wakeup-select sits at the boundary between [[FQ9N]] (which holds the instruction) and [[5CT9]] (which named the tags being broadcast). All three structures together are what people mean by "the out-of-order back-end."}

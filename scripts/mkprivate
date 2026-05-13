@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-
-opam exec -- forester build $FORESTDIR/forest.toml -vv

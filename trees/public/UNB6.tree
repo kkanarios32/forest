@@ -1,0 +1,18 @@
+\import{base-macros}
+\date{2026-05-13}
+\author{kellenkanarios}
+\title{Store buffer}
+\taxon{Definition}
+\tag{public}
+
+\p{A FIFO of retired-but-not-yet-globally-visible stores that decouples instruction commit from cache write. When a store reaches the head of the [[BI4H]] and commits, its value has not yet reached L1 — commit only hands the store off to the store buffer. The actual cache write, called \em{drain}, happens asynchronously and may be delayed by cache misses, coherence traffic, or memory-ordering rules.}
+
+\p{Without this split, the ROB would have to stall on a cache miss for every store. With it, once a store is known to be non-speculative, the front-end moves on while the store buffer absorbs whatever latency the memory hierarchy imposes. \em{Commit} and \em{drain} are therefore two distinct moments in the lifetime of a store:}
+\ul{
+  \li{\strong{Commit} — the store is architecturally real. Younger speculation cannot squash it, but other cores do not see it yet.}
+  \li{\strong{Drain} — the value is written to L1 and becomes visible to the coherence protocol, and therefore to other cores.}
+}
+
+\p{Between these two moments the value lives only in the store buffer. Younger same-core loads can still observe it through [[GXCN]], but other cores cannot — which is the structural reason [[BCFG]] permits store-load reordering across cores under TSO. A [[R03A]] like \code{mfence} forces the buffer to drain so that subsequent operations see a consistent global view.}
+
+\remark{Retirement bandwidth (ROB commits per cycle) and store bandwidth (drain rate to L1) are separate throughput limits. A workload that retires stores faster than the cache can absorb them eventually backs up the ROB anyway, but the store buffer absorbs short bursts at no cost.}

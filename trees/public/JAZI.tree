@@ -1,0 +1,20 @@
+\import{base-macros}
+\date{2026-05-13}
+\author{kellenkanarios}
+\title{Instruction-level parallelism}
+\taxon{Definition}
+\tag{public}
+
+\p{Parallelism extracted from \em{within a single thread} by executing independent instructions concurrently. The instruction stream is sequential as written, but a sufficiently aggressive back-end can issue, execute, and complete instructions in a different order than they appear, as long as data dependencies are respected and the visible architectural state still looks in-order.}
+
+\p{The machinery a CPU spends on ILP is the bulk of its area and complexity:}
+\ul{
+  \li{[[U0NY]] — issue instructions whenever their operands are ready, not in program order.}
+  \li{[[5CT9]] — break false dependencies by mapping the same architectural register name to different physical registers.}
+  \li{[[FQ9N]]s + [[BI4H]] — hold dispatched instructions while waiting on operands, then commit them in original order.}
+  \li{[[IIF9]] and speculation — keep the pipeline fed across control-flow boundaries by predicting which way a branch will go.}
+}
+
+\p{ILP runs into hard limits: dependency chains, branch mispredictions, and the quadratic scaling of issue-queue [wakeup-select](UJPD) all cap how wide a single-threaded window can grow. Beyond that ceiling, more silicon stops buying more performance, which is the structural reason the industry pivoted to [[G4ML]] for throughput-bound workloads.}
+
+\remark{ILP is what classic uniprocessor texts mean by "out-of-order superscalar execution"; see [[P3GB]] for the unwound history.}

@@ -1,15 +1,87 @@
 \tag{public}
-\tag{todo}
 \import{base-macros}
 \date{2025-07-01T14:50:53Z}
 \title{Notebook: [Stanford](stanford) [CS336](https://stanford-cs336.github.io/spring2025/index.html#schedule)}
 \author{kellenkanarios}
 \tag{note}
 \tag{top}
-\put\transclude/expanded{false}
 
 \p{Formal notebook for my journey in [Stanford's](stanford) [CS336](https://stanford-cs336.github.io/spring2025/index.html#schedule) as part of my [LLM](003W) self-study endeavors.}
 
-\transclude{0086}
-\transclude{DEQS}
-\transclude{ESQ3}
+\transclude{0087}
+\section{Motivating Questions}{
+  \p{We start by discussing a few essential questions one hopes to answer when they set out to train a large model.}
+\question{How long to train a 70b parameter model on 15T tokens on 1024 H100s?
+}
+\answer{Mysteriously, we spawn from the ether (will be explained later) that \code{total_flops = 6 * 70e9 * 15e12}. Intuitively, we know that we need to perform some computation for each parameter for each token. However, the 6 is still an ominous mystery. Given the total flops, we then can just take the GPUs FLOP/s multiply by the number of seconds in the day and divide \code{total_flops} by this number i.e. 
+\code{days = total_flops / flops_per_day}
+}
+\remark{
+In practice, we must also consider the \em{model flop utilization} (MFU). Basically, our algorithm cannot utilize the entirety of the maximum FLOP/s provided by the hardware due to things like memory bandwidth, etc. To account for this in the calculation, they just take \code{flops_per_day / 2}.
+}
+
+\question{
+  What is the largest model that you can train on 8 H100s using AdamW?
+}
+\answer{
+  An H100 has 80gb of shared memory i.e. \code{h100_bytes = 80e9}. The calculation then proceeds as
+  \pre\verb<<<|
+# parameters, gradients, optimizer state
+bytest_per_param = 4 + 4 + (4 + 4)
+num_parameters = (h100_bytes * 8) / bytes_per_parameter
+  <<<
+  what we need each of parameters, gradients, optimizer state will become clear later.
+}
+\remark{
+In practice, we also need to account for activations, which will depend on \strong{both} batch size and sequence length.
+}
+  }
+
+\transclude{DEQU}
+\transclude{DYIV}
+\section{Computation}{
+\transclude{4K5H}
+\transclude{99G8}
+\example{
+Performing a matrix multiplication #{A \cdot B} for #{A \in \mathbb{R}^{(B \times D)}} and #{B \in \mathbb{R}^{(D \times K)}}, requires #{2 \times B \times D \times K} [FLOPS](4K5H)}
+}
+\section{Optimizers}{
+\p{I hope to do a formal blog touring optimizers because I have written a paper on deep learning optimizers for my [optimization course](0033). Due to this, I will leave this blank for now. A brief list of the covered concepts are below:}
+%TODO: link to optimizer blog when finished
+\ul{
+  \li{momentum}
+  \li{adagrad}
+  \li{RMSProp}
+  \li{Adam}
+}
+\p{A key formula to remember:
+##{\text{total memory} \approx 4 \times (\text{params} + \text{activations} + \text{grad size} + \text{optimizer state size})}
+}
+}
+\remark{
+Another useful trick is to use [low precision](DEQV) for forward pass activations, then use \code{float32} for gradients and network parameters.
+}
+\transclude{W4WB}
+\transclude{TOD6}
+\transclude{9VZH}
+\section{Regularization and Dropout}{
+\p{Since there is so much data, it is not feasible to train your model for multiple epochs. This is actually nice in the sense that we do not have to worry about overfitting and performing regularization.}
+\p{However, many of the large models are still trained with weight decay. Tatsu claims that this is not to do with regularization but actually due to some weird interaction with the learning rate schedule. I am not sure I entirely understood this part.}
+}
+\section{Stability Tricks}{
+\p{The [softmax](C00V) is ill-behaved due to the exponentials. In the transformer, we have two softmaxes: one at the end and one in the [attention](004G).
+\ul{
+   \li{For the first, note ##{\log \sigma(\mathbf{x})_i = \log(x_i) - \log \underbrace{\sum_{j=1}^{d} e^{x_j}}_{D(\mathbf{x})}}
+   The only problem is the denominator term. The idea is to enforce the #{D(\mathbf{x}) = 1} by regularizing via a penalty on #{\log D(\mathbf{x})} ie.
+##{\mathcal{L}_{\text{aux}} = 10^{-4} \log^2(D(\mathbf{x}))}
+With the #{\nabla D(\mathbf{x})} should be #{0} and we are effectively only considering the non-exponential term.
+   }
+   \li{For the [attention](004G), they primarily operate on the \em{logits} prior to the softmax. One way is via [layer norm](LVV4) before the [softmax](C00V). Another is via \em{softcapping} i.e.
+   ##{\mathrm{logits} = \mathrm{softcap} \cdot \tanh \left( \frac{\mathrm{logits}}{\mathrm{softcap}} \right) }
+   }
+}
+}
+}
+\section{Attention Variants}{
+\transclude{W4YP}
+}
