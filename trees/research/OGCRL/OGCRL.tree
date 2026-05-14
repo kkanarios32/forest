@@ -1,0 +1,8 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Research Notebook: OGCRL}
+\date{2026-05-14T13:39:34Z}
+
+\p{This is a research notebook to keep track of experiments and ideas for our work on \em{offline goal conditioned reinforcement learning}.}
