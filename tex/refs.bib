@@ -222,6 +222,41 @@
   file = {/home/kellen/Downloads/papers/CompILE Compositional Imitation Learning and Execution - Kipf et al..pdf}
 }
 
+@misc{kostrikovOfflineReinforcementLearning2021,
+  title = {Offline {{Reinforcement Learning}} with {{Implicit Q-Learning}}},
+  author = {Kostrikov, Ilya and Nair, Ashvin and Levine, Sergey},
+  year = 2021,
+  month = oct,
+  number = {arXiv:2110.06169},
+  eprint = {2110.06169},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2110.06169},
+  urldate = {2026-05-14},
+  abstract = {Offline reinforcement learning requires reconciling two conflicting aims: learning a policy that improves over the behavior policy that collected the dataset, while at the same time minimizing the deviation from the behavior policy so as to avoid errors due to distributional shift. This trade-off is critical, because most current offline reinforcement learning methods need to query the value of unseen actions during training to improve the policy, and therefore need to either constrain these actions to be in-distribution, or else regularize their values. We propose a new offline RL method that never needs to evaluate actions outside of the dataset, but still enables the learned policy to improve substantially over the best behavior in the data through generalization. The main insight in our work is that, instead of evaluating unseen actions from the latest policy, we can approximate the policy improvement step implicitly by treating the state value function as a random variable, with randomness determined by the action (while still integrating over the dynamics to avoid excessive optimism), and then taking a state conditional upper expectile of this random variable to estimate the value of the best actions in that state. This leverages the generalization capacity of the function approximator to estimate the value of the best available action at a given state without ever directly querying a Q-function with this unseen action. Our algorithm alternates between fitting this upper expectile value function and backing it up into a Q-function, without any explicit policy. Then, we extract the policy via advantage-weighted behavioral cloning, which also avoids querying out-of-sample actions. We dub our method implicit Q-learning (IQL). IQL is easy to implement, computationally efficient, and only requires fitting an additional critic with an asymmetric L2 loss.1 IQL demonstrates the state-of-the-art performance on D4RL, a standard benchmark for offline reinforcement learning. We also demonstrate that IQL achieves strong performance fine-tuning using online interaction after offline initialization.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Offline Reinforcement Learning with Implicit Q-Learning - Kostrikov et al..pdf}
+}
+
+@misc{levineOfflineReinforcementLearning2020a,
+  title = {Offline {{Reinforcement Learning}}: {{Tutorial}}, {{Review}}, and {{Perspectives}} on {{Open Problems}}},
+  shorttitle = {Offline {{Reinforcement Learning}}},
+  author = {Levine, Sergey and Kumar, Aviral and Tucker, George and Fu, Justin},
+  year = 2020,
+  month = nov,
+  number = {arXiv:2005.01643},
+  eprint = {2005.01643},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2005.01643},
+  urldate = {2026-05-15},
+  abstract = {In this tutorial article, we aim to provide the reader with the conceptual tools needed to get started on research on offline reinforcement learning algorithms: reinforcement learning algorithms that utilize previously collected data, without additional online data collection. Offline reinforcement learning algorithms hold tremendous promise for making it possible to turn large datasets into powerful decision making engines. Effective offline reinforcement learning methods would be able to extract policies with the maximum possible utility out of the available data, thereby allowing automation of a wide range of decision-making domains, from healthcare and education to robotics. However, the limitations of current algorithms make this difficult. We will aim to provide the reader with an understanding of these challenges, particularly in the context of modern deep reinforcement learning methods, and describe some potential solutions that have been explored in recent work to mitigate these challenges, along with recent applications, and a discussion of perspectives on open problems in the field.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Offline Reinforcement Learning Tutorial, Review, and Perspectives on Open Problems - Levine et al. 1.pdf}
+}
+
 @article{liCompetitionLevelCodeGeneration2022,
   title = {Competition-{{Level Code Generation}} with {{AlphaCode}}},
   author = {Li, Yujia and Choi, David and Chung, Junyoung and Kushman, Nate and Schrittwieser, Julian and Leblond, R{\'e}mi and Eccles, Tom and Keeling, James and Gimeno, Felix and Lago, Agustin Dal and Hubert, Thomas and Choy, Peter and {d'Autume}, Cyprien de Masson and Babuschkin, Igor and Chen, Xinyun and Huang, Po-Sen and Welbl, Johannes and Gowal, Sven and Cherepanov, Alexey and Molloy, James and Mankowitz, Daniel J. and Robson, Esme Sutherland and Kohli, Pushmeet and de Freitas, Nando and Kavukcuoglu, Koray and Vinyals, Oriol},
@@ -274,6 +309,14 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Computer Science - Robotics},
   file = {/home/kellen/Downloads/papers/VIP Towards Universal Visual Reward and Representation via Value-Implicit Pre-Training - Ma et al..pdf}
+}
+
+@article{myersHorizonGeneralizationReinforcement,
+  title = {Horizon {{Generalization}} in {{Reinforcement Learning}}},
+  author = {Myers, Vivek and Ji, Catherine and Eysenbach, Benjamin},
+  abstract = {We study goal-conditioned RL through the lens of generalization, but not in the traditional sense of random augmentations and domain randomization. Rather, we aim to learn goal-directed policies that generalize with respect to the horizon: after training to reach nearby goals (which are easy to learn), these policies should succeed in reaching distant goals (which are quite challenging to learn). In the same way that invariance is closely linked with generalization is other areas of machine learning (e.g., normalization layers make a network invariant to scale, and therefore generalize to inputs of varying scales), we show that this notion of horizon generalization is closely linked with invariance to planning: a policy navigating towards a goal will select the same actions as if it were navigating to a waypoint en route to that goal. Thus, such a policy trained to reach nearby goals should succeed at reaching arbitrarily-distant goals. Our theoretical analysis proves that both horizon generalization and planning invariance are possible, under some assumptions. We present new experimental results and recall findings from prior work in support of our theoretical results. Taken together, our results open the door to studying how techniques for invariance and generalization developed in other areas of machine learning might be adapted to achieve this alluring property.},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/Horizon Generalization in Reinforcement Learning - Myers et al..pdf}
 }
 
 @misc{nairHierarchicalForesightSelfSupervised2019,
@@ -546,6 +589,15 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Performance,Computer Science - Programming Languages,Computer Science - Software Engineering},
   file = {/home/kellen/Downloads/papers/SuperCoder Assembly Program Superoptimization with Large Language Models - Wei et al..pdf}
+}
+
+@article{xuOFFLINERLNO2023,
+  title = {{{OFFLINE RL WITH NO OOD ACTIONS}}: {{IN-SAMPLE LEARNING VIA IMPLICIT VALUE REGULARIZATION}}},
+  author = {Xu, Haoran and Jiang, Li and Li, Jianxiong and Yang, Zhuoran and Wang, Zhaoran and Chan, Victor Wai Kin and Zhan, Xianyuan},
+  year = 2023,
+  abstract = {Most offline reinforcement learning (RL) methods suffer from the trade-off between improving the policy to surpass the behavior policy and constraining the policy to limit the deviation from the behavior policy as computing Q-values using outof-distribution (OOD) actions will suffer from errors due to distributional shift. The recent proposed In-sample Learning paradigm (i.e., IQL), which improves the policy by quantile regression using only data samples, shows great promise because it learns an optimal policy without querying the value function of any unseen actions. However, it remains unclear how this type of method handles the distributional shift in learning the value function. In this work, we make a key finding that the in-sample learning paradigm arises under the Implicit Value Regularization (IVR) framework. This gives a deeper understanding of why the in-sample learning paradigm works, i.e., it applies implicit value regularization to the policy. Based on the IVR framework, we further propose two practical algorithms, Sparse Q-learning (SQL) and Exponential Q-learning (EQL), which adopt the same value regularization used in existing works, but in a complete insample manner. Compared with IQL, we find that our algorithms introduce sparsity in learning the value function, making them more robust in noisy data regimes. We also verify the effectiveness of SQL and EQL on D4RL benchmark datasets and show the benefits of in-sample learning by comparing them with CQL in small data regimes. Code is available at https://github.com/ryanxhr/IVR.},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/OFFLINE RL WITH NO OOD ACTIONS IN-SAMPLE LEARNING VIA IMPLICIT VALUE REGULARIZATION - Xu et al..pdf}
 }
 
 @misc{yuksekgonulLearningDiscoverTest2026,

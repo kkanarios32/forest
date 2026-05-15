@@ -1,0 +1,14 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Research Notebook: FlexTPU}
+\date{2026-05-15T13:02:29Z}
+
+\p{This is research notebook for the FlexTPU project. The main goal of this project is to create an analagous [Flex Attention](dongFlexAttentionProgramming2024) implementation optimized for TPU.}
+
+\p{Useful resources:}
+\ul{
+  \li{[[5DFA]]}
+  \li{[[NZZ7]]}
+}

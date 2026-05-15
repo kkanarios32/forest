@@ -1,16 +1,26 @@
 #!/usr/bin/bash
 
+NVIM_SOCK="$FORESTDIR/.nvim.sock"
+export NVIM_SOCK
+
 _serve() {
   trap "kill 0" EXIT
 
-  python3 -m http.server 1234 -d output &>/dev/null &
+  mkdir -p "$FORESTDIR/output"
+  : > "$FORESTDIR/output/.build-stamp"
 
-  while true; do 
-    find $FORESTDIR/trees -type f | entr -rd $FORESTDIR/scripts/mkprivate
+  livereload -p 1234 -t "$FORESTDIR/output/.build-stamp" "$FORESTDIR/output" &>/dev/null &
+  python3 "$FORESTDIR/scripts/_fopen" &>/dev/null &
+
+  while true; do
+    find "$FORESTDIR/trees" "$FORESTDIR/tex/refs.bib" | entr -nd \
+      sh -c "cd '$FORESTDIR' && forester build --dev && curl -s http://localhost:1234/forcereload >/dev/null"
     sleep .5
   done
 
   wait
 }
 
-tmux new-session -d -s forest -n server "bash -c '$(declare -f _serve); _serve'"
+rm -f "$NVIM_SOCK"
+tmux new-session -d -s forest -n server -e "NVIM_SOCK=$NVIM_SOCK" "bash -c '$(declare -f _serve); _serve'"
+tmux new-window -t forest -n edit -e "NVIM_SOCK=$NVIM_SOCK" "cd '$FORESTDIR' && nvim --listen '$NVIM_SOCK'"

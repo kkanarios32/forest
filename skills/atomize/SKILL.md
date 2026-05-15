@@ -153,6 +153,8 @@ or promote to a `\tag{todo}` stub with the question as the
 `\title{...}` and the intuition in the body. Do not atomize prose
 that does not yet have a clear claim.
 
+**Lecture notes.** If you see splits by lecture number or some other arbitrary ordering discard it and instead compose into conceptual parent notes and atoms.
+
 ## Process
 
 When given a long-form note to atomize, follow this order:
