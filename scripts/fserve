@@ -14,7 +14,7 @@ _serve() {
 
   while true; do
     find "$FORESTDIR/trees" "$FORESTDIR/tex/refs.bib" | entr -nd \
-      sh -c "cd '$FORESTDIR' && forester build --dev && curl -s http://localhost:1234/forcereload >/dev/null"
+      "$FORESTDIR/scripts/_fbuild" /_
     sleep .5
   done
 

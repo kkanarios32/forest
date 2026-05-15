@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+set -e
+file="$1"
+cd "$FORESTDIR"
+forester build --dev
+if [ -n "$file" ] && [[ "$file" == *.tree ]]; then
+  slug=$(basename "$file" .tree)
+  curl -s "http://localhost:1235/notify-edit?slug=$slug" >/dev/null || true
+fi
+curl -s http://localhost:1234/forcereload >/dev/null || true
