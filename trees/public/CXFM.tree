@@ -1,7 +1,7 @@
 \import{base-macros}
 \date{2026-05-12T19:32:06Z}
 \tag{public}
-\title{Page fault and swap space}
+\title{Page fault}
 
 \p{Physical memory is finite, so the OS reserves a region of disk — \em{swap space} — to hold pages that don't fit. Pages currently on disk have their \em{present bit} cleared in the [[WALE]] entry; the PTE instead holds a disk address.}
 

@@ -1,0 +1,12 @@
+\import{base-macros}
+\date{2026-05-15}
+\author{kellenkanarios}
+\tag{public}
+\taxon{Definition}
+\title{Interrupt descriptor table}
+
+\p{The CPU's lookup table from \em{interrupt number} to \em{handler}. The OS allocates the IDT in memory, fills entry #{N} with the address of the handler for interrupt #{N}, and points the IDTR register at the table's base. From then on the [[K325]] uses the IDT to dispatch every interrupt without any further software help.}
+
+\p{Each entry — a \em{gate descriptor} on x86 — carries enough information for the CPU to switch into the handler safely: the handler's linear address, the code segment to load (which sets the new privilege level, typically ring 0), and a type byte distinguishing interrupt gates (which mask further interrupts on entry) from trap gates (which don't). Entries 0–31 are reserved for CPU-defined exceptions (divide-by-zero, [[CXFM]], double fault, ...); 32–255 are available for device IRQs and software interrupts.}
+
+\remark{The IDT is one of three OS-installed tables that the CPU consults transparently — the others are the GDT (segment descriptors) and the page tables. Each is a hardware contract: the OS lays bytes out in a format the silicon understands, then hands over a pointer.}

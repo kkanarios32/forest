@@ -9,8 +9,8 @@ _serve() {
   mkdir -p "$FORESTDIR/output"
   : > "$FORESTDIR/output/.build-stamp"
 
-  livereload -p 1234 -t "$FORESTDIR/output/.build-stamp" "$FORESTDIR/output" &>/dev/null &
-  python3 "$FORESTDIR/scripts/_fopen" &>/dev/null &
+  livereload -p 1234 -t "$FORESTDIR/output/.build-stamp" "$FORESTDIR/output" &
+  python3 "$FORESTDIR/scripts/_fopen" &
 
   while true; do
     find "$FORESTDIR/trees" "$FORESTDIR/tex/refs.bib" | entr -nd \

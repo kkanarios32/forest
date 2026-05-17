@@ -1,24 +1,14 @@
 \import{base-macros}
 \date{2026-05-12T22:53:47Z}
 \tag{public}
-\title{Virtual channels and routing deadlock}
+\title{Routing deadlock}
 
 \p{Routing deadlock occurs when a packet cannot make progress because the buffer at its next link is full, and the packet holding that buffer is itself blocked waiting on a buffer this packet holds — a cycle in the channel dependency graph.}
 
 \p{Two structural responses:}
 \ol{
   \li{\em{Avoid} deadlock by construction. [[83P2]] enforces an ordering on dimension transitions so the dependency graph is acyclic by design.}
-  \li{\em{Detect and recover} from deadlock. Allow all turns. Detect cycles via timeouts. Drain stuck packets onto a backup network (a "slow channel" — physical, or more commonly an \em{escape virtual channel}) that uses dimension-order routing.}
-}
-
-\section{Virtual channels}{
-\p{A \em{virtual channel} (VC) is a separate logical buffer that shares the same physical link with other VCs. Multiple VCs on one link let the network distinguish classes of traffic — if one VC fills, others on the same link still flow.}
-
-\p{Two motivations for VCs:}
-\ul{
-  \li{\em{Routing-deadlock avoidance}: provide an escape channel routed via DOR.}
-  \li{\em{Protocol-deadlock avoidance}: separate message classes (request, response, forwarded) onto distinct VCs so a stuck response cannot block a request that would have unstuck it. See [[HHZO]] for a worked Murphi example where 3 VCs are required for the directory protocol.}
-}
+  \li{\em{Detect and recover} from deadlock. Allow all turns. Detect cycles via timeouts. Drain stuck packets onto a backup network (a "slow channel" — physical, or more commonly an \em{escape [virtual channel](HUDE)}) that uses dimension-order routing.}
 }
 
 \p{The relationship to other related concepts:}

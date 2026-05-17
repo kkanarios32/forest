@@ -1,0 +1,23 @@
+\import{base-macros}
+\date{2026-05-15}
+\author{kellenkanarios}
+\tag{public}
+\title{Hardware interrupt path}
+
+\p{What the CPU does, entirely in hardware, the moment an interrupt arrives — whether a device IRQ, a fault like a [[CXFM]], or a software \code{int N}. The point of the hardware path is to land in the kernel at a clean instruction boundary with enough saved state that user execution can resume later as if nothing happened.}
+
+\p{Four things happen, in order, with no software involvement:}
+
+\ol{
+  \li{\strong{Reach a clean instruction boundary.} The CPU cannot pause halfway through, say, a memory write — architectural state would be inconsistent. So the current instruction either \em{finishes} normally (typical for asynchronous interrupts like a timer) or is \em{rolled back} as if it never started (faults, where the instruction couldn't complete anyway and needs to be retried). A page-fault handler maps in the missing page and [[UHNL]] returns to re-execute the faulting instruction; a timer handler returns to the next instruction.}
+
+  \li{\strong{Save the minimum resume state to the kernel stack.} The CPU pushes RIP (where to resume), RSP (the user stack pointer it's about to abandon), the privilege level (CS — were we in ring 3 or ring 0?), and RFLAGS. The save target is the \em{kernel} stack, whose address the CPU reads from the [[ZAAT]] that the OS set up at boot. This is a security boundary: the kernel never trusts the user stack, since user code could have corrupted it or pointed RSP at something malicious. Note what is \em{not} saved: general-purpose registers. The handler itself pushes RAX, RBX, ... if it uses them, which keeps the hardware path fast.}
+
+  \li{\strong{Jump to the handler via the [[YK46]].} The CPU takes the interrupt number #{N}, indexes entry #{N} of the IDT (found via the IDTR register), loads the handler address into RIP, and loads the new code segment, which switches the CPU from ring 3 to ring 0. After this step, the CPU is running kernel code on the kernel stack at the right privilege level — all set up automatically.}
+
+  \li{\strong{Flush the [[BI4H]] of work past the interrupt point.} In an [[U0NY]] CPU the ROB may already contain instructions from after the interrupt — they've been issued speculatively because the front-end ran ahead. Those entries are discarded so the handler sees clean architectural state, as if execution had stopped exactly at the interrupt point. When [[UHNL]] returns, those instructions re-execute normally. This is the same squash machinery used for branch mispredictions in [[IIF9]] — and, famously, the reason Spectre-class side channels exist: speculative work leaves observable traces in caches even after the ROB is flushed.}
+}
+
+\p{Once the hardware path finishes, the OS's interrupt handler is running. Its first job is typically to save the remaining registers before doing real work — the rest is software.}
+
+\remark{Steps 2 and 3 are why an OS needs to set up the IDT and TSS before enabling interrupts. Until both structures point somewhere valid, the first interrupt would either jump to garbage or push to a user-controlled stack — both fatal.}

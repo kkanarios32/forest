@@ -1,0 +1,12 @@
+\date{2026-05-15T16:59:59Z}
+\tag{public}
+
+\title{Virtual Channels}
+
+\p{A \em{virtual channel} (VC) is a separate logical buffer that shares the same physical link with other VCs. Multiple VCs on one link let the network distinguish classes of traffic — if one VC fills, others on the same link still flow.}
+
+\p{Two motivations for VCs:}
+\ul{
+  \li{\em{Routing-deadlock avoidance}: provide an escape channel routed via DOR.}
+  \li{\em{Protocol-deadlock avoidance}: separate message classes (request, response, forwarded) onto distinct VCs so a stuck response cannot block a request that would have unstuck it. See [[HHZO]] for a worked Murphi example where 3 VCs are required for the directory protocol.}
+}

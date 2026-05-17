@@ -46,6 +46,12 @@
 \transclude{JRP0}
 }
 
+\section{Interrupts and exceptions}{
+\transclude{K325}
+\transclude{YK46}
+\transclude{ZAAT}
+}
+
 \section{Machine implementations}{
 \transclude{7XOX}
 \transclude{3LIK}

@@ -1,0 +1,12 @@
+\import{base-macros}
+\date{2026-05-15}
+\author{kellenkanarios}
+\tag{public}
+\taxon{Definition}
+\title{Task state segment}
+
+\p{A small OS-allocated structure that the CPU reads to find the \em{kernel stack pointer} when it raises privilege. Its historical purpose — full task switching in hardware — is dead on modern x86-64; what survives is one essential field: \code{RSP0}, the address of the kernel stack to switch to on entry from ring 3.}
+
+\p{During the [[K325]], the moment the CPU decides to push RIP/RSP/CS/RFLAGS, it reads \code{RSP0} from the current TSS (located via the GDT entry pointed at by the TR register) and switches RSP to that value \em{before} pushing. If the TSS were missing or pointed at user memory, the very first interrupt would either fault while trying to push, or push the user's registers onto attacker-controlled memory. So the TSS is set up at boot, before interrupts are enabled.}
+
+\remark{This is why a kernel needs a per-CPU TSS, not a per-process one: \code{RSP0} is consulted on every transition into the kernel, and each CPU needs its own kernel stack to land on.}
