@@ -1,0 +1,8 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Research Notebook: CuTeLLM}
+\date{2026-05-18T14:07:37Z}
+
+\p{This is a research notebook for an ongoing project on synthesizing \em{speed of light} GPU kernels in CuTe with LLMs.}
