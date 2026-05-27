@@ -1,0 +1,15 @@
+\date{2026-05-24}
+\author{kellenkanarios}
+\title{Release consistency}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+
+\p{A [[BCFG]] discipline that recovers data-race freedom (see [[P0NQ]]) under [[WT44]] not by issuing fewer fences, but by issuing \em{weaker} ones. The full-fence cost of [[OW4D]] is replaced by a pair of half-fences placed exactly at the boundaries of critical sections — acquire on entry, release on exit.}
+
+\p{The intuition is that correctness around a critical section only requires that work cannot \em{leak out} of it; work is free to \em{sink into} it. Half-fences encode exactly this asymmetry, which is why they are the right primitive for lock-based and lock-free synchronization alike.}
+
+\transclude{S80U}
+\transclude{S5D0}
+
+\p{C++ \code{std::atomic} compiles to half-fences in the right places, which is why it is the standard primitive for portable lock-free code.}

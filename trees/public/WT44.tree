@@ -1,0 +1,17 @@
+\date{2026-05-24}
+\author{kellenkanarios}
+\title{Relaxed memory order}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+
+\p{A [[BCFG]] relaxation in which any pair of memory operations may be reordered. RMO is the most permissive end of the consistency spectrum; the programmer recovers ordering only through explicit [[R03A]] instructions.}
+
+\p{Each stronger reordering still has to be justified per case:}
+\ul{
+  \li{\strong{Load → store} — no performance gain to reorder; leave alone.}
+  \li{\strong{Store → store} — keep ordering with a slightly larger [[UNB6]].}
+  \li{\strong{Load → load} — speculate the second load while waiting for the first; the reorder is invisible if the speculation is verified.}
+}
+
+\p{Because every fence is expensive under RMO, the natural next move is to weaken the fences themselves into half-fences, which is what [[ZWHV]] does.}

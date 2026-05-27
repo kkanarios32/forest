@@ -1,0 +1,19 @@
+\date{2026-05-22T17:21:44Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Matrix Multiply Unit (MXU)}
+\p{A core component of the [TPU architecture](NZZ7) responsible for performing matrix multiplication via a \em{systolic array}.}
+\ul{
+  \li{256x256 totaling 65,536 \em{multiply accumulate} units i.e. each unit can multiply and add in one cycle.}
+  \remark{
+  Can only do 256x256 matrix multiplication, so the order is 
+  \ol{
+    \li{Tiling the matrix to load from HBM to VMEM}
+    \li{Compiler tiles from VMEM to 256x256 tiles to load into MXU.}
+  }
+  }
+}
+\figure{
+\<html:img>[width]{30\%}[src]{\route-asset{assets/img/mxu.png}}{}
+\figcaption{Note the input are offset so that the result from the first column can be accumulated int the second column. Can compute matmul in #{2n - 1} cycles.}
+}

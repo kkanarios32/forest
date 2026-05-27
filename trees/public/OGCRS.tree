@@ -1,0 +1,9 @@
+\date{2026-05-24T23:17:00Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\title{ASIC accelerators}
+\p{\em{Application-Specific Integrated Circuits} fuse multiple operations into hardware that a general-purpose pipeline would have to schedule sequentially. The motivating intuition: if you frequently \em{multiply-accumulate}, the multiply and the add each traverse the entire pipeline separately. A dedicated multiply-accumulate ALU does both in one cycle.}
+\p{The cost-of-operation gap is large — 32-bit vs 8-bit addition has roughly an order of magnitude difference in energy per op. ASICs win by matching width to need.}
+\transclude{NZZ7}
+\transclude{2BGU}

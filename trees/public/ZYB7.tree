@@ -1,0 +1,25 @@
+\tag{public}
+\date{2026-05-22}
+\title{TPU Ironwood}
+\author{kellenkanarios}
+\import{base-macros}
+
+\p{The newest generation [TPU architecture](NZZ7).}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/tpu-ironwood.png}}{}
+\figcaption{TPU Ironwood Architecture}
+}
+\section{Scaling Ironwood}{
+    \p{\strong{Torus Cube}:}
+    \ul{
+      \li{64 ironwood chips}
+      \li{Each chip connects to 6 neighbors via high-speed Inter-Chip Interconnect}
+      \li{Form a 3d torus, providing three axes for parallel bandwidth.}
+    }
+    \p{\strong{Optical Circuit Switching}:}
+    \ul{
+      \li{Multiple cubes are linked by an OCS network to build pods.}
+      \li{If a cube fails, the OCS optically bypasses and swaps in a spare.}
+      \li{OCS allows for slices without system shutdown (?)}
+    }
+}

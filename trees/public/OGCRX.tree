@@ -1,0 +1,13 @@
+\date{2026-02-08T12:24:09Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\title{Genius Makers}
+\p{This was basically a historical account of the history of deep learning. The main focus was championing the likes of Hinton, Lecun, and Bengio with their unwavering conviction toward deep learning. Honestly, this book has made me excited and a bit intimidated about research. I do not know if I have the same obsessive commitment to my work as Hinton, etc. Also, for future reference, I feel like I will get a lot more out of books I am not already so familiar with. Technically, I thought it did an OK job, but I once again do not really enjoy reading books on my field for a broad audience. Learning about the industry origins i.e. DNN, Deepmind acquisition, etc. was pretty interesting though.}
+
+\p{Enjoyable read. 5/10.}
+
+\figure{
+\<html:img>[width]{30\%}[src]{\route-asset{assets/img/genius-makers-cover.png}}{}
+\figcaption{Weak cover tbh.}
+}

@@ -1,0 +1,67 @@
+\import{base-macros}
+\title{XLA Compilation}
+\p{\strong{Overview:}}
+\ul{
+  \li{Dispatch / Cache: caches compilation based on input argument signatures i.e. shapes, dtypes, sharding. If shapes change will need to \strong{recompile}.}
+  \li{XLA transformation: Python -> JaxPR -> StableHLO, performing fusion and other simplifications to reduce memory overhead (?).}
+  \li{TPU specific: Further reduced to LLO IR, then \em{very large instruction word} (VLIW) scheduling to map dot products to MXU.}
+}
+\remark{
+As soon as python code is traced into jaxpr it is thrown away. Only HLO is input to XLA compiler.
+}
+\p{\strong{Compilation (Pipeline):}}
+\ol{
+  \li{Tracing: Python / JAX -> Jaxpr}
+  \ul{
+    \li{\code{jax.make_jaxpr(fun)(*args)}}
+    \li{Abstract execution. JAX executes python code using abstract tracer objects instead of real arrays.}
+    \li{Recording the FLow. Every operation and its intermediate result is recorded into JAXpr.}
+    \li{Sequence used to construct a grap, which the XLA compiler will later optimize.}
+    \li{Python code is executed once during tracing but excluded from final graph.}
+    \li{Each JAX primitive registers functions for}
+    \ul{
+        \li{Lowering to StableHLO}  
+        \li{How it is transformed under \code{grad} and \code{vmap}.}
+    }
+  }
+  \li{Lowering: Jaxpr -> HLO}
+  \ul{
+    \li{\code{fn_lowered = jax.jit(fun).lower(*args)}}
+    \li{\code{stable_hlo = fn_lowered.as_text()}}
+    \li{\code{hlo = fn_lowered.compiler_ir('hlo')}}
+    \li{Multiple ML frameworks lower to StableHLO.}
+    \ul{
+      \li{Hardware agnostic.}
+      \li{Backwards compatible.}
+    }
+  }
+  \li{Compile: HLO -> Optimized HLO -> LLO IR -> VLIW -> Executables}
+  \ul{
+    \li{\code{compiled = fn_lowered.compile()}}
+    \li{\code{compiled.runtime_executable()} returns a \code{LoadedExecutable}.}
+    \li{Useful(?) \code{compiled.cost_analysis()}.}
+    \li{HLO:}
+    \ul{
+      \li{Input for XLA compiler.}
+      \li{Directed acyclic graph of copmutational operations.}
+      \li{All array dimensions are known at compile time.}
+      \li{Limited opcodes i.e. Add, Multiply, Transpose, Dot, etc.}
+    }
+  }
+}
+\p{\strong{XLA Shapes and Memory Layout}}
+\ul{
+  \li{Every data type defined by data type and fixed dimensions, determined at compile time.}
+  \li{Minor-to-major order i.e. fastest changing to slowesting changin.}
+  \li{Tiling: arrays are split into smaller blocks to fit into VREG. Want to arrange data to efficiently fit VREG.}
+}
+\figure{
+\<html:img>[width]{60\%}[src]{\route-asset{assets/img/xla-mem-layout.png}}{}
+\figcaption{How memory is laid out based on XLA.}
+}
+\p{\strong{Execution:}}
+\ul{
+  \li{Move tensors from CPU to HBM. Sharding is taken care of by PJIT if on TPU pod.}
+  \li{Async: Immediately returns a \code{Future} JAX array while the hardware executes VLIW microcode asynchronously.}
+  \li{Buffer management: Returns pointer to TPU memory. All handled lazily. Not copied back to CPU until \code{jax.block_until_ready()}.}
+}

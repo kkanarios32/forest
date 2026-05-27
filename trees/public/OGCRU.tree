@@ -1,0 +1,16 @@
+\date{2026-05-25T12:04:14Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\title{Bank conflicts (GPU)}
+\p{Shared memory is divided into \em{banks} (typically 32). Each bank can service one access per cycle. If two threads in a [[X9VZ]] access different addresses in the \em{same} bank, the accesses serialize — a \em{bank conflict}.}
+
+\p{Three behaviors when warp threads access shared memory:}
+\ul{
+  \li{Different banks: full parallelism. No conflict.}
+  \li{Same bank, same word: hardware broadcasts the word to all threads. No conflict.}
+  \li{Same bank, different words: serialize.}
+}
+
+\question{How to avoid bank conflicts?}
+\answer{Change the access pattern so threads hit different banks (often by transposing or by adding padding to break the stride that causes the conflict).}

@@ -1,0 +1,10 @@
+\tag{public}
+\date{2026-05-22}
+\title{Tensor Parallelism}
+\author{kellenkanarios}
+\import{base-macros}
+\p{A form of parallelism that splits the actual weights of the model across devices.}
+\ul{
+  \li{Large weight matrices split across devices. Can train larger models that exceed memory of single device.}
+  \li{Devices exchange partial activations to compute layer outputs.}
+}

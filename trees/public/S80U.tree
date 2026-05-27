@@ -1,0 +1,10 @@
+\date{2026-05-24}
+\author{kellenkanarios}
+\title{Full fence}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+
+\p{A [[R03A]] across which no memory operation may move in either direction. Prior accesses must become globally visible before any subsequent access may issue. x86's \code{mfence} is the canonical example — the hammer that drains the [[UNB6]] and serializes all prior memory operations against all subsequent ones.}
+
+\p{Full fences are the default ordering primitive under [[OW4D]] — every memory operation behaves as if a full fence sat on either side. They are also the only fence one needs to reason about correctness, which is why they are the building block for the half-fences of [[ZWHV]].}

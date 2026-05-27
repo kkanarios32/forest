@@ -1,0 +1,14 @@
+\date{2026-05-24}
+\author{kellenkanarios}
+\title{Half fence}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+
+\p{A [[R03A]] that constrains motion in only one direction, splitting the symmetric guarantee of a [[S80U]] into two cheaper primitives:}
+\ul{
+  \li{\strong{Acquire} — operations after the fence may not move above it. Used at the entry to a critical section: subsequent reads and writes cannot be hoisted before the lock is held.}
+  \li{\strong{Release} — operations before the fence may not move below it. Used at the exit of a critical section: prior writes cannot be deferred past the unlock.}
+}
+
+\p{The asymmetry is exactly the freedom one wants around a critical section: \em{expanding} the section is fine — work may sink into it (past acquire) or rise into it (before release) — but work may not leak out of it. This is the basis of [[ZWHV]] and the reason C++ \code{std::atomic} exposes \code{memory_order_acquire} / \code{memory_order_release} as its core primitives.}

@@ -1,0 +1,29 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\tag{margin}
+\tag{todo}
+\title{Lifecycle of a Store Instruction}
+\date{2026-05-24T22:38:29Z}
+
+\p{In this note, we will cover the entire lifecycle of a store instruction, assuming some fairly modern / sufficiently complex computer architecture}
+
+\p{\strong{Assumptions:} We assume the following setup.}
+\ul{
+  \li{An [OoO processor](U0NY).}
+  \li{A [multi-core](JRP0) processor.}
+  \li{x86 architecture.}
+}
+
+\section{Entering the pipeline}{
+Similar to any other instruction, a store enters the pipeline via the [fetch and decoding](VZDH) pipeline. Since we assume an [OoO processor](U0NY), the instruction is also allocated an entry in the [reorder buffer](BI4H). Unique to the store instruction, it must also be added to the [store buffer](UNB6).
+}
+
+\section{Managing the [store buffer](UNB6)}{
+
+}
+
+\section{Entering the network}{
+
+}

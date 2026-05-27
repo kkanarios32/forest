@@ -1,0 +1,11 @@
+\tag{public}
+\date{2026-05-22}
+\title{Data parallelism}
+\author{kellenkanarios}
+\import{base-macros}
+\p{A form of parallelism where the model is replicated across multiple devices and performed on different data.}
+    \ul{
+    \li{Data sharding: data is split across multiple devices i.e. 32 samples and 8 devices results in 4 unique samples per device.}
+    \li{Parameter replication: on each device, we need to replcicate the model parameters to run the forward pass for the unique samples.}
+    \li{Gradient aggregation: backward pass we need to perform an \em{all-reduce} to sum and average the gradients across devices. This is automatically done by \code{@nnx.jit}.}
+    }

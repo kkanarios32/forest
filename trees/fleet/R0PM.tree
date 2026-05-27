@@ -1,0 +1,151 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\tag{potw}
+\title{Flash Attention (v1)}
+\date{2026-05-25T11:48:03Z}
+
+\transclude{PI7N}
+\section{Flash Attention (Fwd)}{
+  \p{
+Unlike in the [online softmax](PI7N), we are not interested in the outputted probability vector #{\mathbf{p}}. Instead we are interested in the entire output matrix #{O} given by
+  }
+##{O = \mathrm{softmax}(QK^T) V}
+  \p{
+For more details see [self-attention](004G).
+  }
+\notation{
+  In correspondence with the notation in the [online softmax](PI7N), we define the following:
+  ##{x_{i,j} = \mathbf{q}_i \cdot \mathbf{k}_j,}
+  where #{\mathbf{q}_i} is the #{i}th row of #{Q} and #{\mathbf{k}_j} is the #{j}th row of #{K}. Similarly, #{\mathbf{o}_i} is the #{i}th row of the output matrix #{O} given by
+  ##{\mathbf{o}_i = \sum_{j = 1}^{n} \frac{\exp(x_{i,j} - m_n)}{d_n} \cdot \mathbf{v}_j }
+}
+\p{Now following the template provided by the [online softmax](PI7N), we must find a recurrence for #{\mathbf{o}_i}. Namely, we will consider the sequence #{\mathbf{o}_{i,k}'} given by
+##{\mathbf{o}_{i,k}' = \sum_{j = 1}^{k} \frac{\exp(x_{i,j} - m_k)}{d_k} \cdot \mathbf{v}_j, }
+such that #{\mathbf{o}_{i,n}' = \mathbf{o}_n}
+}
+\claim{
+  We have the following recurrence for #{\mathbf{o}_{i,k}'}:
+  ##{
+  \mathbf{o}_{i,k}' = \mathbf{o}_{i, k-1} \cdot \frac{d_{k - 1} \cdot \exp(m_{k-1} - m_{k})}{d_k} + \frac{\exp(x_{i,j} - m_k)}{d_k} \cdot \mathbf{v}_k
+    }
+}
+\proof{
+  We will proceed by directly rewriting the recurrence for #{\mathbf{o}_{i,k}'} as 
+  ##{
+    \begin{align*}
+      \mathbf{o}_{i,k}' &= \sum_{j = 1}^{k} \frac{\exp(x_{i,j} - m_k)}{d_k} \cdot \mathbf{v}_j \\
+                        &= \left(\sum_{j = 1}^{k - 1} \frac{\exp(x_{i,j} - m_{k-1})}{d_{k-1}} \cdot \mathbf{v}_j\right) \frac{d_{k - 1} \cdot \exp(m_{k-1} - m_{k})}{d_k} +  \frac{\exp(x_{i,k} - m_k)}{d_k} \cdot \mathbf{v}_k \\
+                        &= \mathbf{o}_{i, k-1} \cdot \frac{d_{k - 1} \cdot \exp(m_{k-1} - m_{k})}{d_k} +  \frac{\exp(x_{i,k} - m_k)}{d_k} \cdot \mathbf{v}_k
+    .\end{align*}
+    }
+  }
+
+\p{Thus, we are left with the following algorithm}
+\p{
+\latex{#{
+\begin{algo}
+\For{$i = 1$ \textbf{to} $N$}
+\State $m_{0} \gets -\infty;\quad d_{0} \gets 0$
+\For{$j = 1$ \textbf{to} $M$}
+  \State $x_{i,j} \gets \mathbf{q}_i \cdot \mathbf{k}_j$
+  \State $m_{j} \gets \max(m_{j-1}, x_{i,j})$
+  \State $d_{j} \gets d_{j - 1} \cdot e^{\,m_{j - 1} - m_{j}} + e^{\,x_{i,j} - m_{j}}$
+  \State $\mathbf{o}_{i, j} \gets \mathbf{o}_{i, j - 1} \cdot \frac{d_{j - 1} \cdot \exp(m_{j-1} - m_{j})}{d_j} +  \frac{\exp(x_{i,j} - m_j)}{d_j} \cdot \mathbf{v}_j$
+\EndFor
+\EndFor
+\end{algo}
+}}
+}
+\remark{
+A key benefit of this algorithm is that it is entirely parallelizable across rows. This means that we can loop across entire [tiles](OGCRV) like in the GEMM case.
+}
+}
+
+\section{Flash Attention (Bwd)}{
+\p{To understand the innovation of the backward pass in [flash attention](daoFlashAttentionFastMemoryEfficient2022), we must first find all of the gradients we must compute.}
+\notation{
+Following the notation in the [original paper](daoFlashAttentionFastMemoryEfficient2022), we have the following matrices
+##{\mathbf{S} = \mathbf{Q} \mathbf{K}^T, \quad \mathbf{P} = \mathrm{softmax}(\mathbf{S}), \quad \mathbf{O} = \mathbf{P} \mathbf{V}}
+Now suppose their is some scalar loss function #{\phi}. Then we define 
+##{\frac{\partial \phi}{\partial \mathbf{O}}, \frac{\partial \phi}{\partial \mathbf{K}}, \frac{\partial \phi}{\partial \mathbf{V}}  = d\mathbf{O}, d\mathbf{K}, d\mathbf{V}}
+}
+\p{We will compute each gradient individually.}
+\ol{
+  \li{#{d\mathbf{P}}: this is just a straightforward application of the chain rule. In particular, #{\mathbf{O} = \mathbf{P} \mathbf{V}} so that
+  ##{
+     d\mathbf{P} = \frac{\partial \phi(\mathbf{O})}{\partial \mathbf{P}} = \frac{\partial \phi(\mathbf{O})}{\partial \mathbf{O}} \frac{\partial \mathbf{O}}{\partial \mathbf{P}} = d\mathbf{O} \mathbf{V}^T
+    }
+    \p{
+    To sanity check, let us look at the shapes. #{d\mathbf{O}} is the partial with respect to the outputs #{O}, so we need an entry for each output and it is #{N \times d}. #{V^T} is #{d \times N}, so that the result #{d\mathbf{P}} is #{N \times N} as desired.
+    }
+    \p{Furthermore, we can see this by writing #{\mathbf{O}_{ik} = \sum_{j} \mathbf{P}_{ij} \mathbf{V}_{jk}}. Then}
+    ##{
+      \begin{align*}
+       d\mathbf{P}_{ij} &= \sum_{i} \frac{\partial \phi}{\partial \mathbf{O}_{ik}} \cdot \frac{\partial \mathbf{O}_{ik}}{\partial \mathbf{P}_{ij}}  \\
+                        &= \sum_{i} d\mathbf{O}_{ik} \mathbf{V}_{jk} 
+      .\end{align*}
+    }
+  }
+  \li{#{d\mathbf{V}}: this is just the same as #{d\mathbf{P}}. In particular, #{\mathbf{O} = \mathbf{P} \mathbf{V}} so that
+  ##{
+     d\mathbf{V} = \frac{\partial \phi(\mathbf{O})}{\partial \mathbf{V}} = \frac{\partial \phi(\mathbf{O})}{\partial \mathbf{O}} \frac{\partial \mathbf{O}}{\partial \mathbf{V}} = \mathbf{P}^T d\mathbf{O} 
+    }
+    \p{Furthermore, we can see this by writing #{\mathbf{O}_{ik} = \sum_{j} \mathbf{P}_{ij} \mathbf{V}_{jk}}. Then}
+    ##{
+      \begin{align*}
+       d\mathbf{V}_{jk} &= \sum_{i} \frac{\partial \phi}{\partial \mathbf{O}_{ik}} \cdot \frac{\partial \mathbf{O}_{ik}}{\partial \mathbf{V}_{jk}}  \\
+                        &= \sum_{i} d\mathbf{O}_{ik} \mathbf{P}_{ij} 
+      .\end{align*}
+    }
+  }
+  \li{#{d\mathbf{S}}: now we apply chain rule with #{d\mathbf{P}}. However, we must take the gradient through the [softmax](C00V). Exiting matrix notation hell, if we consider the scalar case. Let #{\mathbf{s}} and #{\mathbf{p}} just be rows. Then using the [scalar softmax derivation](C00V)
+    ##{
+      \begin{align*}
+       d\mathbf{s}_j &= \sum_{i} d\mathbf{p}_i \cdot \frac{\partial \mathbf{p}_i}{\partial \mathbf{s}_j} \\  
+       &= \sum_{i} d\mathbf{p}_i \cdot (\delta_{ij}\mathbf{p}_i - \mathbf{p}_{ij}) \\
+       &= d \mathbf{p}_{j} \mathbf{p}_{j} - \mathbf{p}_{j}\sum_{i} d\mathbf{p}_{i} \mathbf{p}_{i}
+      .\end{align*}
+      }
+    Now if we rewrite this as the row vector, we get
+    ##{
+      \begin{align*}
+        d\mathbf{S}_{k} &= \mathbf{P}_{k} \odot (d\mathbf{P}_{k} - \mathbf{P}_k \cdot d\mathbf{P}_k)
+      .\end{align*}
+      }
+    To get back to the full matrix, define #{\mathbf{D}_i = \mathbf{P}_i \cdot d\mathbf{P}_i} i.e. a vector whose #{i}th entry is #{\mathbf{P}_i \cdot d\mathbf{P}_i}. Then we have that
+    ##{
+      \begin{align*}
+        d\mathbf{S} &= \mathbf{P} \odot (d\mathbf{P} - \mathbf{D})
+      .\end{align*}
+      }
+  }
+  \li{#{d\mathbf{Q}}: To get #{d\mathbf{Q}}, we just apply the chain rule to #{d\mathbf{S}}. Since #{\mathbf{S} = \mathbf{Q} \mathbf{K}^T},
+  ##{
+    \begin{align*}
+       d\mathbf{Q}_{i} &= \sum_{j} d\mathbf{S}_{ij} \mathbf{K}_{j} \\
+                      &= \sum_{j} d\mathbf{S}_{ij} \mathbf{K}_{j}
+    .\end{align*}
+    }
+  }
+  \li{#{d\mathbf{K}}: Same as #{d\mathbf{Q}} i.e.}
+}
+\problem{#{d\mathbf{P}} is an #{N \times N} matrix. Materializing this is equivalent to materialing the attention matrix in the forward pass.} 
+\iblock{
+  \strong{Key Insight:} We do not need to materialize the entire #{N \times N} matrix #{d\mathbf{P}}. We can \em{recompute} via
+  ##{d\mathbf{P}_{ij} = \sum_{k} d\mathbf{O}_{ik} \mathbf{V}_{jk} }
+  Only need to #{i}th row of #{d\mathbf{O}} and #{j}th row of #{\mathbf{V}}.
+}
+  \p{To get around this, we \em{recompute} using the #{\mathbf{K}, \mathbf{Q}, \mathbf{V}} values already resident in memory. Namely, #{\mathbf{P}_{ij} = \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}}}, where #{\mathbf{L}_i} is the normalization constant for the #{i}th row. Therefore,}
+  ##{
+    \begin{align*}
+    \mathbf{D}_i &= \mathbf{P}_{i} \cdot d\mathbf{P}_{i}  \\
+    &= \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} d\mathbf{P}_{ij} \\
+    &= \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} d\mathbf{O}_{i}^{T} \mathbf{V}_{j} \\
+    &= \sum_{j} d\mathbf{O}_{i}^{T} \left(\frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} \cdot \mathbf{V}_{j}\right) \\
+    &=  d\mathbf{O}_{i}^{T} \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} \cdot \mathbf{V}_{j} \\
+    &= d\mathbf{O}_{i}^{T} \mathbf{O}_{i}
+    .\end{align*}
+    }
+}

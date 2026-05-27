@@ -1,0 +1,16 @@
+\date{2026-05-21T13:06:35Z}
+\title{\code{atol} vs. \code{rtol}}
+\import{base-macros}
+\author{kellenkanarios}
+
+\p{When testing whether two kernel outputs match, it is often a problem of numerical precision. Using \code{np.testing.assert_allclose} considers two outputs equivalent if ##{|\text{actual} - \text{desired}| \leq \text{atol} + \text{rtol}*|\text{desired}|}}
+\ul{
+  \li{\code{atol} is the absolute tolerance i.e. #{|\text{actual} - \text{desired}| \leq \text{atol}}}
+  \li{\code{rtol} is the relative tolerance i.e. #{|\text{actual} - \text{desired}| \leq \text{atol} + \text{rtol}*|\text{desired}|}}
+}
+\remark{
+\code{rtol} is not informative for values close to zero, so it is often thrown out when testing things like backward equivalence. 
+}
+\remark{
+\code{atol} is not informative for very large values, where differing by #{1, 10, \ldots} is not a big deal if the outputs are on orders of #{10^9, 10^{12}, \ldots}
+}

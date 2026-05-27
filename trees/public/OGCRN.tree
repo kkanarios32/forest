@@ -1,0 +1,10 @@
+\date{2026-05-22T17:20:00Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Vector Processing Unit}
+\p{A core component of the [TPU architecture](NZZ7) responsible for elementwise operations.}
+\ul{
+  \li{2D [SIMD](Q7ZD) execution, where each of 1024 \em{sites} execute same program in lockstep.}
+  \li{Each site contains 4 ALUs, enabling 4096 FLOPs.}
+  \li{Fed a 8x128 [Vector Register](OGCRO) in one cycle.}
+}

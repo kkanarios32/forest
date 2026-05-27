@@ -1,0 +1,14 @@
+\date{2026-05-24}
+\author{kellenkanarios}
+\title{Total store order}
+\tag{public}
+\import{base-macros}
+\taxon{Definition}
+
+\p{A [[BCFG]] relaxation in which loads may be hoisted above prior stores, but no other reorderings are permitted. The motivation: a store can sit in the [[UNB6]] waiting for cache, while subsequent loads — which do not touch the buffered address — proceed without stalling.}
+
+\p{Same-core reads of a still-buffered store get the right value through [[GXCN]]; cross-core reads see the old value until the buffer drains. This asymmetry is the entire point of TSO's relaxation: the store buffer hides latency from the issuing thread without forcing other threads to wait. x86 implements TSO.}
+
+\remark{Under TSO, Dekker's algorithm is still broken without [[R03A]] — the classic example where TSO is too weak for naive software synchronization.}
+
+\remark{The IBM 370 variant is TSO without [[GXCN]] — it preserves global store atomicity at the cost of same-core stall-on-self-read.}

@@ -1,0 +1,16 @@
+\date{2026-05-22T16:49:15Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Problems Encountered: [FlexTPU](FlexTPU)}
+
+\p{
+  \strong{The problem}. The returned mask is i1 (bool). On TPU, mask vectors are physically held in i16 vector registers, and converting i16 → i1 requires an LLVM trunci. Mosaic doesn't support trunci from an i16 vector to an i1 vector, so a naive computed_mask.T blows up at lowering time.
+}
+\p{\strong{The fix} (line 409). \code{computed_mask = computed_mask.astype(jnp.int8).T != jnp.int8(0)} 
+  \ol{
+    \li{\code{astype(jnp.int8)} widens the bool to i8 (a supported vector type — no truncation).}
+    \li{ 2. .T transposes the i8 vector, which Mosaic handles fine. }
+    \li{ 3. != jnp.int8(0) recovers bool via an icmp, which is supported — no trunci needed. So the route is i1 → i8 → transpose → expand. 
+    }
+  }
+}

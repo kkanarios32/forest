@@ -1,0 +1,59 @@
+\date{2026-05-20T20:51:34Z}
+\title{Online Softmax}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+
+\p{This covers the math behind the online softmax algorithm required by [[R0PM]].}
+
+\section{Safe softmax}{
+\p{The first thing we must consider is numerical precision. Namely, the [original softmax](C00V) operation is given by}
+##{\mathrm{softmax}(\mathbf{x}) = \frac{\exp(\mathbf{x})}{\sum_{i=1}^n \exp(\mathbf{x}_i)}}
+\p{However, when operating with [low precision data types](DEQV) (i.e. float16) the maximum value is #{65536}. Therefore, with #{\exp} we can easily get numerically overflow.}
+\p{To get around this, the online softmax algorithm adheres to the \em{safe softmax}. For safe softmax, we simply multiply the numerator and denominator by #{\exp(-m)}, where #{m = \max \{x_{1}, \ldots, x_n\}}. This gives}
+##{\mathrm{softmax}(\mathbf{x}) = \frac{\exp(\mathbf{x} - m)}{\sum_{i=1}^n \exp(\mathbf{x}_i - m)}}
+\p{Since #{x_i - m \leq 0}, this ensures that each #{\exp(x_i - m)} is bounded in a safe range.}
+
+\problem{Note that computing the #{\max} over #{\mathbf{x}} means that we must have all of the logits in a row of #{QK^T} materialized in [SMEM](8GZN), or first loop over all of them to compute the max before computing the normalization constant.}
+}
+
+\section{Fusing the max and normalization}{
+\p{The online softmax algorithm fuses the max reduction into the normalization pass, so a single sweep over the row suffices to compute the normalization with the max. The key difficulty is that the denominator depends on #{n} \strong{for each} #{i} i.e.}
+##{d = \sum_{i=1}^{n} \exp(x_i - m_n)}
+\p{
+Therefore, we must find a recursive relationship such that #{d_{i+1} = f(d_i, m_i, x_{i+1})} for some function #{f}. This would then allow us to locally compute #{d_{i+1}} with only the local information of current #{x_{i+1}} and the two running statistics #{d_i} and #{m_i}. This is exactly the kind of algorithm that is conducive to [memory tiling](OGCRV).
+}
+\question{What is #{f(d_i, m_i, x_{i+1})}?}
+\answer{Consider #{d_{i+1} = d_i \cdot \exp(m_{i} - m_{i + 1}) + \exp(x_{i + 1} - m_{i + 1})}.}
+\proof{
+  This can be seen by directly rewriting #{d_{i + 1}}. 
+  ##{
+    \begin{align*}
+      d_{i + 1} &= \sum_{j = 1}^{i+1} \exp(x_j - m_{i + 1}) \\
+      &= \left(\sum_{j = 1}^{i} \exp(x_j - m_{i+1})\right) + \exp(x_{i+1} - m_{i+1}) \\
+      &= \left(\sum_{j = 1}^{i} \exp(x_j - m_{i})\right)\exp(m_{i} - m_{i + 1}) + \exp(x_{i+1} - m_{i+1}) \\
+      &= d_{i} \exp(m_{i} - m_{i + 1}) + \exp(x_{i+1} - m_{i+1})
+    \end{align*}
+  }
+}
+\p{
+The running denominator #{d} is rescaled by #{e^{m - m_{\text{new}}}} each time a new maximum is found, keeping it consistent with the safe-softmax shift.}
+\p{
+\latex{#{
+\begin{algo}
+\State $m \gets -\infty;\quad d \gets 0$
+\For{$i = 1$ \textbf{to} $n$}
+  \State $m_{i+1} \gets \max(m_i, x_i)$
+  \State $d_{i + 1} \gets d_i \cdot e^{\,m_i - m_{i+1}} + e^{\,x_i - m_{i}}$
+\EndFor
+\For{$i = 1$ \textbf{to} $n$}
+    \State $\mathbf{p}_{i} \gets e^{\,x_i - m_n} / d \;$
+\EndFor
+\Return $\mathbf{p}$
+\end{algo}
+}}
+}
+\remark{
+Unfortunately, we cannot get around the second pass to compute the normalized output for #{\mathbf{p}}. However, this is not the case in [[R0PM]].
+}
+}
