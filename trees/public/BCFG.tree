@@ -7,32 +7,8 @@
 
 \p{A fence is implemented with a counter — incremented on issue of each memory op, decremented on completion. The fence stalls dispatch until the counter reaches zero, which forces the [[UNB6]] to drain before later accesses may proceed.}
 
-\section{Common relaxations}{
-\ul{
-  \li{\strong{TSO (Total Store Order)} — loads may be hoisted above prior stores. The motivation: a store can sit in the [[UNB6]] waiting for cache, while subsequent loads (which don't touch the buffered address) proceed. Same-core reads of the buffered store still get the right value through [[GXCN]]; cross-core reads see the old value until drain. x86 implements TSO.}
-  \li{\strong{RMO (Relaxed Memory Order)} — anything may be reordered. Stronger reorderings still need to be justified per case:
-    \ul{
-      \li{Load → store: no performance gain to reorder; leave alone.}
-      \li{Store → store: keep ordering with a slightly larger store buffer.}
-      \li{Load → load: speculate the second load while waiting for the first; reorder is invisible if the speculation is verified.}
-    }
-  }
-  \li{\strong{IBM 370 variant} — TSO + no [[GXCN]] (preserves global store atomicity at the cost of same-core stall-on-self-read).}
-}
-}
+\p{Real machines pick a relaxation along a spectrum: [[VH8Y]] permits only store-load reordering and is what x86 ships; [[WT44]] permits anything and pushes the ordering burden onto the programmer. Either way, the next move is to make the fences themselves cheaper, which is what [[ZWHV]] does.}
 
-\remark{Under TSO, Dekker's algorithm is still broken without fences — the classic example where TSO is too weak for naive software synchronization.}
-
-\section{Release consistency}{
-\p{In RMO you still need fences to ensure data-race freedom. Release consistency \em{relaxes the fences themselves}:}
-\ol{
-  \li{\strong{Full fence} — no instruction may cross in either direction.}
-  \li{\strong{Half fence (acquire/release)}:
-    \ul{
-      \li{Acquire — operations after may not move above.}
-      \li{Release — operations before may not move below.}
-    }
-    Expanding a critical section is fine; entering it (acquire) must not let subsequent ops sneak above; exiting (release) must not let prior ops sneak below.}
-}
-\p{C++ \code{std::atomic} compiles to half-fences in the right places, which is why it is the standard primitive for portable lock-free code.}
-}
+\transclude{VH8Y}
+\transclude{WT44}
+\transclude{ZWHV}

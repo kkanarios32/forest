@@ -39,20 +39,7 @@
 \section{Data-level parallelism}{
 \transclude{Q7ZD}
 \transclude{82U4}
-\transclude{7F19}
-\transclude{X9VZ}
-\transclude{XPAA}
-\transclude{U1FO}
-\transclude{8GZN}
-
-\section{ASIC accelerators}{
-\p{\em{Application-Specific Integrated Circuits} fuse multiple operations into hardware that a general-purpose pipeline would have to schedule sequentially. The motivating intuition: if you frequently \em{multiply-accumulate}, the multiply and the add each traverse the entire pipeline separately. A dedicated multiply-accumulate ALU does both in one cycle.}
-\p{The cost-of-operation gap is large — 32-bit vs 8-bit addition has roughly an order of magnitude difference in energy per op. ASICs win by matching width to need.}
 }
 
-\section{Processing in memory}{
-\transclude{2BGU}
-}
-}
-
+\transclude{OGCRS}
 \transclude{667T}

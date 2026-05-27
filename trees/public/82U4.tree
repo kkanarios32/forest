@@ -13,7 +13,10 @@
 \tr{\td{Optimizes for}\td{Single-thread latency}\td{Aggregate throughput}}
 }
 
+
 \p{The GPU equivalent of a core is a \em{streaming multiprocessor} (SM). Each SM executes the same instruction across many threads in lockstep — the [[7F19]] programming model — and uses a per-register [[XPAA]] rather than CPU-style [wakeup-select](UJPD) to decide which warp can issue next.}
+
+\transclude{7F19}
 
 \section{Hiding stalls}{
 \question{How do GPUs deal with cache misses given they don't have OoO machinery?}
@@ -21,6 +24,9 @@
 
 \p{In a CPU, [context switching](OKCI) is expensive — registers must be saved to memory. On a GPU, each SM has an enormous register file that holds the registers of all resident warps simultaneously, so a context switch is just changing which warp the scheduler picks. This is the concrete payoff of the [[G4ML]] design choice: latency hiding becomes a scheduling problem instead of a microarchitecture problem.}
 }
+
+\transclude{XPAA}
+\transclude{X9VZ}
 
 \section{CUDA hierarchy}{
 \ol{
@@ -31,4 +37,7 @@
 \remark{The physical size of shared memory constrains the number of resident threads per SM.}
 }
 
+\transclude{8GZN}
+
 \remark{Use GPUs for parallel parts where throughput dominates. Use CPUs for sequential parts where latency dominates — the [[RJEB]] axis is the right frame for deciding which.}
+

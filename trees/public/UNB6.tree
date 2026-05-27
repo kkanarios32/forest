@@ -13,6 +13,6 @@
   \li{\strong{Drain} — the value is written to L1 and becomes visible to the coherence protocol, and therefore to other cores.}
 }
 
-\p{Between these two moments the value lives only in the store buffer. Younger same-core loads can still observe it through [[GXCN]], but other cores cannot — which is the structural reason [[BCFG]] permits store-load reordering across cores under TSO. A [[R03A]] like \code{mfence} forces the buffer to drain so that subsequent operations see a consistent global view.}
+\p{Between these two moments the value lives only in the store buffer. Younger same-core loads can still observe it through [[GXCN]], but other cores cannot — which is the structural reason [[VH8Y]] permits store-load reordering across cores. A [[R03A]] like \code{mfence} forces the buffer to drain so that subsequent operations see a consistent global view.}
 
 \remark{Retirement bandwidth (ROB commits per cycle) and store bandwidth (drain rate to L1) are separate throughput limits. A workload that retires stores faster than the cache can absorb them eventually backs up the ROB anyway, but the store buffer absorbs short bursts at no cost.}

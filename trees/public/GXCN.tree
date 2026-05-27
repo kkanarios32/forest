@@ -9,6 +9,6 @@
 
 \p{Forwarding is the reason the [commit/drain split](UNB6) does not break the single-core illusion. Within one thread, a store followed by a load to the same address must read the just-stored value — and would, on a machine without a store buffer, because the cache is the single source of truth. With a store buffer, the cache is briefly stale relative to architectural state; forwarding patches that hole.}
 
-\p{The structural consequence shows up in [[BCFG]]: under TSO, store-load reordering across cores is permitted precisely because forwarding makes same-core reads see the new value, while cross-core reads continue to see the old one until drain. This asymmetry is the entire point of TSO's relaxation — the store buffer can hide latency from the issuing thread without forcing other threads to wait.}
+\p{The structural consequence shows up in [[VH8Y]]: store-load reordering across cores is permitted precisely because forwarding makes same-core reads see the new value, while cross-core reads continue to see the old one until drain. This asymmetry is the entire point of TSO's relaxation — the store buffer can hide latency from the issuing thread without forcing other threads to wait.}
 
 \remark{Address matching in the store buffer is partial: most implementations check enough low-order bits to detect a hit but fall back to a stall (or a re-execution) on aliasing or partial-overlap cases. Reliable wide-then-narrow forwarding is one of the harder corners of memory disambiguation.}

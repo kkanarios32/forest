@@ -2,7 +2,8 @@
 
 \def\latex-preamble{
  \startverb
- \usepackage{tikz, tikz-cd, mathtools, amssymb, amsmath, stmaryrd}
+ \usepackage{tikz, tikz-cd, mathtools, amssymb, amsmath, stmaryrd, algpseudocodex}
+ \newenvironment{algo}{\begin{varwidth}{20cm}\begin{algorithmic}}{\end{algorithmic}\end{varwidth}}
  \ExplSyntaxOff
  \stopverb
 }

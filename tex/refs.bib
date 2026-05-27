@@ -24,6 +24,14 @@
   file = {/home/kellen/Downloads/papers/OPAL OFFLINE PRIMITIVE DISCOVERY FOR ACCEL- ERATING OFFLINE REINFORCEMENT LEARNING - Ajay et al..pdf}
 }
 
+@article{bassamzadehComparativeStudyDSL,
+  title = {A {{Comparative Study}} of {{DSL Code Generation}}: {{Fine-Tuning}} vs. {{Optimized Retrieval Augmentation}}},
+  author = {Bassamzadeh, Nastaran and Methani, Chhaya},
+  abstract = {Natural Language to Code Generation has made significant progress in recent years with the advent of Large Language Models (LLMs). While generation for general-purpose languages like C, C++, and Python has improved significantly, LLMs struggle with custom function names in Domain Specific Languages or DSLs. This leads to higher hallucination rates and syntax errors, specially for DSLs having a high number of custom function names. Additionally, constant updates to function names add to the challenge as LLMs need to stay up-to-date. In this paper, we present optimizations for using Retrieval Augmented Generation (or RAG) with LLMs for DSL generation along with an ablation study comparing these strategies. We generated a train as well as test dataset with a DSL to represent automation tasks across roughly 700 APIs in public domain. We used the training dataset to fine-tune a Codex model for this DSL. Our results showed that the fine-tuned model scored the best on code similarity metric. With our RAG optimizations, we achieved parity for similarity metric. The compilation rate, however, showed that both the models still got the syntax wrong many times, with RAG-based method being 2 pts better. Conversely, hallucination rate for RAG model lagged by 1 pt for API names and by 2 pts for API parameter keys. We conclude that an optimized RAG model can match the quality of fine-tuned models and offer advantages for new, unseen APIs.},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/A Comparative Study of DSL Code Generation Fine-Tuning vs. Optimized Retrieval Augmentation - Bassamzadeh and Methani.pdf}
+}
+
 @misc{caoKSearchLLMKernel2026,
   title = {K-{{Search}}: {{LLM Kernel Generation}} via {{Co-Evolving Intrinsic World Model}}},
   shorttitle = {K-{{Search}}},
@@ -41,6 +49,25 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence},
   file = {/home/kellen/Downloads/papers/K-Search LLM Kernel Generation via Co-Evolving Intrinsic World Model - Cao et al..pdf}
+}
+
+@misc{daoFlashAttention2FasterAttention2023,
+  title = {{{FlashAttention-2}}: {{Faster Attention}} with {{Better Parallelism}} and {{Work Partitioning}}},
+  shorttitle = {{{FlashAttention-2}}},
+  author = {Dao, Tri},
+  year = 2023,
+  month = jul,
+  number = {arXiv:2307.08691},
+  eprint = {2307.08691},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2307.08691},
+  urldate = {2026-05-25},
+  abstract = {Scaling Transformers to longer sequence lengths has been a major problem in the last several years, promising to improve performance in language modeling and high-resolution image understanding, as well as to unlock new applications in code, audio, and video generation. The attention layer is the main bottleneck in scaling to longer sequences, as its runtime and memory increase quadratically in the sequence length. FlashAttention exploits the asymmetric GPU memory hierarchy to bring significant memory saving (linear instead of quadratic) and runtime speedup (2-4\$\textbackslash times\$ compared to optimized baselines), with no approximation. However, FlashAttention is still not nearly as fast as optimized matrix-multiply (GEMM) operations, reaching only 25-40\textbackslash\% of the theoretical maximum FLOPs/s. We observe that the inefficiency is due to suboptimal work partitioning between different thread blocks and warps on the GPU, causing either low-occupancy or unnecessary shared memory reads/writes. We propose FlashAttention-2, with better work partitioning to address these issues. In particular, we (1) tweak the algorithm to reduce the number of non-matmul FLOPs (2) parallelize the attention computation, even for a single head, across different thread blocks to increase occupancy, and (3) within each thread block, distribute the work between warps to reduce communication through shared memory. These yield around 2\$\textbackslash times\$ speedup compared to FlashAttention, reaching 50-73\textbackslash\% of the theoretical maximum FLOPs/s on A100 and getting close to the efficiency of GEMM operations. We empirically validate that when used end-to-end to train GPT-style models, FlashAttention-2 reaches training speed of up to 225 TFLOPs/s per A100 GPU (72\textbackslash\% model FLOPs utilization).},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/FlashAttention-2 Faster Attention with Better Parallelism and Work Partitioning - Dao.pdf}
 }
 
 @misc{daoFlashAttentionFastMemoryEfficient2022,
@@ -158,6 +185,24 @@
   langid = {english},
   keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
   file = {/home/kellen/Downloads/papers/InfoBot Transfer and Exploration via the Information Bottleneck - Goyal et al..pdf}
+}
+
+@misc{guoDRTritonLargeScaleSynthetic2026,
+  title = {{{DRTriton}}: {{Large-Scale Synthetic Data Reinforcement Learning}} for {{Triton Kernel Generation}}},
+  shorttitle = {{{DRTriton}}},
+  author = {Guo, Siqi and Lin, Ming and Yang, Tianbao},
+  year = 2026,
+  month = mar,
+  number = {arXiv:2603.21465},
+  eprint = {2603.21465},
+  primaryclass = {cs.CL},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2603.21465},
+  urldate = {2026-05-20},
+  abstract = {Developing efficient CUDA kernels is a fundamental yet challenging task in the generative AI industry. Recent researches leverage Large Language Models (LLMs) to automatically convert PyTorch reference implementations to CUDA kernels, significantly reducing the engineering efforts. State-of-the-art LLMs, such as GPT-5.2 and Claude-Sonnet-4.5, still struggle in this specific task. To address this challenge, we propose DRTriton, a scalable learning framework for training LLMs to convert PyTorch codes into highly optimized Triton kernels, which are then compiled to CUDA kernels at runtime. DRTriton consists of three key components: (i) a data synthetic algorithm CSP-DAG that guarantees full coverage and unbiased uniform sampling over the operator space with controlled difficulty; (ii) a curriculum reinforcement learning with decoupled reward efficiently optimizes conversion success rate and inference speed simultaneously; and (iii) a testtime search algorithm that further improves the inference speed of the generated Triton kernels. Notably, despite being trained exclusively on synthetic data, DRTriton generalizes effectively to real-world CUDA kernels that are challenging even for human experts. Experimental results show that DRTriton-7B achieves speedup on 92\% of the KernelBench Level 2, compared to 23\% for GPT-5.2 and 19\% for Claude-Sonnet-4.5.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/DRTriton Large-Scale Synthetic Data Reinforcement Learning for Triton Kernel Generation - Guo et al..pdf}
 }
 
 @article{harbWhenWaitingNot2018,
@@ -290,6 +335,23 @@
   copyright = {Creative Commons Attribution 4.0 International},
   keywords = {Artificial Intelligence (cs.AI),Distributed Parallel and Cluster Computing (cs.DC),FOS: Computer and information sciences,Machine Learning (cs.LG)},
   file = {/home/kellen/Downloads/papers/CUDA-L1 Improving CUDA Optimization via Contrastive Reinforcement Learning - Li et al..pdf}
+}
+
+@misc{liuRingAttentionBlockwise2023,
+  title = {Ring {{Attention}} with {{Blockwise Transformers}} for {{Near-Infinite Context}}},
+  author = {Liu, Hao and Zaharia, Matei and Abbeel, Pieter},
+  year = 2023,
+  month = nov,
+  number = {arXiv:2310.01889},
+  eprint = {2310.01889},
+  primaryclass = {cs.CL},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2310.01889},
+  urldate = {2026-05-20},
+  abstract = {Transformers have emerged as the architecture of choice for many state-of-the-art AI models, showcasing exceptional performance across a wide range of AI applications. However, the memory demands imposed by Transformers limit their ability to handle long sequences, thereby posing challenges in utilizing videos, actions, and other long-form sequences and modalities in complex environments. We present a novel approach, Ring Attention with Blockwise Transformers (Ring Attention), which leverages blockwise computation of self-attention and feedforward to distribute long sequences across multiple devices while fully overlapping the communication of key-value blocks with the computation of blockwise attention. Our approach enables training and inference of sequences that are up to device count times longer than those achievable by prior memory-efficient Transformers, without resorting to approximations or incurring additional communication and computation overheads. Extensive experiments on language modeling and reinforcement learning tasks demonstrate the effectiveness of our approach in allowing millions of tokens context size and improving performance. 1.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computation and Language},
+  file = {/home/kellen/Downloads/papers/Ring Attention with Blockwise Transformers for Near-Infinite Context - Liu et al..pdf}
 }
 
 @misc{maVIPUniversalVisual2023,
@@ -479,6 +541,21 @@
   file = {/home/kellen/Downloads/papers/Is Value Learning Really the Main Bottleneck in Offline RL - Park et al..pdf}
 }
 
+@inproceedings{parvezRetrievalAugmentedCode2021,
+  title = {Retrieval {{Augmented Code Generation}} and {{Summarization}}},
+  booktitle = {Findings of the {{Association}} for {{Computational Linguistics}}: {{EMNLP}} 2021},
+  author = {Parvez, Md Rizwan and Ahmad, Wasi and Chakraborty, Saikat and Ray, Baishakhi and Chang, Kai-Wei},
+  year = 2021,
+  pages = {2719--2734},
+  publisher = {Association for Computational Linguistics},
+  address = {Punta Cana, Dominican Republic},
+  doi = {10.18653/v1/2021.findings-emnlp.232},
+  urldate = {2026-05-20},
+  abstract = {Software developers write a lot of source code and documentation during software development. Intrinsically, developers often recall parts of source code or code summaries that they had written in the past while implementing software or documenting them. To mimic developers' code or summary generation behavior, we propose a retrieval augmented framework, REDCODER, that retrieves relevant code or summaries from a retrieval database and provides them as a supplement to code generation or summarization models. REDCODER has a couple of uniqueness. First, it extends the state-of-the-art dense retrieval technique to search for relevant code or summaries. Second, it can work with retrieval databases that include unimodal (only code or natural language description) or bimodal instances (code-description pairs). We conduct experiments and extensive analysis on two benchmark datasets of code generation and summarization in Java and Python, and the promising results endorse the effectiveness of our proposed retrieval augmented framework.},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/Retrieval Augmented Code Generation and Summarization - Parvez et al..pdf}
+}
+
 @misc{pertschAcceleratingReinforcementLearning2020,
   title = {Accelerating {{Reinforcement Learning}} with {{Learned Skill Priors}}},
   author = {Pertsch, Karl and Lee, Youngwoon and Lim, Joseph J.},
@@ -591,6 +668,23 @@
   file = {/home/kellen/Downloads/papers/SuperCoder Assembly Program Superoptimization with Large Language Models - Wei et al..pdf}
 }
 
+@misc{wibaultAbstractionOfflineGoalConditioned2026,
+  title = {Abstraction for {{Offline Goal-Conditioned Reinforcement Learning}}},
+  author = {Wibault, Clarisse and Goldie, Alexander and Villares, Antonio and Osborne, Maike and Foerster, Jakob},
+  year = 2026,
+  month = may,
+  number = {arXiv:2605.22711},
+  eprint = {2605.22711},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2605.22711},
+  urldate = {2026-05-26},
+  abstract = {Markov Decision Processes (MDPs) often exhibit significant redundancy due to symmetries and shared structure across state-goal pairs in real-world GoalConditioned Reinforcement Learning (GCRL). While hierarchical policies have been motivated for horizon reduction via temporal abstraction in offline GCRL, we demonstrate that hierarchy also enables absolute abstraction. By introducing relativised options as well as distinct representations for different levels of the hierarchy, we demonstrate how an agent can reuse experience across similar contexts of the state-space. Based on this framework, we introduce two simple algorithms for learning relativised options and abstracting from the absolute frame of reference. Our experiments show that such inductive biases significantly improve performance in offline GCRL.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Abstraction for Offline Goal-Conditioned Reinforcement Learning - Wibault et al..pdf}
+}
+
 @article{xuOFFLINERLNO2023,
   title = {{{OFFLINE RL WITH NO OOD ACTIONS}}: {{IN-SAMPLE LEARNING VIA IMPLICIT VALUE REGULARIZATION}}},
   author = {Xu, Haoran and Jiang, Li and Li, Jianxiong and Yang, Zhuoran and Wang, Zhaoran and Chan, Victor Wai Kin and Zhan, Xianyuan},
@@ -641,4 +735,29 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Symbolic Computation},
   file = {/home/kellen/Downloads/papers/Augmenting Policy Learning with Routines Discovered from a Single Demonstration - Zhao et al..pdf}
+}
+
+@article{zhouDocPromptingGENERATINGCODE2023,
+  title = {{{DocPrompting}}: {{GENERATING CODE BY RETRIEVING}}},
+  author = {Zhou, Shuyan and Alon, Uri and Xu, Frank F and Wang, Zhiruo and Jiang, Zhengbao and Neubig, Graham},
+  year = 2023,
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/DocPrompting GENERATING CODE BY RETRIEVING - Zhou et al..pdf}
+}
+
+@misc{zhouFlatteningHierarchiesPolicy2026,
+  title = {Flattening {{Hierarchies}} with {{Policy Bootstrapping}}},
+  author = {Zhou, John L. and Kao, Jonathan C.},
+  year = 2026,
+  month = jan,
+  number = {arXiv:2505.14975},
+  eprint = {2505.14975},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2505.14975},
+  urldate = {2026-05-18},
+  abstract = {Offline goal-conditioned reinforcement learning (GCRL) is a promising approach for pretraining generalist policies on large datasets of reward-free trajectories, akin to the self-supervised objectives used to train foundation models for computer vision and natural language processing. However, scaling GCRL to longer horizons remains challenging due to the combination of sparse rewards and discounting, which obscures the comparative advantages of primitive actions with respect to distant goals. Hierarchical RL methods achieve strong empirical results on longhorizon goal-reaching tasks, but their reliance on modular, timescale-specific policies and subgoal generation introduces significant additional complexity and hinders scaling to high-dimensional goal spaces. In this work, we introduce an algorithm to train a flat (non-hierarchical) goal-conditioned policy by bootstrapping on subgoal-conditioned policies with advantage-weighted importance sampling. Our approach eliminates the need for a generative model over the (sub)goal space, which we find is key for scaling to high-dimensional control in large state spaces. We further show that existing hierarchical and bootstrapping-based approaches correspond to specific design choices within our derivation. Across a comprehensive suite of state- and pixel-based locomotion and manipulation benchmarks, our method matches or surpasses state-of-the-art offline GCRL algorithms and scales to complex, long-horizon tasks where prior approaches fail.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics},
+  file = {/home/kellen/Downloads/papers/Flattening Hierarchies with Policy Bootstrapping - Zhou and Kao.pdf}
 }

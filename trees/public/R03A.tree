@@ -16,6 +16,6 @@
 
 \p{What a fence actually does in hardware is force the store buffer to drain (or wait for it to drain) rather than just waiting for [[BI4H]] commit. This is the distinction worth keeping straight: ROB commit makes a store architecturally real but invisible to other cores; the fence is what makes it visible. The cost is whatever latency the cache hierarchy adds — fences are expensive precisely because they undo the latency-hiding the [[UNB6]] exists to provide.}
 
-\p{Under [[OW4D]] every memory operation behaves as if a full fence sat on either side of it, which is why SC is fast to reason about and slow to implement. Real-world consistency models pick relaxations and require fences only at the points the programmer marks as ordering-sensitive — \em{acquire} and \em{release} half-fences (see release consistency in [[BCFG]]) are the common compromise.}
+\p{Under [[OW4D]] every memory operation behaves as if a full fence sat on either side of it, which is why SC is fast to reason about and slow to implement. Real-world consistency models pick relaxations and require fences only at the points the programmer marks as ordering-sensitive — \em{acquire} and \em{release} [[S5D0]]s (see [[ZWHV]]) are the common compromise.}
 
 \remark{A fence does not flush caches or invalidate anything — coherence traffic does that. A fence only constrains the issue order observed by the rest of the system.}

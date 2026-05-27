@@ -3,6 +3,35 @@
 \import{base-macros}
 \taxon{Definition}
 \title{Softmax}
-\p{The softmax function #{\sigma: \mathbb{R}^d \to \mathbb{R}^d} is defined by
-##{\sigma(\mathbf{x})_i = \frac{e^{x_i}}{\sum_{j = 1}^{d} e^{x_j}}}
+\p{The softmax function #{\mathrm{softmax}: \mathbb{R}^d \to \mathbb{R}^d} is defined by
+##{\mathrm{softmax}(\mathbf{x})_i = \frac{e^{x_i}}{\sum_{j = 1}^{d} e^{x_j}}}
+}
+
+\claim{
+  The Jacobian of the softmax function for #{\mathbf{y} = \mathrm{softmax}(\mathbf{x})} is given by
+  ##{
+    \begin{align*}
+      \frac{\partial y_i}{\partial x_j} = y_i(\delta_{ij} - y_j),
+    \end{align*}
+  }
+  or, in matrix form,
+  ##{
+    \begin{align*}
+      J = \mathrm{diag}(\mathbf{y}) - \mathbf{y}\mathbf{y}^\top.
+    \end{align*}
+  }
+}
+
+\proof{
+    Write #{y_i = e^{x_i} / S} with #{S = \sum_{k=1}^{d} e^{x_k}}, so that #{\partial S / \partial x_j = e^{x_j}}. By the quotient rule,
+##{
+    \begin{align*}
+      \frac{\partial y_i}{\partial x_j}
+        &= \frac{\delta_{ij} e^{x_i} S - e^{x_i} e^{x_j}}{S^2} \\
+        &= \delta_{ij}\frac{e^{x_i}}{S} - \frac{e^{x_i}}{S}\frac{e^{x_j}}{S} \\
+        &= \delta_{ij} y_i - y_i y_j \\
+        &= y_i(\delta_{ij} - y_j).
+    \end{align*}
+}
+    Collecting these entries into a matrix, the diagonal contributes #{y_i} along #{\mathrm{diag}(\mathbf{y})} and the #{-y_i y_j} term is the outer product #{\mathbf{y}\mathbf{y}^\top}, giving #{J = \mathrm{diag}(\mathbf{y}) - \mathbf{y}\mathbf{y}^\top}.
 }

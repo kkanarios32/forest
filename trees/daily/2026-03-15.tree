@@ -24,11 +24,5 @@
 }
 
 \section{Progress on Todos}{
-I completed the two leetcode problems. I set up copying over SSH to my TPU and have started a [worklog](FAO7) for the project. 
-}
-
-\section{Tomorrow's Todos}{
-\ol{
-  \li{test}
-}
+I completed the two leetcode problems. I set up copying over SSH to my TPU. 
 }

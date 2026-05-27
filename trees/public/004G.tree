@@ -4,7 +4,6 @@
 \import{base-macros}
 \title{Self-Attention}
 \author{kellenkanarios}
-\tag{llms}
 \p{
     TLDR: Learned weighting of token embeddings. Essentially, learning which words to "attend" to in the input sequence. Have matrices
 #{\mathbf{Q} = \begin{bmatrix}

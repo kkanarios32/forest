@@ -1,7 +1,7 @@
 \import{base-macros}
 \date{2026-05-12T22:59:14Z}
 \tag{public}
-\title{Shared memory and bank conflicts}
+\title{Shared memory (GPU)}
 
 \p{\em{Shared memory} on a GPU is a small (per-block) on-chip scratchpad with latency comparable to L1. Software-managed — the programmer explicitly stages data through it, the hardware does not cache for them. Used to:}
 \ul{
@@ -10,18 +10,8 @@
   \li{Communicate between threads within a block.}
 }
 
-\section{Bank conflicts}{
-\p{Shared memory is divided into \em{banks} (typically 32). Each bank can service one access per cycle. If two threads in a [[X9VZ]] access different addresses in the \em{same} bank, the accesses serialize — a \em{bank conflict}.}
-
-\p{Three behaviors when warp threads access shared memory:}
-\ul{
-  \li{Different banks: full parallelism. No conflict.}
-  \li{Same bank, same word: hardware broadcasts the word to all threads. No conflict.}
-  \li{Same bank, different words: serialize.}
-}
-
-\question{How to avoid bank conflicts?}
-\answer{Change the access pattern so threads hit different banks (often by transposing or by adding padding to break the stride that causes the conflict).}
-}
+\transclude{OGCRU}
 
 \remark{The GPU memory hierarchy is software-managed at L1 (shared memory) and coherent only at L2 — by restricting L1 to local-to-block scope, the architecture sidesteps the cost of a global [[GA7N]] protocol on a thousand-way-parallel chip.}
+
+\transclude{U1FO}

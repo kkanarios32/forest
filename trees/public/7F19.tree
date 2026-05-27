@@ -5,7 +5,7 @@
 \taxon{Definition}
 \tag{public}
 
-\p{\em{Single instruction, multiple threads}. A GPU [[82U4]] streaming multiprocessor issues one instruction per cycle to a group of threads — a [[X9VZ]] — but each thread within the group keeps its own program counter and register state. The hardware enforces lockstep execution within the warp while preserving the \em{illusion} of independent threads to the programmer.}
+\p{\em{Single instruction, multiple threads}. A [GPU](82U4) streaming multiprocessor issues one instruction per cycle to a group of threads — a [[X9VZ]] — but each thread within the group keeps its own program counter and register state. The hardware enforces lockstep execution within the warp while preserving the \em{illusion} of independent threads to the programmer.}
 
 \p{SIMT is the GPU's answer to a question the [[Q7ZD]] world struggled with: how do you get the throughput of wide vector execution without forcing the programmer to manually vectorize? Two mechanisms make this work.}
 
@@ -16,7 +16,7 @@
 }
 
 \section{Grouping flexibility}{
-\p{Threads are assigned to warps based on warp-ID, but the hardware and compiler are free to regroup. \em{Warp specialization} re-bundles threads with similar control-flow trajectories into the same warp so that future branches stay non-divergent. This is a class of optimization that pure SIMD cannot express — a SIMD ISA fixes the lane assignment at compile time.}
+\p{Threads are assigned to warps based on warp-ID, but the hardware and compiler are free to regroup. [[JKNL]] re-bundles threads with similar control-flow trajectories into the same warp so that future branches stay non-divergent. This is a class of optimization that pure SIMD cannot express — a SIMD ISA fixes the lane assignment at compile time.}
 }
 
 \p{The hardware cost of SIMT relative to SIMD is the per-thread PC and register state. The benefit is that a single binary runs efficiently across a wide range of dynamic control flow, which is why the model has dominated GPU programming since CUDA. The scoreboard mechanism described in [[XPAA]] operates per-warp rather than per-thread precisely because SIMT treats the warp as the unit of issue.}

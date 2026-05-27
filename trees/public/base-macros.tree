@@ -10,6 +10,10 @@
 \def\#[body]{
   \startverb#\stopverb\body
 }
+
+\def\smile[body]{
+  \startverb:)\stopverb\body
+}
 \def\colblock[body]{
  \<html:div>[class]{jms-indent-block}[style]{
   margin-left: 1em;
@@ -148,6 +152,14 @@
     \put\transclude/toc{false}
     \subtree{%
       \taxon{Remark}
+      \body
+    }
+}
+
+\def\notation[body]{%
+    \put\transclude/toc{false}
+    \subtree{%
+      \taxon{Notation}
       \body
     }
 }

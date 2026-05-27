@@ -7,8 +7,6 @@ description: Decide how to split a long-form note into atomic concept trees for 
 
 ## Guiding principles
 
-**The main workflow we are trying to achieve with atomization is to build long-form notes strictly via transcluding atomic increments. Namely, if we ever want to look up a specific concept it must have an associated note. However, we also want centralized notes to accumulate related information for ease of studying.**
-
 **Parent notes should aggressively link / transclude atomic notes so that we can follow backlinks from the atomic notes to their place in a larger context**
 
 **An atomic note MUST make sense on its own**
@@ -29,7 +27,7 @@ A concept is the right granularity for its own tree when **all** of
 these hold:
 
 1. **It has a stable name.** The concept can be titled in 1-5 words
-   (`MESI protocol`, `Store buffer drain`, `Borel's Normal Number
+   (`MESI protocol`, `Store buffer`, `Borel's Normal Number
    Theorem`). If you cannot title it without using "and", "vs", or
    "with", it is probably two concepts.
 2. **A single orienting sentence works.** You can write one
@@ -52,11 +50,8 @@ these hold:
 strongest signal of an under-atomized note. Examples:
 
 - "ROB vs. Store Buffer" → split into `Reorder buffer (ROB)`,
-  `Store buffer`. Can keep ROB vs. Store buffer as a parent note that references the two notes.
+  `Store buffer`. KEEP ROB VS. STORE BUFFER AS A PARENT NOTE THAT REFERENCES THE TWO NOTES. This is what enables more learning through context / backlinks.
 - "LRU and Clock Algorithms" -> should be split into LRU and Clock algorithm, where the Clock algorithm can reference LRU.
-- "Segmented Page Tables" → reads single but the body covers both
-  segmented page tables *and* hierarchical/multi-level page tables.
-  Two atoms.
 
 **The "family" pattern.** When the prose introduces a *category* and
 then walks through 2+ variants of it, atomize the family into:
