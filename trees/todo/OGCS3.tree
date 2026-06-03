@@ -1,0 +1,8 @@
+\date{2026-06-01T12:38:35Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+\title{\code{const}}
+\taxon{Definition}
+
+\p{A hint to the compiler in [C++](OGCS1), meaning "I promise not to change this value".}

@@ -17,6 +17,3 @@
   \li{[Splash Attention](https://github.com/jax-ml/jax/blob/main/jax/experimental/pallas/ops/tpu/splash_attention/splash_attention_kernel.py#L499)}
   \li{[How to think about TPUs](https://jax-ml.github.io/scaling-book/tpus/)}
 }
-
-\put\transclude/expanded{false}
-\transclude{FlexTPU-2026-05-22}

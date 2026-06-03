@@ -1,0 +1,10 @@
+\date{2026-06-01T14:52:07Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\title{CUDA Hierarchy}
+
+\transclude{OGCS7}
+\transclude{OGCS6}
+\transclude{W2D5}
+\transclude{OGCS5}

@@ -13,5 +13,5 @@
 \transclude{9V3H}
 
 \example{
-Combining \code{fork()} and \code{exec()} is where the true power lies — together they implement an entire shell. The worked examples and homework live in [[VTZ8]].
+Combining \code{fork()} and \code{exec()} is where the true power lies — together they implement an entire shell. The worked examples and homework live in [[W4DQ]] under the \em{Process Interlude} section.
 }

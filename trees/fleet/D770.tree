@@ -1,0 +1,28 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Exceptions (error handling)}
+\date{2026-06-03T11:42:12Z}
+
+\p{In [C++](OGCS1), exceptions are thrown via the \code{throw} keyword.}
+
+\p{The \code{throw} keyword transfers control to \em{exception handler}. This then proceeds as}
+\ol{
+  \li{Allocate heap memory for the exception object.}
+  \li{Invoke the unwinder.}
+  \ol{
+    \li{Walk the stack frame-by-frame to checking to see if any frame has a \code{catch} with matching type.}
+    \li{Walks the stack again, restoring registers / SP per frame.}
+    \ul{
+      \li{Cleaning up all the invalid stack frames between the \code{throw} and \code{catch}.}
+    }
+    \li{Transfers control to the catch block.}
+  }
+}
+\p{If no matching catch block is found, the program calls [\code{std::terminate}](https://cppreference.com/cpp/error/terminate)}
+
+\p{You can annotate a function with \code{noexcept} to indicate that it never throws exceptions. This is mainly used as an annotation to enable better choices by the compiler}
+\example{
+The compiler may call copy constructor instead of move constructor if the move constructer is not marked \code{noexcept}; If an exception were thrown during moving, then the object would be in a broken state.
+}

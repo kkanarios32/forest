@@ -1,0 +1,17 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{\code{constexpr}}
+\taxon{Definition}
+\date{2026-06-01T12:32:06Z}
+
+\p{A hint to the compiler in [C++](OGCS1) that the value or function can be evaluated at compile time. This allows the compiler to pre-compute the function / value and hardcode it into the resulting binary, eliminating any instructions involved in the computation from the final binary.}
+
+\p{
+\em{\strong{Idea:} Shift work from every run on every user's machine to once on the build machine.}
+}
+
+\remark{
+A \code{constexpr} function is not forced to run at compile time. It is only done only when the arguments are [\code{const}](OGCS3).
+}

@@ -1,0 +1,42 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Union [C++](OGCS1)}
+\date{2026-06-01T13:18:57Z}
+
+\p{A union is a [struct](CCIB) in which all members are allocated at the same address. This ensures that the union occupies only as much space as its largest member.}
+
+\p{A union can hold a value for only one member at a time.}
+
+\problem{
+  You can only read the active member of a union.
+\pre\verb<<<|
+union U { int i; float f; };
+U u;
+u.i = 42;
+float x = u.f;  // UB — reading the inactive member
+<<<
+}
+
+\problem{
+\strong{No automatic lifetime management for non-trivial types.} If a union holds an object with a non-trivial constructor/destructor (like \code{std::string}), the compiler won't call them for you. You must manually placement-new and explicitly call the destructor, and getting this wrong causes leaks or corruption.
+\pre\verb<<<|
+union U { std::string s; int i; };  // destructor not called automatically
+<<<
+}
+
+\remark{
+Avoid "naked" unions; opt for "tagged" unions.
+\pre\verb<<<|
+struct Value {
+    enum class Type { Int, Float, Str } tag;
+    union {
+        int   i;
+        float f;
+        char  s[32];
+    };
+};
+<<<
+This along with lifetime management is the basis of [\code{std::variant}](https://en.cppreference.com/cpp/utility/variant).
+}

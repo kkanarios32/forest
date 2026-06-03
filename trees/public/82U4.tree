@@ -27,16 +27,7 @@
 
 \transclude{XPAA}
 \transclude{X9VZ}
-
-\section{CUDA hierarchy}{
-\ol{
-  \li{\strong{Kernel} — the launched function.}
-  \li{\strong{Blocks} — groups of threads sharing fast on-chip \em{shared memory} ([[8GZN]]).}
-  \li{\strong{Warps} — 32 threads issued together in lockstep ([[X9VZ]]).}
-}
-\remark{The physical size of shared memory constrains the number of resident threads per SM.}
-}
-
+\transclude{OGCS4}
 \transclude{8GZN}
 
 \remark{Use GPUs for parallel parts where throughput dominates. Use CPUs for sequential parts where latency dominates — the [[RJEB]] axis is the right frame for deciding which.}

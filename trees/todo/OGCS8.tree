@@ -1,0 +1,26 @@
+\date{2026-06-01T15:00:25Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+\title{Distributed Shared Memory (GPU)}
+
+\p{Because the [CTAs](W2D5) in a cluster live on neighboring [SMs](OGCS6) connected by a dedicated SM-to-SM network, the shared memory of all CTAs in the cluster is exposed as a single logical address space. A thread in one CTA can read/write/atomic into another CTA's shared memory directly, without round-tripping through global memory (L2/DRAM).}
+
+\pre\verb<<<|
+#include <cooperative_groups.h>
+namespace cg = cooperative_groups;
+
+__global__ void __cluster_dims__(2,1,1) kernel(...) {
+    cg::cluster_group cluster = cg::this_cluster();
+    extern __shared__ int smem[];
+
+    // Get a pointer to another CTA's shared memory
+    unsigned int rank = cluster.block_rank();      // my CTA's id in cluster
+    int *remote = cluster.map_shared_rank(smem, /*target rank=*/ rank ^ 1);
+
+    // Now read/write the neighbor's shared memory
+    remote[threadIdx.x] = threadIdx.x;
+
+    cluster.sync();   // cluster-wide barrier
+}
+<<<

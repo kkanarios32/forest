@@ -1,0 +1,17 @@
+\import{base-macros}
+\date{2026-05-28}
+\author{kellenkanarios}
+\title{Solution Manuals}
+\tag{public}
+\tag{top}
+
+\p{One self-contained note per book, organized by chapter. Worked exercises live here; the corresponding conceptual notebooks are linked from each manual's preamble.}
+
+\put\transclude/toc{false}
+\put\transclude/numbered{false}
+\put\transclude/expanded{false}
+\put\transclude/metadata{true}
+
+\transclude{P86P}
+\transclude{OZI3}
+\transclude{W4DQ}

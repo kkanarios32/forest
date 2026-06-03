@@ -1,0 +1,59 @@
+\date{2026-05-27T13:16:05Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+
+\title{Flash Attention (Fwd)}
+  \p{
+Unlike in the [online softmax](PI7N), we are not interested in the outputted probability vector #{\mathbf{p}}. Instead we are interested in the entire output matrix #{O} given by
+  }
+##{O = \mathrm{softmax}(QK^T) V}
+  \p{
+For more details see [self-attention](004G).
+  }
+\notation{
+  In correspondence with the notation in the [online softmax](PI7N), we define the following:
+  ##{x_{i,j} = \mathbf{q}_i \cdot \mathbf{k}_j,}
+  where #{\mathbf{q}_i} is the #{i}th row of #{Q} and #{\mathbf{k}_j} is the #{j}th row of #{K}. Similarly, #{\mathbf{o}_i} is the #{i}th row of the output matrix #{O} given by
+  ##{\mathbf{o}_i = \sum_{j = 1}^{n} \frac{\exp(x_{i,j} - m_n)}{d_n} \cdot \mathbf{v}_j }
+}
+\p{Now following the template provided by the [online softmax](PI7N), we must find a recurrence for #{\mathbf{o}_i}. Namely, we will consider the sequence #{\mathbf{o}_{i,k}'} given by
+##{\mathbf{o}_{i,k}' = \sum_{j = 1}^{k} \frac{\exp(x_{i,j} - m_k)}{d_k} \cdot \mathbf{v}_j, }
+such that #{\mathbf{o}_{i,n}' = \mathbf{o}_n}
+}
+\claim{
+  We have the following recurrence for #{\mathbf{o}_{i,k}'}:
+  ##{
+  \mathbf{o}_{i,k}' = \mathbf{o}_{i, k-1} \cdot \frac{d_{k - 1} \cdot \exp(m_{k-1} - m_{k})}{d_k} + \frac{\exp(x_{i,j} - m_k)}{d_k} \cdot \mathbf{v}_k
+    }
+}
+\proof{
+  We will proceed by directly rewriting the recurrence for #{\mathbf{o}_{i,k}'} as 
+  ##{
+    \begin{align*}
+      \mathbf{o}_{i,k}' &= \sum_{j = 1}^{k} \frac{\exp(x_{i,j} - m_k)}{d_k} \cdot \mathbf{v}_j \\
+                        &= \left(\sum_{j = 1}^{k - 1} \frac{\exp(x_{i,j} - m_{k-1})}{d_{k-1}} \cdot \mathbf{v}_j\right) \frac{d_{k - 1} \cdot \exp(m_{k-1} - m_{k})}{d_k} +  \frac{\exp(x_{i,k} - m_k)}{d_k} \cdot \mathbf{v}_k \\
+                        &= \mathbf{o}_{i, k-1} \cdot \frac{d_{k - 1} \cdot \exp(m_{k-1} - m_{k})}{d_k} +  \frac{\exp(x_{i,k} - m_k)}{d_k} \cdot \mathbf{v}_k
+    .\end{align*}
+    }
+  }
+
+\p{Thus, we are left with the following algorithm}
+\p{
+\latex{#{
+\begin{algo}
+\For{$i = 1$ \textbf{to} $N$}
+\State $m_{0} \gets -\infty;\quad d_{0} \gets 0$
+\For{$j = 1$ \textbf{to} $M$}
+  \State $x_{i,j} \gets \mathbf{q}_i \cdot \mathbf{k}_j$
+  \State $m_{j} \gets \max(m_{j-1}, x_{i,j})$
+  \State $d_{j} \gets d_{j - 1} \cdot e^{\,m_{j - 1} - m_{j}} + e^{\,x_{i,j} - m_{j}}$
+  \State $\mathbf{o}_{i, j} \gets \mathbf{o}_{i, j - 1} \cdot \frac{d_{j - 1} \cdot \exp(m_{j-1} - m_{j})}{d_j} +  \frac{\exp(x_{i,j} - m_j)}{d_j} \cdot \mathbf{v}_j$
+\EndFor
+\EndFor
+\end{algo}
+}}
+}
+\remark{
+A key benefit of this algorithm is that it is entirely parallelizable across rows. This means that we can loop across entire [tiles](OGCRV) like in the GEMM case.
+}

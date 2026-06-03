@@ -1,0 +1,7 @@
+\date{2026-06-01T12:53:00Z}
+\title{Heap}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+
+\p{In [C++](OGCS1), you allocate memory on the heap with \code{new} and \code{delete}.}

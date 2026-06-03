@@ -8,3 +8,11 @@ echo '\tag{public}' >> $FILENAME
 if [ -f templates/$TEMPLATE.tree ]; then
   cat templates/$TEMPLATE.tree >> $FILENAME
 fi
+
+# If an fserve nvim server is listening, background-load the new tree so the
+# forester LSP indexes it (fires FileType -> didOpen) and it becomes
+# searchable by name without a full LSP restart.
+if [ -n "$NVIM_SOCK" ] && [ -S "$NVIM_SOCK" ]; then
+  nvim --server "$NVIM_SOCK" --remote-expr \
+    "luaeval('vim.fn.bufload(vim.fn.bufadd(_A))', '$FILENAME')" >/dev/null 2>&1 || true
+fi

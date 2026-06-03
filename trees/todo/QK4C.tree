@@ -1,0 +1,33 @@
+\date{2026-06-02T11:43:56Z}
+\title{Enumerations (C++)}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+
+\p{User-defined type in [C++](OGCS1) that is a set of named values designed to make code more readable and less error prone.}
+
+\example{
+\pre\verb<<<|
+enum class Color { red, green, blue };
+
+Color c = Color::red;
+<<<
+}
+
+\p{If you want enumerator values to be \code{int}, you can use \code{enum}.}
+
+\example{
+\pre\verb<<<|
+enum Color { red, green, blue };
+
+int color = green     // color = 1
+<<<
+Note that this is an error if \code{Color} is \code{enum class}.
+}
+
+\remark{
+Use enumerations to represent sets of named constants
+}
+\remark{
+Prefer \code{enum class} to \code{enum} when possible
+}

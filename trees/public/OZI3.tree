@@ -1,0 +1,62 @@
+\import{base-macros}
+\date{2024-11-17}
+\author{kellenkanarios}
+\title{Billingsley Probability and Measure: Exercises}
+\tag{public}
+\tag{prob}
+\tag{note}
+
+\p{Worked exercises accompanying [[0007]], my notebook on [[billingsleyProbabilityMeasure1995]]. The conceptual development — definitions, theorems, proofs — lives in the notebook; solved exercises live here, one section per chapter.}
+
+\scope{
+  \put\transclude/expanded{false}
+
+\section{Borel's Normal Number Theorem}{
+\refcardt{Exercise}{}{1.1}{billingsleyProbabilityMeasure1995}{
+  \ol{
+    \li{
+      A discrete probability space cannot contain an infinite sequence of independent events #{A_1, A_2, \ldots} each with probability #{1/2}. To see this, denote the event space as #{\mathcal{X}}. Note that
+      ##{P(A_1 \cap A_2) + P(A_1 \cap A_2^c) + P(A_1^c \cap A_2) + P(A_1^c \cap A_2^c) = 1}
+      Therefore, every #{x \in \mathcal{X}} must be in one of those four events and have probability at most #{1/4}. Similarly, we can construct #{n} disjoint sets in the same manner and bound #{\mathbb{P}(\{x\})} by #{1/n}. Taking #{n \to \infty}, we have that #{\mathbb{P}(\{x\}) = 0}. Since #{\mathcal{X}} is a discrete probability space, we must have that
+      ##{\sum_{x \in \mathcal{X}} \mathbb{P}(\{x\}) = 1}
+      However, we have just shown that for each #{x \in \mathcal{X}}, #{\mathbb{P}(\{x\}) = 0}. Thus, we have reached a contradiction.
+    }
+  }
+}
+}
+
+\section{Uniqueness}{
+\refcardt{Exercise}{}{3.2}{billingsleyProbabilityMeasure1995}{
+  Let #{P} be a probability measure on a field #{\mathscr{F}_{0}} and for every subset #{A} of #{\Omega} define #{P^{\star}(A)} by [(3.1)](000T). Denote also by #{P} the extension of #{P} to #{\mathscr{F}=\sigma(\mathscr{F}_{0})}.
+  \ol{
+      \li{Show that #{A} is [[000U]] if and only if #{P^*(A) = P_*(A)}.}
+    }
+}
+\solution{
+  \p{First suppose that #{P^*(A) = P_*(A)}. Let #{E \subset \Omega}. We must show that
+##{P^*(E \cap A) + P^*(E \cap A^c) = P^*(E)}
+  From part (1) and our hypothesis, #{\exists \overline{A}, \underline{A} \in \mathscr{F}} such that #{\underline{A} \subset A \subset \overline{A}} and ##{P(\overline{A}) = P^*(A) = P_*(A) = P(\underline{A})}. Additionally, #{\exists B \in \mathscr{F}} such that #{E \subset B} and #{P^*(E) = P(B)}. Then we have that
+##{P^*(E \cap A) \leq P^*(B \cap \overline{A}) = P(B \cap \overline{A})}
+  and
+##{P^*(B \cap A) \leq P^*(B \cap \underline{A}^c) = P(B \cap \underline{A}^c)}
+  Thus,
+##{P^*(E \cap A) + P^*(E \cap A^c) \leq P(B \cap \underline{A}^c) + P(B \cap \overline{A}) = P^*(E)}
+  as desired.
+  }
+}
+
+\remark{I really struggled for a minute on even understanding this problem. The import thing to understand for this problem is what space everything is defined on.
+\ol{
+    \li{#{P} is defined on the initial field #{\mathscr{F}_0}, which is the closure over finite unions and complements of #{\Omega}.}
+    \li{#{P^*} is defined on the powerset #{\mathcal{P}(\Omega)}. #{P^*} is \strong{NOT} necessarily a measure on all of these subsets though.
+    \ul{
+        \li{#{E} is \strong{NOT} necessarily in #{\mathscr{F}} hence the need for #{B}.}
+      }
+    }
+    \li{#{P} (abuse of notation) is #{P^*} restricted to the [[000U]] subsets of #{\Omega}.}
+  }
+  Common question is why we cannot just apply finite additivity and have everything [[000U]]? The answer is that #{P^*} is not countably subadditive on #{\mathcal{P}(\Omega)} but only the [[000U]] sets.
+}
+}
+
+}

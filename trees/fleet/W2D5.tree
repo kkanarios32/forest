@@ -1,0 +1,10 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Cooperative Thread Array (CTA)}
+\date{2026-06-01T14:50:49Z}
+
+\p{NVIDIA's hardware-level term for what CUDA programmers call a thread block.}
+
+\p{A CTA is a group of threads that execute on the same Streaming Multiprocessor (SM), can synchronize via barriers (\code{__syncthreads()}), and share fast on-chip \em{shared memory} ([[8GZN]]). Threads within a CTA are scheduled and executed in groups of 32 called [warps](OGCS5). }

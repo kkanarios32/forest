@@ -1,0 +1,22 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{\code{auto} keyword}
+\date{2026-06-01T12:26:23Z}
+
+\p{\code{auto} is automatic type deduction in [C++](OGCS1).}
+
+\p{In [Generic Programming](OGCS2), \code{auto} is crucial because types may not be known.}
+
+\question{When should you \strong{NOT} use \code{auto}?}
+\answer{In [C++](OGCS1) they provide two reasons:
+\ol{
+  \li{When you want to make the type visible clearly to the readers of your code.}
+  \li{You want to be explicit on the variable range or precision i.e. \code{auto x = 1;} will be an \code{int}. If you want to enforce a \code{double}, then you must specify so explicitly.}
+}
+}
+
+\remark{
+\code{auto x{v};} deduces single value's type in modern C++, but in C++11/14 it deduces \code{std::initializer_list}. \code{auto x = {v};} remains an \code{std::initializer_list} in modern C++.
+}

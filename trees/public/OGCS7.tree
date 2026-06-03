@@ -1,0 +1,9 @@
+\date{2026-06-01T14:58:19Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{todo}
+\title{Graphics Processing Cluster (GPC)}
+
+\p{A Graphics Processing Cluster (GPC) is a top-level hardware partition inside an NVIDIA GPU. It's one level up from the [SM](OGCS6) in the chip's hierarchy.}
+
+\p{As of Hopper, [SMs](OGCS6) located in the same GPC are connected via an SM-to-SM network, enabling [DSMEM](OGCS8).}

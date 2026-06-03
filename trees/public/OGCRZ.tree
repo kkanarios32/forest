@@ -1,0 +1,138 @@
+\date{2026-05-27T13:15:25Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+
+\title{Flash Attention (Bwd)}
+\p{To understand the innovation of the backward pass in [flash attention](daoFlashAttentionFastMemoryEfficient2022), we must first find all of the gradients we must compute.}
+\notation{
+Following the notation in the [original paper](daoFlashAttentionFastMemoryEfficient2022), we have the following matrices
+##{\mathbf{S} = \mathbf{Q} \mathbf{K}^T, \quad \mathbf{P} = \mathrm{softmax}(\mathbf{S}), \quad \mathbf{O} = \mathbf{P} \mathbf{V}}
+Now suppose their is some scalar loss function #{\phi}. Then we define 
+##{\frac{\partial \phi}{\partial \mathbf{O}}, \frac{\partial \phi}{\partial \mathbf{K}}, \frac{\partial \phi}{\partial \mathbf{V}}  = d\mathbf{O}, d\mathbf{K}, d\mathbf{V}}
+}
+\p{We will compute each gradient individually.}
+\ol{
+  \li{#{d\mathbf{P}}: this is just a straightforward application of the chain rule. In particular, #{\mathbf{O} = \mathbf{P} \mathbf{V}} so that
+  ##{
+     d\mathbf{P} = \frac{\partial \phi(\mathbf{O})}{\partial \mathbf{P}} = \frac{\partial \phi(\mathbf{O})}{\partial \mathbf{O}} \frac{\partial \mathbf{O}}{\partial \mathbf{P}} = d\mathbf{O} \mathbf{V}^T
+    }
+    \p{
+    To sanity check, let us look at the shapes. #{d\mathbf{O}} is the partial with respect to the outputs #{O}, so we need an entry for each output and it is #{N \times d}. #{V^T} is #{d \times N}, so that the result #{d\mathbf{P}} is #{N \times N} as desired.
+    }
+    \p{Furthermore, we can see this by writing #{\mathbf{O}_{ik} = \sum_{j} \mathbf{P}_{ij} \mathbf{V}_{jk}}. Then}
+    ##{
+      \begin{align*}
+       d\mathbf{P}_{ij} &= \sum_{i} \frac{\partial \phi}{\partial \mathbf{O}_{ik}} \cdot \frac{\partial \mathbf{O}_{ik}}{\partial \mathbf{P}_{ij}}  \\
+                        &= \sum_{i} d\mathbf{O}_{ik} \mathbf{V}_{jk} 
+      .\end{align*}
+    }
+  }
+  \li{#{d\mathbf{V}}: this is just the same as #{d\mathbf{P}}. In particular, #{\mathbf{O} = \mathbf{P} \mathbf{V}} so that
+  ##{
+     d\mathbf{V} = \frac{\partial \phi(\mathbf{O})}{\partial \mathbf{V}} = \frac{\partial \phi(\mathbf{O})}{\partial \mathbf{O}} \frac{\partial \mathbf{O}}{\partial \mathbf{V}} = \mathbf{P}^T d\mathbf{O} 
+    }
+    \p{Furthermore, we can see this by writing #{\mathbf{O}_{ik} = \sum_{j} \mathbf{P}_{ij} \mathbf{V}_{jk}}. Then}
+    ##{
+      \begin{align*}
+       d\mathbf{V}_{jk} &= \sum_{i} \frac{\partial \phi}{\partial \mathbf{O}_{ik}} \cdot \frac{\partial \mathbf{O}_{ik}}{\partial \mathbf{V}_{jk}}  \\
+                        &= \sum_{i} d\mathbf{O}_{ik} \mathbf{P}_{ij} \\
+                        &= \sum_{i} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} d\mathbf{O}_{ik}
+      .\end{align*}
+    }
+  }
+  \li{#{d\mathbf{S}}: now we apply chain rule with #{d\mathbf{P}}. However, we must take the gradient through the [softmax](C00V). Exiting matrix notation hell, if we consider the scalar case. Let #{\mathbf{s}} and #{\mathbf{p}} just be rows. Then using the [scalar softmax derivation](C00V)
+    ##{
+      \begin{align*}
+       d\mathbf{s}_j &= \sum_{i} d\mathbf{p}_i \cdot \frac{\partial \mathbf{p}_i}{\partial \mathbf{s}_j} \\  
+       &= \sum_{i} d\mathbf{p}_i \cdot (\delta_{ij}\mathbf{p}_i - \mathbf{p}_{ij}) \\
+       &= d \mathbf{p}_{j} \mathbf{p}_{j} - \mathbf{p}_{j}\sum_{i} d\mathbf{p}_{i} \mathbf{p}_{i}
+      .\end{align*}
+      }
+    Now if we rewrite this as the row vector, we get
+    ##{
+      \begin{align*}
+        d\mathbf{S}_{k} &= \mathbf{P}_{k} \odot (d\mathbf{P}_{k} - \mathbf{P}_k \cdot d\mathbf{P}_k)
+      .\end{align*}
+      }
+    To get back to the full matrix, define #{\mathbf{D}_i = \mathbf{P}_i \cdot d\mathbf{P}_i} i.e. a vector whose #{i}th entry is #{\mathbf{P}_i \cdot d\mathbf{P}_i}. Then we have that
+    ##{
+      \begin{align*}
+        d\mathbf{S} &= \mathbf{P} \odot (d\mathbf{P} - \mathbf{D})
+      .\end{align*}
+      }
+  }
+  \li{#{d\mathbf{Q}}: To get #{d\mathbf{Q}}, we just apply the chain rule to #{d\mathbf{S}}. Since #{\mathbf{S} = \mathbf{Q} \mathbf{K}^T},
+  ##{
+    \begin{align*}
+       d\mathbf{Q}_{i} &= \sum_{j} d\mathbf{S}_{ij} \mathbf{K}_{j} \\
+                      &= \sum_{j} \mathbf{P}_{ij} \cdot (d\mathbf{P}_{ij} - \mathbf{D}_i) \mathbf{K}_{j}
+    .\end{align*}
+    }
+  }
+  \li{#{d\mathbf{K}}: Same as #{d\mathbf{Q}} i.e.
+  ##{
+    \begin{align*}
+       d\mathbf{K}_{j} &= \sum_{j} d\mathbf{S}_{ij} \mathbf{Q}_{i} \\
+                      &= \sum_{j} \mathbf{P}_{ij} \cdot (d\mathbf{P}_{ij} - \mathbf{D}_i) \mathbf{Q}_{i}
+    .\end{align*}
+    }
+  }
+}
+\problem{#{\mathbf{P}} and #{d\mathbf{P}} are #{N \times N} matrices. Materializing this is equivalent to materialing the attention matrix in the forward pass.} 
+\iblock{
+  \strong{Key Insight 1:} \em{recomputing} #{\mathbf{P}_{ij}} and #{d\mathbf{P}_{ij}}.
+  \p{First, we can easily recompute #{\mathbf{P}_{ij}} with #{\mathbf{Q}} and #{\mathbf{K}} (which are both #{N \times d} and must be resident in memory) via}
+  ##{\mathbf{P}_{ij} = \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}}}
+  \p{We can apply the same trick to #{d\mathbf{P}_{ij}} with #{d\mathbf{O}} and #{\mathbf{V}} (both #{N \times  d}). Namely,}
+  ##{d\mathbf{P}_{ij} = \sum_{k} d\mathbf{O}_{ik} \mathbf{V}_{jk} = d\mathbf{O}_{i}^T \mathbf{V}_j}
+  \p{\strong{Never need an #{N \times N} matrix}.}
+}
+\p{Now we can rewrite #{d\mathbf{Q}} and #{d\mathbf{K}} as
+##{
+  d\mathbf{Q}_{i} = \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} \cdot (d\mathbf{O}_{i}^T \mathbf{V}_j - \mathbf{D}_i) \mathbf{K}_{j}
+}
+and
+##{
+  d\mathbf{K}_{j} = \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} \cdot (d\mathbf{O}_{i}^T \mathbf{V}_j - \mathbf{D}_i) \mathbf{Q}_{i}
+}
+}
+\problem{#{\mathbf{D}} requires computing the \strong{global} dot product #{\mathbf{P}_i \cdot d\mathbf{P}_i}.} 
+\iblock{
+  \strong{Key Insight 2:}
+  \p{To get around this, we precompute #{\mathbf{D}} using the #{\mathbf{O}} values from the forward pass and the current #{d\mathbf{O}} values. In particular,}
+  ##{
+    \begin{align*}
+    \mathbf{D}_i &= \mathbf{P}_{i} \cdot d\mathbf{P}_{i}  \\
+    &= \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} d\mathbf{P}_{ij} \\
+    &= \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} d\mathbf{O}_{i}^{T} \mathbf{V}_{j} \\
+    &= \sum_{j} d\mathbf{O}_{i}^{T} \left(\frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} \cdot \mathbf{V}_{j}\right) \\
+    &=  d\mathbf{O}_{i}^{T} \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} \cdot \mathbf{V}_{j} \\
+    &= d\mathbf{O}_{i}^{T} \mathbf{O}_{i}
+    .\end{align*}
+    }
+    Thus, we can compute #{\mathbf{D}_i} directly from the vectors #{d\mathbf{O}_i}, #{\mathbf{O}_i}.
+}
+
+\hr
+
+\section{Summary}{
+\ul{
+  \li{In the forward pass,}
+  \ol{
+    \li{Compute and store #{\mathbf{O}} values in memory.} 
+    \li{Compute and store #{\mathbf{L}} values in memory}
+  }
+  \li{Between the forward and backward pass,}
+  \ol{
+    \li{Compute #{d\mathbf{O}}. (This is done automatically in [JAX](OGCRY))}
+    \li{Use #{\mathbf{O}} and #{d\mathbf{O}} to compute #{\mathbf{D}}. #{O(n)} memory.}
+  }
+  \li{In the backward pass,}
+  \ol{
+    \li{Compute #{d\mathbf{V}_j} via #{\mathbf{Q}, \mathbf{K}, d\mathbf{O}}. #{O(d)} memory.}
+    \li{Compute #{d\mathbf{Q}_i} via #{\mathbf{Q}_i, \mathbf{K}_j, \mathbf{L}_i, \mathbf{D}_i}. #{O(d)} memory.}
+    \li{Compute #{d\mathbf{K}_j} via #{\mathbf{Q}_i, \mathbf{K}_j, \mathbf{L}_i, \mathbf{D}_i}. #{O(d)} memory.}
+  }
+}
+}

@@ -10,18 +10,16 @@
 
 \p{For these notes, I will attempt to refresh my knowledge of measure-theoretic probability along with learning stochastic processes for the first time. I will be following [Probability and Stochastics](https://link.springer.com/book/10.1007/978-0-387-87859-1) by Cinlar. Unfortunately, there are no solutions to Exercises, but it is by far the best written book I have found.}
 
+\p{The worked exercises are collected separately in [[OZI3]]. What stays here is the conceptual development.}
+
 \section{Borel's Normal Number Theorem}{
   \transclude{000S}
   \remark{
-  The important takeaway from [[000S]] is that extending (2) from finite to countable unions requires Heine-Borel theorem, illustrating that this extension is non-trivial. This will be important to remember as we continue to extend the Lebesgue measure to #{\sigma}-algebras. 
+  The important takeaway from [[000S]] is that extending (2) from finite to countable unions requires Heine-Borel theorem, illustrating that this extension is non-trivial. This will be important to remember as we continue to extend the Lebesgue measure to #{\sigma}-algebras.
   }
   This section aims to motivate why we need to approach probability from a measure theoretic point of view.
-  As an example, we will do the first Exercise for this section.
+  As a concrete example, [[000L]] sets up the dyadic-interval representation of an infinite coin toss, and [Exercise 1.1](OZI3) makes precise why no discrete probability space can carry that sequence.
   \transclude{000L}
-  \scope{
-  \put\transclude/numbered{false}
-  \transclude{000N}
-  }
   I think my main takeaway from this is that infinite sequences break discrete probability because each discrete event will have probability zero. This is not actually a problem because in an infinite sequence the occurence of any such sequence "feasibly" has zero probability. However, we still want to reason about probabilistic things like the convergence of the average of the sequence. Since discrete probability is broken, we cannot even use it for these things. This is why we need to use measure theory to allow for zero probability sequences, but still provide information about these more "general" events. Who knows if this intuition is right though?
 }
 \p{
@@ -128,37 +126,7 @@ Consider a four point space #{\Omega = \{x_1, x_2, x_3, x_4\}}. We can define a 
 
 \transclude{001G}
 
-\refcardt{Exercise}{}{3.2}{billingsleyProbabilityMeasure1995}{
-  Let #{P} be a probability measure on a field #{\mathscr{F}_{0}} and for every subset #{A} of #{\Omega} define #{P^{\star}(A)} by [(3.1)](000T). Denote also by #{P} the extension of #{P} to #{\mathscr{F}=\sigma(\mathscr{F}_{0})}.
-  \ol{
-      \li{Show that #{A} is [[000U]] if and only if #{P^*(A) = P_*(A)}.}
-    }
-}
-\solution{
-  \p{First suppose that #{P^*(A) = P_*(A)}. Let #{E \subset \Omega}. We must show that 
-##{P^*(E \cap A) + P^*(E \cap A^c) = P^*(E)}
-  From part (1) and our hypothesis, #{\exists \overline{A}, \underline{A} \in \mathscr{F}} such that #{\underline{A} \subset A \subset \overline{A}} and ##{P(\overline{A}) = P^*(A) = P_*(A) = P(\underline{A})}. Additionally, #{\exists B \in \mathscr{F}} such that #{E \subset B} and #{P^*(E) = P(B)}. Then we have that
-##{P^*(E \cap A) \leq P^*(B \cap \overline{A}) = P(B \cap \overline{A})}
-  and
-##{P^*(B \cap A) \leq P^*(B \cap \underline{A}^c) = P(B \cap \underline{A}^c)}
-  Thus,
-##{P^*(E \cap A) + P^*(E \cap A^c) \leq P(B \cap \underline{A}^c) + P(B \cap \overline{A}) = P^*(E)}
-  as desired.
-  }
-}
-
-\remark{I really struggled for a minute on even understanding this problem. The import thing to understand for this problem is what space everything is defined on.
-\ol{
-    \li{#{P} is defined on the initial field #{\mathscr{F}_0}, which is the closure over finite unions and complements of #{\Omega}.}
-    \li{#{P^*} is defined on the powerset #{\mathcal{P}(\Omega)}. #{P^*} is \strong{NOT} necessarily a measure on all of these subsets though.
-    \ul{
-        \li{#{E} is \strong{NOT} necessarily in #{\mathscr{F}} hence the need for #{B}.}
-      }
-    }
-    \li{#{P} (abuse of notation) is #{P^*} restricted to the [[000U]] subsets of #{\Omega}.}
-  }
-  Common question is why we cannot just apply finite additivity and have everything [[000U]]? The answer is that #{P^*} is not countably subadditive on #{\mathcal{P}(\Omega)} but only the [[000U]] sets.
-}
+\p{[Exercise 3.2](OZI3) makes the characterization sharp: a set is [[000U]] iff its outer and inner measures agree.}
 }
 
 \section{Denumerable Probabilities}{

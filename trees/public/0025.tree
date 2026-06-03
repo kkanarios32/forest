@@ -1,5 +1,5 @@
 \date{2024-12-28}
-\title{Stack vs. Heap}
+\title{[[NZBG]] vs. [[WLBG]]}
 \tag{margin}
 \tag{public}
 \import{base-macros}
@@ -16,7 +16,7 @@ When you allocate memory on the heap i.e. \code{int *x = malloc(sizeof(int))}, w
 \ul{
     \li{One such implementation is the [buddy algorithm](https://en.wikipedia.org/wiki/Buddy_memory_allocation)}
 }
-However, \code{malloc} itself is not a system call and therefore is not terribly slow. A real issue occurs when we run out of pre-allocated heap memory. This requires invoking a system call like \code{sbrk} to increment the size of the allocated memory for the heap.
+However, \code{malloc} itself is not a system call and therefore is not terribly slow. A real issue occurs when we run out of pre-allocated heap memory. This requires [invoking a system call](A5S6) like \code{sbrk} to increment the size of the allocated memory for the heap.
 \ul{
       \li{If no available pages, OS must evict and write to disk...}
       \li{Formally, this is known as "heap growth".}

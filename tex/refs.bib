@@ -24,12 +24,44 @@
   file = {/home/kellen/Downloads/papers/OPAL OFFLINE PRIMITIVE DISCOVERY FOR ACCEL- ERATING OFFLINE REINFORCEMENT LEARNING - Ajay et al..pdf}
 }
 
+@misc{barretoOptionKeyboardCombining2021,
+  title = {The {{Option Keyboard}}: {{Combining Skills}} in {{Reinforcement Learning}}},
+  shorttitle = {The {{Option Keyboard}}},
+  author = {Barreto, Andr{\'e} and Borsa, Diana and Hou, Shaobo and Comanici, Gheorghe and Ayg{\"u}n, Eser and Hamel, Philippe and Toyama, Daniel and Hunt, Jonathan and Mourad, Shibl and Silver, David and Precup, Doina},
+  year = 2021,
+  month = jun,
+  number = {arXiv:2106.13105},
+  eprint = {2106.13105},
+  primaryclass = {cs.AI},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2106.13105},
+  urldate = {2026-05-27},
+  abstract = {The ability to combine known skills to create new ones may be crucial in the solution of complex reinforcement learning problems that unfold over extended periods. We argue that a robust way of combining skills is to define and manipulate them in the space of pseudo-rewards (or ``cumulants''). Based on this premise, we propose a framework for combining skills using the formalism of options. We show that every deterministic option can be unambiguously represented as a cumulant defined in an extended domain. Building on this insight and on previous results on transfer learning, we show how to approximate options whose cumulants are linear combinations of the cumulants of known options. This means that, once we have learned options associated with a set of cumulants, we can instantaneously synthesise options induced by any linear combination of them, without any learning involved. We describe how this framework provides a hierarchical interface to the environment whose abstract actions correspond to combinations of basic skills. We demonstrate the practical benefits of our approach in a resource management problem and a navigation task involving a quadrupedal simulated robot.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/The Option Keyboard Combining Skills in Reinforcement Learning - Barreto et al..pdf}
+}
+
 @article{bassamzadehComparativeStudyDSL,
   title = {A {{Comparative Study}} of {{DSL Code Generation}}: {{Fine-Tuning}} vs. {{Optimized Retrieval Augmentation}}},
   author = {Bassamzadeh, Nastaran and Methani, Chhaya},
   abstract = {Natural Language to Code Generation has made significant progress in recent years with the advent of Large Language Models (LLMs). While generation for general-purpose languages like C, C++, and Python has improved significantly, LLMs struggle with custom function names in Domain Specific Languages or DSLs. This leads to higher hallucination rates and syntax errors, specially for DSLs having a high number of custom function names. Additionally, constant updates to function names add to the challenge as LLMs need to stay up-to-date. In this paper, we present optimizations for using Retrieval Augmented Generation (or RAG) with LLMs for DSL generation along with an ablation study comparing these strategies. We generated a train as well as test dataset with a DSL to represent automation tasks across roughly 700 APIs in public domain. We used the training dataset to fine-tune a Codex model for this DSL. Our results showed that the fine-tuned model scored the best on code similarity metric. With our RAG optimizations, we achieved parity for similarity metric. The compilation rate, however, showed that both the models still got the syntax wrong many times, with RAG-based method being 2 pts better. Conversely, hallucination rate for RAG model lagged by 1 pt for API names and by 2 pts for API parameter keys. We conclude that an optimized RAG model can match the quality of fine-tuned models and offer advantages for new, unseen APIs.},
   langid = {english},
   file = {/home/kellen/Downloads/papers/A Comparative Study of DSL Code Generation Fine-Tuning vs. Optimized Retrieval Augmentation - Bassamzadeh and Methani.pdf}
+}
+
+@misc{bortkiewiczTemporalDifferenceLearning2025a,
+  title = {Is {{Temporal Difference Learning}} the {{Gold Standard}} for {{Stitching}} in {{RL}}?},
+  author = {Bortkiewicz, Micha{\l} and Pa{\l}ucki, W{\l}adys{\l}aw and Ostaszewski, Mateusz and Eysenbach, Benjamin},
+  year = 2025,
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.2510.21995},
+  urldate = {2026-06-02},
+  abstract = {Reinforcement learning (RL) promises to solve long-horizon tasks even when training data contains only short fragments of the behaviors. This experience stitching capability is often viewed as the purview of temporal difference (TD) methods. However, outside of small tabular settings, trajectories never intersect, calling into question this conventional wisdom. Moreover, the common belief is that Monte Carlo (MC) methods should not be able to recombine experience, yet it remains unclear whether function approximation could result in a form of implicit stitching. The goal of this paper is to empirically study whether the conventional wisdom about stitching actually holds in settings where function approximation is used. We empirically demonstrate that Monte Carlo (MC) methods can also achieve experience stitching. While TD methods do achieve slightly stronger capabilities than MC methods (in line with conventional wisdom), that gap is significantly smaller than the gap between small and large neural networks (even on quite simple tasks). We find that increasing critic capacity effectively reduces the generalization gap for both the MC and TD methods. These results suggest that the traditional TD inductive bias for stitching may be less necessary in the era of large models for RL and, in some cases, may offer diminishing returns. Additionally, our results suggest that stitching, a form of generalization unique to the RL setting, might be achieved not through specialized algorithms (temporal difference learning) but rather through the same recipe that has provided generalization in other machine learning settings (via scale). Project website: https://michalbortkiewicz.github.io/golden-standard/},
+  copyright = {arXiv.org perpetual, non-exclusive license},
+  langid = {english},
+  keywords = {Artificial Intelligence (cs.AI),FOS: Computer and information sciences,Machine Learning (cs.LG),Machine Learning (stat.ML)},
+  file = {/home/kellen/Downloads/papers/2510.pdf}
 }
 
 @misc{caoKSearchLLMKernel2026,
@@ -49,6 +81,23 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence},
   file = {/home/kellen/Downloads/papers/K-Search LLM Kernel Generation via Co-Evolving Intrinsic World Model - Cao et al..pdf}
+}
+
+@misc{chuaLearningSuccessorFeatures2024,
+  title = {Learning {{Successor Features}} the {{Simple Way}}},
+  author = {Chua, Raymond and Ghosh, Arna and Kaplanis, Christos and Richards, Blake A. and Precup, Doina},
+  year = 2024,
+  month = oct,
+  number = {arXiv:2410.22133},
+  eprint = {2410.22133},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2410.22133},
+  urldate = {2026-05-27},
+  abstract = {In Deep Reinforcement Learning (RL), it is a challenge to learn representations that do not exhibit catastrophic forgetting or interference in non-stationary environments. Successor Features (SFs) offer a potential solution to this challenge. However, canonical techniques for learning SFs from pixel-level observations often lead to representation collapse, wherein representations degenerate and fail to capture meaningful variations in the data. More recent methods for learning SFs can avoid representation collapse, but they often involve complex losses and multiple learning phases, reducing their efficiency. We introduce a novel, simple method for learning SFs directly from pixels. Our approach uses a combination of a Temporaldifference (TD) loss and a reward prediction loss, which together capture the basic mathematical definition of SFs. We show that our approach matches or outperforms existing SF learning techniques in both 2D (Minigrid), 3D (Miniworld) mazes and Mujoco, for both single and continual learning scenarios. As well, our technique is efficient, and can reach higher levels of performance in less time than other approaches. Our work provides a new, streamlined technique for learning SFs directly from pixel observations, with no pretraining required1.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Learning Successor Features the Simple Way - Chua et al..pdf}
 }
 
 @misc{daoFlashAttention2FasterAttention2023,
@@ -124,6 +173,24 @@
   langid = {english},
   keywords = {Computer Science - Programming Languages},
   file = {/home/kellen/Downloads/papers/Equivalence Checking of ML GPU Kernels - Dubey et al..pdf}
+}
+
+@misc{elsayedStreamingDeepReinforcement2024,
+  title = {Streaming {{Deep Reinforcement Learning Finally Works}}},
+  author = {Elsayed, Mohamed and Vasan, Gautham and Mahmood, A. Rupam},
+  year = 2024,
+  month = dec,
+  number = {arXiv:2410.14606},
+  eprint = {2410.14606},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2410.14606},
+  urldate = {2026-05-30},
+  abstract = {Natural intelligence processes experience as a continuous stream, sensing, acting, and learning moment-by-moment in real time. Streaming learning, the modus operandi of classic reinforcement learning (RL) algorithms like Q-learning and TD, mimics natural learning by using the most recent sample without storing it. This approach is also ideal for resource-constrained, communication-limited, and privacy-sensitive applications. However, in deep RL, learners almost always use batch updates and replay buffers, making them computationally expensive and incompatible with streaming learning. Although the prevalence of batch deep RL is often attributed to its sample efficiency, a more critical reason for the absence of streaming deep RL is its frequent instability and failure to learn, which we refer to as stream barrier. This paper introduces the stream-x algorithms, the first class of deep RL algorithms to overcome stream barrier for both prediction and control and match sample efficiency of batch RL. Through experiments in Mujoco Gym, DM Control Suite, and Atari Games, we demonstrate stream barrier in existing algorithms and successful stable learning with our stream-x algorithms: stream Q, stream AC, and stream TD, achieving the best model-free performance in DM Control Dog environments. A set of common techniques underlies the stream-x algorithms, enabling their success with a single set of hyperparameters and allowing for easy extension to other algorithms, thereby reviving streaming RL.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Streaming Deep Reinforcement Learning Finally Works - Elsayed et al..pdf}
 }
 
 @article{eysenbachSearchReplayBuffer,
@@ -249,6 +316,24 @@
   file = {/home/kellen/Downloads/papers/Ragged Paged Attention A High-Performance and Flexible LLM Inference Kernel for TPU - Jiang et al..pdf}
 }
 
+@misc{kimOfflinePolicyLearning2024,
+  title = {Offline {{Policy Learning}} via {{Skill-step Abstraction}} for {{Long-horizon Goal-Conditioned Tasks}}},
+  author = {Kim, Donghoon and Yoo, Minjong and Woo, Honguk},
+  year = 2024,
+  month = aug,
+  number = {arXiv:2408.11300},
+  eprint = {2408.11300},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2408.11300},
+  urldate = {2026-05-27},
+  abstract = {Goal-conditioned (GC) policy learning often faces a challenge arising from the sparsity of rewards, when confronting long-horizon goals. To address the challenge, we explore skill-based GC policy learning in offline settings, where skills are acquired from existing data and long-horizon goals are decomposed into sequences of near-term goals that align with these skills. Specifically, we present an `offline GC policy learning via skill-step abstraction' framework (GLVSA) tailored for tackling long-horizon GC tasks affected by goal distribution shifts. In the framework, a GC policy is progressively learned offline in conjunction with the incremental modeling of skill-step abstractions on the data. We also devise a GC policy hierarchy that not only accelerates GC policy learning within the framework but also allows for parameter-efficient fine-tuning of the policy. Through experiments with the maze and Franka kitchen environments, we demonstrate the superiority and efficiency of our GLVSA framework in adapting GC policies to a wide range of long-horizon goals. The framework achieves competitive zero-shot and few-shot adaptation performance, outperforming existing GC policy learning and skill-based methods.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/2408 2.pdf}
+}
+
 @misc{kipfCompILECompositionalImitation2019,
   title = {{{CompILE}}: {{Compositional Imitation Learning}} and {{Execution}}},
   shorttitle = {{{CompILE}}},
@@ -267,6 +352,19 @@
   file = {/home/kellen/Downloads/papers/CompILE Compositional Imitation Learning and Execution - Kipf et al..pdf}
 }
 
+@misc{kobandaOfflineGoalConditionedReinforcement2025a,
+  title = {Offline {{Goal-Conditioned Reinforcement Learning}} with {{Projective Quasimetric Planning}}},
+  author = {Kobanda, Anthony and Radji, Waris and Petitbois, Mathieu and Maillard, Odalric-Ambrym and Portelas, R{\'e}my},
+  year = 2025,
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.2506.18847},
+  urldate = {2026-05-27},
+  abstract = {Offline Goal-Conditioned Reinforcement Learning seeks to train agents to reach specified goals from previously collected trajectories. Scaling that promises to longhorizon tasks remains challenging, notably due to compounding value-estimation errors. Principled geometric offers a potential solution to address these issues. Following this insight, we introduce Projective Quasimetric Planning (ProQ), a compositional framework that learns an asymmetric distance and then repurposes it, firstly as a repulsive energy forcing a sparse set of keypoints to uniformly spread over the learned latent space, and secondly as a structured directional cost guiding towards proximal sub-goals. In particular, ProQ couples this geometry with a Lagrangian out-of-distribution detector to ensure the learned keypoints stay within reachable areas. By unifying metric learning, keypoint coverage, and goalconditioned control, our approach produces meaningful sub-goals and robustly drives long-horizon goal-reaching on diverse a navigation benchmarks.},
+  copyright = {Creative Commons Attribution 4.0 International},
+  keywords = {FOS: Computer and information sciences,Machine Learning (cs.LG)},
+  file = {/home/kellen/Downloads/papers/Offline Goal-Conditioned Reinforcement Learning with Projective Quasimetric Planning - Kobanda et al..pdf}
+}
+
 @misc{kostrikovOfflineReinforcementLearning2021,
   title = {Offline {{Reinforcement Learning}} with {{Implicit Q-Learning}}},
   author = {Kostrikov, Ilya and Nair, Ashvin and Levine, Sergey},
@@ -282,6 +380,19 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/papers/Offline Reinforcement Learning with Implicit Q-Learning - Kostrikov et al..pdf}
+}
+
+@misc{kumarContinualLearningComputationally2023a,
+  title = {Continual {{Learning}} as {{Computationally Constrained Reinforcement Learning}}},
+  author = {Kumar, Saurabh and Marklund, Henrik and Rao, Ashish and Zhu, Yifan and Jeon, Hong Jun and Liu, Yueyang and Van Roy, Benjamin},
+  year = 2023,
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.2307.04345},
+  urldate = {2026-05-27},
+  abstract = {An agent that accumulates knowledge to develop increasingly sophisticated skills over a long lifetime could advance the frontier of artificial intelligence capabilities. The design of such agents, which remains a longstanding challenge, is addressed by the subject of continual learning. This monograph clarifies and formalizes concepts of continual learning, introducing a framework and tools to stimulate further research. We also present a range of empirical case studies to illustrate the roles of forgetting, relearning, exploration, and auxiliary learning.},
+  copyright = {Creative Commons Attribution 4.0 International},
+  keywords = {Artificial Intelligence (cs.AI),FOS: Computer and information sciences,Machine Learning (cs.LG)},
+  file = {/home/kellen/Downloads/papers/2307.pdf}
 }
 
 @misc{levineOfflineReinforcementLearning2020a,
@@ -337,6 +448,24 @@
   file = {/home/kellen/Downloads/papers/CUDA-L1 Improving CUDA Optimization via Contrastive Reinforcement Learning - Li et al..pdf}
 }
 
+@misc{liuMetricResidualNetworks2023,
+  title = {Metric {{Residual Networks}} for {{Sample Efficient Goal-Conditioned Reinforcement Learning}}},
+  author = {Liu, Bo and Feng, Yihao and Liu, Qiang and Stone, Peter},
+  year = 2023,
+  month = jan,
+  number = {arXiv:2208.08133},
+  eprint = {2208.08133},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2208.08133},
+  urldate = {2026-05-27},
+  abstract = {Goal-conditioned reinforcement learning (GCRL) has a wide range of potential real-world applications, including manipulation and navigation problems in robotics. Especially in such robotics tasks, sample efficiency is of the utmost importance for GCRL since, by default, the agent is only rewarded when it reaches its goal. While several methods have been proposed to improve the sample efficiency of GCRL, one relatively under-studied approach is the design of neural architectures to support sample efficiency. In this work, we introduce a novel neural architecture for GCRL that achieves significantly better sample efficiency than the commonlyused monolithic network architecture. The key insight is that the optimal action-value function Q{$\ast$}(s, a, g) must satisfy the triangle inequality in a specific sense. Furthermore, we introduce the metric residual network (MRN) that deliberately decomposes the action-value function Q(s, a, g) into the negated summation of a metric plus a residual asymmetric component. MRN provably approximates any optimal actionvalue function Q{$\ast$}(s, a, g), thus making it a fitting neural architecture for GCRL. We conduct comprehensive experiments across 12 standard benchmark environments in GCRL. The empirical results demonstrate that MRN uniformly outperforms other state-of-the-art GCRL neural architectures in terms of sample efficiency. The code is publicly available at https://github.com/Cranial-XIX/metric-residual-network.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics},
+  file = {/home/kellen/Downloads/papers/2208.pdf}
+}
+
 @misc{liuRingAttentionBlockwise2023,
   title = {Ring {{Attention}} with {{Blockwise Transformers}} for {{Near-Infinite Context}}},
   author = {Liu, Hao and Zaharia, Matei and Abbeel, Pieter},
@@ -352,6 +481,14 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Computation and Language},
   file = {/home/kellen/Downloads/papers/Ring Attention with Blockwise Transformers for Near-Infinite Context - Liu et al..pdf}
+}
+
+@article{lyleUnderstandingPlasticityNeural,
+  title = {Understanding {{Plasticity}} in {{Neural Networks}}},
+  author = {Lyle, Clare and Zheng, Zeyu and Nikishin, Evgenii and Pires, Bernardo Avila and Pascanu, Razvan and Dabney, Will},
+  abstract = {Plasticity, the ability of a neural network to quickly change its predictions in response to new information, is essential for the adaptability and robustness of deep reinforcement learning systems. Deep neural networks are known to lose plasticity over the course of training even in relatively simple learning problems, but the mechanisms driving this phenomenon are still poorly understood. This paper conducts a systematic empirical analysis into plasticity loss, with the goal of understanding the phenomenon mechanistically in order to guide the future development of targeted solutions. We find that loss of plasticity is deeply connected to changes in the curvature of the loss landscape, but that it often occurs in the absence of saturated units. Based on this insight, we identify a number of parameterization and optimization design choices which enable networks to better preserve plasticity over the course of training. We validate the utility of these findings on larger-scale RL benchmarks in the Arcade Learning Environment.},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/Understanding Plasticity in Neural Networks - Lyle et al..pdf}
 }
 
 @misc{maVIPUniversalVisual2023,
@@ -371,6 +508,23 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Computer Science - Robotics},
   file = {/home/kellen/Downloads/papers/VIP Towards Universal Visual Reward and Representation via Value-Implicit Pre-Training - Ma et al..pdf}
+}
+
+@misc{mcleodContinualAuxiliaryTask2022,
+  title = {Continual {{Auxiliary Task Learning}}},
+  author = {McLeod, Matthew and Lo, Chunlok and Schlegel, Matthew and Jacobsen, Andrew and Kumaraswamy, Raksha and White, Martha and White, Adam},
+  year = 2022,
+  month = feb,
+  number = {arXiv:2202.11133},
+  eprint = {2202.11133},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2202.11133},
+  urldate = {2026-05-27},
+  abstract = {Learning auxiliary tasks, such as multiple predictions about the world, can provide many benefits to reinforcement learning systems. A variety of off-policy learning algorithms have been developed to learn such predictions, but as yet there is little work on how to adapt the behavior to gather useful data for those off-policy predictions. In this work, we investigate a reinforcement learning system designed to learn a collection of auxiliary tasks, with a behavior policy learning to take actions to improve those auxiliary predictions. We highlight the inherent non-stationarity in this continual auxiliary task learning problem, for both prediction learners and the behavior learner. We develop an algorithm based on successor features that facilitates tracking under non-stationary rewards, and prove the separation into learning successor features and rewards provides convergence rate improvements. We conduct an in-depth study into the resulting multi-prediction learning system.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Continual Auxiliary Task Learning - McLeod et al..pdf}
 }
 
 @article{myersHorizonGeneralizationReinforcement,
@@ -398,6 +552,24 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Computer Vision and Pattern Recognition,Computer Science - Machine Learning,Computer Science - Robotics,Statistics - Machine Learning},
   file = {/home/kellen/Downloads/papers/Hierarchical Foresight Self-Supervised Learning of Long-Horizon Tasks via Visual Subgoal Generation - Nair and Finn.pdf}
+}
+
+@misc{nilakshSqueezingMoreStream2026a,
+  title = {Squeezing {{More}} from the {{Stream}} : {{Learning Representation Online}} for {{Streaming Reinforcement Learning}}},
+  shorttitle = {Squeezing {{More}} from the {{Stream}}},
+  author = {Nilaksh and Clavaud, Antoine and Reymond, Mathieu and Rivest, Fran{\c c}ois and Chandar, Sarath},
+  year = 2026,
+  month = feb,
+  number = {arXiv:2602.09396},
+  eprint = {2602.09396},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2602.09396},
+  urldate = {2026-05-30},
+  abstract = {In streaming Reinforcement Learning (RL), transitions are observed and discarded immediately after a single update. While this minimizes resource usage for on-device applications, it makes agents notoriously sample-inefficient, since valuebased losses alone struggle to extract meaningful representations from transient data. We propose extending Self-Predictive Representations (SPR) to the streaming pipeline to maximize the utility of every observed frame. However, due to the highly correlated samples induced by the streaming regime, naively applying this auxiliary loss results in training instabilities. Thus, we introduce orthogonal gradient updates relative to the momentum target and resolve gradient conflicts arising from streaming-specific optimizers. Validated across the Atari, MinAtar, and Octax suites, our approach systematically outperforms existing streaming baselines. Latent-space analysis, including t-SNE visualizations and effective-rank measurements, confirms that our method learns significantly richer representations, bridging the performance gap caused by the absence of a replay buffer, while remaining efficient enough to train on just a few CPU cores1.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Squeezing More from the Stream  Learning Representation Online for Streaming Reinforcement Learning - Nilaksh et al..pdf}
 }
 
 @misc{oordNeuralDiscreteRepresentation2018,
@@ -574,6 +746,44 @@
   file = {/home/kellen/Downloads/papers/Accelerating Reinforcement Learning with Learned Skill Priors - Pertsch et al..pdf}
 }
 
+@misc{pitisInductiveBiasDistances2020,
+  title = {An {{Inductive Bias}} for {{Distances}}: {{Neural Nets}} That {{Respect}} the {{Triangle Inequality}}},
+  shorttitle = {An {{Inductive Bias}} for {{Distances}}},
+  author = {Pitis, Silviu and Chan, Harris and Jamali, Kiarash and Ba, Jimmy},
+  year = 2020,
+  month = jul,
+  number = {arXiv:2002.05825},
+  eprint = {2002.05825},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2002.05825},
+  urldate = {2026-05-27},
+  abstract = {Distances are pervasive in machine learning. They serve as similarity measures, loss functions, and learning targets; it is said that a good distance measure solves a task. When defining distances, the triangle inequality has proven to be a useful constraint, both theoretically--to prove convergence and optimality guarantees--and empirically--as an inductive bias. Deep metric learning architectures that respect the triangle inequality rely, almost exclusively, on Euclidean distance in the latent space. Though effective, this fails to model two broad classes of subadditive distances, common in graphs and reinforcement learning: asymmetric metrics, and metrics that cannot be embedded into Euclidean space. To address these problems, we introduce novel architectures that are guaranteed to satisfy the triangle inequality. We prove our architectures universally approximate norm-induced metrics on \$\textbackslash mathbb\textbraceleft R\textbraceright\textasciicircum n\$, and present a similar result for modified Input Convex Neural Networks. We show that our architectures outperform existing metric approaches when modeling graph distances and have a better inductive bias than non-metric approaches when training data is limited in the multi-goal reinforcement learning setting.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/papers/2002.pdf}
+}
+
+@misc{plataniosJellyBeanWorld2020,
+  title = {Jelly {{Bean World}}: {{A Testbed}} for {{Never-Ending Learning}}},
+  shorttitle = {Jelly {{Bean World}}},
+  author = {Platanios, Emmanouil Antonios and Saparov, Abulhair and Mitchell, Tom},
+  year = 2020,
+  month = feb,
+  number = {arXiv:2002.06306},
+  eprint = {2002.06306},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2002.06306},
+  urldate = {2026-05-27},
+  abstract = {Machine learning has shown growing success in recent years. However, current machine learning systems are highly specialized, trained for particular problems or domains, and typically on a single narrow dataset. Human learning, on the other hand, is highly general and adaptable. Never-ending learning is a machine learning paradigm that aims to bridge this gap, with the goal of encouraging researchers to design machine learning systems that can learn to perform a wider variety of inter-related tasks in more complex environments. To date, there is no environment or testbed to facilitate the development and evaluation of never-ending learning systems. To this end, we propose the Jelly Bean World testbed. The Jelly Bean World allows experimentation over two-dimensional grid worlds which are filled with items and in which agents can navigate. This testbed provides environments that are sufficiently complex and where more generally intelligent algorithms ought to perform better than current state-of-the-art reinforcement learning approaches. It does so by producing non-stationary environments and facilitating experimentation with multi-task, multi-agent, multi-modal, and curriculum learning settings. We hope that the Jelly Bean World will prompt new interest in the development of never-ending learning, and more broadly general intelligence.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Multiagent Systems,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/papers/2002 1.pdf}
+}
+
 @misc{renDeepSeekProverV2AdvancingFormal2025,
   title = {{{DeepSeek-Prover-V2}}: {{Advancing Formal Mathematical Reasoning}} via {{Reinforcement Learning}} for {{Subgoal Decomposition}}},
   shorttitle = {{{DeepSeek-Prover-V2}}},
@@ -624,6 +834,24 @@
   file = {/home/kellen/Downloads/papers/Rapid Exploration for Open-World Navigation with Latent Goal Models - Shah et al..pdf}
 }
 
+@misc{sharifnassabIntentionalUpdatesStreaming2026,
+  title = {Intentional {{Updates}} for {{Streaming Reinforcement Learning}}},
+  author = {Sharifnassab, Arsalan and Elsayed, Mohamed and Asis, Kris De and Mahmood, A. Rupam and Sutton, Richard S.},
+  year = 2026,
+  month = apr,
+  number = {arXiv:2604.19033},
+  eprint = {2604.19033},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2604.19033},
+  urldate = {2026-05-30},
+  abstract = {In gradient-based learning, a step size chosen in parameter units does not produce a predictable per-step change in function output. This often leads to instability in the streaming setting (i.e., batch size=1), where stochasticity is not averaged out and update magnitudes can momentarily become arbitrarily big or small. Instead, we propose intentional updates: first specify the intended outcome of an update and then solve for the step size that approximately achieves it. This strategy has precedent in online supervised linear regression via Normalized Least Mean Squares algorithm, which selects a step size to yield a specified change in the function output proportional to the current error. We extend this principle to streaming deep reinforcement learning by defining appropriate intended outcomes: Intentional TD aims for a fixed fractional reduction of the TD error, and Intentional Policy Gradient aims for a bounded per-step change in the policy, limiting local KL divergence. We propose practical algorithms combining eligibility traces and diagonal scaling. Empirically, these methods yield state-of-the-art streaming performance, frequently performing on par with batch and replay-buffer approaches.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Intentional Updates for Streaming Reinforcement Learning - Sharifnassab et al..pdf}
+}
+
 @misc{soiOptimalSoftwarePipelining2025,
   title = {Optimal {{Software Pipelining}} and {{Warp Specialization}} for {{Tensor Core GPUs}}},
   author = {Soi, Rupanshu and Yadav, Rohan and Kjolstad, Fredrik and Aiken, Alex and Dehnavi, Maryam Mehri and Garland, Michael and Bauer, Michael},
@@ -648,6 +876,50 @@
   abstract = {Learning, planning, and representing knowledge at multiple levels of temporal abstraction are key challenges for AI. In this paper we develop an approach to these problems based on the mathematical framework of reinforcement learning and Markov decision processes (MDPs). We extend the usual notion of action to include options---whole courses of behavior that may be temporally extended, stochastic, and contingent on events. Examples of options include picking up an object, going to lunch, and traveling to a distant city, as well as primitive actions such as muscle twitches and joint torques. Options may be given a priori, learned by experience, or both. They may be used interchangeably with actions in a variety of planning and learning methods. The theory of semi-Markov decision processes (SMDPs) can be applied to model the consequences of options and as a basis for planning and learning methods using them. In this paper we develop these connections, building on prior work by Bradtke and Duff (1995), Parr (in prep.) and others. Our main novel results concern the interface between the MDP and SMDP levels of analysis. We show how a set of options can be altered by changing only their termination conditions to improve over SMDP methods with no additional cost. We also introduce intra-option temporal-difference methods that are able to learn from fragments of an option's execution. Finally, we propose a notion of subgoal which can be used to improve the options themselves. Overall, we argue that options and their models provide hitherto missing aspects of a powerful, clear, and expressive framework for representing and organizing knowledge.},
   langid = {english},
   file = {/home/kellen/Downloads/papers/Between MDPs and Semi-MDPs Learning, Planning, and Representing Knowledge at Multiple Temporal Scal - Sutton et al..pdf}
+}
+
+@misc{veeriahDiscoveryUsefulQuestions2019,
+  title = {Discovery of {{Useful Questions}} as {{Auxiliary Tasks}}},
+  author = {Veeriah, Vivek and Hessel, Matteo and Xu, Zhongwen and Lewis, Richard and Rajendran, Janarthanan and Oh, Junhyuk and van Hasselt, Hado and Silver, David and Singh, Satinder},
+  year = 2019,
+  month = sep,
+  number = {arXiv:1909.04607},
+  eprint = {1909.04607},
+  primaryclass = {cs.AI},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1909.04607},
+  urldate = {2026-05-27},
+  abstract = {Arguably, intelligent agents ought to be able to discover their own questions so that in learning answers for them they learn unanticipated useful knowledge and skills; this departs from the focus in much of machine learning on agents learning answers to externally defined questions. We present a novel method for a reinforcement learning (RL) agent to discover questions formulated as general value functions or GVFs, a fairly rich form of knowledge representation. Specifically, our method uses non-myopic meta-gradients to learn GVF-questions such that learning answers to them, as an auxiliary task, induces useful representations for the main task faced by the RL agent. We demonstrate that auxiliary tasks based on the discovered GVFs are sufficient, on their own, to build representations that support main task learning, and that they do so better than popular hand-designed auxiliary tasks from the literature. Furthermore, we show, in the context of Atari 2600 videogames, how such auxiliary tasks, meta-learned alongside the main task, can improve the data efficiency of an actor-critic agent.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Discovery of Useful Questions as Auxiliary Tasks - Veeriah et al..pdf}
+}
+
+@misc{wangImprovedRepresentationAsymmetrical2024,
+  title = {Improved {{Representation}} of {{Asymmetrical Distances}} with {{Interval Quasimetric Embeddings}}},
+  author = {Wang, Tongzhou and Isola, Phillip},
+  year = 2024,
+  month = jan,
+  number = {arXiv:2211.15120},
+  eprint = {2211.15120},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2211.15120},
+  urldate = {2026-05-27},
+  abstract = {Asymmetrical distance structures (quasimetrics) are ubiquitous in our lives and are gaining more attention in machine learning applications. Imposing such quasimetric structures in model representations has been shown to improve many tasks, including reinforcement learning (RL) and causal relation learning. In this work, we present four desirable properties in such quasimetric models, and show how prior works fail at them. We propose Interval Quasimetric Embedding (IQE), which is designed to satisfy all four criteria. On three quasimetric learning experiments, IQEs show strong approximation and generalization abilities, leading to better performance and improved efficiency over prior methods.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/2211 1.pdf}
+}
+
+@article{wangLEARNINGLEARNABILITYQUASIMETRICS2022,
+  title = {{{ON THE LEARNING AND LEARNABILITY OF QUASIMETRICS}}},
+  author = {Wang, Tongzhou and Isola, Phillip},
+  year = 2022,
+  abstract = {Our world is full of asymmetries. Gravity and wind can make reaching a place easier than coming back. Social artifacts such as genealogy charts and citation graphs are inherently directed. In reinforcement learning and control, optimal goal-reaching strategies are rarely reversible (symmetrical). Distance functions supported on these asymmetrical structures are called quasimetrics. Despite their common appearance, little research has been done on the learning of quasimetrics. Our theoretical analysis reveals that a common class of learning algorithms, including unconstrained multilayer perceptrons (MLPs), provably fails to learn a quasimetric consistent with training data. In contrast, our proposed Poisson Quasimetric Embedding (PQE) is the first quasimetric learning formulation that both is learnable with gradient-based optimization and enjoys strong performance guarantees. Experiments on random graphs, social graphs, and offline Q-learning demonstrate its effectiveness over many common baselines.},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/ON THE LEARNING AND LEARNABILITY OF QUASIMETRICS - Wang and Isola.pdf}
 }
 
 @misc{weiSuperCoderAssemblyProgram2026,
@@ -737,6 +1009,19 @@
   file = {/home/kellen/Downloads/papers/Augmenting Policy Learning with Routines Discovered from a Single Demonstration - Zhao et al..pdf}
 }
 
+@misc{zhengCanWeReally2026b,
+  title = {Can {{We Really Learn One Representation}} to {{Optimize All Rewards}}?},
+  author = {Zheng, Chongyi and Jayanth, Royina Karegoudra and Eysenbach, Benjamin},
+  year = 2026,
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.2602.11399},
+  urldate = {2026-05-29},
+  abstract = {As machine learning has moved towards leveraging large models as priors for downstream tasks, the community has debated the right form of prior for solving reinforcement learning (RL) problems. If one were to try to prefetch as much computation as possible, they would attempt to learn a prior over the policies for some yet-to-be-determined reward function. Recent work (forward-backward (FB) representation learning) has tried this, arguing that an unsupervised representation learning procedure can enable optimal control over arbitrary rewards without further fine-tuning. However, FB's training objective and learning behavior remain mysterious. In this paper, we demystify FB by clarifying when such representations can exist, what its objective optimizes, and how it converges in practice. We draw connections with rank matching, fitted Q-evaluation, and contraction mapping. Our analysis suggests a simplified unsupervised pre-training method for RL that, instead of enabling optimal control, performs one step of policy improvement. We call our proposed method one-step forward-backward representation learning (one-step FB). Experiments in didactic settings, as well as in 10 statebased and image-based continuous control domains, demonstrate that one-step FB converges to errors 105 smaller and improves zero-shot performance by +24\% on average. Our project website is available at https://chongyi-zheng. github.io/onestep-fb.},
+  copyright = {arXiv.org perpetual, non-exclusive license},
+  keywords = {Artificial Intelligence (cs.AI),FOS: Computer and information sciences,Machine Learning (cs.LG),Robotics (cs.RO)},
+  file = {/home/kellen/Downloads/papers/2602.pdf}
+}
+
 @article{zhouDocPromptingGENERATINGCODE2023,
   title = {{{DocPrompting}}: {{GENERATING CODE BY RETRIEVING}}},
   author = {Zhou, Shuyan and Alon, Uri and Xu, Frank F and Wang, Zhiruo and Jiang, Zhengbao and Neubig, Graham},
@@ -760,4 +1045,12 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics},
   file = {/home/kellen/Downloads/papers/Flattening Hierarchies with Policy Bootstrapping - Zhou and Kao.pdf}
+}
+
+@article{ziarkoContrastiveRepresentationsTemporal,
+  title = {Contrastive {{Representations}} for {{Temporal Reasoning}}},
+  author = {Ziarko, Alicja and Bortkiewicz, Micha{\l} and Zawalski, Micha{\l} and Eysenbach, Benjamin and Mi{\l}os, Piotr},
+  abstract = {In classical AI, perception relies on learning state-based representations, while planning --- temporal reasoning over action sequences --- is typically achieved through search. We study whether such reasoning can instead emerge from representations that capture both perceptual and temporal structure. We show that standard temporal contrastive learning, despite its popularity, often fails to capture temporal structure due to its reliance on spurious features. To address this, we introduce Contrastive Representations for Temporal Reasoning (CRTR), a method that uses a negative sampling scheme to provably remove these spurious features and facilitate temporal reasoning. CRTR achieves strong results on domains with complex temporal structure, such as Sokoban and Rubik's Cube. In particular, for the Rubik's Cube, CRTR learns representations that generalize across all initial states and allow it to solve the puzzle using fewer search steps than BestFS --- though with longer solutions. To our knowledge, this is the first method that efficiently solves arbitrary Cube states using only learned representations, without relying on an external search algorithm.},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/Contrastive Representations for Temporal Reasoning - Ziarko et al..pdf}
 }

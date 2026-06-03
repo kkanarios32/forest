@@ -1,0 +1,27 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Bufferless Flow Control}
+\date{2026-06-03T01:15:02Z}
+\p{
+In a conventional NoC router, each input port has buffers — small memories that hold flits (the chunks a packet is split into) when they can't move forward immediately. If two flits both want the same output port, one waits in a buffer until the port frees up. Buffers make routing flexible but they're expensive: they take up a lot of silicon area and leak power even when idle. The note's claim that router buffers are the dominant cost in NoCs is the standard motivation here.
+}
+\p{
+Bufferless flow control removes those buffers. The question is then: what happens to a flit that loses arbitration for the port it wants? With no buffer to wait in, it can't stop. So the router deflects it — sends it out some other available port, even if that's the wrong direction. The flit wanders and eventually works its way to the destination. This is sometimes called "hot-potato" routing because no router can hold onto a flit; it must immediately pass it along.
+}
+\p{
+Gains are area and leakage power, because deleting the dominant hardware cost (buffers) shrinks the router and cuts static power draw.
+}
+\p{
+Worst-case latency suffers, because a deflected flit takes a longer, non-optimal path. Under light traffic this rarely happens, but under congestion flits get bounced around repeatedly.
+Routing complexity in a different sense — the logic for handling deflections and guaranteeing flits don't loop forever (livelock-free routing) adds its own design burden.
+Reordering at the destination, because if flits of one packet take different deflected paths, they arrive out of order and the receiver must buffer and reassemble them. (Slightly ironic: you removed buffers from routers but may need some at the endpoints.)
+}
+
+\p{
+CHIPPER is a well-known example — a bufferless router design from research around 2011 that aimed to make deflection cheap by simplifying the arbitration and deflection logic.
+}
+\p{
+The underlying tension: buffers buy you the ability to wait, and waiting is what lets you always move toward the destination. Remove the ability to wait and a flit must keep moving, so sometimes it moves the wrong way. You're trading time (latency under load) and endpoint complexity for area and power.
+}
