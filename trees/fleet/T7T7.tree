@@ -1,0 +1,13 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Sufficient Statistics}
+\taxon{Definition}
+\date{2026-06-04T12:11:28Z}
+
+\p{A statistic #{T(X)} is sufficient for #{\theta} if the conditional distribution of the data #{X} given #{T(X) = t} does not depend on #{\theta}. Intuitively: if someone hands you #{T(X)}, they could regenerate a fresh dataset with the same distribution without knowing #{\theta} — so #{T} lost nothing about #{\theta}.}
+
+\example{
+\strong{Bernoulli.} #{p(\mathbf{x}; \theta) = \theta^{\sum_{i} x_i}(1 - \theta)^{n - \sum_{i} x_i}}. The distribution only depends on #{\mathbf{x}} through #{\sum_{i} x_i}, so this is a sufficient statistic.
+}

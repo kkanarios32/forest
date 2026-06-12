@@ -1,7 +1,8 @@
 \date{2026-06-01T12:38:35Z}
 \import{base-macros}
 \author{kellenkanarios}
-\tag{todo}
+\tag{public}
+\tag{cpp}
 \title{\code{const}}
 \taxon{Definition}
 

@@ -1,0 +1,51 @@
+\date{2026-06-09T12:46:13Z}
+\import{base-macros}
+\taxon{Definition}
+\tag{public}
+\tag{cpp}
+\title{Virtual Function Table ([C++](OGCS1))}
+
+\p{Each [class](KE3D) with a [virtual function](OGCSG) gets a virtual table: a static, per-class, array of function pointers with one entry per virtual function.}
+
+\p{The virtual table is created by the compiler and is stored in the object's memory.}
+
+\pre\verb<<<|
+vtable layout:
+  [ offset-to-top  ]   // slot -2
+  [ type_info*     ]   // slot -1  ← RTTI
+  [ &virtual_fn_0  ]   // slot  0
+  [ &virtual_fn_1  ]   // slot  1
+  ...
+<<<
+
+\remark{
+The \code{type_info} pointer is needed to support runtime type-checking / [dynamic casting](OGCSI) .
+}
+
+\p{During construction, the vptr is initialized to point to the base class's vtable. In each classes vtable, there is a \em{thunk} (\code{offset-to-top}) that tells }
+
+\example{
+\pre\verb<<<|
+struct A {
+    virtual void f();
+    int a;
+};
+
+struct B {
+    virtual void g();
+    int b;
+};
+
+struct D : A, B {
+    void g() override;   // overrides B::g
+    int d;
+};
+<<<
+\pre\verb<<<|
+offset 0:   [ vptr_A ]   ← D's primary vtable (A subobject)
+offset 8:   [ a      ]
+offset 16:  [ vptr_B ]   ← D's secondary vtable (B subobject)
+offset 24:  [ b      ]
+offset 32:  [ d      ]
+<<<
+}

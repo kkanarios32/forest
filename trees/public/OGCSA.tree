@@ -1,0 +1,5 @@
+\date{2026-06-03T16:11:25Z}
+\import{base-macros}
+\taxon{Theorem}
+\title{Behavior cloning error bound (with distribution shift)}
+\p{If #{\pi(a | s)} is trained via [ERM](OGCSB) on #{s \sim d^{\pi_{\beta}}(s)} and optimal labels #{a^*}, and attains generalizationerror #{\epsilon} on #{s \sim d^{\pi_{\beta}}(s)}, then #{\ell(\pi) \leq C + H^2 \epsilon} is the best possible bound.}

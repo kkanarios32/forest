@@ -1,6 +1,10 @@
 \date{2026-06-02T11:42:24Z}
 \import{base-macros}
 \taxon{Definition}
-\title{Constructor [C++](OGCS1)}
+\tag{public}
+\tag{cpp}
+\title{Constructor ([C++](OGCS1))}
 
 \p{A constructor is a function of a [class](KE3D) that shares the same name as the class.}
+
+\p{A constructor without parameters is called a \em{default constructor}.}

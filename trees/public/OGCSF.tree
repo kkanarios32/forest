@@ -1,0 +1,22 @@
+\date{2026-06-05T14:32:52Z}
+\import{base-macros}
+\taxon{Definition}
+\tag{public}
+\tag{cpp}
+\title{Abstract type ([C++](OGCS1))}
+
+\p{An \em{abstract type} is a type that completely insulates a user from implementation details.}
+
+\p{Since we do not know anything about the representation (in particular, the size) we must allocate everything on heap.}
+
+\example{
+  Below is an abstract implementation of a [container class](OGCSE).
+  \pre\verb<<<|
+  class Container {
+  public:
+    virtual double& operator[](int) = 0; // pure virtual function
+    virtual int size() const = 0; // const member function
+    virtual ˜Container() {} // destructor
+  };
+  <<<
+}

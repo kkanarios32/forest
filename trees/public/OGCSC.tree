@@ -1,0 +1,22 @@
+\date{2026-06-05T14:04:26Z}
+\import{base-macros}
+\taxon{Definition}
+\tag{public}
+\tag{cpp}
+\title{Concrete Class ([C++](OGCS1))}
+
+\p{A class that behaves ``just like built-in types''. The defining characteristic of a concrete type is that its representation is part of its definition.}
+
+\p{Because the representation is fixed you can}
+\ol{
+  \li{Allocate objects directly on the stack.}
+  \li{Copy and assign them by value}
+  \li{Have them as direct members of other [classes](KE3D).}
+}
+
+\example{
+\code{complex}, \code{vector}, and \code{string} are concrete classes.
+}
+
+
+\transclude{OGCSE}

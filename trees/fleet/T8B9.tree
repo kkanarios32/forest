@@ -1,0 +1,21 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Global History Register}
+\date{2026-06-03T12:29:02Z}
+
+\p{
+The global history register (GHR) is a hardware structure in a CPU that records the recent outcomes of conditional branches, typically as a shift register of single bits where 1 means "taken" and 0 means "not taken." Each time a branch resolves, its outcome is shifted into the register, evicting the oldest bit. So if the GHR is 8 bits wide and the last eight branches went taken, not-taken, taken, taken, not-taken, not-taken, taken, taken, the register holds \code{10110011}.
+  }
+
+\p{The GHR is then passed as input in [[1LCS]]. The reason this is useful is that branches in real programs are highly correlated. Whether a given branch is taken often depends on what other branches did just before it. 
+}
+\example{
+A classic example:
+\pre\verb<<<|
+if (x < 7)  ...      // branch A
+if (x > 9)  ...      // branch B
+<<<
+If A is taken (meaning x < 7 was true), then B is guaranteed not taken. A predictor that only looks at branch B's own past behavior misses this. A predictor that looks at recent global history sees the pattern and learns the correlation.
+}

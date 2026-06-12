@@ -1,7 +1,8 @@
 \import{base-macros}
 \author{kellenkanarios}
 \meta{author}{false}
-\tag{private}
+\tag{public}
+\tag{cpp}
 \title{\code{constexpr}}
 \taxon{Definition}
 \date{2026-06-01T12:32:06Z}

@@ -1,0 +1,15 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{TPU flags}
+\date{2026-06-04T01:52:03Z}
+
+\pre\verb<<<|
+--xla_tpu_enable_llo_profiling=true \
+--xla_enable_mxu_trace=true \
+--xla_enable_transpose_trace=true \
+--xla_enable_local_dma_trace=true \
+--xla_tpu_emit_tracing_vwaits=true \
+--xla_jf_debug_level=1
+<<<

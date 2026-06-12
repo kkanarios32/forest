@@ -1,0 +1,9 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{public}
+\tag{cpp}
+\title{Struct ([C++](OGCS1))}
+\date{2026-06-01T12:55:10Z}
+
+\p{A struct is a [class](KE3D) whose members are \code{public} by default. The two are the same mechanism — \code{struct} simply flips the default access — so the choice is a convention: use \code{struct} for passive aggregates of data with no invariant to maintain, and [class](KE3D) when access control is enforcing an invariant.}

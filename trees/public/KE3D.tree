@@ -1,12 +1,14 @@
 \import{base-macros}
 \author{kellenkanarios}
 \meta{author}{false}
-\tag{private}
+\tag{public}
+\tag{cpp}
 \title{Class ([C++](OGCS1))}
 \date{2026-06-01T12:56:51Z}
 
 \p{Need an \em{abstraction} to separate \em{implementation} from \em{interface}. This is done in [C++](OGCS1) via the \code{public} and \code{private} members of a class.}
 
-\transclude{OGCS9}
-
 \remark{A [struct](CCIB) is class with its members public by default. }
+
+\transclude{OGCS9}
+\transclude{OGCSD}

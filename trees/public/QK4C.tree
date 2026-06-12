@@ -2,7 +2,8 @@
 \title{Enumerations (C++)}
 \import{base-macros}
 \author{kellenkanarios}
-\tag{todo}
+\tag{public}
+\tag{cpp}
 
 \p{User-defined type in [C++](OGCS1) that is a set of named values designed to make code more readable and less error prone.}
 

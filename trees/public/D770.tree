@@ -1,7 +1,8 @@
 \import{base-macros}
 \author{kellenkanarios}
 \meta{author}{false}
-\tag{private}
+\tag{public}
+\tag{cpp}
 \title{Exceptions (error handling)}
 \date{2026-06-03T11:42:12Z}
 

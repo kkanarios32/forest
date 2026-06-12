@@ -2,6 +2,7 @@
 \title{Heap}
 \import{base-macros}
 \author{kellenkanarios}
-\tag{todo}
+\tag{public}
+\tag{cpp}
 
 \p{In [C++](OGCS1), you allocate memory on the heap with \code{new} and \code{delete}.}

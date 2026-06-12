@@ -64,6 +64,24 @@
   file = {/home/kellen/Downloads/papers/2510.pdf}
 }
 
+@misc{caoAscendKernelGenSystematicStudy2026,
+  title = {{{AscendKernelGen}}: {{A Systematic Study}} of {{LLM-Based Kernel Generation}} for {{Neural Processing Units}}},
+  shorttitle = {{{AscendKernelGen}}},
+  author = {Cao, Xinzi and Zhai, Jianyang and Li, Pengfei and Hu, Zhiheng and Yan, Cen and Mu, Bingxu and Fang, Guanghuan and She, Bin and Li, Jiayu and Su, Yihan and Tao, Dongyang and Huang, Xiansong and Xu, Fan and Yang, Feidiao and Lu, Yao and Wang, Chang-Dong and Lu, Yutong and Xue, Weicheng and Zhou, Bin and Tian, Yonghong},
+  year = 2026,
+  month = apr,
+  number = {arXiv:2601.07160},
+  eprint = {2601.07160},
+  primaryclass = {cs.AI},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2601.07160},
+  urldate = {2026-06-09},
+  abstract = {To meet the ever-increasing demand for computational efficiency, Neural Processing Units (NPUs) have become critical in modern AI infrastructure. However, unlocking their full potential requires developing high-performance compute kernels using vendor-specific Domain-Specific Languages (DSLs), a task that demands deep hardware expertise and is labor-intensive. While Large Language Models (LLMs) have shown promise in general code generation, they struggle with the strict constraints and scarcity of training data in the NPU domain. Our preliminary study reveals that state-of-the-art general-purpose LLMs fail to generate functional complex kernels for Ascend NPUs, yielding a near-zero success rate. To address these challenges, we propose AscendKernelGen, a generation-evaluation integrated framework for NPU kernel development. We introduce Ascend-CoT, a high-quality dataset incorporating chain-of-thought reasoning derived from real-world kernel implementations, and KernelGen-LM, a domain-adaptive model trained via supervised fine-tuning and reinforcement learning with execution feedback. Furthermore, we design NPUKernelBench, a comprehensive benchmark for assessing compilation, correctness, and performance across varying complexity levels. Experimental results demonstrate that our approach significantly bridges the gap between general LLMs and hardware-specific coding. Specifically, the compilation success rate on complex Level-2 kernels improves from 0\% to 95.5\% (Pass@10), while functional correctness achieves 64.3\% compared to the baseline's complete failure. These results highlight the critical role of domain-specific reasoning and rigorous evaluation in automating accelerator-aware code generation. AscendKernGen is available at AscendKernGen and NPUKernelBench.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/AscendKernelGen A Systematic Study of LLM-Based Kernel Generation for Neural Processing Units - Cao et al..pdf}
+}
+
 @misc{caoKSearchLLMKernel2026,
   title = {K-{{Search}}: {{LLM Kernel Generation}} via {{Co-Evolving Intrinsic World Model}}},
   shorttitle = {K-{{Search}}},
@@ -83,6 +101,24 @@
   file = {/home/kellen/Downloads/papers/K-Search LLM Kernel Generation via Co-Evolving Intrinsic World Model - Cao et al..pdf}
 }
 
+@misc{chengMPKCompilerRuntime2026,
+  title = {{{MPK}}: {{A Compiler}} and {{Runtime}} for {{Mega-Kernelizing Tensor Programs}}},
+  shorttitle = {{{MPK}}},
+  author = {Cheng, Xinhao and Zhang, Zhihao and Zhou, Yu and Ji, Jianan and Jiang, Jinchen and Zhao, Zepeng and Xiao, Ziruo and Ye, Zihao and Huang, Yingyi and Lai, Ruihang and Jin, Hongyi and Hou, Bohan and Wu, Mengdi and Dong, Yixin and Yip, Anthony and Ye, Zihao and Wang, Songting and Yang, Wenqin and Miao, Xupeng and Chen, Tianqi and Jia, Zhihao},
+  year = 2026,
+  month = jun,
+  number = {arXiv:2512.22219},
+  eprint = {2512.22219},
+  primaryclass = {cs.DC},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2512.22219},
+  urldate = {2026-06-12},
+  abstract = {We introduce Mirage Persistent Kernel (MPK), the first compiler and runtime system that automatically transforms multiGPU model inference into a single high-performance megakernel. MPK introduces an SM-level graph representation that captures data dependencies at the granularity of individual streaming multiprocessors (SMs), enabling cross-operator software pipelining, fine-grained overlap of computation and communication, and other optimizations that are infeasible under the conventional kernel-per-operator execution model. The MPK compiler lowers tensor programs into optimized SM-level task graphs and generates fast CUDA implementations for each task, while the MPK in-kernel parallel runtime executes these tasks within a single persistent mega-kernel using decentralized scheduling across SMs. Together, these components provide end-to-end kernel fusion with minimal developer effort, while preserving the flexibility of existing programming models. Our evaluation shows that MPK significantly outperforms existing kernel-per-operator LLM serving systems, achieving up to 1.7\texttimes{} lower end-to-end inference latency and pushing LLM inference performance close to the limits of the underlying hardware. MPK is publicly available at https : //github.com/mirage-project/mirage.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Programming Languages},
+  file = {/home/kellen/Downloads/papers/MPK A Compiler and Runtime for Mega-Kernelizing Tensor Programs - Cheng et al..pdf}
+}
+
 @misc{chuaLearningSuccessorFeatures2024,
   title = {Learning {{Successor Features}} the {{Simple Way}}},
   author = {Chua, Raymond and Ghosh, Arna and Kaplanis, Christos and Richards, Blake A. and Precup, Doina},
@@ -98,6 +134,20 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/papers/Learning Successor Features the Simple Way - Chua et al..pdf}
+}
+
+@misc{chungOfflineReinforcementLearning2026,
+  title = {Offline {{Reinforcement Learning}} with {{Universal Horizon Models}}},
+  author = {Chung, Hojun and Lee, Junseo and Oh, Songhwai},
+  year = 2026,
+  publisher = {arXiv},
+  doi = {10.48550/ARXIV.2605.15603},
+  urldate = {2026-06-03},
+  abstract = {Model-based reinforcement learning (RL) offers a compelling approach to offline RL by enabling value learning on imagined on-policy trajectories. However, it often suffers from compounding errors due to repeated model inference on self-generated states. While geometric horizon models (GHM) alleviate this issue through direct prediction over a discounted infinite-horizon future, they remain challenged in accurately modeling distant future states. To this end, we introduce universal horizon models (UHM), a generalization of GHM that directly predicts future states under arbitrary horizons. Leveraging this flexibility, we propose a scalable value learning method that employs a winsorized horizon distribution to stabilize training by capping excessively large horizons. Experimental results on 100 challenging OGBench tasks demonstrate that the proposed method outperforms competitive baselines, particularly on tasks with highly suboptimal datasets and those requiring long-horizon reasoning. Project page: https://rllab-snu.github.io/projects/UHM/},
+  copyright = {arXiv.org perpetual, non-exclusive license},
+  langid = {english},
+  keywords = {Artificial Intelligence (cs.AI),FOS: Computer and information sciences,Machine Learning (cs.LG)},
+  file = {/home/kellen/Downloads/papers/Offline Reinforcement Learning with Universal Horizon Models - Chung et al..pdf}
 }
 
 @misc{daoFlashAttention2FasterAttention2023,
@@ -272,6 +322,24 @@
   file = {/home/kellen/Downloads/papers/DRTriton Large-Scale Synthetic Data Reinforcement Learning for Triton Kernel Generation - Guo et al..pdf}
 }
 
+@misc{hammondAgenticOperatorGeneration2025,
+  title = {Agentic {{Operator Generation}} for {{ML ASICs}}},
+  author = {Hammond, Alec M. and Markosyan, Aram and Dontula, Aman and Mahns, Simon and Fisches, Zacharias and Pedchenko, Dmitrii and Muzumdar, Keyur and Supper, Natacha and Saroufim, Mark and Isaacson, Joe and Wang, Laura and Hunt, Warren and Gondkar, Kaustubh and Levenstein, Roman and Synnaeve, Gabriel and Li, Richard and Kahn, Jacob and Mathews, Ajit},
+  year = 2025,
+  month = dec,
+  number = {arXiv:2512.10977},
+  eprint = {2512.10977},
+  primaryclass = {cs.DC},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2512.10977},
+  urldate = {2026-06-09},
+  abstract = {We present TritorX, an agentic AI system designed to generate functionally correct Triton PyTorch ATen kernels at scale for emerging accelerator platforms. TritorX integrates open-source large language models with a custom linter, JIT compilation, and a PyTorch OpInfo-based test harness. This pipeline is compatible with both real Meta Training and Inference Accelerator (MTIA) silicon and in hardware simulation environments for next-generation devices. In contrast to previous kernel-generation approaches that prioritize performance for a limited set of high-usage kernels, TritorX prioritizes coverage. Our system emphasizes correctness and generality across the entire operator set, including diverse data types, shapes, and argument patterns. In our experiments, TritorX successfully generated kernels and wrappers for 481 unique ATen operators that pass all corresponding PyTorch OpInfo tests (over 20,000 in total). TritorX paves the way for overnight generation of complete PyTorch ATen backends for new accelerator platforms.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Hardware Architecture,Computer Science - Programming Languages},
+  file = {/home/kellen/Downloads/papers/Agentic Operator Generation for ML ASICs - Hammond et al..pdf}
+}
+
 @article{harbWhenWaitingNot2018,
   title = {When {{Waiting Is Not}} an {{Option}}: {{Learning Options With}} a {{Deliberation Cost}}},
   shorttitle = {When {{Waiting Is Not}} an {{Option}}},
@@ -287,6 +355,24 @@
   abstract = {Recent work has shown that temporally extended actions (options) can be learned fully end-to-end as opposed to being specified in advance. While the problem of how to learn options is increasingly well understood, the question of what good options should be has remained elusive. We formulate our answer to what good options should be in the bounded rationality framework (Simon, 1957) through the notion of deliberation cost. We then derive practical gradient-based learning algorithms to implement this objective. Our results in the Arcade Learning Environment (ALE) show increased performance and interpretability.},
   langid = {english},
   file = {/home/kellen/Downloads/papers/When Waiting Is Not an Option Learning Options With a Deliberation Cost - Harb et al..pdf}
+}
+
+@misc{jiangCanLargeLanguage2025,
+  title = {Can {{Large Language Models Understand Intermediate Representations}} in {{Compilers}}?},
+  author = {Jiang, Hailong and Zhu, Jianfeng and Wan, Yao and Fang, Bo and Zhang, Hongyu and Jin, Ruoming and Guan, Qiang},
+  year = 2025,
+  month = jun,
+  number = {arXiv:2502.06854},
+  eprint = {2502.06854},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2502.06854},
+  urldate = {2026-06-12},
+  abstract = {Intermediate Representations (IRs) play a critical role in compiler design and program analysis, yet their comprehension by Large Language Models (LLMs) remains underexplored. In this paper, we present an explorative empirical study evaluating the capabilities of six state-of-the-art LLMs: GPT-4, GPT-3, DeepSeek, Gemma 2, Llama 3, and Code Llama, in understanding IRs. Specifically, we assess model performance across four core tasks: control flow graph reconstruction, decompilation, code summarization, and execution reasoning. While LLMs exhibit competence in parsing IR syntax and identifying high-level structures, they consistently struggle with instruction-level reasoning, especially in control flow reasoning, loop handling, and dynamic execution. Common failure modes include misinterpreting branching instructions, omitting critical operations, and relying on heuristic reasoning rather than precise instruction-level logic. Our findings highlight the need for IR-specific enhancements in LLM design. We recommend fine-tuning on structured IR datasets and integrating control-flow-sensitive architectures to improve model effectiveness. All experimental data and source code are publicly available at},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Can Large Language Models Understand Intermediate Representations in Compilers - Jiang et al..pdf}
 }
 
 @article{jiangLearningOptionsCompression,
@@ -395,6 +481,32 @@
   file = {/home/kellen/Downloads/papers/2307.pdf}
 }
 
+@article{kumarDisCorCorrectiveFeedback,
+  title = {{{DisCor}}: {{Corrective Feedback}} in {{Reinforcement Learning}} via {{Distribution Correction}}},
+  author = {Kumar, Aviral and Gupta, Abhishek and Levine, Sergey},
+  abstract = {Deep reinforcement learning can learn effective policies for a wide range of tasks, but is notoriously difficult to use due to instability and sensitivity to hyperparameters. The reasons for this remain unclear. When using standard supervised methods (e.g., for bandits), on-policy data collection provides ``hard negatives'' that correct the model in precisely those states and actions that the policy is likely to visit. We call this phenomenon ``corrective feedback.'' We show that bootstrapping-based Q-learning algorithms do not necessarily benefit from this corrective feedback, and training on the experience collected by the algorithm is not sufficient to correct errors in the Q-function. In fact, Q-learning and related methods can exhibit pathological interactions between the distribution of experience collected by the agent and the policy induced by training on that experience, leading to potential instability, sub-optimal convergence, and poor results when learning from noisy, sparse or delayed rewards. We demonstrate the existence of this problem, both theoretically and empirically. We then show that a specific correction to the data distribution can mitigate this issue. Based on these observations, we propose a new algorithm, DisCor, which computes an approximation to this optimal distribution and uses it to re-weight the transitions used for training, resulting in substantial improvements in a range of challenging RL settings, such as multi-task learning and learning from noisy reward signals. Blog post presenting a summary of this work is available at: https://bair.berkeley.edu/blog/2020/03/16/discor/.},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/DisCor Corrective Feedback in Reinforcement Learning via Distribution Correction - Kumar et al..pdf}
+}
+
+@misc{langeRobustAgenticCUDA2025a,
+  title = {Towards {{Robust Agentic CUDA Kernel Benchmarking}}, {{Verification}}, and {{Optimization}}},
+  author = {Lange, Robert Tjarko and Sun, Qi and Prasad, Aaditya and Faldor, Maxence and Tang, Yujin and Ha, David},
+  year = 2025,
+  month = sep,
+  number = {arXiv:2509.14279},
+  eprint = {2509.14279},
+  primaryclass = {cs.SE},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2509.14279},
+  urldate = {2026-06-09},
+  abstract = {Recent advances in large language models (LLMs) demonstrate their effectiveness in scaling test-time compute for software engineering tasks. However, these approaches often focus on high-level solutions, with limited attention to optimizing low-level CUDA kernel implementations. Additionally, existing kernel generation benchmarks suffer from exploitable loopholes and insufficient diversity in testing conditions, hindering true generalization assessment. To address these limitations, we introduce robust-kbench, a new benchmark for rigorous evaluation of kernel performance and correctness across varied scenarios. Furthermore, we present a comprehensive agentic framework that automates CUDA kernel discovery, verification, and optimization. This pipeline enables frontier LLMs to translate torch code to CUDA kernels and iteratively improve their runtime within our robust evaluation setting. Our sequential workflow first translates PyTorch code into equivalent CUDA kernels. It then optimizes their runtime using a novel evolutionary metageneration procedure tailored to the CUDA ecosystem, guided by LLM-based verifiers for correctness and efficient filtering. Evaluated on robust-kbench, our approach produces CUDA kernels outperforming torch implementations for practical applications, including forward and backward passes. It can fuse operations and deploy various runtime optimization strategies. The verifier workflow accurately classifies incorrect kernels, enhancing hardware verification efficiency.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Software Engineering},
+  file = {/home/kellen/Downloads/papers/2509.pdf}
+}
+
 @misc{levineOfflineReinforcementLearning2020a,
   title = {Offline {{Reinforcement Learning}}: {{Tutorial}}, {{Review}}, and {{Perspectives}} on {{Open Problems}}},
   shorttitle = {Offline {{Reinforcement Learning}}},
@@ -411,6 +523,25 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
   file = {/home/kellen/Downloads/papers/Offline Reinforcement Learning Tutorial, Review, and Perspectives on Open Problems - Levine et al. 1.pdf}
+}
+
+@misc{liaoKernelEvolveScalingAgentic2026,
+  title = {{{KernelEvolve}}: {{Scaling Agentic Kernel Coding}} for {{Heterogeneous AI Accelerators}} at {{Meta}}},
+  shorttitle = {{{KernelEvolve}}},
+  author = {Liao, Gang and Qin, Hongsen and Wang, Ying and Golden, Alicia and Kuchnik, Michael and Yetim, Yavuz and Ang, Jia Jiunn and Fu, Chunli and He, Yihan and Hsia, Samuel and Jiang, Zewei and Li, Dianshi and Pashkevich, Uladzimir and Puvvada, Varna and Shi, Feng and Steiner, Matt and Xiao, Ruichao and Yan, Nathan and Yu, Xiayu and Fang, Zhou and Levenstein, Roman and Ho, Kunming and Zhu, Haishan and Hammond, Alec and Li, Richard and Mathews, Ajit and Gondkar, Kaustubh and {Zainul-Abedin}, Abdul and Singh, Ketan and Yu, Hongtao and Chi, Wenyuan and Huang, Barney and Zhang, Sean and Weller, Noah and Marine, Zach and Cook, Wyatt and Wu, Carole-Jean and Liu, Gaoxiang},
+  year = 2026,
+  month = jan,
+  number = {arXiv:2512.23236},
+  eprint = {2512.23236},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2512.23236},
+  urldate = {2026-06-11},
+  abstract = {Making deep learning recommendation model (DLRM) training and inference fast and efficient is important. However, this presents three key system challenges - model architecture diversity, kernel primitive diversity, and hardware generation and architecture heterogeneity. This paper presents KernelEvolve-an agentic kernel coding framework-to tackle heterogeneity at-scale for DLRM. KernelEvolve is designed to take kernel specifications as input and automate the process of kernel generation and optimization for recommendation model across heterogeneous hardware architectures. KernelEvolve does so by operating at multiple programming abstractions, from Triton and CuTe DSL to low-level hardware agnostic languages, spanning the full hardware-software optimization stack. The kernel optimization process is described as graph-based search with selection policy, universal operator, fitness function, and termination rule, dynamically adapts to runtime execution context through retrieval-augmented prompt synthesis. We designed, implemented, and deployed KernelEvolve to optimize a wide variety of production recommendation models across generations of NVIDIA and AMD GPUs, as well as Meta's AI accelerators. We validate KernelEvolve on the publicly-available KernelBench suite, achieving 100\% pass rate on all 250 problems across three difficulty levels, and 160 PyTorch ATen operators across three heterogeneous hardware platforms, demonstrating 100\% correctness. KernelEvolve reduces development time from weeks to hours and achieves substantial performance improvements over PyTorch baselines across diverse production use cases and for heterogeneous AI systems at-scale. Beyond performance efficiency improvements, KernelEvolve significantly mitigates the programmability barrier for new AI hardware by enabling automated kernel generation for in-house developed AI hardware.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Artificial Intelligence,Computer Science - Hardware Architecture,Computer Science - Machine Learning,Computer Science - Multiagent Systems,Computer Science - Performance},
+  file = {/home/kellen/Downloads/papers/KernelEvolve Scaling Agentic Kernel Coding for Heterogeneous AI Accelerators at Meta - Liao et al..pdf}
 }
 
 @article{liCompetitionLevelCodeGeneration2022,
@@ -446,6 +577,23 @@
   copyright = {Creative Commons Attribution 4.0 International},
   keywords = {Artificial Intelligence (cs.AI),Distributed Parallel and Cluster Computing (cs.DC),FOS: Computer and information sciences,Machine Learning (cs.LG)},
   file = {/home/kellen/Downloads/papers/CUDA-L1 Improving CUDA Optimization via Contrastive Reinforcement Learning - Li et al..pdf}
+}
+
+@article{liewSoundPartiallyCompleteStatic2024,
+  title = {Sound and {{Partially-Complete Static Analysis}} of {{Data-Races}} in {{GPU Programs}}},
+  author = {Liew, Dennis and Cogumbreiro, Tiago and Lange, Julien},
+  year = 2024,
+  month = oct,
+  journal = {Proceedings of the ACM on Programming Languages},
+  volume = {8},
+  number = {OOPSLA2},
+  pages = {2434--2461},
+  issn = {2475-1421},
+  doi = {10.1145/3689797},
+  urldate = {2026-06-10},
+  abstract = {GPUs are progressively being integrated into modern society, playing a pivotal role in Artificial Intelligence and High-Performance Computing. Programmers need a deep understanding of the GPU programming model to avoid subtle data-races in their codes. Static verification that is sound and incomplete can guarantee data-race freedom, but the alarms it raises may be spurious and need to be validated.                            In this paper, we establish a True Positive Theorem for a static data-race detector for GPU programs, i.e., a result that identifies a class of programs for which our technique only raises true alarms. Our work builds on the formalism of               memory access protocols               , that models the concurrency operations of CUDA programs. The crux of our approach is an               approximation analysis               that can correctly identify true alarms, and pinpoint the conditions that make an alarm imprecise. Our approximation analysis detects when the reported locations are reachable (control independence, or CI), and when the reported locations are precise (data independence, or DI), as well identify inexact values in an alarm. In addition to a True Positive result for programs that are CI and DI, we establish the root causes of spurious alarms depending on whether CI or DI are present.                                         We apply our theory to introduce FaialAA, the first sound and partially complete data-race detector. We evaluate FaialAA in three experiments. First, in a comparative study with the state-of-the-art tools, we show that FaialAA confirms more DRF programs than others while emitting                                                   1.9                   \texttimes{}                                               fewer potential alarms. Importantly, the approximation analysis of FaialAA detects 10 undocumented data-races. Second, in an experiment studying 6 commits of data-race fixes in open source projects OpenMM and Nvidia's MegaTron, FaialAA confirmed the buggy and fixed versions of 5 commits, while others were only able to confirm 2. Third, we show that                                                   59.5                   \%                                               of 2,770 programs are CI and DI, quantifying when the approximation analysis of FaialAA is complete.                          This paper is accompanied by the mechanized proofs of the theoretical results presented therein and a tool (FaialAA) implementing of our theory.},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/Sound and Partially-Complete Static Analysis of Data-Races in GPU Programs - Liew et al..pdf}
 }
 
 @misc{liuMetricResidualNetworks2023,
@@ -957,6 +1105,14 @@
   file = {/home/kellen/Downloads/papers/Abstraction for Offline Goal-Conditioned Reinforcement Learning - Wibault et al..pdf}
 }
 
+@article{wuMirageMultiLevelSuperoptimizer,
+  title = {Mirage: {{A Multi-Level Superoptimizer}} for {{Tensor Programs}}},
+  author = {Wu, Mengdi and Cheng, Xinhao and Shi, Chunan and Velliengiri, Praveen and Padon, Oded},
+  abstract = {We introduce Mirage, the first multi-level superoptimizer for tensor programs. A key idea in Mirage is \textmu Graphs, a uniform representation of tensor programs at the kernel, thread block, and thread levels of the GPU compute hierarchy. \textmu Graphs enable Mirage to discover novel optimizations that combine algebraic transformations, schedule transformations, and generation of new custom kernels. To navigate the large search space, Mirage introduces a pruning technique based on abstraction that significantly reduces the search space and provides a certain optimality guarantee. To ensure that the optimized \textmu Graph is equivalent to the input program, Mirage introduces a probabilistic equivalence verification procedure with strong theoretical guarantees. Our evaluation shows that Mirage significantly outperforms existing approaches even for DNNs that are widely used and heavily optimized. Mirage is publicly available at https : //github.com/mirage-project/mirage.},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/Mirage A Multi-Level Superoptimizer for Tensor Programs - Wu et al..pdf}
+}
+
 @article{xuOFFLINERLNO2023,
   title = {{{OFFLINE RL WITH NO OOD ACTIONS}}: {{IN-SAMPLE LEARNING VIA IMPLICIT VALUE REGULARIZATION}}},
   author = {Xu, Haoran and Jiang, Li and Li, Jianxiong and Yang, Zhuoran and Wang, Zhaoran and Chan, Victor Wai Kin and Zhan, Xianyuan},
@@ -981,6 +1137,24 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/papers/Learning to Discover at Test Time - Yuksekgonul et al..pdf}
+}
+
+@misc{zhangAccelOptSelfImprovingLLM2026,
+  title = {{{AccelOpt}}: {{A Self-Improving LLM Agentic System}} for {{AI Accelerator Kernel Optimization}}},
+  shorttitle = {{{AccelOpt}}},
+  author = {Zhang, Genghan and Zhu, Shaowei and Wei, Anjiang and Song, Zhenyu and Nie, Allen and Jia, Zhen and Vijaykumar, Nandita and Wang, Yida and Olukotun, Kunle},
+  year = 2026,
+  month = apr,
+  number = {arXiv:2511.15915},
+  eprint = {2511.15915},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2511.15915},
+  urldate = {2026-06-09},
+  abstract = {We present AccelOpt, a self-improving large language model (LLM) agentic system that autonomously optimizes kernels for emerging AI acclerators, eliminating the need for expert-provided hardware-specific optimization knowledge. AccelOpt explores the kernel optimization space through iterative generation, informed by an optimization memory that curates experiences and insights from previously encountered slow-fast kernel pairs. We build NKIBench, a new benchmark suite of AWS Trainium accelerator kernels with varying complexity extracted from real-world LLM workloads to evaluate the effectiveness of AccelOpt. Our evaluation confirms that AccelOpt's capability improves over iterations, boosting the average percentage of peak throughput from 49\% to 61\% on Trainium 1 and from 45\% to 59\% on Trainium 2 for NKIBench kernels. Moreover, AccelOpt is highly cost-effective: using open-source models, it matches the kernel improvements of Claude Sonnet 4 while being 26\texttimes{} cheaper. The code is open-sourced at https://github.com/zhang677/AccelOpt.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Computation and Language,Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/AccelOpt A Self-Improving LLM Agentic System for AI Accelerator Kernel Optimization - Zhang et al..pdf}
 }
 
 @article{zhangMINIMUMDESCRIPTIONLENGTH2021,

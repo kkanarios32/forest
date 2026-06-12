@@ -1,0 +1,44 @@
+\import{base-macros}
+\date{2026-06-01}
+\author{kellenkanarios}
+\title{Notebook: C++}
+\tag{public}
+\tag{note}
+\tag{top}
+\tag{cpp}
+
+\p{Concept-level notes on C++, working from the ground up: the kinds of types you can define, how concrete and abstract types differ in their memory model, the machinery behind runtime polymorphism, and the language features that govern immutability, type deduction, error handling, and storage. Each section transcludes an atomic tree; the notebook is the organizing spine, so links to "C++" anywhere in the forest resolve here.}
+
+\section{User-defined types}{
+\p{C++ gives several ways to bundle data into a named type. A [class](KE3D) is the workhorse — it separates interface from implementation through access control, and carries the [constructor](OGCS9)/[destructor](OGCSD) machinery that ties resource lifetime to scope. A [struct](CCIB) is the same mechanism with public defaults, a [union](W375) overlays members in shared storage, and an [enumeration](QK4C) names a fixed set of values.}
+\transclude{KE3D}
+\transclude{CCIB}
+\transclude{W375}
+\transclude{QK4C}
+}
+
+\section{Concrete and abstract types}{
+\p{The pivotal design axis is whether a type's representation is part of its definition. A [concrete class](OGCSC) commits to its layout, so it can live on the stack and be copied by value; an [abstract type](OGCSF) hides representation entirely behind pure virtual functions, which forces heap allocation and pointer-based use. The [container](OGCSE) is the running example that both build on.}
+\transclude{OGCSC}
+\transclude{OGCSF}
+}
+
+\section{Runtime polymorphism}{
+\p{Abstract types are only useful because of dynamic dispatch. A [virtual function](OGCSG) call is resolved through a hidden per-object pointer into a per-class [virtual function table](OGCSH), which also carries the type information that makes [dynamic casting](OGCSI) possible.}
+\transclude{OGCSG}
+}
+
+\section{Core language features}{
+\p{Three keywords that shift guarantees and work between the programmer, the reader, and the compiler. [\code{const}](OGCS3) is a promise not to mutate, [\code{constexpr}](PP8D) pushes that promise further into compile-time evaluation, and [\code{auto}](JXI3) hands type deduction to the compiler — indispensable for [generic programming](OGCS2).}
+\transclude{OGCS3}
+\transclude{PP8D}
+\transclude{JXI3}
+}
+
+\section{Error handling}{
+\transclude{D770}
+}
+
+\section{Memory}{
+\transclude{WLBG}
+}

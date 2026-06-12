@@ -1,0 +1,9 @@
+\date{2026-06-05T14:12:49Z}
+\import{base-macros}
+\taxon{Definition}
+\tag{public}
+\tag{cpp}
+\title{Destructor ([C++](OGCS1))}
+
+\p{A destructor is the mechanism in [C++](OGCS1) that ensures that any memory a constructor allocates is deallocated.}
+\p{A destructor is a function of a [class](KE3D) that shares the same name as the class with the \code{~} operator to denote it is the \em{complement} of the constructor.}

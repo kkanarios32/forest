@@ -1,0 +1,16 @@
+\date{2026-06-05T14:18:14Z}
+\import{base-macros}
+\taxon{Definition}
+\tag{public}
+\tag{cpp}
+\title{Container ([C++](OGCS1))}
+
+\p{A container is a [concrete class](OGCSC) that exists to hold elements..}
+
+\example{
+We call \code{vector} a container.
+}
+
+\section{Initialization}{
+  We can initialize a container via \code{std::initializer_list}, where you directly pass the list of elements via \code{{1,2,3,4,...}}. Alternatively, containers may support additional methods like \code{push_back()}.
+}

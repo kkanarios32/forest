@@ -1,0 +1,34 @@
+\date{2026-06-09T12:22:13Z}
+\import{base-macros}
+\taxon{Definition}
+\tag{public}
+\tag{cpp}
+\title{Virtual Function ([C++](OGCS1))}
+
+\transclude{OGCSH}
+
+\p{Every \strong{object} of a class with a virtual function carries a hidden vptr (virtual pointer) that points to the class's virtual table.}
+
+\example{
+Consider the following class hierarchy:
+\pre\verb<<<|
+struct Base {
+    virtual void f();
+    virtual void g();
+    int x;
+};
+
+struct Derived : Base {
+    void f() override;   // overrides Base::f
+    void h();            // non-virtual, not in vtable
+    int y;
+};
+<<<
+This yields the following components for each type of object:
+\pre\verb<<<|
+Base object:        Derived object:
+[ vptr ]            [ vptr ]      → points to Derived's vtable
+[ x    ]            [ x    ]
+                    [ y    ]
+<<<
+}

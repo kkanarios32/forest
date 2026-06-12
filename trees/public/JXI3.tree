@@ -1,7 +1,8 @@
 \import{base-macros}
 \author{kellenkanarios}
 \meta{author}{false}
-\tag{private}
+\tag{public}
+\tag{cpp}
 \title{\code{auto} keyword}
 \date{2026-06-01T12:26:23Z}
 
