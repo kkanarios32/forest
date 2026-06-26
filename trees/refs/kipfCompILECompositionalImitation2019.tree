@@ -1,0 +1,27 @@
+% ["refs"]
+\title{CompILE: Compositional Imitation Learning and Execution}
+\date{2019-05}
+\author/literal{Thomas Kipf}\author/literal{Yujia Li}\author/literal{Hanjun Dai}\author/literal{Vinicius Zambaldi}\author/literal{Alvaro Sanchez-Gonzalez}\author/literal{Edward Grefenstette}\author/literal{Pushmeet Kohli}\author/literal{Peter Battaglia}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1812.01483}
+\meta{external}{https://arxiv.org/abs/1812.01483}
+
+\meta{bibtex}{\startverb
+@misc{kipfCompILECompositionalImitation2019,
+ title = {{{CompILE}}: {{Compositional Imitation Learning}} and {{Execution}}},
+ author = {Kipf, Thomas and Li, Yujia and Dai, Hanjun and Zambaldi, Vinicius and {Sanchez-Gonzalez}, Alvaro and Grefenstette, Edward and Kohli, Pushmeet and Battaglia, Peter},
+ year = {2019},
+ doi = {10.48550/arXiv.1812.01483},
+ urldate = {2026-05-06},
+ number = {arXiv:1812.01483},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/CompILE Compositional Imitation Learning and Execution - Kipf et al..pdf},
+ keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {We introduce Compositional Imitation Learning and Execution (CompILE): a framework for learning reusable, variable-length segments of hierarchically-structured behavior from demonstration data. CompILE uses a novel unsupervised, fully-differentiable sequence segmentation module to learn latent encodings of sequential data that can be re-composed and executed to perform new tasks. Once trained, our model generalizes to sequences of longer length and from environment instances not seen during training. We evaluate CompILE in a challenging 2D multi-task environment and a continuous control task, and show that it can find correct task boundaries and event encodings in an unsupervised manner. Latent codes and associated behavior policies discovered by CompILE can be used by a hierarchical agent, where the high-level policy selects actions in the latent code space, and the low-level, taskspecific policies are simply the learned decoders. We found that our CompILE-based agent could learn given only sparse rewards, where agents without task-specific policies struggle.},
+ primaryclass = {stat},
+ eprint = {1812.01483},
+ month = {May},
+ shorttitle = {{{CompILE}}}
+}
+\stopverb}

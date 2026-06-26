@@ -1,0 +1,27 @@
+% ["refs"]
+\title{The Option Keyboard: Combining Skills in Reinforcement Learning}
+\date{2021-06}
+\author/literal{André Barreto}\author/literal{Diana Borsa}\author/literal{Shaobo Hou}\author/literal{Gheorghe Comanici}\author/literal{Eser Aygün}\author/literal{Philippe Hamel}\author/literal{Daniel Toyama}\author/literal{Jonathan Hunt}\author/literal{Shibl Mourad}\author/literal{David Silver}\author/literal{Doina Precup}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2106.13105}
+\meta{external}{https://arxiv.org/abs/2106.13105}
+
+\meta{bibtex}{\startverb
+@misc{barretoOptionKeyboardCombining2021,
+ title = {The {{Option Keyboard}}: {{Combining Skills}} in {{Reinforcement Learning}}},
+ author = {Barreto, Andr{\'e} and Borsa, Diana and Hou, Shaobo and Comanici, Gheorghe and Ayg{\"u}n, Eser and Hamel, Philippe and Toyama, Daniel and Hunt, Jonathan and Mourad, Shibl and Silver, David and Precup, Doina},
+ year = {2021},
+ doi = {10.48550/arXiv.2106.13105},
+ urldate = {2026-05-27},
+ number = {arXiv:2106.13105},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/The Option Keyboard Combining Skills in Reinforcement Learning - Barreto et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {The ability to combine known skills to create new ones may be crucial in the solution of complex reinforcement learning problems that unfold over extended periods. We argue that a robust way of combining skills is to define and manipulate them in the space of pseudo-rewards (or ``cumulants''). Based on this premise, we propose a framework for combining skills using the formalism of options. We show that every deterministic option can be unambiguously represented as a cumulant defined in an extended domain. Building on this insight and on previous results on transfer learning, we show how to approximate options whose cumulants are linear combinations of the cumulants of known options. This means that, once we have learned options associated with a set of cumulants, we can instantaneously synthesise options induced by any linear combination of them, without any learning involved. We describe how this framework provides a hierarchical interface to the environment whose abstract actions correspond to combinations of basic skills. We demonstrate the practical benefits of our approach in a resource management problem and a navigation task involving a quadrupedal simulated robot.},
+ primaryclass = {cs.AI},
+ eprint = {2106.13105},
+ month = {June},
+ shorttitle = {The {{Option Keyboard}}}
+}
+\stopverb}

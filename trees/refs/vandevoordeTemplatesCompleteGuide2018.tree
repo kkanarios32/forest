@@ -1,0 +1,19 @@
+% ["refs"]
+\title{C templates: The complete guide}
+\date{2018}
+\author/literal{David Vandevoorde}\author/literal{Nicolai M. Josuttis}\author/literal{Douglas Gregor}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{vandevoordeTemplatesCompleteGuide2018,
+ title = {C Templates: The Complete Guide},
+ author = {Vandevoorde, David and Josuttis, Nicolai M. and Gregor, Douglas},
+ year = {2018},
+ isbn = {978-0-321-71412-1},
+ edition = {Second edition},
+ publisher = {Addison-Wesley},
+ address = {Boston Columbus Indianapolis New York San Francisco Amsterdam Cape Town Dubai London Madrid Milan Munich Paris Montreal Toronto Delhi Mexico City Sao Paulo Sydney Hong Kong Seoul Singapore Taipei Tokyo},
+ file = {/home/kellen/Downloads/papers/C templates the complete guide - Vandevoorde et al..pdf},
+ langid = {english},
+ shorttitle = {C Templates}
+}
+\stopverb}

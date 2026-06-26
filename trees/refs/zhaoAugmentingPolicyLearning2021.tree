@@ -1,0 +1,26 @@
+% ["refs"]
+\title{Augmenting Policy Learning with Routines Discovered from a Single Demonstration}
+\date{2021-05}
+\author/literal{Zelin Zhao}\author/literal{Chuang Gan}\author/literal{Jiajun Wu}\author/literal{Xiaoxiao Guo}\author/literal{Joshua B. Tenenbaum}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2012.12469}
+\meta{external}{https://arxiv.org/abs/2012.12469}
+
+\meta{bibtex}{\startverb
+@misc{zhaoAugmentingPolicyLearning2021,
+ title = {Augmenting {{Policy Learning}} with {{Routines Discovered}} from a {{Single Demonstration}}},
+ author = {Zhao, Zelin and Gan, Chuang and Wu, Jiajun and Guo, Xiaoxiao and Tenenbaum, Joshua B.},
+ year = {2021},
+ doi = {10.48550/arXiv.2012.12469},
+ urldate = {2026-05-06},
+ number = {arXiv:2012.12469},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Augmenting Policy Learning with Routines Discovered from a Single Demonstration - Zhao et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Symbolic Computation},
+ archiveprefix = {arXiv},
+ abstract = {Humans can abstract prior knowledge from very little data and use it to boost skill learning. In this paper, we propose routineaugmented policy learning (RAPL), which discovers routines composed of primitive actions from a single demonstration and uses discovered routines to augment policy learning. To discover routines from the demonstration, we first abstract routine candidates by identifying grammar over the demonstrated action trajectory. Then, the best routines measured by length and frequency are selected to form a routine library. We propose to learn policy simultaneously at primitive-level and routine-level with discovered routines, leveraging the temporal structure of routines. Our approach enables imitating expert behavior at multiple temporal scales for imitation learning and promotes reinforcement learning exploration. Extensive experiments on Atari games demonstrate that RAPL improves the state-of-the-art imitation learning method SQIL and reinforcement learning method A2C. Further, we show that discovered routines can generalize to unseen levels and difficulties on the CoinRun benchmark.},
+ primaryclass = {cs},
+ eprint = {2012.12469},
+ month = {May}
+}
+\stopverb}

@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Compositional Planning with Jumpy World Models}
+\date{2026-02}
+\author/literal{Jesse Farebrother}\author/literal{Matteo Pirotta}\author/literal{Andrea Tirinzoni}\author/literal{Marc G. Bellemare}\author/literal{Alessandro Lazaric}\author/literal{Ahmed Touati}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2602.19634}
+\meta{external}{https://arxiv.org/abs/2602.19634}
+
+\meta{bibtex}{\startverb
+@misc{farebrotherCompositionalPlanningJumpy2026,
+ title = {Compositional {{Planning}} with {{Jumpy World Models}}},
+ author = {Farebrother, Jesse and Pirotta, Matteo and Tirinzoni, Andrea and Bellemare, Marc G. and Lazaric, Alessandro and Touati, Ahmed},
+ year = {2026},
+ doi = {10.48550/arXiv.2602.19634},
+ urldate = {2026-05-07},
+ number = {arXiv:2602.19634},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Compositional Planning with Jumpy World Models - Farebrother et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {The ability to plan with temporal abstractions is central to intelligent decision-making. Rather than reasoning over primitive actions, we study agents that compose pre-trained policies as temporally extended actions, enabling solutions to complex tasks that no constituent alone can solve. Such compositional planning remains elusive as compounding errors in long-horizon predictions make it challenging to estimate the visitation distribution induced by sequencing policies. Motivated by the geometric policy composition framework introduced in arXiv:2206.08736, we address these challenges by learning predictive models of multi-step dynamics -- so-called jumpy world models -- that capture state occupancies induced by pre-trained policies across multiple timescales in an off-policy manner. Building on Temporal Difference Flows (arXiv:2503.09817), we enhance these models with a novel consistency objective that aligns predictions across timescales, improving long-horizon predictive accuracy. We further demonstrate how to combine these generative predictions to estimate the value of executing arbitrary sequences of policies over varying timescales. Empirically, we find that compositional planning with jumpy world models significantly improves zero-shot performance across a wide range of base policies on challenging manipulation and navigation tasks, yielding, on average, a 200\% relative improvement over planning with primitive actions on long-horizon tasks.},
+ primaryclass = {cs},
+ eprint = {2602.19634},
+ month = {February}
+}
+\stopverb}

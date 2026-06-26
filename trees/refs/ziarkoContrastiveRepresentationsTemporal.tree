@@ -1,0 +1,13 @@
+% ["refs"]
+\title{Contrastive Representations for Temporal Reasoning}
+\author/literal{Alicja Ziarko}\author/literal{Michał Bortkiewicz}\author/literal{Michał Zawalski}\author/literal{Benjamin Eysenbach}\author/literal{Piotr Miłos}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{ziarkoContrastiveRepresentationsTemporal,
+ title = {Contrastive {{Representations}} for {{Temporal Reasoning}}},
+ author = {Ziarko, Alicja and Bortkiewicz, Micha{\l} and Zawalski, Micha{\l} and Eysenbach, Benjamin and Mi{\l}os, Piotr},
+ file = {/home/kellen/Downloads/papers/Contrastive Representations for Temporal Reasoning - Ziarko et al..pdf},
+ langid = {english},
+ abstract = {In classical AI, perception relies on learning state-based representations, while planning --- temporal reasoning over action sequences --- is typically achieved through search. We study whether such reasoning can instead emerge from representations that capture both perceptual and temporal structure. We show that standard temporal contrastive learning, despite its popularity, often fails to capture temporal structure due to its reliance on spurious features. To address this, we introduce Contrastive Representations for Temporal Reasoning (CRTR), a method that uses a negative sampling scheme to provably remove these spurious features and facilitate temporal reasoning. CRTR achieves strong results on domains with complex temporal structure, such as Sokoban and Rubik's Cube. In particular, for the Rubik's Cube, CRTR learns representations that generalize across all initial states and allow it to solve the puzzle using fewer search steps than BestFS --- though with longer solutions. To our knowledge, this is the first method that efficiently solves arbitrary Cube states using only learned representations, without relying on an external search algorithm.}
+}
+\stopverb}

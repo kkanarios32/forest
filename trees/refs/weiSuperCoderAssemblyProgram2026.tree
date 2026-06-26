@@ -1,0 +1,27 @@
+% ["refs"]
+\title{SuperCoder: Assembly Program Superoptimization with Large Language Models}
+\date{2026-01}
+\author/literal{Anjiang Wei}\author/literal{Tarun Suresh}\author/literal{Huanmi Tan}\author/literal{Yinglun Xu}\author/literal{Gagandeep Singh}\author/literal{Ke Wang}\author/literal{Alex Aiken}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2505.11480}
+\meta{external}{https://arxiv.org/abs/2505.11480}
+
+\meta{bibtex}{\startverb
+@misc{weiSuperCoderAssemblyProgram2026,
+ title = {{{SuperCoder}}: {{Assembly Program Superoptimization}} with {{Large Language Models}}},
+ author = {Wei, Anjiang and Suresh, Tarun and Tan, Huanmi and Xu, Yinglun and Singh, Gagandeep and Wang, Ke and Aiken, Alex},
+ year = {2026},
+ doi = {10.48550/arXiv.2505.11480},
+ urldate = {2026-05-07},
+ number = {arXiv:2505.11480},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/SuperCoder Assembly Program Superoptimization with Large Language Models - Wei et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Performance,Computer Science - Programming Languages,Computer Science - Software Engineering},
+ archiveprefix = {arXiv},
+ abstract = {Superoptimization is the task of transforming a program into a faster one while preserving its input--output behavior. In this work, we investigate whether large language models (LLMs) can serve as superoptimizers, generating assembly programs that outperform code already optimized by industry-standard compilers. We construct the first large-scale benchmark for this problem, consisting of 8,072 assembly programs averaging 130 lines, in contrast to prior datasets restricted to 2--15 straight-line, loop-free programs. We evaluate 23 LLMs on this benchmark and find that the strongest baseline, Claude-opus-4, achieves a 51.5\% test-passing rate and a 1.43\texttimes{} average speedup over gcc -O3. To further enhance performance, we fine-tune models with reinforcement learning, optimizing a reward function that integrates correctness and performance speedup. Starting from Qwen2.5-Coder-7B-Instruct (61.4\% correctness, 1.10\texttimes{} speedup), the fine-tuned model SuperCoder attains 95.0\% correctness and 1.46\texttimes{} average speedup, with additional improvement enabled by Best-of-N sampling and iterative refinement. Our results demonstrate, for the first time, that LLMs can be applied as superoptimizers for assembly programs, establishing a foundation for future research in program performance optimization beyond compiler heuristics.},
+ primaryclass = {cs},
+ eprint = {2505.11480},
+ month = {January},
+ shorttitle = {{{SuperCoder}}}
+}
+\stopverb}

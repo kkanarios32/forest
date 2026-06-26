@@ -1,0 +1,21 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{public}
+\title{\code{git bisect}}
+\date{2026-06-17T22:58:32Z}
+
+\p{Useful tool for finding a breaking commit. Writeup taken from [here](https://github.com/stas00/the-art-of-debugging/tree/master/methodology).}
+
+\p{Use two terminals. One is used for the bisection process and the other is used to run the program to tell whether the current commit is good or bad.}
+\ol{
+  \li{Start with \code{git bisect start} to initialize the bisection process.}
+  \li{Find a good commit and mark it with \code{git bisect good <commit>}.}
+  \li{Run \code{git bisect bad <commit>} to mark the bad commit.}
+  \li{Repeat until you find the breaking commit.}
+  \li{Use \code{git bisect reset} to restore to the state you started from.}
+}
+
+\remark{
+Can use \code{git bisect skip} to skip a specific commit, or \code{git bisect visualize --oneline} to see current progress.
+}

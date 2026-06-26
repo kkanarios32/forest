@@ -6,15 +6,24 @@
 \author{kellenkanarios}
 \tag{top}
 
-\p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more. For more short-form blogs, see the [marginalia](007L). See [upcoming blogs](007M) and feel free to request! This blog also has a corresponding [Atom feed](/0002/atom.xml).}
+\p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more, ranging from long-form deep dives to short, self-contained notes. See [upcoming blogs](007M) and feel free to request! This blog also has a corresponding [Atom feed](/0002/atom.xml).}
 
 \put\transclude/toc{false}
 \put\transclude/numbered{false}
 \put\transclude/metadata{true}
 \put\transclude/expanded{false}
 
+\transclude{7BUX}
+\transclude{R0PM}
 \transclude{HHZO}
+\transclude{J3CP}
+\transclude{QQC1}
+\transclude{DJPO}
+\transclude{W4YP}
+\transclude{0088}
+\transclude{0082}
 \transclude{005F}
+\transclude{0025}
 
 
 \syndicate-current-tree-as-atom-feed

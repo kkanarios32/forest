@@ -1,0 +1,28 @@
+% ["refs"]
+\title{InfoBot: Transfer and Exploration via the Information Bottleneck}
+\date{2023-12}
+\author/literal{Anirudh Goyal}\author/literal{Riashat Islam}\author/literal{Daniel Strouse}\author/literal{Zafarali Ahmed}\author/literal{Matthew Botvinick}\author/literal{Hugo Larochelle}\author/literal{Yoshua Bengio}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1901.10902}
+\meta{external}{https://arxiv.org/abs/1901.10902}
+
+\meta{bibtex}{\startverb
+@misc{goyalInfoBotTransferExploration2023,
+ title = {{{InfoBot}}: {{Transfer}} and {{Exploration}} via the {{Information Bottleneck}}},
+ author = {Goyal, Anirudh and Islam, Riashat and Strouse, Daniel and Ahmed, Zafarali and Botvinick, Matthew and Larochelle, Hugo and Bengio, Yoshua and Levine, Sergey},
+ year = {2023},
+ doi = {10.48550/arXiv.1901.10902},
+ urldate = {2026-04-10},
+ number = {arXiv:1901.10902},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/InfoBot Transfer and Exploration via the Information Bottleneck - Goyal et al..pdf},
+ keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {A central challenge in reinforcement learning is discovering effective policies for tasks where rewards are sparsely distributed. We postulate that in the absence of useful reward signals, an effective exploration strategy should seek out decision states. These states lie at critical junctions in the state space from where the agent can transition to new, potentially unexplored regions. We propose to learn about decision states from prior experience. By training a goal-conditioned policy with an information bottleneck, we can identify decision states by examining where the model actually leverages the goal state. We find that this simple mechanism effectively identifies decision states, even in partially observed settings. In effect, the model learns the sensory cues that correlate with potential subgoals. In new environments, this model can then identify novel subgoals for further exploration, guiding the agent through a sequence of potential decision states and through new regions of the state space.},
+ primaryclass = {stat},
+ eprint = {1901.10902},
+ month = {December},
+ shorttitle = {{{InfoBot}}}
+}
+\stopverb}

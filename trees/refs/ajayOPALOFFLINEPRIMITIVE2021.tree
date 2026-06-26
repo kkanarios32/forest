@@ -1,0 +1,14 @@
+% ["refs"]
+\title{OPAL: OFFLINE PRIMITIVE DISCOVERY FOR ACCEL- ERATING OFFLINE REINFORCEMENT LEARNING}
+\date{2021}
+\author/literal{Anurag Ajay}\author/literal{Aviral Kumar}\author/literal{Pulkit Agrawal}\author/literal{Sergey Levine}\author/literal{Ofir Nachum}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{ajayOPALOFFLINEPRIMITIVE2021,
+ title = {{{OPAL}}: {{OFFLINE PRIMITIVE DISCOVERY FOR ACCEL- ERATING OFFLINE REINFORCEMENT LEARNING}}},
+ author = {Ajay, Anurag and Kumar, Aviral and Agrawal, Pulkit and Levine, Sergey and Nachum, Ofir},
+ year = {2021},
+ file = {/home/kellen/Downloads/papers/OPAL OFFLINE PRIMITIVE DISCOVERY FOR ACCEL- ERATING OFFLINE REINFORCEMENT LEARNING - Ajay et al..pdf},
+ langid = {english}
+}
+\stopverb}

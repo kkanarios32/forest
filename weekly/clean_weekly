@@ -1,0 +1,61 @@
+#!/usr/bin/bash
+# Undo everything init_weekly created for a week (default: the current week).
+#   1. the week's asset directory (waka/arbtt/running/sleep .png + data)
+#   2. the generated weeknote tree
+#   3. its \transclude line in the weeknotes index (007S.tree)
+#
+# Usage:
+#   ./clean_weekly            # clean the current ISO week
+#   ./clean_weekly 2026-W25   # clean a specific week (matches the tree title)
+
+set -euo pipefail
+
+: "${FORESTDIR:?FORESTDIR must be set}"
+
+# ISO year/week, matching init_weekly (%G/%V stay in sync across year boundaries).
+if [[ $# -ge 1 ]]; then
+    TITLE="$1"
+    YEAR="${TITLE%-W*}"
+    WEEK="${TITLE#*-W}"
+else
+    YEAR="$(date +%G)"
+    WEEK="$(date +%V)"
+    TITLE="${YEAR}-W${WEEK}"
+fi
+
+REL="assets/weekly/${YEAR}/${WEEK}"
+DIR="$FORESTDIR/$REL"
+TREE="$FORESTDIR/trees/weeknotes/$TITLE.tree"
+INDEX="$FORESTDIR/trees/weeknotes/007S.tree"
+
+echo "Cleaning weekly artifacts for $TITLE"
+
+# 1. Asset directory
+if [[ -d "$DIR" ]]; then
+    rm -rf "$DIR"
+    echo "  removed assets: $REL"
+    # drop the year directory too if it is now empty
+    rmdir --ignore-fail-on-non-empty "$(dirname "$DIR")" 2>/dev/null || true
+else
+    echo "  assets: nothing at $REL"
+fi
+
+# 2. Generated weeknote tree
+if [[ -f "$TREE" ]]; then
+    rm -f "$TREE"
+    echo "  removed tree: trees/weeknotes/$TITLE.tree"
+else
+    echo "  tree: nothing at trees/weeknotes/$TITLE.tree"
+fi
+
+# 3. Transclude line in the index
+if [[ -f "$INDEX" ]] && grep -qF "\\transclude{$TITLE}" "$INDEX"; then
+    tmp="$(mktemp)"
+    grep -vF "\\transclude{$TITLE}" "$INDEX" > "$tmp" || true
+    mv "$tmp" "$INDEX"
+    echo "  removed \\transclude{$TITLE} from 007S.tree"
+else
+    echo "  index: no \\transclude{$TITLE} in 007S.tree"
+fi
+
+echo "Done."

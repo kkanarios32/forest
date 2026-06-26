@@ -1,0 +1,108 @@
+\date{2026-06-25T13:34:41Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\title{My Current Workflow (constantly changing)}
+
+\p{
+I have been using [todoist](todoist.com) and [habitify](habitify.me). I decided on these tools primarily because of their API availability. I wanted to be able to add / complete / see outstanding tasks or habits for the day without the allure of everything else my browser has to offer. Also visualization for my [[007S]].
+}
+\ul{
+  \li{I had Claude write a little script to have my next tasks listed when clicked in my status bar, so I do not have to open the browser to check what I need to do today.}
+}
+\p{
+It seems how to properly use these (todoist in particular) is the subject of much debate. Here, I will outline what I converged to / works for ME right now. I have broken down my system into a hierarchy:
+\ol{
+  \li{Higher level: how to actually choose what to do.}
+  \li{Lower level: how to actually do the chosen task.}
+}
+}
+\section{Figuring out what to do}{
+  \p{
+    This is effectively a task management system.
+  }
+    \strong{Work streams:} I took this name from my investment banker friends (sounds cool / important). Basically, these are groupings I have made and allocated time for each day. They roughly consist of the following:
+    \ul{
+      \li{Research / work (4hrs first thing in the morning):}
+      \ul{
+        \li{Active work towards new artifact or paper i.e. coding up ideas.}
+        \li{In the absence of ideas, studying existing relevant papers.}
+      }
+      \li{Deliberate practice (2hrs after run / lunch):}
+      \ul{
+        \li{Name taken from [[calnewport]].}
+        \li{As of writing this, a current example is spending ~2hrs a day writing / optimizing known kernels in CuTe / Pallas / NKI.}
+        \li{Basically, something I need to understand or master for research that is not novel.}
+      }
+      \li{Extraneous Study (30min - 1hr):}
+      \ul{
+        \li{Things not directly related to research, but I am curious about.}
+        \li{I try to maintain study of related computer science fields. Primarily, studying a textbook in something like [OS](0084), [computer architecture](P3GB), etc.}
+      }
+      \li{Habits / daily upkeep (1hr normally end of day):}
+      \ul{
+        \li{Mainly consists of reviewing Anki cards daily that come from extraneous study / deliberate practice.}
+      }
+    }
+  }
+
+\p{
+To decide on the next task, I use a priority-based system:
+\ol{
+  \li{Things I will be working on today / until they are done. At most \strong{ONE} thing per work stream.}
+  \li{The \em{backlog} of things to do next}
+  \ul{
+    \li{An index to find things to move to priority 1 for the next day} 
+    \li{Keep relatively small to avoid the crippling nature of choice - roughly on the order of things I want done this week.}  
+  }
+  \li{A larger backlog of things - should be completed in the next month or so.}
+  \li{Things I am not working on right now, or have any need to be completed any time soon.}
+}
+This idea is mainly based on the [MLFQ](4WG5), which has been proven effective for balancing response / turnaround time. To maintain this system, I have reviews each day and week (tracking with [habitify](habitify.me)) to make sure I stay consistent.
+\ul{
+  \li{\em{Daily review}:}
+  \ul{
+    \li{For each work stream,}
+    \ul{
+     \li{If I finished the allocated task for the day, get new task from priority 2.}
+     \li{Else, do nothing and continue with the current task.}
+    }
+    \li{Review inbox and move new tasks to corresponding work stream for review on Friday.}
+    \ul{
+      \li{If immediately important, can move directly to priority 1 / 2.}
+    }
+    \li{Look at calendar for next day and timeblock work streams for the next day.}
+    \ul{
+      \li{Since PhD work is so hard to predict, I have found timeblocking any further than one day in advance to be a futile effort.}
+    }
+  }
+  \li{\em{Weekly review}: }
+  \ul{
+    \li{Typically done on Fridays, so that I can dynamically allocate time on weekends if needed.}
+    \li{For each work stream,}
+    \ol{
+     \li{Look in remaining priority 2 and priority 3 tasks.}
+     \li{Define what I think a successful week would look like (e.g. if I get all these things done next week I will be happy).}
+     \ul{
+       \li{Look at calendar for week to guide this decision.}
+     }
+     \li{Get rid of at least two of those tasks (initial plan always too ambitious).}
+     \li{Move / keep remaining tasks in priority 2.}
+    }
+    \li{Write [[007S]] for the week.}
+  }
+}
+}
+\section{What to do when actually working on a task}{
+  \p{
+This is the harder part (and requires the most discipline). When working on a task, especially a more open-ended one like research, it is very common that a million other things come up that seem immediately important. All of the sudden, you have a great idea for the research project you haven't worked on in months. 
+  }
+  \p{
+  It is \strong{crucial} to collect and forget about these things until they are scheduled. This is the one thing I did take from [\em{Getting Things Done}](https://gettingthingsdone.com/). The system should \em{flow like water}. Making this achievable is where the todoist API becomes crucial.
+  \ul{
+    \li{I have a script bound by dwm that pops up vim for me to write down the task and, on save, it sends it to my inbox in todoist.}
+    \li{I have more involved ones that allow me to actually allocate it to the specific work stream / priority if it is immediately obvious.}
+  }
+  Another thing that I have found useful to actually achieving this watery flow is the [pomodoro technique](https://en.wikipedia.org/wiki/Pomodoro_Technique). This basically lets me gaslight myself into thinking I can go to the other things as soon as the timer ends (which is intentionally always just close enough). By the end, I often no longer have this urge and can continue on the scheduled tasks.
+  }
+}

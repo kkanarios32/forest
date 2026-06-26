@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Improved Representation of Asymmetrical Distances with Interval Quasimetric Embeddings}
+\author/literal{Tongzhou Wang}\author/literal{Phillip Isola}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{wangImprovedRepresentationAsymmetricala,
+ title = {Improved {{Representation}} of {{Asymmetrical Distances}} with {{Interval Quasimetric Embeddings}}},
+ author = {Wang, Tongzhou and Isola, Phillip},
+ langid = {english},
+ abstract = {Asymmetrical distance structures (quasimetrics) are ubiquitous in our lives and are gaining more attention in machine learning applications. Imposing such quasimetric structures in model representations has been shown to improve many tasks, including reinforcement learning (RL) and causal relation learning. In this work, we present four desirable properties in such quasimetric models, and show how prior works fail at them. We propose Interval Quasimetric Embedding (IQE), which is designed to satisfy all four criteria. On three quasimetric learning experiments, IQEs show strong approximation and generalization abilities, leading to better performance and improved efficiency over prior methods.}
+}
+\stopverb}

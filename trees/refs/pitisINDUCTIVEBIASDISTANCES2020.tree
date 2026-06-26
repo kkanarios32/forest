@@ -1,0 +1,13 @@
+% ["refs"]
+\title{AN INDUCTIVE BIAS FOR DISTANCES: NEURAL NETS THAT RESPECT THE TRIANGLE INEQUALITY}
+\date{2020}
+\author/literal{Silviu Pitis}\author/literal{Harris Chan}\author/literal{Kiarash Jamali}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{pitisINDUCTIVEBIASDISTANCES2020,
+ title = {{{AN INDUCTIVE BIAS FOR DISTANCES}}: {{NEURAL NETS THAT RESPECT THE TRIANGLE INEQUALITY}}},
+ author = {Pitis, Silviu and Chan, Harris and Jamali, Kiarash},
+ year = {2020},
+ langid = {english}
+}
+\stopverb}

@@ -1,0 +1,24 @@
+% ["refs"]
+\title{PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation}
+\date{2024-04}
+\author/literal{Jason Ansel}\author/literal{Edward Yang}\author/literal{Horace He}\author/literal{Natalia Gimelshein}\author/literal{Animesh Jain}\author/literal{Michael Voznesensky}\author/literal{Bin Bao}\author/literal{Peter Bell}\author/literal{David Berard}\author/literal{Evgeni Burovski}\author/literal{Geeta Chauhan}\author/literal{Anjali Chourdia}\author/literal{Will Constable}\author/literal{Alban Desmaison}\author/literal{Zachary DeVito}\author/literal{Elias Ellison}\author/literal{Will Feng}\author/literal{Jiong Gong}\author/literal{Michael Gschwind}\author/literal{Brian Hirsh}\author/literal{Sherlock Huang}\author/literal{Kshiteej Kalambarkar}\author/literal{Laurent Kirsch}\author/literal{Michael Lazos}\author/literal{Mario Lezcano}\author/literal{Yanbo Liang}\author/literal{Jason Liang}\author/literal{Yinghai Lu}\author/literal{C. K. Luk}\author/literal{Bert Maher}\author/literal{Yunjie Pan}\author/literal{Christian Puhrsch}\author/literal{Matthias Reso}\author/literal{Mark Saroufim}\author/literal{Marcos Yukio Siraichi}\author/literal{Helen Suk}\author/literal{Shunting Zhang}\author/literal{Michael Suo}\author/literal{Phil Tillet}\author/literal{Xu Zhao}\author/literal{Eikan Wang}\author/literal{Keren Zhou}\author/literal{Richard Zou}\author/literal{Xiaodong Wang}\author/literal{Ajit Mathews}\author/literal{William Wen}\author/literal{Gregory Chanan}\author/literal{Peng Wu}\author/literal{Soumith Chintala}
+\taxon{Reference}
+\meta{doi}{10.1145/3620665.3640366}
+\meta{bibtex}{\startverb
+@inproceedings{anselPyTorch2Faster2024,
+ title = {{{PyTorch}} 2: {{Faster Machine Learning Through Dynamic Python Bytecode Transformation}} and {{Graph Compilation}}},
+ author = {Ansel, Jason and Yang, Edward and He, Horace and Gimelshein, Natalia and Jain, Animesh and Voznesensky, Michael and Bao, Bin and Bell, Peter and Berard, David and Burovski, Evgeni and Chauhan, Geeta and Chourdia, Anjali and Constable, Will and Desmaison, Alban and DeVito, Zachary and Ellison, Elias and Feng, Will and Gong, Jiong and Gschwind, Michael and Hirsh, Brian and Huang, Sherlock and Kalambarkar, Kshiteej and Kirsch, Laurent and Lazos, Michael and Lezcano, Mario and Liang, Yanbo and Liang, Jason and Lu, Yinghai and Luk, C. K. and Maher, Bert and Pan, Yunjie and Puhrsch, Christian and Reso, Matthias and Saroufim, Mark and Siraichi, Marcos Yukio and Suk, Helen and Zhang, Shunting and Suo, Michael and Tillet, Phil and Zhao, Xu and Wang, Eikan and Zhou, Keren and Zou, Richard and Wang, Xiaodong and Mathews, Ajit and Wen, William and Chanan, Gregory and Wu, Peng and Chintala, Soumith},
+ year = {2024},
+ isbn = {979-8-4007-0385-0},
+ doi = {10.1145/3620665.3640366},
+ urldate = {2026-06-23},
+ booktitle = {Proceedings of the 29th {{ACM International Conference}} on {{Architectural Support}} for {{Programming Languages}} and {{Operating Systems}}, {{Volume}} 2},
+ pages = {929--947},
+ publisher = {ACM},
+ address = {La Jolla CA USA},
+ file = {/home/kellen/Downloads/papers/PyTorch 2 Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilat - Ansel et al..pdf},
+ langid = {english},
+ month = {April},
+ shorttitle = {{{PyTorch}} 2}
+}
+\stopverb}

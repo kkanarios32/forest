@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Transitive RL: Value Learning via Divide and Conquer}
+\date{2026-02}
+\author/literal{Seohong Park}\author/literal{Aditya Oberai}\author/literal{Pranav Atreya}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2510.22512}
+\meta{external}{https://arxiv.org/abs/2510.22512}
+
+\meta{bibtex}{\startverb
+@misc{parkTransitiveRLValue2026,
+ title = {Transitive {{RL}}: {{Value Learning}} via {{Divide}} and {{Conquer}}},
+ author = {Park, Seohong and Oberai, Aditya and Atreya, Pranav and Levine, Sergey},
+ year = {2026},
+ doi = {10.48550/arXiv.2510.22512},
+ urldate = {2026-05-13},
+ number = {arXiv:2510.22512},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Transitive RL Value Learning via Divide and Conquer - Park et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {In this work, we present Transitive Reinforcement Learning (TRL), a new value learning algorithm based on a divide-and-conquer paradigm. TRL is designed for offline goal-conditioned reinforcement learning (GCRL) problems, where the aim is to find a policy that can reach any state from any other state in the smallest number of steps. TRL converts a triangle inequality structure present in GCRL into a practical divide-and-conquer value update rule. This has several advantages compared to alternative value learning paradigms. Compared to temporal difference (TD) methods, TRL suffers less from bias accumulation, as in principle it only requires O(log T ) recursions (as opposed to O(T ) in TD learning) to handle a length-T trajectory. Unlike Monte Carlo methods, TRL suffers less from high variance as it performs dynamic programming. Experimentally, we show that TRL achieves the best performance in highly challenging, long-horizon benchmark tasks compared to previous offline GCRL algorithms.},
+ primaryclass = {cs.LG},
+ eprint = {2510.22512},
+ month = {February},
+ shorttitle = {Transitive {{RL}}}
+}
+\stopverb}

@@ -1,17 +1,27 @@
 #!/usr/bin/bash
 
-cd $FORESTDIR/weekly/
+cd "$FORESTDIR/weekly/"
 export UV_PYTHON=python3.12
-DIR="$FORESTDIR/assets/weekly/$(date +%Y)/$(date +%V)"
+
+# %G/%V are the ISO year and ISO week — they stay in sync across year
+# boundaries (unlike %Y, which can disagree with %V in late Dec / early Jan).
+REL="assets/weekly/$(date +%G)/$(date +%V)"   # relative to forest root, for \route-asset
+DIR="$FORESTDIR/$REL"                          # absolute, for the plotting scripts
 mkdir -p "$DIR"
 ./coding "$DIR"
 ./arbtt-plot "$DIR"
+./habitify "$DIR"
 
 garmindb-cli --all --download --import --analyze --latest
 ./running "$DIR"
 ./sleep "$DIR"
 
-TITLE="$(date +%Y)-W$(date +%V)"
+TITLE="$(date +%G)-W$(date +%V)"
 TREE="$FORESTDIR/trees/weeknotes/$TITLE.tree"
-./mkdailytree "$DIR" "$TREE" "$TITLE"
-echo "\\transclude{$TITLE}" >> $FORESTDIR/trees/weeknotes/007S.tree
+./mkdailytree "$REL" "$TREE" "$TITLE"
+
+# Only add the transclude once, so re-running mid-week doesn't duplicate it.
+INDEX="$FORESTDIR/trees/weeknotes/007S.tree"
+if ! grep -qF "\\transclude{$TITLE}" "$INDEX"; then
+  echo "\\transclude{$TITLE}" >> "$INDEX"
+fi

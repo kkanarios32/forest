@@ -1,0 +1,24 @@
+% ["refs"]
+\title{kgMBQA: Quality Knowledge Graph-driven Multimodal Blind Image Assessment}
+\date{2024-08}
+\author/literal{Wuyuan Xie}\author/literal{Tingcheng Bian}\author/literal{Miaohui Wang}
+\taxon{Reference}
+\meta{doi}{10.24963/ijcai.2024/473}
+\meta{bibtex}{\startverb
+@inproceedings{xieKgMBQAQualityKnowledge2024,
+ title = {{{kgMBQA}}: {{Quality Knowledge Graph-driven Multimodal Blind Image Assessment}}},
+ author = {Xie, Wuyuan and Bian, Tingcheng and Wang, Miaohui},
+ year = {2024},
+ isbn = {978-1-956792-04-1},
+ doi = {10.24963/ijcai.2024/473},
+ urldate = {2026-05-27},
+ booktitle = {Proceedings of the {{Thirty-ThirdInternational Joint Conference}} on {{Artificial Intelligence}}},
+ pages = {4245--4253},
+ publisher = {International Joint Conferences on Artificial Intelligence Organization},
+ address = {Jeju, South Korea},
+ langid = {english},
+ abstract = {Blind image assessment aims to simulate human prediction of image quality distortion levels and provide quality scores. However, existing unimodal quality indicators have limited representational ability when facing complex contents and distortion types, and the predicted scores also fail to provide explanatory reasons, which further affects the credibility of their prediction results. To address these challenges, we propose a multimodal quality indicator with explanatory text descriptions, called kgMBQA. Specifically, we construct an image quality knowledge graph and conduct in-depth mining to generate explanatory texts. The text modality is further aligned and fused with the image modality, thereby improving the model performance while also outputting its corresponding quality explanatory description. The experimental results demonstrate that our kgMBQA achieves the best performance compared to recent representative methods on the KonIQ-10k, LIVE Challenge, BIQ2021, TID2013, and AIGC-3K datasets.},
+ month = {August},
+ shorttitle = {{{kgMBQA}}}
+}
+\stopverb}

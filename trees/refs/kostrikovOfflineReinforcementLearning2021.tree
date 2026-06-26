@@ -1,0 +1,26 @@
+% ["refs"]
+\title{Offline Reinforcement Learning with Implicit Q-Learning}
+\date{2021-10}
+\author/literal{Ilya Kostrikov}\author/literal{Ashvin Nair}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2110.06169}
+\meta{external}{https://arxiv.org/abs/2110.06169}
+
+\meta{bibtex}{\startverb
+@misc{kostrikovOfflineReinforcementLearning2021,
+ title = {Offline {{Reinforcement Learning}} with {{Implicit Q-Learning}}},
+ author = {Kostrikov, Ilya and Nair, Ashvin and Levine, Sergey},
+ year = {2021},
+ doi = {10.48550/arXiv.2110.06169},
+ urldate = {2026-05-14},
+ number = {arXiv:2110.06169},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Offline Reinforcement Learning with Implicit Q-Learning - Kostrikov et al..pdf},
+ keywords = {Computer Science - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {Offline reinforcement learning requires reconciling two conflicting aims: learning a policy that improves over the behavior policy that collected the dataset, while at the same time minimizing the deviation from the behavior policy so as to avoid errors due to distributional shift. This trade-off is critical, because most current offline reinforcement learning methods need to query the value of unseen actions during training to improve the policy, and therefore need to either constrain these actions to be in-distribution, or else regularize their values. We propose a new offline RL method that never needs to evaluate actions outside of the dataset, but still enables the learned policy to improve substantially over the best behavior in the data through generalization. The main insight in our work is that, instead of evaluating unseen actions from the latest policy, we can approximate the policy improvement step implicitly by treating the state value function as a random variable, with randomness determined by the action (while still integrating over the dynamics to avoid excessive optimism), and then taking a state conditional upper expectile of this random variable to estimate the value of the best actions in that state. This leverages the generalization capacity of the function approximator to estimate the value of the best available action at a given state without ever directly querying a Q-function with this unseen action. Our algorithm alternates between fitting this upper expectile value function and backing it up into a Q-function, without any explicit policy. Then, we extract the policy via advantage-weighted behavioral cloning, which also avoids querying out-of-sample actions. We dub our method implicit Q-learning (IQL). IQL is easy to implement, computationally efficient, and only requires fitting an additional critic with an asymmetric L2 loss.1 IQL demonstrates the state-of-the-art performance on D4RL, a standard benchmark for offline reinforcement learning. We also demonstrate that IQL achieves strong performance fine-tuning using online interaction after offline initialization.},
+ primaryclass = {cs.LG},
+ eprint = {2110.06169},
+ month = {October}
+}
+\stopverb}

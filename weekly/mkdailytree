@@ -29,18 +29,16 @@ def daily_tree(path, title):
 
 \\section{{The Quantified Me}}{{
 \\figure{{
-  \\<html:img>[width]{{100\%}}[src]{{\\route-asset{{{path}/waka.png}}}}{{}}
-  \\figcaption{{Wakatime stats for week {title}.}}
-}}
-\\figure{{
-  \\<html:img>[width]{{100\%}}[src]{{\\route-asset{{{path}/arbtt.png}}}}{{}}
-  \\figcaption{{Arbtt-stats for week {title}.}}
+  \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/waka.png}}}}{{}}
+  \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/arbtt.png}}}}{{}}
+  \\figcaption{{Computer stats for week {title}.}}
 }}
 }}
 \\section{{VO2 Max(ing)}}{{
 \\figure{{
-  \\<html:img>[width]{{100\%}}[src]{{\\route-asset{{{path}/running.png}}}}{{}}
-  \\figcaption{{Running stats for this week.}}
+  \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/running.png}}}}{{}}
+  \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/habitify.png}}}}{{}}
+  \\figcaption{{Health stats for week {title}.}}
 }}
 }}
 """

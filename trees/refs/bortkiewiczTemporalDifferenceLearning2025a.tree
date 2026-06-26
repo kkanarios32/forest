@@ -1,0 +1,21 @@
+% ["refs"]
+\title{Is Temporal Difference Learning the Gold Standard for Stitching in RL?}
+\date{2025}
+\author/literal{Michał Bortkiewicz}\author/literal{Władysław Pałucki}\author/literal{Mateusz Ostaszewski}\author/literal{Benjamin Eysenbach}
+\taxon{Reference}
+\meta{doi}{10.48550/ARXIV.2510.21995}
+\meta{bibtex}{\startverb
+@misc{bortkiewiczTemporalDifferenceLearning2025a,
+ title = {Is {{Temporal Difference Learning}} the {{Gold Standard}} for {{Stitching}} in {{RL}}?},
+ author = {Bortkiewicz, Micha{\l} and Pa{\l}ucki, W{\l}adys{\l}aw and Ostaszewski, Mateusz and Eysenbach, Benjamin},
+ year = {2025},
+ doi = {10.48550/ARXIV.2510.21995},
+ urldate = {2026-06-02},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/2510.pdf},
+ keywords = {Artificial Intelligence (cs.AI),FOS: Computer and information sciences,Machine Learning (cs.LG),Machine Learning (stat.ML)},
+ langid = {english},
+ copyright = {arXiv.org perpetual, non-exclusive license},
+ abstract = {Reinforcement learning (RL) promises to solve long-horizon tasks even when training data contains only short fragments of the behaviors. This experience stitching capability is often viewed as the purview of temporal difference (TD) methods. However, outside of small tabular settings, trajectories never intersect, calling into question this conventional wisdom. Moreover, the common belief is that Monte Carlo (MC) methods should not be able to recombine experience, yet it remains unclear whether function approximation could result in a form of implicit stitching. The goal of this paper is to empirically study whether the conventional wisdom about stitching actually holds in settings where function approximation is used. We empirically demonstrate that Monte Carlo (MC) methods can also achieve experience stitching. While TD methods do achieve slightly stronger capabilities than MC methods (in line with conventional wisdom), that gap is significantly smaller than the gap between small and large neural networks (even on quite simple tasks). We find that increasing critic capacity effectively reduces the generalization gap for both the MC and TD methods. These results suggest that the traditional TD inductive bias for stitching may be less necessary in the era of large models for RL and, in some cases, may offer diminishing returns. Additionally, our results suggest that stitching, a form of generalization unique to the RL setting, might be achieved not through specialized algorithms (temporal difference learning) but rather through the same recipe that has provided generalization in other machine learning settings (via scale). Project website: https://michalbortkiewicz.github.io/golden-standard/}
+}
+\stopverb}

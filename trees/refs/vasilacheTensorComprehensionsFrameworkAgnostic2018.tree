@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Tensor Comprehensions: Framework-Agnostic High-Performance Machine Learning Abstractions}
+\date{2018-06}
+\author/literal{Nicolas Vasilache}\author/literal{Oleksandr Zinenko}\author/literal{Theodoros Theodoridis}\author/literal{Priya Goyal}\author/literal{Zachary DeVito}\author/literal{William S. Moses}\author/literal{Sven Verdoolaege}\author/literal{Andrew Adams}\author/literal{Albert Cohen}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1802.04730}
+\meta{external}{https://arxiv.org/abs/1802.04730}
+
+\meta{bibtex}{\startverb
+@misc{vasilacheTensorComprehensionsFrameworkAgnostic2018,
+ title = {Tensor {{Comprehensions}}: {{Framework-Agnostic High-Performance Machine Learning Abstractions}}},
+ author = {Vasilache, Nicolas and Zinenko, Oleksandr and Theodoridis, Theodoros and Goyal, Priya and DeVito, Zachary and Moses, William S. and Verdoolaege, Sven and Adams, Andrew and Cohen, Albert},
+ year = {2018},
+ doi = {10.48550/arXiv.1802.04730},
+ urldate = {2026-06-23},
+ number = {arXiv:1802.04730},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Tensor Comprehensions Framework-Agnostic High-Performance Machine Learning Abstractions - Vasilache et al..pdf},
+ keywords = {Computer Science - Machine Learning,Computer Science - Programming Languages},
+ archiveprefix = {arXiv},
+ abstract = {Deep learning models with convolutional and recurrent networks are now ubiquitous and analyze massive amounts of audio, image, video, text and graph data, with applications in automatic translation, speech-to-text, scene understanding, ranking user preferences, ad placement, etc. Competing frameworks for building these networks such as TensorFlow, Chainer, CNTK, Torch/PyTorch, Caffe1/2, MXNet and Theano, explore different tradeoffs between usability and expressiveness, research or production orientation and supported hardware. They operate on a DAG of computational operators, wrapping high-performance libraries such as CUDNN (for NVIDIA GPUs) or NNPACK (for various CPUs), and automate memory allocation, synchronization, distribution. Custom operators are needed where the computation does not fit existing high-performance library calls, usually at a high engineering cost. This is frequently required when new operators are invented by researchers: such operators suffer a severe performance penalty, which limits the pace of innovation. Furthermore, even if there is an existing runtime call these frameworks can use, it often does not offer optimal performance for a user's particular network architecture and dataset, missing optimizations between operators as well as optimizations that can be done knowing the size and shape of data. Our contributions include (1) a language close to the mathematics of deep learning called Tensor Comprehensions, (2) a polyhedral Just-In-Time compiler to convert a mathematical description of a deep learning DAG into a CUDA kernel with delegated memory management and synchronization, also providing optimizations such as operator fusion and specialization for specific sizes, (3) a compilation cache populated by an autotuner. In particular, we demonstrate the suitability of the polyhedral framework to construct a domain-specific optimizer effective on state-of-the-art deep learning models on GPUs. Our flow reaches up to 4\texttimes{} speedup over NVIDIA libraries on kernels relevant to the Machine Learning Community, and on an actual model used in production at Facebook. It is integrated with mainstream frameworks Caffe2 (production-oriented), PyTorch (research-oriented), through the ATen asynchronous tensor library.},
+ primaryclass = {cs.PL},
+ eprint = {1802.04730},
+ month = {June},
+ shorttitle = {Tensor {{Comprehensions}}}
+}
+\stopverb}

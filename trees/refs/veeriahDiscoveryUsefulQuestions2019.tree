@@ -1,0 +1,26 @@
+% ["refs"]
+\title{Discovery of Useful Questions as Auxiliary Tasks}
+\date{2019-09}
+\author/literal{Vivek Veeriah}\author/literal{Matteo Hessel}\author/literal{Zhongwen Xu}\author/literal{Richard Lewis}\author/literal{Janarthanan Rajendran}\author/literal{Junhyuk Oh}\author/literal{Hado van Hasselt}\author/literal{David Silver}\author/literal{Satinder Singh}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1909.04607}
+\meta{external}{https://arxiv.org/abs/1909.04607}
+
+\meta{bibtex}{\startverb
+@misc{veeriahDiscoveryUsefulQuestions2019,
+ title = {Discovery of {{Useful Questions}} as {{Auxiliary Tasks}}},
+ author = {Veeriah, Vivek and Hessel, Matteo and Xu, Zhongwen and Lewis, Richard and Rajendran, Janarthanan and Oh, Junhyuk and van Hasselt, Hado and Silver, David and Singh, Satinder},
+ year = {2019},
+ doi = {10.48550/arXiv.1909.04607},
+ urldate = {2026-05-27},
+ number = {arXiv:1909.04607},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Discovery of Useful Questions as Auxiliary Tasks - Veeriah et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ archiveprefix = {arXiv},
+ abstract = {Arguably, intelligent agents ought to be able to discover their own questions so that in learning answers for them they learn unanticipated useful knowledge and skills; this departs from the focus in much of machine learning on agents learning answers to externally defined questions. We present a novel method for a reinforcement learning (RL) agent to discover questions formulated as general value functions or GVFs, a fairly rich form of knowledge representation. Specifically, our method uses non-myopic meta-gradients to learn GVF-questions such that learning answers to them, as an auxiliary task, induces useful representations for the main task faced by the RL agent. We demonstrate that auxiliary tasks based on the discovered GVFs are sufficient, on their own, to build representations that support main task learning, and that they do so better than popular hand-designed auxiliary tasks from the literature. Furthermore, we show, in the context of Atari 2600 videogames, how such auxiliary tasks, meta-learned alongside the main task, can improve the data efficiency of an actor-critic agent.},
+ primaryclass = {cs.AI},
+ eprint = {1909.04607},
+ month = {September}
+}
+\stopverb}

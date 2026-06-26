@@ -1,8 +1,9 @@
 \import{base-macros}
 \date{2025-08-14T23:31:25Z}
 \tag{public}
-\tag{margin}
+\tag{blog}
 \title{Rapidly Exploring Random Trees}
+\author{kellenkanarios}
 \p{Rapidly exploring random trees (RRT) is a very simple, elegant and widely used algorithm for motion planning. The algorithm proceeds as follows:}
 \section{The Algorithm}{
 \iblock{
@@ -27,3 +28,6 @@ Preferable to use higher-order method like Runge-Kutta.
 #{\mathsf{SELECT\_INPUT}} is determined by whether the system is holonomic or non-holomonic. If the agent is holonomic, then #{u} will just be the control corresponding to the difference in the two states.
 }
 }
+\hr
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

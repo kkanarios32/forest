@@ -5,7 +5,7 @@
 \tag{cpp}
 \title{Concrete Class ([C++](OGCS1))}
 
-\p{A class that behaves ``just like built-in types''. The defining characteristic of a concrete type is that its representation is part of its definition.}
+\p{A class that behaves "just like built-in types". The defining characteristic of a concrete type is that its representation is part of its definition.}
 
 \p{Because the representation is fixed you can}
 \ol{

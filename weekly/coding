@@ -20,7 +20,6 @@ import sys
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
-import seaborn as sns
 import json
 from datetime import datetime
 from etils import epath
@@ -29,32 +28,16 @@ import argparse
 import requests
 from datetime import timedelta
 
-key_file ="/home/kellen/.keys/waka"
-with open(key_file, 'r') as file:         
-        API_KEY = file.read()
+from dotenv import load_dotenv
 
+import wtheme
 
-def set_style():
-    sns.set_context("paper", font_scale=1.5)
-    rc = {
-        "font.family": "sans-serif",
-        "font.sans-serif": "Facebook Sans",
-        # "font.sans-serif": ["Helvetica", "Arial", "DejaVu Sans"],
-        "axes.spines.top": False,
-        "axes.spines.right": False,
-        "axes.labelsize": 14,
-        "axes.titlesize": 16,
-        "axes.titleweight": 300,
-        "axes.labelweight": 400,
-        "legend.fontsize": 12,
-        "xtick.labelsize": 12,
-        "ytick.labelsize": 12,
-        "figure.dpi": 300,
-        "savefig.bbox": "tight",
-    }
+env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "key.env")
+load_dotenv(env_path)
+API_KEY = os.environ["WAKA_API"]
 
-    palette = sns.color_palette("ch:start=.2,rot=-.3")
-    sns.set_theme(palette=palette, style="whitegrid", rc=rc)
+DOW = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]  # review week ends Friday
+TOP_N = 6  # keep the legend legible; the rest collapses into "Other"
 
 
 def fetch(end_date):
@@ -86,109 +69,88 @@ def fetch(end_date):
     return data
 
 
+def long_frame(data, field):
+    """Flatten the Wakatime summary into (day, name, hours) rows for a field."""
+    records = []
+    for entry in data:
+        day = datetime.strptime(entry["range"]["date"], "%Y-%m-%d").strftime("%a")
+        for item in entry[field]:
+            records.append(
+                {"day": day, "name": item["name"], "hours": item["total_seconds"] / 3600}
+            )
+    return pd.DataFrame(records)
+
+
+def top_n_pivot(df, n=TOP_N, min_hours=0.5):
+    """Pivot day x name, keeping the top-n names by total and lumping the rest
+    into 'Other'. Returns a (pivot, has_other) pair with columns ordered big→small."""
+    df = df[df.groupby("name")["hours"].transform("sum") >= min_hours]
+    if df.empty:
+        return None, False
+    totals = df.groupby("name")["hours"].sum().sort_values(ascending=False)
+    keep = list(totals.index[:n])
+    has_other = len(totals) > n
+    df = df.copy()
+    df["name"] = df["name"].where(df["name"].isin(keep), "Other")
+    pivot = df.pivot_table(index="day", columns="name", values="hours",
+                           aggfunc="sum", fill_value=0).reindex(DOW, fill_value=0)
+    cols = [c for c in keep if c in pivot.columns]
+    if has_other and "Other" in pivot.columns:
+        cols.append("Other")
+    return pivot[cols], has_other
+
+
+def stacked_day_plot(pivot, has_other, ax, title, legend_title):
+    n = pivot.shape[1]
+    colors = wtheme.palette(n - 1 if has_other else n)
+    if has_other:
+        colors = colors + [wtheme.OTHER]
+    pivot.plot(kind="bar", stacked=True, ax=ax, width=0.74,
+               color=colors[:n], edgecolor="white", linewidth=0.7, legend=False)
+
+    # Total hours atop each day's stack.
+    totals = pivot.sum(axis=1)
+    for x, total in enumerate(totals):
+        if total > 0:
+            ax.text(x, total + totals.max() * 0.02, f"{total:.1f}",
+                    ha="center", va="bottom", fontsize=9, color=wtheme.FAINT)
+
+    ax.set_ylabel("Hours")
+    ax.set_xlabel("")
+    ax.set_title(title)
+    ax.tick_params(axis="x", rotation=0)
+    ax.margins(x=0.02)
+    ax.set_ylim(0, totals.max() * 1.15 if totals.max() > 0 else 1)
+    wtheme.style_axis(ax, grid="y")
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles, labels, title=legend_title, loc="upper center",
+              bbox_to_anchor=(0.5, -0.12), ncol=min(n, 4))
+
+
 def plot(data, save_dir):
-    # --- PROCESS DATA ---
-    # Prepare date labels
-    dates = [entry["range"]["date"] for entry in data]
-    day_labels = [datetime.strptime(d, "%Y-%m-%d").strftime("%a") for d in dates]
+    lang_pivot, lang_other = top_n_pivot(long_frame(data, "languages"))
+    proj_pivot, proj_other = top_n_pivot(long_frame(data, "projects"))
 
-    # Total hours
-    totals = [entry["grand_total"]["total_seconds"] / 3600 for entry in data]
+    wtheme.apply()
+    fig, axs = plt.subplots(1, 2, figsize=(15, 5.2))
 
-    # Languages
-    lang_records = []
-    for entry in data:
-        day = datetime.strptime(entry["range"]["date"], "%Y-%m-%d").strftime("%a")
-        for lang in entry["languages"]:
-            lang_records.append(
-                {
-                    "day": day,
-                    "language": lang["name"],
-                    "hours": lang["total_seconds"] / 3600,
-                }
-            )
+    if lang_pivot is not None:
+        stacked_day_plot(lang_pivot, lang_other, axs[0],
+                         "By language", "Language")
+    if proj_pivot is not None:
+        stacked_day_plot(proj_pivot, proj_other, axs[1],
+                         "By project", "Project")
 
-    min_hours = 1.0
-    lang_df = pd.DataFrame(lang_records)
+    total_hours = sum(e["grand_total"]["total_seconds"] for e in data) / 3600
+    wtheme.suptitle(fig, "Coding", f"{total_hours:.1f} hours this week")
+    plt.tight_layout(rect=[0, 0, 1, 0.93])
 
-    # Filter out languages with total hours below threshold
-    lang_totals = lang_df.groupby("language")["hours"].sum()
-    valid_langs = lang_totals[lang_totals >= min_hours].index
-    lang_df = lang_df[lang_df["language"].isin(valid_langs)]
+    for a in axs:
+        wtheme.round_bars(a, edge="white")
+        wtheme.arrows(a)
 
-    # Projects
-    proj_records = []
-    for entry in data:
-        day = datetime.strptime(entry["range"]["date"], "%Y-%m-%d").strftime("%a")
-        for proj in entry["projects"]:
-            proj_records.append(
-                {
-                    "day": day,
-                    "project": proj["name"],
-                    "hours": proj["total_seconds"] / 3600,
-                }
-            )
-
-    proj_df = pd.DataFrame(proj_records)
-    # Filter out projects with total hours below threshold
-    proj_totals = proj_df.groupby("project")["hours"].sum()
-    valid_projs = proj_totals[proj_totals >= min_hours].index
-    proj_df = proj_df[proj_df["project"].isin(valid_projs)]
     os.makedirs(save_dir, exist_ok=True)
-
-    # --- PLOTTING STYLE ---
-    set_style()
-
-    # --- PLOT 1: Total time ---
-    fig, axs = plt.subplots(2, 1, figsize=(10, 10))
-
-    # --- PLOT 2: Language time ---
-    if not lang_df.empty:
-        lang_pivot = lang_df.pivot_table(
-            index="day", columns="language", values="hours", aggfunc="sum", fill_value=0
-        )
-        lang_pivot = lang_pivot.reindex(
-            ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-        )
-        lang_pivot.plot(kind="bar", stacked=True, ax=axs[0])
-        axs[0].set_ylabel("Hours")
-        axs[0].set_xlabel("Day of Week")
-        axs[0].set_title("Coding Time by Language")
-
-        axs[0].legend(
-            title="Language",
-            loc="upper right",
-            fontsize="small",
-            title_fontsize="small",
-            frameon=False,
-            bbox_to_anchor=(1.0, 1.0)
-        )
-    # --- PLOT 3: Project time ---
-    if not proj_df.empty:
-        proj_pivot = proj_df.pivot_table(
-            index="day", columns="project", values="hours", aggfunc="sum", fill_value=0
-        )
-        proj_pivot = proj_pivot.reindex(
-            ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-        )
-        proj_pivot.plot(kind="bar", stacked=True, ax=axs[1])
-        axs[1].set_ylabel("Hours")
-        axs[1].set_xlabel("Day of Week")
-        axs[1].set_title("Coding Time by Project")
-
-        axs[1].legend(
-            title="Project",
-            loc="upper right",
-            fontsize="small",
-            title_fontsize="small",
-            frameon=False,
-            bbox_to_anchor=(1.0, 1.0)
-        )
-
-    plt.tight_layout(rect=[0, 0, 0.85, 1])  # Make space for right-side legend
-
-    save_path = os.path.join(save_dir, "waka.png")
-    plt.savefig(save_path, dpi=300)
+    plt.savefig(os.path.join(save_dir, "waka.png"), dpi=200)
 
 
 def main(argv):
@@ -205,7 +167,6 @@ def main(argv):
     else:
         data = fetch(end_date)
 
-    end_str = end_date.strftime("%Y-%m-%d")
     save_dir = argv[0]
     os.makedirs(save_dir, exist_ok=True)
     plot(data, save_dir)

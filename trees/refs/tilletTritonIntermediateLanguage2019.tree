@@ -1,0 +1,27 @@
+% ["refs", "manual"]
+\title{Triton: An intermediate language and compiler for tiled neural network computations}
+\date{2019-06}
+\tag{POTW}
+\tag{upcoming}
+\author/literal{Philippe Tillet}\author/literal{H. T. Kung}\author/literal{David Cox}
+\taxon{Reference}
+\meta{doi}{10.1145/3315508.3329973}
+\meta{bibtex}{\startverb
+@inproceedings{tilletTritonIntermediateLanguage2019,
+ title = {Triton: An Intermediate Language and Compiler for Tiled Neural Network Computations},
+ author = {Tillet, Philippe and Kung, H. T. and Cox, David},
+ year = {2019},
+ isbn = {978-1-4503-6719-6},
+ doi = {10.1145/3315508.3329973},
+ urldate = {2026-06-23},
+ booktitle = {Proceedings of the 3rd {{ACM SIGPLAN International Workshop}} on {{Machine Learning}} and {{Programming Languages}}},
+ pages = {10--19},
+ publisher = {ACM},
+ address = {Phoenix AZ USA},
+ file = {/home/kellen/Downloads/papers/Triton an intermediate language and compiler for tiled neural network computations - Tillet et al..pdf},
+ langid = {english},
+ abstract = {The validation and deployment of novel research ideas in the field of Deep Learning is often limited by the availability of efficient compute kernels for certain basic primitives. In particular, operations that cannot leverage existing vendor libraries (e.g., cuBLAS, cuDNN) are at risk of facing poor device utilization unless custom implementations are written by experts -- usually at the expense of portability. For this reason, the development of new programming abstractions for specifying custom Deep Learning workloads at a minimal performance cost has become crucial.},
+ month = {June},
+ shorttitle = {Triton}
+}
+\stopverb}

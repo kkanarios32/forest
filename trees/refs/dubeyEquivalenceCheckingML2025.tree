@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Equivalence Checking of ML GPU Kernels}
+\date{2025-11}
+\author/literal{Kshitij Dubey}\author/literal{Benjamin Driscoll}\author/literal{Anjiang Wei}\author/literal{Neeraj Kayal}\author/literal{Rahul Sharma}\author/literal{Alex Aiken}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2511.12638}
+\meta{external}{https://arxiv.org/abs/2511.12638}
+
+\meta{bibtex}{\startverb
+@misc{dubeyEquivalenceCheckingML2025,
+ title = {Equivalence {{Checking}} of {{ML GPU Kernels}}},
+ author = {Dubey, Kshitij and Driscoll, Benjamin and Wei, Anjiang and Kayal, Neeraj and Sharma, Rahul and Aiken, Alex},
+ year = {2025},
+ doi = {10.48550/arXiv.2511.12638},
+ urldate = {2026-05-07},
+ number = {arXiv:2511.12638},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Equivalence Checking of ML GPU Kernels - Dubey et al..pdf},
+ keywords = {Computer Science - Programming Languages},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {With the rapid progress of deep learning and large language models (LLMs), companies now spend enormous sums executing GPU kernels. These kernels have, therefore, become prime targets for aggressive optimization. Recent efforts increasingly leverage LLMs to generate GPU kernels, but make no formal guarantees about the generated kernels. We present the first equivalence checker for GPU kernels and use it to formally verify the correctness of machine learning (ML) kernels optimized by hand, by LLMs, and by compilers. We show that our equivalence checker is sound and, for a well-defined class of GPU kernels which includes the programs of interest, complete. Our implementation, VOLTA, can verify ML computations such as convolutions, matrix multiplications, and various attention mechanisms.},
+ primaryclass = {cs},
+ eprint = {2511.12638},
+ month = {November}
+}
+\stopverb}

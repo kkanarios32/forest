@@ -1,0 +1,27 @@
+% ["refs"]
+\title{DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition}
+\date{2025-07}
+\author/literal{Z. Z. Ren}\author/literal{Zhihong Shao}\author/literal{Junxiao Song}\author/literal{Huajian Xin}\author/literal{Haocheng Wang}\author/literal{Wanjia Zhao}\author/literal{Liyue Zhang}\author/literal{Zhe Fu}\author/literal{Qihao Zhu}\author/literal{Dejian Yang}\author/literal{Z. F. Wu}\author/literal{Zhibin Gou}\author/literal{Shirong Ma}\author/literal{Hongxuan Tang}\author/literal{Yuxuan Liu}\author/literal{Wenjun Gao}\author/literal{Daya Guo}\author/literal{Chong Ruan}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2504.21801}
+\meta{external}{https://arxiv.org/abs/2504.21801}
+
+\meta{bibtex}{\startverb
+@misc{renDeepSeekProverV2AdvancingFormal2025,
+ title = {{{DeepSeek-Prover-V2}}: {{Advancing Formal Mathematical Reasoning}} via {{Reinforcement Learning}} for {{Subgoal Decomposition}}},
+ author = {Ren, Z. Z. and Shao, Zhihong and Song, Junxiao and Xin, Huajian and Wang, Haocheng and Zhao, Wanjia and Zhang, Liyue and Fu, Zhe and Zhu, Qihao and Yang, Dejian and Wu, Z. F. and Gou, Zhibin and Ma, Shirong and Tang, Hongxuan and Liu, Yuxuan and Gao, Wenjun and Guo, Daya and Ruan, Chong},
+ year = {2025},
+ doi = {10.48550/arXiv.2504.21801},
+ urldate = {2026-05-12},
+ number = {arXiv:2504.21801},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/DeepSeek-Prover-V2 Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal D - Ren et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language},
+ archiveprefix = {arXiv},
+ abstract = {We introduce DeepSeek-Prover-V2, an open-source large language model designed for formal theorem proving in Lean 4, with initialization data collected through a recursive theorem proving pipeline powered by DeepSeek-V3. The cold-start training procedure begins by prompting DeepSeek-V3 to decompose complex problems into a series of subgoals. The proofs of resolved subgoals are synthesized into a chain-of-thought process, combined with DeepSeek-V3's stepby-step reasoning, to create an initial cold start for reinforcement learning. This process enables us to integrate both informal and formal mathematical reasoning into a unified model. The resulting model, DeepSeek-Prover-V2-671B, achieves state-of-the-art performance in neural theorem proving, reaching 88.9\% pass ratio on the MiniF2F-test and solving 47 out of 658 problems from PutnamBench. In addition to standard benchmarks, we introduce ProverBench, a collection of 325 formalized problems, to enrich our evaluation, including 15 selected problems from the recent AIME competitions (years 24-25). Further evaluation on these 15 AIME problems shows that the model successfully solves 6 of them. In comparison, DeepSeek-V3 solves 8 of these problems using majority voting, highlighting that the gap between formal and informal mathematical reasoning in large language models is substantially narrowing.},
+ primaryclass = {cs.CL},
+ eprint = {2504.21801},
+ month = {July},
+ shorttitle = {{{DeepSeek-Prover-V2}}}
+}
+\stopverb}

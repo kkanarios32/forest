@@ -1,0 +1,28 @@
+\date{2026-06-24T21:42:52Z}
+\tag{public}
+\author{kellenkanarios}
+\import{base-macros}
+\tag{blog}
+\tag{public}
+\title{My Notes on Productivity}
+\p{Due to the unstructured nature of PhD life / knowledge work in general, I have been trying to come up with the most effective system to ensure I am \em{Getting Things Done} (ironically I found this system actually not that helpful).}
+
+\p{Since [Cal Newport](calnewport) is a professor (can relate to the knowledge work problem), I have been reading a lot of his stuff on productivity.}
+\ul{
+  \li{Deep work.}
+  \li{Slow productivity.}
+}
+
+\p{I often refer back to Atomic Habits as it intuitively just makes so much sense to me.}
+\ul{
+  \li{\em{Start small}: starting a habit should take less than 2 minutes.}
+  \li{\em{Never miss a habit twice}.}
+  \li{\em{Habit anchors}: I am always going to run so now after I run I stretch, which has resulted in remarkable stretching consistency (see my [Weeknotes](007S)).}
+}
+
+
+\transclude{OGCSJ}
+
+\hr
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

@@ -1,0 +1,27 @@
+% ["refs"]
+\title{MPK: A Compiler and Runtime for Mega-Kernelizing Tensor Programs}
+\date{2026-06}
+\author/literal{Xinhao Cheng}\author/literal{Zhihao Zhang}\author/literal{Yu Zhou}\author/literal{Jianan Ji}\author/literal{Jinchen Jiang}\author/literal{Zepeng Zhao}\author/literal{Ziruo Xiao}\author/literal{Zihao Ye}\author/literal{Yingyi Huang}\author/literal{Ruihang Lai}\author/literal{Hongyi Jin}\author/literal{Bohan Hou}\author/literal{Mengdi Wu}\author/literal{Yixin Dong}\author/literal{Anthony Yip}\author/literal{Zihao Ye}\author/literal{Songting Wang}\author/literal{Wenqin Yang}\author/literal{Xupeng Miao}\author/literal{Tianqi Chen}\author/literal{Zhihao Jia}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2512.22219}
+\meta{external}{https://arxiv.org/abs/2512.22219}
+
+\meta{bibtex}{\startverb
+@misc{chengMPKCompilerRuntime2026,
+ title = {{{MPK}}: {{A Compiler}} and {{Runtime}} for {{Mega-Kernelizing Tensor Programs}}},
+ author = {Cheng, Xinhao and Zhang, Zhihao and Zhou, Yu and Ji, Jianan and Jiang, Jinchen and Zhao, Zepeng and Xiao, Ziruo and Ye, Zihao and Huang, Yingyi and Lai, Ruihang and Jin, Hongyi and Hou, Bohan and Wu, Mengdi and Dong, Yixin and Yip, Anthony and Ye, Zihao and Wang, Songting and Yang, Wenqin and Miao, Xupeng and Chen, Tianqi and Jia, Zhihao},
+ year = {2026},
+ doi = {10.48550/arXiv.2512.22219},
+ urldate = {2026-06-12},
+ number = {arXiv:2512.22219},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/MPK A Compiler and Runtime for Mega-Kernelizing Tensor Programs - Cheng et al..pdf},
+ keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Programming Languages},
+ archiveprefix = {arXiv},
+ abstract = {We introduce Mirage Persistent Kernel (MPK), the first compiler and runtime system that automatically transforms multiGPU model inference into a single high-performance megakernel. MPK introduces an SM-level graph representation that captures data dependencies at the granularity of individual streaming multiprocessors (SMs), enabling cross-operator software pipelining, fine-grained overlap of computation and communication, and other optimizations that are infeasible under the conventional kernel-per-operator execution model. The MPK compiler lowers tensor programs into optimized SM-level task graphs and generates fast CUDA implementations for each task, while the MPK in-kernel parallel runtime executes these tasks within a single persistent mega-kernel using decentralized scheduling across SMs. Together, these components provide end-to-end kernel fusion with minimal developer effort, while preserving the flexibility of existing programming models. Our evaluation shows that MPK significantly outperforms existing kernel-per-operator LLM serving systems, achieving up to 1.7\texttimes{} lower end-to-end inference latency and pushing LLM inference performance close to the limits of the underlying hardware. MPK is publicly available at https : //github.com/mirage-project/mirage.},
+ primaryclass = {cs.DC},
+ eprint = {2512.22219},
+ month = {June},
+ shorttitle = {{{MPK}}}
+}
+\stopverb}

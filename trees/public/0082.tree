@@ -1,5 +1,5 @@
 \tag{public}
-\tag{margin}
+\tag{blog}
 \import{base-macros}
 \date{2025-06-30T20:59:54Z}
 \title{Evidence Lower Bound}
@@ -48,3 +48,6 @@ Thus, to tighten the lower bound we can optimize #{q_{\phi}(z)} to try to match 
 .\end{align*}}
 You may be wondering how we use this algorithmically to find #{\theta^*}? This will be the main idea of [expectation maximization](0088). Feel free to check it out!
 }
+\hr
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

@@ -1,0 +1,13 @@
+% ["refs"]
+\title{Halide: A Language and Compiler for Optimizing Parallelism, Locality, and Recomputation in Image Processing Pipelines}
+\author/literal{Jonathan Ragan-Kelley}\author/literal{Connelly Barnes}\author/literal{Andrew Adams}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{ragan-kelleyHalideLanguageCompiler,
+ title = {Halide: {{A Language}} and {{Compiler}} for {{Optimizing Parallelism}}, {{Locality}}, and {{Recomputation}} in {{Image Processing Pipelines}}},
+ author = {{Ragan-Kelley}, Jonathan and Barnes, Connelly and Adams, Andrew},
+ file = {/home/kellen/Downloads/papers/Halide A Language and Compiler for Optimizing Parallelism, Locality, and Recomputation in Image Pro - Ragan-Kelley et al..pdf},
+ langid = {english},
+ abstract = {Image processing pipelines combine the challenges of stencil computations and stream programs. They are composed of large graphs of different stencil stages, as well as complex reductions, and stages with global or data-dependent access patterns. Because of their complex structure, the performance difference between a naive implementation of a pipeline and an optimized one is often an order of magnitude. Efficient implementations require optimization of both parallelism and locality, but due to the nature of stencils, there is a fundamental tension between parallelism, locality, and introducing redundant recomputation of shared values.}
+}
+\stopverb}

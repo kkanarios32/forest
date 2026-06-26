@@ -1,0 +1,22 @@
+% ["refs"]
+\title{On-Chip Networks}
+\date{2017}
+\author/literal{Natalie Enright Jerger}\author/literal{Tushar Krishna}\author/literal{Li-Shiuan Peh}
+\taxon{Reference}
+\meta{doi}{10.1007/978-3-031-01755-1}
+\meta{bibtex}{\startverb
+@book{jergerOnChipNetworks2017,
+ title = {On-{{Chip Networks}}},
+ author = {Jerger, Natalie Enright and Krishna, Tushar and Peh, Li-Shiuan},
+ year = {2017},
+ isbn = {978-3-031-00627-2 978-3-031-01755-1},
+ doi = {10.1007/978-3-031-01755-1},
+ urldate = {2026-04-13},
+ series = {Synthesis {{Lectures}} on {{Computer Architecture}}},
+ publisher = {Springer International Publishing},
+ address = {Cham},
+ file = {/home/kellen/Downloads/papers/On-Chip Networks - Jerger et al..pdf},
+ langid = {english},
+ copyright = {https://www.springer.com/tdm}
+}
+\stopverb}

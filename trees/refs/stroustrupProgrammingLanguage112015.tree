@@ -1,0 +1,19 @@
+% ["refs"]
+\title{The C++ programming language: C++ 11}
+\date{2015}
+\author/literal{Bjarne Stroustrup}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{stroustrupProgrammingLanguage112015,
+ title = {The {{C}}++ Programming Language: {{C}}++ 11},
+ author = {Stroustrup, Bjarne},
+ year = {2015},
+ isbn = {978-0-321-56384-2},
+ edition = {4. ed., 4. print},
+ publisher = {Addison-Wesley},
+ address = {Upper Saddle River, NJ},
+ file = {/home/kellen/Downloads/papers/The C++ programming language C++ 11 - Stroustrup.pdf},
+ langid = {english},
+ shorttitle = {The {{C}}++ Programming Language}
+}
+\stopverb}

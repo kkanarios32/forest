@@ -1,0 +1,21 @@
+% ["refs"]
+\title{Offline Reinforcement Learning with Universal Horizon Models}
+\date{2026}
+\author/literal{Hojun Chung}\author/literal{Junseo Lee}\author/literal{Songhwai Oh}
+\taxon{Reference}
+\meta{doi}{10.48550/ARXIV.2605.15603}
+\meta{bibtex}{\startverb
+@misc{chungOfflineReinforcementLearning2026,
+ title = {Offline {{Reinforcement Learning}} with {{Universal Horizon Models}}},
+ author = {Chung, Hojun and Lee, Junseo and Oh, Songhwai},
+ year = {2026},
+ doi = {10.48550/ARXIV.2605.15603},
+ urldate = {2026-06-03},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Offline Reinforcement Learning with Universal Horizon Models - Chung et al..pdf},
+ keywords = {Artificial Intelligence (cs.AI),FOS: Computer and information sciences,Machine Learning (cs.LG)},
+ langid = {english},
+ copyright = {arXiv.org perpetual, non-exclusive license},
+ abstract = {Model-based reinforcement learning (RL) offers a compelling approach to offline RL by enabling value learning on imagined on-policy trajectories. However, it often suffers from compounding errors due to repeated model inference on self-generated states. While geometric horizon models (GHM) alleviate this issue through direct prediction over a discounted infinite-horizon future, they remain challenged in accurately modeling distant future states. To this end, we introduce universal horizon models (UHM), a generalization of GHM that directly predicts future states under arbitrary horizons. Leveraging this flexibility, we propose a scalable value learning method that employs a winsorized horizon distribution to stabilize training by capping excessively large horizons. Experimental results on 100 challenging OGBench tasks demonstrate that the proposed method outperforms competitive baselines, particularly on tasks with highly suboptimal datasets and those requiring long-horizon reasoning. Project page: https://rllab-snu.github.io/projects/UHM/}
+}
+\stopverb}

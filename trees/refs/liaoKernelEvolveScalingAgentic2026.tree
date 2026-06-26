@@ -1,0 +1,28 @@
+% ["refs"]
+\title{KernelEvolve: Scaling Agentic Kernel Coding for Heterogeneous AI Accelerators at Meta}
+\date{2026-01}
+\author/literal{Gang Liao}\author/literal{Hongsen Qin}\author/literal{Ying Wang}\author/literal{Alicia Golden}\author/literal{Michael Kuchnik}\author/literal{Yavuz Yetim}\author/literal{Jia Jiunn Ang}\author/literal{Chunli Fu}\author/literal{Yihan He}\author/literal{Samuel Hsia}\author/literal{Zewei Jiang}\author/literal{Dianshi Li}\author/literal{Uladzimir Pashkevich}\author/literal{Varna Puvvada}\author/literal{Feng Shi}\author/literal{Matt Steiner}\author/literal{Ruichao Xiao}\author/literal{Nathan Yan}\author/literal{Xiayu Yu}\author/literal{Zhou Fang}\author/literal{Roman Levenstein}\author/literal{Kunming Ho}\author/literal{Haishan Zhu}\author/literal{Alec Hammond}\author/literal{Richard Li}\author/literal{Ajit Mathews}\author/literal{Kaustubh Gondkar}\author/literal{Abdul Zainul-Abedin}\author/literal{Ketan Singh}\author/literal{Hongtao Yu}\author/literal{Wenyuan Chi}\author/literal{Barney Huang}\author/literal{Sean Zhang}\author/literal{Noah Weller}\author/literal{Zach Marine}\author/literal{Wyatt Cook}\author/literal{Carole-Jean Wu}\author/literal{Gaoxiang Liu}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2512.23236}
+\meta{external}{https://arxiv.org/abs/2512.23236}
+
+\meta{bibtex}{\startverb
+@misc{liaoKernelEvolveScalingAgentic2026,
+ title = {{{KernelEvolve}}: {{Scaling Agentic Kernel Coding}} for {{Heterogeneous AI Accelerators}} at {{Meta}}},
+ author = {Liao, Gang and Qin, Hongsen and Wang, Ying and Golden, Alicia and Kuchnik, Michael and Yetim, Yavuz and Ang, Jia Jiunn and Fu, Chunli and He, Yihan and Hsia, Samuel and Jiang, Zewei and Li, Dianshi and Pashkevich, Uladzimir and Puvvada, Varna and Shi, Feng and Steiner, Matt and Xiao, Ruichao and Yan, Nathan and Yu, Xiayu and Fang, Zhou and Levenstein, Roman and Ho, Kunming and Zhu, Haishan and Hammond, Alec and Li, Richard and Mathews, Ajit and Gondkar, Kaustubh and {Zainul-Abedin}, Abdul and Singh, Ketan and Yu, Hongtao and Chi, Wenyuan and Huang, Barney and Zhang, Sean and Weller, Noah and Marine, Zach and Cook, Wyatt and Wu, Carole-Jean and Liu, Gaoxiang},
+ year = {2026},
+ doi = {10.48550/arXiv.2512.23236},
+ urldate = {2026-06-11},
+ number = {arXiv:2512.23236},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/KernelEvolve Scaling Agentic Kernel Coding for Heterogeneous AI Accelerators at Meta - Liao et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Hardware Architecture,Computer Science - Machine Learning,Computer Science - Multiagent Systems,Computer Science - Performance},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Making deep learning recommendation model (DLRM) training and inference fast and efficient is important. However, this presents three key system challenges - model architecture diversity, kernel primitive diversity, and hardware generation and architecture heterogeneity. This paper presents KernelEvolve-an agentic kernel coding framework-to tackle heterogeneity at-scale for DLRM. KernelEvolve is designed to take kernel specifications as input and automate the process of kernel generation and optimization for recommendation model across heterogeneous hardware architectures. KernelEvolve does so by operating at multiple programming abstractions, from Triton and CuTe DSL to low-level hardware agnostic languages, spanning the full hardware-software optimization stack. The kernel optimization process is described as graph-based search with selection policy, universal operator, fitness function, and termination rule, dynamically adapts to runtime execution context through retrieval-augmented prompt synthesis. We designed, implemented, and deployed KernelEvolve to optimize a wide variety of production recommendation models across generations of NVIDIA and AMD GPUs, as well as Meta's AI accelerators. We validate KernelEvolve on the publicly-available KernelBench suite, achieving 100\% pass rate on all 250 problems across three difficulty levels, and 160 PyTorch ATen operators across three heterogeneous hardware platforms, demonstrating 100\% correctness. KernelEvolve reduces development time from weeks to hours and achieves substantial performance improvements over PyTorch baselines across diverse production use cases and for heterogeneous AI systems at-scale. Beyond performance efficiency improvements, KernelEvolve significantly mitigates the programmability barrier for new AI hardware by enabling automated kernel generation for in-house developed AI hardware.},
+ primaryclass = {cs.LG},
+ eprint = {2512.23236},
+ month = {January},
+ shorttitle = {{{KernelEvolve}}}
+}
+\stopverb}

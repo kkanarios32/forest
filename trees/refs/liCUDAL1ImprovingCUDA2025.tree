@@ -1,0 +1,21 @@
+% ["refs"]
+\title{CUDA-L1: Improving CUDA Optimization via Contrastive Reinforcement Learning}
+\date{2025}
+\author/literal{Xiaoya Li}\author/literal{Xiaofei Sun}\author/literal{Albert Wang}\author/literal{Jiwei Li}\author/literal{Chris Shum}
+\taxon{Reference}
+\meta{doi}{10.48550/ARXIV.2507.14111}
+\meta{bibtex}{\startverb
+@misc{liCUDAL1ImprovingCUDA2025,
+ title = {{{CUDA-L1}}: {{Improving CUDA Optimization}} via {{Contrastive Reinforcement Learning}}},
+ author = {Li, Xiaoya and Sun, Xiaofei and Wang, Albert and Li, Jiwei and Shum, Chris},
+ year = {2025},
+ doi = {10.48550/ARXIV.2507.14111},
+ urldate = {2026-05-12},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/CUDA-L1 Improving CUDA Optimization via Contrastive Reinforcement Learning - Li et al..pdf},
+ keywords = {Artificial Intelligence (cs.AI),Distributed Parallel and Cluster Computing (cs.DC),FOS: Computer and information sciences,Machine Learning (cs.LG)},
+ copyright = {Creative Commons Attribution 4.0 International},
+ abstract = {The exponential growth in demand for GPU computing resources has created an urgent need for automated CUDA optimization strategies. While recent advances in LLMs show promise for code generation, current state-of-the-art models achieve low success rates in improving CUDA speed. In this paper, we introduce CUDA-L1, an automated reinforcement learning (RL) framework for CUDA optimization that employs a novel contrastive RL algorithm.},
+ shorttitle = {{{CUDA-L1}}}
+}
+\stopverb}

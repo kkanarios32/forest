@@ -1,7 +1,9 @@
 \date{2025-07-24T21:14:08Z}
-\tag{margin}
-\tag{todo}
 \title{Eligibility Traces}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\tag{blog}
 
 \p{As I grow more interested in abandoning batched updates and the replay buffer, the importance of elibility traces grows with me. Due to this, I thought it finally time to re-prove / understand what makes these traces so eligible.}
 \p{The reference followed is [Sutton and Barto](suttonReinforcementLearningIntroduction2018) (Ch 12.).}
@@ -64,3 +66,6 @@ It is easy to see the same thing goes through for the finite time slice #{\lambd
   This shows that the \em{backward-view} and \em{forward-view} are "equivalent". The forward-view in practice makes an update at each step, so it is typically better.
 }
 }
+\hr
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

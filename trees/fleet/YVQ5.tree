@@ -1,0 +1,17 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Debugger internals}
+\date{2026-06-18T15:13:58Z}
+
+\p{
+The central primitive on Linux is the ptrace system call. The debugger calls ptrace(PTRACE_ATTACH) or forks a child that calls PTRACE_TRACEME then execs the target. This establishes a tracer/tracee relationship: the kernel routes the tracee's signals to the tracer and lets the tracer read/write the tracee's memory and registers (PTRACE_PEEKTEXT, PTRACE_POKETEXT, PTRACE_GETREGS, etc.).
+}
+\p{
+Breakpoints come in two flavors:
+Software breakpoints work by overwriting the instruction at the target address with a trap instruction—on x86 that's int3, a single byte 0xCC. The debugger saves the original byte first. When execution hits 0xCC, the CPU raises a trap, the kernel delivers SIGTRAP, and the tracer wakes up. To continue, the debugger restores the original byte, sets the program counter back by one, single-steps over the original instruction, then re-inserts 0xCC.
+}
+\p{
+Hardware breakpoints use dedicated debug registers (DR0–DR3 for addresses, DR7 for control on x86). These don't modify code, so they work on read-only pages and ROM, and they can trigger on data access (watchpoints), not just execution. The limitation is quantity—typically only four. Single-stepping uses the CPU's trap flag (the TF bit in EFLAGS on x86), which causes a SIGTRAP after every instruction. ptrace(PTRACE_SINGLESTEP) sets this for you. Symbol and source mapping is what turns raw addresses into meaningful information. The compiler emits DWARF debug info (in .debug_* sections) when you pass -g. DWARF encodes the mapping from machine addresses to source lines, variable names, types, scopes, and the rules for unwinding stack frames and locating each variable (which register or stack offset holds it at a given PC). The debugger parses this to show you source-level context. Stack unwinding for backtraces walks frame pointers (when available) or uses DWARF CFI (call frame information) to reconstruct the chain of callers when frame pointers are omitted. So a "set breakpoint at line 42" involves: DWARF lookup to map line 42 to an address, poking 0xCC there, letting the process run, catching the SIGTRAP, then reading registers and memory and using DWARF again to render locals and the call stack.
+}

@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Metric Residual Networks for Sample Efficient Goal-Conditioned Reinforcement Learning}
+\author/literal{Bo Liu}\author/literal{Yihao Feng}\author/literal{Qiang Liu}\author/literal{Peter Stone}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{liuMetricResidualNetworks,
+ title = {Metric {{Residual Networks}} for {{Sample Efficient Goal-Conditioned Reinforcement Learning}}},
+ author = {Liu, Bo and Feng, Yihao and Liu, Qiang and Stone, Peter},
+ langid = {english},
+ abstract = {Goal-conditioned reinforcement learning (GCRL) has a wide range of potential real-world applications, including manipulation and navigation problems in robotics. Especially in such robotics tasks, sample efficiency is of the utmost importance for GCRL since, by default, the agent is only rewarded when it reaches its goal. While several methods have been proposed to improve the sample efficiency of GCRL, one relatively under-studied approach is the design of neural architectures to support sample efficiency. In this work, we introduce a novel neural architecture for GCRL that achieves significantly better sample efficiency than the commonlyused monolithic network architecture. The key insight is that the optimal action-value function Q{$\ast$}(s, a, g) must satisfy the triangle inequality in a specific sense. Furthermore, we introduce the metric residual network (MRN) that deliberately decomposes the action-value function Q(s, a, g) into the negated summation of a metric plus a residual asymmetric component. MRN provably approximates any optimal actionvalue function Q{$\ast$}(s, a, g), thus making it a fitting neural architecture for GCRL. We conduct comprehensive experiments across 12 standard benchmark environments in GCRL. The empirical results demonstrate that MRN uniformly outperforms other state-of-the-art GCRL neural architectures in terms of sample efficiency. The code is publicly available at https://github.com/Cranial-XIX/metric-residual-network.}
+}
+\stopverb}

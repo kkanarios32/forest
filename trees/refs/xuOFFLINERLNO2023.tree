@@ -1,0 +1,15 @@
+% ["refs"]
+\title{OFFLINE RL WITH NO OOD ACTIONS: IN-SAMPLE LEARNING VIA IMPLICIT VALUE REGULARIZATION}
+\date{2023}
+\author/literal{Haoran Xu}\author/literal{Li Jiang}\author/literal{Jianxiong Li}\author/literal{Zhuoran Yang}\author/literal{Zhaoran Wang}\author/literal{Victor Wai Kin Chan}\author/literal{Xianyuan Zhan}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{xuOFFLINERLNO2023,
+ title = {{{OFFLINE RL WITH NO OOD ACTIONS}}: {{IN-SAMPLE LEARNING VIA IMPLICIT VALUE REGULARIZATION}}},
+ author = {Xu, Haoran and Jiang, Li and Li, Jianxiong and Yang, Zhuoran and Wang, Zhaoran and Chan, Victor Wai Kin and Zhan, Xianyuan},
+ year = {2023},
+ file = {/home/kellen/Downloads/papers/OFFLINE RL WITH NO OOD ACTIONS IN-SAMPLE LEARNING VIA IMPLICIT VALUE REGULARIZATION - Xu et al..pdf},
+ langid = {english},
+ abstract = {Most offline reinforcement learning (RL) methods suffer from the trade-off between improving the policy to surpass the behavior policy and constraining the policy to limit the deviation from the behavior policy as computing Q-values using outof-distribution (OOD) actions will suffer from errors due to distributional shift. The recent proposed In-sample Learning paradigm (i.e., IQL), which improves the policy by quantile regression using only data samples, shows great promise because it learns an optimal policy without querying the value function of any unseen actions. However, it remains unclear how this type of method handles the distributional shift in learning the value function. In this work, we make a key finding that the in-sample learning paradigm arises under the Implicit Value Regularization (IVR) framework. This gives a deeper understanding of why the in-sample learning paradigm works, i.e., it applies implicit value regularization to the policy. Based on the IVR framework, we further propose two practical algorithms, Sparse Q-learning (SQL) and Exponential Q-learning (EQL), which adopt the same value regularization used in existing works, but in a complete insample manner. Compared with IQL, we find that our algorithms introduce sparsity in learning the value function, making them more robust in noisy data regimes. We also verify the effectiveness of SQL and EQL on D4RL benchmark datasets and show the benefits of in-sample learning by comparing them with CQL in small data regimes. Code is available at https://github.com/ryanxhr/IVR.}
+}
+\stopverb}

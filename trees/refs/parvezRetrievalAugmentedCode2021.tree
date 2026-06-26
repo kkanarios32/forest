@@ -1,0 +1,22 @@
+% ["refs"]
+\title{Retrieval Augmented Code Generation and Summarization}
+\date{2021}
+\author/literal{Md Rizwan Parvez}\author/literal{Wasi Ahmad}\author/literal{Saikat Chakraborty}\author/literal{Baishakhi Ray}\author/literal{Kai-Wei Chang}
+\taxon{Reference}
+\meta{doi}{10.18653/v1/2021.findings-emnlp.232}
+\meta{bibtex}{\startverb
+@inproceedings{parvezRetrievalAugmentedCode2021,
+ title = {Retrieval {{Augmented Code Generation}} and {{Summarization}}},
+ author = {Parvez, Md Rizwan and Ahmad, Wasi and Chakraborty, Saikat and Ray, Baishakhi and Chang, Kai-Wei},
+ year = {2021},
+ doi = {10.18653/v1/2021.findings-emnlp.232},
+ urldate = {2026-05-20},
+ booktitle = {Findings of the {{Association}} for {{Computational Linguistics}}: {{EMNLP}} 2021},
+ pages = {2719--2734},
+ publisher = {Association for Computational Linguistics},
+ address = {Punta Cana, Dominican Republic},
+ file = {/home/kellen/Downloads/papers/Retrieval Augmented Code Generation and Summarization - Parvez et al..pdf},
+ langid = {english},
+ abstract = {Software developers write a lot of source code and documentation during software development. Intrinsically, developers often recall parts of source code or code summaries that they had written in the past while implementing software or documenting them. To mimic developers' code or summary generation behavior, we propose a retrieval augmented framework, REDCODER, that retrieves relevant code or summaries from a retrieval database and provides them as a supplement to code generation or summarization models. REDCODER has a couple of uniqueness. First, it extends the state-of-the-art dense retrieval technique to search for relevant code or summaries. Second, it can work with retrieval databases that include unimodal (only code or natural language description) or bimodal instances (code-description pairs). We conduct experiments and extensive analysis on two benchmark datasets of code generation and summarization in Java and Python, and the promising results endorse the effectiveness of our proposed retrieval augmented framework.}
+}
+\stopverb}

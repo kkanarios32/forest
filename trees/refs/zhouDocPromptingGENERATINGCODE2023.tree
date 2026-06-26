@@ -1,0 +1,14 @@
+% ["refs"]
+\title{DocPrompting: GENERATING CODE BY RETRIEVING}
+\date{2023}
+\author/literal{Shuyan Zhou}\author/literal{Uri Alon}\author/literal{Frank F Xu}\author/literal{Zhiruo Wang}\author/literal{Zhengbao Jiang}\author/literal{Graham Neubig}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{zhouDocPromptingGENERATINGCODE2023,
+ title = {{{DocPrompting}}: {{GENERATING CODE BY RETRIEVING}}},
+ author = {Zhou, Shuyan and Alon, Uri and Xu, Frank F and Wang, Zhiruo and Jiang, Zhengbao and Neubig, Graham},
+ year = {2023},
+ file = {/home/kellen/Downloads/papers/DocPrompting GENERATING CODE BY RETRIEVING - Zhou et al..pdf},
+ langid = {english}
+}
+\stopverb}

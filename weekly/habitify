@@ -1,0 +1,183 @@
+#!/usr/bin/env -S uv run --script
+#
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "matplotlib",
+#     "numpy",
+#     "pandas",
+#     "requests",
+#     "seaborn",
+# ]
+# ///
+#
+# Habitify weekly visualization.
+#
+# Two panels, side by side:
+#   left  — completion grid: habits (rows) x Sat-Fri (cols), shaded by how much
+#           of each day's target was met. Days a habit wasn't scheduled are left
+#           blank so "missed" and "not due" read differently.
+#   right — completion-rate bars: per habit, the share of its *scheduled* days
+#           completed this week.
+#
+# The weekly review runs on Fridays, so the week is the 7 days ending on the
+# most recent Friday (Sat -> Fri).
+#
+# Uses the Habitify v2 REST API (X-API-Key auth). The key lives one line in
+# $HABITIFY_API_KEY or ~/.config/habitify/apikey (same place sb-habits reads).
+
+import os
+import sys
+from datetime import date, timedelta
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import requests
+import seaborn as sns
+
+import wtheme
+
+API = "https://api.habitify.me/v2"
+KEY_FILE = os.path.join(
+    os.environ.get("XDG_CONFIG_HOME", os.path.expanduser("~/.config")),
+    "habitify",
+    "apikey",
+)
+DOW = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]  # review week ends Friday
+
+
+def get_key():
+    key = os.environ.get("HABITIFY_API_KEY")
+    if key:
+        return key.strip()
+    with open(KEY_FILE) as f:
+        return f.readline().strip()
+
+
+def fetch_journal(key, day):
+    r = requests.get(
+        f"{API}/habits/journal",
+        params={"date": day.strftime("%Y-%m-%d")},
+        headers={"X-API-Key": key},
+        timeout=10,
+    )
+    r.raise_for_status()
+    return r.json().get("data", [])
+
+
+def week_records(key, start):
+    # One row per (habit, day) the habit was scheduled, with the day's
+    # completion fraction in [0, 1].
+    records = []
+    for i in range(7):
+        day = start + timedelta(days=i)
+        for h in fetch_journal(key, day):
+            prog = h.get("progress") or {}
+            target = prog.get("target") or 0
+            current = prog.get("current") or 0
+            status = (h.get("status") or "").lower()
+            if "complet" in status:
+                frac = 1.0
+            elif target > 0:
+                frac = min(current / target, 1.0)
+            else:
+                frac = 0.0
+            records.append(
+                {"habit": h["name"], "dow": day.strftime("%a"), "frac": frac}
+            )
+    return pd.DataFrame(records)
+
+
+def _empty(ax, title, msg="No habit data this week"):
+    ax.set_title(title)
+    ax.text(0.5, 0.5, msg, ha="center", va="center", color=wtheme.FAINT,
+            transform=ax.transAxes)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    for s in ax.spines.values():
+        s.set_visible(False)
+
+
+def plot(df, save_dir):
+    wtheme.apply()
+    fig, axs = plt.subplots(1, 2, figsize=(15, 5.0),
+                            gridspec_kw={"width_ratios": [1.3, 1]})
+
+    if df.empty:
+        _empty(axs[0], "Completion grid")
+        _empty(axs[1], "Completion rate")
+        subtitle = None
+    else:
+        # Order both panels by weekly rate so the strongest habit sits on top.
+        rate = df.groupby("habit")["frac"].mean().sort_values(ascending=False)
+        order = list(rate.index)
+        grid = (
+            df.pivot_table(index="habit", columns="dow", values="frac", aggfunc="mean")
+            .reindex(index=order, columns=DOW)
+        )
+
+        # --- left: completion grid ---
+        cmap = wtheme.sequential_cmap()
+        cmap.set_bad("#d7dadf")  # not scheduled — a clear neutral gray, distinct
+                                 # from the light-blue floor of a missed day
+        sns.heatmap(
+            grid, ax=axs[0], cmap=cmap, vmin=0, vmax=1,
+            linewidths=3, linecolor="white", square=True, cbar=False,
+        )
+        axs[0].set_title("Completion grid")
+        axs[0].set_xlabel("")
+        axs[0].set_ylabel("")
+        axs[0].tick_params(length=0)
+        axs[0].set_yticklabels(axs[0].get_yticklabels(), rotation=0)
+        axs[0].set_xticklabels(axs[0].get_xticklabels(), rotation=0)
+
+        # --- right: completion-rate bars (single accent, direct-labeled) ---
+        rate_up = rate[::-1]  # highest on top with a horizontal bar axis
+        y = np.arange(len(rate_up))
+        axs[1].barh(y, rate_up.values * 100, color=wtheme.ACCENT,
+                    zorder=3, height=0.62)
+        axs[1].set_yticks(y)
+        axs[1].set_yticklabels(rate_up.index)
+        axs[1].set_xlim(0, 104)
+        axs[1].set_xticks([0, 25, 50, 75, 100])
+        axs[1].set_xticklabels(["0", "25", "50", "75", "100%"])
+        axs[1].set_title("Completion rate")
+        wtheme.style_axis(axs[1], grid="x")
+        for yi, v in zip(y, rate_up.values):
+            pct = v * 100
+            inside = pct > 12
+            axs[1].text(pct - 2 if inside else pct + 2, yi, f"{pct:.0f}%",
+                        va="center", ha="right" if inside else "left",
+                        fontsize=10, fontweight="bold",
+                        color="white" if inside else wtheme.MUTED, zorder=4)
+
+        done = int((df["frac"] >= 1.0).sum())
+        total = len(df)
+        subtitle = f"{done}/{total} scheduled habit-days completed this week"
+
+    wtheme.suptitle(fig, "Habits", subtitle)
+    plt.tight_layout(rect=[0, 0, 1, 0.93])
+
+    if not df.empty:
+        wtheme.round_bars(axs[1], edge="hue", horizontal=True)
+        wtheme.arrows(axs[1])  # the grid (axs[0]) keeps its heatmap frame
+
+    os.makedirs(save_dir, exist_ok=True)
+    plt.savefig(os.path.join(save_dir, "habitify.png"), dpi=200)
+
+
+def main(argv):
+    save_dir = argv[0]
+    today = date.today()
+    # Friday of the current week (Mon–Sun): the upcoming Friday on weekdays, the
+    # just-passed Friday on the weekend. So a mid-week run shows the in-progress
+    # week (with newly added habits), not the previous one.
+    friday = today + timedelta(days=(4 - today.weekday()))
+    start = friday - timedelta(days=6)  # the preceding Saturday
+    df = week_records(get_key(), start)
+    plot(df, save_dir)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

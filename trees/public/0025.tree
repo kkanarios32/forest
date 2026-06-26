@@ -1,8 +1,9 @@
 \date{2024-12-28}
 \title{[[NZBG]] vs. [[WLBG]]}
-\tag{margin}
+\tag{blog}
 \tag{public}
 \import{base-macros}
+\author{kellenkanarios}
 
 \p{I often hear this question come up amongst performance-driven developers, and for the longest time I could never get a straight answer as to why the stack was so much better? After a long foray into the inner workings of how memory allocation is actually done, I think I finally have an answer. I do not want to forget this, so I am doing a quick write up here.}
 
@@ -23,3 +24,6 @@ However, \code{malloc} itself is not a system call and therefore is not terribly
 }
 Generally, if you know how much memory you need it is good practice to just allocated all up front to minimize any potential system calls. With this, the performance difference is not too drastic \startverb :) \stopverb
 }
+\hr
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

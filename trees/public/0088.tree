@@ -1,5 +1,5 @@
 \tag{public}
-\tag{margin}
+\tag{blog}
 \import{base-macros}
 \date{2025-07-01T17:03:45Z}
 \title{Expectation Maximization}
@@ -78,3 +78,6 @@ Now this is all cool theoretically but how TF do we actually maximize this thing
 Alternating between these steps yields the \em{expectation-maximization} algorithm the ML oldheads mythologize.
 }
 }
+\hr
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Agentic Operator Generation for ML ASICs}
+\date{2025-12}
+\author/literal{Alec M. Hammond}\author/literal{Aram Markosyan}\author/literal{Aman Dontula}\author/literal{Simon Mahns}\author/literal{Zacharias Fisches}\author/literal{Dmitrii Pedchenko}\author/literal{Keyur Muzumdar}\author/literal{Natacha Supper}\author/literal{Mark Saroufim}\author/literal{Joe Isaacson}\author/literal{Laura Wang}\author/literal{Warren Hunt}\author/literal{Kaustubh Gondkar}\author/literal{Roman Levenstein}\author/literal{Gabriel Synnaeve}\author/literal{Richard Li}\author/literal{Jacob Kahn}\author/literal{Ajit Mathews}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2512.10977}
+\meta{external}{https://arxiv.org/abs/2512.10977}
+
+\meta{bibtex}{\startverb
+@misc{hammondAgenticOperatorGeneration2025,
+ title = {Agentic {{Operator Generation}} for {{ML ASICs}}},
+ author = {Hammond, Alec M. and Markosyan, Aram and Dontula, Aman and Mahns, Simon and Fisches, Zacharias and Pedchenko, Dmitrii and Muzumdar, Keyur and Supper, Natacha and Saroufim, Mark and Isaacson, Joe and Wang, Laura and Hunt, Warren and Gondkar, Kaustubh and Levenstein, Roman and Synnaeve, Gabriel and Li, Richard and Kahn, Jacob and Mathews, Ajit},
+ year = {2025},
+ doi = {10.48550/arXiv.2512.10977},
+ urldate = {2026-06-09},
+ number = {arXiv:2512.10977},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Agentic Operator Generation for ML ASICs - Hammond et al..pdf},
+ keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Hardware Architecture,Computer Science - Programming Languages},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {We present TritorX, an agentic AI system designed to generate functionally correct Triton PyTorch ATen kernels at scale for emerging accelerator platforms. TritorX integrates open-source large language models with a custom linter, JIT compilation, and a PyTorch OpInfo-based test harness. This pipeline is compatible with both real Meta Training and Inference Accelerator (MTIA) silicon and in hardware simulation environments for next-generation devices. In contrast to previous kernel-generation approaches that prioritize performance for a limited set of high-usage kernels, TritorX prioritizes coverage. Our system emphasizes correctness and generality across the entire operator set, including diverse data types, shapes, and argument patterns. In our experiments, TritorX successfully generated kernels and wrappers for 481 unique ATen operators that pass all corresponding PyTorch OpInfo tests (over 20,000 in total). TritorX paves the way for overnight generation of complete PyTorch ATen backends for new accelerator platforms.},
+ primaryclass = {cs.DC},
+ eprint = {2512.10977},
+ month = {December}
+}
+\stopverb}

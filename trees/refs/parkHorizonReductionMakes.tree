@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Horizon Reduction Makes RL Scalable}
+\author/literal{Seohong Park}\author/literal{Kevin Frans}\author/literal{Deepinder Mann}\author/literal{Benjamin Eysenbach}\author/literal{Aviral Kumar}\author/literal{Sergey Levine}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{parkHorizonReductionMakes,
+ title = {Horizon {{Reduction Makes RL Scalable}}},
+ author = {Park, Seohong and Frans, Kevin and Mann, Deepinder and Eysenbach, Benjamin and Kumar, Aviral and Levine, Sergey},
+ file = {/home/kellen/Downloads/papers/Horizon Reduction Makes RL Scalable - Park et al. 1.pdf},
+ langid = {english}
+}
+\stopverb}

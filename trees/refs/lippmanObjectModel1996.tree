@@ -1,0 +1,18 @@
+% ["refs"]
+\title{Inside the C^{++} object model}
+\date{1996}
+\author/literal{Stanley B. Lippman}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{lippmanObjectModel1996,
+ title = {Inside the {{C}}{$^{++}$} Object Model},
+ author = {Lippman, Stanley B.},
+ year = {1996},
+ isbn = {978-0-201-83454-3},
+ publisher = {Addison Wesley Longman},
+ address = {Reading, Mass},
+ file = {/home/kellen/Downloads/papers/C++_En_Inside.The.C++.Object.Model.pdf},
+ keywords = {C++ (Computer program language),Object-oriented programming (Computer science)},
+ lccn = {QA76.73.C153 L58 1996}
+}
+\stopverb}

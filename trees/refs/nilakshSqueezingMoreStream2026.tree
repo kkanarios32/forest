@@ -1,0 +1,20 @@
+% ["refs"]
+\title{Squeezing More from the Stream : Learning Representation Online for Streaming Reinforcement Learning}
+\date{2026}
+\author/literal{Nilaksh}\author/literal{Antoine Clavaud}\author/literal{Mathieu Reymond}\author/literal{François Rivest}\author/literal{Sarath Chandar}
+\taxon{Reference}
+\meta{doi}{10.48550/ARXIV.2602.09396}
+\meta{bibtex}{\startverb
+@misc{nilakshSqueezingMoreStream2026,
+ title = {Squeezing {{More}} from the {{Stream}} : {{Learning Representation Online}} for {{Streaming Reinforcement Learning}}},
+ author = {{Nilaksh} and Clavaud, Antoine and Reymond, Mathieu and Rivest, Fran{\c c}ois and Chandar, Sarath},
+ year = {2026},
+ doi = {10.48550/ARXIV.2602.09396},
+ urldate = {2026-05-30},
+ publisher = {arXiv},
+ keywords = {Artificial Intelligence (cs.AI),FOS: Computer and information sciences,Machine Learning (cs.LG)},
+ copyright = {Creative Commons Attribution Share Alike 4.0 International},
+ abstract = {In streaming Reinforcement Learning (RL), transitions are observed and discarded immediately after a single update. While this minimizes resource usage for on-device applications, it makes agents notoriously sample-inefficient, since value-based losses alone struggle to extract meaningful representations from transient data. We propose extending Self-Predictive Representations (SPR) to the streaming pipeline to maximize the utility of every observed frame. However, due to the highly correlated samples induced by the streaming regime, naively applying this auxiliary loss results in training instabilities. Thus, we introduce orthogonal gradient updates relative to the momentum target and resolve gradient conflicts arising from streaming-specific optimizers. Validated across the Atari, MinAtar, and Octax suites, our approach systematically outperforms existing streaming baselines. Latent-space analysis, including t-SNE visualizations and effective-rank measurements, confirms that our method learns significantly richer representations, bridging the performance gap caused by the absence of a replay buffer, while remaining efficient enough to train on just a few CPU cores.},
+ shorttitle = {Squeezing {{More}} from the {{Stream}}}
+}
+\stopverb}

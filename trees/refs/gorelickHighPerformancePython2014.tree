@@ -1,0 +1,19 @@
+% ["refs"]
+\title{High performance python: Practical performant programming for humans}
+\date{2014}
+\author/literal{Micha Gorelick}\author/literal{Ian Ozsvald}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{gorelickHighPerformancePython2014,
+ title = {High Performance Python: Practical Performant Programming for Humans},
+ author = {Gorelick, Micha and Ozsvald, Ian},
+ year = {2014},
+ isbn = {978-1-4493-6159-4 978-1-4493-6177-8},
+ edition = {First edition},
+ publisher = {O'Reilly Media, Incorporated},
+ address = {Beijing Cambridge\$Farnham Sebastopol K\"oln Tokyo},
+ file = {/home/kellen/Downloads/papers/High performance python practical performant programming for humans - Gorelick and Ozsvald 1.pdf;/home/kellen/Downloads/papers/High performance python practical performant programming for humans - Gorelick and Ozsvald.pdf},
+ langid = {english},
+ shorttitle = {High Performance Python}
+}
+\stopverb}

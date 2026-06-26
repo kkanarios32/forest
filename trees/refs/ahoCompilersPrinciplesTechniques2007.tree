@@ -1,0 +1,18 @@
+% ["refs"]
+\title{Compilers: Principles, techniques, & tools}
+\date{2007}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{ahoCompilersPrinciplesTechniques2007,
+ title = {Compilers: Principles, Techniques, \& Tools},
+ year = {2007},
+ isbn = {978-0-321-48681-3 978-0-321-49169-5},
+ edition = {2. ed., Pearson internat. ed},
+ editor = {Aho, Alfred V. and Lam, Monica S. and Sethi, Ravi and Ullman, Jeffrey D.},
+ publisher = {Pearson Addison-Wesley},
+ address = {Boston Munich},
+ file = {/home/kellen/Downloads/papers/Compilers principles, techniques, & tools - Aho et al..pdf},
+ langid = {english},
+ shorttitle = {Compilers}
+}
+\stopverb}

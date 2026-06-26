@@ -1,0 +1,28 @@
+% ["refs"]
+\title{An Inductive Bias for Distances: Neural Nets that Respect the Triangle Inequality}
+\date{2020-07}
+\author/literal{Silviu Pitis}\author/literal{Harris Chan}\author/literal{Kiarash Jamali}\author/literal{Jimmy Ba}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2002.05825}
+\meta{external}{https://arxiv.org/abs/2002.05825}
+
+\meta{bibtex}{\startverb
+@misc{pitisInductiveBiasDistances2020,
+ title = {An {{Inductive Bias}} for {{Distances}}: {{Neural Nets}} That {{Respect}} the {{Triangle Inequality}}},
+ author = {Pitis, Silviu and Chan, Harris and Jamali, Kiarash and Ba, Jimmy},
+ year = {2020},
+ doi = {10.48550/arXiv.2002.05825},
+ urldate = {2026-05-27},
+ number = {arXiv:2002.05825},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/2002.pdf},
+ keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Distances are pervasive in machine learning. They serve as similarity measures, loss functions, and learning targets; it is said that a good distance measure solves a task. When defining distances, the triangle inequality has proven to be a useful constraint, both theoretically--to prove convergence and optimality guarantees--and empirically--as an inductive bias. Deep metric learning architectures that respect the triangle inequality rely, almost exclusively, on Euclidean distance in the latent space. Though effective, this fails to model two broad classes of subadditive distances, common in graphs and reinforcement learning: asymmetric metrics, and metrics that cannot be embedded into Euclidean space. To address these problems, we introduce novel architectures that are guaranteed to satisfy the triangle inequality. We prove our architectures universally approximate norm-induced metrics on \$\textbackslash mathbb\textbraceleft R\textbraceright\textasciicircum n\$, and present a similar result for modified Input Convex Neural Networks. We show that our architectures outperform existing metric approaches when modeling graph distances and have a better inductive bias than non-metric approaches when training data is limited in the multi-goal reinforcement learning setting.},
+ primaryclass = {cs.LG},
+ eprint = {2002.05825},
+ month = {July},
+ shorttitle = {An {{Inductive Bias}} for {{Distances}}}
+}
+\stopverb}

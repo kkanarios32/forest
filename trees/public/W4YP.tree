@@ -1,7 +1,7 @@
 \import{base-macros}
 \date{2025-07-14T17:21:58Z}
 \tag{public}
-\tag{margin}
+\tag{blog}
 \title{Multi Query Attention}
 \author{kellenkanarios}
 \p{Notes on the paper [[shazeerFastTransformerDecoding2019]].}
@@ -35,3 +35,6 @@ Similar to the [[TJLA]], we still can use #{h} #{Q} matrices because we do not n
 \transclude{XUVV}
 \p{Also inspired by this idea of reducing the dependence of #{K} and #{V} on the sequence length is sliding window attention.}
 \transclude{WM3M}
+\hr
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}

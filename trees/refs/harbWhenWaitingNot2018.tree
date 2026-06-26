@@ -1,0 +1,24 @@
+% ["refs"]
+\title{When Waiting Is Not an Option: Learning Options With a Deliberation Cost}
+\date{2018-04}
+\author/literal{Jean Harb}\author/literal{Pierre-Luc Bacon}\author/literal{Martin Klissarov}\author/literal{Doina Precup}
+\taxon{Reference}
+\meta{doi}{10.1609/aaai.v32i1.11831}
+\meta{bibtex}{\startverb
+@article{harbWhenWaitingNot2018,
+ title = {When {{Waiting Is Not}} an {{Option}}: {{Learning Options With}} a {{Deliberation Cost}}},
+ author = {Harb, Jean and Bacon, Pierre-Luc and Klissarov, Martin and Precup, Doina},
+ year = {2018},
+ doi = {10.1609/aaai.v32i1.11831},
+ urldate = {2026-05-06},
+ journal = {Proceedings of the AAAI Conference on Artificial Intelligence},
+ volume = {32},
+ number = {1},
+ file = {/home/kellen/Downloads/papers/When Waiting Is Not an Option Learning Options With a Deliberation Cost - Harb et al..pdf},
+ langid = {english},
+ abstract = {Recent work has shown that temporally extended actions (options) can be learned fully end-to-end as opposed to being specified in advance. While the problem of how to learn options is increasingly well understood, the question of what good options should be has remained elusive. We formulate our answer to what good options should be in the bounded rationality framework (Simon, 1957) through the notion of deliberation cost. We then derive practical gradient-based learning algorithms to implement this objective. Our results in the Arcade Learning Environment (ALE) show increased performance and interpretability.},
+ issn = {2374-3468, 2159-5399},
+ month = {April},
+ shorttitle = {When {{Waiting Is Not}} an {{Option}}}
+}
+\stopverb}

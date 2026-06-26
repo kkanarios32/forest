@@ -1,0 +1,12 @@
+% ["refs"]
+\title{CPython Internals: Your Guide to the Python 3 Interpreter}
+\author/literal{Anthony Shaw}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{shawCPythonInternalsYour,
+ title = {{{CPython Internals}}: {{Your Guide}} to the {{Python}} 3 {{Interpreter}}},
+ author = {Shaw, Anthony},
+ file = {/home/kellen/Downloads/papers/CPython Internals Your Guide to the Python 3 Interpreter - Shaw.pdf},
+ langid = {english}
+}
+\stopverb}

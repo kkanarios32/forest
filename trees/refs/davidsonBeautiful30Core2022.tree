@@ -1,0 +1,18 @@
+% ["refs"]
+\title{Beautiful C++: 30 core guidelines for writing clean, safe, and fast code}
+\date{2022}
+\author/literal{J. Guy Davidson}\author/literal{Kate Gregory}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{davidsonBeautiful30Core2022,
+ title = {Beautiful {{C}}++: 30 Core Guidelines for Writing Clean, Safe, and Fast Code},
+ author = {Davidson, J. Guy and Gregory, Kate},
+ year = {2022},
+ isbn = {978-0-13-764784-2},
+ publisher = {Addison-Wesley},
+ address = {Boston},
+ file = {/home/kellen/Downloads/papers/Beautiful C++ 30 core guidelines for writing clean, safe, and fast code - Davidson and Gregory.pdf},
+ langid = {english},
+ shorttitle = {Beautiful {{C}}++}
+}
+\stopverb}

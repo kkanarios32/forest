@@ -1,0 +1,12 @@
+% ["refs"]
+\title{General-Purpose Graphics Processor Architectures}
+\author/literal{Tor M Aamodt}\author/literal{Wilson Wai Lun Fung}\author/literal{Timothy G Rogers}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{aamodtGeneralPurposeGraphicsProcessor,
+ title = {General-{{Purpose Graphics Processor Architectures}}},
+ author = {Aamodt, Tor M and Fung, Wilson Wai Lun and Rogers, Timothy G},
+ file = {/home/kellen/Downloads/papers/General-Purpose Graphics Processor Architectures - Aamodt et al..pdf},
+ langid = {english}
+}
+\stopverb}

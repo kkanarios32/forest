@@ -4,25 +4,23 @@
 # dependencies = [
 #     "datetime",
 #     "fitfile",
-#     "garmindb",
+#     "garmindb==3.6.4",  # must match the garmindb-cli that builds the DB (schema version skew otherwise)
 #     "matplotlib",
 #     "numpy",
+#     "pandas",
 #     "seaborn",
 # ]
 # ///
 # Running
 
-import seaborn as sns
-import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.dates as dates
 from datetime import datetime, date, timedelta
 import sys
-import argparse
 import os
 
 import fitfile
-import numpy as np
+import pandas as pd
 from garmindb import GarminConnectConfigManager
 from garmindb.garmindb import (
     GarminDb,
@@ -31,25 +29,7 @@ from garmindb.garmindb import (
     Activities,
 )
 
-
-def set_style():
-    sns.set_context("poster", font_scale=1.5)
-    rc = {
-        "font.family": "sans-serif",
-        "font.sans-serif": "Facebook Sans",
-        "axes.labelsize": 14,
-        "axes.titlesize": 16,
-        "axes.titleweight": 300,
-        "axes.labelweight": 400,
-        "legend.fontsize": 12,
-        "xtick.labelsize": 12,
-        "ytick.labelsize": 12,
-        "figure.dpi": 300,
-        "savefig.bbox": "tight",
-    }
-    palette = sns.color_palette("ch:start=.2,rot=-.3")
-    sns.set_theme(palette=palette, rc=rc, style="ticks")
-    return palette
+import wtheme
 
 gc_config = GarminConnectConfigManager()
 db_params_dict = gc_config.get_db_params()
@@ -60,133 +40,95 @@ measurement_system = Attributes.measurements_type(garmin_db)
 unit_strings = fitfile.units.unit_strings[measurement_system]
 distance_units = {"miles": "m"}[unit_strings[fitfile.units.UnitTypes.distance_long]]
 
+WEEKS = 16  # how many recent weeks of mileage to show
+
 end_ts = datetime.now()
-start_ts = datetime.now() - timedelta(days=7)
+start_ts = end_ts - timedelta(weeks=WEEKS)
 
 activities = Activities.get_for_period(garmin_act_db, start_ts, end_ts)
 
-def hr_spm(ax):
-    start_dates = []
-    moving_times = []
-    spm = []
-    hrs = []
-    i = 0
+
+def _empty(ax, title, msg="No runs in this period"):
+    ax.set_title(title)
+    ax.text(0.5, 0.5, msg, ha="center", va="center", color=wtheme.FAINT,
+            transform=ax.transAxes)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    for s in ax.spines.values():
+        s.set_visible(False)
+
+
+def weekly_miles(ax):
+    # Bucket running distance into weeks (Monday-anchored training weeks).
+    runs = []
     for activity in activities:
-        if (activity.name is not None):
-            avg_hr = activity.avg_hr
-            cadence = activity.avg_cadence
+        if activity.name is None or activity.distance is None or activity.moving_time is None:
+            continue
+        s = activity.distance
+        t = (datetime.combine(date.min, activity.moving_time) - datetime.min).total_seconds() / 60
+        if s > 0.5 and 5 < t / s < 15:  # pace/distance heuristic → it's a run
+            d = activity.start_time.date()
+            week_start = d - timedelta(days=d.weekday())  # Monday of that week
+            runs.append((week_start, s))
 
-            hrs += [avg_hr]
-            spm += [cadence * 2]
-            start_dates += [activity.start_time]
+    if not runs:
+        _empty(ax, "Miles per week")
+        return 0.0
 
-    host = ax
-    palette = set_style()
+    df = pd.DataFrame(runs, columns=["week", "miles"])
+    weekly = df.groupby("week")["miles"].sum()
 
-    columns = {
-        "avg_hr": {
-            "label": "Average_hr",
-            "trend_marker": "--",
-            "color": palette[0],
-            "data": hrs,
-        },
-        "spm": {
-            "label": "Steps per minute",
-            "trend_marker": "--",
-            "color": palette[2],
-            "data": spm,
-        },
-    }
+    # Continuous weekly index so zero-mileage (rest) weeks stay visible.
+    full = pd.date_range(end=end_ts.date() - timedelta(days=end_ts.weekday()),
+                         periods=WEEKS, freq="7D")
+    weekly = weekly.reindex(full.date, fill_value=0)
+    weekly.index = pd.to_datetime(weekly.index)
 
-    plots = []
-    step = 0
+    roll = weekly.rolling(4, min_periods=1).mean()
 
+    # Trim leading empty weeks so the chart starts where running data begins.
+    nonzero = weekly[weekly > 0]
+    if not nonzero.empty:
+        weekly = weekly.loc[nonzero.index[0]:]
+        roll = roll.loc[nonzero.index[0]:]
 
-    for col in columns:
-        ax2 = host.twinx()
-        ax2.set_ylabel(columns[col]["label"])
-        ax2.tick_params(axis="y", labelcolor=columns[col]["color"])
+    ax.bar(weekly.index, weekly.values, width=5.2, color=wtheme.ACCENT,
+           zorder=3, label="Weekly miles")
+    ax.plot(weekly.index, roll.values, color=wtheme.ACCENT_WARM, linewidth=2.4,
+            solid_capstyle="round", zorder=4, label="4-week average")
 
-        plot = ax2.scatter(
-            start_dates,
-            columns[col]["data"],
-            color=columns[col]["color"],
-            label=columns[col]["label"],
-        )
+    # Direct-label each week's mileage.
+    ymax = weekly.values.max()
+    for x, v in zip(weekly.index, weekly.values):
+        if v > 0:
+            ax.text(x, v + ymax * 0.02, f"{v:.0f}", ha="center", va="bottom",
+                    fontsize=9, color=wtheme.FAINT)
 
-        fit_label = "Fit " + columns[col]["label"]
-        x_num = dates.date2num(start_dates)
-        trend = np.polyfit(x_num, hrs, 7)
-        fit = np.poly1d(trend)
-        x_fit = np.linspace(x_num.min(), x_num.max())
-        fit = ax2.plot(
-            dates.num2date(x_fit), fit(x_fit), color=columns[col]["color"], label=fit_label
-        )
-
-        # data
-        plots.append(plot)
-        plots.append(fit)
-
-        ax2.spines["right"].set_position(("outward", step))
-
-        step = step + 60
-
-    plt.title("HR and SPM")
-
-
-def dist(ax):
-    start_dates = []
-    moving_times = []
-    distances = []
-    time1000m = []
-    for activity in activities:
-        if (activity.name is not None):
-            s = activity.distance
-            t = (datetime.combine(date.min, activity.moving_time) - datetime.min).total_seconds() / 60
-            
-            if (5 < t/s < 15) and (s > 0.5):
-                time1000m += [t/s]
-                start_dates += [activity.start_time]
-                moving_times += [t]
-                distances += [s]
-
-    palette = set_style()
-    colormap = sns.color_palette("ch:start=.2,rot=-.3", as_cmap=True)
-
-    scatter = ax.scatter(start_dates, time1000m, c=distances, norm=matplotlib.colors.LogNorm(), cmap=colormap)
-
-    x_num = dates.date2num(start_dates)
-    trend = np.polyfit(x_num, time1000m, 7)
-    fit = np.poly1d(trend)
-    x_fit = np.linspace(x_num.min(), x_num.max())
-    ax.plot(dates.num2date(x_fit), fit(x_fit), "r--")
-
-    # ax1 = ax.gca()
-    # years = plt.matplotlib.dates.YearLocator()
-    # months = plt.matplotlib.dates.MonthLocator()
-    # ax1.xaxis.set_major_locator(years)
-    # ax1.xaxis.set_minor_locator(months)
-
-    ax.set_title("Time per Mile")
-    ax.set_ylabel("Time per mile [min]")
-    ax.set_ylim(5, 15)
-    ax.set_yticks([5, 10, 15])
-    ax.grid(True, which="both", linestyle="--", alpha=0.5)
-    plt.colorbar(scatter, ax=ax, label="Distance [miles]")
+    ax.set_ylabel("Miles")
+    ax.set_xlabel("")
+    ax.set_ylim(0, ymax * 1.15)
+    wtheme.style_axis(ax, grid="y")
+    ax.margins(x=0.02)
+    ax.xaxis.set_major_locator(dates.WeekdayLocator(byweekday=dates.MO, interval=1))
+    ax.xaxis.set_major_formatter(dates.DateFormatter("%b %d"))
+    ax.tick_params(axis="x", rotation=0)
+    ax.legend(loc="upper left", ncol=2)
+    return float(weekly.values.mean())
 
 
 def main(argv):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("dir", help="save directory")
-
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10), sharex=False)
-    dist(ax1)
-    hr_spm(ax2)
-    plt.tight_layout()
     save_dir = argv[0]
+    wtheme.apply()
+    fig, ax = plt.subplots(figsize=(13, 4.9))
+    avg = weekly_miles(ax)
+    subtitle = f"{avg:.1f} mi/week average" if avg else None
+    wtheme.suptitle(fig, "Running", subtitle)
+    plt.tight_layout(rect=[0, 0, 1, 0.93])
+    wtheme.round_bars(ax, edge="hue")
+    wtheme.arrows(ax)
     os.makedirs(save_dir, exist_ok=True)
-    save_path = os.path.join(save_dir, "running.png")
-    plt.savefig(save_path, dpi=300)
+    plt.savefig(os.path.join(save_dir, "running.png"), dpi=200)
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])

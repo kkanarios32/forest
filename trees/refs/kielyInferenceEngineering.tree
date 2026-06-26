@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Inference Engineering}
+\author/literal{Philip Kiely}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{kielyInferenceEngineering,
+ title = {Inference {{Engineering}}},
+ author = {Kiely, Philip},
+ file = {/home/kellen/Downloads/papers/Inference Engineering - Kiely.pdf},
+ langid = {english}
+}
+\stopverb}

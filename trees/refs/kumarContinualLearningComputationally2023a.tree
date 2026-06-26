@@ -1,0 +1,20 @@
+% ["refs"]
+\title{Continual Learning as Computationally Constrained Reinforcement Learning}
+\date{2023}
+\author/literal{Saurabh Kumar}\author/literal{Henrik Marklund}\author/literal{Ashish Rao}\author/literal{Yifan Zhu}\author/literal{Hong Jun Jeon}\author/literal{Yueyang Liu}\author/literal{Benjamin Van Roy}
+\taxon{Reference}
+\meta{doi}{10.48550/ARXIV.2307.04345}
+\meta{bibtex}{\startverb
+@misc{kumarContinualLearningComputationally2023a,
+ title = {Continual {{Learning}} as {{Computationally Constrained Reinforcement Learning}}},
+ author = {Kumar, Saurabh and Marklund, Henrik and Rao, Ashish and Zhu, Yifan and Jeon, Hong Jun and Liu, Yueyang and Van Roy, Benjamin},
+ year = {2023},
+ doi = {10.48550/ARXIV.2307.04345},
+ urldate = {2026-05-27},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/2307.pdf},
+ keywords = {Artificial Intelligence (cs.AI),FOS: Computer and information sciences,Machine Learning (cs.LG)},
+ copyright = {Creative Commons Attribution 4.0 International},
+ abstract = {An agent that accumulates knowledge to develop increasingly sophisticated skills over a long lifetime could advance the frontier of artificial intelligence capabilities. The design of such agents, which remains a longstanding challenge, is addressed by the subject of continual learning. This monograph clarifies and formalizes concepts of continual learning, introducing a framework and tools to stimulate further research. We also present a range of empirical case studies to illustrate the roles of forgetting, relearning, exploration, and auxiliary learning.}
+}
+\stopverb}

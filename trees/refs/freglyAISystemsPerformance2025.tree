@@ -1,0 +1,18 @@
+% ["refs"]
+\title{AI Systems Performance Engineering: Optimizing Hardware, Software, and Algorithms for Efficient Trai: Optimizing Hardware, Software, and Algorithms for Efficient Training and Inference}
+\date{2025}
+\author/literal{Chris Fregly}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{freglyAISystemsPerformance2025,
+ title = {{{AI Systems Performance Engineering}}: {{Optimizing Hardware}}, {{Software}}, and {{Algorithms}} for {{Efficient Trai}}: {{Optimizing Hardware}}, {{Software}}, and {{Algorithms}} for {{Efficient Training}} and {{Inference}}},
+ author = {Fregly, Chris},
+ year = {2025},
+ isbn = {979-8-3416-2778-9 979-8-3416-2775-8},
+ publisher = {O'Reilly Media},
+ address = {US},
+ file = {/home/kellen/Downloads/papers/AI Systems Performance Engineering Optimizing Hardware, Software, and Algorithms for Efficient Trai - Fregly.pdf},
+ langid = {english},
+ shorttitle = {{{AI Systems Performance Engineering}}}
+}
+\stopverb}

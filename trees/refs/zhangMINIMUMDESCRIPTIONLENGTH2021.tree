@@ -1,0 +1,15 @@
+% ["refs"]
+\title{MINIMUM DESCRIPTION LENGTH SKILLS FOR ACCELERATED REINFORCEMENT LEARNING}
+\date{2021}
+\author/literal{Jesse Zhang}\author/literal{Karl Pertsch}\author/literal{Jiefan Yang}\author/literal{Joseph Lim}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{zhangMINIMUMDESCRIPTIONLENGTH2021,
+ title = {{{MINIMUM DESCRIPTION LENGTH SKILLS FOR ACCELERATED REINFORCEMENT LEARNING}}},
+ author = {Zhang, Jesse and Pertsch, Karl and Yang, Jiefan and Lim, Joseph},
+ year = {2021},
+ file = {/home/kellen/Downloads/papers/MINIMUM DESCRIPTION LENGTH SKILLS FOR ACCELERATED REINFORCEMENT LEARNING - Zhang et al..pdf},
+ langid = {english},
+ abstract = {Humans can quickly learn new tasks by reusing a large number of previously acquired skills. How can we discover such reusable skills for artificial agents when given a large dataset of prior experience? Past works leverage extensive human supervision to define skills or use simple skill heuristics that limit their expressiveness. In contrast, we propose a principled, unsupervised objective for skill discovery from large, offline datasets based on the Minimum Description Length principle: we show that a ``code book'' of skills that can maximally compress the training data can be reused to efficiently learn new tasks. By minimizing description length we strike an optimal balance between the number of extracted skills and their complexity. We show that our approach outperforms methods that heuristically define skills on a complex, long-horizon maze navigation task.}
+}
+\stopverb}

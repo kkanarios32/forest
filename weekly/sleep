@@ -3,17 +3,16 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#     "garmindb",
+#     "garmindb==3.6.4",  # must match the garmindb-cli that builds the DB (schema version skew otherwise)
 #     "matplotlib",
 #     "pandas",
 #     "seaborn",
 # ]
 # ///
 
-import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib.dates as dates
 import sys
-import argparse
 
 import datetime
 import pandas as pd
@@ -27,27 +26,9 @@ from garmindb.garmindb import (
 )
 from garmindb.summarydb import DaysSummary, SummaryDb
 
+import wtheme
 
-def set_style():
-    sns.set_context("poster", font_scale=1.5)
-    rc = {
-        "font.family": "sans-serif",
-        "font.sans-serif": "Facebook Sans",
-        # "axes.spines.top": False,
-        # "axes.spines.right": False,
-        "axes.labelsize": 14,
-        "axes.titlesize": 16,
-        "axes.titleweight": 300,
-        "axes.labelweight": 400,
-        "legend.fontsize": 12,
-        "xtick.labelsize": 12,
-        "ytick.labelsize": 12,
-        "figure.dpi": 300,
-        "savefig.bbox": "tight",
-    }
-    palette = sns.color_palette("ch:start=.2,rot=-.3")
-    sns.set_theme(palette=palette, rc=rc, style="ticks")
-    return palette
+WINDOW_DAYS = 56  # how many recent days to show (full history is unreadable as bars)
 
 
 def minsFromTime(t):
@@ -106,51 +87,57 @@ df_long = df[["Date", "deep_sleep", "rem_sleep_max", "light_sleep"]].melt(
     id_vars="Date", var_name="Sleep Stage", value_name="Hours"
 )
 
-# Optional: Rename for prettier legend
 df_long["Sleep Stage"] = df_long["Sleep Stage"].map(
     {"deep_sleep": "Deep", "rem_sleep_max": "REM", "light_sleep": "Light"}
 )
 
-# --- Plot ---
-palette = set_style()
-plt.figure(figsize=(12, 6))
-
-# We need to pivot the data to use Matplotlib for stacking
+# Pivot to a date-indexed frame for matplotlib stacking.
 pivot = df_long.pivot(index="Date", columns="Sleep Stage", values="Hours")
-pivot = pivot.fillna(0)  # ensure no NaNs
-pivot.index = pd.to_datetime(pivot.index)  # Ensure it's a DatetimeIndex
-pivot.index.strftime("%m-%d")  # "06-17"
-
-
-# Order the stack from bottom to top
-stack_order = ["Light", "REM", "Deep"]
-colors = {"Light": palette[0], "REM": palette[1], "Deep": palette[2]}
-
-# Plot stacked bars manually
-bottom = None
-for stage in stack_order:
-    plt.bar(pivot.index, pivot[stage], bottom=bottom, label=stage, color=colors[stage])
-    if bottom is None:
-        bottom = pivot[stage]
-    else:
-        bottom += pivot[stage]
+pivot = pivot.fillna(0)
+pivot.index = pd.to_datetime(pivot.index)
+pivot = pivot.sort_index().tail(WINDOW_DAYS)  # recent window only — keeps bars readable
 
 
 def main(argv):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("dir", help="save directory")
-
-# --- Styling ---
-    plt.title("Sleep Composition", fontsize=18)
-    plt.ylabel("Hours")
-    plt.xticks(rotation=90)
-    plt.legend(title="Sleep Stage")
-    sns.despine()
-    plt.tight_layout()
     save_dir = argv[0]
+    wtheme.apply()
+    fig, ax = plt.subplots(figsize=(13, 5.1))
+
+    # Stack light → deep, lightest to darkest shade of one hue (ordinal).
+    stack_order = ["Light", "REM", "Deep"]
+    shade = wtheme.shades(3, light="#e3edf8", dark="#6f9ad0")
+    colors = {"Light": shade[0], "REM": shade[1], "Deep": shade[2]}
+
+    bottom = None
+    for stage in stack_order:
+        ax.bar(pivot.index, pivot[stage], bottom=bottom, label=stage,
+               color=colors[stage], width=0.86, edgecolor="white", linewidth=0.4,
+               zorder=3)
+        bottom = pivot[stage] if bottom is None else bottom + pivot[stage]
+
+    # 7-day rolling average of total sleep for trend.
+    total = pivot.sum(axis=1)
+    roll = total.rolling(7, min_periods=1).mean()
+    ax.plot(pivot.index, roll, color=wtheme.ACCENT_WARM, linewidth=2.4,
+            solid_capstyle="round", zorder=4, label="7-day average")
+
+    avg = total.mean()
+    ax.set_ylabel("Hours")
+    ax.set_xlabel("")
+    wtheme.style_axis(ax, grid="y")
+    ax.margins(x=0.01)
+    ax.xaxis.set_major_locator(dates.WeekdayLocator(byweekday=dates.MO))
+    ax.xaxis.set_major_formatter(dates.DateFormatter("%b %d"))
+    ax.tick_params(axis="x", rotation=0)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.1), ncol=4)
+
+    wtheme.suptitle(fig, "Sleep",
+                    f"{avg:.1f} h/night average · last {WINDOW_DAYS // 7} weeks")
+    plt.tight_layout(rect=[0, 0, 1, 0.93])
+    wtheme.arrows(ax)  # dense daily bars read better un-rounded
     os.makedirs(save_dir, exist_ok=True)
-    save_path = os.path.join(save_dir, "sleep.png")
-    plt.savefig(save_path, dpi=300)
+    plt.savefig(os.path.join(save_dir, "sleep.png"), dpi=200)
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])

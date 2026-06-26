@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Programming from the Ground Up}
+\author/literal{Jonathan Bartlett}\author/literal{Dominick Bruno}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{bartlettProgrammingGround,
+ title = {Programming from the {{Ground Up}}},
+ author = {Bartlett, Jonathan and Bruno, Dominick},
+ file = {/home/kellen/Downloads/papers/Programming from the Ground Up - Bartlett and Bruno.pdf},
+ langid = {english}
+}
+\stopverb}

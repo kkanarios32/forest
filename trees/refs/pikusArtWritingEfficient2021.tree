@@ -1,0 +1,20 @@
+% ["refs"]
+\title{The Art of Writing Efficient Programs: An advanced programmer’s guide to efficient hardware utilization and compiler optimizations using C++ examples}
+\date{2021}
+\author/literal{Fedor G. Pikus}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{pikusArtWritingEfficient2021,
+ title = {The {{Art}} of {{Writing Efficient Programs}}: {{An}} Advanced Programmer's Guide to Efficient Hardware Utilization and Compiler Optimizations Using {{C}}++ Examples},
+ author = {Pikus, Fedor G.},
+ year = {2021},
+ isbn = {978-1-80020-811-7 978-1-80020-274-0},
+ edition = {1},
+ publisher = {Packt Publishing Limited},
+ address = {Birmingham},
+ file = {/home/kellen/Downloads/papers/The Art of Writing Efficient Programs An advanced programmer's guide to efficient hardware utilizat - Pikus.pdf},
+ langid = {english},
+ abstract = {bBecome a better programmer with performance improvement techniques such as concurrency, lock-free programming, atomic operations, parallelism, and memory management/bh4Key Features/h4ulliLearn proven techniques from a heavyweight and recognized expert in C++ and high-performance computing/liliUnderstand the limitations of modern CPUs and their performance impact/liliFind out how you can avoid writing inefficient code and get the best optimizations from the compiler/liliLearn the tradeoffs and costs of writing high-performance programs/li/ulh4Book Description/h4The great free lunch of "performance taking care of itself" is over. Until recently, programs got faster by themselves as CPUs were upgraded, but that doesn't happen anymore. The clock frequency of new processors has almost peaked, and while new architectures provide small improvements to existing programs, this only helps slightly. To write efficient software, you now have to know how to program by making good use of the available computing resources, and this book will teach you how to do that. The Art of Efficient Programming covers all the major aspects of writing efficient programs, such as using CPU resources and memory efficiently, avoiding unnecessary computations, measuring performance, and how to put concurrency and multithreading to good use. You'll also learn about compiler optimizations and how to use the programming language (C++) more efficiently. Finally, you'll understand how design decisions impact performance. By the end of this book, you'll not only have enough knowledge of processors and compilers to write efficient programs, but you'll also be able to understand which techniques to use and what to measure while improving performance. At its core, this book is about learning how to learn.h4What you will learn/h4ulliDiscover how to use the hardware computing resources in your programs effectively/liliUnderstand the relationship between memory order and memory barriers/liliFamiliarize yourself with the performance implications of different data structures and organizations/liliAssess the performance impact of concurrent memory accessed and how to minimize it/liliDiscover when to use and when not to use lock-free programming techniques/liliExplore different ways to improve the effectiveness of compiler optimizations/liliDesign APIs for concurrent data structures and high-performance data structures to avoid inefficiencies/li/ulh4Who this book is for/h4This book is for experienced developers and programmers who work on performance-critical projects and want to learn new techniques to improve the performance of their code. Programmers in algorithmic trading, gaming, bioinformatics, computational genomics, or computational fluid dynamics communities will get the most out of the examples in this book, but the techniques are fairly universal. Although this book uses the C++ language, the concepts demonstrated in the book can be easily transferred or applied to other compiled languages such as C, Java, Rust, Go, and more},
+ shorttitle = {The {{Art}} of {{Writing Efficient Programs}}}
+}
+\stopverb}

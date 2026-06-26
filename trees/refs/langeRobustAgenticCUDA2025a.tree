@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Towards Robust Agentic CUDA Kernel Benchmarking, Verification, and Optimization}
+\date{2025-09}
+\author/literal{Robert Tjarko Lange}\author/literal{Qi Sun}\author/literal{Aaditya Prasad}\author/literal{Maxence Faldor}\author/literal{Yujin Tang}\author/literal{David Ha}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2509.14279}
+\meta{external}{https://arxiv.org/abs/2509.14279}
+
+\meta{bibtex}{\startverb
+@misc{langeRobustAgenticCUDA2025a,
+ title = {Towards {{Robust Agentic CUDA Kernel Benchmarking}}, {{Verification}}, and {{Optimization}}},
+ author = {Lange, Robert Tjarko and Sun, Qi and Prasad, Aaditya and Faldor, Maxence and Tang, Yujin and Ha, David},
+ year = {2025},
+ doi = {10.48550/arXiv.2509.14279},
+ urldate = {2026-06-09},
+ number = {arXiv:2509.14279},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/2509.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Software Engineering},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Recent advances in large language models (LLMs) demonstrate their effectiveness in scaling test-time compute for software engineering tasks. However, these approaches often focus on high-level solutions, with limited attention to optimizing low-level CUDA kernel implementations. Additionally, existing kernel generation benchmarks suffer from exploitable loopholes and insufficient diversity in testing conditions, hindering true generalization assessment. To address these limitations, we introduce robust-kbench, a new benchmark for rigorous evaluation of kernel performance and correctness across varied scenarios. Furthermore, we present a comprehensive agentic framework that automates CUDA kernel discovery, verification, and optimization. This pipeline enables frontier LLMs to translate torch code to CUDA kernels and iteratively improve their runtime within our robust evaluation setting. Our sequential workflow first translates PyTorch code into equivalent CUDA kernels. It then optimizes their runtime using a novel evolutionary metageneration procedure tailored to the CUDA ecosystem, guided by LLM-based verifiers for correctness and efficient filtering. Evaluated on robust-kbench, our approach produces CUDA kernels outperforming torch implementations for practical applications, including forward and backward passes. It can fuse operations and deploy various runtime optimization strategies. The verifier workflow accurately classifies incorrect kernels, enhancing hardware verification efficiency.},
+ primaryclass = {cs.SE},
+ eprint = {2509.14279},
+ month = {September}
+}
+\stopverb}

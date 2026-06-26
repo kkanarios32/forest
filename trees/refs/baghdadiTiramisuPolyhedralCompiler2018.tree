@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Tiramisu: A Polyhedral Compiler for Expressing Fast and Portable Code}
+\date{2018-12}
+\author/literal{Riyadh Baghdadi}\author/literal{Jessica Ray}\author/literal{Malek Ben Romdhane}\author/literal{Emanuele Del Sozzo}\author/literal{Abdurrahman Akkas}\author/literal{Yunming Zhang}\author/literal{Patricia Suriana}\author/literal{Shoaib Kamil}\author/literal{Saman Amarasinghe}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1804.10694}
+\meta{external}{https://arxiv.org/abs/1804.10694}
+
+\meta{bibtex}{\startverb
+@misc{baghdadiTiramisuPolyhedralCompiler2018,
+ title = {Tiramisu: {{A Polyhedral Compiler}} for {{Expressing Fast}} and {{Portable Code}}},
+ author = {Baghdadi, Riyadh and Ray, Jessica and Romdhane, Malek Ben and Sozzo, Emanuele Del and Akkas, Abdurrahman and Zhang, Yunming and Suriana, Patricia and Kamil, Shoaib and Amarasinghe, Saman},
+ year = {2018},
+ doi = {10.48550/arXiv.1804.10694},
+ urldate = {2026-06-23},
+ number = {arXiv:1804.10694},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Tiramisu A Polyhedral Compiler for Expressing Fast and Portable Code - Baghdadi et al..pdf},
+ keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Mathematical Software,Computer Science - Neural and Evolutionary Computing,Computer Science - Performance,Computer Science - Programming Languages},
+ archiveprefix = {arXiv},
+ abstract = {This paper introduces TIRAMISU, a polyhedral framework designed to generate high performance code for multiple platforms including multicores, GPUs, and distributed machines. TIRAMISU introduces a scheduling language with novel commands to explicitly manage the complexities that arise when targeting these systems. The framework is designed for the areas of image processing, stencils, linear algebra and deep learning. TIRAMISU has two main features: it relies on a flexible representation based on the polyhedral model and it has a rich scheduling language allowing fine-grained control of optimizations. TIRAMISU uses a four-level intermediate representation that allows full separation between the algorithms, loop transformations, data layouts, and communication. This separation simplifies targeting multiple hardware architectures with the same algorithm. We evaluate TIRAMISU by writing a set of image processing, deep learning, and linear algebra benchmarks and compare them with state-of-the-art compilers and hand-tuned libraries. We show that TIRAMISU matches or outperforms existing compilers and libraries on different hardware architectures, including multicore CPUs, GPUs, and distributed machines.},
+ primaryclass = {cs.PL},
+ eprint = {1804.10694},
+ month = {December},
+ shorttitle = {Tiramisu}
+}
+\stopverb}

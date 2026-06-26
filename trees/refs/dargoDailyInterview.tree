@@ -1,0 +1,12 @@
+% ["refs"]
+\title{Daily C++ Interview}
+\author/literal{Sandor Dargo}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{dargoDailyInterview,
+ title = {Daily {{C}}++ {{Interview}}},
+ author = {Dargo, Sandor},
+ file = {/home/kellen/Downloads/papers/Daily C++ Interview - Dargo.pdf},
+ langid = {english}
+}
+\stopverb}

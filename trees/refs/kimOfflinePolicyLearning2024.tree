@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Offline Policy Learning via Skill-step Abstraction for Long-horizon Goal-Conditioned Tasks}
+\date{2024-08}
+\author/literal{Donghoon Kim}\author/literal{Minjong Yoo}\author/literal{Honguk Woo}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2408.11300}
+\meta{external}{https://arxiv.org/abs/2408.11300}
+
+\meta{bibtex}{\startverb
+@misc{kimOfflinePolicyLearning2024,
+ title = {Offline {{Policy Learning}} via {{Skill-step Abstraction}} for {{Long-horizon Goal-Conditioned Tasks}}},
+ author = {Kim, Donghoon and Yoo, Minjong and Woo, Honguk},
+ year = {2024},
+ doi = {10.48550/arXiv.2408.11300},
+ urldate = {2026-05-27},
+ number = {arXiv:2408.11300},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/2408 2.pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Goal-conditioned (GC) policy learning often faces a challenge arising from the sparsity of rewards, when confronting long-horizon goals. To address the challenge, we explore skill-based GC policy learning in offline settings, where skills are acquired from existing data and long-horizon goals are decomposed into sequences of near-term goals that align with these skills. Specifically, we present an `offline GC policy learning via skill-step abstraction' framework (GLVSA) tailored for tackling long-horizon GC tasks affected by goal distribution shifts. In the framework, a GC policy is progressively learned offline in conjunction with the incremental modeling of skill-step abstractions on the data. We also devise a GC policy hierarchy that not only accelerates GC policy learning within the framework but also allows for parameter-efficient fine-tuning of the policy. Through experiments with the maze and Franka kitchen environments, we demonstrate the superiority and efficiency of our GLVSA framework in adapting GC policies to a wide range of long-horizon goals. The framework achieves competitive zero-shot and few-shot adaptation performance, outperforming existing GC policy learning and skill-based methods.},
+ primaryclass = {cs.LG},
+ eprint = {2408.11300},
+ month = {August}
+}
+\stopverb}

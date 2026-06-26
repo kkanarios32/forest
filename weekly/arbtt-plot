@@ -12,8 +12,6 @@
 # ///
 
 
-import argparse
-import numpy as np
 import sys
 import os
 
@@ -24,9 +22,9 @@ import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 from io import StringIO
 
+import wtheme
 
-def read_blank_separated(text):
-    return list(filter(None, (s.strip() for s in text.split("\n\n"))))
+TOP_N = 6  # categories kept before collapsing the tail into "Other"
 
 
 def read_csv(inp):
@@ -43,105 +41,107 @@ def read_csv(inp):
         converters={"Time": convert_time},
     )
 
-def set_style():
-    sns.set_context("paper", font_scale=1.5)
-    rc = {
-        "font.family": "sans-serif",
-        "font.sans-serif": "Facebook Sans",
-        "axes.spines.top": False,
-        "axes.spines.right": False,
-        "axes.labelsize": 14,
-        "axes.titlesize": 16,
-        "axes.titleweight": 300,
-        "axes.labelweight": 400,
-        "legend.fontsize": 12,
-        "xtick.labelsize": 12,
-        "ytick.labelsize": 12,
-        "figure.dpi": 300,
-        "savefig.bbox": "tight",
-    }
-    palette = sns.color_palette("ch:start=.2,rot=-.3")
-    sns.set_theme(palette=palette, style="whitegrid", rc=rc)
 
-# --- 1. Read CSV and preprocess ---
-def convert_time(t):
-    """Convert HH:MM:SS or seconds to timedelta"""
-    if isinstance(t, str) and t.isdigit():
-        return pd.to_timedelta(int(t), unit="s")
-    else:
-        return pd.to_timedelta(t)
+def _collapse(series_index_names, totals):
+    """Top-N category names by total hours; the rest map to 'Other'."""
+    keep = list(totals.sort_values(ascending=False).index[:TOP_N])
+    return keep, len(totals) > TOP_N
+
 
 def daily(df, ax):
-# --- 2. Extract category from Tag ---
+    df = df.copy()
     df["Category"] = df["Tag"].str.extract(r"^([\w-]+):")
 
-# --- 3. Group by Day and Category, summing Time ---
-    grouped = df.groupby(["Day", "Category"])["Time"].sum().unstack(fill_value=pd.Timedelta(0))
+    grouped = (
+        df.groupby(["Day", "Category"])["Time"].sum().unstack(fill_value=pd.Timedelta(0))
+    )
+    grouped_hours = grouped.map(lambda td: td.total_seconds() / 3600)
 
-# --- 4. Convert timedelta to hours for plotting ---
-    grouped_hours = grouped.applymap(lambda td: td.total_seconds() / 3600)
+    # Keep the busiest categories; lump the rest into "Other".
+    totals = grouped_hours.sum().sort_values(ascending=False)
+    keep, has_other = _collapse(totals.index, totals)
+    cols = [c for c in keep]
+    plot_df = grouped_hours[cols].copy()
+    if has_other:
+        plot_df["Other"] = grouped_hours.drop(columns=cols).sum(axis=1)
+        cols = cols + ["Other"]
+    plot_df = plot_df[cols]
+    plot_df.index = pd.to_datetime(plot_df.index).strftime("%b %d")
 
-# --- 5. Plot ---
-    set_style()
-    grouped_hours.plot(kind="bar", ax=ax)
+    colors = wtheme.palette(len(keep)) + ([wtheme.OTHER] if has_other else [])
+    plot_df.plot(kind="bar", stacked=True, ax=ax, width=0.74,
+                 color=colors[: plot_df.shape[1]], edgecolor="white",
+                 linewidth=0.7, legend=False)
+
     ax.set_ylabel("Hours")
-    ax.set_title("Total Time per Category per Day")
-    ax.tick_params(axis="x", rotation=45)
+    ax.set_xlabel("")
+    ax.set_title("By day")
+    ax.tick_params(axis="x", rotation=0)
+    wtheme.style_axis(ax, grid="y")
+    ax.margins(x=0.02)
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles, labels, title="Category", loc="upper center",
+              bbox_to_anchor=(0.5, -0.12), ncol=min(plot_df.shape[1], 4))
 
 
 def summary(df, ax):
-    set_style()
-# Extract category and strip tag
+    df = df.copy()
     df["Category"] = df["Tag"].str.extract(r"^([\w-]+):")
     df["Type"] = df["Tag"].str.replace(r"^[\w-]+:", "", regex=True)
-
-# --- 2. Aggregate time per (Category, Type) ---
     df["Hours"] = df["Time"] / pd.Timedelta(hours=1)
+
     agg = df.groupby(["Category", "Type"])["Hours"].sum().reset_index()
+    agg = agg.sort_values("Hours", ascending=True)  # ascending → biggest on top (barh)
 
-# --- 3. Sort tags by category for grouped visual alignment ---
-    agg = agg.sort_values(["Category", "Type"])
+    cats = list(agg.groupby("Category")["Hours"].sum().sort_values(ascending=False).index)
+    color_map = {c: wtheme.palette(len(cats))[i] for i, c in enumerate(cats)}
+    colors = [color_map[c] for c in agg["Category"]]
 
-# Use seaborn barplot with category-based hue
-    sns.barplot(
-        data=agg,
-        x="Type",
-        y="Hours",
-        hue="Category",
-        dodge=False,  # no spacing, bars stack over each other per tag
-        ax=ax
-    )
+    y = range(len(agg))
+    ax.barh(list(y), agg["Hours"].values, color=colors, edgecolor="white",
+            linewidth=0.6, zorder=3, height=0.72)
+    ax.set_yticks(list(y))
+    ax.set_yticklabels(agg["Type"].values)
+    ax.set_xlabel("Hours (week)")
+    ax.set_title("By activity")
+    wtheme.style_axis(ax, grid="x")
 
-    ax.set_ylabel("Total Hours (Week)")
-    ax.set_title("Categories Breakdown")
-    ax.tick_params(axis="x", rotation=45)
+    # One legend entry per category, ordered by total.
+    from matplotlib.patches import Patch
+    handles = [Patch(facecolor=color_map[c], label=c) for c in cats]
+    ax.legend(handles=handles, title="Category", loc="lower right")
+
 
 def main(argv):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("dir", help="save directory")
     seven_days_ago = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
 
     command = [
         "arbtt-stats",
         f"--filter=$date>={seven_days_ago}",
         "--for-each=day",
-        "--output-format=csv"
+        "--output-format=csv",
     ]
 
     result = subprocess.run(command, capture_output=True, text=True)
-    inputs = read_blank_separated(result.stdout)
     df = read_csv(result.stdout)
-    # if not inputs:
-    #     return print("(no meaningful inputs)")
-    fig, axs = plt.subplots(1, 2, figsize=(18, 6))
+
+    wtheme.apply()
+    fig, axs = plt.subplots(1, 2, figsize=(16, 5.2))
     daily(df, axs[0])
     summary(df, axs[1])
-    plt.tight_layout()
+
+    total = (df["Time"].sum().total_seconds() / 3600) if not df.empty else 0
+    wtheme.suptitle(fig, "Computer activity", f"{total:.1f} tracked hours this week")
+    plt.tight_layout(rect=[0, 0, 1, 0.93])
+
+    wtheme.round_bars(axs[0], edge="white")              # daily: stacked
+    wtheme.round_bars(axs[1], edge="hue", horizontal=True)  # summary: horizontal
+    wtheme.arrows(axs[0])
+    wtheme.arrows(axs[1])
 
     save_dir = argv[0]
     os.makedirs(save_dir, exist_ok=True)
-    save_path = os.path.join(save_dir, "arbtt.png")
-    plt.savefig(save_path)
+    plt.savefig(os.path.join(save_dir, "arbtt.png"), dpi=200)
 
 
 if __name__ == "__main__":

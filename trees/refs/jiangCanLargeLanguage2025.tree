@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Can Large Language Models Understand Intermediate Representations in Compilers?}
+\date{2025-06}
+\author/literal{Hailong Jiang}\author/literal{Jianfeng Zhu}\author/literal{Yao Wan}\author/literal{Bo Fang}\author/literal{Hongyu Zhang}\author/literal{Ruoming Jin}\author/literal{Qiang Guan}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2502.06854}
+\meta{external}{https://arxiv.org/abs/2502.06854}
+
+\meta{bibtex}{\startverb
+@misc{jiangCanLargeLanguage2025,
+ title = {Can {{Large Language Models Understand Intermediate Representations}} in {{Compilers}}?},
+ author = {Jiang, Hailong and Zhu, Jianfeng and Wan, Yao and Fang, Bo and Zhang, Hongyu and Jin, Ruoming and Guan, Qiang},
+ year = {2025},
+ doi = {10.48550/arXiv.2502.06854},
+ urldate = {2026-06-12},
+ number = {arXiv:2502.06854},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Can Large Language Models Understand Intermediate Representations in Compilers - Jiang et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Computation and Language,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Intermediate Representations (IRs) play a critical role in compiler design and program analysis, yet their comprehension by Large Language Models (LLMs) remains underexplored. In this paper, we present an explorative empirical study evaluating the capabilities of six state-of-the-art LLMs: GPT-4, GPT-3, DeepSeek, Gemma 2, Llama 3, and Code Llama, in understanding IRs. Specifically, we assess model performance across four core tasks: control flow graph reconstruction, decompilation, code summarization, and execution reasoning. While LLMs exhibit competence in parsing IR syntax and identifying high-level structures, they consistently struggle with instruction-level reasoning, especially in control flow reasoning, loop handling, and dynamic execution. Common failure modes include misinterpreting branching instructions, omitting critical operations, and relying on heuristic reasoning rather than precise instruction-level logic. Our findings highlight the need for IR-specific enhancements in LLM design. We recommend fine-tuning on structured IR datasets and integrating control-flow-sensitive architectures to improve model effectiveness. All experimental data and source code are publicly available at},
+ primaryclass = {cs.LG},
+ eprint = {2502.06854},
+ month = {June}
+}
+\stopverb}

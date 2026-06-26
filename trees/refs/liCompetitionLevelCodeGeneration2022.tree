@@ -1,0 +1,30 @@
+% ["refs"]
+\title{Competition-Level Code Generation with AlphaCode}
+\date{2022-12}
+\author/literal{Yujia Li}\author/literal{David Choi}\author/literal{Junyoung Chung}\author/literal{Nate Kushman}\author/literal{Julian Schrittwieser}\author/literal{Rémi Leblond}\author/literal{Tom Eccles}\author/literal{James Keeling}\author/literal{Felix Gimeno}\author/literal{Agustin Dal Lago}\author/literal{Thomas Hubert}\author/literal{Peter Choy}\author/literal{Cyprien de Masson Autume}\author/literal{Igor Babuschkin}\author/literal{Xinyun Chen}\author/literal{Po-Sen Huang}\author/literal{Johannes Welbl}\author/literal{Sven Gowal}\author/literal{Alexey Cherepanov}\author/literal{James Molloy}\author/literal{Daniel J. Mankowitz}\author/literal{Esme Sutherland Robson}\author/literal{Pushmeet Kohli}\author/literal{Nando de Freitas}\author/literal{Koray Kavukcuoglu}\author/literal{Oriol Vinyals}
+\taxon{Reference}
+\meta{doi}{10.1126/science.abq1158}
+\meta{external}{https://arxiv.org/abs/2203.07814}
+
+\meta{bibtex}{\startverb
+@article{liCompetitionLevelCodeGeneration2022,
+ title = {Competition-{{Level Code Generation}} with {{AlphaCode}}},
+ author = {Li, Yujia and Choi, David and Chung, Junyoung and Kushman, Nate and Schrittwieser, Julian and Leblond, R{\'e}mi and Eccles, Tom and Keeling, James and Gimeno, Felix and Lago, Agustin Dal and Hubert, Thomas and Choy, Peter and {d'Autume}, Cyprien de Masson and Babuschkin, Igor and Chen, Xinyun and Huang, Po-Sen and Welbl, Johannes and Gowal, Sven and Cherepanov, Alexey and Molloy, James and Mankowitz, Daniel J. and Robson, Esme Sutherland and Kohli, Pushmeet and de Freitas, Nando and Kavukcuoglu, Koray and Vinyals, Oriol},
+ year = {2022},
+ doi = {10.1126/science.abq1158},
+ urldate = {2026-05-12},
+ journal = {Science},
+ volume = {378},
+ number = {6624},
+ pages = {1092--1097},
+ file = {/home/kellen/Downloads/papers/Competition-Level Code Generation with AlphaCode - Li et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Programming Languages},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Programming is a powerful and ubiquitous problem-solving tool. Developing systems that can assist programmers or even generate programs independently could make programming more productive and accessible, yet so far incorporating innovations in AI has proven challenging. Recent large-scale language models have demonstrated an impressive ability to generate code, and are now able to complete simple programming tasks. However, these models still perform poorly when evaluated on more complex, unseen problems that require problem-solving skills beyond simply translating instructions into code. For example, competitive programming problems which require an understanding of algorithms and complex natural language remain extremely challenging. To address this gap, we introduce AlphaCode, a system for code generation that can create novel solutions to these problems that require deeper reasoning. In simulated evaluations on recent programming competitions on the Codeforces platform, AlphaCode achieved on average a ranking of top 54.3\% in competitions with more than 5,000 participants. We found that three key components were critical to achieve good and reliable performance: (1) an extensive and clean competitive programming dataset for training and evaluation, (2) large and efficient-to-sample transformer-based architectures, and (3) large-scale model sampling to explore the search space, followed by filtering based on program behavior to a small set of submissions.},
+ issn = {0036-8075, 1095-9203},
+ primaryclass = {cs.PL},
+ eprint = {2203.07814},
+ month = {December}
+}
+\stopverb}

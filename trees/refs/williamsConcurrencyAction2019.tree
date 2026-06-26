@@ -1,0 +1,17 @@
+% ["refs"]
+\title{C++ Concurrency in Action}
+\date{2019}
+\author/literal{Anthony Williams}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{williamsConcurrencyAction2019,
+ title = {C++ {{Concurrency}} in {{Action}}},
+ author = {Williams, Anthony},
+ year = {2019},
+ isbn = {978-1-61729-469-3 978-1-63835-635-6},
+ publisher = {Manning Publications Co. LLC},
+ address = {New York},
+ file = {/home/kellen/Downloads/papers/C++ Concurrency in Action - Williams.pdf},
+ langid = {english}
+}
+\stopverb}

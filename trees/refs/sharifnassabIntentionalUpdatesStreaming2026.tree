@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Intentional Updates for Streaming Reinforcement Learning}
+\date{2026-04}
+\author/literal{Arsalan Sharifnassab}\author/literal{Mohamed Elsayed}\author/literal{Kris De Asis}\author/literal{A. Rupam Mahmood}\author/literal{Richard S. Sutton}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2604.19033}
+\meta{external}{https://arxiv.org/abs/2604.19033}
+
+\meta{bibtex}{\startverb
+@misc{sharifnassabIntentionalUpdatesStreaming2026,
+ title = {Intentional {{Updates}} for {{Streaming Reinforcement Learning}}},
+ author = {Sharifnassab, Arsalan and Elsayed, Mohamed and Asis, Kris De and Mahmood, A. Rupam and Sutton, Richard S.},
+ year = {2026},
+ doi = {10.48550/arXiv.2604.19033},
+ urldate = {2026-05-30},
+ number = {arXiv:2604.19033},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Intentional Updates for Streaming Reinforcement Learning - Sharifnassab et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {In gradient-based learning, a step size chosen in parameter units does not produce a predictable per-step change in function output. This often leads to instability in the streaming setting (i.e., batch size=1), where stochasticity is not averaged out and update magnitudes can momentarily become arbitrarily big or small. Instead, we propose intentional updates: first specify the intended outcome of an update and then solve for the step size that approximately achieves it. This strategy has precedent in online supervised linear regression via Normalized Least Mean Squares algorithm, which selects a step size to yield a specified change in the function output proportional to the current error. We extend this principle to streaming deep reinforcement learning by defining appropriate intended outcomes: Intentional TD aims for a fixed fractional reduction of the TD error, and Intentional Policy Gradient aims for a bounded per-step change in the policy, limiting local KL divergence. We propose practical algorithms combining eligibility traces and diagonal scaling. Empirically, these methods yield state-of-the-art streaming performance, frequently performing on par with batch and replay-buffer approaches.},
+ primaryclass = {cs.LG},
+ eprint = {2604.19033},
+ month = {April}
+}
+\stopverb}

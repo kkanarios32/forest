@@ -1,0 +1,26 @@
+% ["refs"]
+\title{Can We Really Learn One Representation to Optimize All Rewards?}
+\date{2026-02}
+\author/literal{Chongyi Zheng}\author/literal{Royina Karegoudra Jayanth}\author/literal{Benjamin Eysenbach}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2602.11399}
+\meta{external}{https://arxiv.org/abs/2602.11399}
+
+\meta{bibtex}{\startverb
+@misc{zhengCanWeReally2026,
+ title = {Can {{We Really Learn One Representation}} to {{Optimize All Rewards}}?},
+ author = {Zheng, Chongyi and Jayanth, Royina Karegoudra and Eysenbach, Benjamin},
+ year = {2026},
+ doi = {10.48550/arXiv.2602.11399},
+ urldate = {2026-05-09},
+ number = {arXiv:2602.11399},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Can We Really Learn One Representation to Optimize All Rewards - Zheng et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics},
+ archiveprefix = {arXiv},
+ abstract = {As machine learning has moved towards leveraging large models as priors for downstream tasks, the community has debated the right form of prior for solving reinforcement learning (RL) problems. If one were to try to prefetch as much computation as possible, they would attempt to learn a prior over the policies for some yet-to-be-determined reward function. Recent work (forward-backward (FB) representation learning) has tried this, arguing that an unsupervised representation learning procedure can enable optimal control over arbitrary rewards without further fine-tuning. However, FB's training objective and learning behavior remain mysterious. In this paper, we demystify FB by clarifying when such representations can exist, what its objective optimizes, and how it converges in practice. We draw connections with rank matching, fitted Q-evaluation, and contraction mapping. Our analysis suggests a simplified unsupervised pre-training method for RL that, instead of enabling optimal control, performs one step of policy improvement. We call our proposed method \$\textbackslash textbf\textbraceleft one-step forward-backward representation learning (one-step FB)\textbraceright\$. Experiments in didactic settings, as well as in \$10\$ state-based and image-based continuous control domains, demonstrate that one-step FB converges to errors \$10\textasciicircum 5\$ smaller and improves zero-shot performance by \$+24\textbackslash\%\$ on average. Our project website is available at https://chongyi-zheng.github.io/onestep-fb.},
+ primaryclass = {cs},
+ eprint = {2602.11399},
+ month = {February}
+}
+\stopverb}

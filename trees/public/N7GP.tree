@@ -5,7 +5,7 @@
 \tag{top}
 \author{kellenkanarios}
 \title{Notebook: Computer Architecture}
-\p{Concept-level notes on multicore architecture, the cache-coherence stack, memory consistency, on-chip networks, and data-level parallelism. Mostly distilled from an EECS course; cross-references into [[P3GB]] (Inside the Machine) for single-core/uniprocessor topics.}
+\p{Notebook for EECS 570 taught by Prof. Naryasanamy; cross-references into [[P3GB]] (Inside the Machine) for single-core/uniprocessor topics.}
 
 \section{Foundation}{
 \transclude{S0TN}

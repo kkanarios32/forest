@@ -1,0 +1,19 @@
+% ["refs"]
+\title{Offline Goal-Conditioned Reinforcement Learning with Projective Quasimetric Planning}
+\date{2025}
+\author/literal{Anthony Kobanda}\author/literal{Waris Radji}\author/literal{Mathieu Petitbois}\author/literal{Odalric-Ambrym Maillard}\author/literal{Rémy Portelas}
+\taxon{Reference}
+\meta{doi}{10.48550/ARXIV.2506.18847}
+\meta{bibtex}{\startverb
+@misc{kobandaOfflineGoalConditionedReinforcement2025,
+ title = {Offline {{Goal-Conditioned Reinforcement Learning}} with {{Projective Quasimetric Planning}}},
+ author = {Kobanda, Anthony and Radji, Waris and Petitbois, Mathieu and Maillard, Odalric-Ambrym and Portelas, R{\'e}my},
+ year = {2025},
+ doi = {10.48550/ARXIV.2506.18847},
+ urldate = {2026-05-27},
+ publisher = {arXiv},
+ keywords = {FOS: Computer and information sciences,Machine Learning (cs.LG)},
+ copyright = {Creative Commons Attribution 4.0 International},
+ abstract = {Offline Goal-Conditioned Reinforcement Learning seeks to train agents to reach specified goals from previously collected trajectories. Scaling that promises to long-horizon tasks remains challenging, notably due to compounding value-estimation errors. Principled geometric offers a potential solution to address these issues. Following this insight, we introduce Projective Quasimetric Planning (ProQ), a compositional framework that learns an asymmetric distance and then repurposes it, firstly as a repulsive energy forcing a sparse set of keypoints to uniformly spread over the learned latent space, and secondly as a structured directional cost guiding towards proximal sub-goals. In particular, ProQ couples this geometry with a Lagrangian out-of-distribution detector to ensure the learned keypoints stay within reachable areas. By unifying metric learning, keypoint coverage, and goal-conditioned control, our approach produces meaningful sub-goals and robustly drives long-horizon goal-reaching on diverse a navigation benchmarks.}
+}
+\stopverb}

@@ -3,6 +3,7 @@
 \date{2022-02}
 \author/literal{Matthew McLeod}\author/literal{Chunlok Lo}\author/literal{Matthew Schlegel}\author/literal{Andrew Jacobsen}\author/literal{Raksha Kumaraswamy}\author/literal{Martha White}\author/literal{Adam White}
 \taxon{Reference}
+\meta{doi}{10.48550/arXiv.2202.11133}
 \meta{external}{https://arxiv.org/abs/2202.11133}
 
 \meta{bibtex}{\startverb
@@ -10,15 +11,15 @@
  title = {Continual {{Auxiliary Task Learning}}},
  author = {McLeod, Matthew and Lo, Chunlok and Schlegel, Matthew and Jacobsen, Andrew and Kumaraswamy, Raksha and White, Martha and White, Adam},
  year = {2022},
- urldate = {2024-10-16},
+ doi = {10.48550/arXiv.2202.11133},
+ urldate = {2026-05-27},
  number = {arXiv:2202.11133},
  publisher = {arXiv},
- file = {/home/kellen/Downloads/pdfs/storage/GUALHQEZ/McLeod et al. - 2022 - Continual Auxiliary Task Learning.pdf},
+ file = {/home/kellen/Downloads/papers/Continual Auxiliary Task Learning - McLeod et al..pdf},
  keywords = {Computer Science - Machine Learning},
- langid = {english},
  archiveprefix = {arXiv},
  abstract = {Learning auxiliary tasks, such as multiple predictions about the world, can provide many benefits to reinforcement learning systems. A variety of off-policy learning algorithms have been developed to learn such predictions, but as yet there is little work on how to adapt the behavior to gather useful data for those off-policy predictions. In this work, we investigate a reinforcement learning system designed to learn a collection of auxiliary tasks, with a behavior policy learning to take actions to improve those auxiliary predictions. We highlight the inherent non-stationarity in this continual auxiliary task learning problem, for both prediction learners and the behavior learner. We develop an algorithm based on successor features that facilitates tracking under non-stationary rewards, and prove the separation into learning successor features and rewards provides convergence rate improvements. We conduct an in-depth study into the resulting multi-prediction learning system.},
- primaryclass = {cs},
+ primaryclass = {cs.LG},
  eprint = {2202.11133},
  month = {February}
 }
