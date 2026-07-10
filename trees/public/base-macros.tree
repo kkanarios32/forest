@@ -110,6 +110,17 @@
   \<html:hr>{}
 }
 
+\def\stub{
+ \<html:div>[class]{stub-notice}[style]{
+  margin: 0.5em 0;
+  padding: 8px 12px;
+  border-left: 4px solid #7cb342;
+  background-color: #f1f8e9;
+  color: #33691e;
+  font-style: italic;
+  }{🌱 Stub — this concept is referenced but not yet written.}
+}
+
 \alloc\base/tex-preamble
 
 \def\latex[body]{
@@ -214,8 +225,6 @@
    }
  }
 }
-
-\def\citek[uid]{\let\escape[x]{\x}[\escape{[\uid]}](\uid)}
 
 \def\tdtask[id][body]{\li{\body}}
 \def\tdtaskx[id][body]{\li{\<html:s>{\body}}}

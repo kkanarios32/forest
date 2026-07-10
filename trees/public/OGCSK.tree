@@ -1,0 +1,29 @@
+\date{2026-07-05T13:12:25Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{TPU ISA}
+
+\p{Instructions are sent over PCIe and follow the [CISC](L896) tradition. The TPU does not have a program counter or branch instructions. All instructions are sent from the host CPU.}
+
+\p{The five key instructions are:}
+\ol{
+  \li{\code{Read_Host_Memory}: reads data from CPU memory into unified buffer.}
+  \li{\code{Read_Weights}: reads weights from weight memory into Weight FIFO as input to the [matrix unit](OGCRP).}
+  \li{\code{MatrixMultiply}/\code{Convolve}: causes the Matrix Multiply Unit to perform a matrix-matrix multiply, a vector-matrix multiply, an element-wise matrix multiply, an element-wise vector multiply, or a convolution from the Unified Buffer into the Accumulators}
+  \li{\code{Activate}: performs nonlinear function on the accumulators and writes output to unified buffer.}
+  \li{\code{Write_Host_Memory}: writes data from unified buffer to CPU memory.}
+}
+
+\remark{
+The other instructions are alternate host memory read/write, set configuration, two versions of synchronization, interrupt host, debug-tap, nop, and halt.
+}
+
+\example{
+The CISC \code{MatrixMultiply} instruction is 12 bytes
+\ul{
+  \li{3 are unified buffer address,}
+  \li{2 are accumulator address,}
+  \li{4 are length,}
+  \li{Remainder are opcodes / flags.}
+}
+}

@@ -1,0 +1,15 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Domain Specific Architectures}
+\date{2026-07-05T12:22:59Z}
+
+\p{Five principles to guide DSA design.}
+\ol{
+  \li{\em{Use dedicated memories to minimize distance data travels.} [Caches](M91V).}
+  \li{\em{Invest resources saved into more arithmetic units or bigger memories}.}
+  \li{\em{Use easiest parallelism that matches domain.}}
+  \li{\em{Reduce data size and type to simplest needed for domain.}}
+  \li{\em{Use domain-specific programming language to port code.}}
+}

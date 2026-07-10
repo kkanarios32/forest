@@ -4,7 +4,12 @@
 \tag{public}
 \title{CUDA Hierarchy}
 
-\transclude{OGCS7}
-\transclude{OGCS6}
-\transclude{W2D5}
-\transclude{OGCS5}
+\p{Grid: Top-level define how many blocks are needed to cover the computation across [SMs](OGCS6).}
+\p{Block: Ensures all warps in a block are resident on the same [SM](OGCS6) and have the same [shared memory](8GZN).}
+\p{Warp: A group of 32 threads that execute the same instruction.}
+\p{Thread: A single thread within a warp.}
+
+\figure{
+\<html:img>[width]{70\%}[src]{\route-asset{assets/img/gpu-mem-hierarchy.png}}{}
+\figcaption{Which components share which memory at a high-level.}
+}

@@ -1,0 +1,10 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Assembling a program}
+\date{2026-07-06T23:27:32Z}
+
+\p{Assembling is the process that transforms what you typed in machine code into instructions for the machine.}
+
+\p{The input into the assembler is the assembly language source code .s file. The output is the .o object file. The object file is in machine language, but has not been completely put together. To do so, we need the \em{linker}.}

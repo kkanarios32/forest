@@ -1,0 +1,6 @@
+\date{2026-07-05T14:15:57Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{TPU Microarchitecture}
+
+\p{The TPU microarchitecture is desined to keep the [MXU](OGCRP) busy. Therefore, every other instruction must be able to be overlapped with the \code{MatrixMultiply} instruction.}

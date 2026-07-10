@@ -1,0 +1,30 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{UNIX Files}
+\date{2026-07-09T12:17:03Z}
+
+\p{Open a file with the \code{open} [syscall](A5S6). Must be called with the following:}
+\ul{
+  \li{\code{eax} contains system call number.}
+  \li{\code{ebx} contains pointer to string with name of file to open.}
+  \li{\code{ecx} contains the options for opening the file.}
+  \li{\code{edx} contains permissions used to open the file.}
+}
+
+\p{Pointers to all command line arguments are stored on the stack.}
+\ul{
+  \li{Number of arguments is stored at #{8}(\code{esp}),}
+  \li{Name of program at #{12}(\code{esp}),}
+  \li{Arguments at #{16}(\code{esp}) on.}
+}
+\p{These are the \code{argv} array in C.}
+
+\p{
+\pre\verb<<<|
+fd (int) → fd table → struct file → struct inode
+   per-process         "open file        the actual file
+                       description"      (one per file)
+<<<
+}

@@ -1,0 +1,26 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{What happens during a function call}
+\date{2026-07-08T15:20:22Z}
+
+\p{For this note, we will assume we are using the C [calling convention](Q602).}
+
+\p{The first thing we do is push the arguments onto the stack (in reverse order). Then execute a \code{call} instruction. The \code{call} instruction does two things:}
+\ol{
+  \li{It pushes the return address onto the stack. This is the address of the next instruction after the function call.}
+  \li{It then modifies \code{eip} to point to the function to be called.}
+}
+\p{Now we have jumped to the function to be called. However, there is still some bookkeeping that must be done within a function. Namely, we must keep track of where the stack started on a function call. To do so, we copy \code{esp} (stack pointer) into \code{ebp} (base register). This allows us to access each parameter stored to the stack by the caller via #{N*4 + 4} \code{ebp}.}
+\p{Finally, we simply allocate space on the stack by subtracting the size of the arguments from \code{esp}. This is the new stack pointer.}
+
+\p{Now we have to return from the function. To do so, we first store the return value in the special register \code{eax}. Then, we must return to where we left off prior to calling the function. Recall that we saved the next instruction address at the top of the stack when we first called the function. There are now other local variables, etc. in the stack so we have to unwind it back. We can do this simply by 
+\pre\verb<<<|
+movl %ebp, %esp
+popl %ebp
+ret
+<<<
+Here, the \code{ret} instruction just pops whatever is on the top of the stack and sets \code{rip} to it.
+}
+\p{We are now back in the calling code with the return value stored in \code{eax}. However, remember that the caller pushed the function parameters onto the stack. Therefore, we must also pop all of these parameters off before continuing execution.}

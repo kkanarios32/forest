@@ -1,0 +1,26 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\tag{potw}
+\title{Learning Options via Compression}
+\date{2026-07-09T14:26:56Z}
+
+\p{Notes on [[jiangLearningOptionsCompression]]}
+
+\section{TLDR}{
+\question{What problem does this paper aim to address?} 
+\answer{Factored log-likelihood is underspecified, so that directly trying to learn skills from log-likelihood does not result in "good" (temporally-extended) skills}
+\question{What are the technical challenges that motivated this paper?}
+\answer{How can we learn skills that are semantically meaningful / temporally extended from offline data}
+}
+
+\section{Contributions}{
+\p{What is the core contribution / insight?}
+\p{How was the method evaluated / why does this show progress toward the problem?}
+}
+
+\section{Limitations}{
+\p{Were any assumptions made that were necessary for results?}
+\p{Can you think of any instances, where the method may struggle?}
+}

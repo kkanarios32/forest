@@ -1,0 +1,24 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{[OGCRL](OGCRL) - [2026-07-09](2026-07-09)}
+\date{2026-07-09T15:04:25Z}
+
+\p{\strong{Did today:}}
+\ul{
+\li{Ran LOVE on manipulation env and looked at labeling of skills on task 5.}
+\li{Passing raw state to skill conditioned policy allows decoder #{p(a | s, z)} to ignore skill labels.}
+}
+\p{\strong{Stopped at:}}
+\ul{
+
+}
+\p{\strong{Next step:}}
+\ul{
+
+}
+\p{\strong{Open Questions:}}
+\ul{
+
+}

@@ -832,6 +832,23 @@
   file = {/home/kellen/Downloads/papers/Foundations of Reinforcement Learning and Interactive Decision Making - Foster and Rakhlin.pdf}
 }
 
+@misc{foxMultiLevelDiscoveryDeep2017,
+  title = {Multi-{{Level Discovery}} of {{Deep Options}}},
+  author = {Fox, Roy and Krishnan, Sanjay and Stoica, Ion and Goldberg, Ken},
+  year = 2017,
+  month = oct,
+  number = {arXiv:1703.08294},
+  eprint = {1703.08294},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.1703.08294},
+  urldate = {2026-07-10},
+  abstract = {Augmenting an agent's control with useful higher-level behaviors called options can greatly reduce the sample complexity of reinforcement learning, but manually designing options is infeasible in high-dimensional and abstract state spaces. While recent work has proposed several techniques for automated option discovery, they do not scale to multi-level hierarchies and to expressive representations such as deep networks. We present Discovery of Deep Options (DDO), a policy-gradient algorithm that discovers parametrized options from a set of demonstration trajectories, and can be used recursively to discover additional levels of the hierarchy. The scalability of our approach to multi-level hierarchies stems from the decoupling of low-level option discovery from high-level meta-control policy learning, facilitated by under-parametrization of the high level. We demonstrate that using the discovered options to augment the action space of Deep Q-Network agents can accelerate learning by guiding exploration in tasks where random actions are unlikely to reach valuable states. We show that DDO is effective in adding options that accelerate learning in 4 out of 5 Atari RAM environments chosen in our experiments. We also show that DDO can discover structure in robot-assisted surgical videos and kinematics that match expert annotation with 72\% accuracy.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/pdfs/storage/U5EXH42Y/Multi-Level Discovery of Deep Options - Fox et al..pdf}
+}
+
 @book{freglyAISystemsPerformance2025,
   title = {{{AI Systems Performance Engineering}}: {{Optimizing Hardware}}, {{Software}}, and {{Algorithms}} for {{Efficient Trai}}: {{Optimizing Hardware}}, {{Software}}, and {{Algorithms}} for {{Efficient Training}} and {{Inference}}},
   shorttitle = {{{AI Systems Performance Engineering}}},
@@ -1233,6 +1250,25 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Performance},
   file = {/home/kellen/Downloads/papers/Ragged Paged Attention A High-Performance and Flexible LLM Inference Kernel for TPU - Jiang et al..pdf}
+}
+
+@misc{jinEventTensorUnified2026,
+  title = {Event {{Tensor}}: {{A Unified Abstraction}} for {{Compiling Dynamic Megakernel}}},
+  shorttitle = {Event {{Tensor}}},
+  author = {Jin, Hongyi and Hou, Bohan and Wang, Guanjie and Lai, Ruihang and Chen, Jinqi and Ye, Zihao and Cai, Yaxing and Dong, Yixin and Cheng, Xinhao and Zhang, Zhihao and Zhao, Yilong and Huang, Yingyi and Yang, Lijie and Jiang, Jinchen and Oliaro, Gabriele and Ji, Jianan and Miao, Xupeng and Grover, Vinod and Mowry, Todd C. and Jia, Zhihao and Chen, Tianqi},
+  year = 2026,
+  month = apr,
+  number = {arXiv:2604.13327},
+  eprint = {2604.13327},
+  primaryclass = {cs.DC},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2604.13327},
+  urldate = {2026-06-23},
+  abstract = {Modern GPU workloads, especially large language model (LLM) inference, suffer from kernel launch overheads and coarse synchronization that limit inter-kernel parallelism. Recent megakernel techniques fuse multiple operators into a single persistent kernel to eliminate launch gaps and expose inter-kernel parallelism, but struggle to handle dynamic shapes and data-dependent computation in real workloads. We present Event Tensor, a unified compiler abstraction for dynamic megakernels. Event Tensor encodes dependencies between tiled tasks, and enables first-class support for both shape and data-dependent dynamism. Built atop this abstraction, our Event Tensor Compiler (ETC) applies static and dynamic scheduling transformations to generate high-performance persistent kernels. Evaluations show that ETC achieves state-of-the-art LLM serving latency while significantly reducing system warmup overhead.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Programming Languages},
+  file = {/home/kellen/Downloads/pdfs/storage/JXBIMAVB/Event Tensor A Unified Abstraction for Compiling Dynamic Megakernel - Jin et al..pdf}
 }
 
 @book{khanferFundamentalsFunctionalAnalysis2023,
@@ -3496,6 +3532,24 @@
   howpublished = {https://arxiv.org/abs/2304.11277v2},
   langid = {english},
   file = {/home/kellen/Downloads/papers/PyTorch FSDP Experiences on Scaling Fully Sharded Data Parallel - Zhao et al..pdf}
+}
+
+@misc{zhengAnsorGeneratingHighPerformance2023,
+  title = {Ansor: {{Generating High-Performance Tensor Programs}} for {{Deep Learning}}},
+  shorttitle = {Ansor},
+  author = {Zheng, Lianmin and Jia, Chengfan and Sun, Minmin and Wu, Zhao and Yu, Cody Hao and {Haj-Ali}, Ameer and Wang, Yida and Yang, Jun and Zhuo, Danyang and Sen, Koushik and Gonzalez, Joseph E. and Stoica, Ion},
+  year = 2023,
+  month = oct,
+  number = {arXiv:2006.06762},
+  eprint = {2006.06762},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2006.06762},
+  urldate = {2026-07-10},
+  abstract = {High-performance tensor programs are crucial to guarantee efficient execution of deep neural networks. However, obtaining performant tensor programs for different operators on various hardware platforms is notoriously challenging. Currently, deep learning systems rely on vendor-provided kernel libraries or various search strategies to get performant tensor programs. These approaches either require significant engineering effort to develop platform-specific optimization code or fall short of finding high-performance programs due to restricted search space and ineffective exploration strategy.},
+  archiveprefix = {arXiv},
+  keywords = {Computer Science - Machine Learning,Computer Science - Neural and Evolutionary Computing,Computer Science - Performance,Computer Science - Programming Languages,Statistics - Machine Learning},
+  file = {/home/kellen/Downloads/papers/Ansor Generating High-Performance Tensor Programs for Deep Learning - Zheng et al..pdf}
 }
 
 @misc{zhengCanWeReally2026,

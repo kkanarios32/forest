@@ -1,0 +1,8 @@
+\date{2026-07-06T12:41:58Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Conditional Branching in GPUs}
+
+\p{When threads in a warp take different branches of a conditional, the warp does not split into smaller warps. Instead, the active mask selects which lanes execute each branch; lanes on the inactive side run \em{dummy} instructions until the warp reconverges at the post-conditional join point. The programmer writes ordinary scalar code with \code{if}/\code{else}, and the hardware silently masks the inactive lanes.}
+
+\p{This is the chief ergonomic win over SIMD: the compiler does not have to prove that all lanes will take the same path. The cost is that divergent code pays for both sides — a 32-wide warp where 16 threads take the if-branch and 16 take the else-branch executes both branches sequentially with half the lanes idle each time.}

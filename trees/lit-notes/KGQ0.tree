@@ -1,0 +1,12 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Addressing modes}
+\date{2026-07-06T23:17:37Z}
+
+\p{\em{Register addressing mode}, the instuction operand is a register, and the instruction will read the value stored in the register.}
+\p{\em{Direct addressing mode}, the instructions operand is a memory address, and the instruction will read the memory located at the specified address.}
+\p{\em{Indexed addressing mode}, the instructions contains an operand for the memory address and an offset register that contains how many bytes offset from the specified memory address we actually want to load. On x86, you can also have a \em{multiplier} that specifies how many bytes correspond to each offset.}
+\p{\em{Indirect addressing mode}, the instructions operand is a register that contains the address of the memory location we want to load from. The instruction will read the memory located at the specified address.}
+\p{\em{Base pointer addressing mode}, same as indirect addressing mode but you also include an offset to add to the registers value like the indexed addressing mode.}

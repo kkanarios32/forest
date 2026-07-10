@@ -32,3 +32,6 @@
 
 \remark{Use GPUs for parallel parts where throughput dominates. Use CPUs for sequential parts where latency dominates — the [[RJEB]] axis is the right frame for deciding which.}
 
+\transclude{OGCS7}
+\transclude{OGCS6}
+\transclude{W2D5}

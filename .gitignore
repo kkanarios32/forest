@@ -5,3 +5,5 @@ build
 .python-version
 output
 key.env
+inbox.md
+todoist-reading-queue.csv

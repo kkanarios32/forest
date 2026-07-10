@@ -11,8 +11,8 @@ overview is `CLAUDE.md`.
 
 ## Boundaries
 
-**You own:** `trees/public/`, `trees/research/`, `trees/todo/`,
-`trees/fleet/`, `trees/daily/`, `trees/weeknotes/`. Create, update,
+**You own:** `trees/public/`, `trees/research/`, `trees/stubs/`,
+`trees/lit-notes/`, `trees/daily/`, `trees/weeknotes/`. Create, update,
 rewrite, restructure, and atomize freely.
 
 **You curate but do not hand-edit:** `trees/refs/`. These are
@@ -29,7 +29,7 @@ artifact), `tex/generated/` (intermediate JSON from `split_bib`).
 ## Evolution
 
 The forest is a living, continuously evolving artifact — never a static
-reference. Every new note, paper, or fleet thought is an opportunity to
+reference. Every new note, paper, or raw thought is an opportunity to
 revise, deepen, challenge, and restructure what exists. When new
 information changes the picture, rewrite affected trees to reflect the
 current best understanding. Do not append "update" sections or
@@ -102,11 +102,11 @@ preferred to a trailing "see also."
 
 **Link to things that don't exist yet.** If a concept deserves its own
 tree but does not have one, do not skip the link — create a placeholder
-todo tree (see [Stub a missing concept](#stub-a-missing-concept) below)
-and link to its ID. The placeholder gets `\tag{todo}`, no body, and a
+stub tree (see [Stub a missing concept](#stub-a-missing-concept) below)
+and link to its ID. The stub gets `\tag{stub}`, no body, and a
 `\title{...}` matching the concept name. This keeps prose links live,
-makes the gap show up in `scripts/hastags todo`, and gives the next
-writing session a queue.
+makes the gap show up in `scripts/hastags stub` and `scripts/inbox`,
+and gives the next writing session a queue.
 
 ## Atomization
 
@@ -129,10 +129,12 @@ to an existing tree, that is a signal to split.
 Two tags carry behavior:
 
 - `public` — opt into the published site.
-- `private` — kept local (daily logs, fleet, todo).
+- `private` — kept local (daily logs, lit-notes).
+- `stub` — a placeholder link target awaiting a body; off-site, shows
+  in `scripts/inbox` ranked by inbound links.
 
 Topical tags currently in use (reuse before inventing): `blog`, `note`,
-`top`, `margin`, `potw`, `upcoming`, `todo`, `talk`, `prob`,
+`top`, `margin`, `potw`, `upcoming`, `stub`, `talk`, `prob`,
 `action-perception`. Add tags when a Datalog query would benefit. List
 trees with a given tag combination via `scripts/hastags public blog`.
 
@@ -147,14 +149,18 @@ trees with a given tag combination via `scripts/hastags public blog`.
    or `\refcard{taxon}{name}{citekey}{body}` — do not hand-edit the
    auto-generated card.
 4. If the paper deserves a full reading notebook, run
-   `scripts/new` and link it from the reference card's notebook page
-   (e.g. `\title{Notebook: [[citekey]]}`).
+   `scripts/new note Notebook: <citekey>` and link it from the
+   reference card's notebook page (the title becomes
+   `\title{Notebook: <citekey>}`; edit to the `[[citekey]]` link form).
 
 ### Add an atomic concept
 
-1. `scripts/new def` (or `thm`, `prop`, `lemma`, `blog`, `potw`). This
-   creates `trees/public/<random-id>.tree` with the right
-   frontmatter and template body.
+1. `scripts/new def <Title>` (or `thm`, `prop`, `lemma`, `blog`,
+   `potw`). The title is required and may contain spaces, no quotes
+   needed (`scripts/new def Warp scheduling divergence`). This creates
+   `trees/public/<random-id>.tree` with the full frontmatter
+   (`\import`, `\author`, `\title`, publish tag) and template body
+   already filled in, and appends a line to `notes-log.md`.
 2. Write the body. Lead with one orienting sentence inside `\p{...}`.
    Link liberally with `[[ID]]` to anything that has — or should have
    — its own tree.
@@ -168,18 +174,24 @@ trees with a given tag combination via `scripts/hastags public blog`.
 
 When prose mentions an atomic concept that does not yet have a tree:
 
-1. Run `scripts/new todo`. This creates
-   `trees/public/<random-id>.tree` with `\import{base-macros}`,
-   `\author{kellenkanarios}`, and `\tag{todo}` already set.
-2. Add `\title{<Concept Name>}` matching the phrase you wanted to
-   link. The title is the only required content — no body yet.
+1. Run `scripts/new stub <Concept Name>`, passing the phrase you
+   wanted to link as the title. This creates
+   `trees/stubs/<random-id>.tree` with `\import{base-macros}`,
+   `\author{kellenkanarios}`, `\title{<Concept Name>}`, `\tag{stub}`,
+   and the `\stub` notice (stubs stay off the public site and land in
+   the `inbox.md` worklist, not the `notes-log.md` index). In nvim,
+   `:ForesterStub` — or `<leader>ft` over a visual selection — does
+   this and inserts the link in one step.
+2. The title is the only required content — no body yet.
 3. Link to the new tree from the original prose using `[[<new-id>]]`
    (or `[display text](<new-id>)` if the title doesn't fit the
    sentence).
-4. The todo tree is now a real link target, surfaces under
-   `scripts/hastags todo`, and can be promoted to a full atomic
-   concept (swap `\tag{todo}` for `\tag{public}`, add taxon and body)
-   whenever the idea is ready to write.
+4. The stub is now a real link target, surfaces under
+   `scripts/hastags stub` and in `scripts/inbox` (ranked by how many
+   trees link it), and can be promoted to a full atomic concept — write
+   the body, drop the `\stub` line, swap `\tag{stub}` for `\tag{public}`
+   + a taxon, and `git mv` it to `trees/public/` — whenever the idea is
+   ready to write. Its id and inbound links never change.
 
 ### Build a notebook / index page
 
@@ -211,7 +223,7 @@ report (fix what you can; surface the rest):
    from any other tree, and not reachable from `index`.
 3. **Broken links.** `[[ID]]` / `\transclude{ID}` / `[text](ID)`
    referring to IDs that do not exist as `.tree` files. Fix by
-   stubbing a `\tag{todo}` tree with the right `\title{...}` (see
+   stubbing a `\tag{stub}` tree with the right `\title{...}` (see
    [Stub a missing concept](#stub-a-missing-concept)) rather than
    removing the link.
 4. **Wrong link form.** Any occurrence of `[[ID|alias]]`. Rewrite as
@@ -227,14 +239,52 @@ report (fix what you can; surface the rest):
 `scripts/has "query"` (ripgrep over trees) and
 `scripts/hastags <tags...>` are the primary tools for lint sweeps.
 
-## Daily and fleet notes
+## The note pipeline (Zettelkasten)
 
-`trees/daily/YYYY-MM-DD.tree` and `trees/fleet/*.tree` are
-`\tag{private}`. They do not appear on the published site. Treat them
-as scratchpads — fleet notes graduate into atomic public trees once
-the idea has shape. When promoting a fleet note, write a new tree
-under `trees/public/` and either delete the fleet note or replace its
-body with a single `\transclude{<new-id>}` pointer.
+Notes flow through three stages, and the directory *is* the stage.
+`scripts/new` routes by template:
+
+1. **`trees/stubs/` — concept stubs** (`scripts/new stub <title>`).
+   Placeholder trees that exist only so a prose link resolves —
+   `\title{...}` plus the `\stub` notice, no body. `\tag{stub}`,
+   off-site. Ids are directory-independent, so a stub promotes to a
+   permanent note with no link breakage. The reading queue (sources you
+   want to read *later*) lives in an external capture tool, not here —
+   only in-graph link targets are stubs.
+2. **`trees/lit-notes/` — literature notes** (`scripts/new lit-notes
+   <title> [@citekey]`). First-pass, source-bound notes taken while
+   reading — *reformulated in your own words, not transcribed*.
+   `\tag{private}`, off-site. The optional `@citekey` seeds `\citek{...}`;
+   always bind a literature note to its source.
+3. **`trees/public/` — permanent notes** (`scripts/new def <title>`,
+   `thm`, `prop`, `blog`, …). One atomic idea, in your own words,
+   linked into the graph. `\tag{public}`, published.
+
+Promotion is the discipline: a literature note graduates by being
+rewritten as an atomic permanent note under `trees/public/` and linked
+in, then the lit-note is deleted or reduced to a single
+`\transclude{<new-id>}` pointer. A stub graduates by writing its body,
+swapping `\tag{stub}` for
+`\tag{public}` + a taxon, dropping the `\stub` line, and `git mv`-ing it
+to `trees/public/` (its id, and every inbound link, is unchanged).
+
+Two derived, machine-owned markdown views track this (never hand-edit):
+
+- **`notes-log.md`** — the permanent slip-box index. Every `trees/public/`
+  note (excluding `stub`/`private` stragglers), newest last.
+  Rebuilt by `scripts/registry`; committed.
+- **`inbox.md`** — the work-in-progress worklist: stubs (ranked by
+  inbound-link count) and lit-notes awaiting promotion. Rebuilt by
+  `scripts/inbox`; **gitignored** so private titles stay local. Drive
+  it toward zero. (The reading queue lives in an external capture tool,
+  not the forest.)
+
+Both refresh automatically on `scripts/new` and in the pre-commit hook,
+so notes created any other way still get picked up.
+
+`trees/daily/YYYY-MM-DD.tree` and `trees/weeknotes/*.tree` are dated
+journals (`\tag{private}`), separate from this pipeline and not listed
+in either view.
 
 ## Writing principles
 
@@ -258,7 +308,7 @@ Ordered by priority:
    square of its connections, and Forester's hover-previews make
    in-prose links readable. Trailing "see also" lists are a smell.
 
-6. **Stubs are valid.** A `\tag{todo}` tree with only a `\title{...}`
+6. **Stubs are valid.** A `\tag{stub}` tree with only a `\title{...}`
    is enough to function as a link target. Promote it to `\tag{public}`
    with a body when the idea is ready. Never leave a `[[??]]` dangling
    in prose — stub the tree first, then link.

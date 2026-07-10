@@ -1,0 +1,11 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Status register}
+\date{2026-07-06T23:53:38Z}
+
+\p{Known as RFLAGS. Has a number of responsibilities}
+\ol{
+  \li{Stores result of comparisons.}
+}

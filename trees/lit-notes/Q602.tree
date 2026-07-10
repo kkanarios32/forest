@@ -1,0 +1,12 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Calling convention}
+\date{2026-07-05T22:23:03Z}
+
+\p{The way that the variables are stored and the parameters and return values are transferred by the computer}
+
+\remark{
+Assembly language can use whatever calling convention you want.
+}
