@@ -10,7 +10,7 @@
 \p{The machinery a CPU spends on ILP is the bulk of its area and complexity:}
 \ul{
   \li{[[U0NY]] — issue instructions whenever their operands are ready, not in program order.}
-  \li{[[5CT9]] — break false dependencies by mapping the same architectural register name to different physical registers.}
+  \li{[register renaming](5CT9) — break false dependencies by mapping the same architectural register name to different physical registers.}
   \li{[[FQ9N]]s + [[BI4H]] — hold dispatched instructions while waiting on operands, then commit them in original order.}
   \li{[[IIF9]] and speculation — keep the pipeline fed across control-flow boundaries by predicting which way a branch will go.}
 }

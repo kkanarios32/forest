@@ -11,4 +11,4 @@
 
 \p{This is the structural reason CPU out-of-order windows stay in the tens-to-low-hundreds of entries even as transistor budgets grow. Wider doesn't help: timing closure on the CAM degrades faster than the additional ILP repays. GPUs sidestep the whole problem by leaning on [[G4ML]] — a cheap per-register [scoreboard](XPAA) plus a warp scheduler covers stalls without any broadcast/compare structure.}
 
-\remark{Wakeup-select sits at the boundary between [[FQ9N]] (which holds the instruction) and [[5CT9]] (which named the tags being broadcast). All three structures together are what people mean by "the out-of-order back-end."}
+\remark{Wakeup-select sits at the boundary between [[FQ9N]] (which holds the instruction) and [register renaming](5CT9) (which named the tags being broadcast). All three structures together are what people mean by "the out-of-order back-end."}

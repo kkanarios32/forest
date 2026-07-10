@@ -5,4 +5,6 @@
 \taxon{Definition}
 \tag{loss}
 
-\p{The \em{[InfoNCE](oordRepresentationLearningContrastive2019)} loss aims to minimize the following information-theoretic objective ##{\mathcal{L}_{N} = - \mathbb{E}_{\mathcal{X}} \left[\log \frac{f_k(x_{t + k}, c_t)}{\sum_{x_j \in \mathcal{X}} f_k(x_j, c_t)}\right]}}
+\p{\em{[InfoNCE](oordRepresentationLearningContrastive2019)} recasts representation learning as classification: given a context #{c_t} and a batch #{\mathcal{X}} holding one positive future sample #{x_{t+k}} among #{N-1} distractors, it trains a score #{f_k} to pick the positive out of the batch. This is the workhorse objective of contrastive learning.}
+
+\p{The loss is the cross-entropy of that identification: ##{\mathcal{L}_{N} = - \mathbb{E}_{\mathcal{X}} \left[\log \frac{f_k(x_{t + k}, c_t)}{\sum_{x_j \in \mathcal{X}} f_k(x_j, c_t)}\right]} The numerator rewards a high score on the true pair; the denominator normalizes over the positive \em{plus every negative}, so a score only counts by being large \em{relative} to the distractors. Minimizing #{\mathcal{L}_N} maximizes a lower bound on the mutual information #{I(x_{t+k}; c_t)}, and the bound tightens with #{N} — which is the mechanistic reason contrastive methods reward large batches and many negatives.}

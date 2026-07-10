@@ -8,5 +8,5 @@
 \p{Two standard mitigations:}
 \ul{
   \li{[[USSP]] — route the producer's output directly into the consumer's input, before the writeback stage commits it. The consumer sees the result one cycle earlier.}
-  \li{[[5CT9]] — false dependencies, where two instructions write to the same architectural register but operate on independent values, can be broken by mapping the architectural register to two different physical registers.}
+  \li{[register renaming](5CT9) — false dependencies, where two instructions write to the same architectural register but operate on independent values, can be broken by mapping the architectural register to two different physical registers.}
 }

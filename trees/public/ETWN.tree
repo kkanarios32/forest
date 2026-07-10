@@ -10,6 +10,6 @@
 \problem{Die area for a register file scales \em{quadratically} in the number of ports.}
 \solution{Split it. Different execution units (integer, floating-point, vector) get their own smaller register files. Fewer ports per file, faster access, less area.}
 
-\p{Beyond the architecturally-named registers, modern chips keep many extra \em{rename} registers used by [[5CT9]] to break false data dependencies.}
+\p{Beyond the architecturally-named registers, modern chips keep many extra \em{rename} registers used by [register renaming](5CT9) to break false data dependencies.}
 
 \remark{Instructions distinguish "immediate types" from "register types" so the decoder knows whether a field encodes a register name or a literal value.}

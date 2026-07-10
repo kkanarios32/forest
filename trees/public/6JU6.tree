@@ -3,7 +3,7 @@
 \tag{public}
 \title{Superscalar architecture}
 
-\p{Multiple [[DA6Q]]s on the same chip running in parallel during the same pipeline stage. Decode becomes \em{decode/dispatch}: the front-end must decide which instructions can issue in parallel and route them to the right units. Going superscalar amplifies the cost of every pipeline [[ITFA]] and [[I2B5]], which is why the rest of this chapter's machinery — [[USSP]], [[5CT9]], [[1LCS]] — exists.}
+\p{Multiple [[DA6Q]]s on the same chip running in parallel during the same pipeline stage. Decode becomes \em{decode/dispatch}: the front-end must decide which instructions can issue in parallel and route them to the right units. Going superscalar amplifies the cost of every pipeline [[ITFA]] and [[I2B5]], which is why the rest of this chapter's machinery — [[USSP]], [register renaming](5CT9), [[1LCS]] — exists.}
 
 \transclude{DA6Q}
 \transclude{87GH}

@@ -12,7 +12,7 @@
   \li{Instruction identity and program order position.}
   \li{Operand register names (and renamed sources).}
   \li{Status — pending, executing, complete, speculated.}
-  \li{The instruction's result, held in a data field that doubles as a [[5CT9]] register.}
+  \li{The instruction's result, held in a data field that doubles as a [register renaming](5CT9) register.}
 }
 
 \p{Speculatively-issued instructions also enter the ROB but are tagged. On a branch misprediction, all speculative entries past the mispredicted branch are squashed.}
