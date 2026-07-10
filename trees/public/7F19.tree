@@ -5,7 +5,7 @@
 \taxon{Definition}
 \tag{public}
 
-\p{\em{Single instruction, multiple threads}. A [GPU](82U4) streaming multiprocessor issues one instruction per cycle to a group of threads — a [[X9VZ]] — but each thread within the group keeps its own program counter and register state. The hardware enforces lockstep execution within the warp while preserving the \em{illusion} of independent threads to the programmer.}
+\p{\em{Single instruction, multiple threads}. A [GPU](82U4) streaming multiprocessor issues one instruction per cycle to a group of threads — a [warp](X9VZ) — but each thread within the group keeps its own program counter and register state. The hardware enforces lockstep execution within the warp while preserving the \em{illusion} of independent threads to the programmer.}
 
 \p{SIMT is the GPU's answer to a question the [[Q7ZD]] world struggled with: how do you get the throughput of wide vector execution without forcing the programmer to manually vectorize? Two mechanisms make this work.}
 

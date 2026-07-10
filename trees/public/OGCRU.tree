@@ -2,8 +2,8 @@
 \import{base-macros}
 \author{kellenkanarios}
 \tag{public}
-\title{Bank conflicts (GPU)}
-\p{Shared memory is divided into \em{banks} (typically 32). Each bank can service one access per cycle. If two threads in a [[X9VZ]] access different addresses in the \em{same} bank, the accesses serialize — a \em{bank conflict}.}
+\title{Bank conflicts serialize shared-memory accesses to the same bank}
+\p{Shared memory is divided into \em{banks} (typically 32). Each bank can service one access per cycle. If two threads in a [warp](X9VZ) access different addresses in the \em{same} bank, the accesses serialize — a \em{bank conflict}.}
 
 \p{Three behaviors when warp threads access shared memory:}
 \ul{

@@ -1,7 +1,7 @@
 \import{base-macros}
 \date{2026-05-12T22:59:13Z}
 \tag{public}
-\title{Warp scheduling}
+\title{Warp scheduling hides memory latency by switching among resident warps}
 
 \p{A warp is 32 threads on an NVIDIA GPU executing in lockstep — one instruction issued per cycle to all 32. The SM's \em{warp scheduler} picks which resident warp to run on each cycle.}
 

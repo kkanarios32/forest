@@ -1,7 +1,7 @@
 \date{2026-07-06T12:41:58Z}
 \import{base-macros}
 \author{kellenkanarios}
-\title{Conditional Branching in GPUs}
+\title{Warp divergence serializes both sides of a branch}
 
 \p{When threads in a warp take different branches of a conditional, the warp does not split into smaller warps. Instead, the active mask selects which lanes execute each branch; lanes on the inactive side run \em{dummy} instructions until the warp reconverges at the post-conditional join point. The programmer writes ordinary scalar code with \code{if}/\code{else}, and the hardware silently masks the inactive lanes.}
 

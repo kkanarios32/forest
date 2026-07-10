@@ -1,9 +1,9 @@
 \import{base-macros}
 \date{2026-05-12T22:59:13Z}
 \tag{public}
-\title{Memory coalescing}
+\title{Memory coalescing merges a warp's accesses into one transaction per cache line}
 
-\p{The hardware optimization on GPUs that combines simultaneous memory accesses by threads in a [[X9VZ]] into a single transaction — when the accessed addresses fall in the same cache line.}
+\p{The hardware optimization on GPUs that combines simultaneous memory accesses by threads in a [warp](X9VZ) into a single transaction — when the accessed addresses fall in the same cache line.}
 
 \p{Global memory latency on a GPU is 400–800 cycles. Coalescing is the primary way to keep the SM fed:}
 \ul{
