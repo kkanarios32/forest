@@ -2,6 +2,7 @@
 
 \date{2024-11-20}
 \taxon{Theorem}
+\title{Continuity and countable subadditivity of a probability measure}
 \p{
 Let #{P} be a probability measure on a field #{\mathscr{F}}.
 

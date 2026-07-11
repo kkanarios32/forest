@@ -2,6 +2,7 @@
 
 \date{2025-01-15}
 \taxon{Theorem}
+\title{Characterizations of sub-Gaussian random variables}
 \p{
   Let #{X} be a random variable. Then the following are equivalent.
   \ol{

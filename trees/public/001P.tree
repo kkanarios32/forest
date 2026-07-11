@@ -3,6 +3,7 @@
 \date{2024-12-27}
 \taxon{Theorem}
 \import{base-macros}
+\title{Independent #{\pi}-systems generate independent #{\sigma}-algebras}
 \p{If #{\mathscr{A}_1, \ldots, \mathscr{A}_n} are independent and each #{\mathscr{A}_i} is a [[0018]] then #{\sigma(\mathscr{A}_1), \ldots, \sigma(\mathscr{A}_n)} are independent.}
 
 \proof{

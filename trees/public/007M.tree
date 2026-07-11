@@ -1,9 +1,6 @@
 \tag{public}
-
 \date{2025-06-05}
 \import{base-macros}
-\tag{blog}
-\tag{upcoming}
 \title{Upcoming Blogs}
 \author{kellenkanarios}
 \xmlns:html{http://www.w3.org/1999/xhtml}

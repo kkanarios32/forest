@@ -4,6 +4,7 @@
 \import{base-macros}
 
 \taxon{Theorem}
+\title{Properties of the typical set for continuous variables}
 \p{
 The typical set #{ A_{\epsilon}^{(n)} } has the following properties:
 

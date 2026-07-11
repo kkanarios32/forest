@@ -3,7 +3,7 @@
 \date{2025-03-25}
 \import{base-macros}
 \taxon{Proposition}
-
+\title{Size of a type class}
 
 \p{
 Let #{ P\in\mathcal{P}_{n} } denote a type with denominator #{ n }. Then, the type class associated with #{ P }, defined as #{ T(P)=\{x^{n}:\hat{P}_{x^n}=P\} } satisfies

@@ -3,6 +3,7 @@
 \date{2025-03-25}
 \import{base-macros}
 \taxon{Proposition}
+\title{The number of types is polynomial in #{n}}
 \p{
 
 Suppose #{ |\mathcal{X}|=m }, and #{ \mathcal{P}_{n} } denotes the set of all distinct types that can be constructed using elements of #{ \mathcal{X}^{n} }. Then, we have_

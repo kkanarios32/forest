@@ -3,6 +3,7 @@
 \date{2024-12-02}
 \taxon{Theorem}
 \import{base-macros}
+\title{Fatou's lemma for events}
 \p{
 For each sequence #{\{A_{n}\}},
 
