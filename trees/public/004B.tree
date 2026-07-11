@@ -41,7 +41,6 @@
         Q(x) / P(x) = c \implies Q(x) = P(x) c \iff \sum Q(x) = c \sum P(x) \implies c = 1
       }
   }
-  \p{\strong{Applications of [[004E]].} The nonnegativity of KL divergence propagates into the basic entropy inequalities, each a specialization of Gibbs to a particular pair of distributions.}
   \transclude{TB4P}
   \transclude{H7J5}
   \transclude{C6M8}
@@ -144,47 +143,27 @@ Note that [non-singular](005U) does not imply [uniquely decodable](005M). This i
 \transclude{006C}
 \transclude{006D}
 \transclude{006E}
-}
-\section{Optimal NP Test}{
 \transclude{0068}
 \transclude{006F}
 }
+
 \section{Error Exponents in Hypothesis Testing}{
 In the previous section, we consider the optimal test in the non-asymptotic regime i.e. for finite #{n} what test minimizes the error according to some notion of error. In this section, we ask the question of what is the rate that this error converges to #{0}. More specifically, if #{\text{error}_n \leq 2^{-nV}} then what is the best (largest) #{V} we can hope to achieve?
-}
-\section{NP Error Exponent}{
 \transclude{006G}
 \transclude{006H}
-}
-\section{Bayesian Error Exponent}{
 \transclude{006I}
 \transclude{006J}
 }
-\section{Fixed-Rate Universal Source Coding}{
 \transclude{006K}
-}
-\section{Construction of universal fixed rated code}{
-    To construct, a universal fixed rate code, we need a code that satisfies (i) and (ii) from [[006K]]. 
-    \ul{
-        \li{
-Let #{ |\mathcal{X}|=m }, and for any #{ n\geq1 } and a given #{ R>0 }, define #{ R_n=R-m \frac{\log n+1}{n}}
-            }
-      \li{Consider the subset #{A_n \subset \mathcal{X}^n}, defined as ##{A_n = \{x^n \in \mathcal{X}^n \mid H(\hat{P}_{x^n} \leq R_n)\}  }}
-      \li{Then just define the encoder in the usual way i.e. for encoder #{e_n} give every #{x^n \in A_n} a unique code and everything else map to the same code.}
-      \li{Then the decoder can easily identify everything in #{A_n} and it suffices to show that in the limit the probabilities concentrate around #{A_n}.}
-    }
-\transclude{006L}
-}
+\transclude{OGCSN}
 \section{Variable-Rate Universal Source Coding}{
 \transclude{006M}
-\transclude{006P}
-}
-\section{Redundancy-Capacity Theorem}{
 \transclude{006N}
 \remark{
 It will turn out the optimal choice of #{Q} is the centroid associated with the #{k} elements of #{\mathcal{P}}.
 }
 \transclude{006O}
+\transclude{006P}
 }
 \section{Channel Coding}{
 \p{The channel coding problem has three components — a channel encoder, a noisy channel, and a channel decoder. We pass a message #{W} to the encoder to get #{X^n}, which the noisy channel turns into #{Y^n}; the decoder must recover #{W} from #{Y^n}. The encoder's job is to reduce redundancy while keeping codewords far enough apart that the channel noise cannot confuse them.}
@@ -224,9 +203,7 @@ Note that the first term depends only on the encoder and the second term depends
 }
 }
 }
-\section{Differential Entropy}{
 \transclude{007C}
-}
 \section{AEP for Continuous Random Variables}{
 \transclude{007E}
 \transclude{007D}
@@ -238,7 +215,4 @@ Note that the first term depends only on the encoder and the second term depends
 Taking #{\Delta = 2^{-n}}, then #{X^{\Delta}} is an "#{n}-bit" approximation of #{X}.
 }
 \transclude{007H}
-}
-\section{Gaussian Channel}{
-
 }

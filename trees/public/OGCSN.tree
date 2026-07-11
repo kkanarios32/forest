@@ -1,0 +1,15 @@
+\date{2026-07-11T12:12:03Z}
+\import{base-macros}
+\title{Construction of universal fixed rated code}
+\p{
+  To construct, a universal fixed rate code, we need a code that satisfies (i) and (ii) from [[006K]]. 
+  \ul{
+      \li{
+Let #{ |\mathcal{X}|=m }, and for any #{ n\geq1 } and a given #{ R>0 }, define #{ R_n=R-m \frac{\log n+1}{n}}
+          }
+    \li{Consider the subset #{A_n \subset \mathcal{X}^n}, defined as ##{A_n = \{x^n \in \mathcal{X}^n \mid H(\hat{P}_{x^n} \leq R_n)\}  }}
+    \li{Then just define the encoder in the usual way i.e. for encoder #{e_n} give every #{x^n \in A_n} a unique code and everything else map to the same code.}
+    \li{Then the decoder can easily identify everything in #{A_n} and it suffices to show that in the limit the probabilities concentrate around #{A_n}.}
+  }
+}
+\transclude{006L}
