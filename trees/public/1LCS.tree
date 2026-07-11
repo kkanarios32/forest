@@ -3,7 +3,7 @@
 \tag{public}
 \title{Branch prediction}
 
-\p{The mechanism that lets the front-end of a pipelined CPU keep fetching past a [[IJ7Q]] before the branch has actually resolved. The fetcher consults a predictor; if the prediction is right, the [[COV5]] runs at full throughput; if wrong, the speculatively-issued instructions are squashed.}
+\p{The mechanism that lets the front-end of a pipelined CPU keep fetching past a [[IJ7Q]] before the branch has actually resolved. The fetcher consults a predictor; if the prediction is right, the [pipeline](COV5) runs at full throughput; if wrong, the speculatively-issued instructions are squashed.}
 
 \section{Static prediction}{
 \p{Program-agnostic rules: e.g. "always predict taken", "always predict not-taken", or "predict backward branches taken, forward branches not-taken". Cheap, but accuracy is poor outside of loop-heavy code.}

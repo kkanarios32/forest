@@ -3,7 +3,7 @@
 \tag{public}
 \title{Register renaming breaks false dependencies}
 
-\p{Register renaming is the [[ITFA]] mitigation that makes out-of-order execution viable: the hardware dynamically remaps each architectural-register \em{write} to a fresh physical register from a larger pool, so two instructions that reuse the same architectural name for \em{independent} values never collide. The false data dependency — same architectural register, unrelated values — simply disappears, because each write lands in a different physical register.}
+\p{Register renaming is the [data hazard](ITFA) mitigation that makes out-of-order execution viable: the hardware dynamically remaps each architectural-register \em{write} to a fresh physical register from a larger pool, so two instructions that reuse the same architectural name for \em{independent} values never collide. The false data dependency — same architectural register, unrelated values — simply disappears, because each write lands in a different physical register.}
 
 \example{Consider:
 \pre\verb<<<|

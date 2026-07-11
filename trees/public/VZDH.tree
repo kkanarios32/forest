@@ -12,4 +12,4 @@
 
 \remark{Instructions don't take arbitrary time. The motherboard's \em{clock cycle} bounds when latched values become visible to the next stage.}
 
-\p{[[COV5]] decomposes this loop into independently-running pipeline stages so multiple instructions are in flight at once. Superscalar machines run multiple instructions per stage. Both are extensions of this same three-phase model.}
+\p{[pipeline](COV5) decomposes this loop into independently-running pipeline stages so multiple instructions are in flight at once. Superscalar machines run multiple instructions per stage. Both are extensions of this same three-phase model.}

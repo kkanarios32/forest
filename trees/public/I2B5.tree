@@ -1,9 +1,9 @@
 \import{base-macros}
 \date{2026-05-12T19:47:05Z}
 \tag{public}
-\title{Control hazard}
+\title{Control hazards stall fetch until the branch resolves}
 
-\p{When the CPU reaches a [[IJ7Q]] in the [[COV5]], it doesn't yet know what to fetch next. Until the branch's condition resolves and its target is computed — several stages later — fetch is stuck.}
+\p{When the CPU reaches a [[IJ7Q]] in the [pipeline](COV5), it doesn't yet know what to fetch next. Until the branch's condition resolves and its target is computed — several stages later — fetch is stuck.}
 
 \p{Mitigations:}
 \ul{
@@ -12,4 +12,4 @@
   \li{\em{Instruction caching} — keep recently-fetched instructions handy so the cost of restarting fetch on a mispredict is at least bounded by cache latency, not DRAM latency.}
 }
 
-\remark{The cost of a mispredicted branch is roughly the pipeline depth — every speculatively-issued instruction has to be squashed and the pipeline refilled. Deeper pipelines amplify this cost, which is one reason [[037I]] (deep pipeline, narrow & deep) and [[6JU6]]-style designs (wider, shallower) make different tradeoffs.}
+\remark{The cost of a mispredicted branch is roughly the pipeline depth — every speculatively-issued instruction has to be squashed and the pipeline refilled. Deeper pipelines amplify this cost, which is one reason [[037I]] (deep pipeline, narrow & deep) and [superscalar](6JU6)-style designs (wider, shallower) make different tradeoffs.}

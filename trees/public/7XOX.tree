@@ -27,7 +27,7 @@
 \section{The Pentium Pro}{
 \p{Concepts introduced:}
 \ul{
-  \li{[[U0NY]] — instructions execute in dataflow order, commit in program order.}
+  \li{[out-of-order execution](U0NY) — instructions execute in dataflow order, commit in program order.}
   \li{[[BI4H]] — 40-entry ROB tracks all in-flight instructions and assists [register renaming](5CT9).}
   \li{[[FQ9N]] — three-instruction dispatch, up to five-issue per cycle.}
   \li{[[L896]] decoupling — x86 in front, [[WEW2]] internally.}

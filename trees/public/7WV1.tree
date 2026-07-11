@@ -1,7 +1,7 @@
 \import{base-macros}
 \date{2026-05-12T19:47:04Z}
 \tag{public}
-\title{Structural hazard}
+\title{Structural hazards stall when instructions contend for one resource}
 
 \p{Two simultaneous instructions need the same hardware resource, and there's only one of it. The classic example is a single-port [[ETWN]] facing two writes in one cycle, or two memory-accessing instructions facing a single load-store unit.}
 

@@ -11,6 +11,6 @@
 
 \p{Conditional branches require the hardware to remember the outcome of recent arithmetic — typically in a \em{processor status word} (PSW) register, with one bit per condition (zero, sign, carry, overflow). Each conditional-branch variant tests a particular PSW bit.}
 
-\p{In a pipelined CPU, branches stall the front-end: until the branch resolves, the fetcher doesn't know what to fetch next. This is the [[I2B5]], and modern machines mitigate it with [[IIF9]] driven by [[1LCS]].}
+\p{In a pipelined CPU, branches stall the front-end: until the branch resolves, the fetcher doesn't know what to fetch next. This is the [control hazard](I2B5), and modern machines mitigate it with [[IIF9]] driven by [[1LCS]].}
 
 \remark{If the program uses relative addressing, the OS supplies a code-segment base to add to the branch destination.}

@@ -1,9 +1,9 @@
 \import{base-macros}
 \date{2026-05-12T19:47:02Z}
 \tag{public}
-\title{Data hazard}
+\title{Data hazards stall when an instruction needs a not-yet-written value}
 
-\p{When one instruction's result is the next instruction's input, a naive [[COV5]] would have to stall: the second instruction can't execute until the first has written back. Data hazards are the most pervasive source of stalls in a CPU.}
+\p{When one instruction's result is the next instruction's input, a naive [pipeline](COV5) would have to stall: the second instruction can't execute until the first has written back. Data hazards are the most pervasive source of stalls in a CPU.}
 
 \p{Two standard mitigations:}
 \ul{

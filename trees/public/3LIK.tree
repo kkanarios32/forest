@@ -3,7 +3,7 @@
 \tag{public}
 \title{PowerPC chip family}
 
-\p{Machine-instance notes for the PowerPC line — a RISC implementation of the same concepts covered in [[6JU6]] and [[1LCS]], with a few innovations specific to this family.}
+\p{Machine-instance notes for the PowerPC line — a RISC implementation of the same concepts covered in [superscalar](6JU6) and [[1LCS]], with a few innovations specific to this family.}
 
 \section{PowerPC 601}{
   \p{\strong{Front-end:} standard 4-stage pipeline. Instruction queue dispatches 3 instructions per cycle.}

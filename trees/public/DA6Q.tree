@@ -3,7 +3,7 @@
 \tag{public}
 \title{Execution units}
 
-\p{The functional circuitry that actually performs an instruction. A superscalar CPU contains several, dispatched to in parallel during the execute stage of the [[COV5]]. The common families:}
+\p{The functional circuitry that actually performs an instruction. A superscalar CPU contains several, dispatched to in parallel during the execute stage of the [pipeline](COV5). The common families:}
 
 \ul{
   \li{\strong{ALU} — \em{arithmetic logic unit}, performs arithmetic (add, sub, mul, div) and logical (AND, OR, NOT) operations on integers and on special registers like the PSW. Typically split into integer logic units (ILU) and floating-point units (FPU).}

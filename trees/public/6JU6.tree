@@ -1,9 +1,9 @@
 \import{base-macros}
 \date{2026-04-03T18:33:45Z}
 \tag{public}
-\title{Superscalar architecture}
+\title{Superscalar CPUs issue multiple instructions per cycle}
 
-\p{Multiple [[DA6Q]]s on the same chip running in parallel during the same pipeline stage. Decode becomes \em{decode/dispatch}: the front-end must decide which instructions can issue in parallel and route them to the right units. Going superscalar amplifies the cost of every pipeline [[ITFA]] and [[I2B5]], which is why the rest of this chapter's machinery — [[USSP]], [register renaming](5CT9), [[1LCS]] — exists.}
+\p{Multiple [[DA6Q]]s on the same chip running in parallel during the same pipeline stage. Decode becomes \em{decode/dispatch}: the front-end must decide which instructions can issue in parallel and route them to the right units. Going superscalar amplifies the cost of every pipeline [data hazard](ITFA) and [control hazard](I2B5), which is why the rest of this chapter's machinery — [[USSP]], [register renaming](5CT9), [[1LCS]] — exists.}
 
 \transclude{DA6Q}
 \transclude{87GH}
