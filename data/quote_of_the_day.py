@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-r"""Print a Forester \iblock 'quote of the day' from Marcus Aurelius'
+r"""Print a Forester 'quote of the day' paragraph from Marcus Aurelius'
 Meditations, and mark it read so it won't recur until the corpus is exhausted.
 
 Paths resolve relative to this file, so it runs from any working directory.
@@ -54,10 +54,9 @@ def main():
     pool = [p for p in unread if len(p["text"]) <= SHORT_MAX] or unread
     q = random.choice(pool)
 
-    print("\\iblock{")
-    print(f"\\em{{{forester_safe(q['text'])}}}")
-    print(f"\\p{{— \\strong{{Marcus Aurelius}}, "
-          f"\\em{{Meditations}}, Book {q['book']} §{q['section']}}}")
+    print("\\p{")
+    print(f"\\em{{{forester_safe(q['text'])}}} — \\strong{{Marcus Aurelius}}, "
+          f"\\em{{Meditations}}, Book {q['book']} §{q['section']}")
     print("}")
 
     if not peek:
