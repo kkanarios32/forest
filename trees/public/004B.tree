@@ -123,13 +123,13 @@ Note that [non-singular](005U) does not imply [uniquely decodable](005M). This i
 \example{
     Let #{\mathcal{X} = \{1,2,3\}.} For #{n = 2}, #{x^n = 12} the [type](005X) is #{(\frac{1}{2},\frac{1}{2}, 0)} and the [type class](0061) is #{\{12, 21\}  }.
 }
-\section{Properties}{
+}
+\section{Properties of types}{
 \transclude{0062}
 \transclude{0063}
 \transclude{0065}
 \transclude{0064}
 \transclude{0066}
-}
 }
 \section{Large Deviation Theory}{
 \transclude{0067}
@@ -139,6 +139,7 @@ Note that [non-singular](005U) does not imply [uniquely decodable](005M). This i
 \transclude{0069}
 \transclude{006A}
 \transclude{006B}
+}
 \section{Notions of optimality}{
 \transclude{006C}
 \transclude{006D}
@@ -150,6 +151,7 @@ Note that [non-singular](005U) does not imply [uniquely decodable](005M). This i
 }
 \section{Error Exponents in Hypothesis Testing}{
 In the previous section, we consider the optimal test in the non-asymptotic regime i.e. for finite #{n} what test minimizes the error according to some notion of error. In this section, we ask the question of what is the rate that this error converges to #{0}. More specifically, if #{\text{error}_n \leq 2^{-nV}} then what is the best (largest) #{V} we can hope to achieve?
+}
 \section{NP Error Exponent}{
 \transclude{006G}
 \transclude{006H}
@@ -158,10 +160,9 @@ In the previous section, we consider the optimal test in the non-asymptotic regi
 \transclude{006I}
 \transclude{006J}
 }
-}
-}
 \section{Fixed-Rate Universal Source Coding}{
 \transclude{006K}
+}
 \section{Construction of universal fixed rated code}{
     To construct, a universal fixed rate code, we need a code that satisfies (i) and (ii) from [[006K]]. 
     \ul{
@@ -174,17 +175,16 @@ Let #{ |\mathcal{X}|=m }, and for any #{ n\geq1 } and a given #{ R>0 }, define #
     }
 \transclude{006L}
 }
-}
 \section{Variable-Rate Universal Source Coding}{
 \transclude{006M}
+\transclude{006P}
+}
 \section{Redundancy-Capacity Theorem}{
 \transclude{006N}
 \remark{
 It will turn out the optimal choice of #{Q} is the centroid associated with the #{k} elements of #{\mathcal{P}}.
 }
 \transclude{006O}
-}
-\transclude{006P}
 }
 \section{Channel Coding}{
 \p{The channel coding problem has three components — a channel encoder, a noisy channel, and a channel decoder. We pass a message #{W} to the encoder to get #{X^n}, which the noisy channel turns into #{Y^n}; the decoder must recover #{W} from #{Y^n}. The encoder's job is to reduce redundancy while keeping codewords far enough apart that the channel noise cannot confuse them.}
@@ -226,6 +226,7 @@ Note that the first term depends only on the encoder and the second term depends
 }
 \section{Differential Entropy}{
 \transclude{007C}
+}
 \section{AEP for Continuous Random Variables}{
 \transclude{007E}
 \transclude{007D}
@@ -237,7 +238,6 @@ Note that the first term depends only on the encoder and the second term depends
 Taking #{\Delta = 2^{-n}}, then #{X^{\Delta}} is an "#{n}-bit" approximation of #{X}.
 }
 \transclude{007H}
-}
 }
 \section{Gaussian Channel}{
 
