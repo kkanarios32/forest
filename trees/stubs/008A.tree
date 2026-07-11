@@ -16,8 +16,5 @@ To understand flow matching, it is a useful endeavor to understand the problems 
  \p{To generate samples, we integrate the \strong{vector field}}
  \p{\strong{Important:} We do not \em{have} the flow. We only have the flow for a \strong{given} #{x_{1}}. This can then provide a target for the vector field with equivalent gradient.}
 
- \transclude{008G}
- \transclude{008H}
-
 
 \transclude{TGWF}
