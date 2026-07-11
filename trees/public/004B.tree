@@ -11,7 +11,7 @@
 \transclude{0081}
 }
 
-\section{Lecture 5}{
+\section{Convexity and the fundamental inequalities}{
 \transclude{004C}
 \transclude{004D}
 
@@ -51,19 +51,12 @@
   \transclude{WV2P}
   \transclude{TVGU}
 }
-\section{Lecture 7}{
+\section{Estimation and the data processing inequality}{
 \transclude{004Y}
-\section{Data Processing Inequality}{
-    \transclude{UWYD}
-    \transclude{004Z}
-}
-\section{Fano's Inequality}{
-    \ul{
-        \li{#{H(X | Y)} controls the error probability #{P_e}.}
-      }
+\transclude{UWYD}
+\transclude{004Z}
 \transclude{0050}
 }
-  }
 \section{Asymptotic Equipartion Propery}{
 \transclude{0051}
 \transclude{0052}
@@ -113,11 +106,7 @@ Note that [non-singular](005U) does not imply [uniquely decodable](005M). This i
 }
 
 
-\section{Kraft's inequality}{
 \transclude{005O}
-\remark{Other direction is also true. For any #{\ell_i} satisfying Kraft's inequality, one can construct a prefix-free code whose lengths of #{e(x_i) = \ell_i}.}
-\remark{Surprisingly, any [uniquely decodable](005M) code must also satisfy [[005O]].}
-    }
 \section{Performance Limit of Variable Rate Source Codes}{
 \transclude{005P}
 \transclude{005Q}
@@ -198,6 +187,7 @@ It will turn out the optimal choice of #{Q} is the centroid associated with the 
 \transclude{006P}
 }
 \section{Channel Coding}{
+\p{The channel coding problem has three components — a channel encoder, a noisy channel, and a channel decoder. We pass a message #{W} to the encoder to get #{X^n}, which the noisy channel turns into #{Y^n}; the decoder must recover #{W} from #{Y^n}. The encoder's job is to reduce redundancy while keeping codewords far enough apart that the channel noise cannot confuse them.}
 \transclude{006S}
 \transclude{006T}
 \transclude{006U}
@@ -219,15 +209,6 @@ Random encoding: #{X^n(i)} is drawn i.i.d from some specified distribution #{P_X
 \remark{
 The capacity of a [symmetric or weakly symmetric](006Y) channel is #{\log(|\mathcal{Y}|) - H(r)}, where #{r} is the first row of #{P_{Y|X}}.
 }
-}
-\section{Channel Coding}{
-    \p{We have three components to the channel coding problem:}
-    \ol{
-      \li{Channel encoder}
-      \li{Noisy channel}
-      \li{Channel decoder}
-    }
-    \p{We first pass #{W} to the channel encoder get some #{X^n} which goes into noisy channel and becomes #{Y^n}. Then the goal is for the channel decoder to recover #{W} from #{Y^n}. This means that the goal of the encoder is to reduce redundancy while also ensuring that there is no overlap when passed through the noisy channel.}
 \transclude{0070}
 \transclude{0071}
 \remark{

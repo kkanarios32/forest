@@ -7,3 +7,7 @@
 \p{Let #{e: \mathcal{X} \to \{0,1\}^* } denote a [prefix-free](005N) code with lengths #{\ell_i = \ell(x_i)} for #{x_i \in \mathcal{X}}. Suppose #{|\mathcal{X}| = m}. Then the following must be true:
 ##{\sum_{i=1}^{m} 2^{-\ell_i} \leq 1}
 }
+
+\remark{The converse holds too: for any lengths #{\ell_i} satisfying the inequality, one can construct a [prefix-free](005N) code whose codewords have exactly those lengths.}
+
+\remark{Surprisingly, the constraint is no weaker for the larger class of [uniquely decodable](005M) codes — every uniquely decodable code must also satisfy the inequality (McMillan). So allowing non-prefix-free-but-decodable codes buys nothing in achievable lengths.}
