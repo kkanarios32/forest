@@ -9,20 +9,11 @@
 \transclude{7WG2}
 \transclude{LQV3}
 
-\section{Process-aware policy: segmented FIFO}{
-\p{Pure [[7WG2]] is a \em{global} policy — it does not distinguish memory by owner, so a single greedy process can hog memory. \em{Segmented FIFO} maintains a per-process FIFO queue capped at the process's \em{resident set size}; evicted pages go to one of two secondary lists:}
-\ol{
-  \li{\em{Clean page free list} — evicted pages that haven't been modified.}
-  \li{\em{Dirty page list} — evicted pages that need to be written back.}
-}
-\p{If the original process faults on a page still on the dirty list, it can be reclaimed without I/O.}
-}
+\p{Two refinements make eviction practical on real workloads. A pure global policy lets one greedy process hog memory, which [[HF6H]] fixes with a per-process resident-set cap; and writing victims back one page at a time wastes disk bandwidth, which [[YMHF]] amortizes by batching the dirty list.}
 
+\transclude{HF6H}
 \transclude{DEJB}
 \transclude{PW7Q}
-
-\section{Page clustering}{
-  \p{Small page-out I/Os are amortized by batching: instead of writing one dirty page at a time, the OS collects a batch from the global dirty list and writes them together.}
-}
+\transclude{YMHF}
 
 \remark{A common convention is to map the kernel into every process's address space (via [[DEJB]]) so kernel code and structures appear at the same virtual addresses everywhere.}

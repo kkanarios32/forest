@@ -1,0 +1,14 @@
+\date{2026-07-11T01:26:01Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Segmented FIFO}
+
+\p{A process-aware refinement of [[7WG2]]. Pure FIFO is a \em{global} policy — it does not distinguish memory by owner, so one greedy process can evict everyone else's pages. Segmented FIFO instead maintains a per-process FIFO queue capped at that process's \em{resident set size}, bounding how much physical memory any single process can hold.}
+
+\p{Evicted pages are not discarded outright; they move to one of two secondary lists:}
+\ol{
+  \li{\em{Clean page free list} — evicted pages that were never modified.}
+  \li{\em{Dirty page list} — evicted pages that must be written back before reuse.}
+}
+
+\p{The secondary lists act as a victim cache: if a process faults on a page still sitting on the dirty list, it can be reclaimed without going to disk. The resident-set cap gives fairness; the secondary lists soften the cost of capping it too aggressively.}

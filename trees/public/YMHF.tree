@@ -1,0 +1,6 @@
+\date{2026-07-11T01:26:02Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Page clustering}
+
+\p{An amortization trick for the write side of [page replacement](HK73). Writing one dirty page to swap at a time pays a full disk I/O per eviction, and small random writes are the worst case for a disk. Page clustering batches them: the OS collects a group of dirty pages from the global dirty list and writes them out together in a single larger, more sequential I/O. The per-page cost of paging out falls because the fixed overhead of a disk write is spread across the whole batch.}
