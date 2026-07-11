@@ -2,18 +2,10 @@
 \import{base-macros}
 \date{2025-07-06T20:47:40Z}
   \title{Optimality Conditions}
+  \p{Local conditions that a minimizer of a (not necessarily convex) #{f} must satisfy, phrased in terms of its gradient and Hessian at the candidate point. They pin an optimum down to a [stationary point](003P) and then use curvature to separate minima from maxima and saddles.}
     \transclude{003P}
-    \ul{
-    \li{\strong{First order necessary condition}:
-    If #{\ \mathbf{x_{\star}}} is a local minimizer of #{\ f:\mathbb{R}^{n}\mapsto\mathbb{R}}, and #{f} is continuously differentiable in an open neighborhood of #{\ \mathbf{x_{\star}}}, then we must have ##{\boxed{\nabla f(\mathbf{x_{\star}})\ =\ \mathbf{0}.}}
-    \li{\strong{Second order necessary condition:}
-    If #{\mathbf{x_{\star}}} is a local minimizer of #{f:\mathbb{R}^{n}\mapsto\mathbb{R}}, and #{f} is twice continuously differentiable in an open neighborhood around #{\mathbf{x_{\star}}}, then we must have ##{(i)\ \nabla f(\mathbf{x_{\star}})=\mathbf{0};} ##{(ii)\ \nabla^{2}f(\mathbf{x_{\star}})\succeq\mathbf{0}.}
-    \ul{
-        \li{If #{\nabla^{2}f(\mathbf{x_{\star}})\succ\mathbf{0}} then the above is a sufficient condition.}
-      }
-    }
-    }
-  }
+    \transclude{I6DT}
+    \transclude{U3L4}
   \remark{
   Let #{f:\mathbb{R}^{n}\mapsto\mathbb{R}} be a convex function, then 
   \ul{

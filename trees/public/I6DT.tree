@@ -1,0 +1,11 @@
+\date{2026-07-11T01:36:50Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{First-order optimality condition}
+\taxon{Theorem}
+\tag{public}
+
+\p{If #{\mathbf{x_\star}} is a local minimizer of #{f:\mathbb{R}^n\to\mathbb{R}} and #{f} is continuously differentiable in an open neighborhood of #{\mathbf{x_\star}}, then #{\mathbf{x_\star}} is a [stationary point](003P):
+##{\nabla f(\mathbf{x_\star})\ =\ \mathbf{0}.}}
+
+\p{This is only \em{necessary}: a stationary point may be a maximizer or saddle, which is what the [second-order conditions](U3L4) disambiguate. Under [convexity](004D) it becomes sufficient as well — a stationary point of a convex function is a global minimizer.}

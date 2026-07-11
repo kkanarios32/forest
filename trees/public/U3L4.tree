@@ -1,0 +1,14 @@
+\date{2026-07-11T01:36:51Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Second-order optimality conditions}
+\taxon{Theorem}
+\tag{public}
+
+\p{Let #{f:\mathbb{R}^n\to\mathbb{R}} be twice continuously differentiable in an open neighborhood of #{\mathbf{x_\star}}.}
+
+\p{\strong{Necessary.} If #{\mathbf{x_\star}} is a local minimizer, then
+##{(i)\ \nabla f(\mathbf{x_\star})=\mathbf{0};\qquad (ii)\ \nabla^2 f(\mathbf{x_\star})\succeq\mathbf{0}.}
+That is, it is a [stationary point](003P) whose Hessian is [positive semidefinite](003A).}
+
+\p{\strong{Sufficient.} If instead #{\nabla f(\mathbf{x_\star})=\mathbf{0}} and #{\nabla^2 f(\mathbf{x_\star})\succ\mathbf{0}} (Hessian strictly positive definite), then #{\mathbf{x_\star}} is a strict local minimizer. The gap between #{\succeq} and #{\succ} is exactly the ambiguity the [first-order condition](I6DT) alone cannot resolve.}
