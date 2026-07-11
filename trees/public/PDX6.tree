@@ -1,0 +1,14 @@
+\date{2026-07-11T01:32:03Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Matrix trace}
+\taxon{Definition}
+\tag{public}
+
+\p{For a square matrix #{\mathbf{M}\in\mathbb{R}^{n\times n}}, the trace is the sum of its diagonal entries:
+##{\mathrm{tr}(\mathbf{M}):=\sum_{i=1}^{n}M_{ii}.}}
+
+\p{Two identities make it the workhorse of matrix calculus. It is invariant under cyclic permutation of a product,
+##{\mathrm{tr}(\mathbf{A}\mathbf{B})=\mathrm{tr}(\mathbf{B}\mathbf{A}),\qquad \mathrm{tr}(\mathbf{A}_{1}\mathbf{A}_{2}\cdots\mathbf{A}_{n})=\mathrm{tr}(\mathbf{A}_{\pi(1)}\cdots\mathbf{A}_{\pi(n)})}
+for any cyclic permutation #{\pi} of #{\{1,\dots,n\}}; and it computes the [matrix inner product](WWMR),
+##{\langle\mathbf{X},\mathbf{Z}\rangle=\mathrm{tr}(\mathbf{X}^{\top}\mathbf{Z})=\mathrm{tr}(\mathbf{X}\mathbf{Z}^{\top}).}}

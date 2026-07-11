@@ -1,0 +1,10 @@
+\date{2026-07-11T01:33:32Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Spectral norm}
+\taxon{Definition}
+\tag{public}
+
+\p{The [operator norm](003G) of a matrix induced by the Euclidean norm on both sides, #{\|\mathbf{A}\|_{2\to 2}}, usually written just #{\|\mathbf{A}\|}. It equals the largest singular value,
+##{\|\mathbf{A}\|\ =\ \sup_{\|\mathbf{x}\|_2\leq 1}\|\mathbf{A}\mathbf{x}\|_2\ =\ \sigma_1(\mathbf{A}),}
+i.e. the most any unit vector can be stretched by #{\mathbf{A}}. As a [Schatten norm](003I) it is the #{p=\infty} case, #{\|\mathbf{A}\|_{\mathrm{S}_\infty}=\|\sigma(\mathbf{A})\|_\infty}, sitting opposite the [Frobenius norm](4M9J) (#{p=2}) in that family.}

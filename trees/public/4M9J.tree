@@ -1,0 +1,10 @@
+\date{2026-07-11T01:33:33Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Frobenius norm}
+\taxon{Definition}
+\tag{public}
+
+\p{The entrywise Euclidean norm of a matrix — treat #{\mathbf{A}} as a long vector and take its 2-norm:
+##{\|\mathbf{A}\|_F\ =\ \sqrt{\sum_{i,j}A_{ij}^2}\ =\ \sqrt{\langle\mathbf{A},\mathbf{A}\rangle}\ =\ \sqrt{\mathrm{tr}(\mathbf{A}^{\top}\mathbf{A})}.}
+It is the norm induced by the [matrix inner product](WWMR), and in terms of singular values it is the #{p=2} [Schatten norm](003I), #{\|\mathbf{A}\|_F=\sqrt{\sum_i\sigma_i^2(\mathbf{A})}} — the Euclidean length of the singular-value vector, dual in that family to the [spectral norm](3U43) (#{p=\infty}).}

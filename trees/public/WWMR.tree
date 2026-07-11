@@ -1,0 +1,13 @@
+\date{2026-07-11T01:32:02Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Matrix inner product}
+\taxon{Definition}
+\tag{public}
+
+\p{The [inner product](B1RI) on #{\mathbb{R}^{m\times n}}, obtained by treating a matrix as a long vector and summing the entrywise products:
+##{\langle\mathbf{X},\mathbf{Z}\rangle\ :=\ \sum_{i=1}^{m}\sum_{j=1}^{n}X_{ij}Z_{ij},}
+the direct generalization of the vector case #{\langle\mathbf{x},\mathbf{z}\rangle=\sum_i x_i z_i}. It is the inner product whose induced norm is the Frobenius norm, #{\|\mathbf{X}\|_F=\sqrt{\langle\mathbf{X},\mathbf{X}\rangle}}.}
+
+\p{It has a compact trace form (see [[PDX6]]):
+##{\langle\mathbf{X},\mathbf{Z}\rangle\ =\ \mathrm{tr}(\mathbf{X}^{\top}\mathbf{Z})\ =\ \mathrm{tr}(\mathbf{X}\mathbf{Z}^{\top}).}}
