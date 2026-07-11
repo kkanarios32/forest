@@ -1,0 +1,15 @@
+\date{2026-07-11T01:16:58Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Directory protocols expose transient states because transactions span multiple hops}
+\tag{public}
+
+\p{Because a [directory](KIT8) transaction takes several hops (requestor → home → owner → …), a line spends observable time in \em{transient states} between the stable ones — e.g. #{\mathrm{MI}^{A}} ("modified, going to invalid, waiting on an acknowledgment"). These are not an implementation detail to wave away: concurrent transactions to the same line race, and the protocol must define a correct outcome for every interleaving. That combinatorial state space is what makes directory protocols hard to get right.}
+
+\example{L holds a dirty copy and starts a writeback to home H. Concurrently R sends a read to H. R sits in #{\mathrm{S}^{D}} ("shared, waiting for data") until the race resolves.
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/example-race.png}}{}
+}
+}
+
+\remark{Never resolve these races with NACKs — they cause starvation. The [[HHZO]] Murphi implementation works through the channel-separation arguments that keep the transient-state space deadlock-free.}

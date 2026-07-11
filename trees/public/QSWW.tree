@@ -1,0 +1,7 @@
+\date{2026-07-11T01:16:57Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Sparse directories keep coherence metadata from scaling with memory}
+\tag{public}
+
+\p{A [directory](KIT8) must remember which caches hold each line, and the naive encoding — a sharer bitmap per cache line — does not scale: at 256 nodes that is 32 bytes of metadata per line, so roughly half of memory goes to coherence bookkeeping. Two ideas bring it back down. \em{Limited-sharer encoding} exploits the fact that most lines have ≤4 sharers: track those exactly and fall back to broadcast for the rare widely-shared line. \em{Sparse directories} go further and cache the directory entries themselves — an entry missing from the directory cache means nobody holds the line at all, and evicting an entry invalidates the corresponding lines. The directory then scales with the number of \em{actively cached} lines rather than with total memory.}

@@ -1,0 +1,9 @@
+\date{2026-07-11T01:16:59Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Migratory-sharing optimization collapses read-then-write into one coherence transaction}
+\tag{public}
+
+\p{A common access pattern is \em{migratory}: a core reads a line and then writes it — think a lock or a hand-off variable that passes from core to core. Handled naively this costs two [cache-coherence](GA7N) transactions: a read miss that fetches the line shared, then a write miss that upgrades it to modified. \em{Upgrade-miss detection} spots the pattern and, on the read miss, transitions the line straight to a migratory-exclusive state, so the following write is silent — one transaction instead of two.}
+
+\remark{The same optimization \em{hurts} producer–consumer sharing, where one core writes and several read. There the right move on a read miss is to \em{downgrade} the previous writer rather than invalidate it, so later readers source the line from the last writer instead of racing to own it. The lesson generalizes: coherence optimizations are workload-shaped — a win for one sharing pattern is a loss for another.}
