@@ -6,3 +6,16 @@
 \p{When threads in a warp take different branches of a conditional, the warp does not split into smaller warps. Instead, the active mask selects which lanes execute each branch; lanes on the inactive side run \em{dummy} instructions until the warp reconverges at the post-conditional join point. The programmer writes ordinary scalar code with \code{if}/\code{else}, and the hardware silently masks the inactive lanes.}
 
 \p{This is the chief ergonomic win over SIMD: the compiler does not have to prove that all lanes will take the same path. The cost is that divergent code pays for both sides — a 32-wide warp where 16 threads take the if-branch and 16 take the else-branch executes both branches sequentially with half the lanes idle each time.}
+
+\section{How the hardware tracks divergence}{
+\p{Classically the SM manages divergence with a \em{reconvergence stack}. Each entry holds a next-PC, a reconvergence PC (the post-conditional join point), and an active mask; on a divergent branch the hardware pushes both sides and executes them one at a time, popping back to the reconvergence point as each side completes. Entries are pushed largest-mask-first to bound stack depth.}
+
+\p{The stack has a fatal flaw. A thread that exits a loop diverges and is stacked \em{below} threads still spinning inside it — so if those spinning threads wait on a lock the exited thread already holds, neither can proceed and the program deadlocks. Modern NVIDIA hardware abandons the stack for a barrier-based scheme: each divergence point is tracked by a 32-bit participation mask, letting the scheduler switch between branches arbitrarily and guarantee \em{independent thread progress}.}
+}
+
+\section{Mitigations}{
+\ul{
+  \li{Structure code so a warp's threads follow the same control flow.}
+  \li{\em{Warp specialization} ([[JKNL]]): group threads with the same control-flow trajectory into the same warp so future branches stay non-divergent.}
+}
+}

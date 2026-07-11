@@ -1,0 +1,15 @@
+\date{2026-07-11T00:07:45Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Warp scheduling hides memory latency by switching among resident warps}
+\tag{public}
+
+\p{A GPU keeps many [warps](X9VZ) resident on each [[OGCS6]] and switches between them on every stall. When a warp issues a memory op that misses cache it is dead for hundreds of cycles — but with dozens of resident warps the scheduler always has a runnable one, so aggregate throughput stays high even though single-warp latency is awful. This is the [[G4ML]] design point cashed out on the GPU: spend silicon on resident warp state rather than on latency-reduction machinery.}
+
+\p{\em{Occupancy} — the ratio of active warps to the SM's maximum — measures how much slack the scheduler has. Higher occupancy means more candidates to switch to, hence more latency hiding; low occupancy stalls the SM whenever every resident warp is waiting on the same transaction. For latency-bound workloads (most GPU code), maximizing occupancy is the first-order optimization.}
+
+\section{The two-loop scheduler}{
+\p{Checking every warp's operands against the [scoreboard](XPAA) every cycle would be prohibitive — 64 warps against 4 operands each is 256 comparisons. Instead the scheduler splits into two loops. The first selects a warp with space in its instruction buffer, looks up its PC, and fetches; a small per-warp bit-vector of outstanding register dependencies rides alongside the fetched instruction and clears as writes retire. The second loop issues any buffered instruction whose dependency vector is clean. An instruction stays ineligible until its vector clears, so readiness is an #{O(1)} check per warp rather than a global scan.}
+
+\p{Register reads then hit a second hazard: the [register file](ETWN) is banked, and a warp's 32 threads each reading 2–4 registers cannot all hit the same bank in one cycle. An \em{operand collector} gathers the reads across cycles and routes register values to the lanes. These register-file [bank conflicts](OGCRU) are invisible to the programmer, but shrink as \em{register pressure} drops — fewer registers per thread, fewer collisions.}
+}

@@ -1,24 +1,8 @@
 \import{base-macros}
 \date{2026-05-12T22:59:13Z}
 \tag{public}
-\title{Warp scheduling hides memory latency by switching among resident warps}
+\title{Warp}
 
-\p{A warp is 32 threads on an NVIDIA GPU executing in lockstep — one instruction issued per cycle to all 32. The SM's \em{warp scheduler} picks which resident warp to run on each cycle.}
+\p{A \em{warp} is the unit of scheduling on an NVIDIA GPU: a group of ~32 threads that issue one instruction per cycle in lockstep. Each functional unit in the [SM](OGCS6) has as many lanes as a warp has threads, so a single fetched instruction fans out across all 32 lanes at once. The warp — not the thread — is what the hardware fetches, schedules, and tracks; the per-thread [[7F19]] programming model is an illusion built on top of it.}
 
-\p{The point of the scheduler: hide stalls. When a warp issues a memory operation that misses cache, it can't run for hundreds of cycles. With many resident warps, the scheduler always has a runnable one. Aggregate throughput stays high even though individual-warp latency is awful.}
-
-\section{Latency hiding}{
-\p{\em{Occupancy} is the ratio of active warps to maximum allowed warps per SM. Higher occupancy means more candidates for the scheduler to switch to, which means more latency hiding. Low occupancy means the SM stalls because every resident warp is waiting on the same memory transaction.}
-
-\p{For latency-bound workloads (and most GPU code is), maximizing occupancy is the first-order optimization.}
-}
-
-\section{Warp divergence}{
-\p{When threads in a warp take different branches of a conditional, the SM must serialize: execute one branch with its threads active and the others masked off, then the other. The lanes on the inactive path execute dummy instructions, wasting their compute slots.}
-
-\p{Mitigations:}
-\ul{
-  \li{Structure code so threads in a warp follow the same control flow when possible.}
-  \li{\em{Warp specialization}: have the compiler group threads with the same control-flow pattern into the same warp.}
-}
-}
+\p{Because the warp is the atom of execution, the two facts that dominate GPU performance are both properties of the warp: it [hides memory latency by switching among resident warps](1PWL) instead of stalling, and it [serializes both sides of a branch](OGCSM) when its threads diverge.}
