@@ -16,3 +16,5 @@
 }
 
 \p{The concrete state machines are protocols like [[EYXU]], [[30XT]], [[AI2B]], and DEC Firefly, each adding states to handle more cases or to optimize specific sharing patterns. A worked implementation of directory-based MESI in Murphi lives in [[HHZO]].}
+
+\p{Worked instance: [[HHZO]] implements directory-based MESI in Murphi.}

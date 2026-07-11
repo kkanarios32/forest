@@ -16,10 +16,7 @@
 \transclude{Q2DT}
 }
 
-\section{Cache coherence}{
 \transclude{GA7N}
-\p{Worked instance: [[HHZO]] implements directory-based MESI in Murphi.}
-}
 
 \section{Memory consistency}{
 \transclude{OW4D}
