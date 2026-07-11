@@ -137,6 +137,14 @@
  }
 }
 
+% The answer side of a spaced-repetition card. A card tree (trees/cards/) is
+% \taxon{Card} with \title{<question>} and this \prompt{<answer>} as its body;
+% the theme paints the whole Card-taxon section (question + answer) as one blue
+% card (see style.css). The tree id is the card's stable identity and
+% scripts/anki-sync mirrors \title -> Front and \prompt -> Back to Anki, writing
+% the note id back as \meta{anki}{...}.
+\def\prompt[back]{\p{\back}}
+
 \def\proof[body]{%
  \scope{
    \put\transclude/toc{false}

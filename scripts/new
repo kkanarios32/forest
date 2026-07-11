@@ -40,6 +40,7 @@ fi
 case "$TEMPLATE" in
   stub)      DEST="$FORESTDIR/trees/stubs" ;;
   lit-notes) DEST="$FORESTDIR/trees/lit-notes" ;;
+  card)      DEST="$FORESTDIR/trees/cards" ;;
   *)         DEST="$FORESTDIR/trees/public" ;;
 esac
 mkdir -p "$DEST"
@@ -74,8 +75,15 @@ fi
 # Publish by default, but respect templates that opt out of the public site
 # (stub / lit-notes). Never add a second public tag a template already declares.
 if ! grep -q '\\tag{public}' "$FILENAME" \
-   && ! grep -qE '\\tag\{(stub|private)\}' "$FILENAME"; then
+   && ! grep -qE '\\tag\{(stub|private|card)\}' "$FILENAME"; then
   echo '\tag{public}' >> "$FILENAME"
+fi
+
+# Cards: the \title is the question (front); \prompt holds only the answer.
+# `new card <question>` leaves an empty \prompt to fill; scripts/anki-sync
+# mirrors \title -> Front and \prompt -> Back to Anki.
+if [ "$TEMPLATE" = "card" ]; then
+  printf '\n\\prompt{\n  \n}\n' >> "$FILENAME"
 fi
 
 # Refresh the derived views: notes-log.md (permanent index) and inbox.md

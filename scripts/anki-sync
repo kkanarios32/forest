@@ -1,0 +1,245 @@
+#!/usr/bin/env python3
+"""Mirror trees/cards/*.tree prompts into Anki via AnkiConnect.
+
+Each card tree holds exactly one `\\prompt{front}{back}`. The tree's Forester id
+is the card's stable identity; the Anki note id is written back into the tree as
+`\\meta{anki}{<id>}` on first sync, so every later sync is idempotent (update,
+not duplicate). Notes land in the `Forest` deck (override per card with
+`\\meta{anki-deck}{DeckName}`) using the built-in `Basic` model, tagged
+`forest` + `forest-id-<treeid>`.
+
+Dry run by default — prints the plan and touches nothing. Pass --apply to
+create/update notes in Anki and write ids back. Pass --prune (with --apply) to
+delete Anki notes whose source card tree no longer exists.
+
+    scripts/anki-sync              # show the plan
+    scripts/anki-sync --apply      # do it
+    scripts/anki-sync --apply --prune
+"""
+import argparse
+import json
+import os
+import re
+import sys
+import urllib.request
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CARDS_DIR = os.path.join(ROOT, "trees", "cards")
+ANKI_URL = "http://localhost:8765"
+DEFAULT_DECK = "Forest"
+MODEL = "Basic"
+
+
+# ---- AnkiConnect ------------------------------------------------------------
+
+def anki(action, **params):
+    payload = json.dumps({"action": action, "version": 6, "params": params}).encode()
+    req = urllib.request.Request(
+        ANKI_URL, data=payload, headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=15) as r:
+        resp = json.load(r)
+    if resp.get("error"):
+        raise RuntimeError(f"AnkiConnect error on '{action}': {resp['error']}")
+    return resp["result"]
+
+
+# ---- Forester parsing -------------------------------------------------------
+
+def brace_arg(s, i):
+    """s[i] must be '{'. Return (content, index just past the matching '}')."""
+    depth, start = 0, i
+    while i < len(s):
+        c = s[i]
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                return s[start + 1:i], i + 1
+        i += 1
+    raise ValueError("unbalanced braces")
+
+
+def parse_prompt(text):
+    """Extract the answer (back) from \\prompt{...}, or None. The question
+    (front) is the tree's \\title, so \\prompt carries only the answer."""
+    m = re.search(r"\\prompt\b", text)
+    if not m:
+        return None
+    i = m.end()
+    while i < len(text) and text[i] in " \t\r\n":
+        i += 1
+    if i >= len(text) or text[i] != "{":
+        return None
+    back, _ = brace_arg(text, i)
+    return back.strip()
+
+
+def meta(text, key):
+    m = re.search(r"\\meta\{" + re.escape(key) + r"\}\{([^}]*)\}", text)
+    return m.group(1).strip() if m else None
+
+
+def brace_arg_named(text, macro):
+    i = text.find("\\" + macro + "{")
+    if i < 0:
+        return None
+    content, _ = brace_arg(text, i + len(macro) + 1)
+    return content
+
+
+# ---- Forester -> Anki (HTML + MathJax) --------------------------------------
+
+def convert_math(s):
+    out, i = [], 0
+    while i < len(s):
+        if s[i] == "#" and s[i:i + 3] == "##{":
+            content, i = brace_arg(s, i + 2)
+            out.append("\\[" + content + "\\]")
+        elif s[i] == "#" and s[i:i + 2] == "#{":
+            content, i = brace_arg(s, i + 1)
+            out.append("\\(" + content + "\\)")
+        else:
+            out.append(s[i])
+            i += 1
+    return "".join(out)
+
+
+def to_anki(s, titles):
+    s = convert_math(s)
+    s = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", s)                     # [text](ID) -> text
+    s = re.sub(r"\[\[([0-9A-Za-z\-]+)\]\]",
+               lambda m: titles.get(m.group(1), m.group(1)), s)       # [[ID]] -> title
+    s = re.sub(r"\\strong\{([^}]*)\}", r"<b>\1</b>", s)
+    s = re.sub(r"\\em\{([^}]*)\}", r"<i>\1</i>", s)
+    s = re.sub(r"\\code\{([^}]*)\}", r"<code>\1</code>", s)
+    return s.strip()
+
+
+def build_title_index():
+    """id -> plain-text title, for resolving [[ID]] links in card text."""
+    titles = {}
+    trees = os.path.join(ROOT, "trees")
+    for dirpath, _, files in os.walk(trees):
+        for fn in files:
+            if not fn.endswith(".tree"):
+                continue
+            path = os.path.join(dirpath, fn)
+            try:
+                text = open(path, encoding="utf-8", errors="ignore").read()
+            except OSError:
+                continue
+            raw = brace_arg_named(text, "title")
+            if raw:
+                plain = re.sub(r"[#]{1,2}\{|\}|\\[a-zA-Z]+|\[\[|\]\]", "",
+                               " ".join(raw.split()))
+                titles[fn[:-5]] = plain.strip()
+    return titles
+
+
+# ---- Write the note id back into the card tree ------------------------------
+
+def write_back_id(path, text, note_id):
+    line = f"\\meta{{anki}}{{{note_id}}}"
+    if re.search(r"\\meta\{anki\}\{[^}]*\}", text):
+        new = re.sub(r"\\meta\{anki\}\{[^}]*\}", lambda m: line, text)
+    elif "\\tag{card}\n" in text:
+        new = text.replace("\\tag{card}\n", "\\tag{card}\n" + line + "\n", 1)
+    else:
+        new = re.sub(r"\n\\prompt", "\n" + line + "\n\\prompt", text, count=1)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(new)
+
+
+# ---- Main -------------------------------------------------------------------
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--apply", action="store_true",
+                    help="create/update Anki notes and write ids back (default: dry run)")
+    ap.add_argument("--prune", action="store_true",
+                    help="with --apply, delete Anki notes whose card tree is gone")
+    args = ap.parse_args()
+
+    if not os.path.isdir(CARDS_DIR):
+        print(f"no cards directory at {CARDS_DIR} — nothing to sync")
+        return
+
+    try:
+        anki("version")
+    except Exception as e:
+        sys.exit(f"AnkiConnect unreachable ({e}). Is Anki running with the add-on?")
+
+    titles = build_title_index()
+
+    cards = []
+    for fn in sorted(os.listdir(CARDS_DIR)):
+        if not fn.endswith(".tree"):
+            continue
+        path = os.path.join(CARDS_DIR, fn)
+        text = open(path, encoding="utf-8").read()
+        back = parse_prompt(text)
+        if back is None:
+            print(f"  skip   {fn[:-5]}: no \\prompt found")
+            continue
+        raw_title = brace_arg_named(text, "title")
+        if not raw_title:
+            print(f"  skip   {fn[:-5]}: no \\title (the card's question)")
+            continue
+        front = " ".join(raw_title.split())
+        cards.append({
+            "id": fn[:-5], "path": path, "text": text,
+            "front": to_anki(front, titles), "back": to_anki(back, titles),
+            "deck": meta(text, "anki-deck") or DEFAULT_DECK,
+            "note_id": meta(text, "anki"),
+        })
+
+    if args.apply:
+        for deck in sorted({c["deck"] for c in cards}):
+            anki("createDeck", deck=deck)
+
+    added = updated = 0
+    for c in cards:
+        nid = int(c["note_id"]) if c["note_id"] else None
+        exists = bool(nid and anki("notesInfo", notes=[nid]) and
+                      anki("notesInfo", notes=[nid])[0].get("noteId"))
+        if exists:
+            print(f"  update {c['id']} -> note {nid}  [{c['deck']}]")
+            if args.apply:
+                anki("updateNoteFields",
+                     note={"id": nid, "fields": {"Front": c["front"], "Back": c["back"]}})
+            updated += 1
+        else:
+            tag = f"forest-id-{c['id']}"
+            note = {"deckName": c["deck"], "modelName": MODEL,
+                    "fields": {"Front": c["front"], "Back": c["back"]},
+                    "tags": ["forest", tag],
+                    "options": {"allowDuplicate": False, "duplicateScope": "deck"}}
+            print(f"  ADD    {c['id']} (new)     [{c['deck']}]")
+            if args.apply:
+                new_id = anki("addNote", note=note)
+                write_back_id(c["path"], c["text"], new_id)
+            added += 1
+
+    # Orphans: forest-tagged Anki notes whose source card tree is gone.
+    live_ids = {c["id"] for c in cards}
+    orphans = []
+    for nid in anki("findNotes", query="tag:forest"):
+        info = anki("notesInfo", notes=[nid])[0]
+        src = next((t[len("forest-id-"):] for t in info.get("tags", [])
+                    if t.startswith("forest-id-")), None)
+        if src is not None and src not in live_ids:
+            orphans.append((nid, src))
+    for nid, src in orphans:
+        verb = "PRUNE " if (args.apply and args.prune) else "orphan"
+        print(f"  {verb} note {nid} (was card {src})")
+    if args.apply and args.prune and orphans:
+        anki("deleteNotes", notes=[nid for nid, _ in orphans])
+
+    mode = "applied" if args.apply else "dry run — pass --apply to sync"
+    print(f"\n{len(cards)} cards · {added} to add · {updated} to update · "
+          f"{len(orphans)} orphaned  ({mode})")
+
+
+if __name__ == "__main__":
+    main()
