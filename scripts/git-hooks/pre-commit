@@ -1,5 +1,5 @@
 #!/bin/bash
-# Keep notes-log.md in sync with trees/public/ on every commit. This catches
+# Keep notes-log.md in sync with trees/evergreen/ on every commit. This catches
 # trees created outside `scripts/new` (e.g. `forester new` directly or an editor
 # snippet) and title/date edits to existing trees. Rebuilds the registry and
 # stages it if it changed. Never blocks a commit: a registry failure warns only.
@@ -13,7 +13,7 @@ if ! "$ROOT/scripts/registry"; then
 fi
 
 # Refresh the local inbox worklist too (gitignored, never staged) so stub /
-# lit-note trees created outside scripts/new still show up.
+# transient trees created outside scripts/new still show up.
 "$ROOT/scripts/inbox" >/dev/null 2>&1 || true
 
 # Stage the (re)generated registry. `git add` is a no-op when content is

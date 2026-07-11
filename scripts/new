@@ -4,7 +4,7 @@ set -euo pipefail
 TEMPLATE="${1:-}"
 
 # Title is every argument after the template. A trailing `@citekey` token is
-# pulled off as the source citation (for literature notes) rather than
+# pulled off as the source citation (for transient notes) rather than
 # treated as part of the title.
 ARGS=("${@:2}")
 CITE=""
@@ -21,17 +21,18 @@ if [ -z "$TEMPLATE" ] || [ -z "$TITLE" ]; then
   cat >&2 <<'USAGE'
 usage: scripts/new <template> <title...> [@citekey]
 
-  template: def thm prop lemma blog potw experiment  -> trees/public/    (permanent)
-            stub                                      -> trees/stubs/     (concept stub / link target)
-            lit-notes                                 -> trees/lit-notes/ (literature notes)
-            note                                      -> trees/public/    (plain, no body)
+  template: def thm prop lemma blog potw experiment  -> trees/evergreen/  (permanent)
+            stub                                      -> trees/stubs/      (concept stub / link target)
+            transient                                 -> trees/inbox/      (transient / literature note)
+            card                                      -> trees/cards/      (spaced-repetition prompt)
+            note                                      -> trees/evergreen/  (plain, no body)
   title:    display title (may contain spaces, no quotes needed)
-  @citekey: optional source, seeds \citek{...} — use for literature notes
+  @citekey: optional source, seeds \citek{...} — use for transient notes
 
 examples:
   scripts/new def Warp scheduling divergence
   scripts/new stub Total Store Order
-  scripts/new lit-notes Store instruction lifecycle @henn2017
+  scripts/new transient Store instruction lifecycle @henn2017
 USAGE
   exit 1
 fi
@@ -39,9 +40,9 @@ fi
 # Route by kind: the directory *is* the note's stage in the pipeline.
 case "$TEMPLATE" in
   stub)      DEST="$FORESTDIR/trees/stubs" ;;
-  lit-notes) DEST="$FORESTDIR/trees/lit-notes" ;;
+  transient) DEST="$FORESTDIR/trees/inbox" ;;
   card)      DEST="$FORESTDIR/trees/cards" ;;
-  *)         DEST="$FORESTDIR/trees/public" ;;
+  *)         DEST="$FORESTDIR/trees/evergreen" ;;
 esac
 mkdir -p "$DEST"
 
@@ -52,7 +53,7 @@ TPL="templates/$TEMPLATE.tree"
 
 # forester emitted just `\date{...}`. Complete the standard frontmatter now that
 # the title is known. Skip `\author` when the template opts out via
-# `\meta{author}{false}` (e.g. literature notes).
+# `\meta{author}{false}` (e.g. transient notes).
 {
   echo '\import{base-macros}'
   if [ ! -f "$TPL" ] || ! grep -q '\\meta{author}{false}' "$TPL"; then
@@ -67,15 +68,15 @@ if [ -f "$TPL" ]; then
   grep -vE '^\\(import\{base-macros\}|author\{[^}]*\}|title\{)' "$TPL" >> "$FILENAME" || true
 fi
 
-# Literature notes are bound to their source: seed the citation up front.
+# Transient (literature) notes are bound to their source: seed the citation up front.
 if [ -n "$CITE" ]; then
   printf '\n\\p{Source: \\citek{%s}.}\n' "$CITE" >> "$FILENAME"
 fi
 
 # Publish by default, but respect templates that opt out of the public site
-# (stub / lit-notes). Never add a second public tag a template already declares.
+# (stub / transient). Never add a second public tag a template already declares.
 if ! grep -q '\\tag{public}' "$FILENAME" \
-   && ! grep -qE '\\tag\{(stub|private|card)\}' "$FILENAME"; then
+   && ! grep -qE '\\tag\{(stub|private|card|transient)\}' "$FILENAME"; then
   echo '\tag{public}' >> "$FILENAME"
 fi
 
@@ -87,7 +88,7 @@ if [ "$TEMPLATE" = "card" ]; then
 fi
 
 # Refresh the derived views: notes-log.md (permanent index) and inbox.md
-# (stub/lit-notes worklist). Both scripts are the single source of truth for format.
+# (stub/transient worklist). Both scripts are the single source of truth for format.
 HERE="$(dirname "$0")"
 "$HERE/registry"
 "$HERE/inbox" >/dev/null

@@ -1,7 +1,7 @@
 \import{base-macros}
 \author{kellenkanarios}
 \meta{author}{false}
-\tag{private}
+\tag{transient}
 \title{\code{tmux} keybinds}
 \date{2026-06-18T12:53:52Z}
 

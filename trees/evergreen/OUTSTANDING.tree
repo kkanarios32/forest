@@ -1,0 +1,17 @@
+\import{base-macros}
+\author{kellenkanarios}
+\title{Outstanding questions}
+\tag{public}
+\tag{note}
+
+\p{Open questions the forest raises but has not resolved, collected by the
+\code{question} tag. A question graduates by being answered — rewrite it as
+the resulting claim or definition and drop the tag. Driving this list down
+is how the graph grows.}
+
+\put\transclude/expanded{false}
+
+\query\datalog{
+  ?X -:
+  {\rel/has-tag ?X '{question}}
+}

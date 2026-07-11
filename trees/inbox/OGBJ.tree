@@ -1,7 +1,7 @@
 \import{base-macros}
 \author{kellenkanarios}
 \meta{author}{false}
-\tag{private}
+\tag{transient}
 \title{What happens during a function call}
 \date{2026-07-08T15:20:22Z}
 

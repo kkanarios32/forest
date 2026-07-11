@@ -1,7 +1,7 @@
 \import{base-macros}
 \author{kellenkanarios}
 \meta{author}{false}
-\tag{private}
+\tag{transient}
 \title{Bufferless Flow Control}
 \date{2026-06-03T01:15:02Z}
 \p{

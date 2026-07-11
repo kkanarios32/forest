@@ -11,8 +11,8 @@ overview is `CLAUDE.md`.
 
 ## Boundaries
 
-**You own:** `trees/public/`, `trees/research/`, `trees/stubs/`,
-`trees/lit-notes/`, `trees/cards/`, `trees/daily/`, `trees/weeknotes/`.
+**You own:** `trees/evergreen/`, `trees/research/`, `trees/stubs/`,
+`trees/inbox/`, `trees/cards/`, `trees/daily/`, `trees/weeknotes/`.
 Create, update, rewrite, restructure, and atomize freely.
 
 **You curate but do not hand-edit:** `trees/refs/`. These are
@@ -23,7 +23,7 @@ JSON array to include `"manual"`; without that tag, `split_bib`
 overwrites on the next run.
 
 **Read-only:** `theme/` (git submodule — page-level tweaks belong in
-`trees/public/base-macros.tree`, not the theme), `output/` (build
+`trees/evergreen/base-macros.tree`, not the theme), `output/` (build
 artifact), `tex/generated/` (intermediate JSON from `split_bib`).
 
 ## Evolution
@@ -42,7 +42,7 @@ prefer descriptive commit messages.
 
 ## Tree format
 
-Every authored tree under `trees/public/` looks roughly like this:
+Every authored tree under `trees/evergreen/` looks roughly like this:
 
 ```
 \import{base-macros}
@@ -126,15 +126,33 @@ to an existing tree, that is a signal to split.
 
 ## Tag vocabulary
 
-Two tags carry behavior:
+Tags carry three things: publish state, pipeline stage, and topic. The
+behavioral ones:
 
 - `public` — opt into the published site.
-- `private` — kept local (daily logs, lit-notes).
+- `private` — kept local (daily logs, weeknotes).
 - `stub` — a placeholder link target awaiting a body; off-site, shows
   in `scripts/inbox` ranked by inbound links.
+- `transient` — a first-pass inbox note (literature note or other
+  capture) awaiting promotion to an evergreen note; off-site, shows in
+  `scripts/inbox`.
+- `card` — a spaced-repetition prompt (see below); off-site, mirrored
+  to Anki.
+
+Two role tags mark a note's kind within the evergreen graph, and exist
+mainly so Datalog can index them:
+
+- `question` — an open question the graph raises but has not resolved.
+  Surfaced together on the [[OUTSTANDING]] index; a question graduates
+  by being answered — rewrite it as the resulting claim/definition and
+  drop the tag (or link the answer and keep it as a resolved pointer).
+- `bridge` — a note whose job is to connect two clusters that were
+  developed separately (an analogy, a translation of vocabulary, a
+  "these are the same thing" observation). Bridges are the highest-value
+  links in the graph; tag them so they can be found.
 
 Topical tags currently in use (reuse before inventing): `blog`, `note`,
-`top`, `margin`, `potw`, `upcoming`, `stub`, `talk`, `prob`,
+`top`, `margin`, `potw`, `upcoming`, `talk`, `prob`,
 `action-perception`. Add tags when a Datalog query would benefit. List
 trees with a given tag combination via `scripts/hastags public blog`.
 
@@ -187,7 +205,7 @@ prompt per tree, the tree's id is the card's stable identity.
 1. `scripts/new def <Title>` (or `thm`, `prop`, `lemma`, `blog`,
    `potw`). The title is required and may contain spaces, no quotes
    needed (`scripts/new def Warp scheduling divergence`). This creates
-   `trees/public/<random-id>.tree` with the full frontmatter
+   `trees/evergreen/<random-id>.tree` with the full frontmatter
    (`\import`, `\author`, `\title`, publish tag) and template body
    already filled in, and appends a line to `notes-log.md`.
 2. Write the body. Lead with one orienting sentence inside `\p{...}`.
@@ -219,7 +237,7 @@ When prose mentions an atomic concept that does not yet have a tree:
    `scripts/hastags stub` and in `scripts/inbox` (ranked by how many
    trees link it), and can be promoted to a full atomic concept — write
    the body, drop the `\stub` line, swap `\tag{stub}` for `\tag{public}`
-   + a taxon, and `git mv` it to `trees/public/` — whenever the idea is
+   + a taxon, and `git mv` it to `trees/evergreen/` — whenever the idea is
    ready to write. Its id and inbound links never change.
 
 ### Build a notebook / index page
@@ -276,34 +294,35 @@ Notes flow through three stages, and the directory *is* the stage.
 1. **`trees/stubs/` — concept stubs** (`scripts/new stub <title>`).
    Placeholder trees that exist only so a prose link resolves —
    `\title{...}` plus the `\stub` notice, no body. `\tag{stub}`,
-   off-site. Ids are directory-independent, so a stub promotes to a
-   permanent note with no link breakage. The reading queue (sources you
+   off-site. Ids are directory-independent, so a stub promotes to an
+   evergreen note with no link breakage. The reading queue (sources you
    want to read *later*) lives in an external capture tool, not here —
    only in-graph link targets are stubs.
-2. **`trees/lit-notes/` — literature notes** (`scripts/new lit-notes
-   <title> [@citekey]`). First-pass, source-bound notes taken while
-   reading — *reformulated in your own words, not transcribed*.
-   `\tag{private}`, off-site. The optional `@citekey` seeds `\citek{...}`;
-   always bind a literature note to its source.
-3. **`trees/public/` — permanent notes** (`scripts/new def <title>`,
+2. **`trees/inbox/` — transient notes** (`scripts/new transient
+   <title> [@citekey]`). First-pass captures — literature notes taken
+   while reading (*reformulated in your own words, not transcribed*) and
+   other raw thoughts not yet worth an evergreen tree. `\tag{transient}`,
+   off-site. The optional `@citekey` seeds `\citek{...}`; always bind a
+   literature note to its source.
+3. **`trees/evergreen/` — evergreen notes** (`scripts/new def <title>`,
    `thm`, `prop`, `blog`, …). One atomic idea, in your own words,
    linked into the graph. `\tag{public}`, published.
 
-Promotion is the discipline: a literature note graduates by being
-rewritten as an atomic permanent note under `trees/public/` and linked
-in, then the lit-note is deleted or reduced to a single
+Promotion is the discipline: a transient note graduates by being
+rewritten as an atomic evergreen note under `trees/evergreen/` and linked
+in, then the transient note is deleted or reduced to a single
 `\transclude{<new-id>}` pointer. A stub graduates by writing its body,
 swapping `\tag{stub}` for
 `\tag{public}` + a taxon, dropping the `\stub` line, and `git mv`-ing it
-to `trees/public/` (its id, and every inbound link, is unchanged).
+to `trees/evergreen/` (its id, and every inbound link, is unchanged).
 
 Two derived, machine-owned markdown views track this (never hand-edit):
 
-- **`notes-log.md`** — the permanent slip-box index. Every `trees/public/`
+- **`notes-log.md`** — the evergreen slip-box index. Every `trees/evergreen/`
   note (excluding `stub`/`private` stragglers), newest last.
   Rebuilt by `scripts/registry`; committed.
 - **`inbox.md`** — the work-in-progress worklist: stubs (ranked by
-  inbound-link count) and lit-notes awaiting promotion. Rebuilt by
+  inbound-link count) and transient notes awaiting promotion. Rebuilt by
   `scripts/inbox`; **gitignored** so private titles stay local. Drive
   it toward zero. (The reading queue lives in an external capture tool,
   not the forest.)

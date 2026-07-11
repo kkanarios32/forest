@@ -1,7 +1,7 @@
 \import{base-macros}
 \author{kellenkanarios}
 \meta{author}{false}
-\tag{private}
+\tag{transient}
 \title{Status register}
 \date{2026-07-06T23:53:38Z}
 

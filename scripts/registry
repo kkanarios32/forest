@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild notes-log.md — the notes registry — from trees/public/.
+"""Rebuild notes-log.md — the notes registry — from trees/evergreen/.
 
 This is the single source of truth for the registry's line format. `scripts/new`
 and the pre-commit hook both call it, so the file stays canonical regardless of
@@ -57,14 +57,14 @@ def kind(text):
 
 def build():
     rows = []
-    for path in glob.glob(os.path.join(ROOT, "trees/public/*.tree")):
+    for path in glob.glob(os.path.join(ROOT, "trees/evergreen/*.tree")):
         tid = os.path.splitext(os.path.basename(path))[0]
         if tid in SKIP:
             continue
         with open(path, encoding="utf-8") as f:
             text = f.read()
-        # Permanent-note index only. Stub / lit-note stragglers that still live
-        # under trees/public belong to the inbox, not this index.
+        # Permanent-note index only. Stub / transient stragglers that still live
+        # under trees/evergreen belong to the inbox, not this index.
         tags = set(re.findall(r"\\tag\{([^}]*)\}", text))
         if tags & {"stub", "private"}:
             continue
@@ -82,7 +82,7 @@ def build():
            "`scripts/new` and the pre-commit hook). Do not hand-edit.", ""]
     for date, tid, k, title in rows:
         d = date if date else "??????????"
-        out.append(f"- {d} · `{k}` · [{tid}](trees/public/{tid}.tree) — {title}")
+        out.append(f"- {d} · `{k}` · [{tid}](trees/evergreen/{tid}.tree) — {title}")
     out.append("")
     return "\n".join(out), len(rows)
 

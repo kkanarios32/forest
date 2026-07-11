@@ -7,8 +7,8 @@ zero, in three sections:
 
   * Stubs   — concept placeholders owing a body, ranked by inbound-link count
               (write the concepts your graph most depends on first).
-  * Lit-notes — literature notes awaiting promotion into permanent notes,
-              oldest first.
+  * Transient — inbox notes (incl. literature notes) awaiting promotion into
+              evergreen notes, oldest first.
 
 (The reading queue lives in an external capture tool, not the forest.)
 
@@ -84,7 +84,7 @@ def main():
     for tid, (rel, tags, date, title, _text) in trees.items():
         if "stub" in tags:
             stubs.append((counts.get(tid, 0), date, tid, rel, title))
-        elif "private" in tags and rel.startswith("trees/lit-notes/"):
+        elif "transient" in tags:
             lit.append((date, tid, rel, title))
 
     stubs.sort(key=lambda r: (-r[0], r[1] != "", r[1], r[2]))  # most-linked first
@@ -118,14 +118,14 @@ def main():
         "",
         *stub_lines(stubs),
         "",
-        f"## ✍️ Lit-notes to refine — {len(lit)}  _(oldest first)_",
+        f"## ✍️ Transient notes to refine — {len(lit)}  _(oldest first)_",
         "",
         *dated_lines(lit),
         "",
     ])
     with open(os.path.join(ROOT, "inbox.md"), "w", encoding="utf-8") as f:
         f.write(body)
-    print(f"inbox.md: {len(stubs)} stubs, {len(lit)} lit-notes", file=sys.stderr)
+    print(f"inbox.md: {len(stubs)} stubs, {len(lit)} transient", file=sys.stderr)
 
 
 if __name__ == "__main__":

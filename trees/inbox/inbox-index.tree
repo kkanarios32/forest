@@ -1,0 +1,14 @@
+\import{base-macros}
+\title{Transient notes}
+\author{kellenkanarios}
+
+\p{The inbox: first-pass notes (literature notes and other transient
+captures) awaiting promotion into evergreen notes. Auto-listed by the
+\code{transient} tag — a note leaves this list the moment it is promoted.}
+
+\put\transclude/expanded{false}
+
+\query\datalog{
+  ?X -:
+  {\rel/has-tag ?X '{transient}}
+}
