@@ -1,0 +1,9 @@
+\date{2026-07-11T00:13:50Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{An operand collector serializes register reads to dodge register-file bank conflicts}
+\tag{public}
+
+\p{A [warp](X9VZ)'s 32 threads each read 2–4 registers per instruction, but the [register file](ETWN) is banked and cannot serve two reads to the same bank in one cycle. An \em{operand collector} absorbs this: it gathers a warp's register reads across multiple cycles and routes the collected values to the lanes once all are available, turning what would be a stall into a few cycles of latency the [scheduler](1PWL) hides anyway.}
+
+\p{These register-file [bank conflicts](OGCRU) are invisible to the programmer — unlike shared-memory bank conflicts, which the programmer controls directly — but they shrink as \em{register pressure} drops. Fewer registers per thread means fewer simultaneous reads competing for banks, one more reason low register pressure raises throughput.}

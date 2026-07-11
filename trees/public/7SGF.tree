@@ -1,0 +1,9 @@
+\date{2026-07-11T00:13:49Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{A two-loop scheduler makes warp readiness a constant-time scoreboard check}
+\tag{public}
+
+\p{Deciding which [warp](X9VZ) to issue each cycle by scanning every warp's operands against the [scoreboard](XPAA) would be prohibitive — 64 warps against 4 operands each is 256 comparisons. A \em{two-loop} scheduler makes the readiness check constant-time instead. The first loop selects a warp with room in its instruction buffer, looks up its PC, and fetches; a small per-warp bit-vector of outstanding register dependencies rides alongside the fetched instruction and clears as writes retire. The second loop issues any buffered instruction whose dependency vector is clean.}
+
+\p{Because readiness is a single per-warp bit-vector test rather than a global scan, the scheduler stays cheap even with dozens of resident warps — the design tradeoff that lets a GPU keep far more work in flight than a CPU's CAM-based [wakeup-select](UJPD) ever could. It is the scheduling-side counterpart to why the [scoreboard](XPAA) replaces a CPU's dependency-tracking hardware.}

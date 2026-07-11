@@ -1,0 +1,7 @@
+\date{2026-07-11T00:13:48Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Occupancy bounds how much latency a GPU can hide}
+\tag{public}
+
+\p{\em{Occupancy} is the ratio of a GPU [SM](OGCS6)'s active [warps](X9VZ) to the maximum it can hold. It is the ceiling on [latency hiding](1PWL): every resident warp is a candidate to switch to when another stalls, so higher occupancy gives the scheduler more runnable work, while low occupancy stalls the SM whenever its few resident warps all wait on the same transaction. For latency-bound workloads — most GPU code — raising occupancy is the first-order optimization. What caps it is per-warp resource use: registers and shared memory are finite per SM, so heavier kernels fit fewer warps, which is why cutting register pressure can raise throughput even when it does no less work.}
