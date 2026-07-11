@@ -1,0 +1,12 @@
+\date{2026-07-11T01:43:02Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Entropy is subadditive}
+\taxon{Theorem}
+\tag{public}
+
+\p{The joint [entropy](0081) of a collection never exceeds the sum of the individual entropies:
+##{H(X_1,\dots,X_n)\ \leq\ \sum_{i=1}^{n} H(X_i),}
+with equality iff the #{X_i} are mutually independent.}
+
+\p{Expand the joint entropy by the chain rule, #{H(X_1,\dots,X_n)=\sum_i H(X_i\mid X_1,\dots,X_{i-1})}, and apply [[H7J5]] term by term: each #{H(X_i\mid X_{<i})\leq H(X_i)}. Conditioning on the past can only shrink each term, so dropping the conditioning gives an upper bound.}

@@ -1,0 +1,12 @@
+\date{2026-07-11T01:43:01Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Conditioning reduces entropy}
+\taxon{Theorem}
+\tag{public}
+
+\p{Observing another variable can only lower [entropy](0081) on average:
+##{H(X\mid Y)\ \leq\ H(X),}
+with equality iff #{X} and #{Y} are independent.}
+
+\p{Immediate from [[TB4P]] and the identity #{I(X;Y)=H(X)-H(X\mid Y)}: since #{I(X;Y)\geq 0}, the conditional entropy cannot exceed the unconditional one. The caveat is that this holds \em{on average} over #{Y} — a \em{particular} outcome #{Y=y} can raise the entropy of #{X}; it is only the expectation #{H(X\mid Y)=\mathbb{E}_Y[H(X\mid Y=y)]} that is guaranteed to drop.}

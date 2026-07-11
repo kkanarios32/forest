@@ -19,7 +19,7 @@ Use chain rule to expand #{I(U; (V, W))} in two ways i.e.
     I(U; (V, W)) = I(U; V) + I(U; W | V) = I(U; W) + I(U; V | W)
   \end{align*}
 }
-Since #{U \to V \to W} is a Markov chain, #{I(U; W | V) = 0}. Therefore,
+Since #{U \to V \to W} is a [Markov chain](UWYD), the conditional independence #{(U \perp W) \mid V} makes #{I(U; W | V) = 0}. Therefore,
 ##{
 \begin{align*}
   I(U; V)  &= I(U; W) + I(U; V | W) \\

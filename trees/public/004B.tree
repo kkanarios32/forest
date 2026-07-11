@@ -41,50 +41,21 @@
         Q(x) / P(x) = c \implies Q(x) = P(x) c \iff \sum Q(x) = c \sum P(x) \implies c = 1
       }
   }
-  \strong{Applications of [[004E]]:}
-  \ul{
-    \li{
-      #{I(X; Y) \geq 0}
-    }
-    \li{#{H(X | Y) \leq H(X)}}
-    \li{#{H(X^n) \leq \sum_{i = 1}^n H(X_i)}}
-    \li{#{H(X) \leq \log |\mathcal{X}|}}
-  }
+  \p{\strong{Applications of [[004E]].} The nonnegativity of KL divergence propagates into the basic entropy inequalities, each a specialization of Gibbs to a particular pair of distributions.}
+  \transclude{TB4P}
+  \transclude{H7J5}
+  \transclude{C6M8}
+  \transclude{6FHG}
   \transclude{004F}
-  \strong{Consequences of [[004F]]:}
-  \ul{
-      \li{Joint convexity of #{D_{\mathrm{KL}}(P || Q)},}
-      \li{Individual convexity of #{D_{\mathrm{KL}}(P || Q)}.}
-      \li{Concavity of entropy.}
-    }
+  \p{\strong{Consequences of [[004F]].} The log-sum inequality upgrades nonnegativity to convexity.}
+  \transclude{WV2P}
+  \transclude{TVGU}
 }
 \section{Lecture 7}{
 \transclude{004Y}
 \section{Data Processing Inequality}{
-    High-level
-    \ul{
-        \li{#{Y} contains more information about #{X} than #{\hat{X}}.}
-        \li{We cannot increase the amount of information about #{X} by processing #{Y}.}
-      }
-    \strong{Markov Chains:}
-    \ul{
-        \li{#{(U, V, W)} form a Markov chain if
-        ##{
-\begin{align*}
-  P(W = w \mid U = u, V = v) = P(w = w \mid V = v)
-\end{align*}
-          }
-Denoted #{U \to V \to W}.
-        }
-          \li{Equivalently, we say #{(U \perp W) | V} which means ##{
-             P(W = w, U=u \mid V = v) \implies P(W = w \mid V = v)P(U = u \mid V = v)
-          }
-          }
-          \li{Reversibility: #{U \to V \to W \iff W \to V \to U}.}
-          \li{Estimation: #{X \to Y \to \hat{X}}}
-      } 
-
-\transclude{004Z}
+    \transclude{UWYD}
+    \transclude{004Z}
 }
 \section{Fano's Inequality}{
     \ul{

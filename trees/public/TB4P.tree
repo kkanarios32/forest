@@ -1,0 +1,12 @@
+\date{2026-07-11T01:43:00Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Mutual information is nonnegative}
+\taxon{Theorem}
+\tag{public}
+
+\p{For any pair of random variables, #{I(X;Y)\geq 0}, with equality iff #{X} and #{Y} are independent.}
+
+\p{This is [[004E]] in disguise: [mutual information](000V) is the [KL divergence](000W) between the joint distribution and the product of marginals,
+##{I(X;Y)\ =\ D_{\mathrm{KL}}\left(P_{XY}\,\|\,P_X P_Y\right)\ \geq\ 0,}
+and Gibbs' inequality forces every KL divergence to be nonnegative, vanishing exactly when the two arguments coincide — i.e. when #{P_{XY}=P_XP_Y}. It is the root fact from which [[H7J5]] follows.}

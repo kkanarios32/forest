@@ -1,0 +1,14 @@
+\date{2026-07-11T01:43:03Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The uniform distribution maximizes entropy}
+\taxon{Theorem}
+\tag{public}
+
+\p{Over a finite alphabet #{\mathcal{X}}, [entropy](0081) is bounded by the log of the alphabet size,
+##{H(X)\ \leq\ \log|\mathcal{X}|,}
+with equality iff #{X} is uniform. No distribution on #{\mathcal{X}} is more uncertain than the uniform one.}
+
+\p{Again a face of [[004E]]: measuring #{P} against the uniform law #{U(x)=1/|\mathcal{X}|},
+##{D_{\mathrm{KL}}(P\,\|\,U)\ =\ \log|\mathcal{X}| - H(X)\ \geq\ 0,}
+so #{H(X)\leq\log|\mathcal{X}|}, and Gibbs' equality condition #{P=U} pins down the maximizer. This is the discrete base case of the general maximum-entropy principle: absent constraints, the flattest distribution wins.}

@@ -1,0 +1,11 @@
+\date{2026-07-11T01:43:04Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{KL divergence is jointly convex}
+\taxon{Theorem}
+\tag{public}
+
+\p{The [KL divergence](000W) #{D_{\mathrm{KL}}(P\,\|\,Q)} is convex in the pair #{(P,Q)} jointly: for any two pairs and #{\lambda\in[0,1]},
+##{D_{\mathrm{KL}}\left(\lambda P_1+(1-\lambda)P_2\ \|\ \lambda Q_1+(1-\lambda)Q_2\right)\ \leq\ \lambda D_{\mathrm{KL}}(P_1\|Q_1)+(1-\lambda)D_{\mathrm{KL}}(P_2\|Q_2).}}
+
+\p{This drops out of the [[004F]] applied termwise. Joint convexity is the strong statement: it immediately gives \em{individual} convexity in either argument (fix the other and set the two copies equal), and — via #{D_{\mathrm{KL}}(P\|U)=\log|\mathcal{X}|-H(P)} against the fixed uniform law — it makes [[TVGU]] a corollary.}

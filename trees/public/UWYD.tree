@@ -1,0 +1,13 @@
+\date{2026-07-11T01:40:24Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Markov chain as conditional independence}
+\taxon{Definition}
+\tag{public}
+
+\p{The information-theoretic reading of a [Markov chain](0040): three variables form a chain #{U\to V\to W} when #{W} depends on #{U} only through #{V},
+##{P(W=w\mid U=u, V=v)\ =\ P(W=w\mid V=v).}
+Equivalently, #{U} and #{W} are conditionally independent given #{V}, written #{(U\perp W)\mid V}:
+##{P(U=u, W=w\mid V=v)\ =\ P(U=u\mid V=v)\,P(W=w\mid V=v).}}
+
+\p{Two consequences make this the right object for information theory. The relation is \em{reversible} — #{U\to V\to W \iff W\to V\to U} — because conditional independence is symmetric in #{U} and #{W}. And any estimator forms a chain #{X\to Y\to \hat X}: an estimate #{\hat X} is computed from the observation #{Y} alone, never touching #{X} directly. That structure is exactly what the [data processing inequality](004Z) needs — you cannot manufacture information about #{X} by processing #{Y}.}

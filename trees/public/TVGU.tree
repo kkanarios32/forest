@@ -1,0 +1,12 @@
+\date{2026-07-11T01:43:04Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Entropy is concave}
+\taxon{Theorem}
+\tag{public}
+
+\p{[Entropy](0081) is a concave functional of the distribution: for #{\lambda\in[0,1]},
+##{H(\lambda P_1+(1-\lambda)P_2)\ \geq\ \lambda H(P_1)+(1-\lambda)H(P_2).}
+Mixing two distributions never destroys uncertainty — the entropy of a mixture is at least the mixture of entropies.}
+
+\p{This is the mirror image of [[WV2P]]. Writing #{H(P)=\log|\mathcal{X}|-D_{\mathrm{KL}}(P\,\|\,U)} against the uniform law #{U}, concavity of #{H} is exactly convexity of #{P\mapsto D_{\mathrm{KL}}(P\|U)}. Concavity is what makes the maximum in [[6FHG]] well-behaved — a concave objective on the simplex has a unique maximizer.}
