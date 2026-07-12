@@ -1873,6 +1873,23 @@
   file = {/home/kellen/Downloads/papers/Ring Attention with Blockwise Transformers for Near-Infinite Context - Liu et al..pdf}
 }
 
+@inproceedings{lustigFormalAnalysisNVIDIA2019,
+  title = {A {{Formal Analysis}} of the {{NVIDIA PTX Memory Consistency Model}}},
+  booktitle = {Proceedings of the {{Twenty-Fourth International Conference}} on {{Architectural Support}} for {{Programming Languages}} and {{Operating Systems}}},
+  author = {Lustig, Daniel and Sahasrabuddhe, Sameer and Giroux, Olivier},
+  year = 2019,
+  month = apr,
+  pages = {257--270},
+  publisher = {ACM},
+  address = {Providence RI USA},
+  doi = {10.1145/3297858.3304043},
+  urldate = {2026-07-11},
+  abstract = {This paper presents the first formal analysis of the official memory consistency model for the NVIDIA PTX virtual ISA. Like other GPU memory models, the PTX memory model is weakly ordered but provides scoped synchronization primitives that enable GPU program threads to communicate through memory. However, unlike some competing GPU memory models, PTX does not require data race freedom, and this results in PTX using a fundamentally different (and more complicated) set of rules in its memory model. As such, PTX has a clear need for a rigorous and reliable memory model testing and analysis infrastructure.},
+  isbn = {978-1-4503-6240-5},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/A Formal Analysis of the NVIDIA PTX Memory Consistency Model - Lustig et al..pdf}
+}
+
 @article{lyleUnderstandingPlasticityNeural,
   title = {Understanding {{Plasticity}} in {{Neural Networks}}},
   author = {Lyle, Clare and Zheng, Zeyu and Nikishin, Evgenii and Pires, Bernardo Avila and Pascanu, Razvan and Dabney, Will},
@@ -3635,6 +3652,25 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Computer Science - Robotics},
   file = {/home/kellen/Downloads/papers/Flattening Hierarchies with Policy Bootstrapping - Zhou and Kao.pdf}
+}
+
+@misc{zhouLinearLayoutsRobust2026,
+  title = {Linear {{Layouts}}: {{Robust Code Generation}} of {{Efficient Tensor Computation Using}} \$\textbackslash mathbb\textbraceleft{{F}}\textbraceright\_2\$},
+  shorttitle = {Linear {{Layouts}}},
+  author = {Zhou, Keren and Lezcano, Mario and Goucher, Adam and Rakhmati, Akhmed and Niu, Jeff and Lebar, Justin and Szczerbuk, Pawel and Bell, Peter and Tillet, Phil and Raoux, Thomas and Moudallal, Zahi},
+  year = 2026,
+  month = mar,
+  number = {arXiv:2505.23819},
+  eprint = {2505.23819},
+  primaryclass = {cs.PL},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2505.23819},
+  urldate = {2026-07-11},
+  abstract = {Efficient tensor computation is a cornerstone of modern deep learning (DL) workloads, yet existing approaches struggle to achieve flexible and performant design and implementation of tensor layouts -- mappings between logical tensors and hardware resources. The increasing complexity of DL algorithms and hardware demands a generic and systematic approach to handling tensor layouts. In this work, we introduce Linear Layouts, a novel approach that models tensor layouts using linear algebra over \$\textbackslash mathbb\textbraceleft F\textbraceright\_2\$. By representing tensor layouts as binary matrices acting on the bits of the hardware representation, our approach enables a generic layout definition -- as opposed to the classical case-by-case approach -- and allows for generic layout-to-layout conversions, eliminating the quadratic explosion that plagues existing solutions. We integrate linear layouts with Triton and demonstrate their effectiveness in optimizing individual Triton operators as well as kernels written in Triton. We also show that linear layouts reduce engineering effort in the compiler backend while fixing several bugs in Triton's legacy layout system.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Hardware Architecture,Computer Science - Performance,Computer Science - Programming Languages},
+  file = {/home/kellen/Downloads/papers/Linear Layouts Robust Code Generation of Efficient Tensor Computation Using $mathbb F _2$ - Zhou et al..pdf}
 }
 
 @article{ziarkoContrastiveRepresentationsTemporal,

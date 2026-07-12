@@ -13,3 +13,5 @@ add r4, r5, r2      // r2 := r4 + r5   (reuses r2 for an independent value)
 The second \code{add} only depends on \code{r2} as a \em{destination}, not as a source. Without renaming, it would have to wait for the first instruction's writeback to avoid clobbering. With renaming, the second write goes to a fresh physical register, and the two instructions can proceed in parallel.}
 
 \p{The programming model exposes only the architecturally-named registers; the [[ETWN]] hides a larger pool of rename registers underneath. This is one of the central tricks that makes out-of-order execution viable.}
+
+\transclude{2RO9}

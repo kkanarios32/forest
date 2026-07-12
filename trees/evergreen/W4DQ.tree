@@ -9,7 +9,16 @@
   \put\transclude/expanded{false}
 
 \section{Processes Intro}{
-  \ol{
+\ol{
+  \li{For what types of workloads does [[VJ4F]] deliver the same turnaround as [[JA6Z]]?}
+  \answer{For workloads that arrive in increasing order of total job time.}
+  \li{For what types of workloads and quantum lengths does SJF deliver the same response times as [[NEL8]]?}
+  \answer{For shorter jobs and longer quantum lengths, RR and SJF should deliver similar response times.}
+  \li{What happens to response time with SJF as job lengths increase?}
+  \answer{Response time degrades because the longest jobs have to wait for each of the shorter jobs to finish. If these shorter jobs become longer than the response time grows linearly.}
+  \li{What happens to response time with RR as quantum lengths increase? Can you write an equation that gives the worst-case response time, given #{N} jobs?}
+  \answer{The response time is the average over stride length number of preceding jobs. The formula can be written as
+    ##{\mathrm{RT} = \frac{1}{N} \sum_{i = 1}^{N} (i - 1)S = \frac{S(N - 1) N}{N} = S(N - 1)}}
     \li{Run \code{process.py} with the flags \code{-l 5:100, 5:100}. What should the CPU utilization be?
     \answer{The flags correspond to running two processes each with #{5} instructions where each instruction has probability one of using the CPU. The output from the program is
     \pre\verb<<<|
