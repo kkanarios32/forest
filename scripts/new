@@ -88,6 +88,23 @@ if [ "$TEMPLATE" = "card" ]; then
   printf '\n\\prompt{\n  \n}\n' >> "$FILENAME"
 fi
 
+# Log the new note in today's daily journal, if it's open. Each note created
+# during the day is timestamped and transcluded there, so the daily log doubles
+# as a chronological record of the day's work. The `daily` command seeds/opens
+# that file; we only append when it already exists. Skip stubs (empty
+# placeholders) and cards (Anki-bound), which don't belong in a reading log.
+case "$TEMPLATE" in
+  stub|card) ;;
+  *)
+    DAILY="$FORESTDIR/trees/daily/$(date +%F).tree"
+    if [ -f "$DAILY" ]; then
+      ID=$(basename "$FILENAME" .tree)
+      printf '\n\\p{\\strong{%s}}\n\\hr\n\\transclude{%s}\n' \
+        "$(date +'%-I:%M %p')" "$ID" >> "$DAILY"
+    fi
+    ;;
+esac
+
 # Refresh the derived views: notes-log.md (permanent index) and inbox.md
 # (stub/transient worklist). Both scripts are the single source of truth for format.
 HERE="$(dirname "$0")"
