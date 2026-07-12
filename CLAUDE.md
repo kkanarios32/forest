@@ -11,8 +11,8 @@ overview is `CLAUDE.md`.
 
 ## Boundaries
 
-**You own:** `trees/evergreen/`, `trees/research/`, `trees/stubs/`,
-`trees/inbox/`, `trees/cards/`, `trees/daily/`, `trees/weeknotes/`.
+**You own:** `trees/evergreen/`, `trees/research/`, `trees/inbox/`,
+`trees/cards/`, `trees/daily/`, `trees/weeknotes/`.
 Create, update, rewrite, restructure, and atomize freely.
 
 **You curate but do not hand-edit:** `trees/refs/`. These are
@@ -223,22 +223,22 @@ When prose mentions an atomic concept that does not yet have a tree:
 
 1. Run `scripts/new stub <Concept Name>`, passing the phrase you
    wanted to link as the title. This creates
-   `trees/stubs/<random-id>.tree` with `\import{base-macros}`,
+   `trees/evergreen/<random-id>.tree` with `\import{base-macros}`,
    `\author{kellenkanarios}`, `\title{<Concept Name>}`, `\tag{stub}`,
-   and the `\stub` notice (stubs stay off the public site and land in
-   the `inbox.md` worklist, not the `notes-log.md` index). In nvim,
-   `:ForesterStub` — or `<leader>ft` over a visual selection — does
-   this and inserts the link in one step.
+   and the `\stub` notice. The `\tag{stub}` (not the directory) keeps it
+   off the public site and lands it in the `inbox.md` worklist, not the
+   `notes-log.md` index. In nvim, `:ForesterStub` — or `<leader>ft` over
+   a visual selection — does this and inserts the link in one step.
 2. The title is the only required content — no body yet.
 3. Link to the new tree from the original prose using `[[<new-id>]]`
    (or `[display text](<new-id>)` if the title doesn't fit the
    sentence).
 4. The stub is now a real link target, surfaces under
    `scripts/hastags stub` and in `scripts/inbox` (ranked by how many
-   trees link it), and can be promoted to a full atomic concept — write
-   the body, drop the `\stub` line, swap `\tag{stub}` for `\tag{public}`
-   + a taxon, and `git mv` it to `trees/evergreen/` — whenever the idea is
-   ready to write. Its id and inbound links never change.
+   trees link it), and can be promoted to a full atomic concept **in
+   place** — write the body, drop the `\stub` line, swap `\tag{stub}`
+   for `\tag{public}` + a taxon — whenever the idea is ready to write.
+   It never moves; its id and inbound links never change.
 
 ### Build a notebook / index page
 
@@ -288,14 +288,18 @@ report (fix what you can; surface the rest):
 
 ## The note pipeline (Zettelkasten)
 
-Notes flow through three stages, and the directory *is* the stage.
-`scripts/new` routes by template:
+Notes flow through three stages. The `\tag{...}`, not the directory,
+marks the stage — Forester ids are directory-independent, so nothing
+downstream cares where a tree lives. Only one workspace directory earns
+its keep: `trees/inbox/`, the transient-capture staging area you `ls`
+and process. Everything graph-bound — stubs and published notes alike —
+lives in `trees/evergreen/`. `scripts/new` routes by template:
 
-1. **`trees/stubs/` — concept stubs** (`scripts/new stub <title>`).
-   Placeholder trees that exist only so a prose link resolves —
-   `\title{...}` plus the `\stub` notice, no body. `\tag{stub}`,
-   off-site. Ids are directory-independent, so a stub promotes to an
-   evergreen note with no link breakage. The reading queue (sources you
+1. **Concept stubs** (`scripts/new stub <title>`) — `\tag{stub}`, born
+   in `trees/evergreen/`. Placeholder trees that exist only so a prose
+   link resolves: `\title{...}` plus the `\stub` notice, no body,
+   off-site. Because a stub already sits in its eventual home, promotion
+   is a pure in-place edit — no move. The reading queue (sources you
    want to read *later*) lives in an external capture tool, not here —
    only in-graph link targets are stubs.
 2. **`trees/inbox/` — transient notes** (`scripts/new transient
@@ -304,17 +308,17 @@ Notes flow through three stages, and the directory *is* the stage.
    other raw thoughts not yet worth an evergreen tree. `\tag{transient}`,
    off-site. The optional `@citekey` seeds `\citek{...}`; always bind a
    literature note to its source.
-3. **`trees/evergreen/` — evergreen notes** (`scripts/new def <title>`,
-   `thm`, `prop`, `blog`, …). One atomic idea, in your own words,
-   linked into the graph. `\tag{public}`, published.
+3. **Evergreen notes** (`scripts/new def <title>`, `thm`, `prop`,
+   `blog`, …) — `trees/evergreen/`, `\tag{public}`, published. One
+   atomic idea, in your own words, linked into the graph.
 
 Promotion is the discipline: a transient note graduates by being
 rewritten as an atomic evergreen note under `trees/evergreen/` and linked
 in, then the transient note is deleted or reduced to a single
-`\transclude{<new-id>}` pointer. A stub graduates by writing its body,
-swapping `\tag{stub}` for
-`\tag{public}` + a taxon, dropping the `\stub` line, and `git mv`-ing it
-to `trees/evergreen/` (its id, and every inbound link, is unchanged).
+`\transclude{<new-id>}` pointer. A stub graduates **in place** — write
+its body, swap `\tag{stub}` for `\tag{public}` + a taxon, drop the
+`\stub` line. It never moves; its id and every inbound link are
+unchanged.
 
 Two derived, machine-owned markdown views track this (never hand-edit):
 

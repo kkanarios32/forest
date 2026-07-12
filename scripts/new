@@ -22,7 +22,7 @@ if [ -z "$TEMPLATE" ] || [ -z "$TITLE" ]; then
 usage: scripts/new <template> <title...> [@citekey]
 
   template: def thm prop lemma blog potw experiment  -> trees/evergreen/  (permanent)
-            stub                                      -> trees/stubs/      (concept stub / link target)
+            stub                                      -> trees/evergreen/  (concept stub / link target; \tag{stub})
             transient                                 -> trees/inbox/      (transient / literature note)
             card                                      -> trees/cards/      (spaced-repetition prompt)
             note                                      -> trees/evergreen/  (plain, no body)
@@ -37,9 +37,10 @@ USAGE
   exit 1
 fi
 
-# Route by kind: the directory *is* the note's stage in the pipeline.
+# Route by kind. inbox/cards get their own workspace directory; stubs are born
+# in trees/evergreen/ (their eventual home) tagged \tag{stub}, so promotion is a
+# pure in-place edit — no git mv. The \tag{...}, not the directory, marks stage.
 case "$TEMPLATE" in
-  stub)      DEST="$FORESTDIR/trees/stubs" ;;
   transient) DEST="$FORESTDIR/trees/inbox" ;;
   card)      DEST="$FORESTDIR/trees/cards" ;;
   *)         DEST="$FORESTDIR/trees/evergreen" ;;
