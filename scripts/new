@@ -99,7 +99,9 @@ case "$TEMPLATE" in
     DAILY="$FORESTDIR/trees/daily/$(date +%F).tree"
     if [ -f "$DAILY" ]; then
       ID=$(basename "$FILENAME" .tree)
-      printf '\n\\p{\\strong{%s}}\n\\hr\n\\transclude{%s}\n' \
+      # Wrap the transclude in a \scope that suppresses the section number and
+      # TOC entry, so the daily log reads as flat timestamped prose.
+      printf '\n\\p{\\strong{%s}}\n\\hr\n\\scope{\n  \\put\\transclude/numbered{false}\n  \\put\\transclude/toc{false}\n  \\transclude{%s}\n}\n' \
         "$(date +'%-I:%M %p')" "$ID" >> "$DAILY"
     fi
     ;;
