@@ -9,8 +9,12 @@ set -euo pipefail
 # promotion: you still open each note to rewrite it in your own words, add a
 # \taxon, drop \meta{author}{false}, and link it into the graph.
 #
+# In a terminal it uses fzf (TAB multi-selects, with a body preview). Launched
+# from a keybind with no tty (e.g. dwm), it falls back to a dmenu picker that
+# promotes a single note by title.
+#
 # Usage:
-#   scripts/promote          fzf picker (TAB = multi-select, Enter = promote)
+#   scripts/promote          fzf in a terminal, dmenu otherwise
 
 FORESTDIR="${FORESTDIR:-$(cd "$(dirname "$0")/.." && pwd)}"
 DEST="$FORESTDIR/trees/evergreen"
@@ -30,11 +34,20 @@ if [ -z "$list" ]; then
   exit 0
 fi
 
-selection=$(printf '%s\n' "$list" | fzf --multi \
-  --delimiter='\t' --with-nth=1 \
-  --prompt='promote> ' \
-  --header='TAB: select multiple · Enter: promote to evergreen' \
-  --preview='cat {2}' --preview-window='right:60%:wrap') || true
+# Pick UI. In a terminal: fzf — TAB multi-selects, with a body preview pane.
+# No tty (launched from a keybind, e.g. dwm): dmenu, single-select by title.
+if [ -t 0 ] && [ -t 1 ]; then
+  selection=$(printf '%s\n' "$list" | fzf --multi \
+    --delimiter='\t' --with-nth=1 \
+    --prompt='promote> ' \
+    --header='TAB: select multiple · Enter: promote to evergreen' \
+    --preview='cat {2}' --preview-window='right:60%:wrap') || true
+else
+  choice=$(printf '%s\n' "$list" | cut -f1 | dmenu -i -l 20 -p 'promote:') || true
+  [ -n "$choice" ] || exit 0
+  # Map the chosen title back to its "<title>\t<path>" line (first match wins).
+  selection=$(printf '%s\n' "$list" | awk -F'\t' -v t="$choice" '$1 == t {print; exit}')
+fi
 
 [ -n "$selection" ] || { echo "Nothing selected." >&2; exit 0; }
 
