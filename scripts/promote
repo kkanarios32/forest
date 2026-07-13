@@ -1,0 +1,59 @@
+#!/bin/bash
+set -euo pipefail
+
+# promote — graduate transient inbox notes to evergreen.
+#
+# Fuzzy-select one or more \tag{transient} notes by title (TAB multi-selects in
+# fzf, Enter promotes), flip each to \tag{public}, and move it from
+# trees/inbox/ into trees/evergreen/. This is only the mechanical half of
+# promotion: you still open each note to rewrite it in your own words, add a
+# \taxon, drop \meta{author}{false}, and link it into the graph.
+#
+# Usage:
+#   scripts/promote          fzf picker (TAB = multi-select, Enter = promote)
+
+FORESTDIR="${FORESTDIR:-$(cd "$(dirname "$0")/.." && pwd)}"
+DEST="$FORESTDIR/trees/evergreen"
+
+# Gather every transient-tagged tree as "<title>\t<path>", sorted by title.
+list=$(
+  grep -rlZ '\\tag{transient}' "$FORESTDIR/trees" --include='*.tree' 2>/dev/null \
+  | while IFS= read -r -d '' f; do
+      title=$(sed -n 's/^\\title{\(.*\)}[[:space:]]*$/\1/p' "$f" | head -1)
+      [ -n "$title" ] || title="(untitled)"
+      printf '%s\t%s\n' "$title" "$f"
+    done | sort
+) || true
+
+if [ -z "$list" ]; then
+  echo "No transient notes to promote." >&2
+  exit 0
+fi
+
+selection=$(printf '%s\n' "$list" | fzf --multi \
+  --delimiter='\t' --with-nth=1 \
+  --prompt='promote> ' \
+  --header='TAB: select multiple · Enter: promote to evergreen' \
+  --preview='cat {2}' --preview-window='right:60%:wrap') || true
+
+[ -n "$selection" ] || { echo "Nothing selected." >&2; exit 0; }
+
+n=0
+while IFS=$'\t' read -r title path; do
+  [ -n "$path" ] || continue
+  # transient -> public. The \tag, not the directory, marks the pipeline stage,
+  # but we also move the file so trees/inbox/ physically drains toward zero.
+  # ids are directory-independent, so no inbound link breaks.
+  sed -i 's/\\tag{transient}/\\tag{public}/g' "$path"
+  mv "$path" "$DEST/$(basename "$path")"
+  echo "promoted  $title  ->  trees/evergreen/$(basename "$path")"
+  n=$((n + 1))
+done <<< "$selection"
+
+# Refresh the derived views: notes-log.md (now includes the promoted notes) and
+# inbox.md (no longer lists them). Both are pure Python — no opam env needed.
+HERE="$(dirname "$0")"
+"$HERE/registry"
+"$HERE/inbox" >/dev/null
+
+echo "Promoted $n note(s)." >&2
