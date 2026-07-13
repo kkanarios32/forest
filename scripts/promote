@@ -10,8 +10,8 @@ set -euo pipefail
 # \taxon, drop \meta{author}{false}, and link it into the graph.
 #
 # In a terminal it uses fzf (TAB multi-selects, with a body preview). Launched
-# from a keybind with no tty (e.g. dwm), it falls back to a dmenu picker that
-# promotes a single note by title.
+# from a keybind with no tty (e.g. dwm), it falls back to a dmenu picker
+# (multi-select patch: pick several titles at once).
 #
 # Usage:
 #   scripts/promote          fzf in a terminal, dmenu otherwise
@@ -43,10 +43,14 @@ if [ -t 0 ] && [ -t 1 ]; then
     --header='TAB: select multiple · Enter: promote to evergreen' \
     --preview='cat {2}' --preview-window='right:60%:wrap') || true
 else
-  choice=$(printf '%s\n' "$list" | cut -f1 | dmenu -i -l 20 -p 'promote:') || true
-  [ -n "$choice" ] || exit 0
-  # Map the chosen title back to its "<title>\t<path>" line (first match wins).
-  selection=$(printf '%s\n' "$list" | awk -F'\t' -v t="$choice" '$1 == t {print; exit}')
+  # dmenu's multi-select patch prints one chosen title per line.
+  choices=$(printf '%s\n' "$list" | cut -f1 | dmenu -i -l 20 -p 'promote:') || true
+  [ -n "$choices" ] || exit 0
+  # Map each chosen title back to its "<title>\t<path>" line (first match each).
+  selection=$(printf '%s\n' "$choices" | while IFS= read -r c; do
+    [ -n "$c" ] || continue
+    printf '%s\n' "$list" | awk -F'\t' -v t="$c" '$1 == t {print; exit}'
+  done)
 fi
 
 [ -n "$selection" ] || { echo "Nothing selected." >&2; exit 0; }
