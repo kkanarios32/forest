@@ -52,3 +52,42 @@
 
 \question{Is the instruction the CPU writes uniform across device and it is the drivers job to translate?}
 \answer{Yes. Each device can have its own register layout i.e. different registers correspond to different things. In the case of NVMe, this is actually standardized in the NVMe specification, so all NVMe devices can use the same driver.}
+
+\p{\strong{8:45 PM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{PMIC}
+}
+
+
+\p{\strong{9:23 PM}}
+\hr
+\section{Reflection}{
+\ul{
+  \li{\strong{Study}}
+  \ul{
+    \tdtaskx{}{Read OSTEP Ch. 36: I/O Devices}
+  }
+}
+\p{\strong{What went well today?} I think I have finally found a good productivity system with this daily log. It is very easy to just dump here. I need to make sure I am diligent with my reviews and extracting persistent notes. I also did a good job with my habits today, finishing Leetcode and Anki.}
+\p{\strong{What went bad today?} I started the day poorly by waking up 2hrs late. Did not do any work in the formal sense today. I am still struggling with overcoming the initial \em{starting barrier}. Once I begin working I am able to maintain focus, but it is very hard for me to currently sit down and begin. After a pomo block, I also find myself getting up and never being able to regain focus. I think I need to try shortening the pomo blocks into ~25mins, so the conclusion does not feel like an ending relief and I won't feel accomplished enough to leave. }
+}
+
+
+\p{\strong{9:36 PM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{9RLX}
+}
+
+\p{\strong{9:37 PM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{7STU}
+}
