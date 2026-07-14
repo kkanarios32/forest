@@ -1,0 +1,27 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Tuesday, July 14, 2026}
+\date{2026-07-14T11:41:51Z}
+
+\p{
+\em{What object soever, our reasonable and sociable faculty doth meet with, that affords nothing either for the satisfaction of reason, or for the practice of charity, she worthily doth think unworthy of herself.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 7 §42
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Triton fused attention tutorial (06)}
+      \li{Code: Triton tutorial 03 (matmul) + autotune sweep}
+      \li{Read: Halide paper (PLDI'13), sections 1-4}
+      \li{Read: Ansor paper, section 3 only (search over schedule spaces)}
+    }
+  }
+}
+}
+
+\p{\strong{7:41 AM}}
+\hr
+\p{\strong{Daily quote translation:} another restatement of a very common theme throughout \em{meditations}. If something does not help you act more rationally or help others, then it is not worth your time.}
