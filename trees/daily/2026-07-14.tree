@@ -25,3 +25,39 @@
 \p{\strong{7:41 AM}}
 \hr
 \p{\strong{Daily quote translation:} another restatement of a very common theme throughout \em{meditations}. If something does not help you act more rationally or help others, then it is not worth your time.}
+
+\p{\strong{8:28 AM}}
+\hr
+\p{I am having a real hard time understanding the grouped ordering from the [triton tutorial](https://triton-lang.org/main/getting-started/tutorials/03-matrix-multiplication.html). I find that CUDA is actually way more intuitive for me than [Triton](tilletTritonIntermediateLanguage2019), but this is the cost of abstraction as you get a lot of free optimizations with [Triton](tilletTritonIntermediateLanguage2019).}
+\p{To clarify my understanding, we basically start with a 1D grid where the grid is no longer over threads like in CUDA but instead just over blocks (it has been a real mental model mismatch thinking in terms of blocks instead of threads for me). We then want to compute a mapping from this 1D array of size \code{(M / BS_M) * (N / BS_N)} to indices #{(m, n)} for each PID. In CUDA, we care about [memory coalescing of threads](U1FO) but this is handled for us by the Triton compiler.} 
+\p{Instead, we only need to minimize the number of loads from memory to compute the same number of output tiles. A 1D tile (what they call Row-major PID order) requires loading each column from #{B}. However, if we instead do a 2D tile, then each column can be reused for each additional row we load from #{A}. This means that we can dramatically reduce the number of loads required to write the same number of blocks.}
+
+\p{\strong{9:20 AM}}
+\hr
+\p{After doing more research, this grouping is actually across blocks. This was bewildering to me because there is no guarantee of block execution order (that I am aware of).}
+\question{Is L2 shared across SMs? If so, then why does grouping do anything?}
+\answer{L2 is shared across all SMs and this is deeper into the GPU architecture than I have been before. Basically, the GPU can only schedule a maximum number of blocks across all SMs at any given time. Which blocks are scheduled is determined by the [[YSXO]]. Empirically, it seems this is done roughly in PID order (but it is still just a heuristic). Therefore, ensuring that block groups (blocks with close PID) reuse the same data ensures that data remains hot in L2.}
+
+\p{\strong{11:35 AM}}
+\hr
+\p{I have finally finished the matmul kernel tutorial with the group ordering!!!}
+
+\p{\strong{1:43 PM}}
+\hr
+
+\p{Interesting tidbit: Suppose a thread makes a store to #{x} then later a subsequent load from #{x}. If there is a context switch between the store and the load and that thread is then scheduled on a \strong{different} core it could actually miss its own store on the new core because it will be in the [store buffer](UNB6) of the old core. This is why the OS scheduler must insert a [memory fence](R03A) between that core and the re-scheduling of that thread on another core.}
+
+\p{\strong{8:41 PM}}
+\hr
+\p{I think I am coming around to a pure program synthesis approach vs. neurosymbolic. Recently, AWS released [[kothariAxonSynthesizingSuperoptimizer2026]] for Trainium and [Mirage](wuMirageMultiLevelSuperoptimizer) also came out recently for GPU. [Luminal](https://docs.luminalai.com/docs/compilers) seems to also believe in this \em{pure search} based approach.}
+
+\section{Reflection}{
+\ul{
+  \li{\strong{Work}}
+  \ul{
+    \tdtaskx{}{Code: Triton tutorial 03 (matmul)}
+  }
+}
+\p{\strong{What went well today?} I managed to focus a lot better when actually working. The 25min pomo definitely helped. It turns out fixing the timer to actually play sound when it was over was useful. I think I pretty deeply understand the Triton matmul example although it took way longer than I expected. I also played around with doing Anki right after lunch, which I think might be a good idea because I often struggle from the cognitive overhead of getting into another demanding task. Anki seems like a good way to ease in with a clear next task. I lifted for the first time in awhile.}
+\p{\strong{What went bad today?} I am still struggling to maintain productivity into the second phase of the day. I think this may come with time as I continue to train my focus. Once I return from lunch, I have almost no hope of deep work, so I need to find a way to remain productive in this state. I do not know if Anki + leetcode here is a good idea. It gets done but then I effectively do nothing after. I also do not feel like I am getting as much done as I should in the morning despite my focus seeming to improve. I wonder if carrying over my no phone during break habits through lunch can help. I think my \em{Read} todos are not descriptive enough. Just "reading" a paper does not really mean anything. I need to find a better way to break this into atomic chunks, so that it actually gets done / seems more feasible. I might play around with moving all fitness together into one big chunk after all work. It seems that fitness is kind of derailing my day after, but I only go on run once I feel like I cannot focus. Therefore, there might be a correlation #{\neq} causation at play here. TBD.}
+}
