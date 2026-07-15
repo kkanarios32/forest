@@ -1,0 +1,31 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Wednesday, July 15, 2026}
+\date{2026-07-15T11:43:35Z}
+
+\p{
+\em{Death is a cessation from the impression of the senses, the tyranny of the passions, the errors of the mind, and the servitude of the body.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 6 §26
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Wed: §3.1-3.2 CPU caches big picture (pp. 13-17)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Exercise: dump and read Triton's compiler pipeline for your matmul}
+      \li{Read: Halide paper (PLDI'13), sections 1-4}
+      \li{Code: matmul sweep + profiling}
+    }
+  }
+}
+}
+
+\p{\strong{7:43 AM}}
+\hr
+\p{New idea: close all tabs the night before. Having a bunch of tabs open when I come to my computer in the morning enables me to be easily distracted. Even better: open exactly what I should be working on in the morning and nothing else to reduce the friction of getting started.}
