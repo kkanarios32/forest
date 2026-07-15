@@ -15,7 +15,7 @@ One can then learn a \em{task} conditioned policy #{\pi_{\theta}(s \mid \mathbf{
 \p{
   In this paper, they consider a skill as something distinguishable by a third party. What does this mean:
 }
-  \iblock{
+  \remark{
   \em{If you have a skill, then a discriminator observing you perform your skill should be able to tell you which skill you performed.}
   }
   \p{

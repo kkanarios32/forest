@@ -6,7 +6,7 @@
 \author{kellenkanarios}
 \p{Rapidly exploring random trees (RRT) is a very simple, elegant and widely used algorithm for motion planning. The algorithm proceeds as follows:}
 \section{The Algorithm}{
-\iblock{
+\algorithm{
   For #{k = 1} to #{K} do
  \ol{
   \li{#{x_{rand} \gets \mathsf{RANDOM\_STATE}()}}

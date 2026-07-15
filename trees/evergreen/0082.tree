@@ -10,10 +10,10 @@
     \strong{Setup:}
 We are given a joint distribution #{p(X, Z; \theta)}, where #{X} and #{Z} are random variables with their joint parametrized by #{\theta}. We are also given a dataset #{\mathcal{D}} containing realizations of \strong{only} #{X} i.e. #{Z} is a [latent random variable](0083).
   }
-\iblock{\strong{Goal:} We want to learn #{p(x; \theta)}.}
+\goal{We want to learn #{p(x; \theta)}.}
 \p{ However, ##{p(x; \theta) = \int p(x, z; \theta) \mathrm{d}z = \int p(x | z; \theta)p(z) \mathrm{d}z,} which is computationally intractable for most continuous #{Z}.}
-\iblock{\strong{Question:} Can we update #{\theta} for a given realization of #{x} and #{z}?}
-\iblock{\strong{Answer:} Yes!!!}
+\question{Can we update #{\theta} for a given realization of #{x} and #{z}?}
+\answer{Yes!!!}
 \p{\strong{Motivation:} Suppose we had some #{q(z)} that we could sample realizations of #{Z} from. Then we want to find some reasonable #{\ell_{\theta}}, such that
 ##{\theta^* \approx \arg\max_{\theta} \mathbb{E}_{x, \sim p(x; \theta^*), z \sim q(z)}[\ell_{\theta}(X, Z)]}
 \remark{

@@ -5,7 +5,7 @@
 \title{Limited Direct Execution}
 
 \p{The OS lets user code run directly on the CPU for speed, but with hardware-enforced limits that prevent a buggy or malicious program from compromising the rest of the system. Two questions motivate the mechanism:}
-\iblock{
+\question{
   \ol{
     \li{\em{How do we make sure a program doesn't do what we don't want it to do?}}
     \li{\em{How do we enable time-sharing?}}

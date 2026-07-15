@@ -80,8 +80,8 @@ Now suppose their is some scalar loss function #{\phi}. Then we define
   }
 }
 \problem{#{\mathbf{P}} and #{d\mathbf{P}} are #{N \times N} matrices. Materializing this is equivalent to materialing the attention matrix in the forward pass.} 
-\iblock{
-  \strong{Key Insight 1:} \em{recomputing} #{\mathbf{P}_{ij}} and #{d\mathbf{P}_{ij}}.
+\insight{
+  \em{recomputing} #{\mathbf{P}_{ij}} and #{d\mathbf{P}_{ij}}.
   \p{First, we can easily recompute #{\mathbf{P}_{ij}} with #{\mathbf{Q}} and #{\mathbf{K}} (which are both #{N \times d} and must be resident in memory) via}
   ##{\mathbf{P}_{ij} = \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}}}
   \p{We can apply the same trick to #{d\mathbf{P}_{ij}} with #{d\mathbf{O}} and #{\mathbf{V}} (both #{N \times  d}). Namely,}
@@ -98,8 +98,7 @@ and
 }
 }
 \problem{#{\mathbf{D}} requires computing the \strong{global} dot product #{\mathbf{P}_i \cdot d\mathbf{P}_i}.} 
-\iblock{
-  \strong{Key Insight 2:}
+\insight{
   \p{To get around this, we precompute #{\mathbf{D}} using the #{\mathbf{O}} values from the forward pass and the current #{d\mathbf{O}} values. In particular,}
   ##{
     \begin{align*}

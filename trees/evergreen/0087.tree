@@ -17,8 +17,7 @@ A \em{tokenizer} is responsible for taking text and turning it into a numerical 
 }
   \section{Character-based tokenization}{
 \p{Trivially, we can do \em{character-based tokenization} i.e. mapping each character to a unique number. For example, #{\mathsf{chr}(97) = \text{``a''}} and #{\mathsf{ord}(\text{``a''}) = 97}. The compression ratio will be #{> 1} because each token corresponds to a character potentially consisting of more than one byte.}
-\iblock{
-  \strong{Problems:}
+\problem{
   \ol{
     \li{Very large vocabulary}
     \li{Many characters are quite rare.}
@@ -35,17 +34,16 @@ There is a fundamental \strong{tradeoff} between compression ratio and vocabular
 \p{In byte-based tokenization, each byte is a token achieving a compression ratio of exactly #{1}, where a byte #{\mapsto [0, 256]}
 . This is very elegant in the sense that our vocabulary size is fixed at #{256}.
 }
-\iblock{
-  \strong{Problem:}
-However, with this, the length of our encoding is # of bytes in the string, which will become too long.
+\problem{
+However, with this, the length of our encoding is the number of bytes in the string, which will become too long.
 }
 }
 \section{Word-based tokenization}{
   \p{
 In \em{word-based tokenization}, we simply split the string into the corresponding words then map each of these to a unique integer.
     }
-\iblock{
-  \strong{Problem:} The vocabulary size is "unbounded" i.e. if we see a word we have not seen before then we need to extend the vocabulary size.
+\problem{
+  The vocabulary size is "unbounded" i.e. if we see a word we have not seen before then we need to extend the vocabulary size.
 }
 }
 \section{Byte Pair Encoding}{
@@ -53,8 +51,7 @@ In \em{word-based tokenization}, we simply split the string into the correspondi
 \remark{
 In GPT2, they first split the raw text into words and then do this byte pair encoding.
 }
-\p{\strong{Algorithm:}}
-\iblock{
+\algorithm{
 \em{while} \strong{true}:
 \ol{
   \li{Count occurences of byte pairs. Store in dict #{D} with #{\{(b_1, b_2): \text{count}\}}}
