@@ -29,3 +29,48 @@
 \p{\strong{7:43 AM}}
 \hr
 \p{New idea: close all tabs the night before. Having a bunch of tabs open when I come to my computer in the morning enables me to be easily distracted. Even better: open exactly what I should be working on in the morning and nothing else to reduce the friction of getting started.}
+
+\p{\strong{8:37 AM}}
+\hr
+\p{I have been nerd sniped by [[IR7B]].}
+\p{\strong{Dialects}. This is effectively a syntax. For your given DSL, you must write each of the operations in this \em{MLIR dialect} in order to inherit the benefits of the MLIR ecosystem.}
+\quotes{The whole structured CodeGen paradigm in MLIR prefers co-designing op semantics and transformations and let ops structurally encode and guarantee certain properties to simplify analyses and transformations.}{[Lei Zhang](https://www.lei.chat/posts/mlir-linalg-dialect-and-patterns/)}
+\p{\strong{The general paradigm}: It seems that when you are writing a DSL backed by MLIR that you}
+\ol{
+  \li{Write an MLIR dialect for your DSL}
+  \li{You can write custom compiler passes for your MLIR dialect.}
+  \ul{
+    \li{This is what is done in Triton.}
+    \li{Triton has two custom MLIR dialects: \code{ttir} and \code{ttgir}.}
+    \ul{
+      \li{The \code{ttir} dialect is the backend agnostic IR.}
+      \li{The \code{ttgir} dialect is the Triton GPU IR.}
+    }
+  }
+  \li{Write a lowering pass from your MLIR dialect to the MLIR dialect of an MLIR with codegen backing i.e.}
+  \ul{
+    \li{MLIR has an LLVM dialect}
+    \li{Alternatively, [XLA](xla2017) ingests StableHLO which is an MLIR dialect. In theory, this means that if your DSL is similar to that of a JAX / LinAlg dialect, then you can get a lot of the optimizations Google has come up with for free.}
+    \ul{
+      \li{However, XLA works by translating StableHLO to HLO, which is then optimized by XLA. HLO is NOT an MLIR dialect and therefore in order to use XLA your backend needs to have an appropriate conversion from HLO to an executable on their backend.}
+      \li{This is what is done for trainium. Namely, the [neuronx-cc](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/compiler/index.html) compiler performs the translation from optimized HLO to optimized executable code on their ASIC.}
+    }
+    \li{Triton and the GPU backend for XLA are the LLVM + NVVM MLIR, which is the MLIR dialect for LLVM with added GPU instructions.}
+  }
+}
+\p{\strong{10:51 AM}}
+\hr
+\remark{
+A great observation from [Lei Zhang's blog](https://www.lei.chat/posts/gluon-explicit-performance/): [Gluon](gluon2025) is essentially a python front-end for \code{ttgir}, where [Triton](tilletTritonIntermediateLanguage2019) is the front-end for \code{ttir}.
+}
+
+\p{\strong{11:46 AM}}
+\hr
+
+\question{What is FFI and how does it relate to ABI?}
+\answer{FFI is the \em{foreign function interface}. It is a way to call functions written in other languages from within your language. ABI is the \em{application binary interface}. It is an agreed upon [calling convention](Q602) in your language i.e. in the C ABI we have the caller must push the args onto the stack, etc. In python, if you want to call to call a C function with a python list, then the FFI must walk the list and copy every element into a C array.}
+
+\p{\strong{12:08 PM}}
+\hr
+
+\p{In a devastating turn of events, I got sidetracked with Claude making this website look nice with colored callout boxes instead of subtrees...}
