@@ -1,0 +1,51 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Thursday, July 16, 2026}
+\date{2026-07-16T12:22:08Z}
+
+\p{
+\em{Give what thou wilt, and take away what thou wilt, saith he that is well taught and truly modest, to Him that gives, and takes away. And it is not out of a stout and peremptory resolution, that he saith it, but in mere love, and humble submission.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 10 §16
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Triton fused attention tutorial (06)}
+      \li{Read: Colfax CuTe layout algebra tutorials (parts on Layout, composition, divide/product)}
+    }
+  }
+}
+}
+
+\p{\strong{8:22 AM}}
+\hr
+\p{A good example explanation of today's quote per ChatGPT.}
+\example{ Imagine you spend years preparing for your dream job but don't get the offer.
+The untrained response is:
+
+\quotes{
+"This shouldn't have happened. Everything is ruined."
+}{Non-stoic}
+
+The Stoic response is:
+\quotes{
+"I wanted this job, and I worked hard for it. But getting it was never completely in my control. I'll accept this outcome without bitterness and continue acting well."
+}{Stoic}
+Notice that the Stoic still preferred getting the job. Acceptance comes \strong{after} reality has spoken. Importantly, this is \strong{never} used as a reason to avoid working hard for the job in the first place.
+}
+\p{Finished my daily reading of [[hofstadter1999godel]]. Brief summary:}
+\ul{
+  \li{We had our first dialogue between the tortoise and Achilles.}
+  \li{Zeno and his paradox were presented.}
+  \li{I had a little fun playing around in the \code{MIU} system, and the interesting question of playing within vs. outside a system arose.}
+  \li{He argued a distinction between humands and computers was that computers were able to effectively \em{turn off} their "thinking".}
+  \example{Say, for example, in the \code{MIU} system we give the computer the list of transformations and tell it to continue until it shows that \code{U} is in the grammar. The computer will infinitely apply rules with no thought, where a human will quickly be able to tell this is impossible and will stop trying to do so.}
+}
