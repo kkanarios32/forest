@@ -33,30 +33,10 @@
 \p{\strong{8:37 AM}}
 \hr
 \p{I have been nerd sniped by [[IR7B]].}
-\p{\strong{Dialects}. This is effectively a syntax. For your given DSL, you must write each of the operations in this \em{MLIR dialect} in order to inherit the benefits of the MLIR ecosystem.}
-\quotes{The whole structured CodeGen paradigm in MLIR prefers co-designing op semantics and transformations and let ops structurally encode and guarantee certain properties to simplify analyses and transformations.}{[Lei Zhang](https://www.lei.chat/posts/mlir-linalg-dialect-and-patterns/)}
-\p{\strong{The general paradigm}: It seems that when you are writing a DSL backed by MLIR that you}
-\ol{
-  \li{Write an MLIR dialect for your DSL}
-  \li{You can write custom compiler passes for your MLIR dialect.}
-  \ul{
-    \li{This is what is done in Triton.}
-    \li{Triton has two custom MLIR dialects: \code{ttir} and \code{ttgir}.}
-    \ul{
-      \li{The \code{ttir} dialect is the backend agnostic IR.}
-      \li{The \code{ttgir} dialect is the Triton GPU IR.}
-    }
-  }
-  \li{Write a lowering pass from your MLIR dialect to the MLIR dialect of an MLIR with codegen backing i.e.}
-  \ul{
-    \li{MLIR has an LLVM dialect}
-    \li{Alternatively, [XLA](xla2017) ingests StableHLO which is an MLIR dialect. In theory, this means that if your DSL is similar to that of a JAX / LinAlg dialect, then you can get a lot of the optimizations Google has come up with for free.}
-    \ul{
-      \li{However, XLA works by translating StableHLO to HLO, which is then optimized by XLA. HLO is NOT an MLIR dialect and therefore in order to use XLA your backend needs to have an appropriate conversion from HLO to an executable on their backend.}
-      \li{This is what is done for trainium. Namely, the [neuronx-cc](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/compiler/index.html) compiler performs the translation from optimized HLO to optimized executable code on their ASIC.}
-    }
-    \li{Triton and the GPU backend for XLA are the LLVM + NVVM MLIR, which is the MLIR dialect for LLVM with added GPU instructions.}
-  }
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{IR7B}
 }
 \p{\strong{10:51 AM}}
 \hr
@@ -74,3 +54,37 @@ A great observation from [Lei Zhang's blog](https://www.lei.chat/posts/gluon-exp
 \hr
 
 \p{In a devastating turn of events, I got sidetracked with Claude making this website look nice with colored callout boxes instead of subtrees...}
+
+\p{\strong{2:39 PM}}
+\hr
+\p{ I have been super nerd-sniped by all of the new possibilities I wanted for my site before claude. Hopefully, I will be done soon and starting Anki before exercise.}
+
+\p{\strong{3:08 PM}}
+\hr
+\question{What is the tradeoff of off-chip vs. on-chip memory?}
+\answer{Look up Rent's rule.
+  \ol{
+    \li{On-chip bandwidth scales with die area (transistor count).}
+    \li{Off-chip bandwidth scales with package pin count — which is limited by ball pitch and mechanical/thermal reality, and improves glacially.}
+  }
+}
+
+\p{\strong{10:01 PM}}
+\hr
+
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{EXEQ}
+}
+
+\section{Reflection}{
+\ul{
+  \li{\strong{Study}}
+  \ul{
+    \tdtaskx{}{Wed: §3.1-3.2 CPU caches big picture (pp. 13-17)}
+  }
+}
+\p{\strong{What went well today?} I did not lose much time on truly unproductive things. I do think my phone screentime has dramatically reduced and my self-deprivation of all media content has also left me with little else to do but be on this computer. I am doing well with my habits, setting up \code{leetcode.nvim} might also help me like leetcoding more. I think I am actually getting more flexible (after over 100 days stretching), which is really cool! I will likely be all caught up on Anki tomorrow, so that may help add some extra time to start reading new material / adding more cards.}
+\p{\strong{What went bad today?} I completely abandoned the pomodoro timer and the scheduled tasks for the day. One potential fix for this outlined above is to close all tabs the night before (will try after writing this). I was overwhelmed while waking up this morning and immediately picked up rabbit holes from the night before. I spent almost all of my working hours on this forest today. Hopefully, I am satisfied with the results and can now just effectively use it. The tasks chosen were also not very good. Looking at the Triton IR before understanding [[IR7B]] didn't really make any sense.}
+}
