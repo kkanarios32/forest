@@ -63,7 +63,7 @@
 \transclude{0054}
 \transclude{0055}
 \p{
-\strong{interpretation:} #{A_{\epsilon}^{(n)}\,\text{ is a subset of }\,{\mathcal{X}}^{n}}
+\paragraph{interpretation} #{A_{\epsilon}^{(n)}\,\text{ is a subset of }\,{\mathcal{X}}^{n}}
 \ul{
     \li{Contains almost all the probability.}
     \li{Consists of #{\approx 2^{nH(X)}}}
@@ -76,7 +76,7 @@
 \section{Fixed-rate lossless source coding}{
 \transclude{0059}
 \p{
-    \strong{Performance:}
+    \paragraph{Performance}
     \ul{
         \li{Rate = #{\frac{\log_2 \theta}{n}}}
         \li{Probability of decoding error = #{\mathbb{P}|\hat{X}^n \neq X^n|}}
@@ -197,7 +197,7 @@ Note that the first term depends only on the encoder and the second term depends
 }
 \p{
 \ul{
-\strong{Assumptions:}
+\paragraph{Assumptions}
   \li{The encoder is a deterministic function of #{\mathbf{W}}}
   \li{The channel does not have access to the message #{\mathbf{W}}.}
 }

@@ -9,7 +9,7 @@
   }
 
 \p{
-  \strong{Intuition:} by data processing, we can never create new information about #{U}.
+  \paragraph{Intuition} by data processing, we can never create new information about #{U}.
 }
 
 \proof{

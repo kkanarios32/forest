@@ -6,24 +6,24 @@
 \p{Machine-instance notes for the PowerPC line — a RISC implementation of the same concepts covered in [superscalar](6JU6) and [[1LCS]], with a few innovations specific to this family.}
 
 \section{PowerPC 601}{
-  \p{\strong{Front-end:} standard 4-stage pipeline. Instruction queue dispatches 3 instructions per cycle.}
+  \p{\paragraph{Front-end} standard 4-stage pipeline. Instruction queue dispatches 3 instructions per cycle.}
   \ul{
     \li{Identifies unconditional branches (and resolved conditional ones) in the queue; if taken, deletes the branch instruction and starts fetching from the target — \em{branch folding}.}
     \li{Untaken branches "fall out" — \em{fall through}.}
     \li{No [[BI4H]]-equivalent. Static scheduling.}
   }
-  \p{\strong{Back-end:} one integer ALU (also handles addresses), one floating-point ALU with single-cycle fused multiply-add. For FP-heavy code the integer ALU just does addresses.}
+  \p{\paragraph{Back-end} one integer ALU (also handles addresses), one floating-point ALU with single-cycle fused multiply-add. For FP-heavy code the integer ALU just does addresses.}
   \remark{Competed with two-integer-ALU designs because simpler logic left room for 4× the L1 cache (32KB vs 8KB).}
 }
 
 \section{PowerPC 603 and 603e}{
- \p{\strong{Front-end:}}
+ \p{\paragraph{Front-end}}
  \ul{
    \li{Branch dispatch on a separate bus, so branches don't compete with non-branch dispatch.}
    \li{Up to 2 non-branch instructions dispatched per cycle.}
    \li{Adds a \em{commit unit} and \em{completion queue} — the PowerPC names for [[BI4H]]. Dynamic scheduling with an instruction window.}
  }
- \p{\strong{Back-end:}}
+ \p{\paragraph{Back-end}}
  \ul{
    \li{Two added execution units: a system unit for misc integer ops and a load/store unit. Lighter load on the integer ALU.}
    \li{FPU took hits: 3 instructions every 4 cycles (mandatory bubble); double precision (including \code{fmadd}) takes 2 cycles in execute.}
@@ -31,14 +31,14 @@
 }
 
 \section{PowerPC 604}{
-  \p{\strong{Front-end:}}
+  \p{\paragraph{Front-end}}
   \ul{
    \li{Splits decode/dispatch and writeback into two stages — enables shorter clock cycles.}
    \li{Up to 6 instructions dispatched per cycle.}
    \li{Dynamic [[1LCS]] with a 512-entry BHT (2 bits per entry) and a 64-entry branch address cache (BTB).}
    \li{Adds a condition-register unit sharing dispatch bus with the branch unit.}
   }
-  \p{\strong{Back-end:} two simple integer units + one complex; fully pipelined FPU.}
+  \p{\paragraph{Back-end} two simple integer units + one complex; fully pipelined FPU.}
 
   \p{Dispatch obeys [[FQ9N]] rules: in-order dispatch, execution-unit availability, ROB availability, and rename-register availability.}
 

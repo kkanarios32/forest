@@ -138,7 +138,7 @@ The results of this section concern infinite sequences of events in a probabilit
 \transclude{001K}
 \transclude{001O}
 \transclude{001P}
-\p{\strong{Meaning in english:} In the book, they give the example of even and odd numbered coin tosses. We want to know when a new event only depends on even or odd coin tosses. Concretely, we know that even and odd coin tosses are independent, and we want to know if, for example, the outcome of every fourth coin toss is independent of odd tosses. We can do this rigorously by showing that this event is in the #{\sigma}-algebra of even coin tosses. Then by [Theorem 5.7](001P), we know that this event is also independent of odd coin tosses.}
+\p{\paragraph{Meaning in english} In the book, they give the example of even and odd numbered coin tosses. We want to know when a new event only depends on even or odd coin tosses. Concretely, we know that even and odd coin tosses are independent, and we want to know if, for example, the outcome of every fourth coin toss is independent of odd tosses. We can do this rigorously by showing that this event is in the #{\sigma}-algebra of even coin tosses. Then by [Theorem 5.7](001P), we know that this event is also independent of odd coin tosses.}
 \transclude{001R}
 \section{Subfields}{
 \remark{Intuition of subfields are spaces with partial information. My best

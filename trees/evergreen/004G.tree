@@ -39,7 +39,7 @@
 }
 }
 \p{
-\strong{Intuition 1:} Convex re-weighting of input tokens.
+\paragraph{Intuition 1} Convex re-weighting of input tokens.
   Note that
 ##{
 \begin{align*}
@@ -82,7 +82,7 @@
   \end{bmatrix}
 \end{align*}
   }
-  \strong{Intuition 2:} Context dependent re-weighting.
+  \paragraph{Intuition 2} Context dependent re-weighting.
       If #{\mathbf{p} = \mathbb{S}(\mathbf{Q} \mathbf{K}^T)} then
       ##{
         \begin{align*}

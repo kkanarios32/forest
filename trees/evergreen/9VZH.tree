@@ -23,7 +23,7 @@
   \li{If poor network speed then pipeline parallel might be more viable and deeper networks would be more parallelizable.}
 }
 }
-\p{\strong{Rule 4:} Vocab size
+\p{\paragraph{Rule 4} Vocab size
 \ul{
   \li{For single language models, vocab size is typically #{30-50k}}
   \li{For multi language models, vocab size is typically #{100-250k}}

@@ -7,7 +7,7 @@
 
 \p{In this note, we will cover the entire lifecycle of a store instruction, assuming some fairly modern / sufficiently complex computer architecture}
 
-\p{\strong{Assumptions:} We assume the following setup.}
+\p{\paragraph{Assumptions} We assume the following setup.}
 \ul{
   \li{An [OoO processor](U0NY).}
   \li{A [multi-core](JRP0) processor.}

@@ -21,7 +21,7 @@
     \li{Needs deep buffers (126-entry [[BI4H]]) to keep the fast back-end fed.}
   }
 
-  \p{\strong{[[3DIC]]:}}
+  \p{\paragraph{[[3DIC]]}}
   \ul{
     \li{x86 decoding was too slow to keep a 20-stage pipeline fed.}
     \li{The trace cache moves to L1, storing already-decoded [[WEW2]] traces; the raw instruction cache moves to L2.}

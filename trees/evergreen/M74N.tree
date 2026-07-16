@@ -1,6 +1,6 @@
 \import{base-macros}
 \title{XLA Compilation}
-\p{\strong{Overview:}}
+\p{\paragraph{Overview}}
 \ul{
   \li{Dispatch / Cache: caches compilation based on input argument signatures i.e. shapes, dtypes, sharding. If shapes change will need to \strong{recompile}.}
   \li{XLA transformation: Python -> JaxPR -> StableHLO, performing fusion and other simplifications to reduce memory overhead (?).}
@@ -9,7 +9,7 @@
 \remark{
 As soon as python code is traced into jaxpr it is thrown away. Only HLO is input to XLA compiler.
 }
-\p{\strong{Compilation (Pipeline):}}
+\p{\paragraph{Compilation (Pipeline)}}
 \ol{
   \li{Tracing: Python / JAX -> Jaxpr}
   \ul{
@@ -59,7 +59,7 @@ As soon as python code is traced into jaxpr it is thrown away. Only HLO is input
 \<html:img>[width]{60\%}[src]{\route-asset{assets/img/xla-mem-layout.png}}{}
 \figcaption{How memory is laid out based on XLA.}
 }
-\p{\strong{Execution:}}
+\p{\paragraph{Execution}}
 \ul{
   \li{Move tensors from CPU to HBM. Sharding is taken care of by PJIT if on TPU pod.}
   \li{Async: Immediately returns a \code{Future} JAX array while the hardware executes VLIW microcode asynchronously.}

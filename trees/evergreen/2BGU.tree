@@ -18,7 +18,7 @@
 \remark{
 Unlike fully-connected cannot batch self-attention because it depends on the individual prompts.
 }
-\p{\strong{Recall:} operational intensity is ##{\frac{\text{compute throughput}}{\text{memory bandwidth}}}}
+\p{\paragraph{Recall} operational intensity is ##{\frac{\text{compute throughput}}{\text{memory bandwidth}}}}
 \p{\strong{Inference much lower operational intensity than GEMM!}}
 \ul{
   \li{Inference only doing matrix #{\times} row}
@@ -34,7 +34,7 @@ Put high use operations i.e. vector multiplication, element-wise multiplication 
 \remark{
 CENT supports inter and intra-device communication via connecting communication controller to shared buffer and CXL port.
 }
-\p{\strong{Communcation primitives:} multicast and gather}
+\p{\paragraph{Communcation primitives} multicast and gather}
 \ul{
   \li{Multicast: send to all CXL devices.}
   \li{Gather: receive data sequentially from all CXL devices.}

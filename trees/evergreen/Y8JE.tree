@@ -19,8 +19,8 @@
 \section{Version management (rollback)}{
 \p{Two operations: \em{commit} and \em{abort}. Implementations:}
 \ol{
-  \li{\strong{Lazy:} stores go to a "write table" rather than memory; loads check the table first, falling back to memory. Commit writes the table back (slow); abort just clears the table (fast).}
-  \li{\strong{Eager (coherence-backed):} stores write through but track read/write sets per cache line. Commit clears the sets (fast); abort clears the sets (also fast — work already on overwrite if not aborted before commit).}
+  \li{\paragraph{Lazy} stores go to a "write table" rather than memory; loads check the table first, falling back to memory. Commit writes the table back (slow); abort just clears the table (fast).}
+  \li{\paragraph{Eager (coherence-backed)} stores write through but track read/write sets per cache line. Commit clears the sets (fast); abort clears the sets (also fast — work already on overwrite if not aborted before commit).}
 }
 }
 

@@ -64,7 +64,7 @@
 \remark{Instruction encoding size hasn't actually changed — the PC widened because the virtual address space did.}
 \remark{Only integer and addressing units widened. Floating point and vector units already operated on wider registers.}
 
-\p{\strong{Benefits:}}
+\p{\paragraph{Benefits}}
 \ul{
   \li{Increased \em{dynamic range} — values can range over #{2^{64}} instead of #{2^{32}}. Overflow/underflow happens at the extremes of the representable range.}
   \li{64-bit address space. x86-64 currently implements 40-bit virtual addresses but the architecture allows far more.}

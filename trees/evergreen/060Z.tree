@@ -40,14 +40,14 @@
       \li{7.39\% On-chip read utilization.}
     }
   }
-  \p{\strong{HBM Bottleneck:} The default XLA attention does not fuse the softmax with the logit computation, requiring the entire logit matrix to be written back to HBM.}
-  \p{\strong{Vector Unit Limitations:} MXU can be left idle while VPU is performing copmlex exponential and sum operations.}
-  \p{\strong{VMEM Residency and Loop Control:} Pallas allows you to control data movement, so that we can explicitly enforce \em{online softmax} rather than writing back to HBM.}
-  \p{\strong{Temporal Control via LLO:} Pallas also allows control over the \em{temporal flow}, preventing the compiler from reordering your manual optimizations.}
+  \p{\paragraph{HBM Bottleneck} The default XLA attention does not fuse the softmax with the logit computation, requiring the entire logit matrix to be written back to HBM.}
+  \p{\paragraph{Vector Unit Limitations} MXU can be left idle while VPU is performing copmlex exponential and sum operations.}
+  \p{\paragraph{VMEM Residency and Loop Control} Pallas allows you to control data movement, so that we can explicitly enforce \em{online softmax} rather than writing back to HBM.}
+  \p{\paragraph{Temporal Control via LLO} Pallas also allows control over the \em{temporal flow}, preventing the compiler from reordering your manual optimizations.}
 }
 \section{Pallas Fundamentals}{
 \em{Ignore the HLO pass.}
-\p{\strong{Writing a kernel:}}
+\p{\paragraph{Writing a kernel}}
 \ul{
   \li{Inside the kernel, data has already been moved from HBM to VMEM.
 \figure{
@@ -70,13 +70,13 @@
   \figure{
   \<html:img>[width]{100\%}[src]{\route-asset{assets/img/pipelined-matmul.png}}{}
   }
-  \p{\strong{Two-level Tiling:}}
+  \p{\paragraph{Two-level Tiling}}
   \ul{
     \li{Macro-tiling: this is done by Pallas / user. You define the larger software blocks i.e. 1024x1024 to hide latency DMA transfers. Pallas manages pipeling.}
     \li{Micro-tiling: this is done by compiler / hardware. Translates larger block into hardware native VREG 8x128.
     }
   }
-  \p{\strong{VPU Pipelining:}}
+  \p{\paragraph{VPU Pipelining}}
   \ul{
     \li{VLOAD: fetching inputs for \strong{chunk (8x128)(N + 1)th} from VMEM and move to VRegs}
     \li{VALU: Perform elementwise operations for \strong{current (Nth)} chunk }
@@ -84,7 +84,7 @@
   }
 }
 \section{Flash Attention}{
-\p{\strong{Online softmax:}}
+\p{\paragraph{Online softmax}}
 \ul{
   \li{Each block does a local softmax calculation.}
   \li{Tracks a shared maximum and adjusts results.}
@@ -99,20 +99,20 @@
   \li{Additive updates: partial results (current softmax and outputs) are added to running totals via fast multiply and addition ops.}
   \li{Delayed normalization: only divide by normalization once at the very end of the loop because division is slow.}
 }
-\p{\strong{Block-size tuning:} to maximize compute-to-load ratio need biggest block sizes that fit into VMEM.}
+\p{\paragraph{Block-size tuning} to maximize compute-to-load ratio need biggest block sizes that fit into VMEM.}
 }
 \section{Splash Attention}{
 \p{With certain masks (i.e. causal) can skip alot of computation for parts of the attention matrix that are being masked out.}
 \ul{
   \li{Finer blocks -> can skip more but then have poorer utilization.}
 }
-\p{\strong{Pre-processing Mask Info:}}
+\p{\paragraph{Pre-processing Mask Info}}
 \ul{
   \li{Sparsity pruning: Divide mask into blocks and discard all inactive blocks (all zeros).}
   \li{Data compression: see how many unique mask patterns are needed to describe the remaining active blocks.}
   \li{Execution map and pre-fetching: (active_rows, mask_next) generated to map the computation order and tell the MXU which mask pattern to prefetch for zero-latency application.}
 }
-\p{\strong{Metadata structures:}}
+\p{\paragraph{Metadata structures}}
 \ul{
   \li{Block filtering (block_mask): categorizes QK blocks as zero, non-zero, partial.}
   \li{Coordinate mapping (active_ros/cols): provides the hardware with (Q, KV) grid indices, ensuring efficient loading of active blocks from HBM.}

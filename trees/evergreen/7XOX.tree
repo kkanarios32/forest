@@ -12,7 +12,7 @@
   \li{[[1LCS]] — branch history table (BHT) and branch target buffer (BTB) combined with static prediction as a fallback on BHT miss.}
   \li{[[IIF9]] — execute past a predicted branch, write back only after the prediction is confirmed.}
 }
-\p{\strong{Pipeline:}}
+\p{\paragraph{Pipeline}}
 \ol{
   \li{\em{Fetch / Prefetch}: read from instruction cache.}
   \li{\em{Decode 1}: decode to internal format; branch prediction.}

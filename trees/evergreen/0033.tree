@@ -33,7 +33,7 @@
 
 }
 \section{Iterative Methods}{
-  \strong{Assume:}
+  \paragraph{Assume}
   \ul{
       \li{#{f: \mathbb{R}^n \to \mathbb{R}} is a [[004D]] and a [[003K]].}
       \li{The gradient #{\nabla f(\mathbf{x})} is [#{L}-Lipschitz](003J).}

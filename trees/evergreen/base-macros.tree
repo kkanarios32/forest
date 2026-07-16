@@ -76,6 +76,13 @@
 
 \def\mark[body]{\<html:mark>{\body}}
 
+% LaTeX-style run-in heading. \paragraph{Word} renders a bold sans lead-in
+% label with a trailing period — "Word." — after which the sentence continues
+% inline. Replaces the bold-label-with-colon idiom so the label pops in the
+% sans (var(--sans)) against the serif body. Pass the label WITHOUT punctuation;
+% the macro adds the period. The argument may hold links/math (\paragraph{[[ID]]}).
+\def\paragraph[head]{\<html:strong>[style]{font-family: var(--sans);}{\head.}}
+
 \def\lsquare{\startverb[\stopverb}
 \def\rsquare{\startverb]\stopverb}
 \def\lparen{\startverb(\stopverb}

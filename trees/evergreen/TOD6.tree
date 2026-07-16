@@ -5,7 +5,7 @@
 \p{\strong{Notation}:
 For this section, our notion of an \em{embedding} is a function #{f} that takes a token and a position i.e. #{f(x, i)} is the embedding of token #{x}, occurring at position #{i}.
 }
-\p{\strong{Idea:} the [inner product](B1RI) of two embeddings should only need relative positioning i.e. for any two #{\mathbf{x}}, #{\mathbf{y}} with positions #{i} and #{j} respectively, there should exist some #{g}, such that
+\p{\paragraph{Idea} the [inner product](B1RI) of two embeddings should only need relative positioning i.e. for any two #{\mathbf{x}}, #{\mathbf{y}} with positions #{i} and #{j} respectively, there should exist some #{g}, such that
 ##{\langle f(\mathbf{x}, i), f(\mathbf{y}, j) \rangle = g(\mathbf{x}, \mathbf{y}, i - j)}
 Namely, this can be written as a function of just the relative positioning between the embeddings.
 }
