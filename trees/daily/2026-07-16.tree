@@ -49,3 +49,62 @@ Notice that the Stoic still preferred getting the job. Acceptance comes \strong{
   \li{He argued a distinction between humands and computers was that computers were able to effectively \em{turn off} their "thinking".}
   \example{Say, for example, in the \code{MIU} system we give the computer the list of transformations and tell it to continue until it shows that \code{U} is in the grammar. The computer will infinitely apply rules with no thought, where a human will quickly be able to tell this is impossible and will stop trying to do so.}
 }
+
+\p{\strong{10:39 AM}}
+\hr
+\question{What is the benefit of defining the complex CuTe layout algebra? Surely, it must buy us something to be worth the huge theoretical / mathematical overhead?}
+\answer{The fact that it is a \em{complete} algebra, is useful in the sense that composing any two operations is guaranteed to remain a valid layout. This allows us to reason about layouts as the composition of better understood primitives instead of having to close-form expand the final expression. Additionally, these transformations can be applied at \em{compile time}, paying an upfront compilation time cost to get rid of any complex address calculation during runtime.}
+
+\p{\strong{11:18 AM}}
+\hr
+\idea{One way to combine neuro + symbolic is to create a pure synthesizer that takes in example programs i.e. PyTorch and synthesizes the corresponding kernel i.e. \citek{wuMirageMultiLevelSuperoptimizer}. Then have another tool to synthesize the mega-kernel / composition like \citek{jinEventTensorUnified2026}.
+\algorithm{
+  The LLM would then operate as:
+  \ul{
+    \li{For each kernel,}
+      \ol{
+        \li{Provide PyTorch implementation of sub-kernel}
+        \li{Run synthesizer and get output kernel}
+        \ul{
+          \li{Optionally, then optimize the synthesized kernel (if the modification is an easier task).}
+      }
+    }
+    \li{Then compose the kernels with the mega-kernel tool.}
+    \ul{
+      \li{Optionally, then optimize the mega-kernel (if the modification is an easier task).}
+    }
+  }
+}
+}
+\idea{Maybe the synthesizer also takes in weightings of operations. The LLM could adaptively update these weights based on the performance of synthesized programs.
+\ul{
+  \li{It is likely that the synthesizer is far too slow right now. (It seems \citek{wuMirageMultiLevelSuperoptimizer} takes on the order of hours). Making it faster (perhaps with Xinyu's help) could be a very useful thing then.}
+}
+}
+
+\p{\strong{11:47 AM}}
+\hr
+
+\question{If we hard-code in the manipulation environment the mapping from drawer open / window open to a fixed state and do GCRL will it learn to press the respective buttons?
+\question{If so, then how could we plan over the skill to learn the termination condition?}
+\question{Then how could we actually learn the mapping from raw state to meaningful things like drawer / window are open / closed?}
+\remark{
+  This is likely related to [TAMP](garrettIntegratedTaskMotion2021), where maybe we do GCRL on the discrete portion of the state space to learn skills. Although in \em{task and motion planning}, I think the split is actually in the action space?
+}
+}
+
+\p{\strong{2:46 PM}}
+\hr
+\scope{
+  \put\transclude/expanded{false}
+  \put\transclude/toc{false}
+  \transclude{8GCT}
+}
+
+\p{\strong{9:36 PM}}
+\hr
+
+\section{Reflection}{
+  \p{\strong{What went well today?} I really like my reading in the morning habit. Especially because [GEB](hofstadter1979godel) is an interesting book, but I cannot focus well enough to get through it at night. I had a very long meeting with Joy today, where we discussed the landscape of DSLs and she provided some great insight.}
+  \p{\strong{What went poorly today?} I did not exercise due to an incredible air quality issue in Michigan. Detroit had the worst air quality in the world at one point today! However, this showed me that my getting sidetracked is not at all related to being tired from exercise. The same fatigue hit at the same time and I did the same little amount of work. I once again failed to use the pomo to force myself to stick to a task for at least 25min at a time, and it showed with very little deep work getting done.}
+}
