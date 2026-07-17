@@ -1,0 +1,31 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Friday, July 17, 2026}
+\date{2026-07-17T12:49:07Z}
+
+\p{
+\em{Dost thou grieve that thou dost weigh but so many pounds, and not three hundred rather? Just as much reason hast thou to grieve that thou must live but so many years, and not longer. For as for bulk and substance thou dost content thyself with that proportion of it that is allotted unto thee, so shouldst thou for time.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 6 §44
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Triton fused attention tutorial (06)}
+      \li{Read: Colfax CuTe layout algebra tutorials (parts on Layout, composition, divide/product)}
+    }
+  }
+}
+}
+
+\p{\strong{8:49 AM}}
+\hr
+\p{\paragraph{Meditations Translation.} Another quote about how we should treat death like any other universal truth of the world. In this instance, he chooses to compare to your weight. }
+\remark{I really do not get the hype about this book. It is like 10\% insightful and 90\% forcing the same concepts down your throat.}
