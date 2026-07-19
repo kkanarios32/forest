@@ -1,0 +1,30 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Sunday, July 19, 2026}
+\date{2026-07-19T15:41:28Z}
+
+\p{
+\em{To live with the Gods. He liveth with the Gods, who at all times affords unto them the spectacle of a soul, both contented and well pleased with whatsoever is afforded, or allotted unto her; and performing whatsoever is pleasing to that Spirit, whom (being part of himself) Jove hath appointed to every man as his overseer and governor.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 5 §21
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Triton fused attention tutorial (06)}
+      \li{Read: Colfax CuTe layout algebra tutorials (parts on Layout, composition, divide/product)}
+    }
+  }
+}
+}
+
+\p{\strong{11:41 AM}}
+\hr
+\p{\em{Today's [GEB](hofstadter1979godel).} The primary focus was on \em{figure} vs. \em{ground}. The concept was nicely introduced across a variety of disciplines. The mathematical point of view was in defining the formaly system of prime numbers. It is easy to do so as the \em{ground} of composite numbers. Here, the \em{ground} is the set of theorems not included in the formal system of composite numbers. It posed the very interesting question of whether all \em{grounds} can be rewritten as \em{figures}. Surprisingly, this is not the case in mathematics (though it is the case for prime numbers). This notion of \em{figure} is then translated to its logical counterpart \em{recursively enumerable}. A \em{recursive set} is then a set whose \em{ground} and \em{figure} are both \em{recursively enumerable}.}
