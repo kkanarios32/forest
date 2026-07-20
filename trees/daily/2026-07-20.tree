@@ -1,0 +1,30 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Monday, July 20, 2026}
+\date{2026-07-20T13:57:10Z}
+
+\p{
+\em{He hath a stronger body, and is a better wrestler than I. What then? Is he more bountiful? is he more modest? Doth he bear all adverse chances with more equanimity: or with his neighbour's offences with more meekness and gentleness than I?} — \strong{Marcus Aurelius}, \em{Meditations}, Book 7 §28
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Triton fused attention tutorial (06)}
+    }
+  }
+}
+}
+
+\p{\strong{9:57 AM}}
+\hr
+\p{\paragraph{Meditation's translation} This one is pretty straightforward. Aurelius is saying that being superior physically is not what actually matters. Instead it is more important to carry yourself with the Stoic ideals outlined throughout the book.}
+\p{I am trying something new today. I already ran and stretched. We will see if it has a noticable negative impact on my focus. I am also trying no breakfast due to [this Huberman pod](https://www.youtube.com/watch?v=Pmd6knanPKw). I will likely try no running and just fasting tomorrow to try to isolate causes.}
