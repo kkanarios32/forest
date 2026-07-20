@@ -27,4 +27,13 @@
 
 \p{\strong{11:41 AM}}
 \hr
-\p{\em{Today's [GEB](hofstadter1979godel).} The primary focus was on \em{figure} vs. \em{ground}. The concept was nicely introduced across a variety of disciplines. The mathematical point of view was in defining the formaly system of prime numbers. It is easy to do so as the \em{ground} of composite numbers. Here, the \em{ground} is the set of theorems not included in the formal system of composite numbers. It posed the very interesting question of whether all \em{grounds} can be rewritten as \em{figures}. Surprisingly, this is not the case in mathematics (though it is the case for prime numbers). This notion of \em{figure} is then translated to its logical counterpart \em{recursively enumerable}. A \em{recursive set} is then a set whose \em{ground} and \em{figure} are both \em{recursively enumerable}.}
+\p{\em{Today's [GEB](hofstadterGodelEscherBach1999).} The primary focus was on \em{figure} vs. \em{ground}. The concept was nicely introduced across a variety of disciplines. The mathematical point of view was in defining the formaly system of prime numbers. It is easy to do so as the \em{ground} of composite numbers. Here, the \em{ground} is the set of theorems not included in the formal system of composite numbers. It posed the very interesting question of whether all \em{grounds} can be rewritten as \em{figures}. Surprisingly, this is not the case in mathematics (though it is the case for prime numbers). This notion of \em{figure} is then translated to its logical counterpart \em{recursively enumerable}. A \em{recursive set} is then a set whose \em{ground} and \em{figure} are both \em{recursively enumerable}.}
+
+\p{\strong{10:24 PM}}
+\hr
+
+\section{Reflection}{
+  \p{\strong{What went well today?} I got back on the horse of running with a light 8.5 miles, and it felt pretty good! I also read [GEB](hofstadterGodelEscherBach1999). I have my first [weekly review](2026-W29). I do not know if this is good or bad, but the site now also looks really good. I hope that I have finally reached a point of stability and can start just get into a flow of production.}
+  \p{\strong{What went poorly today?} Woke up really late (got very little sleep the night before). Missed my Leetcode today. I listened to the Huberman daily routine, and I think I am going to try what he has to say. Namely, no more eating in the morning (or something very light), and try to delay my carbs till end of day, which is complete opposite of what I was doing before. Also my 9am-12pm must be protected at all costs as my best working block. If my runs are light that day, then I will run before this block.
+  }
+}
