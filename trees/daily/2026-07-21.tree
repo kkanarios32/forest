@@ -1,0 +1,29 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Tuesday, July 21, 2026}
+\date{2026-07-21T11:24:30Z}
+
+\p{
+\em{As they that long after figs in winter when they cannot be had; so are they that long after children, before they be granted them.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 11 §29
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Triton fused attention tutorial (06)}
+    }
+  }
+}
+}
+
+\p{\strong{7:24 AM}}
+\hr
+\p{Finished morning walk. We will see if this remains a part of the daily routine.}
