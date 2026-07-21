@@ -28,3 +28,73 @@
 \hr
 \p{\paragraph{Meditation's translation} This one is pretty straightforward. Aurelius is saying that being superior physically is not what actually matters. Instead it is more important to carry yourself with the Stoic ideals outlined throughout the book.}
 \p{I am trying something new today. I already ran and stretched. We will see if it has a noticable negative impact on my focus. I am also trying no breakfast due to [this Huberman pod](https://www.youtube.com/watch?v=Pmd6knanPKw). I will likely try no running and just fasting tomorrow to try to isolate causes.}
+
+\p{\strong{10:39 AM}}
+\hr
+\p{I think the Triton tutorial is a bit too performance-focused. For example, they include the following snippet to convert the [softmax](C00V) to base 2 for better hardware alignment. I just want the vibes of how to do fused attention without every possible optimization included with no explanation.}
+\codeblock{python}{\verb<<<|
+  qk_scale = sm_scale
+  qk_scale *= 1.44269504  # 1/log(2)
+<<<}
+
+\p{\strong{11:23 AM}}
+\hr
+\p{In [FlashAttention](daoFlashAttentionFastMemoryEfficient2022), they do not do the #{k}-\em{reduction} and instead load entire rows from #{Q} and #{K}.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/flash_inner.png}}{}
+\figcaption{Inner loop computes entire tile. Outer loop loops over rows of #{K} and accumulates necessary information for [online softmax](PI7N).}
+}
+
+\p{\strong{3:06 PM}}
+\hr
+\p{Finished my \em{Daily [GEB](hofstadterGodelEscherBach1999)}. Today's notes:}
+\ul{
+  \li{For the first time, I couldn't really follow the dialogue. Maybe it is because I am not very well-versed in the mechanisms of the phonograph. It seems like roughly what they were trying to convey was that an isomorphism is only well-defined on its \em{range}. Inverting the isomorphism outside of the range can result in undefined behavior.}
+  \li{Got a good exposition on \em{external} vs. \em{internal} consistency. Namely, that we cannot associate consistency with whatever preconceived notion we associate with the symbols of the system.}
+  \example{
+  Adding axioms to the #{pq}-system cause external inconsistency \em{if we continue to associate with addition}. It does not make sense to maintain this association when our isomorphism no longer holds. Internally, we can alter the \em{meaning} to be \em{at least one more than} and recover our external consistency.
+  }
+  \li{They also make a good point about the hierarchy of systems and how higher-level hierarchies inherit meaning from their lower-level systems.}
+  \example{
+  Human intelligence can be thought of in this way. One reason that we cannot comprehend Escher's \em{relativity} is that our lower level system has already internalized the meaning of staircases.
+  \figure{
+  \<html:img>[width]{70\%}[src]{\route-asset{assets/img/escher-staircase.jpg}}{}
+  \figcaption{Escher's \em{relativity}.}
+  }
+  }
+  \li{Good tidbits about the \em{expressiveness} of the system and how that relates to \em{completeness}. Namely, that Godel's incompleteness theorem only applies to systems that our adequately expressive like Number theory.}
+  \example{
+  Our #{pq}-system is \em{complete} in the sense that the addition of any two numbers is contained in it. However, we cannot express much in this system. We cannot even express the addition of three numbers.
+  }
+}
+
+\p{\strong{3:30 PM}}
+\hr
+\p{[Triton](tilletTritonIntermediateLanguage2019) limitations \citek{wangTileLangComposableTiled2025}:}
+\ul{
+  \li{No thread-level, memory-hierarchy control.}
+  \li{\code{num_stages} does not allow for arbitrary pipelines.}
+}
+\p{\em{TileLang} allows control over memory hierarchy via primitives like \code{T.alloc_shared} for shared memory or \code{T.alloc_fragments} for accumulators in register files.}
+\table{
+  \tr{\td{\strong{Dataflow Centric Tile Operators}} \td{}\td{\strong{Scheduling primitives}}\td{}}
+  \tr{\td{\code{T.copy}} \td{}\td{\code{T.parallel}}\td{}}
+}
+\remark{
+\em{Warp specialization support}. This is done via analyzing the buffer usage and partitioning warps into producer / consumer. Synchronization is handled via inserting \code{mbarriers} as determined necessary by live variable analysis. 
+}
+
+\p{\strong{11:01 PM}}
+\hr
+
+\section{Reflection}{
+\ul{
+  \li{\strong{Work}}
+  \ul{
+    \tdtaskx{}{Respond to Lei + Kristen email}
+    \tdtaskx{}{Progress report email}
+  }
+}
+\p{\strong{What went well today?} I think fasting genuinely does increase mental clarity / focus. I was able to really lock in this morning even though I missed the optimal window due to running / stretching in the morning. I have gotten really into reading, making it through a lot of [GEB](hofstadterGodelEscherBach1999) and even some [[voltaireCandide2015]].}
+\p{\strong{What went bad today?} I talked on the phone for way too long. Somehow, I had calls with a bunch of people I hadn't talked to in awhile all in the same day. I need to get better at ending phone calls. I was on schedule until I missed my leetcode time due to the calls, and they cause med to go to bed much later as seen by the time of this note.}
+}
