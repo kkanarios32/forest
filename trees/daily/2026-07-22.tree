@@ -1,0 +1,29 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Wednesday, July 22, 2026}
+\date{2026-07-22T12:27:15Z}
+
+\p{
+\em{Sift their minds and understandings, and behold what men they be, whom thou dost stand in fear of what they shall judge of thee, what they themselves judge of themselves.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 9 §16
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Triton fused attention tutorial (06)}
+    }
+  }
+}
+}
+
+\p{\strong{8:27 AM}}
+\hr
+\p{Finished \em{Today's [GEB](hofstadterGodelEscherBach1999)}. LOTs on recursion today. The examples were not exactly illustrative. Although, I guess their complexity ended up being one of the main points of the chapter. Namely, that from somewhat harmless looking recursive equations things can quickly start to expand into unintelligible complexity (may this be the key to intelligence???). The book did show its age when talking about chess. Particularly, that humans were still substantially better than machines...}
