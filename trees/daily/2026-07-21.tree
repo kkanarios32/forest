@@ -27,3 +27,73 @@
 \p{\strong{7:24 AM}}
 \hr
 \p{Finished morning walk. We will see if this remains a part of the daily routine.}
+
+\p{\strong{7:58 AM}}
+\hr
+
+\p{Finished \em{Today's [GEB](hofstadterGodelEscherBach1999)}. Only barely got into the real chapter on \em{recursion}. The dialogue for the chapter was it self 20+ pages. Not only was it long (but like most things with recursion) highly confusing. Not much notable to write down here yet. Although, I still am not sure I understand the connection to music as I do not have a sharp enough ear to know that music is organized into a stack.}
+
+\p{\strong{9:27 AM}}
+\hr
+\p{The setup for \em{[[foxMultiLevelDiscoveryDeep2017]]}:}
+\ul{
+  \li{We have a \em{meta-controller} that outputs the \em{skill} #{z} given the state #{s} i.e. #{z_t \sim \eta(\cdot \mid s_t)}}
+  \li{We have the \em{skill}, which is a skill-conditioned policy #{a_t \sim \pi(\cdot \mid s_t, z_t)}}
+  \li{We have the \em{termination function} #{\psi(\cdot \mid s_t, z_t)}, which is \strong{per skill}, such that #{b_t \sim \mathrm{Ber}\big(\psi(s_t, z_t)\big) \in \{0, 1\}  }}
+  \ul{
+    \li{For #{b_t = 1}, we resample a new skill #{z_t \sim \eta(\cdot \mid s_t)}}
+    \li{Otherwise, #{z_{t + 1} = z_{t}}}
+  }
+}
+\p{Assuming there is a true underlying latent history #{\xi = \{b_{0}, z_{0}, b_{1}, z_{1}, \ldots\}  } and the observable history #{\mathcal{H} = \{s_{0}, a_{0}, s_{1}, a_{1}, \ldots\}  }, the likelihood according to the above generative model is given by}
+##{\mathbb{P}(\mathcal{H}, \xi) = p(s_{0})\delta_{\{b_{0} = 1\}}\eta(z_{0} \mid s_{0}) \prod_{t=1}^{T - 1} \mathbb{P}(b_n, z_n \mid z_{n - 1}, s_n) \prod_{t = 0}^{T - 1} \pi(a_t \mid s_t, z_t) p(s_{t+1} \mid s_t, a_t)}
+\p{Furthermore, according to our model, we have that}
+##{
+\begin{align*}
+ \mathbb{P}(b_n = 0, z_n \mid z_{n - 1}, s_n) &= (1 - \psi(s_t, z_t)) \cdot \delta_{\{z_{n} = z_{n - 1}\}} \\
+ \mathbb{P}(b_n = 1, z_n \mid z_{n - 1}, s_n) &= \psi(s_t, z_t) \cdot \eta(z_n \mid s_n)
+.\end{align*}
+}
+\p{Up to this point, we have assumed this is the ground truth model and we are given each of the components. Instead we want to \em{learn} these components. To do so, we introduce our set of parameters #{\mathbf{\theta} }, such that each component is parametrized by a subset of #{\mathbf{\theta} } i.e. #{\eta_{\theta}, \pi_{\theta}, \psi_{\theta}}.}
+\goal{We want to learn some #{\theta} that maximized the likelihood of the \em{observable} data.}
+\p{To do so, first consider the log-likelihood of our new parametrized model}
+##{
+\begin{align*}
+\log \mathbb{P}_{\theta}(\mathcal{H}, \xi) &= \log \left[p(s_{0})\delta_{\{b_{0} = 1\}}\eta_{\theta}(z_{0} \mid s_{0}) \prod_{t=1}^{T - 1} \mathbb{P}_{\theta}(b_n, z_n \mid z_{n - 1}, s_n) \prod_{t = 0}^{T - 1} \pi_{\theta}(a_t \mid s_t, z_t) p(s_{t+1} \mid s_t, a_t)\right] \\
+&= \log p(s_{0})\delta_{\{b_{0} = 1\}} + \log\left[\eta_{\theta}(z_{0} \mid s_{0}) \prod_{t=1}^{T - 1} \mathbb{P}_{\theta}(b_n, z_n \mid z_{n - 1}, s_n) \prod_{t = 0}^{T - 1} \pi_{\theta}(a_t \mid s_t, z_t) \right] + \sum_{t=0}^{T-1} \log \left[p(s_{t+1} \mid s_t, a_t)\right] \\
+&= \underbrace{\log p(s_{0})\delta_{\{b_{0} = 1\}} + \sum_{t=0}^{T-1} \log \left[p(s_{t+1} \mid s_t, a_t)\right]}_{\text{independent of } \theta} + \log\left[\eta_{\theta}(z_{0} \mid s_{0}) \prod_{t=1}^{T - 1} \mathbb{P}_{\theta}(b_n, z_n \mid z_{n - 1}, s_n) \prod_{t = 0}^{T - 1} \pi_{\theta}(a_t \mid s_t, z_t)\right]
+.\end{align*}
+}
+\p{Since we are only concerned with learning #{\theta}, we can disregard the #{\theta} independent terms leaving}
+##{\begin{align*}
+\nabla_{\theta} \log \mathbb{P}_{\theta}(\mathcal{H}, \xi) &= \nabla_{\theta} \left[ \log\left[\eta_{\theta}(z_{0} \mid s_{0}) \prod_{t=1}^{T - 1} \mathbb{P}_{\theta}(b_n, z_n \mid z_{n - 1}, s_n) \prod_{t = 0}^{T - 1} \pi_{\theta}(a_t \mid s_t, z_t)\right] \right]\\
+&= \nabla_{\theta} \log\left[\eta_{\theta}(z_{0} \mid s_{0})\right] + \sum_{t=1}^{T - 1} \nabla_{\theta} \log\left[\mathbb{P}_{\theta}(b_n, z_n \mid z_{n - 1}, s_n)\right] + \sum_{t = 0}^{T - 1} \nabla_{\theta} \log \left[\pi_{\theta}(a_t \mid s_t, z_t)\right].
+\end{align*}}
+\problem{This requires samples #{(\mathcal{H}, \xi) \sim P_{\theta}(\mathcal{H}, \xi)}, but we only have samples #{\mathcal{H} \sim P_{\theta}(\mathcal{H})}!!!}
+\solution{We can use the trick from [[0088]]. Referred to in the paper as the \em{expectation gradient trick}. Namely,
+##{\nabla_{\theta} \log P_{\theta}(\mathcal{H}) = \mathbb{E}_{\xi \sim P_{\theta}(\xi \mid \mathcal{H})} \left[ \nabla_{\theta} \log P_{\theta}(\mathcal{H}, \xi) \right]}
+}
+\p{Now it remains to compute the expectation from #{P_{\theta}(\xi \mid \mathcal{H})}}
+\remark{
+Note that #{P_{\theta}(\xi \mid \mathcal{H})} is a distribution over #{(K, \{0,1\})^{T} } i.e. over each #{(z_t, b_t)}. To efficiently compute, we need to use [[F3T0]].
+}
+
+\p{\strong{12:06 PM}}
+\hr
+\question{Does conditioning on whole history for #{\eta} i.e. #{z_t \sim \eta(\cdot \mid s_{0}, \ldots, s_{T})} break [forward-backward](F3T0)?}
+
+\p{\strong{1:34 PM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{F3T0}
+}
+
+\p{\strong{8:39 PM}}
+\hr
+
+\section{Reflection}{
+\p{\strong{What went well today?} I officially implemented the Huberman routine. Specifically, fasting (I have protein shake but in spirt) does seem to really help me focus. I get VERY hungry before the end of the second block, so I need to find a solution for that. Overall, focus was pretty good but mainly on understanding [DDO](foxMultiLevelDiscoveryDeep2017)}
+\p{\strong{What went bad today?} I still crashed post-lunch. I think this may be inevitable and seems commonplace throughout corporate America. It seems this may be a diet issue. Unfortunately, avoiding carbs for focus directly interferes with my need for carbs for exercise. I am unsure how to resolve this. I got my Anki done during the crash, but I still have not been able to do any exploratory reading to add to it. I think when reading I still do too much switching between reading and taking notes. I should really try to stay disciplined in first reading, then trying to dump without the source material. Any questions I have I should write down and move on, then look back for answers at the end.}
+}
