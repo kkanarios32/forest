@@ -27,3 +27,31 @@
 \p{\strong{8:27 AM}}
 \hr
 \p{Finished \em{Today's [GEB](hofstadterGodelEscherBach1999)}. LOTs on recursion today. The examples were not exactly illustrative. Although, I guess their complexity ended up being one of the main points of the chapter. Namely, that from somewhat harmless looking recursive equations things can quickly start to expand into unintelligible complexity (may this be the key to intelligence???). The book did show its age when talking about chess. Particularly, that humans were still substantially better than machines...}
+
+\p{\strong{8:51 AM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{ZUAG}
+}
+
+\p{\strong{10:25}}
+\hr
+\p{I finished the [[F3T0]] write-up. I have a pretty decent understanding of what is going on there now.}
+
+\p{\strong{8:47 PM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{G27U}
+}
+
+\p{\strong{9:43 PM}}
+\hr
+
+\section{Reflection}{
+\p{\strong{What went well today?} I had very good focus throughout the first two blocks today. I pretty deeply understand the [[F3T0]] and have pretty much made the connection with [[foxMultiLevelDiscoveryDeep2017]]. Overall, I still do not feel like I made a ton of tangible progress. I think I just have to bet on consistency over spurts of substantial production. Three hours of focus like today stacked over a long period of time will inevitably lead to results. I just need to ensure I am allocating my focus towards the right things.}
+\p{\strong{What went bad today?} I have not been able to get myself to do any exploratory reading prior to dinner. I did not expect this to be a high \em{limbic friction} habit, but it turns out I may need to re-order to earlier when I have more energy. I still am caught up with my existing Anki cards and this habit has become somewhat solidified. I once again crashed post-lunch, but it may just be the result of circadian rhythm and something I need to plan around. I do not know what useful, low-cognitive-overhead tasks I can allocated to the block between running and lunch.}
+}
