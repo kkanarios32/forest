@@ -1,0 +1,35 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Thursday, July 23, 2026}
+\date{2026-07-23T12:10:50Z}
+
+\p{
+\em{What manner of men they be whom they seek to please, and what to get, and by what actions: how soon time will cover and bury all things, and how many it hath already buried!} — \strong{Marcus Aurelius}, \em{Meditations}, Book 6 §54
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+    }
+  }
+  \li{\strong{Tasks}
+    \ul{
+      \li{Take trash out thursday night}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{implement LOVE in OGBench}
+      \li{Code: Triton fused attention tutorial (06)}
+    }
+  }
+}
+}
+
+\p{\strong{8:10 AM}}
+\hr
+\p{Trying pure egg breakfast. We will see if the digestion causes crash, or just sustained satiety. Might just have to tank the fast.}
