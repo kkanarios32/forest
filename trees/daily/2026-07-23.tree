@@ -41,3 +41,17 @@
   \put\transclude/toc{false}
   \transclude{47Y4}
 }
+
+\p{\strong{10:24 PM}}
+\hr
+
+\section{Reflection}{
+\ul{
+  \li{\strong{Tasks}}
+  \ul{
+    \tdtaskx{}{Take trash out thursday night}
+  }
+}
+\p{\strong{What went well today?} I tried the no carbs lunch, and I think my focus was actually maintained.}
+\p{\strong{What went bad today?} I missed my leetcode.}
+}
