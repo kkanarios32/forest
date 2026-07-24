@@ -77,24 +77,33 @@ def _hours(hms):
     return h + m / 60 + s / 3600
 
 
-def fetch():
-    """day x bucket pivot of hours for the most recently completed review week.
+def fetch(thursday=None):
+    """day x bucket pivot of hours for a completed review week.
 
     Reads the `Bucket:` category from arbtt's categorize.cfg via arbtt-stats,
     which already drops idle (`inactive`) samples. The week runs Friday ->
-    Thursday and ends on the most recent Thursday, so today's own partial day
-    is never included."""
-    today = date.today()
-    thursday = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
+    Thursday; `thursday` names its end and defaults to the most recent
+    completed Thursday, so today's own partial day is never included. Pass an
+    explicit Thursday to re-render a past week."""
+    if thursday is None:
+        today = date.today()
+        thursday = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
     friday = thursday - timedelta(days=6)
     days = {(friday + timedelta(days=i)).isoformat():
             (friday + timedelta(days=i)).strftime("%a") for i in range(7)}
 
+    # arbtt stores sample timestamps in UTC but `--for-each=day` groups by the
+    # local date, while the `$date` filter compares the UTC date. In EDT (UTC-4)
+    # Thursday-evening activity carries a UTC date of the following day, so a
+    # `$date <= thursday` bound clips the entire Thursday group. Widen the upper
+    # bound by a day; the `days` guard below still tallies only the 7 local days
+    # of the review week, dropping any stray partial "today" row.
+    hi = thursday + timedelta(days=1)
     out = subprocess.run(
         ["arbtt-stats", "--category=Bucket", "--for-each=day",
          "--output-format=csv", "--min-percentage=0",
          f"--filter=$date>={friday.isoformat()}",
-         f"--filter=$date<={thursday.isoformat()}"],
+         f"--filter=$date<={hi.isoformat()}"],
         capture_output=True, text=True).stdout
 
     tally = {abbr: dict.fromkeys(BUCKETS, 0.0) for abbr in DOW}
@@ -244,8 +253,13 @@ def render(pivot, save_dir):
 def main(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument("dir", help="save directory")
+    parser.add_argument("--thursday", metavar="YYYY-MM-DD",
+                        help="review-week end (Thu); defaults to the most "
+                             "recent completed Thursday. Pass to re-render a "
+                             "past week.")
     args = parser.parse_args(argv)
-    render(fetch(), args.dir)
+    thu = date.fromisoformat(args.thursday) if args.thursday else None
+    render(fetch(thu), args.dir)
 
 
 if __name__ == "__main__":

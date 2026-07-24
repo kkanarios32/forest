@@ -1,0 +1,35 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Friday, July 24, 2026}
+\date{2026-07-24T16:03:17Z}
+
+\p{
+\em{Whatsoever it is that thou goest about, consider of it by thyself, and ask thyself, What? because I shall do this no more when I am dead, should therefore death seem grievous unto me?} — \strong{Marcus Aurelius}, \em{Meditations}, Book 10 §29
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+    }
+  }
+  \li{\strong{Tasks}
+    \ul{
+      \li{Weekly review}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{implement LOVE in OGBench}
+      \li{Code: Triton fused attention tutorial (06)}
+    }
+  }
+}
+}
+
+\p{\strong{12:03 PM}}
+\hr
+\p{\em{Today's [GEB](hofstadterGodelEscherBach1999).}}

@@ -1,0 +1,12 @@
+\date{2026-07-24T15:29:28Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[[5501]]: 2026-W30}
+\tag{public}
+
+% Running: mileage, obstacles, the plan for next week.
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/30/running.png}}{}
+  \figcaption{Health stats for week 2026-W30.}
+}
+% Habits: consistency, Anki, to-do adherence.

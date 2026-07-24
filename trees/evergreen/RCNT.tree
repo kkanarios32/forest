@@ -1,5 +1,5 @@
 \import{base-macros}
-\date{2026-07-22}
+\date{2026-07-24}
 \author{kellenkanarios}
 \title{What I've been thinking about}
 \tag{public}
@@ -11,6 +11,9 @@
   \put\transclude/numbered{false}
   \put\transclude/expanded{false}
   \put\transclude/metadata{true}
+  \transclude{GW1X}
+  \transclude{43BK}
+  \transclude{1AWD}
   \transclude{ZUAG}
   \transclude{ZAR4}
   \transclude{YV5J}
@@ -23,7 +26,4 @@
   \transclude{XQMQ}
   \transclude{XLDA}
   \transclude{XJQO}
-  \transclude{X9VZ}
-  \transclude{X9AO}
-  \transclude{WM3M}
 }

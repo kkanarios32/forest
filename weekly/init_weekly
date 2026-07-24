@@ -17,7 +17,14 @@ garmindb-cli --all --download --import --analyze --latest
 
 TITLE="$(date +%G)-W$(date +%V)"
 TREE="$FORESTDIR/trees/weeknotes/$TITLE.tree"
-./mkdailytree "$REL" "$TREE" "$TITLE"
+
+# Scaffold the weeknote (top tree + the three per-week child trees) only on the
+# first run for this week. Figures above regenerate every run, but the scaffold
+# holds hand-written prose and mints fresh child ids — so re-running mid-week to
+# refresh figures must not overwrite the tree or spawn duplicate children.
+if [ ! -f "$TREE" ]; then
+  ./mkdailytree "$REL" "$TREE" "$TITLE"
+fi
 
 # Only add the transclude once, so re-running mid-week doesn't duplicate it.
 INDEX="$FORESTDIR/trees/weeknotes/007S.tree"

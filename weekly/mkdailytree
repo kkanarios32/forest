@@ -1,47 +1,118 @@
 #!/usr/bin/python3
 
+# Scaffold one week's review in the W29 thematic format: a top-level weeknote
+# that transcludes three per-week child trees, one per standing category —
+#
+#   [[G944]] The Quantified Me : coding (waka.png) + non-coding compute (arbtt.png)
+#   [[5501]] Life Maxing       : running + habits (running.png)
+#   [[RPP0]] Reading Corner     : prose + transcluded book reviews
+#
+# Each child is a real evergreen tree with a random id (minted via `forester
+# new`, same as scripts/new), titled `[[<category>]]: <week>`, carrying that
+# theme's figure(s) with `%`-comment slots where the week's commentary goes. The
+# top tree keeps the week-named id (e.g. 2026-W30) so 007S can transclude it by
+# title, opens with an intro `\p`, then the three transcludes, then a Goals
+# section. Prose is left as non-rendering `%` hints — the figures are the only
+# thing that renders until the week is written up.
+#
+# This only ever runs when the weeknote does not yet exist (init_weekly guards
+# it), so re-running init_weekly to refresh figures never clobbers written prose
+# or spawns duplicate child trees.
+
 import argparse
+import os
+import subprocess
 import sys
+from datetime import date
+
+# Standing category index trees the per-week children link as their title.
+QUANTIFIED = "G944"   # The Quantified Me
+LIFE_MAXING = "5501"  # Life Maxing
+READING = "RPP0"      # Reading Corner
 
 
-def daily_tree(path, title):
-    return f"""\\import{{base-macros}}
-\\author{{kellenkanarios}}
-\\meta{{author}}{{false}}
-\\tag{{public}}
-\\title{{Weekly Review {title}}}
+def mint(forestdir):
+    """Create a fresh random-id tree under trees/evergreen (seeded with just
+    `\\date{...}`, like scripts/new) and return (id, absolute path)."""
+    dest = os.path.join(forestdir, "trees", "evergreen")
+    out = subprocess.run(
+        ["opam", "exec", "--", "forester", "new", "--random", f"--dest={dest}"],
+        cwd=forestdir, capture_output=True, text=True, check=True,
+    ).stdout
+    path = out.strip().splitlines()[-1].strip()   # forester echoes the filename
+    return os.path.splitext(os.path.basename(path))[0], path
 
-\\section{{The Quantified Me}}{{
-\\figure{{
-  \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/waka.png}}}}{{}}
-  \\figcaption{{Coding hours for week {title}.}}
-}}
-\\figure{{
-  \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/arbtt.png}}}}{{}}
-  \\figcaption{{Non-coding computer time for week {title}.}}
-}}
-}}
-\\section{{Life Maxing}}{{
-\\figure{{
-  \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/running.png}}}}{{}}
-  \\figcaption{{Health stats for week {title}.}}
-}}
-}}
-"""
+
+def figure(rel, name, caption):
+    return (
+        "\\figure{\n"
+        f"  \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{rel}/{name}}}}}{{}}\n"
+        f"  \\figcaption{{{caption}}}\n"
+        "}"
+    )
+
+
+def child(path, category, title, body):
+    """Append the standard frontmatter + body to a freshly-minted child tree
+    (which already holds its `\\date{...}` first line)."""
+    with open(path, "a") as f:
+        f.write(
+            "\\import{base-macros}\n"
+            "\\author{kellenkanarios}\n"
+            f"\\title{{[[{category}]]: {title}}}\n"
+            "\\tag{public}\n\n"
+            f"{body}\n"
+        )
+
+
+def top_tree(tree_path, title, quant_id, life_id, read_id):
+    with open(tree_path, "w") as f:
+        f.write(
+            "\\import{base-macros}\n"
+            "\\author{kellenkanarios}\n"
+            "\\tag{public}\n"
+            f"\\date{{{date.today().isoformat()}}}\n"
+            f"\\title{{Weekly Review {title}}}\n"
+            "% Intro: a sentence or two orienting the week.\n\n"
+            f"\\transclude{{{quant_id}}}\n"
+            f"\\transclude{{{life_id}}}\n"
+            f"\\transclude{{{read_id}}}\n\n"
+            "\\section{Goals for Next Week}{\n"
+            "% Goals: what you want to accomplish next week.\n"
+            "}\n"
+        )
 
 
 def main(argv):
     parser = argparse.ArgumentParser()
-    parser.add_argument("dir", help="save directory")
-    parser.add_argument("file", help="file name")
+    parser.add_argument("dir", help="asset path, relative to the forest root")
+    parser.add_argument("file", help="weeknote tree path to write")
+    parser.add_argument("title", help="week title, e.g. 2026-W30")
+    args = parser.parse_args(argv)
 
-    asset_path = argv[0]
-    tree_path = argv[1]
-    title = argv[2]
+    forestdir = os.environ["FORESTDIR"]
+    rel, title = args.dir, args.title
 
-    with open(tree_path, "+w") as tf:
-        tf.flush()
-        tf.write(daily_tree(asset_path, title))
+    quant_id, quant_path = mint(forestdir)
+    life_id, life_path = mint(forestdir)
+    read_id, read_path = mint(forestdir)
+
+    child(quant_path, QUANTIFIED, title,
+          "% Coding: where the week's hours went, focus, notable projects.\n"
+          + figure(rel, "waka.png", f"Coding hours for week {title}.") + "\n"
+          "% Non-coding computer time: work / study / brain rot; what stood out.\n"
+          + figure(rel, "arbtt.png", f"Non-coding computer time for week {title}."))
+
+    child(life_path, LIFE_MAXING, title,
+          "% Running: mileage, obstacles, the plan for next week.\n"
+          + figure(rel, "running.png", f"Health stats for week {title}.") + "\n"
+          "% Habits: consistency, Anki, to-do adherence.")
+
+    child(read_path, READING, title,
+          "% Reading Corner: what you're reading now and your thoughts.\n"
+          "% Transclude any finished book reviews below, e.g. \\transclude{<review-id>}.")
+
+    top_tree(args.file, title, quant_id, life_id, read_id)
 
 
 if __name__ == "__main__":

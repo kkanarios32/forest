@@ -1,0 +1,14 @@
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\date{2026-07-24}
+\title{Weekly Review 2026-W30}
+% Intro: a sentence or two orienting the week.
+
+\transclude{1AWD}
+\transclude{43BK}
+\transclude{GW1X}
+
+\section{Goals for Next Week}{
+% Goals: what you want to accomplish next week.
+}
