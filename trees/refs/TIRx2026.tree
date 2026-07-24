@@ -1,0 +1,15 @@
+% ["refs"]
+\title{TIRx: An Open Compiler Stack for Evolving Frontier ML Kernels }
+\taxon{Reference}
+\date{2026-06-22}
+\author/literal{Apache TVM Community}
+\meta{external}{https://tvm.apache.org/2026/06/22/tirx}
+\meta{bibtex}{\startverb
+@book{TIRx2026,
+ title = {TIRx: An Open Compiler Stack for Evolving Frontier ML Kernels },
+ author = {Apache TVM Community},
+ url = {https://tvm.apache.org/2026/06/22/tirx}
+}
+\stopverb}
+
+\p{Another entrant into the [[5PSC]] space.}

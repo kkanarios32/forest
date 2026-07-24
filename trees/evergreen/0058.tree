@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-02-10}
+\author{kellenkanarios}
 \import{base-macros}
 \taxon{Theorem}
 \title{States in a finite closed irreducible set are recurrent}

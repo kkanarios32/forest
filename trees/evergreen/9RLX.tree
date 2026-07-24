@@ -1,0 +1,20 @@
+\date{2026-07-13T01:36:43Z}
+\import{base-macros}
+\title{Programmed I/O}
+\tag{public}
+
+\p{Simplified I/O Device Protocol: requires three "registers". One is the status register that tells the OS whether the device is ready or currently performing an operation. The second is the command register, which tells the device what we want to do. Lastly, is the data register that stores the actual data we want moved. The procedure operates as follows \citet{36.3}{arpaci2018operating} }
+\ol{
+  \li{OS polls status register in while loop until \code{status == READY}}
+  \li{OS writes data register with data to be moved}
+  \li{OS writes command register with command to be performed}
+  \li{Device begins command and sets \code{status = BUSY}}
+  \li{OS polls status register in while loop until \code{status == READY}}
+}
+
+\p{The above protocol requires that the CPU polls the device. This is a huge waste if the device is very slow because the CPU is unable to do any work while waiting. One solution is to use [interrupts](K325). In particular, the CPU follows the above procedure but after writing the command it resumes doing other work. Upon completion, the device issues an interrupt to the CPU to tell it that it has finished the command and that the CPU can resume working on that line of instructions.}
+
+\question{How is copying memory to device actually done in programmed I/O? Is the device address space mapped into the CPU address space and the CPU has 1. load from CPU address space to register, 2. write to device address from register?}
+
+\answer{There are two ways. The first is there are special I/O instructions (typically protected) that allow the CPU to directly write to the device. In x86, these are \code{in}, \code{out}. The second way is through memory-mapped I/O (MMIO). This is where the device is actually allocated a region of virtual address space and writing to / reading this region is routed to the device rather than the on-chip memory hierarchy \citet{36.6}{arpaci2018operating}.}
+

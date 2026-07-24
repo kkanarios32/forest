@@ -1,6 +1,12 @@
 \date{2026-05-25T13:07:03Z}
 \import{base-macros}
 \author{kellenkanarios}
-\tag{stub}
+\tag{public}
 \title{Memory Tiling (GPU)}
-\stub
+
+\p{An example of how to tile a matrix multiplication, our tile partitions the output matrix #{M \times N} by block sizes \code{BS_N} and \code{BS_M} as seen in the image below (drawn using excalidraw)}
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/tiled-matmul.png}}{}
+\figcaption{Tiling with dimensions}
+}
+\p{The block size of #{k} \code{BS_K} is then basically the \em{accumulation axis}, where we loop over #{k} if we cannot fit the whole row / column of #{A} and #{B} into [shared memory](8GZN).}

@@ -12,24 +12,24 @@
 
 \problem{
   You can only read the active member of a union.
-\pre\verb<<<|
+\codeblock{cpp}{\verb<<<|
 union U { int i; float f; };
 U u;
 u.i = 42;
 float x = u.f;  // UB — reading the inactive member
-<<<
+<<<}
 }
 
 \problem{
-\strong{No automatic lifetime management for non-trivial types.} If a union holds an object with a non-trivial constructor/destructor (like \code{std::string}), the compiler won't call them for you. You must manually placement-new and explicitly call the destructor, and getting this wrong causes leaks or corruption.
-\pre\verb<<<|
+\em{No automatic lifetime management for non-trivial types.} If a union holds an object with a non-trivial constructor/destructor (like \code{std::string}), the compiler won't call them for you. You must manually placement-new and explicitly call the destructor, and getting this wrong causes leaks or corruption.
+\codeblock{cpp}{\verb<<<|
 union U { std::string s; int i; };  // destructor not called automatically
-<<<
+<<<}
 }
 
 \remark{
 Avoid "naked" unions; opt for "tagged" unions.
-\pre\verb<<<|
+\codeblock{cpp}{\verb<<<|
 struct Value {
     enum class Type { Int, Float, Str } tag;
     union {
@@ -38,6 +38,6 @@ struct Value {
         char  s[32];
     };
 };
-<<<
+<<<}
 This along with lifetime management is the basis of [\code{std::variant}](https://en.cppreference.com/cpp/utility/variant).
 }

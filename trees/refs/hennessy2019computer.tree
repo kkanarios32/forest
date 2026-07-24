@@ -1,0 +1,15 @@
+% ["refs"]
+\title{Computer architecture: A quantitative approach}
+\date{2019}
+\author/literal{John L. Hennessy}\author/literal{David A. Patterson}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{hennessy2019computer,
+ title = {Computer Architecture: A Quantitative Approach},
+ author = {Hennessy, John L. and Patterson, David A.},
+ year = {2019},
+ isbn = {9780128119051},
+ edition = {6th},
+ publisher = {Morgan Kaufmann}
+}
+\stopverb}

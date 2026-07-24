@@ -6,11 +6,10 @@
 \xmlns:html{http://www.w3.org/1999/xhtml}
 
 \ul{
-  % \li{[[0005]]}
+  \li{[[0005]]}
   \li{[[003D]]}
-  \li{[[007O]]}
 }
 
 
 \p{Request more below!}
-\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{blog-requests}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+\comments{blog-requests}

@@ -1,5 +1,6 @@
 \import{base-macros}
 \date{2026-05-12T19:32:06Z}
+\author{kellenkanarios}
 \tag{public}
 \title{Page fault}
 
@@ -20,4 +21,4 @@
   \li{\strong{Not valid}: hardware raises an exception; the OS typically kills the process.}
 }
 
-\example{\strong{What happens when you dereference a nullptr?} The TLB misses on VPN 0, the page-table walk finds the PTE marked invalid, and the hardware traps to the OS — which delivers SIGSEGV.}
+\example{\em{What happens when you dereference a nullptr?} The TLB misses on VPN 0, the page-table walk finds the PTE marked invalid, and the hardware traps to the OS — which delivers SIGSEGV.}

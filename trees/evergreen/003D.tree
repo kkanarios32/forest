@@ -63,7 +63,4 @@
   }
 
 }
-
-\hr
-
-\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{deepseek-r1}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+\comments{deepseek-r1}

@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-02-03}
+\author{kellenkanarios}
 \import{base-macros}
 \title{Quasi-Newton's Method}
 \p{Get around computing and inverting hessian by using a surrogate i.e. 

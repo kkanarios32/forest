@@ -9,11 +9,10 @@ REL="assets/weekly/$(date +%G)/$(date +%V)"   # relative to forest root, for \ro
 DIR="$FORESTDIR/$REL"                          # absolute, for the plotting scripts
 mkdir -p "$DIR"
 ./coding "$DIR"
-./arbtt-plot "$DIR"
-./habitify "$DIR"
+./arbtt-plot "$DIR"   # non-coding computer time, bucketed (Work / Study / Brain rot / Other)
 
 garmindb-cli --all --download --import --analyze --latest
-./running "$DIR"
+./running "$DIR"   # combined running + habits figure (habits via the Habitify API)
 ./sleep "$DIR"
 
 TITLE="$(date +%G)-W$(date +%V)"

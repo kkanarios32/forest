@@ -1,5 +1,6 @@
 \import{base-macros}
 \date{2026-05-12T19:47:10Z}
+\author{kellenkanarios}
 \tag{public}
 \title{Cache hierarchy}
 
@@ -17,6 +18,6 @@
   \li{\em{Main memory} — 10–60 ns, GBs.}
 }
 
-\example{\strong{A byte's journey.} L1 checked first; on miss, L2; on miss, main memory; on miss in main memory, [[CXFM]] to disk.}
+\example{\em{A byte's journey.} L1 checked first; on miss, L2; on miss, main memory; on miss in main memory, [[CXFM]] to disk.}
 
 \remark{L1 is split into instruction and data caches because the locality profiles of code and data are very different — re-running the same code over different data has high temporal locality for code but low for data.}

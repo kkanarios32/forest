@@ -1,0 +1,37 @@
+\date{2026-07-23T00:47:18Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[POTW](005G): [[jiangLearningOptionsCompression]]}
+\tag{public}
+\tag{potw}
+
+\p{The setup for \em{[[jiangLearningOptionsCompression]]}.}
+\ul{
+  \li{A \em{state abstraction posterior} #{q_{\theta}(s_{t} \mid z_{t}, x_{t})} and \em{decoder} #{p_{\theta}(a_{t} \mid s_{t})}, where #{\pi_{\theta}(a_t \mid s_t, x_t) = \mathbb{E}_{q_{\theta}(s_{t} \mid x_{t}, z_{t})}[p_{\theta}(a_t \mid s_t)]}}
+  \ul{
+    \li{This seems to be needed to ensure that the decoder cannot overfit to the offline data?}
+  }
+  \li{A \em{termination network} #{\beta_{\theta}(b_t \mid x_{1}, \ldots, x_{t})}}
+  \li{A \em{skill posterior} #{\eta_{\theta}(z_{t} \mid z_{t - 1}, b_{t}, x_{1:T},a_{1:T})}.}
+}
+
+\p{Unlike in [DDO](foxMultiLevelDiscoveryDeep2017), where they do exact posterior inference, here we do variational inference. Namely, they directly try to model the posterior via the neural network #{\eta_{\theta}(z_{t} \mid z_{t - 1}, b_{t}, x_{1:T},a_{1:T})}. This has a few consequences:}
+\ul{
+  \li{The \em{expectation gradient} is now true [[0088]]. In particular, we need to optimize the [ELBO](0082).}
+}
+\p{The [ELBO](0082) of [LOVE](jiangLearningOptionsCompression) can be written as}
+##{\begin{align*}
+\mathcal{L}_{\text{ELBO}}(\theta) \approx \sum_{t=1}^{T} \log &p_{\theta}(\mathbf{a}_{t} \mid \mathbf{s}_{t}) + D_{\text{KL}}(q_{\theta}(m_{t} \mid \mathbf{x}_{1:t}) \parallel p_{\theta}(m_{t} \mid \mathbf{s}_{t})) \\ &+ D_{\text{KL}}(q_{\theta}(z_{t} \mid m_{t}, \mathbf{x}_{1:T}, \mathbf{a}_{1:T}) \parallel p(z_{t})) + D_{\text{KL}}(q_{\theta}(s_{t} \mid z_{t}, \mathbf{x}_{t}) \parallel p_{\theta}(s_{t} \mid s_{t-1}, m_{t-1}))
+.\end{align*}}
+\p{Notably this requires a few additional \em{prior networks} for the KL regularization term in the [ELBO](0082).}
+\ul{
+  \li{A \em{boundary prior} #{\beta(b_t \mid s_{t})}.}
+  \li{A \em{skill prior} #{p(z)}.}
+  \li{A \em{state abstraction transition prior} #{p(s_t | s_{t-1}, z_t)}.}
+}
+\p{Additionally, we also need to \em{sample} the #{z}'s. This is done via Gumbel softmax and causes much higher variance.}
+
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/LOVE-pipeline.png}}{}
+\figcaption{How [LOVE](jiangLearningOptionsCompression) goes from input sequence to end skill labels.}
+}

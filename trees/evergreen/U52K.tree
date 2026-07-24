@@ -1,0 +1,7 @@
+\date{2026-07-16T14:05:40Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{What is the role of weight decay in training large models?}
+\taxon{Question}
+\p{Since there is so much data, it is not feasible to train your model for multiple epochs. This is actually nice in the sense that we do not have to worry about overfitting and performing regularization.}
+\p{However, many of the large models are still trained with weight decay. Tatsu claims that this is not to do with regularization but actually due to some weird interaction with the learning rate schedule. I am not sure I entirely understood this part.}

@@ -1,6 +1,8 @@
 \import{base-macros}
 \date{2026-05-12T22:53:41Z}
+\author{kellenkanarios}
 \tag{public}
+\taxon{Definition}
 \title{Crossbar}
 
 \p{The simplest [indirect network](95AC): an #{n \times m} grid of switch points connecting #{n} inputs to #{m} outputs. Any input can be connected to any free output simultaneously — \em{non-blocking}.}

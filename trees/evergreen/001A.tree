@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2024-11-26}
+\author{kellenkanarios}
 \taxon{Lemma}
 \title{A #{\pi}-system that is also a #{\lambda}-system is a #{\sigma}-field}
 \p{A class that is both a #{\pi}-system and a #{\lambda}-system is a #{\sigma}-field.}

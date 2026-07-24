@@ -1,5 +1,6 @@
 \import{base-macros}
 \date{2026-05-12T22:52:11Z}
+\author{kellenkanarios}
 \tag{public}
 \title{Data race}
 
@@ -10,6 +11,6 @@
 \p{Data-race freedom (DRF) is the implicit contract behind every relaxed memory model: if your program has no data races, [[BCFG]] hardware behaves as if it were [[OW4D]]. Conversely, in the presence of a data race, the result is undefined by the language and the model.}
 
 \problem{Writing data-race-free programs is hard. Treating every shared access as a synchronization point destroys performance.}
-\p{\strong{SC-preserving compilers} approach: forbid the compiler from reordering shared accesses, leaving the hardware free to do TSO-style reordering. The optimization most disrupted is common-subexpression elimination across shared accesses — solved by inserting a "monitor" check on the coherence bit between expressions.}
+\p{\paragraph{SC-preserving compilers approach} forbid the compiler from reordering shared accesses, leaving the hardware free to do TSO-style reordering. The optimization most disrupted is common-subexpression elimination across shared accesses — solved by inserting a "monitor" check on the coherence bit between expressions.}
 
-\p{\strong{Hardware approach.} Treat all pages as local/safe by default and extend page protection bits to the thread level: a non-owning thread accessing the page triggers a fault, exposing the data race at runtime.}
+\p{\paragraph{Hardware approach} Treat all pages as local/safe by default and extend page protection bits to the thread level: a non-owning thread accessing the page triggers a fault, exposing the data race at runtime.}

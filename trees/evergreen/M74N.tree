@@ -1,5 +1,9 @@
 \import{base-macros}
 \title{XLA Compilation}
+\tag{public}
+\author{kellenkanarios}
+\date{2026-05-22}
+
 \p{\paragraph{Overview}}
 \ul{
   \li{Dispatch / Cache: caches compilation based on input argument signatures i.e. shapes, dtypes, sharding. If shapes change will need to \strong{recompile}.}
@@ -49,7 +53,7 @@ As soon as python code is traced into jaxpr it is thrown away. Only HLO is input
     }
   }
 }
-\p{\strong{XLA Shapes and Memory Layout}}
+\p{\paragraph{XLA Shapes and Memory Layout}}
 \ul{
   \li{Every data type defined by data type and fixed dimensions, determined at compile time.}
   \li{Minor-to-major order i.e. fastest changing to slowesting changin.}

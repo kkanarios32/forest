@@ -1,6 +1,7 @@
 \tag{public}
 \import{base-macros}
 \date{2025-07-06T20:45:52Z}
+\author{kellenkanarios}
 \title{Taylor Expansion and Lipschitz Functions}
       \transclude{003J}
       \transclude{003K}

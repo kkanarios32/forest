@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-02-10}
+\author{kellenkanarios}
 \import{base-macros}
 \title{#{\epsilon}-typical set}
 \p{

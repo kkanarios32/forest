@@ -8,28 +8,37 @@
 #     "matplotlib",
 #     "numpy",
 #     "pandas",
-#     "seaborn",
+#     "requests",
 # ]
 # ///
-# Running
+#
+# Fitness — a single figure: weekly running (wide, left) beside the habits
+# completion grid (narrow, right). Running is the week's headline, so it takes
+# most of the width; habits is the compact companion. Two hues (coral running,
+# blue habits) keep the two measures visually independent. Saved as running.png.
+#
+# Running panel: recessive bars + a prominent 4-week trailing average line. The
+# average is emitted only where a full four-week window of real data exists (NaN
+# otherwise, which matplotlib skips): leading pre-running weeks are trimmed
+# before the window is taken, so zero-filled rest weeks can't dilute the early
+# points into a phantom ramp.
+#
+# Habits panel lives in hgrid.py so it can be drawn onto a shared axis.
+
+import os
+import sys
+from datetime import date, datetime, timedelta
 
 import matplotlib.pyplot as plt
-import matplotlib.dates as dates
-from datetime import datetime, date, timedelta
-import sys
-import os
-
-import fitfile
+import matplotlib.transforms as mtransforms
 import pandas as pd
+import fitfile
 from garmindb import GarminConnectConfigManager
-from garmindb.garmindb import (
-    GarminDb,
-    Attributes,
-    ActivitiesDb,
-    Activities,
-)
+from garmindb.garmindb import ActivitiesDb, Activities, Attributes, GarminDb
+from matplotlib.patches import PathPatch
+from matplotlib.path import Path
 
-import wtheme
+import hgrid
 
 gc_config = GarminConnectConfigManager()
 db_params_dict = gc_config.get_db_params()
@@ -40,26 +49,29 @@ measurement_system = Attributes.measurements_type(garmin_db)
 unit_strings = fitfile.units.unit_strings[measurement_system]
 distance_units = {"miles": "m"}[unit_strings[fitfile.units.UnitTypes.distance_long]]
 
-WEEKS = 16  # how many recent weeks of mileage to show
+WEEKS = 16          # recent weeks to bucket before trimming leading empties
+WINDOW = 4          # trailing weeks in the rolling average
+
+# --- ink + marks (coral ramp; light-only) ------------------------------------
+BG = "#ffffff"
+INK = "#0b0b0b"      # the one primary-ink label (line endpoint)
+MUTED = "#898781"    # bar values, x labels
+BAR = "#F5C4B3"      # recessive bars (100 stop)
+LINE = "#4A1B0C"     # prominent average line (900 stop)
+
+BAR_MAX_PX = 24
+RADIUS_PX = 4
 
 end_ts = datetime.now()
-start_ts = end_ts - timedelta(weeks=WEEKS)
-
+# Fetch a couple of extra weeks so the oldest Fri->Thu bucket is fully covered.
+start_ts = end_ts - timedelta(weeks=WEEKS + 2)
 activities = Activities.get_for_period(garmin_act_db, start_ts, end_ts)
 
 
-def _empty(ax, title, msg="No runs in this period"):
-    ax.set_title(title)
-    ax.text(0.5, 0.5, msg, ha="center", va="center", color=wtheme.FAINT,
-            transform=ax.transAxes)
-    ax.set_xticks([])
-    ax.set_yticks([])
-    for s in ax.spines.values():
-        s.set_visible(False)
-
-
-def weekly_miles(ax):
-    # Bucket running distance into weeks (Monday-anchored training weeks).
+def weekly_series():
+    """Miles per Friday-anchored week (Fri -> Thu), trimmed to the first week
+    with real running, plus its 4-week trailing average (NaN until a full
+    window). The series ends on the most recently completed week."""
     runs = []
     for activity in activities:
         if activity.name is None or activity.distance is None or activity.moving_time is None:
@@ -68,66 +80,132 @@ def weekly_miles(ax):
         t = (datetime.combine(date.min, activity.moving_time) - datetime.min).total_seconds() / 60
         if s > 0.5 and 5 < t / s < 15:  # pace/distance heuristic → it's a run
             d = activity.start_time.date()
-            week_start = d - timedelta(days=d.weekday())  # Monday of that week
-            runs.append((week_start, s))
+            friday = d - timedelta(days=(d.weekday() - 4) % 7)  # Friday of its week
+            runs.append((friday, s))
 
     if not runs:
-        _empty(ax, "Miles per week")
-        return 0.0
+        return None, None
 
     df = pd.DataFrame(runs, columns=["week", "miles"])
     weekly = df.groupby("week")["miles"].sum()
 
-    # Continuous weekly index so zero-mileage (rest) weeks stay visible.
-    full = pd.date_range(end=end_ts.date() - timedelta(days=end_ts.weekday()),
-                         periods=WEEKS, freq="7D")
+    today = end_ts.date()
+    last_thu = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
+    last_fri = last_thu - timedelta(days=6)   # Friday starting the last full week
+    full = pd.date_range(end=last_fri, periods=WEEKS, freq="7D")
     weekly = weekly.reindex(full.date, fill_value=0)
     weekly.index = pd.to_datetime(weekly.index)
 
-    roll = weekly.rolling(4, min_periods=1).mean()
-
-    # Trim leading empty weeks so the chart starts where running data begins.
     nonzero = weekly[weekly > 0]
-    if not nonzero.empty:
-        weekly = weekly.loc[nonzero.index[0]:]
-        roll = roll.loc[nonzero.index[0]:]
+    if nonzero.empty:
+        return None, None
+    weekly = weekly.loc[nonzero.index[0]:]
 
-    ax.bar(weekly.index, weekly.values, width=5.2, color=wtheme.ACCENT,
-           zorder=3, label="Weekly miles")
-    ax.plot(weekly.index, roll.values, color=wtheme.ACCENT_WARM, linewidth=2.4,
-            solid_capstyle="round", zorder=4, label="4-week average")
+    roll = weekly.rolling(WINDOW, min_periods=WINDOW).mean()  # NaN until full
+    return weekly, roll
 
-    # Direct-label each week's mileage.
-    ymax = weekly.values.max()
-    for x, v in zip(weekly.index, weekly.values):
+
+def _rounded_top(x, y, w, h, rx, ry, color):
+    rx, ry = min(rx, w / 2), min(ry, h)
+    verts = [
+        (x, y), (x + w, y), (x + w, y + h - ry),
+        (x + w, y + h), (x + w - rx, y + h),
+        (x + rx, y + h), (x, y + h), (x, y + h - ry), (x, y),
+    ]
+    codes = [Path.MOVETO, Path.LINETO, Path.LINETO, Path.CURVE3, Path.CURVE3,
+             Path.LINETO, Path.CURVE3, Path.CURVE3, Path.CLOSEPOLY]
+    return PathPatch(Path(verts, codes), facecolor=color, edgecolor="none",
+                     linewidth=0, zorder=2)
+
+
+def draw_running(ax, weekly, roll):
+    n = len(weekly)
+    miles = weekly.values
+    ymax = 1.15 * max(miles.max(), 1)
+    ax.set_xlim(-0.5, n - 0.5)
+    ax.set_ylim(0, ymax)
+    ax.axis("off")
+
+    ax.figure.canvas.draw()
+    ext = ax.get_window_extent()
+    xppx = n / ext.width
+    yppx = ymax / ext.height
+    w = min(0.6, BAR_MAX_PX * xppx)
+    rx, ry = RADIUS_PX * xppx, RADIUS_PX * yppx
+
+    blended = mtransforms.blended_transform_factory(ax.transData, ax.transAxes)
+
+    for i, v in enumerate(miles):
         if v > 0:
-            ax.text(x, v + ymax * 0.02, f"{v:.0f}", ha="center", va="bottom",
-                    fontsize=9, color=wtheme.FAINT)
+            ax.add_patch(_rounded_top(i - w / 2, 0, w, v, rx, ry, BAR))
+            ax.text(i, v + ymax * 0.015, f"{round(v)}", ha="center", va="bottom",
+                    fontsize=11, fontweight=400, color=MUTED, clip_on=False)
+        ax.text(i, -0.05, weekly.index[i].strftime("%b %d"), ha="center",
+                va="top", fontsize=12, color=MUTED, transform=blended,
+                clip_on=False)
 
-    ax.set_ylabel("Miles")
-    ax.set_xlabel("")
-    ax.set_ylim(0, ymax * 1.15)
-    wtheme.style_axis(ax, grid="y")
-    ax.margins(x=0.02)
-    ax.xaxis.set_major_locator(dates.WeekdayLocator(byweekday=dates.MO, interval=1))
-    ax.xaxis.set_major_formatter(dates.DateFormatter("%b %d"))
-    ax.tick_params(axis="x", rotation=0)
-    ax.legend(loc="upper left", ncol=2)
-    return float(weekly.values.mean())
+    ax.plot(range(n), roll.values, color=LINE, linewidth=2, zorder=3)
+
+    valid = roll.dropna()
+    if not valid.empty:
+        xi = list(roll.index).index(valid.index[-1])
+        yi = valid.iloc[-1]
+        ax.plot(xi, yi, marker="o", markersize=8, markerfacecolor=LINE,
+                markeredgecolor=BG, markeredgewidth=2, zorder=4)
+        ax.annotate(f"{round(yi)} mi · {WINDOW}-week avg",
+                    (xi, yi), xytext=(-2, 34), textcoords="offset points",
+                    ha="right", va="bottom", fontsize=12, fontweight=500,
+                    color=INK, zorder=5)
+
+
+def _empty_running(ax):
+    ax.axis("off")
+    ax.text(0.5, 0.5, "No runs in this period", ha="center", va="center",
+            color=MUTED, fontsize=13, transform=ax.transAxes)
 
 
 def main(argv):
     save_dir = argv[0]
-    wtheme.apply()
-    fig, ax = plt.subplots(figsize=(13, 4.9))
-    avg = weekly_miles(ax)
-    subtitle = f"{avg:.1f} mi/week average" if avg else None
-    wtheme.suptitle(fig, "Running", subtitle)
-    plt.tight_layout(rect=[0, 0, 1, 0.93])
-    wtheme.round_bars(ax, edge="hue")
-    wtheme.arrows(ax)
+    weekly, roll = weekly_series()
+    # A Habitify outage must not sink the running chart: fall back to an empty
+    # habits panel (hgrid.draw renders a placeholder) rather than aborting.
+    try:
+        df = hgrid.fetch()
+    except Exception as e:                       # noqa: BLE001
+        print(f"habits unavailable, skipping panel: {e}", file=sys.stderr)
+        df = None
+
+    plt.rcParams.update({
+        "font.family": "sans-serif",
+        "font.sans-serif": ["Work Sans", "DejaVu Sans", "Arial"],
+        "font.size": 12,
+        "font.weight": 400,
+    })
+
+    fig = plt.figure(figsize=(16, 5.0))
+    fig.patch.set_facecolor(BG)
+    # Wide running panel, a clear gap, then the habits grid with its labels on
+    # the right (they overflow into the reserved margin past `right`).
+    gs = fig.add_gridspec(1, 2, width_ratios=[2.6, 1], wspace=0.18,
+                          left=0.035, right=0.82, top=0.93, bottom=0.12)
+    axr = fig.add_subplot(gs[0])
+    axh = fig.add_subplot(gs[1])
+    # Drop the habits panel down so its grid centres against the bottom-weighted
+    # running bars instead of floating above them.
+    hp = axh.get_position()
+    axh.set_position([hp.x0, 0.05, hp.width, 0.80])
+    axr.set_facecolor(BG)
+    axh.set_facecolor(BG)
+
+    if weekly is None:
+        _empty_running(axr)
+    else:
+        draw_running(axr, weekly, roll)
+    hgrid.draw(axh, df)
+
     os.makedirs(save_dir, exist_ok=True)
-    plt.savefig(os.path.join(save_dir, "running.png"), dpi=200)
+    fig.savefig(os.path.join(save_dir, "running.png"), dpi=200, facecolor=BG)
+    plt.close(fig)
 
 
 if __name__ == "__main__":

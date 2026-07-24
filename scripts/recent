@@ -1,0 +1,134 @@
+#!/usr/bin/env python3
+"""Rebuild trees/evergreen/RCNT.tree — the "Recently updated" index.
+
+Lists the N most recently modified evergreen trees (by git last-commit time,
+falling back to filesystem mtime for uncommitted trees) as collapsed
+transclusions. Like scripts/registry and scripts/inbox, this is the single
+source of truth for the page's format, and is run by scripts/new and the
+pre-commit hook so the page stays fresh however a tree was created.
+
+Self-locates the repo root from its own path, so it runs from any cwd and
+inside git hooks.
+"""
+import glob
+import os
+import re
+import subprocess
+import sys
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EVERGREEN = os.path.join(ROOT, "trees", "evergreen")
+
+# The generated page's own id — excluded from its own listing.
+SELF_ID = "RCNT"
+N = 15
+
+# Not notes: macro libraries / scaffolds.
+SKIP = {"base-macros", "latex-preamble", SELF_ID}
+
+
+def brace_arg(text, macro):
+    """Return the balanced-brace argument of \\macro{...}, or None."""
+    i = text.find("\\" + macro + "{")
+    if i < 0:
+        return None
+    i += len(macro) + 2
+    depth, out = 1, []
+    while i < len(text) and depth:
+        c = text[i]
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                break
+        out.append(c)
+        i += 1
+    return "".join(out).strip()
+
+
+def git_time(path):
+    """Last-commit unix time for path, or None if untracked / no history."""
+    try:
+        r = subprocess.run(
+            ["git", "-C", ROOT, "log", "-1", "--format=%ct", "--", path],
+            capture_output=True, text=True, check=True)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
+    out = r.stdout.strip()
+    return int(out) if out else None
+
+
+def modified_time(path):
+    """Best available 'last modified' signal: git commit time, else mtime.
+
+    Uncommitted edits (staged or working-tree) aren't reflected in git commit
+    time, so take the max of the two — a freshly edited tree should rank as
+    most-recent even before it is committed.
+    """
+    gt = git_time(path)
+    mt = os.path.getmtime(path)
+    return max(gt, mt) if gt is not None else mt
+
+
+def build():
+    entries = []
+    for path in glob.glob(os.path.join(EVERGREEN, "*.tree")):
+        tid = os.path.splitext(os.path.basename(path))[0]
+        if tid in SKIP:
+            continue
+        with open(path, encoding="utf-8") as f:
+            text = f.read()
+        tags = set(re.findall(r"\\tag\{([^}]*)\}", text))
+        # Skip empty placeholders, local-only trees, and structural navigation
+        # pages (\tag{index}) — none of them are "work" worth surfacing here.
+        if tags & {"stub", "private", "index"}:
+            continue
+        entries.append((modified_time(path), tid))
+
+    entries.sort(key=lambda e: (e[0], e[1]), reverse=True)
+    top = entries[:N]
+
+    # The page's own \date tracks its freshness: the newest entry's date.
+    newest_date = ""
+    if top:
+        newest_path = os.path.join(EVERGREEN, f"{top[0][1]}.tree")
+        newest_date = (brace_arg(open(newest_path, encoding="utf-8").read(),
+                                 "date") or "")[:10]
+
+    lines = [
+        "\\import{base-macros}",
+    ]
+    if newest_date:
+        lines.append(f"\\date{{{newest_date}}}")
+    lines += [
+        "\\author{kellenkanarios}",
+        "\\title{What I've been thinking about}",
+        "\\tag{public}",
+        "\\tag{index}",
+        "",
+        f"\\p{{The {N} most recently modified trees, by git commit time.}}"
+        "",
+        "\\scope{",
+        "  \\put\\transclude/toc{false}",
+        "  \\put\\transclude/numbered{false}",
+        "  \\put\\transclude/expanded{false}",
+        "  \\put\\transclude/metadata{true}",
+    ]
+    for _, tid in top:
+        lines.append(f"  \\transclude{{{tid}}}")
+    lines.append("}")
+    lines.append("")
+    return "\n".join(lines), len(top)
+
+
+def main():
+    content, n = build()
+    with open(os.path.join(EVERGREEN, f"{SELF_ID}.tree"), "w",
+              encoding="utf-8") as f:
+        f.write(content)
+    print(f"{SELF_ID}.tree: {n} entries", file=sys.stderr)
+
+
+if __name__ == "__main__":
+    main()

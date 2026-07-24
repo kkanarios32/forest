@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2024-12-27}
+\author{kellenkanarios}
 \taxon{Theorem}
 \import{base-macros}
 \title{Independent #{\pi}-systems generate independent #{\sigma}-algebras}

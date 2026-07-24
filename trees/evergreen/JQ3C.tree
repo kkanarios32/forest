@@ -1,9 +1,10 @@
 \import{base-macros}
 \author{kellenkanarios}
-\meta{author}{false}
-\tag{transient}
-\title{UNIX Files}
+\tag{public}
+\title{Opening a file in UNIX}
 \date{2026-07-09T12:17:03Z}
+
+\p{For more details, see \citek{bartlettProgrammingGround}.}
 
 \p{Open a file with the \code{open} [syscall](A5S6). Must be called with the following:}
 \ul{

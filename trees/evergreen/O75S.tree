@@ -1,4 +1,5 @@
 \date{2026-03-22T17:40:52Z}
+\author{kellenkanarios}
 \tag{public}
 
 \title{Putting the engineer in my engineering degree}
@@ -12,6 +13,5 @@
 \p{\strong{Completed / In Progress}}
 \ol{
  \li{[Inside the Machine](P3GB)} 
- \li{[Everything a SWE needs to know about memory](YDKA)}
  \li{[Three Easy Pieces](0084)}
 }

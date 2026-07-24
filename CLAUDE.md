@@ -22,9 +22,15 @@ reference, append a BibTeX entry to `tex/refs.bib` and re-run
 JSON array to include `"manual"`; without that tag, `split_bib`
 overwrites on the next run.
 
-**Read-only:** `theme/` (git submodule — page-level tweaks belong in
-`trees/evergreen/base-macros.tree`, not the theme), `output/` (build
-artifact), `tex/generated/` (intermediate JSON from `split_bib`).
+**You may edit but prefer not to:** `theme/` (git submodule — the published
+site's XSL templates and `style.css`; changes are committed to the submodule).
+Keep visual styling in `trees/evergreen/base-macros.tree` as inline-styled
+macros. Only reach into `theme/style.css` when the styling genuinely cannot
+live in a macro — the canonical case is theming tied to a `\taxon{...}` (e.g.
+the `Card` taxon's blue card). When in doubt, do it in `base-macros`.
+
+**Read-only:** `output/` (build artifact), `tex/generated/` (intermediate
+JSON from `split_bib`).
 
 ## Evolution
 
@@ -103,10 +109,12 @@ preferred to a trailing "see also."
 **Link to things that don't exist yet.** If a concept deserves its own
 tree but does not have one, do not skip the link — create a placeholder
 stub tree (see [Stub a missing concept](#stub-a-missing-concept) below)
-and link to its ID. The stub gets `\tag{stub}`, no body, and a
-`\title{...}` matching the concept name. This keeps prose links live,
-makes the gap show up in `scripts/hastags stub` and `scripts/inbox`,
-and gives the next writing session a queue.
+and link to its ID. The stub gets `\tag{stub}` + `\tag{public}`, no
+body, and a `\title{...}` matching the concept name. This keeps prose
+links live, makes the gap show up in `scripts/hastags stub` and
+`scripts/inbox`, and gives the next writing session a queue. Stubs are
+public: the concept name ships to the site as a live link target even
+before the body exists.
 
 ## Atomization
 
@@ -131,13 +139,20 @@ behavioral ones:
 
 - `public` — opt into the published site.
 - `private` — kept local (daily logs, weeknotes).
-- `stub` — a placeholder link target awaiting a body; off-site, shows
-  in `scripts/inbox` ranked by inbound links.
+- `stub` — a placeholder link target awaiting a body; published (also
+  carries `public`) so the concept name renders on-site as a live link,
+  and shows in `scripts/inbox` ranked by inbound links.
 - `transient` — a first-pass inbox note (literature note or other
   capture) awaiting promotion to an evergreen note; off-site, shows in
   `scripts/inbox`.
 - `card` — a spaced-repetition prompt (see below); off-site, mirrored
   to Anki.
+- `index` — a top-level navigation / index page (the home page, `0002`
+  Blog, `0015` Notebooks, `005G` Research Bible, `914H` Solution
+  Manuals, `OUTSTANDING`, …) rather than atomic content. Tag any new
+  navigation page with it: `scripts/recent` excludes `index` trees from
+  the "Recently updated" listing so structural pages don't crowd out
+  real work. Notebooks (`\title{Notebook: …}`) are content, not indexes.
 
 Two role tags mark a note's kind within the evergreen graph, and exist
 mainly so Datalog can index them:
@@ -224,11 +239,12 @@ When prose mentions an atomic concept that does not yet have a tree:
 1. Run `scripts/new stub <Concept Name>`, passing the phrase you
    wanted to link as the title. This creates
    `trees/evergreen/<random-id>.tree` with `\import{base-macros}`,
-   `\author{kellenkanarios}`, `\title{<Concept Name>}`, `\tag{stub}`,
-   and the `\stub` notice. The `\tag{stub}` (not the directory) keeps it
-   off the public site and lands it in the `inbox.md` worklist, not the
-   `notes-log.md` index. In nvim, `:ForesterStub` — or `<leader>ft` over
-   a visual selection — does this and inserts the link in one step.
+   `\author{kellenkanarios}`, `\title{<Concept Name>}`, `\tag{stub}` +
+   `\tag{public}`, and the `\stub` notice. The `\tag{public}` ships the
+   concept name to the site as a live link target; the `\tag{stub}`
+   lands it in the `inbox.md` worklist, not the `notes-log.md` index. In
+   nvim, `:ForesterStub` — or `<leader>ft` over a visual selection —
+   does this and inserts the link in one step.
 2. The title is the only required content — no body yet.
 3. Link to the new tree from the original prose using `[[<new-id>]]`
    (or `[display text](<new-id>)` if the title doesn't fit the
@@ -236,9 +252,9 @@ When prose mentions an atomic concept that does not yet have a tree:
 4. The stub is now a real link target, surfaces under
    `scripts/hastags stub` and in `scripts/inbox` (ranked by how many
    trees link it), and can be promoted to a full atomic concept **in
-   place** — write the body, drop the `\stub` line, swap `\tag{stub}`
-   for `\tag{public}` + a taxon — whenever the idea is ready to write.
-   It never moves; its id and inbound links never change.
+   place** — write the body, drop the `\stub` line, replace `\tag{stub}`
+   with a taxon (`\tag{public}` is already there) — whenever the idea is
+   ready to write. It never moves; its id and inbound links never change.
 
 ### Build a notebook / index page
 
@@ -295,11 +311,12 @@ its keep: `trees/inbox/`, the transient-capture staging area you `ls`
 and process. Everything graph-bound — stubs and published notes alike —
 lives in `trees/evergreen/`. `scripts/new` routes by template:
 
-1. **Concept stubs** (`scripts/new stub <title>`) — `\tag{stub}`, born
-   in `trees/evergreen/`. Placeholder trees that exist only so a prose
-   link resolves: `\title{...}` plus the `\stub` notice, no body,
-   off-site. Because a stub already sits in its eventual home, promotion
-   is a pure in-place edit — no move. The reading queue (sources you
+1. **Concept stubs** (`scripts/new stub <title>`) — `\tag{stub}` +
+   `\tag{public}`, born in `trees/evergreen/`. Placeholder trees that
+   exist only so a prose link resolves: `\title{...}` plus the `\stub`
+   notice, no body, but published — the concept name renders on-site as
+   a live link target. Because a stub already sits in its eventual home,
+   promotion is a pure in-place edit — no move. The reading queue (sources you
    want to read *later*) lives in an external capture tool, not here —
    only in-graph link targets are stubs.
 2. **`trees/inbox/` — transient notes** (`scripts/new transient
@@ -316,9 +333,9 @@ Promotion is the discipline: a transient note graduates by being
 rewritten as an atomic evergreen note under `trees/evergreen/` and linked
 in, then the transient note is deleted or reduced to a single
 `\transclude{<new-id>}` pointer. A stub graduates **in place** — write
-its body, swap `\tag{stub}` for `\tag{public}` + a taxon, drop the
-`\stub` line. It never moves; its id and every inbound link are
-unchanged.
+its body, drop `\tag{stub}` and the `\stub` line, add a taxon
+(`\tag{public}` is already there). It never moves; its id and every
+inbound link are unchanged.
 
 Two derived, machine-owned markdown views track this (never hand-edit):
 
@@ -360,10 +377,11 @@ Ordered by priority:
    square of its connections, and Forester's hover-previews make
    in-prose links readable. Trailing "see also" lists are a smell.
 
-6. **Stubs are valid.** A `\tag{stub}` tree with only a `\title{...}`
-   is enough to function as a link target. Promote it to `\tag{public}`
-   with a body when the idea is ready. Never leave a `[[??]]` dangling
-   in prose — stub the tree first, then link.
+6. **Stubs are valid.** A `\tag{stub}` + `\tag{public}` tree with only
+   a `\title{...}` is enough to function as a published link target.
+   Promote it to a full note — swap `\tag{stub}` for a taxon and write a
+   body — when the idea is ready. Never leave a `[[??]]` dangling in
+   prose — stub the tree first, then link.
 
 7. **Let the bibliography pipeline do its job.** Add to `tex/refs.bib`
    and re-run `scripts/split_bib`. Never hand-edit `trees/refs/`

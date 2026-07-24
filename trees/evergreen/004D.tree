@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-02-01}
+\author{kellenkanarios}
 \title{Convex Function}
 \taxon{Definition}
 \p{A function #{f : C \to \mathbb{R}} is said to be convex if #{C} is convex, and for any #{x_1, x_2 \in C}, #{\lambda \in [0,1]}, we have

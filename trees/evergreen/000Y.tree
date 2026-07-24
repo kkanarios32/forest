@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2024-11-22}
+\author{kellenkanarios}
 \title{Markov Decision Processes}
 \import{base-macros}
 

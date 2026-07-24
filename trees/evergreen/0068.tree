@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-03-25}
+\author{kellenkanarios}
 \import{base-macros}
 \taxon{Theorem}
 \title{Optimal NP Test}

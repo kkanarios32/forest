@@ -1,0 +1,7 @@
+\date{2026-07-17T16:30:21Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Software Pipelining}
+\tag{public}
+\taxon{Definition}
+\p{A compiler transformation that restructures a loop so the steady-state body contains instructions from \strong{multiple logical iterations}, each at a different stage — statically constructing the overlap an OoO core would find dynamically. Canonical algorithm: modulo scheduling.}

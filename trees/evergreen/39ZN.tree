@@ -1,0 +1,10 @@
+\date{2026-07-16T14:08:37Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\title{Softcapping}
+\taxon{Definition}
+\p{\em{Softcapping} is a [stability trick](7TMH) in the [attention](004G) mechanism. It is a way to ensure that the softmax does not explode.
+   ##{\mathrm{logits} = \mathrm{softcap} \cdot \tanh \left( \frac{\mathrm{logits}}{\mathrm{softcap}} \right) }
+}
+

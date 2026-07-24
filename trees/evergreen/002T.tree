@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-01-19}
+\author{kellenkanarios}
 \title{Soft Actor Critic}
 \tag{rl}
 \p{

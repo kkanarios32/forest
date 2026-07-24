@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-03-26}
+\author{kellenkanarios}
 \import{base-macros}
 \taxon{Definition}
 \title{Optimal Error Exponent in NP setting}

@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-02-09}
+\author{kellenkanarios}
 \title{Fano's Inequality}
 \p{
   Suppose that #{X \iff Y \iff \hat{X}} and let #{p_e = \mathbb{P}(X \neq \hat{X})}. Then, we have 

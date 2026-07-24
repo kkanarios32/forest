@@ -1,0 +1,15 @@
+% ["refs"]
+\title{Helion: A High-Level DSL for Performant and Portable ML Kernels}
+\taxon{Reference}
+\date{2025-10-22}
+\author/literal{PyTorch Team at Meta}
+\meta{external}{https://pytorch.org/blog/helion/}
+\meta{bibtex}{\startverb
+@article{helion2025,
+ title = {Helion: A High-Level DSL for Performant and Portable ML Kernels},
+ author = {PyTorch Team at Meta},
+ url = {https://pytorch.org/blog/helion/}
+}
+\stopverb}
+
+\p{Another entrant into the [[5PSC]] space.}

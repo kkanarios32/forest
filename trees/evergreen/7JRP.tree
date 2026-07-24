@@ -1,0 +1,21 @@
+\date{2026-07-16T13:57:45Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Norms}
+\p{\paragraph{Pre-norm vs. Post-norm} The first architecture variation discussed is when to apply the [layer norm](LVV4). As can be seen in the figure below, rather than apply the [layer norm](LVV4) in the residual stream. They instead place it before the FFN and MHA layers.}
+\figure{
+\<html:img>[width]{40\%}[src]{\route-asset{assets/img/pre-post-norm.png}}{}
+\figcaption{Post norm (a) vs. pre norm (b).}
+}
+\p{They actually found that adding [layer normalization](LVV4) before and after the MHA and FFN works the best. This is known as \em{double norm}.}
+\p{\paragraph{[RMSNorm](1XNO) vs. [LayerNorm](LVV4)}
+Another useful trick is to use the [RMSNorm](1XNO) instead of [LayerNorm](LVV4).
+}
+\transclude{1XNO}
+\p{One might wonder if matrix multiplies are the only thing that matters what can such a small change really accomplish.}
+\ul{
+  \li{Due to memory movement, despite being .17\startverb%\stopverb of [FLOPS](4K5H), provided 25\startverb%\stopverb speedup in runtime!!}
+}
+\remark{
+Most people apparently just drop the bias term and keep the centering i.e. subtracting the mean. This makes sense because computing the mean does not require loading any additional information back to memory.
+}

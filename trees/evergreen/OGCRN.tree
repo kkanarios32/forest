@@ -1,5 +1,6 @@
 \date{2026-05-22T17:20:00Z}
 \import{base-macros}
+\taxon{Definition}
 \author{kellenkanarios}
 \title{Vector Processing Unit}
 \p{A core component of the [TPU architecture](NZZ7) responsible for elementwise operations.}

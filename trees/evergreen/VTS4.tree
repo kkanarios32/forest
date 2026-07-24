@@ -1,5 +1,6 @@
 \import{base-macros}
 \date{2026-05-12T22:53:45Z}
+\author{kellenkanarios}
 \tag{public}
 \title{Network routing strategies}
 
@@ -27,7 +28,7 @@
 }
 
 \example{
-\strong{Tornado traffic} on an 8-node bidirectional ring: node #{i} sends to #{(i+3) \bmod 8}.
+\em{Tornado traffic} on an 8-node bidirectional ring: node #{i} sends to #{(i+3) \bmod 8}.
 \ul{
   \li{Greedy: all packets travel counter-clockwise. Bidirectional bandwidth wasted; #{\frac{1}{3}} utilization.}
   \li{Uniform: randomly clockwise/counter-clockwise. Counter-clockwise gets #{\frac{2}{3}} utilization, clockwise #{\frac{2}{5}}; worst-case #{\frac{2}{5}}.}

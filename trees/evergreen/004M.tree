@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-02-03}
+\author{kellenkanarios}
 \import{base-macros}
 \title{Sublinear convergence of GD}
 \taxon{Theorem}

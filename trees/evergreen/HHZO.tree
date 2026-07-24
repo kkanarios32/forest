@@ -8,34 +8,7 @@
 
 \put\transclude/metadata{false}
 
-\section{Murphi}{
-\p{Syntactical things I need to remember from Murphi docs. Most things are straightforward, but there are a few things to note:}
-  \p{\strong{Declarations.} A \em{declaration} is a variable or a collection of variables that are used in the rules.}
-  \p{\strong{Rules}. A \em{rule} is a transition from one state to another}
-  \ul{
-    \li{Each rule can optionally have an initial condition required to be fired}
-    \li{We can easily define rules for all the processors or collection of #{n} things with \code{ruleset}.}
-    \li{For our use case, rules are used to define}
-    \ol{
-      \li{Controller actions}
-      \li{Receiving a request from the network}
-      \li{Retrying stalled requests}
-    }
-  }
-  \p{\strong{Startstates.} A \em{startstate} is the intial configuration for all our declarations.}
-  \ul{
-    \li{Must assign a value to every global variable}
-  }
-  \p{\strong{Invariants}. An \em{invariant} is something that Murphi checks to ensure is true at all possible configurations of the system.}
-\p{\strong{Overview straight from the docs}. Repeat forever:
-}
-\ol{
-  \li{Find all rules whose conditions are true in the current state.
-       (i.e. conditional expressions are true, given the current values
-       of the global variables).}
-    \li{Choose one arbitrarily and execute the action, yielding a new state.}
-}
-}
+\transclude{CMAL}
 
 \section{Starting with MSI}{
 \p{The first thing we need to do is understand all the things that can go awry.}
@@ -70,7 +43,7 @@
     PutAck          -- put acknowledgment
   };
 <<<
-\strong{Cache controller.} We will start with MSI cache controller, given by the following table:
+\paragraph{Cache controller} We will start with MSI cache controller, given by the following table:
 \figure{
 \<html:img>[width]{100\%}[src]{\route-asset{assets/img/cache-msi.png}}{}
 }
@@ -96,7 +69,7 @@
 \remark{
 The \code{load}, \code{store}, and \code{replacement} all only alter the states of the coherence protocol for the permanent states. Therefore, to simulate the system it is sufficient to only implement the rules that initiate these state transitions i.e. evict in modified state or load from invalid state.
 }
-\strong{Directory controller.} Now for the directory controller:
+\paragraph{Directory controller} Now for the directory controller:
 \figure{
 \<html:img>[width]{100\%}[src]{\route-asset{assets/img/directory-msi.png}}{}
 \figcaption{}
@@ -104,7 +77,7 @@ The \code{load}, \code{store}, and \code{replacement} all only alter the states 
 \remark{
 We actually end up adding a second transient state to the directory controller #{M^D}. This is to handle the \code{PutM}, \code{GetM} race described below.
 }
-\strong{Weird Race Conditions}
+\paragraph{Weird Races}
 \problem{
 When implementing the \code{PutM} rule to downgrade from modified to invalid. We must \strong{NOT} get rid of the data until we have been acknowledged, so that we can still service forward requests. This is a transition to #{MI^A}. However, we can still receive the \code{PutAck} causing us to transition to #{I} before servicing the \code{Fwd-GetM} request. This is lost data.
 }
@@ -125,28 +98,28 @@ When the home directory is in #{M} and we get a \code{GetS} we cannot clear owne
 }
 \section{Moving to MESI}{
 Aside from the modifications discussed above, the rest was straightforward and we now are ready to move on to MESI.
-\p{ \strong{Cache controller.} We will start with MESI cache controller, given by the following table:
+\p{ \paragraph{Cache controller} We will start with MESI cache controller, given by the following table:
 }
 \figure{
 \<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-cache.png}}{}
 }
-\p{\strong{Design choice 1.} Since we allow immediate upgrade to #{M}, without forwarding, if E upgrades to M, then the value in the directory sent to the next \code{GetS / GetM} would not have updated value. It seems we must either
+\p{\paragraph{Design choice 1} Since we allow immediate upgrade to #{M}, without forwarding, if E upgrades to M, then the value in the directory sent to the next \code{GetS / GetM} would not have updated value. It seems we must either
 \ol{
   \li{not allow E to silently upgrade to M and then we do not need forwarding, or}
   \li{allow E to silently upgrade to M and treat E as M basically and forward everything.}
 }
 Notably, neither of these have to write back on \code{PutE}, but we will go with 1 because that is how it is indicated in the figure.
 }
-\p{\strong{Design Choice 2.} In order to indicate that the directory received the first \code{GetS} we introduce a \code{ExclusiveData} message. Upon receiving, \code{ExclusiveData} in #{IS^D} we transition to #{E}.}
+\p{\paragraph{Design Choice 2} In order to indicate that the directory received the first \code{GetS} we introduce a \code{ExclusiveData} message. Upon receiving, \code{ExclusiveData} in #{IS^D} we transition to #{E}.}
 \remark{
 Once we have sent the \code{PutE}, or the \code{PutM} #{EI^A} and #{MI^A} are functionally the same. I include both for completeness but verified that transitioning directly to #{MI^A} from #{E} works the same.
 }
-\p{\strong{Directory controller.} We start with the analagous table.}
+\p{\paragraph{Directory controller} We start with the analagous table.}
 \figure{
 \<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-directory.png}}{}
 }
 \p{Similar to the cache controller, we also add a #{E^D} state for completion that can be absorbed into #{M^D} introduced in the MSI protocol.}
-\p{\strong{Weird Races.}}
+\p{\paragraph{Weird Races}}
 \problem{First processor does \code{GetS} and is in #{IS^D} but the Home directory sends it exclusive data and is now in #{E}. Then second processor does \code{GetM} and Home issues \code{Fwd-GetM} to processor one, which arrives before data.}
 \solution{Need to stall on \code{Fwd-GetM} and \code{Fwd-GetS} in #{IS^D} until data arrives}
 \problem{An even crazier race happens when we get invalidated before the \code{Fwd-GetM} or \code{Fwd-GetS} arrive. Due to our previous design decision, we transition to #{II^A}, where if we receive a \code{PutAck} we transition to invalid. This then loses the needed forward data.}

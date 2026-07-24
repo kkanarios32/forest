@@ -1,5 +1,8 @@
+\import{base-macros}
 \tag{public}
+\tag{index}
 \date{2025-06-05}
+\author{kellenkanarios}
 \title{Upcoming papers of the week}
 
 \p{Here I am storing interesting papers I come across and want to review at some point.}
@@ -11,5 +14,4 @@
 }
 
 \p{Taking requests below!}
-
-\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{poaw-requests}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+\comments{poaw-requests}

@@ -1,0 +1,38 @@
+\date{2026-07-15T13:00:46Z}
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\title{MLIR}
+
+\p{Collection of resources}
+\ul{
+  \li{https://llvm.org/devmtg/2020-09/slides/MLIR_Tutorial.pdf}
+  \li{https://www.lei.chat/posts/mlir-linalg-dialect-and-patterns/}
+  \li{https://www.lei.chat/posts/mlir-vector-dialect-and-patterns/}
+}
+
+\p{\paragraph{Dialects} This is effectively a syntax. For your given DSL, you must write each of the operations in this \em{MLIR dialect} in order to inherit the benefits of the MLIR ecosystem.}
+\quotes{The whole structured CodeGen paradigm in MLIR prefers co-designing op semantics and transformations and let ops structurally encode and guarantee certain properties to simplify analyses and transformations.}{[Lei Zhang](https://www.lei.chat/posts/mlir-linalg-dialect-and-patterns/)}
+\p{\paragraph{The general paradigm} It seems that when you are writing a DSL backed by MLIR that you}
+\ol{
+  \li{Write an MLIR dialect for your DSL}
+  \li{You can write custom compiler passes for your MLIR dialect.}
+  \ul{
+    \li{This is what is done in [Triton](tilletTritonIntermediateLanguage2019).}
+    \li{[Triton](tilletTritonIntermediateLanguage2019) has two custom MLIR dialects: \code{ttir} and \code{ttgir}.}
+    \ul{
+      \li{The \code{ttir} dialect is the backend agnostic IR.}
+      \li{The \code{ttgir} dialect is the [Triton](tilletTritonIntermediateLanguage2019) GPU IR.}
+    }
+  }
+  \li{Write a lowering pass from your MLIR dialect to the MLIR dialect of an MLIR with codegen backing i.e.}
+  \ul{
+    \li{MLIR has an LLVM dialect}
+    \li{Alternatively, [XLA](xla2017) ingests StableHLO which is an MLIR dialect. In theory, this means that if your DSL is similar to that of a JAX / LinAlg dialect, then you can get a lot of the optimizations Google has come up with for free.}
+    \ul{
+      \li{However, XLA works by translating StableHLO to HLO, which is then optimized by XLA. HLO is NOT an MLIR dialect and therefore in order to use XLA your backend needs to have an appropriate conversion from HLO to an executable on their backend.}
+      \li{This is what is done for trainium. Namely, the [neuronx-cc](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/compiler/index.html) compiler performs the translation from optimized HLO to optimized executable code on their ASIC.}
+    }
+    \li{[Triton](tilletTritonIntermediateLanguage2019) and the GPU backend for XLA are the LLVM + NVVM MLIR, which is the MLIR dialect for LLVM with added GPU instructions.}
+  }
+}

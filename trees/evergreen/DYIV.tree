@@ -1,5 +1,7 @@
 \import{base-macros}
 \tag{public}
+\date{2025-07-03T15:02:23Z}
+\author{kellenkanarios}
 \title{Torch Tensors}
   \p{
 In pytorch, tensors are \em{contiguous} blocks of memory, where their shape is controlled by \em{strides}. A stride basically just refers to how far you have to jump in physical memory to correspond to incrementing the logical index i.e. in a (2, 3) matrix each row requires jumping #{3} spots in physical memory. Thus, \code{stride[1] = 3}.

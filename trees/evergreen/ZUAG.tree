@@ -1,0 +1,104 @@
+\date{2026-07-22T12:51:34Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[POTW](005G): [[foxMultiLevelDiscoveryDeep2017]]}
+\tag{potw}
+\tag{public}
+
+\p{The setup for \em{[[foxMultiLevelDiscoveryDeep2017]]}:}
+\ul{
+  \li{We have a \em{meta-controller} that outputs the \em{skill} #{z} given the state #{s} i.e. #{z_t \sim \eta(\cdot \mid s_t)}}
+  \li{We have the \em{skill}, which is a skill-conditioned policy #{a_t \sim \pi(\cdot \mid s_t, z_t)}}
+  \li{We have the \em{termination function} #{\psi(\cdot \mid s_t, z_{t - 1})}, which is \strong{per skill} and evaluates the \em{previous} skill #{z_{t - 1}} at the new state #{s_t}, such that #{b_t \sim \mathrm{Ber}\big(\psi(s_t, z_{t - 1})\big) \in \{0, 1\}  }}
+  \ul{
+    \li{For #{b_t = 1}, we resample a new skill #{z_t \sim \eta(\cdot \mid s_t)}}
+    \li{Otherwise, #{z_{t} = z_{t - 1}}}
+  }
+}
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/ddo-gm.png}}{}
+\figcaption{Graphical model for [DDO](foxMultiLevelDiscoveryDeep2017).}
+}
+\p{Assuming there is a true underlying latent history #{\xi = \{b_{0}, z_{0}, b_{1}, z_{1}, \ldots\}  } and the observable history #{\mathcal{H} = \{s_{0}, a_{0}, s_{1}, a_{1}, \ldots\}  }, the likelihood according to the above generative model is given by}
+##{\mathbb{P}(\mathcal{H}, \xi) = p(s_{0})\delta_{\{b_{0} = 1\}}\eta(z_{0} \mid s_{0}) \prod_{t=1}^{T - 1} \mathbb{P}(b_t, z_t \mid z_{t - 1}, s_t) \prod_{t = 0}^{T - 1} \pi(a_t \mid s_t, z_t) p(s_{t+1} \mid s_t, a_t)}
+\p{Furthermore, according to our model, we have that}
+##{
+\begin{align*}
+ \mathbb{P}(b_t = 0, z_t \mid z_{t - 1}, s_t) &= (1 - \psi(s_t, z_{t - 1})) \cdot \delta_{\{z_{t} = z_{t - 1}\}} \\
+ \mathbb{P}(b_t = 1, z_t \mid z_{t - 1}, s_t) &= \psi(s_t, z_{t - 1}) \cdot \eta(z_t \mid s_t)
+.\end{align*}
+}
+\p{Up to this point, we have assumed this is the ground truth model and we are given each of the components. Instead we want to \em{learn} these components. To do so, we introduce our set of parameters #{\mathbf{\theta} }, such that each component is parametrized by a subset of #{\mathbf{\theta} } i.e. #{\eta_{\theta}, \pi_{\theta}, \psi_{\theta}}.}
+\goal{We want to learn some #{\theta} that maximized the likelihood of the \em{observable} data.}
+\p{To do so, first consider the log-likelihood of our new parametrized model}
+##{
+\begin{align*}
+\log \mathbb{P}_{\theta}(\mathcal{H}, \xi) &= \log \left[p(s_{0})\delta_{\{b_{0} = 1\}}\eta_{\theta}(z_{0} \mid s_{0}) \prod_{t=1}^{T - 1} \mathbb{P}_{\theta}(b_t, z_t \mid z_{t - 1}, s_t) \prod_{t = 0}^{T - 1} \pi_{\theta}(a_t \mid s_t, z_t) p(s_{t+1} \mid s_t, a_t)\right] \\
+&= \log p(s_{0})\delta_{\{b_{0} = 1\}} + \log\left[\eta_{\theta}(z_{0} \mid s_{0}) \prod_{t=1}^{T - 1} \mathbb{P}_{\theta}(b_t, z_t \mid z_{t - 1}, s_t) \prod_{t = 0}^{T - 1} \pi_{\theta}(a_t \mid s_t, z_t) \right] + \sum_{t=0}^{T-1} \log \left[p(s_{t+1} \mid s_t, a_t)\right] \\
+&= \underbrace{\log p(s_{0})\delta_{\{b_{0} = 1\}} + \sum_{t=0}^{T-1} \log \left[p(s_{t+1} \mid s_t, a_t)\right]}_{\text{independent of } \theta} + \log\left[\eta_{\theta}(z_{0} \mid s_{0}) \prod_{t=1}^{T - 1} \mathbb{P}_{\theta}(b_t, z_t \mid z_{t - 1}, s_t) \prod_{t = 0}^{T - 1} \pi_{\theta}(a_t \mid s_t, z_t)\right]
+.\end{align*}
+}
+\p{Since we are only concerned with learning #{\theta}, we can disregard the #{\theta} independent terms leaving}
+##{\begin{align*}
+\nabla_{\theta} \log \mathbb{P}_{\theta}(\mathcal{H}, \xi) &= \nabla_{\theta} \left[ \log\left[\eta_{\theta}(z_{0} \mid s_{0}) \prod_{t=1}^{T - 1} \mathbb{P}_{\theta}(b_t, z_t \mid z_{t - 1}, s_t) \prod_{t = 0}^{T - 1} \pi_{\theta}(a_t \mid s_t, z_t)\right] \right]\\
+&= \nabla_{\theta} \log\left[\eta_{\theta}(z_{0} \mid s_{0})\right] + \sum_{t=1}^{T - 1} \nabla_{\theta} \log\left[\mathbb{P}_{\theta}(b_t, z_t \mid z_{t - 1}, s_t)\right] + \sum_{t = 0}^{T - 1} \nabla_{\theta} \log \left[\pi_{\theta}(a_t \mid s_t, z_t)\right].
+\end{align*}}
+\problem{This requires samples #{(\mathcal{H}, \xi) \sim P_{\theta}(\mathcal{H}, \xi)}, but we only have samples #{\mathcal{H} \sim P_{\theta}(\mathcal{H})}!!!}
+\solution{We can use the trick from [[0088]]. Referred to in the paper as the \em{expectation gradient trick}. Namely,
+##{\nabla_{\theta} \log P_{\theta}(\mathcal{H}) = \mathbb{E}_{\xi \sim P_{\theta}(\xi \mid \mathcal{H})} \left[ \nabla_{\theta} \log P_{\theta}(\mathcal{H}, \xi) \right]}
+}
+\p{Now it remains to compute the expectation from #{P_{\theta}(\xi \mid \mathcal{H})}}
+\remark{
+Note that #{P_{\theta}(\xi \mid \mathcal{H})} is a distribution over #{(K, \{0,1\})^{T} } i.e. over each #{(z_t, b_t)}. To efficiently compute, we need to use [[F3T0]].
+}
+\section{Computing the expectation}{
+\p{For,}
+##{\begin{aligned} u_t(z) &= \mathbb{P}_{\theta}(z_t = z | \xi) \\ v_t(z) &= \mathbb{P}_{\theta}(b_t = 1, z_t = z | \xi) \\ w_t(z) &= \mathbb{P}_{\theta}(z_t = z, b_{t+1} = 0 | \xi). \end{aligned}}
+\p{We have that}
+##{\nabla_{\theta} L[\theta; \xi] = \sum_{h \in \mathcal{H}} \left( \sum_{t=0}^{T-1} \left( v_t(z) \nabla_{\theta} \log \eta(z|s_t) + u_t(z) \nabla_{\theta} \log \pi_h(a_t|s_t) \right) + \sum_{t=0}^{T-2} \left( (u_t(z) - w_t(z)) \nabla_{\theta} \log \psi_h(s_{t+1}) + w_t(z) \nabla_{\theta} \log (1 - \psi_h(s_{t+1})) \right) \right).}
+\p{Following the [[F3T0]], we can get the posterior for the latent i.e. #{\mathbb{P}((z_{t}, b_{t}) \mid \mathcal{H})}. We have the corresponding forward and backward components}
+##{\begin{align*}
+  \phi_t(z, b) &= \mathbb{P}(s_{0}, a_{0}, \ldots, s_{t}, z_{t} = z, b_{t} = b) \\
+  \beta_t(z, b) &= \mathbb{P}(s_{t + 1}, a_{t + 1}, \ldots, s_{T} \mid z_{t} = z, b_{t} = b),
+.\end{align*}}
+\p{which can then be written as}
+##{\begin{align*}
+  \phi_t(z, b) &= \mathbb{P}(s_t, a_t \mid z, b) \sum_{(z', b')} \phi_{t - 1}(z', b') \mathbb{P}(z, b \mid z', b') \\
+  \beta_t(z, b) &= \sum_{(z', b')} \beta_{t + 1}(z', b') \mathbb{P}(s_{t + 1}, a_{t + 1} \mid z', b')  \mathbb{P}(z', b' \mid z, b)
+.\end{align*}}
+\p{\paragraph{Forward pass} For the forward pass, we have the initial condition}
+##{\phi_0(z, b) = p_{0}(s_{0}) \delta_{\{b = 1\}} \eta (z \mid s_{0})}
+\p{Here #{(z', b')} ranges over the possible values of #{(z_{t - 1}, b_{t - 1})}. It is sufficient to expand the remaining two terms in terms of our generative model as defined above. First, note that #{(z_{t}, b_{t})} are independent of #{b_{t - 1}}. Therefore, we can drop the #{b_{t - 1}} term and are left with the following two cases:}
+##{\begin{align*}
+  \mathbb{P}_{\theta}(z, b = 0 \mid z') &= \delta_{\{z = z'\}} (1 - \psi_{\theta}(s_{t}, z')) \\
+  \mathbb{P}_{\theta}(z, b = 1 \mid z') &= \eta_{\theta}(z \mid s_{t}) \psi_{\theta}(s_{t}, z')
+.\end{align*}}
+\p{Plugging this in, we now have}
+##{\begin{align*}
+  \phi_t(z, b) = \mathbb{P}_{\theta}(s_t, a_t \mid z, b) \sum_{(z', b')} \phi_{t - 1}(z', b') \Big(&\eta_{\theta}(z \mid s_{t}) \psi_{\theta}(s_{t}, z') \\
+  &+ \delta_{\{z = z'\}} (1 - \psi_{\theta}(s_{t}, z'))\Big)
+.\end{align*}}
+\p{It remains to find #{\mathbb{P}_{\theta}(s_t, a_t \mid z, b)}. Once again, given #{z_t} we no longer care about #{b_t}. Therefore, this becomes}
+##{\begin{align*}
+\mathbb{P}_{\theta}(s_t, a_t \mid z) &= \pi_{\theta}(a_t \mid s_t, z) p(s_t \mid s_{t - 1}, a_{t - 1})
+.\end{align*}}
+\p{This gives us our final expression}
+##{\begin{align*}
+  \phi_t(z, b) = &\pi_{\theta}(a_t \mid s_t, z) p(s_t \mid s_{t - 1}, a_{t - 1}) \\
+  &\times  \sum_{(z', b')} \phi_{t - 1}(z', b') \Big(\eta_{\theta}(z \mid s_{t}) \psi_{\theta}(s_{t}, z') + \delta_{\{z = z'\}} (1 - \psi_{\theta}(s_{t}, z'))\Big)
+.\end{align*}}
+\remark{
+We have abused notation here, allowing #{\mathbb{P}(s_t, a_t \mid z_t, b_t)} to depend on #{s_{t - 1}, a_{t - 1}}, etc. This is to align with the notation from [[F3T0]]. It makes no difference in practice as long as the backward dependence is finite / bounded. However, in practice you would want the history dependence to be small and here it is only one-step.
+}
+\p{\paragraph{Backward pass} For the backward pass, we define the end term as}
+##{\beta_{T-1}(z, b) = \pi(a_{T - 1} \mid z, s_{T - 1}) p(s_{T} \mid s_{T - 1}, a_{T - 1})}
+\p{Here #{(z', b')} ranges over the possible values of #{(z_{t + 1}, b_{t + 1})}. The other terms are analagous i.e.}
+##{\begin{align*}
+  \mathbb{P}_{\theta}(z', b' = 0 \mid z) &= \delta_{\{z' = z\}} (1 - \psi_{\theta}(s_{t + 1}, z)) \\
+  \mathbb{P}_{\theta}(z', b' = 1 \mid z) &= \eta_{\theta}(z' \mid s_{t + 1}) \psi_{\theta}(s_{t + 1}, z)
+.\end{align*}}
+\p{and}
+##{\begin{align*}
+\mathbb{P}_{\theta}(s_{t + 1}, a_{t + 1} \mid z') &= \pi_{\theta}(a_{t + 1} \mid s_{t + 1}, z') p(s_{t + 1} \mid s_t, a_t)
+.\end{align*}}
+}

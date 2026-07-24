@@ -1,0 +1,15 @@
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\date{2026-07-17}
+\title{Weekly Review 2026-W29}
+\p{This is the first official entry into my [[007S]]! The infrastructure has long been in development, but I have been too lazy / scared to actually start making / publicizing these.}
+
+\transclude{NQFF}
+\transclude{QBM9}
+\transclude{K7MF}
+
+\section{Goals for Next Week}{
+\p{I completed a [rough outline](MA2W) of the state of kernel generations as far as I am concerned. I hope to make some serious progress on this next week. Namely, I want to have a pretty complete understanding of the Tiled [DSLs](5PSC) portion and where the distinction between each [DSL](5PSC) is made. I would like to deeply understand the Flash attention Triton kernel from the tutorial. Afterwards, moving to [TileLang](wangTileLangComposableTiled2025) and seeing how / where they draw the line for more optimization opportunity.}
+\p{For Reading Corner, I will likely finish [[voltaireCandide2015]] and might also finish [[isaacsonElonMusk2023]], which I have been working on for awhile now. Stay tuned for their [reviews](YJ05)!}
+}

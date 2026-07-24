@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2024-12-29}
+\author{kellenkanarios}
 \title{Markov's Inequality}
 \taxon{Theorem}
 \p{##{P[X \geq \alpha] \leq \frac{1}{\alpha} \mathbb{E}[X]}}

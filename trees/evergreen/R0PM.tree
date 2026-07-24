@@ -6,9 +6,8 @@
 \title{Flash Attention (v1)}
 \date{2026-05-25T11:48:03Z}
 
+\p{This will be a brief tour through all the fundamentals needed to understand the first instantiation of \em{FlashAttention} as introduced in [[daoFlashAttentionFastMemoryEfficient2022]].}
 \transclude{PI7N}
 \transclude{OGCS0}
 \transclude{OGCRZ}
-\hr
-
-\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+\comments{pathname}

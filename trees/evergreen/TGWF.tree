@@ -1,5 +1,6 @@
 \import{base-macros}
 \tag{stub}
+\tag{public}
 \title{Flow Matching vs. Diffusion}
 \p{Notes and thoughts from blog [[gaoDiffusionMeetsFlow2024]]. As a useful pre-requisite, I recommend my notes on [diffusion](007T) and [flow matching](008A) respectively.}
 

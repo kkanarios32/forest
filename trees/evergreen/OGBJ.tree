@@ -1,11 +1,10 @@
 \import{base-macros}
 \author{kellenkanarios}
-\meta{author}{false}
-\tag{transient}
+\tag{public}
 \title{What happens during a function call}
 \date{2026-07-08T15:20:22Z}
 
-\p{For this note, we will assume we are using the C [calling convention](Q602).}
+\p{For this note, we will assume we are using the C [calling convention](Q602). More details in \citek{bartlettProgrammingGround}.}
 
 \p{The first thing we do is push the arguments onto the stack (in reverse order). Then execute a \code{call} instruction. The \code{call} instruction does two things:}
 \ol{

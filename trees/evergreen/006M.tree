@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-03-30}
+\author{kellenkanarios}
 \import{base-macros}
 \taxon{Proposition}
 \title{Redundancy of a mismatched code is the KL divergence}

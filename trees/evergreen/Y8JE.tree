@@ -1,5 +1,6 @@
 \import{base-macros}
 \date{2026-05-12T22:46:41Z}
+\author{kellenkanarios}
 \tag{public}
 \title{Transactional memory}
 
@@ -9,8 +10,8 @@
 \p{Two transactions \em{conflict} if they access the same memory location and at least one of them is a write. The implementation tracks per-transaction read and write sets.}
 
 \ul{
-  \li{\strong{Lazy detection.} Build the entire read/write set as the transaction runs; check for conflicts only at commit time. If conflict, roll back.}
-  \li{\strong{Eager detection.} Check on every access against other transactions' sets; abort immediately on conflict.}
+  \li{\paragraph{Lazy detection} Build the entire read/write set as the transaction runs; check for conflicts only at commit time. If conflict, roll back.}
+  \li{\paragraph{Eager detection} Check on every access against other transactions' sets; abort immediately on conflict.}
 }
 
 \p{Eager detection can piggyback on the cache coherence protocol: add read/write bits to each cache line, set them during a transaction, and let a coherence invalidation signal a conflict.}

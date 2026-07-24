@@ -1,6 +1,7 @@
 \tag{public}
 \import{base-macros}
 \date{2025-07-03T23:41:25Z}
+\author{kellenkanarios}
 \title{Low Precision Data Types}
 \p{\code{float16}: here, we decrease both the fraction and exponent bits. Importantly, there are only #{5} exponent bits making the effective range #{(2^{-6}, 2^{6})}. The dynamic range for small numbers is pretty bad. This can cause small numbers to "die" effectively killing these neurons for the remainder of learning due to backpropagation.
 }

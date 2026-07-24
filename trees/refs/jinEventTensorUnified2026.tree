@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Event Tensor: A Unified Abstraction for Compiling Dynamic Megakernel}
+\date{2026-04}
+\author/literal{Hongyi Jin}\author/literal{Bohan Hou}\author/literal{Guanjie Wang}\author/literal{Ruihang Lai}\author/literal{Jinqi Chen}\author/literal{Zihao Ye}\author/literal{Yaxing Cai}\author/literal{Yixin Dong}\author/literal{Xinhao Cheng}\author/literal{Zhihao Zhang}\author/literal{Yilong Zhao}\author/literal{Yingyi Huang}\author/literal{Lijie Yang}\author/literal{Jinchen Jiang}\author/literal{Gabriele Oliaro}\author/literal{Jianan Ji}\author/literal{Xupeng Miao}\author/literal{Vinod Grover}\author/literal{Todd C. Mowry}\author/literal{Zhihao Jia}\author/literal{Tianqi Chen}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2604.13327}
+\meta{external}{https://arxiv.org/abs/2604.13327}
+
+\meta{bibtex}{\startverb
+@misc{jinEventTensorUnified2026,
+ title = {Event {{Tensor}}: {{A Unified Abstraction}} for {{Compiling Dynamic Megakernel}}},
+ author = {Jin, Hongyi and Hou, Bohan and Wang, Guanjie and Lai, Ruihang and Chen, Jinqi and Ye, Zihao and Cai, Yaxing and Dong, Yixin and Cheng, Xinhao and Zhang, Zhihao and Zhao, Yilong and Huang, Yingyi and Yang, Lijie and Jiang, Jinchen and Oliaro, Gabriele and Ji, Jianan and Miao, Xupeng and Grover, Vinod and Mowry, Todd C. and Jia, Zhihao and Chen, Tianqi},
+ year = {2026},
+ doi = {10.48550/arXiv.2604.13327},
+ urldate = {2026-06-23},
+ number = {arXiv:2604.13327},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/JXBIMAVB/Event Tensor A Unified Abstraction for Compiling Dynamic Megakernel - Jin et al..pdf},
+ keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Programming Languages},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Modern GPU workloads, especially large language model (LLM) inference, suffer from kernel launch overheads and coarse synchronization that limit inter-kernel parallelism. Recent megakernel techniques fuse multiple operators into a single persistent kernel to eliminate launch gaps and expose inter-kernel parallelism, but struggle to handle dynamic shapes and data-dependent computation in real workloads. We present Event Tensor, a unified compiler abstraction for dynamic megakernels. Event Tensor encodes dependencies between tiled tasks, and enables first-class support for both shape and data-dependent dynamism. Built atop this abstraction, our Event Tensor Compiler (ETC) applies static and dynamic scheduling transformations to generate high-performance persistent kernels. Evaluations show that ETC achieves state-of-the-art LLM serving latency while significantly reducing system warmup overhead.},
+ primaryclass = {cs.DC},
+ eprint = {2604.13327},
+ month = {April},
+ shorttitle = {Event {{Tensor}}}
+}
+\stopverb}

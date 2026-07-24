@@ -1,5 +1,6 @@
 \import{base-macros}
 \tag{stub}
+\tag{public}
 \date{2025-07-01T21:51:12Z}
 \title{Flow Matching: What, Why, and How?}
 \p{This is a blog cataloging my understanding of [[lipmanFlowMatchingGenerative2023]] prior to my group presentation on [[farebrotherTemporalDifferenceFlows2025]].}

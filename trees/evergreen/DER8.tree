@@ -1,6 +1,7 @@
 \tag{public}
 \import{base-macros}
 \date{2025-07-06T20:51:50Z}
+\author{kellenkanarios}
   \title{Line Search}
 \transclude{004Q}
 \remark{Way to computationally expensive to use in practice.}

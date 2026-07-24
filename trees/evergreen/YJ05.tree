@@ -5,5 +5,10 @@
 \tag{public}
 
 \put\transclude/expanded{false}
+\put\transclude/numbered{false}
+\put\transclude/metadata{true}
+
+
+\transclude{HGRL}
 \transclude{OGCRW}
 \transclude{OGCRX}

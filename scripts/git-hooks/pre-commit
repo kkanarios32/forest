@@ -16,12 +16,20 @@ fi
 # transient trees created outside scripts/new still show up.
 "$ROOT/scripts/inbox" >/dev/null 2>&1 || true
 
-# Stage the (re)generated registry. `git add` is a no-op when content is
-# unchanged, and — unlike `git diff` — correctly handles notes-log.md while it
-# is still untracked (first commit).
-if [ -n "$(git status --porcelain -- notes-log.md)" ]; then
-  git add -- notes-log.md
-  echo "pre-commit: notes-log.md updated and staged" >&2
-fi
+# Refresh the "Recently updated" index (trees/evergreen/RCNT.tree). It ranks by
+# git commit time, so at pre-commit it reflects the forest as of the *previous*
+# commit (the in-progress one isn't recorded yet) — close enough, and it
+# self-corrects on the next commit.
+"$ROOT/scripts/recent" >/dev/null 2>&1 || true
+
+# Stage the (re)generated registry and recent index. `git add` is a no-op when
+# content is unchanged, and — unlike `git diff` — correctly handles files while
+# they are still untracked (first commit).
+for f in notes-log.md trees/evergreen/RCNT.tree; do
+  if [ -n "$(git status --porcelain -- "$f")" ]; then
+    git add -- "$f"
+    echo "pre-commit: $f updated and staged" >&2
+  fi
+done
 
 exit 0

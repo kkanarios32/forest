@@ -1,0 +1,12 @@
+\date{2026-07-16T13:59:31Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Activations}
+  \p{Despite a long list of activations, the two focused on are [ReLU](BEA2) and [GELU](5SPM).}
+  \transclude{BEA2}
+  \transclude{5SPM}
+  \transclude{OZD8}
+  \remark{
+  The extra computation required by [GELU](5SPM) or [Swish](OZD8) is a non-factor because [FLOPS](4K5H) are dominated by matrix multiplication and there is no increase in memory pressure.
+  }
+  \transclude{K2N7}

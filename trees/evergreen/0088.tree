@@ -49,15 +49,14 @@ Now this is all cool theoretically but how TF do we actually maximize this thing
 &= \mathbb{E}_{x \sim \mathcal{D}, z \sim q(\cdot \mid x, \theta)} \left[-\frac{Z^2}{2}  - \frac{\sigma_{\phi}(x)^2}{\sigma_{\theta}(z)^2}\big((Z - \mu_{\theta}(Z))^2 - (Z - \mu_{\phi}(x))^2\big)\right]
     .\end{align*}
     }
-    We face one more obstacle.
   }
-  \question{
+}
+  \problem{
     We need to sample realization #{z \sim q_{\phi}(\cdot |x, \theta)}. So isn't our realization #{z} a function of #{\phi}. How would we optimize this?
   }
   \answer{
     The [reparametrization trick](0089)!!
   }
-  \transclude{0089}
   \p{Now for a given sample #{x_i \sim \mathcal{D}}, we can get a sample #{z_i(\phi) \sim q(\cdot \mid x_i, \theta)} that is differentiable with respect to #{\phi}. Using this, we can get the stochastic gradient estimate
   ##{\nabla_q \widetilde{\mathsf{ELBO}}(x, q, \theta) = \nabla_{\phi} \left[\frac{z_i(\phi)^2}{2}  - \frac{\sigma_{\phi}(x)^2}{\sigma_{\theta}(z)^2}\big((z_i(\phi) - \mu_{\theta}(z_i(\phi)))^2 - (z_i(\phi) - \mu_{\phi}(x))^2\big)\right]}
   }
@@ -71,13 +70,10 @@ Now this is all cool theoretically but how TF do we actually maximize this thing
   }
 }
 }
-}
 \section{Maximization}{
 \p{Finally, we have reached the maximization step. This step is fairly straightforward after all the progress we have made. Once we have a tight lower bound i.e. #{q(z) \approx p(z \mid x; \theta)} then we simply fix #{q} and maximize the [ELBO](0082) for #{\theta} i.e. in the above example and algorithm we instead compute
 ##{\nabla_\theta \widetilde{\mathsf{ELBO}}(x, q, \theta) = \nabla_{\theta} \left[\frac{z_i(\phi)^2}{2}  - \frac{\sigma_{\phi}(x)^2}{\sigma_{\theta}(z)^2}\big((z_i(\phi) - \mu_{\theta}(z_i(\phi)))^2 - (z_i(\phi) - \mu_{\phi}(x))^2\big)\right]}
 Alternating between these steps yields the \em{expectation-maximization} algorithm the ML oldheads mythologize.
 }
 }
-\hr
-
-\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+\comments{pathname}

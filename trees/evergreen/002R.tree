@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-01-15}
+\author{kellenkanarios}
 \title{Holder's Inequality}
 \p{
 Let #{(S,\Sigma,\mu)} be a measure space and let #{p,q\in[1,\ \infty]} with #{1/p+1/q=1}. Then for all measurable real- or complex-valued functions #{f} and #{g} on #{S},

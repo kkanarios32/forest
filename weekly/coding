@@ -10,166 +10,259 @@
 #     "matplotlib",
 #     "pandas",
 #     "requests",
-#     "seaborn",
 #     "typing-extensions",
 # ]
 # ///
+#
+# Coding — overview + detail, both by project. The primary chart is hours per
+# day by project (the story); beneath it a single thin horizontal strip shows
+# the week's project mix (the same series, rolled up). The strip carries the
+# project labels and doubles as the colour key: the day columns are unlabelled
+# and correspond to the strip purely by colour. Chrome-stripped: no legend, no
+# y-axis, no gridlines, no frame.
+#
+# Folding rule (both series): keep the top-2 by weekly total, fold the rest into
+# one "other". Wakatime emits its own pre-aggregated "Other" language bucket — it
+# is never eligible to be named and always merges into the fold bucket. (The old
+# code appended a *second* "Other" column on top of Wakatime's, double-counting
+# those hours — the inflated-language / phantom-gray-Other bug.)
 
-
-import sys
-import pandas as pd
-import os
-import matplotlib.pyplot as plt
-import json
-from datetime import datetime
-from etils import epath
 import argparse
+import json
+import os
+import sys
+from datetime import datetime, timedelta
 
+import matplotlib.pyplot as plt
+import matplotlib.transforms as mtransforms
+import pandas as pd
 import requests
-from datetime import timedelta
-
 from dotenv import load_dotenv
-
-import wtheme
+from etils import epath
+from matplotlib.patches import FancyBboxPatch, PathPatch, Rectangle
+from matplotlib.path import Path
 
 env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "key.env")
 load_dotenv(env_path)
 API_KEY = os.environ["WAKA_API"]
 
-DOW = ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]  # review week ends Friday
-TOP_N = 6  # keep the legend legible; the rest collapses into "Other"
+DOW = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu"]  # review week: Fri -> Thu
+KEEP_N = 2
+MIN_DAILY = 0.3
+FOLD = "other"
+SENTINEL = {"other"}
+
+BG = "#ffffff"
+INK = "#0b0b0b"          # daily totals
+MUTED = "#898781"        # day labels, caption, strip values
+SECONDARY = "#4a4742"    # strip series names
+
+# One coral ramp, shared by the day columns and the mix strip so the project
+# colours correspond between them — the strip doubles as the colour key.
+CORAL = ["#4A1B0C", "#D85A30", "#F5C4B3"]   # [forest, lab, other], dark -> light
+
+BAR_MAX_PX = 24
+GAP_PX = 2
+RADIUS_PX = 4
 
 
 def fetch(end_date):
     start_date = end_date - timedelta(days=6)
-
-    end_str = end_date.strftime("%Y-%m-%d")
-    start_str = start_date.strftime("%Y-%m-%d")
-
-    # --- API REQUEST ---
     url = "https://wakatime.com/api/v1/users/current/summaries"
-    params = {"start": start_str, "end": end_str}
-
+    params = {"start": start_date.strftime("%Y-%m-%d"),
+              "end": end_date.strftime("%Y-%m-%d")}
     response = requests.get(url, params=params, auth=(API_KEY, ""))
-
-    if response.status_code != 200:
-        print(f"Error: {response.status_code}")
-        print(response.text)
-        exit(1)
-
+    response.raise_for_status()
     data = response.json()["data"]
-
-    save_dir = f"data/{end_str}"
+    save_dir = f"data/{end_date.strftime('%Y-%m-%d')}"
     os.makedirs(save_dir, exist_ok=True)
-    path = f"{save_dir}/data.json"
-
-    with epath.Path(path).open("w") as fout:
+    with epath.Path(f"{save_dir}/data.json").open("w") as fout:
         json.dump(data, fout)
-
     return data
 
 
 def long_frame(data, field):
-    """Flatten the Wakatime summary into (day, name, hours) rows for a field."""
     records = []
     for entry in data:
         day = datetime.strptime(entry["range"]["date"], "%Y-%m-%d").strftime("%a")
         for item in entry[field]:
-            records.append(
-                {"day": day, "name": item["name"], "hours": item["total_seconds"] / 3600}
-            )
+            records.append({"day": day, "name": item["name"],
+                            "hours": item["total_seconds"] / 3600})
     return pd.DataFrame(records)
 
 
-def top_n_pivot(df, n=TOP_N, min_hours=0.5):
-    """Pivot day x name, keeping the top-n names by total and lumping the rest
-    into 'Other'. Returns a (pivot, has_other) pair with columns ordered big→small."""
-    df = df[df.groupby("name")["hours"].transform("sum") >= min_hours]
+def fold_daily(df):
+    """day x [named..., other] pivot, columns bottom -> top of the stack."""
     if df.empty:
-        return None, False
-    totals = df.groupby("name")["hours"].sum().sort_values(ascending=False)
-    keep = list(totals.index[:n])
-    has_other = len(totals) > n
-    df = df.copy()
-    df["name"] = df["name"].where(df["name"].isin(keep), "Other")
-    pivot = df.pivot_table(index="day", columns="name", values="hours",
-                           aggfunc="sum", fill_value=0).reindex(DOW, fill_value=0)
-    cols = [c for c in keep if c in pivot.columns]
-    if has_other and "Other" in pivot.columns:
-        cols.append("Other")
-    return pivot[cols], has_other
+        return None
+    daily = (df.pivot_table(index="day", columns="name", values="hours",
+                            aggfunc="sum", fill_value=0)
+             .reindex(DOW, fill_value=0))
+    weekly = daily.sum().sort_values(ascending=False)
+    eligible = [n for n in weekly.index
+                if daily[n].max() >= MIN_DAILY and n.strip().lower() not in SENTINEL]
+    keep = eligible[:KEEP_N]
+    rest = [c for c in daily.columns if c not in keep]
+    out = daily[keep].copy()
+    out[FOLD] = daily[rest].sum(axis=1) if rest else 0.0
+    return out[keep + [FOLD]]
 
 
-def stacked_day_plot(pivot, has_other, ax, title, legend_title):
-    n = pivot.shape[1]
-    colors = wtheme.palette(n - 1 if has_other else n)
-    if has_other:
-        colors = colors + [wtheme.OTHER]
-    pivot.plot(kind="bar", stacked=True, ax=ax, width=0.74,
-               color=colors[:n], edgecolor="white", linewidth=0.7, legend=False)
-
-    # Total hours atop each day's stack.
-    totals = pivot.sum(axis=1)
-    for x, total in enumerate(totals):
-        if total > 0:
-            ax.text(x, total + totals.max() * 0.02, f"{total:.1f}",
-                    ha="center", va="bottom", fontsize=9, color=wtheme.FAINT)
-
-    ax.set_ylabel("Hours")
-    ax.set_xlabel("")
-    ax.set_title(title)
-    ax.tick_params(axis="x", rotation=0)
-    ax.margins(x=0.02)
-    ax.set_ylim(0, totals.max() * 1.15 if totals.max() > 0 else 1)
-    wtheme.style_axis(ax, grid="y")
-    handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles, labels, title=legend_title, loc="upper center",
-              bbox_to_anchor=(0.5, -0.12), ncol=min(n, 4))
+def fold_weekly(df):
+    """Ordered dict [named..., other] -> weekly hours, for the strip."""
+    if df.empty:
+        return None
+    weekly = df.groupby("name")["hours"].sum().sort_values(ascending=False)
+    eligible = [n for n in weekly.index if n.strip().lower() not in SENTINEL]
+    keep = eligible[:KEEP_N]
+    rest = [c for c in weekly.index if c not in keep]
+    out = {k: float(weekly[k]) for k in keep}
+    out[FOLD] = float(sum(weekly[r] for r in rest)) if rest else 0.0
+    return out
 
 
-def plot(data, save_dir):
-    lang_pivot, lang_other = top_n_pivot(long_frame(data, "languages"))
-    proj_pivot, proj_other = top_n_pivot(long_frame(data, "projects"))
+def _sc(s):
+    return s[:1].upper() + s[1:].lower() if s else s
 
-    wtheme.apply()
-    fig, axs = plt.subplots(1, 2, figsize=(15, 5.2))
 
-    if lang_pivot is not None:
-        stacked_day_plot(lang_pivot, lang_other, axs[0],
-                         "By language", "Language")
-    if proj_pivot is not None:
-        stacked_day_plot(proj_pivot, proj_other, axs[1],
-                         "By project", "Project")
+def _rounded_top(x, y, w, h, rx, ry, color):
+    rx, ry = min(rx, w / 2), min(ry, h)
+    verts = [(x, y), (x + w, y), (x + w, y + h - ry),
+             (x + w, y + h), (x + w - rx, y + h),
+             (x + rx, y + h), (x, y + h), (x, y + h - ry), (x, y)]
+    codes = [Path.MOVETO, Path.LINETO, Path.LINETO, Path.CURVE3, Path.CURVE3,
+             Path.LINETO, Path.CURVE3, Path.CURVE3, Path.CLOSEPOLY]
+    return PathPatch(Path(verts, codes), facecolor=color, edgecolor="none",
+                     linewidth=0, zorder=2)
 
-    total_hours = sum(e["grand_total"]["total_seconds"] for e in data) / 3600
-    wtheme.suptitle(fig, "Coding", f"{total_hours:.1f} hours this week")
-    plt.tight_layout(rect=[0, 0, 1, 0.93])
 
-    for a in axs:
-        wtheme.round_bars(a, edge="white")
-        wtheme.arrows(a)
+def draw_project(ax, pivot, ymax):
+    cols = list(pivot.columns)               # [forest, lab, other]
+    n = len(pivot)
+    ax.set_xlim(-0.5, n - 0.5)
+    ax.set_ylim(0, ymax)
+    ax.axis("off")
+
+    ax.figure.canvas.draw()
+    ext = ax.get_window_extent()
+    xppx, yppx = n / ext.width, ymax / ext.height
+    w = min(0.6, BAR_MAX_PX * xppx)
+    gap_y = GAP_PX * yppx
+    rx, ry = RADIUS_PX * xppx, RADIUS_PX * yppx
+
+    totals = pivot.sum(axis=1).values
+    blended = mtransforms.blended_transform_factory(ax.transData, ax.transAxes)
+
+    for xi in range(n):
+        heights = [pivot.iloc[xi][c] for c in cols]
+        nz = [i for i, hh in enumerate(heights) if hh > 1e-6]
+        if nz:
+            bot, top = nz[0], nz[-1]
+            x0, y = xi - w / 2, 0.0
+            for i, hh in enumerate(heights):
+                if hh <= 1e-6:
+                    continue
+                b = y + (gap_y / 2 if i != bot else 0.0)
+                t = max((y + hh) - (gap_y / 2 if i != top else 0.0), b + 1e-6)
+                if i == top:
+                    ax.add_patch(_rounded_top(x0, b, w, t - b, rx, ry, CORAL[i]))
+                else:
+                    ax.add_patch(Rectangle((x0, b), w, t - b, facecolor=CORAL[i],
+                                           edgecolor="none", linewidth=0, zorder=2))
+                y += hh
+            ax.text(xi, totals[xi] + ymax * 0.015, f"{totals[xi]:.1f}",
+                    ha="center", va="bottom", fontsize=12, fontweight=500,
+                    color=INK, clip_on=False, zorder=6)
+        ax.text(xi, -0.05, DOW[xi], ha="center", va="top", fontsize=12,
+                color=MUTED, transform=blended, clip_on=False)
+
+
+def draw_strip(ax, lang):
+    names = list(lang)
+    vals = [lang[n] for n in names]
+    total = sum(vals) or 1.0
+    ax.set_xlim(0, total)
+    ax.set_ylim(0, 1)
+    ax.axis("off")
+
+    ax.figure.canvas.draw()
+    ext = ax.get_window_extent()
+    xppx, yppx = total / ext.width, 1 / ext.height
+    gap = GAP_PX * xppx
+    r = RADIUS_PX * xppx
+    asp = yppx / xppx
+
+    x = 0.0
+    for i, v in enumerate(vals):
+        left = x + (gap / 2 if i > 0 else 0.0)
+        right = x + v - (gap / 2 if i < len(vals) - 1 else 0.0)
+        ax.add_patch(FancyBboxPatch(
+            (left, 0), max(right - left, 1e-6), 1,
+            boxstyle=f"round,pad=0,rounding_size={r}", mutation_aspect=asp,
+            facecolor=CORAL[i], edgecolor="none", linewidth=0, zorder=2))
+        cx = (left + right) / 2
+        ax.annotate(_sc(names[i]), (cx, 0), xytext=(0, -7),
+                    textcoords="offset points", ha="center", va="top",
+                    fontsize=11, color=SECONDARY, annotation_clip=False)
+        ax.annotate(f"{v:.1f}h", (cx, 0), xytext=(0, -21),
+                    textcoords="offset points", ha="center", va="top",
+                    fontsize=11, color=MUTED, annotation_clip=False)
+        x += v
+
+
+def load_data():
+    # The review week (Fri -> Thu) ends on the most recent Thursday, so today's
+    # own still-accumulating day is never included. A completed week is stable,
+    # so a snapshot cached under its Thursday is authoritative — fetch only if
+    # we don't already have it.
+    today = datetime.today().date()
+    thursday = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
+    path = f"data/{thursday.strftime('%Y-%m-%d')}/data.json"
+    if os.path.exists(path):
+        with epath.Path(path).open("r") as file:
+            return json.load(file)
+    return fetch(thursday)
+
+
+def render(data, save_dir):
+    proj = fold_daily(long_frame(data, "projects"))
+    mix = fold_weekly(long_frame(data, "projects"))
+
+    plt.rcParams.update({
+        "font.family": "sans-serif",
+        "font.sans-serif": ["Work Sans", "DejaVu Sans", "Arial"],
+        "font.size": 12,
+        "font.weight": 400,
+    })
+
+    fig = plt.figure(figsize=(14, 5.6))
+    fig.patch.set_facecolor(BG)
+
+    ax_main = fig.add_axes([0.03, 0.34, 0.94, 0.60])
+    ax_main.set_facecolor(BG)
+    if proj is not None:
+        daily_max = proj.sum(axis=1).max()
+        draw_project(ax_main, proj, 1.15 * max(daily_max, 1))
+
+    # Subordinate project-mix strip: an order of magnitude thinner, below. It
+    # carries the project labels, so the columns above need none.
+    fig.text(0.03, 0.245, "Project mix, week total", ha="left", va="top",
+             fontsize=12, color=MUTED)
+    ax_strip = fig.add_axes([0.03, 0.185, 0.94, 0.024])
+    ax_strip.set_facecolor(BG)
+    if mix is not None:
+        draw_strip(ax_strip, mix)
 
     os.makedirs(save_dir, exist_ok=True)
-    plt.savefig(os.path.join(save_dir, "waka.png"), dpi=200)
+    fig.savefig(os.path.join(save_dir, "waka.png"), dpi=200, facecolor=BG)
+    plt.close(fig)
 
 
 def main(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument("dir", help="save directory")
-
-    end_date = datetime.today().date()
-    end_str = end_date.strftime("%Y-%m-%d")
-
-    path = f"data/waka/{end_str}.json"
-    if os.path.exists(path):
-        with epath.Path(path).open("r") as file:
-            data = json.load(file)
-    else:
-        data = fetch(end_date)
-
-    save_dir = argv[0]
-    os.makedirs(save_dir, exist_ok=True)
-    plot(data, save_dir)
+    args = parser.parse_args(argv)
+    render(load_data(), args.dir)
 
 
 if __name__ == "__main__":

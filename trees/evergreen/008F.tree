@@ -2,6 +2,7 @@
 \import{base-macros}
 \title{Conditioning Trick [FM](lipmanFlowMatchingGenerative2023) }
 \tag{stub}
+\tag{public}
 
  \p{ Given data distribution #{q(x)}, we define an approximation #{p(x)} with the form ##{p(x) = \int p(x \mid x_1) q(x_1) \mathrm{d}x_{1}} In order to ensure #{p(x) \approx q(x)}, we pick #{p(x \mid x_{1})} that concentrates around #{x_{1}} i.e. #{p(x \mid x_{1}) \sim N(x \mid x_{1}, \sigma^2 I)} for small #{\sigma}.
  }

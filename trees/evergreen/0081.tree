@@ -1,5 +1,7 @@
+\import{base-macros}
 \tag{public}
 
+\author{kellenkanarios}
 \title{Entropy}
 \taxon{Definition}
 

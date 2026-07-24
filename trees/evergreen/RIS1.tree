@@ -1,0 +1,7 @@
+\date{2026-07-17T15:37:18Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Complex instruction set computing (CISC)}
+\taxon{Definition}
+\tag{public}
+\p{An ISA with many specialized instructions, including ones that combine memory access with arithmetic or operate on complex types (strings, decimal numbers). One instruction often does the work of several. x86 is the canonical example.}

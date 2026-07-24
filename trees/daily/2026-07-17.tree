@@ -27,5 +27,34 @@
 
 \p{\strong{8:49 AM}}
 \hr
-\p{\paragraph{Meditations Translation.} Another quote about how we should treat death like any other universal truth of the world. In this instance, he chooses to compare to your weight. }
+\p{\paragraph{Meditations Translation} Another quote about how we should treat death like any other universal truth of the world. In this instance, he chooses to compare to your weight. }
 \remark{I really do not get the hype about this book. It is like 10\% insightful and 90\% forcing the same concepts down your throat.}
+
+\p{\strong{10:08 AM}}
+\hr
+
+\p{\em{Today's [GEB](hofstadterGodelEscherBach1999)}. Brief summary for my own recollection:}
+\ul{
+  \li{Provides intuition on a \em{decision procedure}. Namely, formalizing that to be a \em{formal system} you \strong{need} to be able to identify if something is an axiom in finite time. It is nice to be able to do so with theorems as well.}
+  \example{
+  \em{The} #{pq}-\em{system}. In the #{pq}-\em{system}, you can identify a theorem by adding the dashes before and after #{p} and seeing if they are equal to the number after #{q}.
+  }
+  \li{From the above example, he introduces the notion of an \em{isomorphism}. In particular, that the #{pq}-system is isomorphic to the natural numbers with addition.}
+  \li{There is a lot of gold on the \em{usefulness} of an isomorphism. They make the distinction that you can have many isomorphisms for a given system but finding one with \em{meaning} is crucial.}
+  \example{
+  \em{The} #{pq}-\em{system} is isomorphic to the natural numbers with addition. However, it is also isomorphic to the \em{"takes from"} system, where the leftmost dashes are the middle dashes taken from the rightmost dashes. From this, we see that the #{pq}-\em{system} is isomorphic to both addition and subtraction. Which is more \em{meaningful} is the question.
+  }
+}
+
+\p{\strong{10:28 AM}}
+\hr
+\question{How does [[QQ69]] match cutlass without compile times? Is it because of [JIT](CX9V)?}
+\answer{Yes and no. It is because instead of treating the compilers template resolution as a meta interpreter (which is very slow), it just instead directly uses CPython as the interpreter, actually just performing all of the layout algebra computation. Then the computation graph dependent on the resulting layout is directly captured and converted into [[IR7B]] and used for [JIT](CX9V).}
+
+\p{\strong{11:47 AM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{MOPC}
+}

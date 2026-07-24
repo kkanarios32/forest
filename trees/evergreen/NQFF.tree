@@ -1,0 +1,17 @@
+\date{2026-07-20T01:00:18Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[[G944]]: 2026-W29}
+\tag{public}
+  \p{This week I spent the large majority of my time taking notes in this forest. We can see this via the 23hr spent on my forest throughout the week. Admittedly, some of this was spent purely on aesthetic re-design / cleanup, which I hope to not have to do this week. Lab corresponds to my kernel learning, where I spent what appears to be ~5hr implementing a few of the [Triton](tilletTritonIntermediateLanguage2019) tutorials, including GEMM. I played around with excalidraw and took some notes [here](OGCRV). With this, I began looking into the [[5PSC]] landscape along with [[IR7B]].}
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/29/waka.png}}{}
+  \figcaption{Coding hours for week 2026-W29.}
+}
+\p{
+Outside of coding, I did not spend too much time brain-rotting. My phone screentime has also gotten remarkably low, so the issue is not really wasting time doomscrolling / watching youtube, etc. Instead, the problem is just a lack of maintained focus. I bounce between things too frequently, failing to get as much done as I should. I hope to remedy this by being disciplined with pomodoro blocks but early attempts have not been too promising.
+}
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/29/arbtt.png}}{}
+  \figcaption{Non-coding computer time for week 2026-W29.}
+}

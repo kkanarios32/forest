@@ -1,0 +1,18 @@
+% ["refs"]
+\title{CMOS VLSI design: A circuits and systems perspective}
+\date{2011}
+\author/literal{Neil H. E. Weste}\author/literal{David Money Harris}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@book{westeCMOSVLSIDesign2011,
+ title = {{{CMOS VLSI}} Design: A Circuits and Systems Perspective},
+ author = {Weste, Neil H. E. and Harris, David Money},
+ year = {2011},
+ isbn = {978-0-321-54774-3},
+ edition = {4. ed},
+ publisher = {Addison-Wesley},
+ address = {Boston, Mass.},
+ langid = {english},
+ shorttitle = {{{CMOS VLSI}} Design}
+}
+\stopverb}

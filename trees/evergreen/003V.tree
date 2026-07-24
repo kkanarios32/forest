@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-01-29}
+\author{kellenkanarios}
 \tag{infot}
 \import{base-macros}
 \title{Chain Rule of Mutual Info}

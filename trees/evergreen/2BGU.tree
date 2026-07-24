@@ -1,5 +1,6 @@
 \import{base-macros}
 \date{2026-04-06T18:54:24Z}
+\author{kellenkanarios}
 \tag{public}
 \title{Processing in Memory for ML}
 \p{Notes on guest lecture by Yufeng Gu titled \em{Architecture and System Co-Design for Scalable Large Language Model Inference}}

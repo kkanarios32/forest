@@ -39,21 +39,17 @@ such that #{\mathbf{o}_{i,n}' = \mathbf{o}_n}
   }
 
 \p{Thus, we are left with the following algorithm}
-\p{
-\latex{#{
-\begin{algo}
-\For{$i = 1$ \textbf{to} $N$}
-\State $m_{0} \gets -\infty;\quad d_{0} \gets 0$
-\For{$j = 1$ \textbf{to} $M$}
-  \State $x_{i,j} \gets \mathbf{q}_i \cdot \mathbf{k}_j$
-  \State $m_{j} \gets \max(m_{j-1}, x_{i,j})$
-  \State $d_{j} \gets d_{j - 1} \cdot e^{\,m_{j - 1} - m_{j}} + e^{\,x_{i,j} - m_{j}}$
-  \State $\mathbf{o}_{i, j} \gets \mathbf{o}_{i, j - 1} \cdot \frac{d_{j - 1} \cdot \exp(m_{j-1} - m_{j})}{d_j} +  \frac{\exp(x_{i,j} - m_j)}{d_j} \cdot \mathbf{v}_j$
-\EndFor
-\EndFor
-\end{algo}
-}}
-}
+\codeblockf{flash_attention.py}{python}{for i in range(N):                      # one query row at a time
+    m = float("-inf")                    # running max of the logits
+    d = 0.0                              # running softmax denominator
+    o = zeros(head_dim)                  # running output accumulator
+    for j in range(M):                   # stream over keys/values
+        x = q[i] @ k[j]                  # logit x_{i,j}
+        m_new = max(m, x)
+        d_new = d * exp(m - m_new) + exp(x - m_new)
+        o = o * (d * exp(m - m_new) / d_new) + (exp(x - m_new) / d_new) * v[j]
+        m, d = m_new, d_new
+    out[i] = o}
 \remark{
 A key benefit of this algorithm is that it is entirely parallelizable across rows. This means that we can loop across entire [tiles](OGCRV) like in the GEMM case.
 }

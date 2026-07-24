@@ -24,6 +24,4 @@ However, \code{malloc} itself is not a system call and therefore is not terribly
 }
 Generally, if you know how much memory you need it is good practice to just allocated all up front to minimize any potential system calls. With this, the performance difference is not too drastic \startverb :) \stopverb
 }
-\hr
-
-\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+\comments{pathname}

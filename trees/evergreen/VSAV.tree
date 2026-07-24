@@ -1,22 +1,15 @@
 \import{base-macros}
 \author{kellenkanarios}
-\meta{author}{false}
-\tag{transient}
-\title{Functions}
+\tag{public}
+\title{Components of a function}
 \date{2026-07-08T14:29:48Z}
 
-\p{Components of a function:}
-\ul{
-  \li{local variables}
-\p{
-Local variables are data storage that a function uses while processing that is thrown away when it returns. It’s kind of like a scratch pad of paper. Functions get a new piece of paper every time they are activated, and they have to throw it away when they are finished processing. Local variables of a function are not accessible to any other function within a program.
+\p{Summarized from \citek{bartlettProgrammingGround}.}
+
+\p{\paragraph{Local variables} Local variables are data storage that a function uses while processing that is thrown away when it returns. It’s kind of like a scratch pad of paper. Functions get a new piece of paper every time they are activated, and they have to throw it away when they are finished processing. Local variables of a function are not accessible to any other function within a program.
 }
-\li{static variables}
-\p{Static variables are data storage that a function uses while processing that is not thrown away afterwards, but is reused for every time the function’s code is activated. This data is not accessible to any other part of the program. Static variables are generally not used unless absolutely necessary, as they can cause problems later on.}
-\li{global variables}
-\p{Global variables are data storage that a function uses for processing which are managed outside the function. For example, a simple text editor may put the entire contents of the file it is working on in a global variable so it doesn’t have to be passed to every function that operates on it.2 Configuration values are also often stored in global variables. return address The return address is an "invisible" parameter in that it isn’t directly used during the function. The return address is a parameter which tells the function}
-\li{return address}
-\p{The return address is an "invisible" parameter in that it isn’t directly used during the function. The return address is a parameter which tells the function. where to resume executing after the function is completed. This is needed because functions can be called to do processing from many different parts of your program, and the function needs to be able to get back to wherever it was called from. In most programming languages, this parameter is passed automatically when the function is called. In assembly language, the call instruction handles passing the return address for you, and ret handles using that address to return back to where you called the function from.}
-\li{return value}
-\p{The return value is the main method of transferring data back to the main program. Most programming languages only allow a single return value for a function.}
-}
+
+\p{\paragraph{Static variables} Static variables are data storage that a function uses while processing that is not thrown away afterwards, but is reused for every time the function’s code is activated. This data is not accessible to any other part of the program. Static variables are generally not used unless absolutely necessary, as they can cause problems later on.}
+\p{\paragraph{Global variables} Global variables are data storage that a function uses for processing which are managed outside the function. For example, a simple text editor may put the entire contents of the file it is working on in a global variable so it doesn’t have to be passed to every function that operates on it.2 Configuration values are also often stored in global variables. return address The return address is an "invisible" parameter in that it isn’t directly used during the function. The return address is a parameter which tells the function}
+\p{ \paragraph{Return address} The return address is an "invisible" parameter in that it isn’t directly used during the function. The return address is a parameter which tells the function. where to resume executing after the function is completed. This is needed because functions can be called to do processing from many different parts of your program, and the function needs to be able to get back to wherever it was called from. In most programming languages, this parameter is passed automatically when the function is called. In assembly language, the call instruction handles passing the return address for you, and ret handles using that address to return back to where you called the function from.}
+\p{\paragraph{Return value} The return value is the main method of transferring data back to the main program. Most programming languages only allow a single return value for a function.}

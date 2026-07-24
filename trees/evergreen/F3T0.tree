@@ -1,0 +1,109 @@
+\date{2026-07-21T16:04:27Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Forward-backward algorithm}
+\tag{public}
+\tag{blog}
+
+\p{Suppose we have a sequence of latent variable #{\xi = (z_{1}, z_{2}, \ldots, z_{T})} and the corresponding sequence of observations #{\mathcal{H} = (x_{1}, x_{2}, \ldots, x_{T})}}
+
+\goal{We want to compute the \em{posterior} distribution #{\mathbb{P}(\xi \mid \mathcal{H}).}}
+
+\p{Suppose #{\mathcal{z}} is a discrete random variable taking at most #{K} different values. Then, for horizon length #{T}, there are #{K^T} possible values for #{\xi}. Thus, computing #{\mathbb{P}(\xi \mid \mathcal{H})} blows up \strong{exponentially}.}
+\example{
+\p{Suppose that #{z \in \{0, 1\} } and #{T = 2}. Then}
+##{\begin{align*}
+  \xi \in \{\{0, 0\}, \{0, 1\}, \{1, 1\}, \{1, 0\} \}
+.\end{align*}}
+\p{If #{T = 3},}
+##{\begin{align*}
+  \xi \in \{\{0, 0, 0\}, \{0, 1, 0\}, \{1, 1, 0\}, \{1, 0, 0\}, \{1, 0, 1\}, \{0, 1, 1\}, \{1, 1, 1\} \}
+.\end{align*}}
+\p{If #{T = 4},}
+##{\begin{align*}
+  \xi \in \{\{0, 0, 0, 0\}, \{0, 1, 0, 0\}, \{1, 1, 0, 0\}, \ldots \}
+.\end{align*}}
+##{\begin{gathered}\vdots\end{gathered}}
+}
+\p{Directly computing the probability for each possible value of #{\xi} would thus take #{O(K^T)} or exponential in the horizon length. Can we do better?}
+\p{In the particular case of a \em{hidden markov model}, we can achieve #{O(TK^2)}!!!}
+
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{3C07}
+}
+  \p{In our setup, we can rewrite the marginal as}
+  ##{\mathbb{P}(z_t \mid \mathcal{H}) = \mathbb{P}(z_t \mid x_{0}, \ldots, x_{T})}
+  \p{From Baye's rule, we can decompose this as}
+  ##{\begin{align*}
+    \mathbb{P}(z_t \mid x_{0}, \ldots, x_{T}) &= \frac{\mathbb{P}(x_{0}, \ldots, x_{T} \mid z_t)\mathbb{P}(z_t)}{\mathbb{P}(x_{0}, \ldots, x_{T})} \\
+&= \frac{\mathbb{P}(x_{t + 1}, \ldots, x_{T} \mid z_t, x_{0}, \ldots, x_t) \mathbb{P}(x_{0}, \ldots, x_{t} \mid z_t)\mathbb{P}(z_t)}{\mathbb{P}(x_{0}, \ldots, x_{T})} \\
+&= \frac{\mathbb{P}(x_{t + 1}, \ldots, x_{T} \mid z_t, x_{0}, \ldots, x_t) \mathbb{P}(x_{0}, \ldots, x_{t}, z_t)}{\mathbb{P}(x_{0}, \ldots, x_{T})}
+  .\end{align*}}
+  \p{Since we are considering an [HMM](3C07), #{(x_{1}, \ldots, x_t)} and #{(x_{t + 1}, \ldots, x_{T})} are \em{conditionally independent} conditioned on #{z_t}. Thus, we can further simplify this to}
+  ##{\mathbb{P}(z_t \mid x_{0}, \ldots, x_{T}) = \frac{\mathbb{P}(x_{t + 1}, \ldots, x_{T} \mid z_t) \mathbb{P}(x_{0}, \ldots, x_{t}, z_t)}{\mathbb{P}(x_{0}, \ldots, x_{T})}}
+  \notation{We will now consider the terms in the numerator separately. The first can be viewed as the \em{backward} term
+  ##{\beta_t(z) = \mathbb{P}(x_{t + 1}, \ldots, x_{T} \mid z_t = z),}
+  and the second as the \em{forward} term
+  ##{\phi_t(z) = \mathbb{P}(x_{0}, \ldots, x_{t}, z_t = z).}
+  Naming convention is to denote which direction in time information propagates (we will see shortly).
+  }
+
+
+\section{Forward pass}{
+##{\begin{align*}
+  \phi_t(z) &= \mathbb{P}(x_{0}, \ldots, x_t, z) \\
+  &= \mathbb{P}(x_0, \ldots, x_t \mid z) \mathbb{P}(z) \\
+  &= \mathbb{P}(x_0, \ldots, x_{t - 1} \mid x_t, z) \mathbb{P}(x_t \mid z) \mathbb{P}(z)
+.\end{align*}}
+Since this is a [HMM](3C07), #{(x_{0}, \ldots, x_{t - 1}) \perp x_{t} \mid z_{t}}. Therefore, we can drop the #{x_t} from the first term, such that
+##{\begin{align*}
+  \phi_t(z) &= \mathbb{P}(x_0, \ldots, x_{t - 1} \mid z) \mathbb{P}(x_t \mid z) \mathbb{P}(z) \\
+  &= \mathbb{P}(x_0, \ldots, x_{t - 1}, z) \mathbb{P}(x_t \mid z) \\
+  &= \mathbb{P}(x_t \mid z) \sum_{z'} \mathbb{P}(x_0, \ldots, x_{t - 1}, z', z)  \\
+  &= \mathbb{P}(x_t \mid z) \sum_{z'} \mathbb{P}(x_0, \ldots, x_{t - 1} \mid z', z) \mathbb{P}(z \mid z') \mathbb{P}(z')
+.\end{align*}}
+Similarly, #{(x_{0}, \ldots, x_{t - 1}) \perp z_{t} \mid z_{t - 1}}, such that
+##{\begin{align*}
+   \phi_t(z) &= \mathbb{P}(x_t \mid z) \sum_{z'} \mathbb{P}(x_0, \ldots, x_{t - 1} \mid z') \mathbb{P}(z \mid z') \mathbb{P}(z') \\
+&= \mathbb{P}(x_t \mid z) \sum_{z'} \mathbb{P}(x_0, \ldots, x_{t - 1}, z') \mathbb{P}(z \mid z') \\
+&= \mathbb{P}(x_t \mid z) \sum_{z'} \phi_{t - 1}(z') \mathbb{P}(z \mid z')
+.\end{align*}}
+\p{Here #{z'} ranges over the possible values of #{z_{t - 1}}. We see that #{\phi_t(z)} depends only on information from time #{t} and #{t - 1}. Therefore, information propagates \em{forward in time}.}
+}
+\section{Backward Pass}{
+##{\begin{align*}
+  \beta_t(z) &= \mathbb{P}(x_{t + 1}, \ldots, x_{T} \mid z) \\
+  &= \sum_{z'} \mathbb{P}(x_{t + 1}, \ldots, x_{T}, z' \mid z) \\
+  &= \sum_{z'} \mathbb{P}(x_{t + 2}, \ldots, x_{T} \mid x_{t + 1}, z', z) \mathbb{P}(x_{t + 1} \mid z', z) \mathbb{P}(z' \mid z)
+.\end{align*}}
+First, since this is a [HMM](3C07), everything is independent of #{z_{t}} given #{z_{t + 1}}. Therefore, we can simplify
+##{\begin{align*}
+  \beta_t(z) &= \sum_{z'} \mathbb{P}(x_{t + 2}, \ldots, x_{T} \mid x_{t + 1}, z') \mathbb{P}(x_{t + 1} \mid z') \mathbb{P}(z' \mid z).
+\end{align*}}
+Additionally, #{(x_{t + 2}, \ldots, x_{T}) \perp x_{t + 1} \mid z_{t + 1}}, such that
+##{\begin{align*}
+  \beta_t(z) &= \sum_{z'} \mathbb{P}(x_{t + 2}, \ldots, x_{T} \mid z') \mathbb{P}(x_{t + 1} \mid z') \mathbb{P}(z' \mid z) \\
+&= \sum_{z'} \beta_{t + 1}(z') \mathbb{P}(x_{t + 1} \mid z') \mathbb{P}(z' \mid z)
+.\end{align*}}
+\p{Here #{z'} ranges over the possible values of #{z_{t + 1}}. We see that #{\beta_t(z)} depends only on information from time #{t} and #{t + 1}. Therefore, information propagates \em{backward in time}.}
+}
+\remark{
+Both passes are #{O(TK^2)} because at each timestep, it requires computing #{\mathbb{P}(z_{t} \mid z_{t - 1})} or #{\mathbb{P}(z_{t + 1} \mid z_{t})} which is a #{K \times K} transition matrix.
+}
+\p{Notably, the structure of the [HMM](3C07) ensures each marginal #{\mathbb{P}(z_t \mid \mathcal{H})} depends only on the \strong{local} transition probabilities #{\mathbb{P}(z_{t} \mid z_{t - 1})} and #{\mathbb{P}(z_{t + 1} \mid z_{t})} rather than the exponential \strong{global} #{\mathbb{P}(z_{0}, \ldots, z_{T})}. This lends itself to the idea of a \em{dynamic programming} algorithm, where we compute the posterior of the preceding / succeeding latent and use the result for the next. Since we have bi-directional dependencies this requires making two passes a \em{forward} and \em{backward} pass. The key remaining detail is that these components can be efficiently combined to recover the full true marginal.}
+\section{Computing the posterior}{
+  \p{Finally, all that remains is to combine #{\phi} and #{\beta} to recover the true posterior. Recall that these directly correspond to the components in the numerator i.e.}
+  ##{\mathbb{P}(z_t \mid \mathcal{H}) = \frac{\phi_t(z) \beta_t(z)}{\mathbb{P}(\mathcal{H})}}
+  \p{Therefore, it remains to compute the normalization term #{\mathbb{P}(\mathcal{H})}. To do so, note that}
+  ##{\begin{align*}
+    \phi_t(z) \beta_t(z) = \mathbb{P}(\mathcal{H} \mid z) \mathbb{P}(z) \implies \sum_{z} \phi_t(z)\beta_t(z) &= \sum_{z} \mathbb{P}(\mathcal{H} \mid z) \mathbb{P}(z) \\
+    &= \mathbb{P}(\mathcal{H})
+  .\end{align*}}
+  \p{Thus, the true posterior can be recovered as}
+  ##{\mathbb{P}(z_t \mid \mathcal{H}) = \frac{\phi_t(z) \beta_t(z)}{\sum_{z} \phi_t(z)\beta_t(z)}}
+  \p{Since #{z} is discrete, this sum is only #{O(K)} and therefore easily computable.}
+}
+
+\comments{pathname}

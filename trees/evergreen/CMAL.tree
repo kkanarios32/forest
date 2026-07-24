@@ -1,0 +1,48 @@
+\date{2026-07-17T00:56:19Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Murphi}
+\tag{public}
+
+\p{Syntactical things I need to remember from Murphi docs. Most things are straightforward, but there are a few things to note:}
+  \subtree{
+    \taxon{Definition}
+    \title{Declarations}
+  \p{A \em{declaration} is a variable or a collection of variables that are used in the rules.}
+  }
+  \subtree{
+    \taxon{Definition}
+    \title{Rules}
+  \p{A \em{rule} is a transition from one state to another}
+  \ul{
+    \li{Each rule can optionally have an initial condition required to be fired}
+    \li{We can easily define rules for all the processors or collection of #{n} things with \code{ruleset}.}
+    \li{For our use case, rules are used to define}
+    \ol{
+      \li{Controller actions}
+      \li{Receiving a request from the network}
+      \li{Retrying stalled requests}
+    }
+  }
+  }
+  \subtree{
+    \taxon{Definition}
+    \title{Startstates}
+  \p{A \em{startstate} is the intial configuration for all our declarations.}
+  \ul{
+    \li{Must assign a value to every global variable}
+  }
+  }
+  \subtree{
+    \taxon{Definition}
+    \title{Invariants}
+  \p{An \em{invariant} is something that Murphi checks to ensure is true at all possible configurations of the system.}
+  }
+\p{\paragraph{Overview straight from the docs} Repeat forever:
+}
+\ol{
+  \li{Find all rules whose conditions are true in the current state.
+       (i.e. conditional expressions are true, given the current values
+       of the global variables).}
+    \li{Choose one arbitrarily and execute the action, yielding a new state.}
+}

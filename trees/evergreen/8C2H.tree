@@ -1,5 +1,6 @@
 \import{base-macros}
 \date{2026-05-12T22:47:52Z}
+\author{kellenkanarios}
 \tag{public}
 \title{Snoop-based coherence keeps caches consistent by watching a shared bus}
 

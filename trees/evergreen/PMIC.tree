@@ -1,0 +1,15 @@
+\date{2026-07-13T00:45:04Z}
+\import{base-macros}
+\title{Operator fusion is like ASIC caching}
+\tag{public}
+
+\p{On a traditional CPU, the hardware manages [caching](M91V) to ensure that data that is reused does not roundtrip through [[GWD5]]. On an [[OGCRS]], we forego the complexity of caching to allow for more execution units. However, now if we have two operations i.e. elementwise add #{\to} [softmax](C00V) this would}
+\ol{
+  \li{Load the input tensors from memory (HBM on [TPU](NZZ7)).}
+  \li{Perform the elementwise add.}
+  \li{Store the output tensor to memory.}
+  \li{Load the input tensors from memory.}
+  \li{Perform the softmax.}
+  \li{Store the output tensor to memory.}
+}
+\p{On a CPU, the input tensors would remain in the cache. However, this must be done explicitly on ASIC (or by the compiler in the case of Google / [XLA](M74N)).}

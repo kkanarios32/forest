@@ -1,5 +1,6 @@
 \import{base-macros}
 \date{2026-04-08T19:08:32Z}
+\author{kellenkanarios}
 \tag{public}
 \title{On-chip interconnection networks}
 
@@ -49,11 +50,11 @@
 }
 
 \section{Implementation considerations}{
-\p{\strong{Links}. Thicker wires with larger spacing → lower resistance, higher speed, better energy efficiency. The wire budget determines how many ports you can afford per router.}
+\p{\paragraph{Links} Thicker wires with larger spacing → lower resistance, higher speed, better energy efficiency. The wire budget determines how many ports you can afford per router.}
 
-\p{\strong{Routers}. Each port costs a buffer, a crossbar input, state logic, and a link to its neighbor. [[YV5J]] area scales as the square of port count, so high-radix routers are dramatically expensive. Rings have very simple routers but poor performance.}
+\p{\paragraph{Routers} Each port costs a buffer, a crossbar input, state logic, and a link to its neighbor. [[YV5J]] area scales as the square of port count, so high-radix routers are dramatically expensive. Rings have very simple routers but poor performance.}
 
-\p{\strong{Floorplan}. Tori need to be folded to equalize wire lengths, doubling effective wire length; meshes don't. Tori also have twice as many links as meshes, which may force narrower links and lower per-link bandwidth.}
+\p{\paragraph{Floorplan} Tori need to be folded to equalize wire lengths, doubling effective wire length; meshes don't. Tori also have twice as many links as meshes, which may force narrower links and lower per-link bandwidth.}
 
 \p{\strong{Folding} can also equalize path lengths inside a network at the cost of increasing average latency.}
 

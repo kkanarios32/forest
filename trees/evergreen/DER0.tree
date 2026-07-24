@@ -1,6 +1,7 @@
 \import{base-macros}
 \tag{public}
 \date{2025-07-06T20:43:11Z}
+\author{kellenkanarios}
 \title{Operations that preserve convexity}
 \p{The following operations preserve [convexity](004D)}
 \ul{

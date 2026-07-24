@@ -1,6 +1,8 @@
 \import{base-macros}
 \date{2026-05-12T22:53:46Z}
+\author{kellenkanarios}
 \tag{public}
+\taxon{Definition}
 \title{Dimension-order routing}
 
 \p{An oblivious [[VTS4]] for #{k}-ary #{n}-cube networks ([[9SA2]], [[DDKT]]): always exhaust the offset in one dimension completely before changing to the next. E.g. in 2D mesh routing, route X-then-Y — never turn back to X after starting Y.}

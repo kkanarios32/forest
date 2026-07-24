@@ -1,0 +1,120 @@
+\date{2026-07-23T12:41:52Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[[Z902]]: Skills for Offline Goal-Conditioned RL}
+\tag{public}
+
+\section{Background}{
+  \p{This idea is a combination of a few relevant papers in \em{offline skill learning}. Namely, the problem of how to learn re-usable, temporally-extended objects purely from offline data.}
+\transclude{ZUAG}
+\transclude{G27U}
+}
+
+\section{Frankenstein-ing [LOVE](jiangLearningOptionsCompression) and [DDO](foxMultiLevelDiscoveryDeep2017)}{
+  \p{We find ourselves in-between [LOVE](jiangLearningOptionsCompression) and [DDO](foxMultiLevelDiscoveryDeep2017). In particular, in [DDO](foxMultiLevelDiscoveryDeep2017), they are concerned with learning a \em{hierarchy} of policies where the higher-level \em{meta policy} #{\eta} must be usable \em{online} only given the current state.}
+  \ul{
+    \li{(+) The learned termination conditions #{\beta} are dependent on the \strong{active skill}.}
+    \li{(+) Exact inference #{\implies} lower variance.}
+    \li{(-) Weak skill model #{\eta(z \mid s)}.}
+    \li{(-) No explicit encouragement for temporally-extended skills.}
+  }
+  \p{On the contrary, in [LOVE](jiangLearningOptionsCompression), they treat skills as a pure \em{sequence-modeling} problem. The posterior #{q_{\theta}(z_{t} \mid z_{t - 1}, b_{t}, x_{0}, \ldots, x_{T})} is purely used to label \em{offline trajectories} and give the skills \em{meaning}. To make them usable online, it is then required to learn an additional hierarchical policy over these skills.}
+  \ul{
+    \li{(+) The skill-labeler is allowed to use not only the current state but also the future visited states.}
+    \li{(+) Compression objective encourages temporally extended skills.}
+    \li{(-) Design inherently does not allow the terminations to be skill-dependent.}
+    \li{(-) Need to sample #{z}'s to compute gradients #{\implies} higher-variance.}
+  }
+\p{\paragraph{Our graphical model} We try to combine the desirable properties.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/deepLOVE-gm.png}}{}
+\figcaption{Each boundary depends on a skill and each skill depends on the \strong{whole} sequence. Each boundary also depends on the whole history. However, the skill conditioned policy only requires the current state #{s} and skill #{z}. Thus, allowing the skills to be used.}
+}
+\p{We essentially combine the insight of [LOVE](jiangLearningOptionsCompression) where instead of trying to model the full joint distribution i.e. #{\mathbb{P}(\mathcal{H}, \xi)} we instead model #{\mathbb{P}(\mathcal{A}, \xi \mid \mathcal{S})}, where we treat the entire state history as known.} 
+\p{In the language of [HMMs](3C07), the \em{emission probabilities} only correspond to the \strong{actions}. Therefore, we can perform the [[F3T0]] and condition on whatever component of the state we want without breaking the exactness.}
+\remark{
+This is only a good idea for us because we do not need to use the \em{meta controller} during evaluation.
+}
+\p{\paragraph{Deliberation cost} In [LOVE](jiangLearningOptionsCompression), they encourage temporal extension through the compression loss. This requires an empirical approximation of the skillmarginal #{p(z)}. For me, this caused the skill entropy to just collapse to zero instead of encouraging temporally extended options. Instead, we use a deliberation cost more common in the options literature [[baconOptionCriticArchitecture2017]], where we just add the \em{switch-rate} as an additional loss term.}
+\ul{
+  \li{We are given the posterior #{\mathbb{P}(z_t = z, b_t = 1 \mid \mathcal{H})}. In our implementation this would be #{(B, T, K)}}
+  \li{We marginalize over skills #{z} by summing to get #{\mathbb{P}(b_t = 1 \mid \mathcal{H})}}
+  \li{Then average over batch #{B} and time #{T} to get expected reads.}
+}
+\p{As in [LOVE](jiangLearningOptionsCompression), we need to balance minimizing log-likelihood with compression / switching cost. To do so, we do dual descent.}
+\ul{
+  \li{First, without compression, we run the algorithm and observe what is approximately the best attainable log-likelihood loss is.}
+  \li{Then, we minimize the deliberation cost subject to #{\mathcal{L}_{\text{likelihood}} \leq C + \epsilon}}
+}
+}
+\section{Implementation details}{
+  \ul{
+    \li{The \em{skill network} #{\eta(z_t \mid s_{0}, \ldots s_{T})} is a bidirectional GRU, where the hidden states are accumulated via running the GRU forwards and backwards and concatenating the results.}
+    \li{The \em{termination network} #{\beta(b_t \mid z_{t - 1}, s_{0}, \ldots, s_{t})} is a GRU, that only runs forward.}
+    \ul{
+      \li{Instead of passing the previous skill as input, the output dimension is size #{K} (number of skills).}
+    }
+    \li{The \em{skill policy network} #{\pi_{\theta}(a \mid s, z)} is a standard Gaussian policy that take #{z} as a one-hot encoding.}
+  }
+}
+\section{Planning over learned skills}{
+\p{\paragraph{Setup} Assume we are given a set of skills #{\mathbf{z} \in \{0, \ldots, K\}} along with a skill-conditioned lower-level policy #{\pi(s \mid z)}. Then what we want is to be able to learn the optimal goal-reaching policy over these skills. To do so, we must go beyond traditional offline skill-learning algorithms. We must \em{Learn a value function over learned skills purely from offline data} 
+}
+
+\p{\paragraph{Skill-conditioned GCIQL}
+If we now define the analagous skill-conditioned GCIQL losses, we have
+##{\begin{align}
+  \mathcal{L}_{V}(\theta_{V}) &= \mathbb{E}_{(s_{t}, z_{t}, g) \sim \mathcal{D}} \Big[L_{2}^{\tau}\big(Q_{\overline{\theta}_{Q}}(s_{t},z_{t},g) - V_{\theta_{V}}(s_{t},g)\big)\Big] \\
+  \mathcal{L}_{Q}(\theta_{Q}) &= \mathbb{E}_{(s_{t}, z_{t}, s_{t+\kappa}) \sim \mathcal{D}} \Big[\big(r(s_{t}, z_{t}, g) + \gamma V_{\overline{\theta}_{V}}(s_{t+\kappa}, g) - Q_{\theta_{Q}}(s_{t},z_{t},g) \big)^2\Big]
+\end{align}}
+This introduces a few changes and constraints on the final algorithm.
+\ul{
+  \li{#{\kappa} is a random variable dependent on the termination condition of #{z}.}
+  \li{It is not immediately obvious how we should design #{r(s_t, z_t, g)}.}
+}
+\paragraph{Future states} For the first point, there are two options with trade-offs. In [LOVE](jiangLearningOptionsCompression), they learn a model over trajectories that partitions them into unique skills. We can directly use this to get the intermediate #{s_{t + \kappa}} just based off the termination output by the model.
+\ul{
+  \li{This is the simplest approach and basically a generalization of [HIQL](parkHIQLOfflineGoalConditioned2024) to varying length skills, where they just use a state #{k} steps away in the trajectory.}
+  \li{However, this approach would be limited on \em{stitching} datasets, where all of the trajectories are short.}
+}
+\p{The second approach, assuming we already have skills (given termination function), to perform better in the stitching setting is instead to learn a generative model over the state #{s_{t+\kappa}}. Then we could just use  #{s_{t + \kappa} \sim p(s_{t+\kappa} \mid s_t, z_t)} as our next state in \eqref{eq:gciql-qz}. There is new work on \em{universal horizon models}\citek{chungOfflineReinforcementLearning2026} focused on this for #{n}-step models. Alternatively, it seems there is work directly learning the value function for a sequence of skills \citek{farebrotherCompositionalPlanningJumpy2026}, but this seems to only work for a fixed (per skill) discount factor.}
+
+\p{\paragraph{Reward} Here, I propose a modified reward function based on the observation that goal-conditioned policies work well for short-horizon goal-reaching. One of our skills is hardcoded to instead be a learned goal-conditioned policy #{\pi(a \mid s, g)} with associated value function #{V(s, g)}. Denote this skill as #{z_g}. Then we can define the reward function as}
+##{\begin{align*}
+  r(s, z, g) &= \begin{cases}
+    1, & \text{if } z = z_g \text{ and } V(s, g) < \epsilon \\
+    0, & \text{otherwise}
+  \end{cases}
+.\end{align*}
+}
+\p{Note that it may be the case that the high-level policy learns to just choose #{z_g} everytime, so we may want to penalize that decision somehow for #{(s,g)} pairs with large #{V(s,g)}. Intuitively, this would end up with a higher-level policy that best utilizes the temporally-extended skills to reach the nearby region of #{g} then concedes to the lower-level policy.}
+}
+}
+\section{Outstanding Problems / Future directions}{
+  \p{\paragraph{Extending beyond pointmaze in locomotion} The main issue faced here is that our \em{discriminator} is too powerful in high dimensional state space. Namely, we \em{score} options based on their ability to reconstruct actions i.e. if #{\mathbb{P}(a_t \mid s_t, z_t = z)} is high then we further increase the probability of selecting that option #{z}. In higher-dimensional state spaces, the skill network #{\pi_{\theta}(a_t \cdot \mid s_t, z)} is powerful enough to reconstruct #{a_t} purely from #{s_t} without using #{z}. This basically provides no signal for which #{z} to use, and we end up just selecting #{z} uniformly every time step.}
+  \ul{
+    \li{I have seen a little sign of life from trying #{\pi(a \mid f_{\theta}(s), z)} i.e. compressing #{s} to a lower dimensional representation.}
+    \li{It may also be worth trying a really small network. Right now #{(256, 256)} already gets very low reconstruction loss, so maybe we can go smaller?}
+  }
+\p{\paragraph{Conquering manipulation} In [[parkOGBenchBenchmarkingOffline2025]], they provide a suite of manipulation environments in addition to the standard locomotion. One such environment, is the manipulation equivalent of the [lights out game](https://en.wikipedia.org/wiki/Lights_Out_(game)). This is a great test-bed to separate \em{skill-learning} from \em{planning}. In particular, the \em{skill-learning} portion can be clearly decomposed into the pressing of each of the buttons. However, when directly trying to use the [LOVE](jiangLearningOptionsCompression) it is not able to distinguish between these skills.}
+\ul{
+  \li{On \code{puzzle 3x3} [LOVE](jiangLearningOptionsCompression) terminates every #{1.4} steps because all the skills look similar.}
+  \li{This is using the threshold #{\beta > 0.9}.}
+}
+\subtree{
+  \taxon{Conjecture}
+  \p{Pressing each of the buttons looks too similar, where the main discrepancy between them is only their \strong{termination condition}. Since [LOVE](jiangLearningOptionsCompression)'s termination condition is independent of skill, it is unable to distinguish between these.}
+  \ul{
+    \li{ This is further confirmed in the \em{scene} environment. [LOVE](jiangLearningOptionsCompression) is able to distinguish between very different skills like open drawer vs. window. However, it is not able to distinguish between unlock drawer vs. window, where they only differ in pressing two adjacent buttons.}  
+  }
+\p{\paragraph{Injecting goals into the graphical model} Another failure mode of manipulation is that skills cannot be \em{goal-independent}. For example, in the generating policy of \em{scene} they have a \em{pick and place} skill that picks up the block and places it somewhere. Where to place the block is \strong{encoded in the goal}. We can augment our graphical model to also allow the actions to depend on the goal.}
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/ddgLOVE.png}}{}
+\figcaption{Our graphical model with the goal included.}
+}
+\p{However, we do not want the skills to become goal-conditioned policies. To get around this we can use the \em{information bottleneck} idea from [[goyalInfoBotTransferExploration2023]]. Namely, we penalize the [[000V]] between the goal and action or goal and skill (TBD the right way to do this).} 
+\remark{
+Ideally, this would allow goal-dependent skills, where the goal is not the entire state space. For example, penalizing [[000V]] could cause just the desired block position as the information to be passed to the skill. This ignores the irrelavant components of the state space \strong{for that skill}. Another skill may focus on whether the window is locked / unlocked, etc.}
+\p{\paragraph{Get rid of weird threshold / turn into MPC-ish} Currently, when planning, we must tune the \code{value_threshold} for when we pass control to goal-conditioned policy. To get 89 percent on pointmaze we used -10. Instead of using a threshold, we could instead just treat the goal-conditioned policy as another skill, but the future state is just .}
+}
+}

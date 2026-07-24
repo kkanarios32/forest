@@ -81,7 +81,7 @@
 % inline. Replaces the bold-label-with-colon idiom so the label pops in the
 % sans (var(--sans)) against the serif body. Pass the label WITHOUT punctuation;
 % the macro adds the period. The argument may hold links/math (\paragraph{[[ID]]}).
-\def\paragraph[head]{\<html:strong>[style]{font-family: var(--sans);}{\head.}}
+\def\paragraph[head]{\<html:strong>[style]{font-family: var(--sans); font-weight: 500;}{\head.}}
 
 \def\lsquare{\startverb[\stopverb}
 \def\rsquare{\startverb]\stopverb}
@@ -153,6 +153,33 @@
   \<html:hr>{}
 }
 
+% Syntax-highlighted code block. Wraps a \verb body in <pre><code
+% class="language-<lang>"> so highlight.js (vendored in theme/, run on load
+% from tree.xsl) can tokenize it; token colors live in theme/style.css. The
+% body must still be \verb<<<|...<<< so backslashes/braces pass through raw.
+% Usage:  \codeblock{lua}{\verb<<<|  ...code...  <<<}
+% Languages: the hljs core bundle (bash, c, cpp, python, lua, rust, js, ts,
+% json, yaml, sql, go, java, ...). Unknown/blank lang → hljs auto-detects.
+\def\codeblock[lang][body]{\<html:pre>{\<html:code>[class]{language-\lang}{\body}}}
+
+% Same as \codeblock but with a filename/title bar above the code (rendered by
+% the .code-figure / .code-filename rules in theme/style.css). Use when the
+% snippet is a named source file.  Usage:
+%   \codeblockf{flash_attention.py}{python}{ ...code... }
+\def\codeblockf[file][lang][body]{\<html:div>[class]{code-figure}{\<html:div>[class]{code-filename}{\file}\<html:pre>{\<html:code>[class]{language-\lang}{\body}}}}
+
+% Utterances comment thread for a blog post. Wrapped in a .comments div so the
+% theme can suppress it whenever the post is transcluded (expanded on an index
+% or the home page) and render it only on the post's own page — see the
+% html:div[@class='comments'] rule in theme/core.xsl. The argument is the
+% utterances issue-term (usually \comments{pathname}; a fixed slug otherwise).
+\def\comments[term]{
+  \<html:div>[class]{comments}{
+    \hr
+    \<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{\term}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+  }
+}
+
 \def\stub{
  \<html:div>[class]{stub-notice}[style]{
   margin: 0.5em 0;
@@ -211,8 +238,10 @@
 % A stated objective — what we are trying to achieve.
 \def\goal[body]{\callout{rgba(190, 50, 130, 0.85)}{rgba(190, 50, 130, 0.06)}{Goal.}{\body}}
 
+\def\idea[body]{\callout{rgba(190, 50, 130, 0.85)}{rgba(190, 50, 130, 0.06)}{💡 Idea.}{\body}}
+
 % A highlighted key takeaway / "aha".
-\def\insight[body]{\callout{rgba(0, 160, 175, 0.9)}{rgba(0, 160, 175, 0.06)}{Insight.}{\body}}
+\def\insight[body]{\callout{rgba(0, 160, 175, 0.9)}{rgba(0, 160, 175, 0.06)}{💡 Insight.}{\body}}
 
 \def\section[tit][body]{
   \subtree{

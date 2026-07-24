@@ -1,6 +1,8 @@
 \import{base-macros}
 \date{2026-05-12T22:53:46Z}
+\author{kellenkanarios}
 \tag{public}
+\taxon{Definition}
 \title{Valiant's routing algorithm}
 
 \p{An oblivious [[VTS4]] that achieves provably optimal worst-case throughput by introducing randomness in path selection:}

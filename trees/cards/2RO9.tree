@@ -4,6 +4,6 @@
 \taxon{Card}
 \title{What false dependencies does register renaming eliminate?}
 \tag{card}
-\meta{anki}{1783779570463}
+\meta{anki}{1784508017023}
 
 \prompt{Write-after-write (#{\mathrm{WAW}}) and write-after-read (#{\mathrm{WAR}}) hazards — the \em{false} dependencies that arise from reusing an architectural register, not from real data flow. Removing them exposes more [[5CT9]] to the scheduler.}

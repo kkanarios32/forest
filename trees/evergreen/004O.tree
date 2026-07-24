@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-02-03}
+\author{kellenkanarios}
 \title{Nesterov's Method}
 \p{
 Generate two sequences #{\{\mathbf{x}_{k}\}_{k\geq1}{\mathrm{~and~}}\{\mathbf{p}_{k}\}_{k\geq1}}

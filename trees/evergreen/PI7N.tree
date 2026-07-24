@@ -38,21 +38,13 @@ Therefore, we must find a recursive relationship such that #{d_{i+1} = f(d_i, m_
 }
 \p{
 The running denominator #{d} is rescaled by #{e^{m - m_{\text{new}}}} each time a new maximum is found, keeping it consistent with the safe-softmax shift.}
-\p{
-\latex{#{
-\begin{algo}
-\State $m \gets -\infty;\quad d \gets 0$
-\For{$i = 1$ \textbf{to} $n$}
-  \State $m_{i+1} \gets \max(m_i, x_i)$
-  \State $d_{i + 1} \gets d_i \cdot e^{\,m_i - m_{i+1}} + e^{\,x_i - m_{i}}$
-\EndFor
-\For{$i = 1$ \textbf{to} $n$}
-    \State $\mathbf{p}_{i} \gets e^{\,x_i - m_n} / d \;$
-\EndFor
-\Return $\mathbf{p}$
-\end{algo}
-}}
-}
+\codeblockf{online_softmax.py}{python}{m = float("-inf")                    # running max of the logits
+d = 0.0                              # running softmax denominator
+for i in range(n):                   # one fused sweep for the stats
+    m_new = max(m, x[i])
+    d = d * exp(m - m_new) + exp(x[i] - m_new)
+    m = m_new
+p = [exp(x[i] - m) / d for i in range(n)]   # second pass: normalized probs}
 \remark{
 Unfortunately, we cannot get around the second pass to compute the normalized output for #{\mathbf{p}}. However, this is not the case in [[R0PM]].
 }

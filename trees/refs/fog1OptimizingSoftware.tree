@@ -1,0 +1,12 @@
+% ["refs"]
+\title{1. Optimizing software in C++}
+\author/literal{Agner Fog}
+\taxon{Reference}
+\meta{bibtex}{\startverb
+@article{fog1OptimizingSoftware,
+ title = {1. {{Optimizing}} Software in {{C}}++},
+ author = {Fog, Agner},
+ file = {/home/kellen/Downloads/papers/1. Optimizing software in C++ - Fog.pdf},
+ langid = {english}
+}
+\stopverb}

@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-04-22}
+\author{kellenkanarios}
 \import{base-macros}
 \taxon{Definition}
 \title{Differential Entropy}

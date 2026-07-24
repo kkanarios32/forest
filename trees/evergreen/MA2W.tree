@@ -1,0 +1,43 @@
+\date{2026-07-13T17:52:38Z}
+\import{base-macros}
+\title{Automatic Brrrrr: History and Challenges}
+\author{kellenkanarios}
+\tag{public}
+
+\section{ML Compilers}{
+  \ul{
+    \li{[[ragan-kelleyHalideLanguageCompiler]]}
+    \li{[[chenTVMAutomatedEndtoEnd2018]]}
+    \li{[[xla2017]]}
+    \li{[[anselPyTorch2Faster2024]]}
+  }
+}
+\section{Tiled DSLs}{
+  \ul{
+    \li{[[tilletTritonIntermediateLanguage2019]]}
+    \li{[[wangTileLangComposableTiled2025]]}
+    \li{cuTile}
+  }
+  \paragraph{Autotuning + Tiles}
+  \ul{
+    \li{[[helion2025]]}
+  }
+}
+\section{Low-level DSLs}{
+  \ul{
+    \li{CuTe DSL}
+    \li{[[TIRx2026]]}
+  }
+}
+\section{ASICs}{
+  \ul{
+    \li{Pallas}
+    \ul{
+      \li{Tile DSL for TPU.}
+    }
+    \li{NKI + NISA}
+    \ul{
+      \li{NKI = tile, NISA = low-level}
+    }
+  }
+}

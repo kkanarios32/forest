@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2024-12-27}
+\author{kellenkanarios}
 \title{Kolmogorov's Zero-one Law}
 \taxon{Theorem}
 \p{If #{A_1, A_2, \ldots} is an independent sequence of events, then for each

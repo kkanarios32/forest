@@ -9,11 +9,11 @@
 from PIL import Image, ImageDraw
 
 # Load image
-img = Image.open("/home/kellen/Projects/forest/assets/img/logo.png").convert("RGBA")
+img = Image.open("/home/kellen/Projects/forest/ghibli-profile-pic.png").convert("RGBA")
 width, height = img.size
 size = min(img.size)
 
-circle_diameter = int(min(width, height) * 0.55)
+circle_diameter = int(min(width, height) * 0.95)
 
 # Calculate coordinates to crop a square centered box
 left = (width - circle_diameter) // 2

@@ -11,33 +11,19 @@ def daily_tree(path, title):
 \\tag{{public}}
 \\title{{Weekly Review {title}}}
 
-\\section{{What went well?}}{{
-
-}}
-
-\\section{{What could be adjusted?}}{{
-
-}}
-
-\\section{{What should I stop doing?}}{{
-
-}}
-
-\\section{{What should I start doing?}}{{
-
-}}
-
 \\section{{The Quantified Me}}{{
 \\figure{{
   \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/waka.png}}}}{{}}
+  \\figcaption{{Coding hours for week {title}.}}
+}}
+\\figure{{
   \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/arbtt.png}}}}{{}}
-  \\figcaption{{Computer stats for week {title}.}}
+  \\figcaption{{Non-coding computer time for week {title}.}}
 }}
 }}
-\\section{{VO2 Max(ing)}}{{
+\\section{{Life Maxing}}{{
 \\figure{{
   \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/running.png}}}}{{}}
-  \\<html:img>[width]{{100\\%}}[src]{{\\route-asset{{{path}/habitify.png}}}}{{}}
   \\figcaption{{Health stats for week {title}.}}
 }}
 }}

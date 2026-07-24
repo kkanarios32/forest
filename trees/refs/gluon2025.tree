@@ -1,0 +1,16 @@
+% ["refs"]
+\title{Gluon: A Lower-Level GPU Programming Model for Triton}
+\author/literal{OpenAI Triton Team}
+\taxon{Reference}
+\date{2025}
+\meta{bibtex}{\startverb
+@misc{gluon-triton,
+  author = {OpenAI Triton Team},
+  title = {Gluon: A Lower-Level GPU Programming Model for Triton},
+  year = {2025},
+  howpublished = {\url{https://github.com}},
+  note = {Accessed: YYYY-MM-DD}
+}
+\stopverb}
+
+\p{Another [[5PSC]] specifically for GPUs.}

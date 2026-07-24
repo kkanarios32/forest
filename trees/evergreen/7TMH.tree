@@ -1,0 +1,14 @@
+\date{2026-07-16T14:07:40Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Stabilizing [[C00V]] in [Attention](004G)}
+\p{The [softmax](C00V) is ill-behaved due to the exponentials. In the transformer, we have two softmaxes: one at the end and one in the [attention](004G).
+\ul{
+   \li{For the first, note ##{\log \sigma(\mathbf{x})_i = \log(x_i) - \log \underbrace{\sum_{j=1}^{d} e^{x_j}}_{D(\mathbf{x})}}
+   The only problem is the denominator term. The idea is to enforce the #{D(\mathbf{x}) = 1} by regularizing via a penalty on #{\log D(\mathbf{x})} ie.
+##{\mathcal{L}_{\text{aux}} = 10^{-4} \log^2(D(\mathbf{x}))}
+With the #{\nabla D(\mathbf{x})} should be #{0} and we are effectively only considering the non-exponential term.
+   }
+   \li{For the [attention](004G), they primarily operate on the \em{logits} prior to the softmax. One way is via [layer norm](LVV4) before the [softmax](C00V). Another is via [[39ZN]]}
+}
+}

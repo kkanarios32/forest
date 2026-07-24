@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2024-12-28}
+\author{kellenkanarios}
 \title{Simple Random Variable}
 \taxon{Definition}
 \p{Let #{(\Omega, \mathscr{F}, P)} be an arbitrary probability space, and let #{X} be a real-valued function on #{\Omega}. #{X} is a simple random variable if it has finite range and if 

@@ -33,3 +33,11 @@
 \p{\strong{8:10 AM}}
 \hr
 \p{Trying pure egg breakfast. We will see if the digestion causes crash, or just sustained satiety. Might just have to tank the fast.}
+
+\p{\strong{8:41 AM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{47Y4}
+}

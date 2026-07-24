@@ -1,6 +1,7 @@
 \tag{public}
 \import{base-macros}
 \date{2025-07-06T20:47:40Z}
+\author{kellenkanarios}
   \title{Optimality Conditions}
   \p{Local conditions that a minimizer of a (not necessarily convex) #{f} must satisfy, phrased in terms of its gradient and Hessian at the candidate point. They pin an optimum down to a [stationary point](003P) and then use curvature to separate minima from maxima and saddles.}
     \transclude{003P}

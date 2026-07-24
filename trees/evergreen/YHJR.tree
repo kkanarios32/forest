@@ -1,5 +1,6 @@
 \import{base-macros}
 \date{2026-05-12T19:37:43Z}
+\author{kellenkanarios}
 \tag{public}
 \title{exec()}
 
@@ -13,7 +14,7 @@
 }
 
 \p{The canonical Unix pattern is \code{fork()} then \code{exec()} — the shell uses this to launch a command without becoming that command:}
-\pre\verb<<<|
+\codeblock{c}{\verb<<<|
 int main()
   while (true) {
     command = getcommand();
@@ -25,14 +26,14 @@ int main()
     else
       int rc = wait(NULL);      // parent waits for it
   }
-<<<
+<<<}
 
 \p{Redirection is implemented by opening a file in the child between \code{fork()} and \code{exec()}, attached to \code{STDOUT_FILENO}:}
-\pre\verb<<<|
+\codeblock{c}{\verb<<<|
 if (rc == 0)
   close(STDOUT_FILENO);
   open("output.txt");
   exec(command);
-<<<
+<<<}
 
 \remark{The many variants — \code{execl}, \code{execle}, \code{execlp}, \code{execv}, \code{execvp}, \code{execvP} — differ in how they take arguments (list vs. vector), whether they use the \code{PATH} environment variable, and whether they take an explicit environment.}

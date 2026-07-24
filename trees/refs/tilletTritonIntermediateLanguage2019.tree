@@ -25,3 +25,8 @@
  shorttitle = {Triton}
 }
 \stopverb}
+
+\p{A tile-based [[5PSC]] lowered to backend agnostic [[IR7B]].}
+\ol{
+  \li{[Warp specialization in Triton](https://pytorch.org/blog/warp-specialization-in-triton-design-and-roadmap/)}
+}

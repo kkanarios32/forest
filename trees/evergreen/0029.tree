@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2024-12-28}
+\author{kellenkanarios}
 \title{Expected Value}
 \taxon{Definition}
 \p{A [[001W]] of the form #{X = \sum_{i} x_i I_{A_i}} is assigned expected value as 

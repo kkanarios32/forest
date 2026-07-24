@@ -1,0 +1,10 @@
+\date{2026-07-16T14:02:14Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Computing FFN and MHA in parallel is free speedup}
+\p{
+Another small trick is to parallelize computation. Traditionally, one computes the #{\mathrm{MHA}} output and then passes this to the #{\mathrm{FFN}} i.e.
+##{\mathbf{y} = \mathbf{x} + \mathrm{FFN}(\mathrm{LN}(\mathbf{x} + \mathrm{MHA}(\mathrm{LN}(\mathbf{x})))).}
+However, this requires waiting for the #{\mathrm{MHA}} to complete before performing the #{\mathrm{FFN}} computation. It has been found that performing these in parallel does not cause any severe degradation in performance. Explicitly, instead they do
+##{\mathbf{y} = \mathbf{x} + \mathrm{FFN}(\mathrm{LN}(\mathbf{x})) + \mathrm{MHA}(\mathrm{LN}(\mathbf{x}))}
+}

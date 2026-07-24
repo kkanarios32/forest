@@ -1,0 +1,13 @@
+\title{XLA - TensorFlow, compiled}
+\date{2017}
+\author/literal{The XLA team}
+\taxon{Reference}
+\meta{external}{https://developers.googleblog.com/xla-tensorflow-compiled/}
+\meta{bibtex}{\startverb
+@incollection{xla2017,
+ title = {XLA - TensorFlow, compiled},
+ author = {The XLA team},
+ year = {2017},
+ url = {https://developers.googleblog.com/xla-tensorflow-compiled/}
+}
+\stopverb}

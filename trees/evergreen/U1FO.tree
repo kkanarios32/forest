@@ -1,5 +1,6 @@
 \import{base-macros}
 \date{2026-05-12T22:59:13Z}
+\author{kellenkanarios}
 \tag{public}
 \title{Memory coalescing merges a warp's accesses into one transaction per cache line}
 

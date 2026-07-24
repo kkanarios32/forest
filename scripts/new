@@ -75,9 +75,10 @@ if [ -n "$CITE" ]; then
 fi
 
 # Publish by default, but respect templates that opt out of the public site
-# (stub / transient). Never add a second public tag a template already declares.
+# (transient). Stubs are public — they ship the concept name to the site as a
+# live link target. Never add a second public tag a template already declares.
 if ! grep -q '\\tag{public}' "$FILENAME" \
-   && ! grep -qE '\\tag\{(stub|private|card|transient)\}' "$FILENAME"; then
+   && ! grep -qE '\\tag\{(private|card|transient)\}' "$FILENAME"; then
   echo '\tag{public}' >> "$FILENAME"
 fi
 
@@ -109,9 +110,15 @@ esac
 
 # Refresh the derived views: notes-log.md (permanent index) and inbox.md
 # (stub/transient worklist). Both scripts are the single source of truth for format.
-HERE="$(dirname "$0")"
-"$HERE/registry"
-"$HERE/inbox" >/dev/null
+# Interactive callers (the nvim commands) set NEW_SKIP_REGISTRY=1 to skip this —
+# the full-tree scans add noticeable latency to note creation, and the pre-commit
+# hook rebuilds both views anyway, so the derived .md files are never stale for long.
+if [ -z "${NEW_SKIP_REGISTRY:-}" ]; then
+  HERE="$(dirname "$0")"
+  "$HERE/registry"
+  "$HERE/inbox" >/dev/null
+  "$HERE/recent" >/dev/null 2>&1 || true
+fi
 
 # If an fserve nvim server is listening, background-load the new tree so the
 # forester LSP indexes it (fires FileType -> didOpen) and it becomes

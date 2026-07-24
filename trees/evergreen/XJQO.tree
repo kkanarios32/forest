@@ -1,0 +1,7 @@
+\date{2026-07-17T15:38:18Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Reduced instruction set computing (RISC)}
+\taxon{Definition}
+\tag{public}
+\p{An ISA with a small set of simple, uniform instructions; explicit load and store; arithmetic only on registers. Each instruction does little but maps cleanly to hardware. PowerPC, MIPS, ARM are RISC.}

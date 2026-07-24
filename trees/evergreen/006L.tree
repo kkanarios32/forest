@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-03-30}
+\author{kellenkanarios}
 \import{base-macros}
 \taxon{Theorem}
 \title{The type-based fixed-rate code is universal}

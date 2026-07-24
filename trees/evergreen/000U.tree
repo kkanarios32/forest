@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2024-11-21}
+\author{kellenkanarios}
 \taxon{Definition}
 \title{#{P^*}-measurable}
 \p{#{A} is #{P^*}-measurable if for every #{E \subset \Omega}, we have that 

@@ -5,6 +5,42 @@
   file = {/home/kellen/Downloads/papers/General-Purpose Graphics Processor Architectures - Aamodt et al..pdf}
 }
 
+@inproceedings{abtsSoftwaredefinedTensorStreaming2022,
+  title = {A Software-Defined Tensor Streaming Multiprocessor for Large-Scale Machine Learning},
+  booktitle = {Proceedings of the 49th {{Annual International Symposium}} on {{Computer Architecture}}},
+  author = {Abts, Dennis and Kimmell, Garrin and Ling, Andrew and Kim, John and Boyd, Matt and Bitar, Andrew and Parmar, Sahil and Ahmed, Ibrahim and DiCecco, Roberto and Han, David and Thompson, John and Bye, Michael and Hwang, Jennifer and Fowers, Jeremy and Lillian, Peter and Murthy, Ashwin and Mehtabuddin, Elyas and Tekur, Chetan and Sohmers, Thomas and Kang, Kris and Maresh, Stephen and Ross, Jonathan},
+  year = 2022,
+  month = jun,
+  pages = {567--580},
+  publisher = {ACM},
+  address = {New York New York},
+  doi = {10.1145/3470496.3527405},
+  urldate = {2026-07-13},
+  abstract = {We describe our novel commercial software-defined approach for large-scale interconnection networks of tensor streaming processing (TSP) elements. The system architecture includes packaging, routing, and flow control of the interconnection network of TSPs. We describe the communication and synchronization primitives of a bandwidth-rich substrate for global communication. This scalable communication fabric provides the backbone for large-scale systems based on a software-defined Dragonfly topology, ultimately yielding a parallel machine learning system with elasticity to support a variety of workloads, both training and inference. We extend the TSP's producer-consumer stream programming model to include global memory which is implemented as logically shared, but physically distributed SRAM on-chip memory. Each TSP contributes 220 MiBytes to the global memory capacity, with the maximum capacity limited only by the network's scale --- the maximum number of endpoints in the system. The TSP acts as both a processing element (endpoint) and network switch for moving tensors across the communication links. We describe a novel software-controlled networking approach that avoids the latency variation introduced by dynamic contention for network links. We describe the topology, routing and flow control to characterize the performance of the network that serves as the fabric for a large-scale parallel machine learning system with up to 10,440 TSPs and more than 2 TeraBytes of global memory accessible in less than 3 microseconds of end-to-end system latency.},
+  isbn = {978-1-4503-8610-4},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/A software-defined tensor streaming multiprocessor for large-scale machine learning - Abts et al..pdf}
+}
+
+@inproceedings{abtsThinkFastTensor2020,
+  title = {Think {{Fast}}: {{A Tensor Streaming Processor}} ({{TSP}}) for {{Accelerating Deep Learning Workloads}}},
+  shorttitle = {Think {{Fast}}},
+  booktitle = {2020 {{ACM}}/{{IEEE}} 47th {{Annual International Symposium}} on {{Computer Architecture}} ({{ISCA}})},
+  author = {Abts, Dennis and Ross, Jonathan and Sparling, Jonathan and {Wong-VanHaren}, Mark and Baker, Max and Hawkins, Tom and Bell, Andrew and Thompson, John and Kahsai, Temesghen and Kimmell, Garrin and Hwang, Jennifer and {Leslie-Hurd}, Rebekah and Bye, Michael and Creswick, E.R. and Boyd, Matthew and Venigalla, Mahitha and Laforge, Evan and Purdy, Jon and Kamath, Purushotham and Maheshwari, Dinesh and Beidler, Michael and Rosseel, Geert and Ahmad, Omar and Gagarin, Gleb and Czekalski, Richard and Rane, Ashay and Parmar, Sahil and Werner, Jeff and Sproch, Jim and Macias, Adrian and Kurtz, Brian},
+  year = 2020,
+  month = may,
+  pages = {145--158},
+  publisher = {IEEE},
+  address = {Valencia, Spain},
+  doi = {10.1109/ISCA45697.2020.00023},
+  urldate = {2026-07-13},
+  abstract = {In this paper, we introduce the Tensor Streaming Processor (TSP) architecture, a functionally-sliced microarchitecture with memory units interleaved with vector and matrix deep learning functional units in order to take advantage of dataflow locality of deep learning operations. The TSP is built based on two key observations: (1) machine learning workloads exhibit abundant data parallelism, which can be readily mapped to tensors in hardware, and (2) a simple and deterministic processor with producer-consumer stream programming model enables precise reasoning and control of hardware components, achieving good performance and power efficiency. The TSP is designed to exploit parallelism inherent in machine-learning workloads including instruction-level, memory concurrency, data and model parallelism, while guaranteeing determinism by eliminating all reactive elements in the hardware (e.g. arbiters, and caches). Early ResNet50 image classification results demonstrate 20.4K processed images per second (IPS) with a batch-size of one---a 4\texttimes{} improvement compared to other modern GPUs and accelerators [44]. Our first ASIC implementation of the TSP architecture yields a computational density of more than 1 TeraOp/s per square mm of silicon for its 25\texttimes 29 mm 14nm chip operating at a nominal clock frequency of 900 MHz. The TSP demonstrates a novel hardware-software approach to achieve fast, yet predictable, performance on machine-learning workloads within a desired power envelope.},
+  copyright = {https://doi.org/10.15223/policy-029},
+  isbn = {978-1-7281-4661-4},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/Think Fast A Tensor Streaming Processor (TSP) for Accelerating Deep Learning Workloads - Abts et al..pdf}
+}
+
 @article{agarwalDeepReinforcementLearning,
   title = {Deep {{Reinforcement Learning}} at the {{Edge}} of the {{Statistical Precipice}}},
   author = {Agarwal, Rishabh and Schwarzer, Max and Castro, Pablo Samuel and Courville, Aaron and Bellemare, Marc G},
@@ -78,6 +114,20 @@
   file = {/home/kellen/Downloads/papers/Stochastic Interpolants A Unifying Framework for Flows and Diffusions - Albergo et al..pdf}
 }
 
+@book{allenGettingThingsDone2015,
+  title = {Getting {{Things Done}}: {{The Art}} of {{Stress-Free Productivity}}},
+  shorttitle = {Getting {{Things Done}}},
+  author = {Allen, David},
+  year = 2015,
+  month = mar,
+  publisher = {Penguin},
+  abstract = {One of Daniel Pink's 13 Books to Read Before 30The book Lifehack calls "The Bible of business and personal productivity.""A completely revised and updated edition of the blockbuster bestseller from 'the personal productivity guru'"---Fast CompanySince it was first published almost fifteen years ago, David Allen's Getting Things Done has become one of the most influential business books of its era, and the ultimate book on personal organization. ``GTD'' is now shorthand for an entire way of approaching professional and personal tasks, and has spawned an entire culture of websites, organizational tools, seminars, and offshoots.Allen has rewritten the book from start to finish, tweaking his classic text with important perspectives on the new workplace, and adding material that will make the book fresh and relevant for years to come. This new edition of Getting Things Done will be welcomed not only by its hundreds of thousands of existing fans but also by a whole new generation eager to adopt its proven principles.},
+  googlebooks = {ebNDDwAAQBAJ},
+  isbn = {978-0-14-312656-0},
+  langid = {english},
+  keywords = {Business & Economics / Time Management,Self-Help / Self-Management / Stress Management,Self-Help / Self-Management / Time Management}
+}
+
 @book{aluffiAlgebraChapter02009,
   title = {Algebra: Chapter 0},
   shorttitle = {Algebra},
@@ -135,6 +185,17 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Mathematical Software,Computer Science - Neural and Evolutionary Computing,Computer Science - Performance,Computer Science - Programming Languages},
   file = {/home/kellen/Downloads/papers/Tiramisu A Polyhedral Compiler for Expressing Fast and Portable Code - Baghdadi et al..pdf}
+}
+
+@book{bakerMezzanine1990,
+  title = {The {{Mezzanine}}},
+  author = {Baker, Nicholson},
+  year = 1990,
+  publisher = {Vintage Books},
+  abstract = {Readers follow the journey of our hero up the escalator and learn why straws don't sink in milk cartons; whether the hot air blowers in bathrooms are really more sanitary than towels; the physics of shoelaces; and how the most trivial of objects can lead to the deepest revelations of the human heart.},
+  isbn = {978-0-679-72576-3},
+  langid = {english},
+  keywords = {Fiction / General,Fiction / Literary,Fiction / Places / United States}
 }
 
 @misc{barretoOptionKeyboardCombining2021,
@@ -488,6 +549,20 @@
   file = {/home/kellen/Downloads/papers/Probability and Stochastics - Çinlar.pdf}
 }
 
+@book{clearAtomicHabitsEasy2019,
+  title = {Atomic {{Habits}}: {{An Easy}} \& {{Proven Way}} to {{Build Good Habits}} \& {{Break Bad Ones}}},
+  shorttitle = {Atomic {{Habits}}},
+  author = {Clear, James},
+  year = 2019,
+  month = sep,
+  publisher = {National Geographic Books},
+  abstract = {The \#1 New York Times bestseller. Over 4 million copies sold!Tiny Changes, Remarkable ResultsNo matter your goals, Atomic Habits offers a proven framework for improving--every day. James Clear, one of the world's leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results.If you're having trouble changing your habits, the problem isn't you. The problem is your system. Bad habits repeat themselves again and again not because you don't want to change, but because you have the wrong system for change. You do not rise to the level of your goals. You fall to the level of your systems. Here, you'll get a proven system that can take you to new heights.Clear is known for his ability to distill complex topics into simple behaviors that can be easily applied to daily life and work. Here, he draws on the most proven ideas from biology, psychology, and neuroscience to create an easy-to-understand guide for making good habits inevitable and bad habits impossible. Along the way, readers will be inspired and entertained with true stories from Olympic gold medalists, award-winning artists, business leaders, life-saving physicians, and star comedians who have used the science of small habits to master their craft and vault to the top of their field.Learn how to:make time for new habits (even when life gets crazy);overcome a lack of motivation and willpower;design your environment to make success easier;get back on track when you fall off course;...and much more.Atomic Habits will reshape the way you think about progress and success, and give you the tools and strategies you need to transform your habits--whether you are a team looking to win a championship, an organization hoping to redefine an industry, or simply an individual who wishes to quit smoking, lose weight, reduce stress, or achieve any other goal.},
+  googlebooks = {mSiOEAAAQBAJ},
+  isbn = {978-0-593-20709-3},
+  langid = {english},
+  keywords = {Business & Economics / Organizational Behavior,Psychology / Social Psychology,Self-Help / General,Self-Help / Personal Growth / General}
+}
+
 @article{coverELEMENTSINFORMATIONTHEORY,
   title = {{{ELEMENTS OF INFORMATION THEORY}}},
   author = {Cover, Thomas M and Thomas, Joy A},
@@ -797,6 +872,13 @@
   file = {/home/kellen/Downloads/papers/Compositional Planning with Jumpy World Models - Farebrother et al..pdf}
 }
 
+@article{fog1OptimizingSoftware,
+  title = {1. {{Optimizing}} Software in {{C}}++},
+  author = {Fog, Agner},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/1. Optimizing software in C++ - Fog.pdf}
+}
+
 @misc{fosterFoundationsReinforcementLearning2023,
   title = {Foundations of {{Reinforcement Learning}} and {{Interactive Decision Making}}},
   author = {Foster, Dylan J. and Rakhlin, Alexander},
@@ -846,7 +928,7 @@
   abstract = {Augmenting an agent's control with useful higher-level behaviors called options can greatly reduce the sample complexity of reinforcement learning, but manually designing options is infeasible in high-dimensional and abstract state spaces. While recent work has proposed several techniques for automated option discovery, they do not scale to multi-level hierarchies and to expressive representations such as deep networks. We present Discovery of Deep Options (DDO), a policy-gradient algorithm that discovers parametrized options from a set of demonstration trajectories, and can be used recursively to discover additional levels of the hierarchy. The scalability of our approach to multi-level hierarchies stems from the decoupling of low-level option discovery from high-level meta-control policy learning, facilitated by under-parametrization of the high level. We demonstrate that using the discovered options to augment the action space of Deep Q-Network agents can accelerate learning by guiding exploration in tasks where random actions are unlikely to reach valuable states. We show that DDO is effective in adding options that accelerate learning in 4 out of 5 Atari RAM environments chosen in our experiments. We also show that DDO can discover structure in robot-assisted surgical videos and kinematics that match expert annotation with 72\% accuracy.},
   archiveprefix = {arXiv},
   keywords = {Computer Science - Machine Learning},
-  file = {/home/kellen/Downloads/pdfs/storage/U5EXH42Y/Multi-Level Discovery of Deep Options - Fox et al..pdf}
+  file = {/home/kellen/Downloads/papers/Multi-Level Discovery of Deep Options - Fox et al..pdf}
 }
 
 @book{freglyAISystemsPerformance2025,
@@ -1135,6 +1217,19 @@
   file = {/home/kellen/Downloads/papers/Podracer architectures for scalable Reinforcement Learning - Hessel et al..pdf}
 }
 
+@book{hofstadterGodelEscherBach1999,
+  title = {G\"odel, {{Escher}}, {{Bach}}: {{An Eternal Goden Braid}}},
+  shorttitle = {G\"odel, {{Escher}}, {{Bach}}},
+  author = {Hofstadter, Douglas R.},
+  year = 1999,
+  publisher = {Basic Books},
+  abstract = {Douglas Hofstadter's book is concerned directly with the nature of ?maps'' or links between formal systems. However, according to Hofstadter, the formal system that underlies all mental activity transcends the system that supports it. If life can grow out of the formal chemical substrate of the cell, if consciousness can emerge out of a formal system of firing neurons, then so too will computers attain human intelligence. G\"odel Escher and Bach is a wonderful exploration of fascinating ideas at the heart of cognitive science: meaning, reduction, recursion, and much more.},
+  googlebooks = {uZLdksxOEecC},
+  isbn = {978-0-465-02656-2},
+  langid = {english},
+  keywords = {Art / Individual Artists / General,Biography & Autobiography / Science & Technology,Computers / Intelligence (AI) & Semantics,Mathematics / Logic,Music / Genres & Styles / Classical,Philosophy / General,Science / General,Science / Philosophy & Social Aspects}
+}
+
 @misc{HttpsArxivorgPdfa,
   title = {{{https://arxiv.org/pdf/2103.00020}}},
   urldate = {2025-09-03},
@@ -1164,6 +1259,19 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning,Statistics - Machine Learning},
   file = {/home/kellen/Downloads/papers/Reinforcement Learning in Low-Rank MDPs with Density Features - Huang et al..pdf}
+}
+
+@book{isaacsonElonMusk2023,
+  title = {Elon {{Musk}}},
+  author = {Isaacson, Walter},
+  year = 2023,
+  month = sep,
+  publisher = {{Simon and Schuster}},
+  abstract = {From the author of Steve Jobs and other bestselling biographies, this is the astonishingly intimate story of the most fascinating and controversial innovator of our era---a rule-breaking visionary who helped to lead the world into the era of electric vehicles, private space exploration, and artificial intelligence. Oh, and took over Twitter.Australian Financial Review Top 20 Read for 2023\hspace{0pt} When Elon Musk was a kid in South Africa, he was regularly beaten by bullies. One day a group pushed him down some concrete steps and kicked him until his face was a swollen ball of flesh. He was in the hospital for a week. But the physical scars were minor compared to the emotional ones inflicted by his father, an engineer, rogue, and charismatic fantasist. His father's impact on his psyche would linger. He developed into a tough yet vulnerable man-child, prone to abrupt Jekyll-and-Hyde mood swings, with an exceedingly high tolerance for risk, a craving for drama, an epic sense of mission, and a maniacal intensity that was callous and at times destructive. At the beginning of 2022---after a year marked by SpaceX launching thirty-one rockets into orbit, Tesla selling a million cars, and him becoming the richest man on earth---Musk spoke ruefully about his compulsion to stir up dramas. ``I need to shift my mindset away from being in crisis mode, which it has been for about fourteen years now, or arguably most of my life,'' he said. It was a wistful comment, not a New Year's resolution. Even as he said it, he was secretly buying up shares of Twitter, the world's ultimate playground. Over the years, whenever he was in a dark place, his mind went back to being bullied on the playground. Now he had the chance to own the playground. For two years, Isaacson shadowed Musk, attended his meetings, walked his factories with him, and spent hours interviewing him, his family, friends, coworkers, and adversaries. The result is the revealing inside story, filled with amazing tales of triumphs and turmoil, that addresses the question: are the demons that drive Musk also what it takes to drive innovation and progress?},
+  googlebooks = {6\_mzEAAAQBAJ},
+  isbn = {978-1-76142-262-1},
+  langid = {english},
+  keywords = {Biography & Autobiography / Business,Biography & Autobiography / General,Biography & Autobiography / Rich & Famous,Biography & Autobiography / Science & Technology}
 }
 
 @article{jaakkolaConvergenceStochasticIterative,
@@ -1448,6 +1556,25 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/papers/Offline Reinforcement Learning with Implicit Q-Learning - Kostrikov et al..pdf}
+}
+
+@misc{kothariAxonSynthesizingSuperoptimizer2026,
+  title = {Axon: {{A Synthesizing Superoptimizer}} for {{Tensor Programs}}},
+  shorttitle = {Axon},
+  author = {Kothari, Akash and Zhu, Shaowei and Kroening, Daniel and Sung, Chungha},
+  year = 2026,
+  month = jun,
+  number = {arXiv:2606.26344},
+  eprint = {2606.26344},
+  primaryclass = {cs.PL},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2606.26344},
+  urldate = {2026-07-13},
+  abstract = {Writing high performance kernels for AI accelerators requires deep expertise in tiling, instruction selection, data layout, and operator fusion placing a significant burden on programmers. In this paper, we focus on tile based AI accelerator programs and present Axon, a synthesizing superoptimizer for tensor programs: it uses program synthesis to automatically generate target instructions from semantics specifications, and explores semantically equivalent program variants to select the best performing kernel empirically. Axon discovers algebraic transformations by propagating operators through computation graphs and uses SMT over unbounded tensors to guarantee that all transformations preserve semantics without requiring hand crafted rewrite rules. It then lowers tensor operations to target ISA instructions, explores tiling configurations constrained by hardware descriptions, and fuses operators and instructions to minimize memory traffic.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Computation and Language,Computer Science - Performance,Computer Science - Programming Languages},
+  file = {/home/kellen/Downloads/papers/Axon A Synthesizing Superoptimizer for Tensor Programs - Kothari et al..pdf}
 }
 
 @misc{kumarContinualLearningComputationally2023,
@@ -1898,6 +2025,20 @@
   file = {/home/kellen/Downloads/papers/Understanding Plasticity in Neural Networks - Lyle et al..pdf}
 }
 
+@book{mallabyInfinityMachineDemis2026,
+  title = {The {{Infinity Machine}}: {{Demis Hassabis}}, {{DeepMind}}, and the {{Quest}} for {{Superintelligence}}},
+  shorttitle = {The {{Infinity Machine}}},
+  author = {Mallaby, Sebastian},
+  year = 2026,
+  month = mar,
+  publisher = {Penguin Group},
+  abstract = {An Instant New York Times BestsellerFrom one of our leading chroniclers of the intersection of innovation and capitalism, a landmark reckoning---based on unprecedented access---with one of the world's most brilliant and driven tech visionaries, and his game-changing companyEven by the standard of a tech industry stacked with so-called geniuses, Demis Hassabis is a special case. Born poor in North London to immigrant parents, a chess prodigy by age five and wizard coder in his teens, he turned down a seven figure offer before turning 18 to feed his insatiable scientific curiosity at Cambridge. Later, he added a neuroscience PhD to his computer science skills to pursue the dream of artificial general intelligence, the ultimate goal being to unravel the mysteries of biology and theoretical physics and to usher in super-abundance. Alongside a small group of fellow travelers, that is the path he is still on, leading the AI research at Google, winning a Nobel Prize along the way, and imagining machines that will compound, or possibly supplant, the human understanding of the universe.Hassabis has given Sebastian Mallaby a great deal of his time, sitting for over thirty hours of conversation. But Mallaby has also drawn from Hassabis's detractors, such as his estranged cofounder Mustafa Suleyman; from his rivals, such as OpenAI's leading scientist Ilya Sutskever; and from academic pioneers who now fear for human survival, such as Nobel laureate Geoffrey Hinton. The result is a revelatory account of a singular figure and his company and a profound reckoning with this protean field as it leaps from the periphery to the center of our consciousness.No one questions Hassabis's brilliance. There are those who, like Elon Musk, have at times regarded him as an "evil genius." He is in a game where the stakes are matched only by the exorbitant costs --- for talent, and for compute. Celebrated scientists pursue the technology because they cannot resist the sweetness of discovery. Others pursue it for money or power. The inventors believe they control their technology, but often, the technology controls them.Despite Hassabis's pivotal role inside Google's engine room, this is not a Silicon Valley story. Hassabis deals with the Valley and takes its money, but remains outside and furiously critical of it, lambasting its leaders in conversation with Mallaby. The end of this race cannot be known, but as this great book shows us, Hassabis's quest to will a new form of cognition into the world is a defining story for our era.},
+  googlebooks = {E7eJEQAAQBAJ},
+  isbn = {978-0-593-83184-7},
+  langid = {english},
+  keywords = {Business & Economics / Industries / Computers & Information Technology,Science / Philosophy & Social Aspects,Technology & Engineering / Social Aspects}
+}
+
 @misc{malladiFineTuningLanguageModels2024,
   title = {Fine-{{Tuning Language Models}} with {{Just Forward Passes}}},
   author = {Malladi, Sadhika and Gao, Tianyu and Nichani, Eshaan and Damian, Alex and Lee, Jason D. and Chen, Danqi and Arora, Sanjeev},
@@ -1966,6 +2107,19 @@
   archiveprefix = {arXiv},
   keywords = {Computer Science - Machine Learning},
   file = {/home/kellen/Downloads/papers/Continual Auxiliary Task Learning - McLeod et al..pdf}
+}
+
+@book{metzGeniusMakersMavericks2021,
+  title = {Genius {{Makers}}: {{The Mavericks Who Brought A}}. {{I}}. to {{Google}}, {{Facebook}}, and the {{World}}},
+  shorttitle = {Genius {{Makers}}},
+  author = {Metz, Cade},
+  year = 2021,
+  publisher = {Random House Business},
+  abstract = {The definitive account of the race to create artificial intelligence 'This colourful page-turner puts artificial intelligence into a human perspective . . . Metz explains this transformative technology and makes the quest thrilling.' Walter Isaacson, author of Steve Jobs \_\_\_  Long dismissed as a technology of the distant future, artificial intelligence was a project once consigned to the fringes of the scientific community. Then two researchers changed everything. One was a 64-year-old computer science professor with a back problem so severe he could not drive or fly. The other was a 36-year-old neuroscientist and chess prodigy. Though they took very different paths, together they helped catapult AI to the forefront of our daily lives and, in the process, created a business worth billions.  This is the story of that technological revolution and of the arms race it has sparked among companies that range from Google to Facebook to OpenAI. It's the story of growing international rivalry to achieve major new breakthroughs. And it's a story that shows both the inventive best of humankind and its darker side, as advances have been counter-balanced by issues of prejudice, bias and the invasion of privacy.  New York Times Silicon Valley journalist Cade Metz draws on unparalleled access to all the major players to create an extraordinarily vivid account of a revolution over five decades in the making. And he poses the questions that will dominate the next half-century- where will AI take us next? Are systems with truly human intelligence on the horizon? And, if so, where does that leave us?  \_\_\_ 'One day soon, when computers are safely driving our roads and speaking to us in complete sentences, we'll look back at Cade Metz's elegant, sweeping Genius Makers as their birth story - the Genesis for an age of sentient machines.' Brad Stone, author of The Everything Store and The Upstarts},
+  googlebooks = {G6QouAEACAAJ},
+  isbn = {978-1-84794-213-5},
+  langid = {english},
+  keywords = {Biography & Autobiography / Science & Technology,Business & Economics / Entrepreneurship,Business & Economics / General,Business & Economics / Industries / Computers & Information Technology,Computers / Artificial Intelligence / General,Computers / Hardware / Mainframes & Minicomputers,Computers / Internet / Search Engines,Computers / Internet / Social Media,Computers / Social Aspects}
 }
 
 @article{momennejadSuccessorRepresentationHuman2017,
@@ -2072,6 +2226,20 @@
   volume = {33},
   pages = {1877--1901},
   publisher = {Curran Associates, Inc.}
+}
+
+@book{newportDeepWorkRules2016,
+  title = {Deep {{Work}}: {{Rules}} for {{Focused Success}} in a {{Distracted World}}},
+  shorttitle = {Deep {{Work}}},
+  author = {Newport, Cal},
+  year = 2016,
+  month = jan,
+  publisher = {Grand Central Publishing},
+  abstract = {Millions of copies sold! The bestselling modern classic that sparked a worldwide conversation about the value of concentration---and the true costs of fractured attention. ``I'm handing you the answer to the overwhelm you feel, and his name is Dr. Cal Newport.'' ---Mel Robbins, The Mel Robbins Podcast, author of New York Times bestselling The Let Them TheoryDeep Work---the ability to focus without distraction on cognitively demanding tasks---is one of the most important abilities you can cultivate in our current moment. It's a skill that allows you to quickly master complicated information and produce quality results in less time. And yet, most people have lost the ability to go deep---spending their days in a frantic blur of emails, online meetings, social media, and AI slop, not realizing there's a better way. In Deep Work, bestselling author and professor Cal Newport makes the case for reclaiming focus as a critical skill in our digital world, providing step-by step instructions for achieving this goal, including four rules for transforming your daily habits: 1. Work Deeply 2. Embrace Boredom 3. Quit Social Media 4. Drain the Shallows A mix of cultural criticism and actionable advice, Deep Work offers a vitally important message: in our age of constant distraction, focus is a superpower. With inspiring examples and clear rules, Deep Work will teach you to introduce this ability in your own life.``As a presence on the page, Newport is exceptional in the realm of self-help authors \dots{} Six pages in, I powered down my laptop. Twenty pages in, I left the house to buy an alarm clock so that I wouldn't have an excuse to sleep next to my phone.''---Molly Young, The New York Times ``One of the few books I would call life-changing.'' ---Tim Maurer, Forbes ``I've read lots of books about productivity and lots of books about distraction. For me, Deep Work is among the best, on both counts.'' ---Joshua Rothman, The New Yorker ``[Deep Work] has changed how I live my life. Particularly, it's led me to stop scheduling morning meetings, and to preserve that time for more sustained, creative work.'' ---Ezra Klein, The Ezra Klein Show},
+  googlebooks = {4QTzCAAAQBAJ},
+  isbn = {978-1-4555-8666-0},
+  langid = {english},
+  keywords = {Business & Economics / Skills,Business & Economics / Time Management,Business & Economics / Workplace Culture,Self-Help / Personal Growth / Success,Self-Help / Self-Management / Time Management}
 }
 
 @misc{nilakshSqueezingMoreStream2026,
@@ -3251,6 +3419,19 @@
   file = {/home/kellen/Downloads/papers/Relative Entropy Pathwise Policy Optimization - Voelcker et al..pdf}
 }
 
+@book{voltaireCandide2015,
+  title = {Candide},
+  author = {Voltaire},
+  year = 2015,
+  month = jan,
+  publisher = {First Avenue Editions},
+  abstract = {Though he\&\#39;s the illegitimate nephew of a German baron, Candide grows up in a castle under the tutelage of the scholar Pangloss. Pangloss is so enraptured by the Enlightenment\~Nan era of prosperity and intellectual growth\~Nthat he proclaims the world to be \&quot;the best of all possible worlds.\&quot; As an adult, Candide tries to cling to this optimistic philosophy despite experiencing a series of horrible misfortunes while striving to be reunited with the woman he loves. The French novel Candide satirizes the philosophies of the Enlightenment and humorously criticizes the nobility, religious viewpoints, and politics of the time. Voltaire\~Nthe pen name of French author Fran?ois-Marie Arouet\~Nfirst published his satire in 1759. This is an unabridged version of an English translation, published in 1918.},
+  googlebooks = {Iy5TBgAAQBAJ},
+  isbn = {978-1-4677-7800-8},
+  langid = {english},
+  keywords = {Fiction / Classics,Fiction / Political,Fiction / Satire}
+}
+
 @article{wangImprovedRepresentationAsymmetrical,
   title = {Improved {{Representation}} of {{Asymmetrical Distances}} with {{Interval Quasimetric Embeddings}}},
   author = {Wang, Tongzhou and Isola, Phillip},
@@ -3292,6 +3473,25 @@
   file = {/home/kellen/Downloads/papers/ON THE LEARNING AND LEARNABILITY OF QUASIMETRICS - Wang and Isola.pdf}
 }
 
+@misc{wangTileLangComposableTiled2025,
+  title = {{{TileLang}}: {{A Composable Tiled Programming Model}} for {{AI Systems}}},
+  shorttitle = {{{TileLang}}},
+  author = {Wang, Lei and Cheng, Yu and Shi, Yining and Tang, Zhengju and Mo, Zhiwen and Xie, Wenhao and Ma, Lingxiao and Xia, Yuqing and Xue, Jilong and Yang, Fan and Yang, Zhi},
+  year = 2025,
+  month = apr,
+  number = {arXiv:2504.17577},
+  eprint = {2504.17577},
+  primaryclass = {cs.LG},
+  publisher = {arXiv},
+  doi = {10.48550/arXiv.2504.17577},
+  urldate = {2026-07-13},
+  abstract = {Modern AI workloads rely heavily on optimized computing kernels for both training and inference. These AI kernels follow well-defined data-flow patterns, such as moving tiles between DRAM and SRAM and performing a sequence of computations on those tiles. However, writing high-performance kernels remains complex despite the clarity of these patterns. Achieving peak performance requires careful, hardware-centric optimizations to fully leverage modern accelerators. While domain-specific compilers attempt to reduce the burden of writing high-performance kernels, they often struggle with usability and expressiveness gaps. In this paper, we present TileLang, a generalized tiled programming model for more efficient AI Kernel programming. TileLang decouples scheduling space (thread binding, layout, tensorize and pipeline) from dataflow, and encapsulated them as a set of customization annotations and primitives. This approach allows users to focus on the kernel's data-flow itself, while leaving most other optimizations to compilers. We conduct comprehensive experiments on commonly-used devices, across numerous experiments, our evaluation shows that TileLang can achieve state-of-the-art performance in key kernels, demonstrating that its unified block-and-thread paradigm and transparent scheduling capabilities deliver both the power and flexibility demanded by modern AI system development.},
+  archiveprefix = {arXiv},
+  langid = {english},
+  keywords = {Computer Science - Machine Learning},
+  file = {/home/kellen/Downloads/papers/TileLang A Composable Tiled Programming Model for AI Systems - Wang et al..pdf}
+}
+
 @misc{weiSuperCoderAssemblyProgram2026,
   title = {{{SuperCoder}}: {{Assembly Program Superoptimization}} with {{Large Language Models}}},
   shorttitle = {{{SuperCoder}}},
@@ -3327,6 +3527,31 @@
   langid = {english},
   keywords = {Computer Science - Artificial Intelligence,Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Performance,Computer Science - Robotics},
   file = {/home/kellen/Downloads/papers/EnvPool A Highly Parallel Reinforcement Learning Environment Execution Engine - Weng et al..pdf}
+}
+
+@book{westeCMOSVLSIDesign2011,
+  title = {{{CMOS VLSI}} Design: A Circuits and Systems Perspective},
+  shorttitle = {{{CMOS VLSI}} Design},
+  author = {Weste, Neil H. E. and Harris, David Money},
+  year = 2011,
+  edition = {4. ed},
+  publisher = {Addison-Wesley},
+  address = {Boston, Mass.},
+  isbn = {978-0-321-54774-3},
+  langid = {english}
+}
+
+@book{westeCMOSVLSIDesign2011a,
+  title = {{{CMOS VLSI}} Design: A Circuits and Systems Perspective},
+  shorttitle = {{{CMOS VLSI}} Design},
+  author = {Weste, Neil H. E. and Harris, David Money},
+  year = 2011,
+  edition = {4. ed},
+  publisher = {Addison-Wesley},
+  address = {Boston, Mass.},
+  isbn = {978-0-321-54774-3},
+  langid = {english},
+  file = {/home/kellen/Downloads/papers/積體電路課本.pdf}
 }
 
 @misc{wibaultAbstractionOfflineGoalConditioned2026,

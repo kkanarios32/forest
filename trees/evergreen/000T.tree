@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2024-11-21}
+\author{kellenkanarios}
 \title{Outer Measure}
 \taxon{Definition}
 \p{For each subset #{A} of #{\Omega}, ##{P^{*}(A)=\mathrm{inf}\,\sum_{n}P(A_{n}),} where #{A \subset \bigcup_{n = 1}^{\infty} A_n.} }

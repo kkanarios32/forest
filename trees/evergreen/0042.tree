@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-01-30}
+\author{kellenkanarios}
 \import{base-macros}
 \title{Chapman-Kolmogorov Equation}
 \taxon{Definition}

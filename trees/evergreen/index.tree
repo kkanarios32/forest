@@ -1,4 +1,5 @@
 \tag{public}
+\tag{index}
 \title{Kellen Kanarios}
 \author{kellenkanarios}
 \meta{author}{false}
@@ -29,7 +30,7 @@
 \p{
   \mark{I am interested in continual reinforcement learning or more explicitly how (and what) to learn generalizable \em{information} online}. With this, I am looking into {zero-shot, unsupervised, hierarchical} RL. I am also recreationally interested in Unix (see my [dotfiles](https://github.com/kkanarios32/dotfiles)), HPC, and biologically-plausible learning algorithms. If you are also interested in any of these thing and want to chat, [schedule a meeting](https://calendly.com/kellenkk-umich/30min)!}
 \p{
-  If you are a student at [[umich]] and are interested in research, I am advising a few undergraduates with my [advisor](leiying).
+  If you are a student at [[umich]] and are interested in research, I am advising a few undergraduates with my [advisor](leiying). For potential projects, see my [[Z902]].
 }
 
 \<html:div>[style]{clear: both;}{}
@@ -40,7 +41,7 @@
   \subtree[about]{
     \title{About this website}
     \p{
-    This is my [forest](https://www.forester-notes.org/index/index.xml) (shoutout to [[jonmsterling]] who is remarkably helpful). This website functions both as a [personal knowledge management system](https://en.wikipedia.org/wiki/Personal_knowledge_management), where I store my notes in [notebooks](0015), some accompanying solutions in the [solution manuals](914H), and any external resources I have made in [[0004]]. Additionally, I store my thoughts in a variety of consumption mediums. Namely, both long-form and short-form notes / posts can be found in my [blog](0002). I also maintain two weekly posting obligations: a [weeknotes / lifelog](007S) and a [paper of the week](005G).
+    This is my [forest](https://www.forester-notes.org/index/index.xml) (shoutout to [[jonmsterling]] who is remarkably helpful). This website functions both as a [personal knowledge management system](https://en.wikipedia.org/wiki/Personal_knowledge_management), where I store my notes in [notebooks](0015), some accompanying solutions in the [solution manuals](914H), and any external resources I have made in [[0004]]. Additionally, I store my thoughts in a variety of consumption mediums. Namely, both long-form and short-form notes / posts can be found in my [blog](0002). I also maintain two weekly posting obligations: a [weeknotes / lifelog](007S) and a [paper of the week](005G). 
   }
   }
 }
@@ -51,10 +52,10 @@
   \subtree[rn]{
     \title{News}
       \ul{
-      \li{[\strong{September. 2024}] I will officially be starting my PhD at [[umich]]}
-      \li{[\strong{August. 2024}] I finished my undergraduate [thesis](kanariosThesis2024) and officially graduated!}
-      \li{[\strong{May. 2024}] Our [paper](kanariosCostAwareBest2024) got accepted by [[rlc]]}
-      \li{[\strong{January. 2024}] I will be TAing [EECS 602](https://sites.google.com/view/intro-to-rl/home)}
+      \li{\paragraph{September. 2024} I will officially be starting my PhD at [[umich]]}
+      \li{\paragraph{August. 2024} I finished my undergraduate [thesis](kanariosThesis2024) and officially graduated!}
+      \li{\paragraph{May. 2024} Our [paper](kanariosCostAwareBest2024) got accepted by [[rlc]]}
+      \li{\paragraph{January. 2024} I will be TAing [EECS 602](https://sites.google.com/view/intro-to-rl/home)}
       }
     }
 }
@@ -74,4 +75,5 @@
     }
   }
   \transclude{0002}
+  \transclude{RCNT}
 }

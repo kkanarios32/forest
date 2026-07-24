@@ -1,5 +1,6 @@
 \tag{public}
 \date{2025-07-01T21:51:12Z}
+\author{kellenkanarios}
 \title{Flow}
 \taxon{Definition}
 \p{Give a [vector field](008C) #{v_t} one can construct a time-dependent diffeomorphic map called a \em{flow} #{\phi: [0,1] \times \mathbb{R}^d \to \mathbb{R}^d} defined via the ordinary differential equation

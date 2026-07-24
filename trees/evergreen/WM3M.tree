@@ -1,4 +1,5 @@
 \date{2025-07-14T17:58:44Z}
+\author{kellenkanarios}
 \tag{public}
 \title{Sliding Window Attention}
 \p{The idea behind \em{sliding window attention} is to ensure the number of weight matrices needed for the keys #{K} and values #{V} does not scale with the sequence length. Intuitively, this means allowing each word to "attend" to only some fixed number of previous words rather than the whole sequence}

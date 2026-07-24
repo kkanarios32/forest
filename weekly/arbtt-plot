@@ -3,145 +3,249 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#     "datetime",
 #     "matplotlib",
-#     "numpy",
 #     "pandas",
-#     "seaborn",
 # ]
 # ///
+#
+# Arbtt — non-coding computer time, bucketed. Companion to `coding` (Wakatime):
+# that figure owns time spent *writing code*; this one owns everything else the
+# machine was used for, sorted into a few life-buckets. Same visual grammar as
+# coding — a primary hours-per-day stacked column chart, then a thin horizontal
+# strip showing the week's bucket mix that doubles as the colour key. Chrome-
+# stripped: no legend, no axes, no gridlines, no frame. Saved as arbtt.png.
+#
+# Buckets (fixed, one stable colour each — unlike coding's rank-based fold, these
+# are semantic categories whose colour should read across weeks):
+#
+#   Work      research reading + writing: papers/PDFs (zathura, arxiv, Zotero),
+#             Overleaf, ML-systems docs, research assistant chats, the forest
+#             (Claude Code sessions, .tree editing, the published site), comms.
+#   Study     deliberate practice: LeetCode, Anki, DSA prep, coursework.
+#   Brain rot entertainment: YouTube (non-educational), social, streaming, music.
+#   Other     the honest residual — admin, personal browsing, unclassifiable.
+#
+# Coding itself is *excluded* (it is Wakatime's story) and idle time is dropped.
+# The categorisation itself lives in arbtt's own categorize.cfg, under a
+# dedicated `Bucket:` category (Bucket:work / study / brainrot / coding); this
+# script just reads those tags via `arbtt-stats --category=Bucket` and renders
+# them. To retune what lands where, edit the Bucket section of categorize.cfg —
+# not this file. "Roughly" is the operative word: a title-only view can't be
+# perfect, so untagged active time falls through to "Other".
 
-
-import sys
+import argparse
 import os
-
 import subprocess
-import pandas as pd  # type: ignore [import]
-import seaborn as sns
+import sys
+from datetime import date, timedelta
+
 import matplotlib.pyplot as plt
-from datetime import datetime, timedelta
-from io import StringIO
+import matplotlib.transforms as mtransforms
+import pandas as pd
+from matplotlib.patches import FancyBboxPatch, PathPatch, Rectangle
+from matplotlib.path import Path
 
-import wtheme
+DOW = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu"]  # review week: Fri -> Thu
+BUCKETS = ["Work", "Study", "Brainrot", "Other"]          # stack + strip order
+LABELS = {"Work": "Work", "Study": "Study",
+          "Brainrot": "Brain rot", "Other": "Other"}
+# arbtt Bucket:<tag> -> display bucket. Bucket:coding is dropped (Wakatime's);
+# arbtt-stats' "(unmatched time)" row is the residual, shown as Other.
+TAG_BUCKET = {"work": "Work", "study": "Study", "brainrot": "Brainrot"}
 
-TOP_N = 6  # categories kept before collapsing the tail into "Other"
+BG = "#ffffff"
+INK = "#0b0b0b"          # daily totals
+MUTED = "#898781"        # day labels, caption, strip values
+SECONDARY = "#4a4742"    # strip bucket names
+
+# One coral ramp, a fixed colour per bucket (dark -> light), shared by the day
+# columns and the mix strip so the buckets correspond between them.
+PALETTE = {
+    "Work": "#4A1B0C",       # deep
+    "Study": "#C0522C",      # brick (shares the running/habits coral)
+    "Brainrot": "#E68A5E",   # light coral
+    "Other": "#F5C4B3",      # pale residual
+}
+
+BAR_MAX_PX = 24
+GAP_PX = 2
+RADIUS_PX = 4
 
 
-def read_csv(inp):
-    def convert_time(t):
-        if t.isdigit():
-            return pd.to_timedelta(int(t), unit="s")
+def _hours(hms):
+    h, m, s = (int(x) for x in hms.split(":"))
+    return h + m / 60 + s / 3600
+
+
+def fetch():
+    """day x bucket pivot of hours for the most recently completed review week.
+
+    Reads the `Bucket:` category from arbtt's categorize.cfg via arbtt-stats,
+    which already drops idle (`inactive`) samples. The week runs Friday ->
+    Thursday and ends on the most recent Thursday, so today's own partial day
+    is never included."""
+    today = date.today()
+    thursday = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
+    friday = thursday - timedelta(days=6)
+    days = {(friday + timedelta(days=i)).isoformat():
+            (friday + timedelta(days=i)).strftime("%a") for i in range(7)}
+
+    out = subprocess.run(
+        ["arbtt-stats", "--category=Bucket", "--for-each=day",
+         "--output-format=csv", "--min-percentage=0",
+         f"--filter=$date>={friday.isoformat()}",
+         f"--filter=$date<={thursday.isoformat()}"],
+        capture_output=True, text=True).stdout
+
+    tally = {abbr: dict.fromkeys(BUCKETS, 0.0) for abbr in DOW}
+    for line in out.splitlines()[1:]:                       # skip CSV header
+        day, tag, time, _pct = line.split(",")
+        if day not in days or tag == "(total time)":
+            continue
+        if tag == "(unmatched time)":
+            b = "Other"
+        elif tag.startswith("Bucket:"):
+            b = TAG_BUCKET.get(tag.split(":", 1)[1])        # None for coding
         else:
-            return pd.to_timedelta(t)
+            continue
+        if b:
+            tally[days[day]][b] += _hours(time)
 
-    return pd.read_csv(
-        StringIO(inp),
-        index_col="Day",
-        usecols=["Day", "Tag", "Time"],
-        converters={"Time": convert_time},
-    )
+    df = pd.DataFrame(tally).T.reindex(index=DOW, columns=BUCKETS, fill_value=0.0)
+    return df if df.to_numpy().sum() > 1e-6 else None
 
 
-def _collapse(series_index_names, totals):
-    """Top-N category names by total hours; the rest map to 'Other'."""
-    keep = list(totals.sort_values(ascending=False).index[:TOP_N])
-    return keep, len(totals) > TOP_N
+def _sc(name):
+    return LABELS.get(name, name)
 
 
-def daily(df, ax):
-    df = df.copy()
-    df["Category"] = df["Tag"].str.extract(r"^([\w-]+):")
-
-    grouped = (
-        df.groupby(["Day", "Category"])["Time"].sum().unstack(fill_value=pd.Timedelta(0))
-    )
-    grouped_hours = grouped.map(lambda td: td.total_seconds() / 3600)
-
-    # Keep the busiest categories; lump the rest into "Other".
-    totals = grouped_hours.sum().sort_values(ascending=False)
-    keep, has_other = _collapse(totals.index, totals)
-    cols = [c for c in keep]
-    plot_df = grouped_hours[cols].copy()
-    if has_other:
-        plot_df["Other"] = grouped_hours.drop(columns=cols).sum(axis=1)
-        cols = cols + ["Other"]
-    plot_df = plot_df[cols]
-    plot_df.index = pd.to_datetime(plot_df.index).strftime("%b %d")
-
-    colors = wtheme.palette(len(keep)) + ([wtheme.OTHER] if has_other else [])
-    plot_df.plot(kind="bar", stacked=True, ax=ax, width=0.74,
-                 color=colors[: plot_df.shape[1]], edgecolor="white",
-                 linewidth=0.7, legend=False)
-
-    ax.set_ylabel("Hours")
-    ax.set_xlabel("")
-    ax.set_title("By day")
-    ax.tick_params(axis="x", rotation=0)
-    wtheme.style_axis(ax, grid="y")
-    ax.margins(x=0.02)
-    handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles, labels, title="Category", loc="upper center",
-              bbox_to_anchor=(0.5, -0.12), ncol=min(plot_df.shape[1], 4))
+def _rounded_top(x, y, w, h, rx, ry, color):
+    rx, ry = min(rx, w / 2), min(ry, h)
+    verts = [(x, y), (x + w, y), (x + w, y + h - ry),
+             (x + w, y + h), (x + w - rx, y + h),
+             (x + rx, y + h), (x, y + h), (x, y + h - ry), (x, y)]
+    codes = [Path.MOVETO, Path.LINETO, Path.LINETO, Path.CURVE3, Path.CURVE3,
+             Path.LINETO, Path.CURVE3, Path.CURVE3, Path.CLOSEPOLY]
+    return PathPatch(Path(verts, codes), facecolor=color, edgecolor="none",
+                     linewidth=0, zorder=2)
 
 
-def summary(df, ax):
-    df = df.copy()
-    df["Category"] = df["Tag"].str.extract(r"^([\w-]+):")
-    df["Type"] = df["Tag"].str.replace(r"^[\w-]+:", "", regex=True)
-    df["Hours"] = df["Time"] / pd.Timedelta(hours=1)
+def draw_columns(ax, pivot, ymax):
+    cols = list(pivot.columns)
+    n = len(pivot)
+    ax.set_xlim(-0.5, n - 0.5)
+    ax.set_ylim(0, ymax)
+    ax.axis("off")
 
-    agg = df.groupby(["Category", "Type"])["Hours"].sum().reset_index()
-    agg = agg.sort_values("Hours", ascending=True)  # ascending → biggest on top (barh)
+    ax.figure.canvas.draw()
+    ext = ax.get_window_extent()
+    xppx, yppx = n / ext.width, ymax / ext.height
+    w = min(0.6, BAR_MAX_PX * xppx)
+    gap_y = GAP_PX * yppx
+    rx, ry = RADIUS_PX * xppx, RADIUS_PX * yppx
 
-    cats = list(agg.groupby("Category")["Hours"].sum().sort_values(ascending=False).index)
-    color_map = {c: wtheme.palette(len(cats))[i] for i, c in enumerate(cats)}
-    colors = [color_map[c] for c in agg["Category"]]
+    totals = pivot.sum(axis=1).values
+    blended = mtransforms.blended_transform_factory(ax.transData, ax.transAxes)
 
-    y = range(len(agg))
-    ax.barh(list(y), agg["Hours"].values, color=colors, edgecolor="white",
-            linewidth=0.6, zorder=3, height=0.72)
-    ax.set_yticks(list(y))
-    ax.set_yticklabels(agg["Type"].values)
-    ax.set_xlabel("Hours (week)")
-    ax.set_title("By activity")
-    wtheme.style_axis(ax, grid="x")
+    for xi in range(n):
+        heights = [pivot.iloc[xi][c] for c in cols]
+        nz = [i for i, hh in enumerate(heights) if hh > 1e-6]
+        if nz:
+            bot, top = nz[0], nz[-1]
+            y = 0.0
+            for i, hh in enumerate(heights):
+                if hh <= 1e-6:
+                    continue
+                b = y + (gap_y / 2 if i != bot else 0.0)
+                t = max((y + hh) - (gap_y / 2 if i != top else 0.0), b + 1e-6)
+                if i == top:
+                    ax.add_patch(_rounded_top(xi - w / 2, b, w, t - b, rx, ry,
+                                              PALETTE[cols[i]]))
+                else:
+                    ax.add_patch(Rectangle((xi - w / 2, b), w, t - b,
+                                           facecolor=PALETTE[cols[i]],
+                                           edgecolor="none", linewidth=0, zorder=2))
+                y += hh
+            ax.text(xi, totals[xi] + ymax * 0.015, f"{totals[xi]:.1f}",
+                    ha="center", va="bottom", fontsize=12, fontweight=500,
+                    color=INK, clip_on=False, zorder=6)
+        ax.text(xi, -0.05, DOW[xi], ha="center", va="top", fontsize=12,
+                color=MUTED, transform=blended, clip_on=False)
 
-    # One legend entry per category, ordered by total.
-    from matplotlib.patches import Patch
-    handles = [Patch(facecolor=color_map[c], label=c) for c in cats]
-    ax.legend(handles=handles, title="Category", loc="lower right")
+
+def draw_strip(ax, mix):
+    names = [n for n in BUCKETS if mix.get(n, 0) > 1e-6]
+    vals = [mix[n] for n in names]
+    total = sum(vals) or 1.0
+    ax.set_xlim(0, total)
+    ax.set_ylim(0, 1)
+    ax.axis("off")
+
+    ax.figure.canvas.draw()
+    ext = ax.get_window_extent()
+    xppx, yppx = total / ext.width, 1 / ext.height
+    gap = GAP_PX * xppx
+    r = RADIUS_PX * xppx
+    asp = yppx / xppx
+
+    x = 0.0
+    for i, (name, v) in enumerate(zip(names, vals)):
+        left = x + (gap / 2 if i > 0 else 0.0)
+        right = x + v - (gap / 2 if i < len(vals) - 1 else 0.0)
+        ax.add_patch(FancyBboxPatch(
+            (left, 0), max(right - left, 1e-6), 1,
+            boxstyle=f"round,pad=0,rounding_size={r}", mutation_aspect=asp,
+            facecolor=PALETTE[name], edgecolor="none", linewidth=0, zorder=2))
+        cx = (left + right) / 2
+        ax.annotate(_sc(name), (cx, 0), xytext=(0, -7),
+                    textcoords="offset points", ha="center", va="top",
+                    fontsize=11, color=SECONDARY, annotation_clip=False)
+        ax.annotate(f"{v:.1f}h", (cx, 0), xytext=(0, -21),
+                    textcoords="offset points", ha="center", va="top",
+                    fontsize=11, color=MUTED, annotation_clip=False)
+        x += v
+
+
+def _empty(fig):
+    fig.text(0.5, 0.5, "No tracked activity this week", ha="center",
+             va="center", color=MUTED, fontsize=13)
+
+
+def render(pivot, save_dir):
+    plt.rcParams.update({
+        "font.family": "sans-serif",
+        "font.sans-serif": ["Work Sans", "DejaVu Sans", "Arial"],
+        "font.size": 12,
+        "font.weight": 400,
+    })
+
+    fig = plt.figure(figsize=(14, 5.6))
+    fig.patch.set_facecolor(BG)
+
+    if pivot is None or pivot.to_numpy().sum() <= 1e-6:
+        _empty(fig)
+    else:
+        ax_main = fig.add_axes([0.03, 0.34, 0.94, 0.60])
+        ax_main.set_facecolor(BG)
+        daily_max = pivot.sum(axis=1).max()
+        draw_columns(ax_main, pivot, 1.15 * max(daily_max, 1))
+
+        fig.text(0.03, 0.245, "Activity mix, week total", ha="left", va="top",
+                 fontsize=12, color=MUTED)
+        ax_strip = fig.add_axes([0.03, 0.185, 0.94, 0.024])
+        ax_strip.set_facecolor(BG)
+        draw_strip(ax_strip, pivot.sum(axis=0).to_dict())
+
+    os.makedirs(save_dir, exist_ok=True)
+    fig.savefig(os.path.join(save_dir, "arbtt.png"), dpi=200, facecolor=BG)
+    plt.close(fig)
 
 
 def main(argv):
-    seven_days_ago = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
-
-    command = [
-        "arbtt-stats",
-        f"--filter=$date>={seven_days_ago}",
-        "--for-each=day",
-        "--output-format=csv",
-    ]
-
-    result = subprocess.run(command, capture_output=True, text=True)
-    df = read_csv(result.stdout)
-
-    wtheme.apply()
-    fig, axs = plt.subplots(1, 2, figsize=(16, 5.2))
-    daily(df, axs[0])
-    summary(df, axs[1])
-
-    total = (df["Time"].sum().total_seconds() / 3600) if not df.empty else 0
-    wtheme.suptitle(fig, "Computer activity", f"{total:.1f} tracked hours this week")
-    plt.tight_layout(rect=[0, 0, 1, 0.93])
-
-    wtheme.round_bars(axs[0], edge="white")              # daily: stacked
-    wtheme.round_bars(axs[1], edge="hue", horizontal=True)  # summary: horizontal
-    wtheme.arrows(axs[0])
-    wtheme.arrows(axs[1])
-
-    save_dir = argv[0]
-    os.makedirs(save_dir, exist_ok=True)
-    plt.savefig(os.path.join(save_dir, "arbtt.png"), dpi=200)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dir", help="save directory")
+    args = parser.parse_args(argv)
+    render(fetch(), args.dir)
 
 
 if __name__ == "__main__":

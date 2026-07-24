@@ -1,53 +1,56 @@
 \tag{public}
-
+\tag{blog}
+\import{base-macros}
 \date{2025-03-04}
 \author{kellenkanarios}
-\import{base-macros}
-
 \title{Rebuilding My (Neo)Vim Config From Scratch}
-\p{I have been using LazyVim for some time now, but I have now run into issues multiple times where understanding how LazyVim is doing something is far more difficult than if I had written my own setup. I allocated one day for this adventure and really just wanted to make sure I had support for #{\TeX}, python, forester, and C/C++. Due to my (self-imposed) time constraint, I do not have the associated resources linked for each of the things discussed below. At some point, I hope to come back and more thoroughly cover each of the components.
-}
-\section{Sane Defaults}{
-To my surprise, a lot of the features that I had come to take for granted were actually options set up internally by Lazyvim. For example, I was shocked with 8 space indents!! and I could not even copy from one terminal instance to another... Due to this, I went and found all of the options I liked from Lazyvim and added them to my new configuration in \code{configs/options.lua}.
-}
-\section{Installing a Plugin Manager}{
-For this, we will be using the defacto standard \code{lazy.nvim}. This is actually straightforward and kind of "just works". Just follow the installation guide in their documentation.
-}
-\section{Setting up Auto Complete}{
-This is one of the main motivations for me making the switch. It seems \code{nvim-cmp} has finally been replaced with a new \code{blink.cmp}, so that is what we will be using.
 
-\section{Language Server Protocol}{
-It turns out there is a lot that goes into getting LSP setup correctly.
-\ol{
-\li{First we must actually install the language servers. To do this the easiest way, we use the \code{mason.nvim} and \code{mason.nvim-lspconfig} plugins. At some point, I might actually figure out how to set up lsp myself without lspconfig but that point is not now.
+\p{I used LazyVim for a long time, but I kept hitting a wall: understanding \em{how} LazyVim did something was consistently harder than if I had just written the thing myself. So I gave myself one day to rebuild from scratch, with the modest goal of first-class support for #{\TeX}, Python, Forester, and C/C++. That one-day sprint is long past, and the config has kept evolving since — this note describes where it landed, not the frantic first pass. The through-line is that almost everything now leans on Neovim's own primitives instead of a framework, which is exactly the transparency I was missing.}
+
+\remark{The whole config lives in my [dotfiles](https://github.com/kkanarios32/dotfiles). It is a thin \code{init.lua} that loads four modules — \code{config.lazy}, \code{config.options}, \code{config.keymaps}, and \code{core.lsp} — with the actual plugin specs under \code{lua/plugins/} and per-server LSP tables under \code{lsp/}.}
+
+\section{Sane defaults}{
+\p{To my surprise, a lot of the behavior I had taken for granted turned out to be options LazyVim set internally. I was greeted on first launch by 8-space indents and a clipboard that would not survive a trip between terminal instances. So the first job was archaeology: I dug through LazyVim for every option I actually liked and copied them into \code{config/options.lua}. System clipboard, sensible folding via Treesitter (\code{foldexpr = v:lua.vim.treesitter.foldexpr()}), a global statusline, \code{conceallevel} for markup — the unglamorous foundation everything else sits on.}
 }
-\li{Through \code{nvim-lspconfig}, we can set up each of the servers we want to have LSP support. I just set up clangd, pyright, and texlab.}
+
+\section{Plugin management}{
+\p{The plugin manager is \code{lazy.nvim}, the de facto standard, and it genuinely just works. The bootstrap snippet from their docs clones it on first run, and after that every file under \code{lua/plugins/} that returns a spec table is imported automatically. No central manifest to keep in sync — a new file is a new plugin.}
 }
-This was a bit ridiculous. The first of many challenges was around import resolution in python. To remedy this, I needed to write a function to find the virtual environment directory and then set the \code{pythonPath} to the venv python binary. Previously, I think I was just using pylsp and installing it as a pip package to each python venv. I much prefer the new way, and I think pyright is overall a much better lsp.
+
+\section{Native LSP, no framework}{
+\p{This is where the config diverged most sharply from where it started. The first pass used \code{mason.nvim}, \code{mason-lspconfig}, and \code{nvim-lspconfig} — the standard stack. All three are now gone. Neovim 0.11 ships a [native LSP](https://neovim.io/doc/user/lsp/) configuration API: \code{vim.lsp.config} defines a server and \code{vim.lsp.enable} turns it on, and any table returned from \code{lsp/<name>.lua} on the runtime path is picked up as that server's config. So \code{core.lsp} is just a list —}
+\codeblock{lua}{ vim.lsp.enable({ "forester", "texlab", "clangd", "basedpyright", "lua_ls", "ruff" })
 }
-\section{Forester Completion}{
-  Another necessary completion source for me is the one provided by \code{forester.nvim}. Similar to vimtex, the reference completion support is VERY useful. Obviously, I need completion when I am writing this blog!!! This was a little more involved. The first difficulty was that the completion source provided by the \code{forester.nvim} plugin was for \code{nvim-cmp}. It turns out this is a prevalent enough problem that the author of \code{blink.cmp} wrote an additional plugin \code{blink.compat} to allow for \code{nvim-cmp} completion sources. While this sounds all fine and good, \code{nvim-compat} expects plugins that return the completion source themselves, whereas in \code{forester.nvim} the completion source is just one submodule of a more feature-rich plugin. To get around this, I needed to look into the \code{blink.compat} code and find how they are registering the sources and just do it myself.
+\p{— and each server gets a plain Lua file in \code{lsp/}. No package manager, no bridge plugin translating between two config schemas. I install the servers themselves through my system package manager and let Neovim wire them up. It is dramatically less machinery for the same result, and when something breaks there is exactly one place to look.}
+\p{The Python setup is the clearest upgrade. I dropped \code{pyright} for \code{basedpyright} and split responsibilities: \code{basedpyright} does type checking and inlay hints, while \code{ruff} runs as its own language server handling import organization and diagnostics. In the LazyVim days I fought constantly with import resolution, hand-writing a function to locate each project's virtualenv and pin \code{pythonPath} to its interpreter. \code{basedpyright} resolves environments well enough on its own that the hack is gone. \code{clangd}, \code{texlab}, and \code{lua_ls} round out the set, each configured in its own file — \code{texlab} in particular carries a fair amount of custom command wiring for building, forward search into Zathura, and environment manipulation.}
+\p{A shared \code{LspAttach} autocommand in \code{core.lsp} binds the buffer-local LSP keymaps once, for every server: go-to-definition and friends route through \code{fzf-lua} pickers, and document highlighting, inlay-hint toggling, and native completion get enabled per-buffer based on what each client actually supports.}
 }
+
+\section{Forester finally has a [real language server](https://www.forester-notes.org/MZSF/index.xml)}{
+\p{The original post described an ugly hack to get Forester completion. The \code{forester.nvim} plugin exposed a completion source, but only for \code{nvim-cmp}; \code{blink.cmp} (which I use — see below) needs a \code{blink.compat} shim, and that shim expected a plugin to \em{be} a source rather than to bury one inside a larger feature set. Getting reference completion working meant reading \code{blink.compat} internals and registering the source by hand.}
+\p{None of that survives, because Forester now ships an actual language server. My \code{lsp/forester.lua} just launches \code{forester lsp} and hands it the forest root. The one wrinkle worth recording: \code{forester} locates the forest by its process working directory and \em{ignores} the LSP \code{rootUri}, and Neovim does not spawn the server in \code{root_dir} by default. So the config resolves the nearest \code{forest.toml} and starts the RPC process with an explicit \code{cwd} — otherwise the server exits with status 1 whenever Neovim's cwd has no \code{forest.toml} (e.g. when I open a tree from \code{$HOME}). Reference completion — indispensable for writing this very blog — now flows through the standard LSP path with no shim in sight.}
 }
+
+\section{Completion}{
+\p{Completion is \code{blink.cmp}, the successor that finally displaced \code{nvim-cmp}. Its sources are \code{lsp}, \code{path}, \code{snippets}, and \code{omni}, with LuaSnip as the snippet engine. Because I lean on native LSP, the \code{on_attach} handler calls \code{vim.lsp.completion.enable} with autotrigger, so the server's completions feed the picker directly.}
+\p{Layered on top is \code{supermaven-nvim} for AI ghost-text suggestions — accept-suggestion, accept-word, and clear bound to \code{<C-l>}, \code{<C-j>}, and \code{<C-\startverb]\stopverb>}. It fills the role Copilot-style tools play elsewhere without getting in the way of the structured LSP and snippet completions.}
+}
+
 \section{Snippets}{
-  \p{
-  Going all the way back to the [Gilles Castel blog post](https://castel.dev/post/lecture-notes-1/), I have always been partial to snippets that auto-expand. I had them set up prior to Lazyvim but with Lazyvim I had resigned to using friendly-snippets with native nvim snippets. Since I was already redoing everything, this time around I decided not to compromise. Once upon a time (right when it came out I think?) I tried out Luasnips, but it seems that they now have far more extensive features. They are also natively supported by \code{blink.cmp}!! It feels necessary that I plug the [awesome repo](https://github.com/iurimateus/luasnip-latex-snippets.nvim) that ports the original Ultisnips snippets to Luasnip. With this, I was able to easily add my own forester snippets!!!
-  }
-  \p{
-  A fun little thing that I had been hoping to do for awhile and is finally now possible - I can load latex snippets when inside math environments in forester!!!! To do this, I looked into the forester treesitter grammar and found the corresponding nodetypes for math envs. It was then straightforward to detect whether we were in a math env and to load the associated latex snippets.
-  }
-}
-\section{Anki}{
-  \p{
-  There is a very cool add-on to anki called [AnkiConnect](https://git.sr.ht/~foosoft/anki-connect#deck-actions) that has an associated plugin \code{anki.nvim}. Basically, AnkiConnects allows you to make requests to Anki and receive/send useful information from/to your decks. Unfortunately, \code{anki.nvim} built-in commands didn't seem all that useful to me. However, it provided the necessary infrastructure for me to accomplish my desired workflow.
-  }
-  \p{
-  Namely, I made my own command that queries Anki for the deck names, which you can then pick from using telescope pickers. When you select one it will create a new flashcard in a specified flashcard directory under a directory created based on the deck name. You can then send this card to that deck using the existing \code{AnkiSend} command.
-  }
-  \p{I also continued the snippet fun here. When writing Anki cards, you can write latex code between [latex] [/latex] delimiters. I wrote a quick function to detect whether we are in these delimiters and if we are then to load the latex snippets from the previous section. I also added some basic anki filetype plugins to insert things like these delimiters.}
-}
-\section{Formatters and Linters}{
-  \code{compat.nvim}, \code{mason.nvim}, black, isort.
+\p{Going all the way back to the [Gilles Castel blog post](https://castel.dev/post/lecture-notes-1/), I have always wanted snippets that auto-expand. Under LazyVim I had settled for friendly-snippets on native Neovim snippets; rebuilding from scratch, I refused to compromise. The engine is \code{LuaSnip}, which \code{blink.cmp} supports natively, and I have to plug the [luasnip-latex-snippets repo](https://github.com/iurimateus/luasnip-latex-snippets.nvim) that ports the original UltiSnips math snippets over. My own snippets live in a small local plugin, \code{custom-luasnip-snippets.nvim}, vendored under \code{lua/local/}.}
+\p{The trick I had wanted for years and can finally do: load LaTeX math snippets while inside math environments \em{in Forester}. The snippet plugin runs with \code{use_treesitter = true}, so it inspects the Forester Treesitter grammar, finds the node types for math environments, and only expands the math snippets when the cursor is actually inside one. Writing #{\TeX} inside a \code{.tree} file feels exactly like writing it in a \code{.tex} file.}
 }
 
-\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{nvim}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+\section{Formatting and linting}{
+\p{Formatting runs through \code{conform.nvim} on save. Python is handled by \code{ruff_format} followed by \code{pyink}, Lua by \code{stylua} — this replaced the old \code{black} + \code{isort} pairing, folding most of it into the same \code{ruff} that already runs as a language server. Formatting falls back to the LSP formatter when no dedicated tool is configured for a filetype.}
+}
+
+\section{Fuzzy finding and forest integration}{
+\p{The fuzzy finder is \code{fzf-lua}, which replaced Telescope. File and grep pickers are scoped to a detected project root — a small \code{utils.root} module (lifted from LazyVim) walks LSP workspace folders, \code{.git}, and cwd to find it — with a dedicated \code{tex} override that restricts live-grep to #{\TeX} source files.}
+\p{The piece I am most fond of is \code{forester-new}, a local plugin that wires the editor into the forest's own note pipeline. It shells out to \code{scripts/new} so every tree gets the standard frontmatter and routing, then commands like \code{:ForesterNew}, \code{:ForesterStub}, \code{:ForesterCitek}, and \code{:ForesterTransient} handle the follow-through: creating a tree and inserting a \code{\startverb\transclude\stopverb}, stubbing a concept and dropping a \code{\startverb[[id]]\stopverb} link at the cursor, or — in visual mode — lifting a selection into a new tree and replacing it in place with the transclude. Stub-and-link without ever leaving the sentence, which is exactly the friction the forest workflow is supposed to remove.}
+}
+
+\section{Anki}{
+\p{I originally built a whole in-editor Anki workflow on top of [AnkiConnect](https://git.sr.ht/~foosoft/anki-connect#deck-actions) and a vendored \code{anki.nvim}. That has since moved out of the editor and into the forest itself: cards are just \code{\startverb\taxon{Card}\stopverb} trees, and \code{scripts/anki-sync} mirrors them into Anki — creating the note on first sync and updating in place thereafter. Writing a card is now the same as writing any other tree, snippets and all, and the sync is one command away. This is [an example of a card](2RO9).}
+}
+\comments{nvim}

@@ -1,6 +1,8 @@
 \import{base-macros}
 \date{2026-05-12T22:53:41Z}
+\author{kellenkanarios}
 \tag{public}
+\taxon{Definition}
 \title{Ring topology}
 
 \p{A [direct network](95AC) where each node connects to two neighbors, forming a closed loop. Bidirectional rings allow either direction of travel; unidirectional rings allow only one. The simplest topology to implement and reason about.}

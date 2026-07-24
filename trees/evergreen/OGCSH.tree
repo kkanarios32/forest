@@ -1,4 +1,5 @@
 \date{2026-06-09T12:46:13Z}
+\author{kellenkanarios}
 \import{base-macros}
 \taxon{Definition}
 \tag{public}
@@ -25,7 +26,7 @@ The \code{type_info} pointer is needed to support runtime type-checking / [dynam
 \p{During construction, the vptr is initialized to point to the base class's vtable. In each classes vtable, there is a \em{thunk} (\code{offset-to-top}) that tells }
 
 \example{
-\pre\verb<<<|
+\codeblock{cpp}{\verb<<<|
 struct A {
     virtual void f();
     int a;
@@ -40,7 +41,7 @@ struct D : A, B {
     void g() override;   // overrides B::g
     int d;
 };
-<<<
+<<<}
 \pre\verb<<<|
 offset 0:   [ vptr_A ]   ← D's primary vtable (A subobject)
 offset 8:   [ a      ]

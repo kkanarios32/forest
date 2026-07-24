@@ -1,0 +1,40 @@
+\date{2026-07-17T15:47:06Z}
+\import{base-macros}
+\title{Software pipelining vs. loop unrolling}
+\tag{public}
+
+\p{See \citet{H.3}{hennessy2019computer} for more details.}
+
+\p{Loop unrolling at its core performs no instruction re-ordering. It literally just expands the loop. When combined with a compiler, this increase the size of your basic blocks allowing for more optimization opportunities. This also eliminates overhead of branch prediction}
+
+\p{[[AOWY]] does not rely on the unroll window.}
+\example{
+  Loop unrolling cannot make use of the large distance between dependencies for large #{k} below. 
+  \codeblock{c}{\verb<<<|
+for (i = k; i < n; i++)
+    a[i] += a[i - k]; 
+  <<<}
+  For #{k = 3}, Software pipelining can perform something like
+  \codeblock{c}{\verb<<<|
+for (i = 3; i < n; i++)
+    a[i - 2] += a[i - 2 - k];
+    a[i - 1] += a[i - 1 - k];
+    a[i] += a[i - k];
+  <<<}
+  You can imagine how this becomes more useful as #{k} grows large.
+}
+\example{
+  There is an actual dependency between instructions here that cannot be circumvented by [OoO hardware](U0NY) 
+\codeblock{c}{\verb<<<|
+for (i = 0; i < n; i++)
+    sum += a[i];
+<<<}
+However, this can be re-written at the software level to get some parallelism within loop bodies as:
+\codeblock{c}{\verb<<<|
+for (i = 0; i < n; i += 4) {
+    s0 += a[i];   s1 += a[i+1];
+    s2 += a[i+2]; s3 += a[i+3];
+}
+sum = (s0 + s1) + (s2 + s3);}
+<<<}
+}

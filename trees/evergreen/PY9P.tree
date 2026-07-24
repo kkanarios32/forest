@@ -1,6 +1,7 @@
 \import{base-macros}
 \title{Continuous Normalizing Flows}
 \tag{stub}
+\tag{public}
 \author{kellenkanarios}
 
 \p{[[rezendeVariationalInferenceNormalizing]], [[chenNeuralOrdinaryDifferential]]}

@@ -2,6 +2,7 @@
 \date{2025-06-30T18:37:01Z}
 \title{Diversity is All You Need}
 \tag{stub}
+\tag{public}
 \author{kellenkanarios}
 \p{The talk starts discussing [Ben's](beneysenbach) amazing paper [DIAYN](eysenbachDiversityAllYou2018). An idea that has become incredibly popular in unsupervised / self-supervised RL is learning \em{conditional} policies. In [[0005]], the learn a \em{goal-conditioned} policy and value function i.e.
 ##{\pi_{\theta}(s \mid g), \quad Q_{\psi}(s, a, g)}

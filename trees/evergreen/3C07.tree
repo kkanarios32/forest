@@ -1,0 +1,17 @@
+\date{2026-07-21T17:34:21Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Hidden markov model}
+\taxon{Definition}
+\tag{public}
+
+\p{A hidden markov model is a statistical model, where the \em{hidden states} #{h \in \mathcal{H}} form a [[0040]], such that #{\mathbb{P}(h_{t+1} \mid h_{1}, \ldots, h_{t}) = \mathbb{P}(h_{t + 1} \mid h_{t})}}
+
+\p{Unlike a Markov chain, in addition to the hidden states, a hidden markov models contains observations #{x \in \mathcal{X}} with associated \em{emission probabilities} #{\mathbb{P}(x_t \mid h_t)}.}
+
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/hmm.png}}{}
+\figcaption{Graphical model of a hidden markov model.}
+}
+
+\p{From the graphical model, we can see that for any #{i < j}, #{(x_{0}, \ldots, x_i) \perp (x_{j}, \ldots, x_{N}) \mid z_{i}}. Or in english, \em{observations are independent conditioned on the hidden state}. }

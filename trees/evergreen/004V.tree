@@ -1,6 +1,7 @@
 \tag{public}
 
 \date{2025-02-03}
+\author{kellenkanarios}
 \import{base-macros}
 \title{Newton's Method}
 \p{Consider [second-order taylor approximation](003O) of #{f}
@@ -16,8 +17,8 @@ Thus, take \em{Newton's direction}
 \remark{
   Some notes
     \ul{
-      \li{\paragraph{Fast convergence} Newton's method usually has local quadratic convergence.}
-      \li{\paragraph{Expensive} requires storing and inverting #{\nabla^2 f( \mathbf{x})}.}
-      \li{\paragraph{Unstable} #{\nabla^2 f \succ 0} might not hold for general nonlinear problems.}
+      \li{\em{Fast convergence.} Newton's method usually has local quadratic convergence.}
+      \li{\em{Expensive.} requires storing and inverting #{\nabla^2 f( \mathbf{x})}.}
+      \li{\em{Unstable.} #{\nabla^2 f \succ 0} might not hold for general nonlinear problems.}
     }
   }

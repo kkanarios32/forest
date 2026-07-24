@@ -1,4 +1,6 @@
 \date{2025-07-03T15:02:23Z}
+\title{Index of my public forest}
+\tag{public}
 
 \def\rel/root/todo-or-private{kellenkanarios.query.root.todo-or-private}
 
@@ -50,4 +52,8 @@
    ?X -: 
    {\rel/root/public ?X}
  }
+}
+\query\datalog{
+   ?X -: 
+   {\rel/root/public ?X}
 }

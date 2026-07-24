@@ -1,5 +1,6 @@
 \tag{public}
 \date{2025-07-06T20:48:19Z}
+\author{kellenkanarios}
 \title{Constrained Optimality}
 \p{
     Consider a smooth contained problem with ##{\min_{\mathbf{x}}f(\mathbf{x}),\quad \text{s.t.} \quad r_{i}(\mathbf{x})\ =\ 0,\ 1\leq i\leq p,} ##{h_{j}(\mathbf{x})\ \leq\ 0,\ 1\leq j\leq q.} Consider its Lagrangian function ##{\mathscr{L}(\mathbf{x},\mathbf{u},\mathbf{v})\ =\ f(\mathbf{x})+\sum_{i=1}^{p}u_{i}\cdot r_{i}(\mathbf{x})+\sum_{j=1}^{q}v_{j}\cdot h_{j}(\mathbf{x}).}

@@ -1,4 +1,5 @@
 \date{2026-06-05T14:32:52Z}
+\author{kellenkanarios}
 \import{base-macros}
 \taxon{Definition}
 \tag{public}
@@ -11,12 +12,12 @@
 
 \example{
   Below is an abstract implementation of a [container class](OGCSE).
-  \pre\verb<<<|
+  \codeblock{cpp}{\verb<<<|
   class Container {
   public:
     virtual double& operator[](int) = 0; // pure virtual function
     virtual int size() const = 0; // const member function
     virtual ˜Container() {} // destructor
   };
-  <<<
+  <<<}
 }
