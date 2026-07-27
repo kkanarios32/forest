@@ -1,0 +1,33 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Monday, July 27, 2026}
+\date{2026-07-27T15:28:51Z}
+
+
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{implement LOVE in OGBench}
+      \li{Code: Triton fused attention tutorial (06)}
+    }
+  }
+}
+}
+
+\p{\strong{11:28 AM}}
+\hr
+
+\p{\em{Todays [[hofstadterGodelEscherBach1999]]}. Mainly about propositional logic, and the one formalized way of ensuring truth. The key observation is that at some level we must take a \em{leap of faith} and assume something is true in order to prove things.}
+\ul{
+\li{In order to avoid any associations or biases towards these assumptions, propositional logic simply abstracts these assumptions into atoms.}
+\li{The notion of recursion and the snowballing of complexity also fits in through the meta-hiearchy of their \em{if-then} operator.}
+}
