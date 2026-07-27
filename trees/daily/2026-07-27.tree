@@ -31,3 +31,16 @@
 \li{In order to avoid any associations or biases towards these assumptions, propositional logic simply abstracts these assumptions into atoms.}
 \li{The notion of recursion and the snowballing of complexity also fits in through the meta-hiearchy of their \em{if-then} operator.}
 }
+
+\p{\strong{1:44 PM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{G9K2}
+}
+
+\p{\strong{2:07 PM}}
+\hr
+\question{What performance benefits arise in [RMO](WT44) that are not possible in [TSO](VH8Y)?}
+\answer{In [RMO](WT44), you can avoid \em{head of line blocking} in the store buffer. Namely, the store buffer has limited capacity if the head is a TLB / LLC miss, then it can take dramatically longer and block younger stores that could be hits. This then prevents the service of even younger stores that cannot fit into the buffer.}
