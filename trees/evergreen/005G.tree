@@ -1,8 +1,18 @@
-\tag{public}
-\tag{index}
 \date{2025-03-22}
 \title{Papers of a week}
 \author{kellenkanarios}
+\tag{public}
+\tag{index}
+\meta{index}{true}
 
-\p{Backlink accumulator for previous papers of the week. For more in-depth coverage of papers I find particularly interesting, see my [blog](0002). There will likely be overlap i.e. most blogs will start here...}
+\put\transclude/expanded{false}
+\put\transclude/numbered{false}
+\put\transclude/metadata{true}
+
+\p{For more in-depth coverage of papers I find particularly interesting, see my [blog](0002). There will likely be overlap i.e. most blogs will start here...}
 \p{See [upcoming papers](007N)!}
+
+\transclude{G27U}
+\transclude{ZUAG}
+\transclude{R0PM}
+\transclude{W4YP}

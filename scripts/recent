@@ -106,6 +106,9 @@ def build():
         "\\title{What I've been thinking about}",
         "\\tag{public}",
         "\\tag{index}",
+        # Reaches the XML (tags do not), so the theme renders a transclusion
+        # of this page as a bare link rather than an expandable block.
+        "\\meta{index}{true}",
         "",
         f"\\p{{The {N} most recently modified trees, by git commit time.}}"
         "",

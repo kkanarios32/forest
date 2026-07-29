@@ -4,6 +4,7 @@
 \title{What I've been thinking about}
 \tag{public}
 \tag{index}
+\meta{index}{true}
 
 \p{The 15 most recently modified trees, by git commit time.}
 \scope{
@@ -11,19 +12,19 @@
   \put\transclude/numbered{false}
   \put\transclude/expanded{false}
   \put\transclude/metadata{true}
-  \transclude{GW1X}
   \transclude{43BK}
   \transclude{1AWD}
+  \transclude{GW1X}
+  \transclude{YJ05}
+  \transclude{2I8C}
+  \transclude{4SOC}
+  \transclude{IR7B}
+  \transclude{47Y4}
+  \transclude{ZYB7}
+  \transclude{ZWHV}
   \transclude{ZUAG}
   \transclude{ZAR4}
+  \transclude{ZAAT}
+  \transclude{Z32G}
   \transclude{YV5J}
-  \transclude{YKAN}
-  \transclude{YJ05}
-  \transclude{YHJR}
-  \transclude{Y8JE}
-  \transclude{XUVV}
-  \transclude{XSFO}
-  \transclude{XQMQ}
-  \transclude{XLDA}
-  \transclude{XJQO}
 }

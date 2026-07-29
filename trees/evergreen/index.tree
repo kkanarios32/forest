@@ -1,5 +1,6 @@
 \tag{public}
 \tag{index}
+\meta{index}{true}
 \title{Kellen Kanarios}
 \author{kellenkanarios}
 \meta{author}{false}
@@ -67,6 +68,10 @@
   \put\transclude/expanded{false}
   \subtree[bib]{
   \title{Research}
+  % A listing, like any other index page: it stays expandable in place, and
+  % the papers it lists render as links to their own pages.
+  \tag{index}
+  \meta{index}{true}
     \query\datalog{
     ?X -:
     {\rel/has-author ?X @{kellenkanarios}}

@@ -12,13 +12,25 @@
  isbn = {978-1-4503-6240-5},
  doi = {10.1145/3297858.3304043},
  urldate = {2026-07-11},
- booktitle = {Proceedings of the {{Twenty-Fourth International Conference}} on {{Architectural Support}} for {{Programming Languages}} and {{Operating Systems}}},
+ booktitle = {Proceedings of the {{Twenty-Fourth International Conference}} on
+{{Architectural Support}} for {{Programming Languages}} and {{
+Operating Systems}}},
  pages = {257--270},
  publisher = {ACM},
  address = {Providence RI USA},
- file = {/home/kellen/Downloads/papers/A Formal Analysis of the NVIDIA PTX Memory Consistency Model - Lustig et al..pdf},
+ file = {/home/kellen/Downloads/papers/A Formal Analysis of the NVIDIA PTX
+Memory Consistency Model - Lustig et al..pdf},
  langid = {english},
- abstract = {This paper presents the first formal analysis of the official memory consistency model for the NVIDIA PTX virtual ISA. Like other GPU memory models, the PTX memory model is weakly ordered but provides scoped synchronization primitives that enable GPU program threads to communicate through memory. However, unlike some competing GPU memory models, PTX does not require data race freedom, and this results in PTX using a fundamentally different (and more complicated) set of rules in its memory model. As such, PTX has a clear need for a rigorous and reliable memory model testing and analysis infrastructure.},
+ abstract = {This paper presents the first formal analysis of the official
+memory consistency model for the NVIDIA PTX virtual ISA. Like other
+GPU memory models, the PTX memory model is weakly ordered but
+provides scoped synchronization primitives that enable GPU program
+threads to communicate through memory. However, unlike some
+competing GPU memory models, PTX does not require data race freedom
+, and this results in PTX using a fundamentally different (and more
+complicated) set of rules in its memory model. As such, PTX has a
+clear need for a rigorous and reliable memory model testing and
+analysis infrastructure.},
  month = {April}
 }
 \stopverb}

@@ -9,6 +9,9 @@
 \put\transclude/metadata{true}
 
 
+
+\transclude{2I8C}
+\transclude{4SOC}
 \transclude{HGRL}
 \transclude{OGCRW}
 \transclude{OGCRX}

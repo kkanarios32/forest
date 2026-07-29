@@ -153,6 +153,19 @@ behavioral ones:
   navigation page with it: `scripts/recent` excludes `index` trees from
   the "Recently updated" listing so structural pages don't crowd out
   real work. Notebooks (`\title{Notebook: …}`) are content, not indexes.
+  Always pair the tag with `\meta{index}{true}` on the line below it —
+  tags never reach the generated XML, so the meta is what the theme sees.
+  It changes how the page's *entries* behave: a collapsed transclusion
+  inside an index page renders as its usual heading — title, taxon, slug,
+  date, author — but with the title linked to its own page and no
+  `<details>`, so clicking navigates there instead of unfolding it in
+  place. Nothing that was visible becomes hidden: anything the page
+  renders expanded is untouched, an index page transcluded into another
+  index page still expands normally, and the page's own rendering is
+  unchanged. See the `index-entry` template in `theme/tree.xsl`. The
+  marker works on an inline `\subtree{...}` too — that is how the home
+  page's Research listing keeps its expandable block while the papers
+  under it render as links.
 
 Two role tags mark a note's kind within the evergreen graph, and exist
 mainly so Datalog can index them:
@@ -298,6 +311,11 @@ report (fix what you can; surface the rest):
    overwritten on the next `scripts/split_bib`.
 7. **Missing cross-references.** Topically adjacent trees that do not
    link each other.
+8. **Index marker drift.** Trees carrying `\tag{index}` without the
+   companion `\meta{index}{true}` (or the reverse) — the tag drives the
+   scripts, the meta drives the theme, and they must agree. Find both
+   sets with `scripts/has 'tag\{index\}'` and
+   `scripts/has 'meta\{index\}'`.
 
 `scripts/has "query"` (ripgrep over trees) and
 `scripts/hastags <tags...>` are the primary tools for lint sweeps.

@@ -5,8 +5,10 @@
 \tag{public}
 
 % Running: mileage, obstacles, the plan for next week.
+\p{The running numbers are a little misleading because the missed runs last week due to the fires actually ended up on this week. On my Garmin cycle, I got to 40 miles, so we are back up to where we need to be. However, due to my illness, my VO2 max has crashed. Need to get that back up ASAP.}
 \figure{
   \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/30/running.png}}{}
   \figcaption{Health stats for week 2026-W30.}
 }
+\p{Friday night I went to Detroit and it carried over into Saturday, which was then my Moms birthday. It seems that Leetcode is my biggest contextual-dependent habit i.e. I do not do it consistently when I am out of routine. I hope to dial this back in even though I will be out of town next week (do not like my odds).}
 % Habits: consistency, Anki, to-do adherence.

@@ -15,10 +15,24 @@
  urldate = {2026-05-06},
  number = {arXiv:1711.09048},
  publisher = {arXiv},
- file = {/home/kellen/Downloads/papers/A Compression-Inspired Framework for Macro Discovery - Garcia et al..pdf},
- keywords = {Computer Science - Artificial Intelligence,Computer Science - Robotics,Electrical Engineering and Systems Science - Systems and Control},
+ file = {/home/kellen/Downloads/papers/A Compression-Inspired Framework for
+Macro Discovery - Garcia et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science -
+Robotics,Electrical Engineering and Systems Science - Systems and
+Control},
  archiveprefix = {arXiv},
- abstract = {In this paper we consider the problem of how a reinforcement learning agent tasked with solving a set of related Markov decision processes can use knowledge acquired early in its lifetime to improve its ability to more rapidly solve novel, but related, tasks. One way of exploiting this experience is by identifying recurrent patterns in trajectories obtained from well-performing policies. We propose a three-step framework in which an agent 1) generates a set of candidate openloop macros by compressing trajectories drawn from near-optimal policies; 2) evaluates the value of each macro; and 3) selects a maximally diverse subset of macros that spans the space of policies typically required for solving the set of related tasks.},
+ abstract = {In this paper we consider the problem of how a reinforcement
+learning agent tasked with solving a set of related Markov decision
+processes can use knowledge acquired early in its lifetime to
+improve its ability to more rapidly solve novel, but related,
+tasks. One way of exploiting this experience is by identifying
+recurrent patterns in trajectories obtained from well-performing
+policies. We propose a three-step framework in which an agent 1)
+generates a set of candidate openloop macros by compressing
+trajectories drawn from near-optimal policies; 2) evaluates the
+value of each macro; and 3) selects a maximally diverse subset of
+macros that spans the space of policies typically required for
+solving the set of related tasks.},
  primaryclass = {cs},
  eprint = {1711.09048},
  month = {February}

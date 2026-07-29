@@ -1,5 +1,6 @@
 \tag{public}
 \tag{index}
+\meta{index}{true}
 
 \date{2024-10-29}
 \import{base-macros}

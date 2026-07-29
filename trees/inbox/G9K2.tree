@@ -1,0 +1,10 @@
+\date{2026-07-27T17:44:58Z}
+\import{base-macros}
+\title{Volta Architecture}
+\meta{author}{false}
+\tag{transient}
+
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/volta-architecture.png}}{}
+\figcaption{Layout of the Volta architecture}
+}

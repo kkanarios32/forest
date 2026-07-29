@@ -5,11 +5,13 @@
 \tag{public}
 
 % Coding: where the week's hours went, focus, notable projects.
+\p{Another week of note-taking / learning. I wrote a little blog on the [[F3T0]] as part of a long overdo [POTW](005G) on [DDO](ZUAG). Also did a brief write-up on [LOVE](G27U) that I might come back to at some point.}
 \figure{
   \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/30/waka.png}}{}
   \figcaption{Coding hours for week 2026-W30.}
 }
 % Non-coding computer time: work / study / brain rot; what stood out.
+\p{It seems like brain-rotting is no longer a problem for me. I do not have any social media accounts remaining so there is not much for me to watch. The study time is down bit because I have done a poor job expanding my Anki deck but a great job staying on top of it.}
 \figure{
   \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/30/arbtt.png}}{}
   \figcaption{Non-coding computer time for week 2026-W30.}

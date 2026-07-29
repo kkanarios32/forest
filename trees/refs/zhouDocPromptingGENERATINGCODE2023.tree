@@ -6,9 +6,11 @@
 \meta{bibtex}{\startverb
 @article{zhouDocPromptingGENERATINGCODE2023,
  title = {{{DocPrompting}}: {{GENERATING CODE BY RETRIEVING}}},
- author = {Zhou, Shuyan and Alon, Uri and Xu, Frank F and Wang, Zhiruo and Jiang, Zhengbao and Neubig, Graham},
+ author = {Zhou, Shuyan and Alon, Uri and Xu, Frank F and Wang, Zhiruo and
+Jiang, Zhengbao and Neubig, Graham},
  year = {2023},
- file = {/home/kellen/Downloads/papers/DocPrompting GENERATING CODE BY RETRIEVING - Zhou et al..pdf},
+ file = {/home/kellen/Downloads/papers/DocPrompting GENERATING CODE BY
+RETRIEVING - Zhou et al..pdf},
  langid = {english}
 }
 \stopverb}

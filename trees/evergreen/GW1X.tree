@@ -6,3 +6,7 @@
 
 % Reading Corner: what you're reading now and your thoughts.
 % Transclude any finished book reviews below, e.g. \transclude{<review-id>}.
+\p{A long week of reading. I am still working my way through [GEB](hofstadterGodelEscherBach1999), but it has become significantly more dense as we get to more formal mathematics. I will be starting [[macintyreSpyTraitorIncredible2018]].}
+
+\transclude{4SOC}
+\transclude{2I8C}

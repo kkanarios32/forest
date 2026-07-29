@@ -263,6 +263,22 @@ To scope option changes to a single transclusion (the most common pattern):
 
 `\scope{...}` is a local environment — the `\put` only applies inside it.
 
+Forester has no option for "clicking this entry should open its page" —
+`expanded{false}` renders a collapsed block that unfolds in place. The theme
+supplies that behavior instead, keyed on the *parent*: inside a tree carrying
+`\meta{index}{true}` (the marker every `\tag{index}` page also carries, since
+tags never reach the generated XML), a collapsed transclusion renders as its
+ordinary heading with the title linked to its own page and no `<details>`
+around it. See the `index-entry` template in `theme/tree.xsl` and the
+`.index-entry` rules in `theme/style.css`.
+
+The rule is deliberately narrow, so it only ever removes a disclosure
+triangle, never content: it skips anything the page renders expanded, and
+skips children that are themselves `\meta{index}{true}` — so an index page
+transcluded into another index page keeps expanding in place. Putting the
+marker on an inline `\subtree{...}` is the way to say "this section is a
+listing": the section itself still expands, and what it lists becomes links.
+
 ### Composition patterns observed in this forest
 
 - **Notebook page**: a `\tag{note}`-tagged `\tag{top}` tree like `N7GP`
@@ -274,7 +290,9 @@ To scope option changes to a single transclusion (the most common pattern):
   taxon'd `Theorem` / `Definition`.
 - **Index page**: `0002.tree` (Blog), `005G.tree` (Research Bible),
   `007L.tree` (Marginalia) — set `\put\transclude/expanded{false}` then
-  either hand-list `\transclude{...}`s or use a Datalog query.
+  either hand-list `\transclude{...}`s or use a Datalog query. Tag the page
+  `\tag{index}` and add `\meta{index}{true}`, so its collapsed entries render
+  as links to their own pages instead of unfolding inline.
 - **Daily logs**: `trees/daily/daily.tree` is a flat list of `\transclude`
   calls, one per day file.
 

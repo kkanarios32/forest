@@ -3,6 +3,14 @@
 \author{kellenkanarios}
 \title{Idea Purgatory}
 \tag{index}
+\meta{index}{true}
 \tag{public}
-\p{A backlink accumulator for previous research endeavours that I either no longer have the time to pursue, or have stalled for some other miscellanous reasons. Obvious selection bias for those ideas that I took the time to write up to some extent.}
+
+\put\transclude/expanded{false}
+\put\transclude/numbered{false}
+\put\transclude/metadata{true}
+
+\p{Collection of previous research endeavours that I either no longer have the time to pursue, or have stalled for some other miscellanous reasons. Obvious selection bias for those ideas that I took the time to write up to some extent.}
 \p{If any of these ideas seem interesting or are something you want to pursue, then please reach out!}
+
+\transclude{47Y4}

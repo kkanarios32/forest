@@ -5,8 +5,10 @@
 \meta{bibtex}{\startverb
 @article{parkHorizonReductionMakes,
  title = {Horizon {{Reduction Makes RL Scalable}}},
- author = {Park, Seohong and Frans, Kevin and Mann, Deepinder and Eysenbach, Benjamin and Kumar, Aviral and Levine, Sergey},
- file = {/home/kellen/Downloads/papers/Horizon Reduction Makes RL Scalable - Park et al. 1.pdf},
+ author = {Park, Seohong and Frans, Kevin and Mann, Deepinder and Eysenbach,
+Benjamin and Kumar, Aviral and Levine, Sergey},
+ file = {/home/kellen/Downloads/papers/Horizon Reduction Makes RL Scalable -
+Park et al. 1.pdf},
  langid = {english}
 }
 \stopverb}

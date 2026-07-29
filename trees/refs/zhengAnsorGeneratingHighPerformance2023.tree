@@ -8,17 +8,32 @@
 
 \meta{bibtex}{\startverb
 @misc{zhengAnsorGeneratingHighPerformance2023,
- title = {Ansor: {{Generating High-Performance Tensor Programs}} for {{Deep Learning}}},
- author = {Zheng, Lianmin and Jia, Chengfan and Sun, Minmin and Wu, Zhao and Yu, Cody Hao and {Haj-Ali}, Ameer and Wang, Yida and Yang, Jun and Zhuo, Danyang and Sen, Koushik and Gonzalez, Joseph E. and Stoica, Ion},
+ title = {Ansor: {{Generating High-Performance Tensor Programs}} for {{Deep
+Learning}}},
+ author = {Zheng, Lianmin and Jia, Chengfan and Sun, Minmin and Wu, Zhao and Yu
+, Cody Hao and {Haj-Ali}, Ameer and Wang, Yida and Yang, Jun and Zhuo
+, Danyang and Sen, Koushik and Gonzalez, Joseph E. and Stoica, Ion},
  year = {2023},
  doi = {10.48550/arXiv.2006.06762},
  urldate = {2026-07-10},
  number = {arXiv:2006.06762},
  publisher = {arXiv},
- file = {/home/kellen/Downloads/papers/Ansor Generating High-Performance Tensor Programs for Deep Learning - Zheng et al..pdf},
- keywords = {Computer Science - Machine Learning,Computer Science - Neural and Evolutionary Computing,Computer Science - Performance,Computer Science - Programming Languages,Statistics - Machine Learning},
+ file = {/home/kellen/Downloads/papers/Ansor Generating High-Performance Tensor
+Programs for Deep Learning - Zheng et al..pdf},
+ keywords = {Computer Science - Machine Learning,Computer Science - Neural and
+Evolutionary Computing,Computer Science - Performance,Computer
+Science - Programming Languages,Statistics - Machine Learning},
  archiveprefix = {arXiv},
- abstract = {High-performance tensor programs are crucial to guarantee efficient execution of deep neural networks. However, obtaining performant tensor programs for different operators on various hardware platforms is notoriously challenging. Currently, deep learning systems rely on vendor-provided kernel libraries or various search strategies to get performant tensor programs. These approaches either require significant engineering effort to develop platform-specific optimization code or fall short of finding high-performance programs due to restricted search space and ineffective exploration strategy.},
+ abstract = {High-performance tensor programs are crucial to guarantee
+efficient execution of deep neural networks. However, obtaining
+performant tensor programs for different operators on various
+hardware platforms is notoriously challenging. Currently, deep
+learning systems rely on vendor-provided kernel libraries or
+various search strategies to get performant tensor programs. These
+approaches either require significant engineering effort to develop
+platform-specific optimization code or fall short of finding
+high-performance programs due to restricted search space and
+ineffective exploration strategy.},
  primaryclass = {cs.LG},
  eprint = {2006.06762},
  month = {October},

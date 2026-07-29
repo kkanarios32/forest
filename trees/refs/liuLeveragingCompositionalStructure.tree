@@ -4,9 +4,11 @@
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{liuLeveragingCompositionalStructure,
- title = {Leveraging {{Compositional Structure}} for {{Reinforcement Learning}}  and {{Sequential Decision Making Problems}}},
+ title = {Leveraging {{Compositional Structure}} for {{Reinforcement Learning}}
+and {{Sequential Decision Making Problems}}},
  author = {Liu, Anthony Z},
- file = {/home/kellen/Downloads/papers/Leveraging Compositional Structure for Reinforcement Learning  and Sequential Decision Making Proble - Liu.pdf},
+ file = {/home/kellen/Downloads/papers/Leveraging Compositional Structure for
+Reinforcement Learning and Sequential Decision Making Proble - Liu.pdf},
  langid = {english}
 }
 \stopverb}

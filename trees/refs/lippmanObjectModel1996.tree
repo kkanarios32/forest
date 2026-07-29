@@ -12,7 +12,8 @@
  publisher = {Addison Wesley Longman},
  address = {Reading, Mass},
  file = {/home/kellen/Downloads/papers/C++_En_Inside.The.C++.Object.Model.pdf},
- keywords = {C++ (Computer program language),Object-oriented programming (Computer science)},
+ keywords = {C++ (Computer program language),Object-oriented programming
+(Computer science)},
  lccn = {QA76.73.C153 L58 1996}
 }
 \stopverb}
