@@ -1,0 +1,23 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Thursday, July 30, 2026}
+\date{2026-07-30T15:10:03Z}
+
+
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Triton fused attention tutorial (06)}
+    }
+  }
+}
+}
