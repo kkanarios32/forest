@@ -17,15 +17,11 @@
  volume = {12},
  number = {4},
  pages = {307--392},
- file = {/home/kellen/Downloads/papers/An Introduction to Variational
-Autoencoders - Kingma and Welling.pdf},
+ file = {/home/kellen/Downloads/papers/An Introduction to Variational Autoencoders - Kingma and Welling.pdf},
  keywords = {Computer Science - Machine Learning,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},
- abstract = {Variational autoencoders provide a principled framework for
-learning deep latent-variable models and corresponding inference
-models. In this work, we provide an introduction to variational
-autoencoders and some important extensions.},
+ abstract = {Variational autoencoders provide a principled framework for learning deep latent-variable models and corresponding inference models. In this work, we provide an introduction to variational autoencoders and some important extensions.},
  issn = {1935-8237, 1935-8245},
  primaryclass = {cs},
  eprint = {1906.02691}

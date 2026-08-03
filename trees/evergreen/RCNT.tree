@@ -1,30 +1,30 @@
 \import{base-macros}
-\date{2026-03-24}
+\date{2026-08-03}
 \author{kellenkanarios}
 \title{What I've been thinking about}
 \tag{public}
 \tag{index}
 \meta{index}{true}
 
-\p{The 15 most recently modified trees, by git commit time.}
+\p{Some recently modified trees (by git commit time).}
 \scope{
   \put\transclude/toc{false}
   \put\transclude/numbered{false}
   \put\transclude/expanded{false}
   \put\transclude/metadata{true}
+  \transclude{Q30B}
+  \transclude{47Y4}
+  \transclude{0025}
   \transclude{HHZO}
   \transclude{R0PM}
   \transclude{OGCRZ}
   \transclude{4QZE}
   \transclude{3HOD}
   \transclude{QTSW}
-  \transclude{47Y4}
   \transclude{ZUAG}
   \transclude{ZAR4}
   \transclude{YV5J}
   \transclude{YKAN}
   \transclude{YHJR}
   \transclude{Y8JE}
-  \transclude{XUVV}
-  \transclude{XSFO}
 }

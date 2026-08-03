@@ -13,18 +13,11 @@
  series = {Adaptive Computation and Machine Learning Series},
  publisher = {The MIT Press},
  address = {Cambridge, Massachusetts},
- file = {/home/kellen/Downloads/papers/Reinforcement learning an introduction -
-Sutton and Barto.pdf},
+ file = {/home/kellen/Downloads/papers/Reinforcement learning an introduction - Sutton and Barto.pdf},
  keywords = {Reinforcement learning},
  lccn = {Q325.6 .R45 2018},
  langid = {english},
- abstract = {"Reinforcement learning, one of the most active research areas in
-artificial intelligence, is a computational approach to learning
-whereby an agent tries to maximize the total amount of reward it
-receives while interacting with a complex, uncertain environment.
-In Reinforcement Learning, Richard Sutton and Andrew Barto provide
-a clear and simple account of the field's key ideas and algorithms.
-"--},
+ abstract = {"Reinforcement learning, one of the most active research areas in artificial intelligence, is a computational approach to learning whereby an agent tries to maximize the total amount of reward it receives while interacting with a complex, uncertain environment. In Reinforcement Learning, Richard Sutton and Andrew Barto provide a clear and simple account of the field's key ideas and algorithms."--},
  shorttitle = {Reinforcement Learning}
 }
 \stopverb}

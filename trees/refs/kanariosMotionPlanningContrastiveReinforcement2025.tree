@@ -1,0 +1,19 @@
+% ["manual"]
+\title{Motion-Planning via Contrastive Reinforcement Learning and Monte-Carlo Tree Search}
+\date{2025}
+\tag{research}
+\author{kellenkanarios}\author/literal{Lei Ying}
+\taxon{Reference}
+\meta{image}{\route-asset{assets/img/mp-crl-graphic.png}}
+\meta{poster}{\route-asset{assets/posters/mp-crl-poster.pdf}}
+\meta{slides}{\route-asset{assets/slides/mp-crl-slides.pdf}}
+\meta{bibtex}{\startverb
+@article{kanariosMotionPlanningContrastiveReinforcement2025,
+ title = {Motion-{{Planning}} via {{Contrastive Reinforcement Learning}} and {{Monte-Carlo Tree Search}}},
+ author = {Kanarios, Kellen and Ying, Lei},
+ year = {2025},
+ file = {/home/kellen/Downloads/papers/Motion-Planning via Contrastive Reinforcement Learning and Monte-Carlo Tree Search - Kanarios and Ying.pdf},
+ langid = {english},
+ abstract = {We consider the generalized movers' problem i.e. finding any path that moves an object to a desired goal while avoiding collisions. Even relaxing optimality requirements, the any-path problem is computationally challenging. Namely, exponential in the degrees of freedom of the object. Due to the curse of dimensionality, applying traditional search algorithms to the discretized state space becomes infeasible as the state space grows. This motivated the use of sampling-based methods. These sampling-based methods are tabula rasa and require complete re-learning on each problem instance. Existing learning-based methods that attempt to leverage shared structure aim to handle arbitrary changes in the environment. Often, this still requires a significant number of samples and / or expert demonstrations. In practice, many robotics applications or UAV routing do not need to handle these pathological cases, where the environment undergoes drastic change. Rather, they must only be able to avoid a minor mismatch with the training environment while their route remains largely unchanged. We allow pre-training in an obstacle free environment and show that combining contrastive reinforcement learning with classical game-inspired search algorithms enables zero shot performance to unseen obstacles.}
+}
+\stopverb}

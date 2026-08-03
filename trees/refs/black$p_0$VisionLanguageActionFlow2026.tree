@@ -8,45 +8,18 @@
 
 \meta{bibtex}{\startverb
 @misc{black$p_0$VisionLanguageActionFlow2026,
- title = {\${$\pi\_$}0\$: {{A Vision-Language-Action Flow Model}} for {{General
-Robot Control}}},
- author = {Black, Kevin and Brown, Noah and Driess, Danny and Esmail, Adnan and
-Equi, Michael and Finn, Chelsea and Fusai, Niccolo and Groom, Lachy
-and Hausman, Karol and Ichter, Brian and Jakubczak, Szymon and Jones,
-Tim and Ke, Liyiming and Levine, Sergey and {Li-Bell}, Adrian and
-Mothukuri, Mohith and Nair, Suraj and Pertsch, Karl and Shi, Lucy
-Xiaoyang and Tanner, James and Vuong, Quan and Walling, Anna and Wang
-, Haohuan and Zhilinsky, Ury},
+ title = {\${$\pi\_$}0\$: {{A Vision-Language-Action Flow Model}} for {{General Robot Control}}},
+ author = {Black, Kevin and Brown, Noah and Driess, Danny and Esmail, Adnan and Equi, Michael and Finn, Chelsea and Fusai, Niccolo and Groom, Lachy and Hausman, Karol and Ichter, Brian and Jakubczak, Szymon and Jones, Tim and Ke, Liyiming and Levine, Sergey and {Li-Bell}, Adrian and Mothukuri, Mohith and Nair, Suraj and Pertsch, Karl and Shi, Lucy Xiaoyang and Tanner, James and Vuong, Quan and Walling, Anna and Wang, Haohuan and Zhilinsky, Ury},
  year = {2026},
  doi = {10.48550/arXiv.2410.24164},
  urldate = {2026-01-20},
  number = {arXiv:2410.24164},
  publisher = {arXiv},
- file = {/home/kellen/Downloads/papers/$π_0$ A Vision-Language-Action Flow
-Model for General Robot Control - Black et al..pdf},
+ file = {/home/kellen/Downloads/papers/$π_0$ A Vision-Language-Action Flow Model for General Robot Control - Black et al..pdf},
  keywords = {Computer Science - Machine Learning,Computer Science - Robotics},
  langid = {english},
  archiveprefix = {arXiv},
- abstract = {Robot learning holds tremendous promise to unlock the full
-potential of flexible, general, and dexterous robot systems, as
-well as to address some of the deepest questions in artificial
-intelligence. However, bringing robot learning to the level of
-generality required for effective real-world systems faces major
-obstacles in terms of data, generalization, and robustness. In this
-paper, we discuss how generalist robot policies (i.e., robot
-foundation models) can address these challenges, and how we can
-design effective generalist robot policies for complex and highly
-dexterous tasks. We propose a novel flow matching architecture
-built on top of a pre-trained vision-language model (VLM) to
-inherit Internet-scale semantic knowledge. We then discuss how this
-model can be trained on a large and diverse dataset from multiple
-dexterous robot platforms, including single-arm robots, dual-arm
-robots, and mobile manipulators. We evaluate our model in terms of
-its ability to perform tasks in zero shot after pre-training,
-follow language instructions from people and from a high-level VLM
-policy, and its ability to acquire new skills via fine-tuning. Our
-results cover a wide variety of tasks, such as laundry folding,
-table cleaning, and assembling boxes.},
+ abstract = {Robot learning holds tremendous promise to unlock the full potential of flexible, general, and dexterous robot systems, as well as to address some of the deepest questions in artificial intelligence. However, bringing robot learning to the level of generality required for effective real-world systems faces major obstacles in terms of data, generalization, and robustness. In this paper, we discuss how generalist robot policies (i.e., robot foundation models) can address these challenges, and how we can design effective generalist robot policies for complex and highly dexterous tasks. We propose a novel flow matching architecture built on top of a pre-trained vision-language model (VLM) to inherit Internet-scale semantic knowledge. We then discuss how this model can be trained on a large and diverse dataset from multiple dexterous robot platforms, including single-arm robots, dual-arm robots, and mobile manipulators. We evaluate our model in terms of its ability to perform tasks in zero shot after pre-training, follow language instructions from people and from a high-level VLM policy, and its ability to acquire new skills via fine-tuning. Our results cover a wide variety of tasks, such as laundry folding, table cleaning, and assembling boxes.},
  primaryclass = {cs},
  eprint = {2410.24164},
  month = {January},

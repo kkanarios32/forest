@@ -12,10 +12,8 @@
  series = {Optimization and Neural Computation Series},
  publisher = {Athena Scientific},
  address = {Belmont, Mass},
- file = {/home/kellen/Downloads/papers/Neuro-dynamic programming - Bertsekas
-and Tsitsiklis.pdf},
- keywords = {Dynamic programming,Mathematical optimization,Neural networks
-(Computer Science)},
+ file = {/home/kellen/Downloads/papers/Neuro-dynamic programming - Bertsekas and Tsitsiklis.pdf},
+ keywords = {Dynamic programming,Mathematical optimization,Neural networks (Computer Science)},
  lccn = {QA76.87 .B47 1996},
  langid = {english}
 }
