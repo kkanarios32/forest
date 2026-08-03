@@ -1,0 +1,59 @@
+\date{2026-08-03T16:03:26Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{MSI in Murphi}
+\tag{public}
+
+\p{MESI is easier to reach through MSI, where there is less to get wrong and the races are already interesting enough.}
+
+\section{The cache controller}{
+\p{The starting point is the primer's MSI cache controller table.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/cache-msi.png}}{}
+\figcaption{MSI cache controller. Rows are states, columns are events.}
+}
+\p{Several table entries are left blank; those are resolved at runtime from the \code{AckCount}, which is why the per-processor record carries an \code{ack} field alongside the state.}
+\codeblockf{msi.m}{lua}{ProcState:
+  Record
+    state: enum {
+      P_Invalid, P_Shared, P_Modified,   -- stable states
+      PT_IS_D,     -- sent GetS, waiting for Data
+      PT_IS_DI,    -- sent GetS, got Inv, waiting for Data then go to I
+      PT_IM_AD,    -- sent GetM (from I), waiting for Data and InvAcks
+      PT_SM_AD,    -- sent GetM (from S), waiting for Data and InvAcks
+      PT_IM_A,     -- got Data for GetM, waiting for remaining InvAcks
+      PT_MI_A,     -- sent PutM, waiting for PutAck
+      PT_SI_A,     -- sent PutS, waiting for PutAck
+      PT_II_A      -- waiting for PutAck, already invalidated
+    };
+    val: Value;
+    ack: AckCount;  -- tracks InvAck count
+  End;}
+\remark{
+\code{load}, \code{store}, and \code{replacement} only move the protocol between stable states. To simulate the system it is therefore enough to implement the rules that \em{initiate} those transitions — evict from modified, load from invalid — and let the model checker drive the transient states from there.
+}
+}
+
+\section{The directory controller}{
+\p{The directory side starts from the analogous table.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/directory-msi.png}}{}
+\figcaption{MSI directory controller.}
+}
+\p{This table is where the first real gap shows up. It gives the directory a single transient state, and the races below force a second one, #{M^D}.}
+}
+
+\section{Losing data to a PutM/Fwd-GetM race}{
+\p{Consider the \code{PutM} rule that downgrades a cache from modified to invalid. The evicting cache must \strong{not} drop the data when it sends \code{PutM}, because it may still have to service a forwarded request; it transitions to #{MI^A} and keeps the value. But nothing stops the \code{PutAck} from arriving first, taking it to #{I} before the \code{Fwd-GetM} shows up. The data is gone and the forwarded request has nobody to answer it.}
+\p{\paragraph{Fix} Add the #{M^D} state to the directory controller. While in #{M^D}, a \code{PutM} from a node that is not the current owner stalls until the data arrives. Leaving #{M^D} for #{M} requires the new owner to send data back to the directory even on a three-hop transaction, so the directory learns that the forward actually completed. I have not found a cleaner way to close this race without the extra state.}
+}
+
+\section{Deadlocking two stores against a load}{
+\p{The #{M^D} fix introduces a deadlock of its own. Take two processors that store-miss and a third that load-misses. The second store wins at the directory: the first store gets data and moves #{IM^{AD} \to IM^{A}}, then the second triggers a \code{Fwd-GetM} that takes ownership away from it.}
+\p{Meanwhile the load miss sits in #{IS^D}. When its \code{Inv} arrives, the table says to stall — and because \code{Inv} and \code{Fwd-GetM} share the forwarded channel, that stall blocks the \code{Fwd-GetM} behind it. The winning processor never receives the data, and nothing ever drains the channel.}
+\p{\paragraph{Fix} Another transient state absent from the table: #{II^A}, meaning "was in #{IS^A}, got invalidated, now waiting on \code{PutAck} before settling in #{I}". The invalidation is processed rather than stalled, so the forwarded channel keeps moving.}
+}
+
+\section{Not clearing the owner too eagerly}{
+\p{One more correction to the table: when the home directory is in #{M} and receives a \code{GetS}, it must not clear the owner field as the figure directs. Once in #{S^D}, the directory can no longer tell whether an incoming \code{PutM} came from the owner (and should stall) or from a stale node. The owner is only cleared once the data has actually arrived.}
+}

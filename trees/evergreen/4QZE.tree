@@ -1,0 +1,82 @@
+\date{2026-08-03T16:05:52Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The gradients we need for [FlashAttention](daoFlashAttentionFastMemoryEfficient2022)}
+\tag{public}
+
+\p{Everything downstream is chain rule; the only step with any content is differentiating through the [softmax](C00V). We take the gradients in dependency order, starting from #{d\mathbf{O}} which arrives from the layer above.}
+
+\section{#{d\mathbf{P}} and #{d\mathbf{V}} from #{\mathbf{O} = \mathbf{P}\mathbf{V}}}{
+\p{Both fall straight out of the product rule for matrices:}
+##{
+  d\mathbf{P} = \frac{\partial \phi}{\partial \mathbf{O}} \frac{\partial \mathbf{O}}{\partial \mathbf{P}} = d\mathbf{O} \mathbf{V}^T,
+  \qquad
+  d\mathbf{V} = \frac{\partial \phi}{\partial \mathbf{O}} \frac{\partial \mathbf{O}}{\partial \mathbf{V}} = \mathbf{P}^T d\mathbf{O}.
+}
+\p{The shapes are a useful sanity check. #{d\mathbf{O}} has one entry per output, so it is #{N \times d}; #{\mathbf{V}^T} is #{d \times N}; their product is #{N \times N}, matching #{\mathbf{P}}. Likewise #{\mathbf{P}^T d\mathbf{O}} is #{N \times d}, matching #{\mathbf{V}}.}
+\p{Componentwise, from #{\mathbf{O}_{ik} = \sum_j \mathbf{P}_{ij} \mathbf{V}_{jk}},}
+##{
+  \begin{align*}
+    d\mathbf{P}_{ij} &= \sum_{k} \frac{\partial \phi}{\partial \mathbf{O}_{ik}} \cdot \frac{\partial \mathbf{O}_{ik}}{\partial \mathbf{P}_{ij}} = \sum_{k} d\mathbf{O}_{ik} \mathbf{V}_{jk}, \\
+    d\mathbf{V}_{jk} &= \sum_{i} \frac{\partial \phi}{\partial \mathbf{O}_{ik}} \cdot \frac{\partial \mathbf{O}_{ik}}{\partial \mathbf{V}_{jk}} = \sum_{i} d\mathbf{O}_{ik} \mathbf{P}_{ij} = \sum_{i} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} d\mathbf{O}_{ik}
+  .\end{align*}
+}
+\p{That last line is worth noting already: #{d\mathbf{V}} never needs #{\mathbf{P}} stored, only the ability to re-evaluate #{\mathbf{P}_{ij}} from #{\mathbf{Q}}, #{\mathbf{K}}, and #{\mathbf{L}}.}
+}
+
+\section{#{d\mathbf{S}} through the softmax}{
+\p{Softmax acts row by row, so drop into the scalar case with #{\mathbf{s}} and #{\mathbf{p}} single rows. The [softmax Jacobian](C00V) is #{\partial \mathbf{p}_i / \partial \mathbf{s}_j = \mathbf{p}_i(\delta_{ij} - \mathbf{p}_j)}, giving}
+##{
+  \begin{align*}
+    d\mathbf{s}_j &= \sum_{i} d\mathbf{p}_i \cdot \frac{\partial \mathbf{p}_i}{\partial \mathbf{s}_j} \\
+                  &= \sum_{i} d\mathbf{p}_i \cdot \mathbf{p}_i (\delta_{ij} - \mathbf{p}_{j}) \\
+                  &= d\mathbf{p}_{j} \mathbf{p}_{j} - \mathbf{p}_{j}\sum_{i} d\mathbf{p}_{i} \mathbf{p}_{i}
+  .\end{align*}
+}
+\p{As a row vector this is #{d\mathbf{s} = \mathbf{p} \odot (d\mathbf{p} - \mathbf{p} \cdot d\mathbf{p})}, where the subtracted term is the \em{scalar} #{\mathbf{p} \cdot d\mathbf{p}} broadcast across the row. Collecting those scalars into a column #{\mathbf{D}} with #{\mathbf{D}_i = \mathbf{P}_i \cdot d\mathbf{P}_i} recovers the matrix form}
+##{d\mathbf{S} = \mathbf{P} \odot (d\mathbf{P} - \mathbf{D}).}
+\p{#{\mathbf{D}} is the piece that will cause trouble later: it is a dot product over an entire row of #{\mathbf{P}}, which is exactly the thing we refuse to materialize.}
+}
+
+\section{#{d\mathbf{Q}} and #{d\mathbf{K}} from #{\mathbf{S} = \mathbf{Q}\mathbf{K}^T}}{
+\p{One more chain rule, and the sums run over opposite indices:}
+##{
+  \begin{align*}
+     d\mathbf{Q}_{i} &= \sum_{j} d\mathbf{S}_{ij} \mathbf{K}_{j} = \sum_{j} \mathbf{P}_{ij} \left(d\mathbf{P}_{ij} - \mathbf{D}_i\right) \mathbf{K}_{j}, \\
+     d\mathbf{K}_{j} &= \sum_{i} d\mathbf{S}_{ij} \mathbf{Q}_{i} = \sum_{i} \mathbf{P}_{ij} \left(d\mathbf{P}_{ij} - \mathbf{D}_i\right) \mathbf{Q}_{i}
+  .\end{align*}
+}
+}
+
+\section{Recomputing instead of storing}{
+\p{Every gradient above is expressed through #{\mathbf{P}_{ij}} and #{d\mathbf{P}_{ij}}, both #{N \times N}. Materializing either one is exactly the quadratic memory cost the forward pass went to such lengths to avoid, so the backward pass has to be able to produce those entries on demand.}
+\insight{
+Both are recoverable from the #{N \times d} tensors already resident in memory. The forward pass saved #{\mathbf{L}}, so
+##{\mathbf{P}_{ij} = \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}},}
+and #{d\mathbf{P}} is just an inner product of two rows,
+##{d\mathbf{P}_{ij} = \sum_{k} d\mathbf{O}_{ik} \mathbf{V}_{jk} = d\mathbf{O}_{i} \cdot \mathbf{V}_j.}
+Neither ever requires an #{N \times N} intermediate.
+}
+\p{Substituting both into the previous section leaves #{d\mathbf{Q}} and #{d\mathbf{K}} in terms of #{\mathbf{Q}}, #{\mathbf{K}}, #{\mathbf{V}}, #{d\mathbf{O}}, #{\mathbf{L}}, and #{\mathbf{D}} alone:}
+##{
+\begin{align*}
+  d\mathbf{Q}_{i} &= \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} \left(d\mathbf{O}_{i} \cdot \mathbf{V}_j - \mathbf{D}_i\right) \mathbf{K}_{j}, \\
+  d\mathbf{K}_{j} &= \sum_{i} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} \left(d\mathbf{O}_{i} \cdot \mathbf{V}_j - \mathbf{D}_i\right) \mathbf{Q}_{i}.
+.\end{align*}
+}
+}
+
+\section{Getting #{\mathbf{D}} for free}{
+\p{One problem survives. #{\mathbf{D}_i = \mathbf{P}_i \cdot d\mathbf{P}_i} is a dot product over a full row, so computing it inside the streaming loop would mean a reduction over all #{j} before any tile of #{d\mathbf{Q}_i} could be finished. This is the same global dependency the online softmax was designed to break.}
+\p{The way out is that the row sum has already been computed once, in the forward pass. Expanding and pulling #{d\mathbf{O}_i} out of the sum:}
+##{
+  \begin{align*}
+  \mathbf{D}_i &= \mathbf{P}_{i} \cdot d\mathbf{P}_{i}  \\
+  &= \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} d\mathbf{P}_{ij} \\
+  &= \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} \left(d\mathbf{O}_{i} \cdot \mathbf{V}_{j}\right) \\
+  &=  d\mathbf{O}_{i} \cdot \sum_{j} \frac{\exp \left(\mathbf{Q}_{i} \cdot \mathbf{K}_{j}\right)}{\mathbf{L}_{i}} \mathbf{V}_{j} \\
+  &= d\mathbf{O}_{i} \cdot \mathbf{O}_{i}
+  .\end{align*}
+}
+\p{The inner sum is precisely the definition of #{\mathbf{O}_i}. So #{\mathbf{D}} is a single elementwise product of #{d\mathbf{O}} and #{\mathbf{O}} summed along the head dimension — one #{O(Nd)} pass over tensors we already have, done once before the backward loop begins.}
+}

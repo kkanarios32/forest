@@ -1,0 +1,60 @@
+\date{2026-08-03T16:03:52Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{MESI in Murphi}
+\tag{public}
+
+\p{With those states in place the rest of MSI is mechanical, and MESI is a short step from it — modulo two design choices and two more races.}
+
+\section{The cache controller}{
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-cache.png}}{}
+\figcaption{MESI cache controller.}
+}
+\p{\paragraph{Silent upgrades} If a cache in #{E} may upgrade to #{M} silently, the directory never learns the line went dirty, and the value it hands to the next \code{GetS} or \code{GetM} is stale. There are two consistent ways out: forbid the silent upgrade, in which case no forwarding is needed; or allow it and treat #{E} exactly like #{M}, forwarding everything. Neither requires a writeback on \code{PutE}. I take the first, matching the table.}
+\p{\paragraph{Signaling exclusivity} The directory needs a way to tell a requester "you are the first reader, take the line exclusive." That is a new \code{ExclusiveData} message: receiving it in #{IS^D} lands the cache in #{E} rather than #{S}. It turns out to also be the key to the second race below.}
+\remark{
+Once \code{PutE} or \code{PutM} has been sent, #{EI^A} and #{MI^A} are functionally identical. Both appear above for completeness, but transitioning from #{E} straight into #{MI^A} verifies the same.
+}
+}
+
+\section{The directory controller}{
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-directory.png}}{}
+\figcaption{MESI directory controller.}
+}
+\p{Symmetrically, the directory gains an #{E^D} state, which for completeness is kept distinct from #{M^D} but could be folded into it.}
+}
+
+\section{Forwards arriving before exclusive data}{
+\p{The first processor issues \code{GetS} and waits in #{IS^D}, while the home directory has already moved to #{E} and sent it \code{ExclusiveData}. A second processor then issues \code{GetM}, and home's \code{Fwd-GetM} overtakes the data in flight.}
+\p{\paragraph{Fix} Stall \code{Fwd-GetM} and \code{Fwd-GetS} in #{IS^D} until the data lands. This is safe here because the data is on the response channel, which no stall can block.}
+}
+
+\section{Losing exclusive data to an invalidation}{
+\p{The nastier version of the same race: the invalidation arrives before the forward. By the #{II^A} rule inherited from MSI, a \code{PutAck} in that state drops the line to #{I} — discarding data a forwarded request is about to ask for.}
+\example{
+\ol{
+  \li{\code{Proc_1} load-misses → #{IS^D}}
+  \li{\code{Home} takes the first \code{GetS} from \code{Proc_1} → #{E}, sends \code{ExclusiveData}}
+  \li{\code{Proc_2} issues \code{GetM} → #{IM^{AD}}}
+  \li{\code{Home} sends \code{Inv} to \code{Proc_1}}
+  \li{\code{Home} forwards \code{Fwd-GetM} to \code{Proc_1}}
+  \li{\code{Proc_1} receives \code{Inv} → #{II^D}}
+  \li{\code{Proc_1} receives \code{ExclusiveData} → #{I}, and the data is lost}
+}
+}
+\p{\paragraph{Fix} \code{ExclusiveData} pays for itself a second time. Because the message is distinguishable from ordinary \code{Data}, a cache receiving it in #{II^D} knows it was the first reader and transitions to #{E} instead of #{I} — from which the pending \code{Fwd-GetM} or \code{Fwd-GetS} is handled correctly.}
+}
+
+\section{The finished controllers}{
+\p{Folding all of the above in leaves these two state machines, which Murphi verifies exhaustively.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/cache_controller.png}}{}
+\figcaption{Final MESI cache controller.}
+}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/directory_controller.png}}{}
+\figcaption{Final MESI directory controller.}
+}
+}

@@ -1,148 +1,48 @@
-\date{2026-03-24T17:35:14Z}
-\title{Implementing Directory-based MESI in Murphi}
 \import{base-macros}
+\date{2026-03-24T17:35:14Z}
 \author{kellenkanarios}
+\title{Implementing Directory-based MESI in Murphi}
 \tag{public}
 \tag{blog}
-\p{This will also serve as a bit of notes from [A Primer on Memory Consistency and Cache Coherence](https://pages.cs.wisc.edu/~markhill/papers/primer2020_2nd_edition.pdf)}
+
+\p{[[CMAL]] is an explicit-state model checker: you describe a system as guarded transition rules, state the invariants, and it enumerates every reachable interleaving looking for a violation. That makes it a natural fit for [cache coherence](GA7N), where the steady-state behavior is easy and the races are not. This post builds a [directory-based](KIT8) [[30XT]] in Murphi, starting from MSI and adding state every time the checker finds a way to break it.}
+
+\p{The state tables come from [A Primer on Memory Consistency and Cache Coherence](https://pages.cs.wisc.edu/~markhill/papers/primer2020_2nd_edition.pdf), which doubles as the source for these notes. The recurring lesson is that the published tables are not quite enough: every protocol below needs [transient states](Z32G) the tables leave implicit.}
 
 \put\transclude/metadata{false}
 
 \transclude{CMAL}
 
-\section{Starting with MSI}{
-\p{The first thing we need to do is understand all the things that can go awry.}
-\p{First in the valid-invalid protocol example we were given they only have two [virtual channels](DWV1). However, we need 3 channels to handle, request messages, \strong{forwarded} messages, and response messages.}
-\p{Let us briefly understand why this is the case. Detecting a deadlock is equivalent to detecting a cycle in a dependency graph, so it is sufficient to show a cyclic dependency.}
+\section{Why three virtual channels}{
+\p{The valid-invalid protocol shipped with the Murphi docs uses two [[HUDE]]. A directory protocol needs three: one each for requests, forwarded requests, and responses. The reason is that [deadlock is a cycle in the dependency graph](DWV1), so it suffices to exhibit one.}
 \ul{
-  \li{If we issue a \code{GetS} this goes to the directory, giving us an edge N1 -> D.}
-  \li{Then the directory issues a \code{Fwd-GetS} to the ownder, giving us the chain N1 -> D -> N2}
-  \li{The owner then needs to send data to the requester, giving us the chain N1 -> D -> N2 -> N1.}
-  \li{Namely, the data must go through the same channel as all of the requests depending on it.}
+  \li{A node issues \code{GetS} to the directory, giving an edge #{N_1 \to D}.}
+  \li{The directory forwards \code{Fwd-GetS} to the owner, extending the chain to #{N_1 \to D \to N_2}.}
+  \li{The owner sends data back to the requester, closing the cycle #{N_1 \to D \to N_2 \to N_1}.}
 }
-\p{To avoid this, we partition into 3 channels:}
+\p{The data closing that cycle would travel on the same channel as the requests waiting behind it, so a full request buffer wedges the response that would drain it. Partitioning by message class breaks the cycle:}
 \ul{
-  \li{Request: GetS, GetM, PutM}
-  \li{Forwarded: Fwd-GetS, Fwd-GetM, PutAck, Inv}
-  \li{Response: InvAck, Data}
+  \li{\strong{Request}: \code{GetS}, \code{GetM}, \code{PutS}, \code{PutM}}
+  \li{\strong{Forwarded}: \code{Fwd-GetS}, \code{Fwd-GetM}, \code{Inv}, \code{PutAck}}
+  \li{\strong{Response}: \code{Data}, \code{InvAck}}
 }
-\p{We directly enumerate these in our \code{MessageType} as }
-\pre\verb<<<|
-  MessageType: enum {
-    GetS,           -- request for shared copy
-    GetM,           -- request for modified (exclusive) copy
-    PutS,           -- evict shared copy
-    PutM,           -- evict modified copy (w/ data)
+\p{These are enumerated directly in the model's \code{MessageType}.}
+\codeblockf{msi.m}{lua}{MessageType: enum {
+  GetS,           -- request for shared copy
+  GetM,           -- request for modified (exclusive) copy
+  PutS,           -- evict shared copy
+  PutM,           -- evict modified copy (w/ data)
 
-    FwdGetS,        -- forwarded GetS to owner
-    FwdGetM,        -- forwarded GetM to owner
-    Inv,            -- invalidation request
+  FwdGetS,        -- forwarded GetS to owner
+  FwdGetM,        -- forwarded GetM to owner
+  Inv,            -- invalidation request
 
-    Data,           -- data response
-    InvAck,         -- invalidation acknowledgment
-    PutAck          -- put acknowledgment
-  };
-<<<
-\paragraph{Cache controller} We will start with MSI cache controller, given by the following table:
-\figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/cache-msi.png}}{}
-}
-\p{Notably, we are missing some of the messages in the figures below. We can handle these based on the \code{AckCount}}
-\pre\verb<<<|
-  ProcState:
-    Record
-      state: enum { 
-        P_Invalid, P_Shared, P_Modified,       --stable states
-        PT_IS_D,      --sent GetS, waiting for Data
-        PT_IS_DI,     --sent GetS, got Inv, waiting for Data then go to I
-        PT_IM_AD,     --sent GetM (from I), waiting for Data and InvAcks
-        PT_SM_AD,     --sent GetM (from S), waiting for Data and InvAcks
-        PT_IM_A,      --got Data for GetM, waiting for remaining InvAcks
-        PT_MI_A,      --sent PutM, waiting for PutAck
-        PT_SI_A,      --sent PutS, waiting for PutAck
-        PT_II_A       --waiting for PutAck, already invalidated
-      };
-      val: Value;
-      ack: AckCount;  -- tracks InvAck count
-    End;
-<<<
-\remark{
-The \code{load}, \code{store}, and \code{replacement} all only alter the states of the coherence protocol for the permanent states. Therefore, to simulate the system it is sufficient to only implement the rules that initiate these state transitions i.e. evict in modified state or load from invalid state.
-}
-\paragraph{Directory controller} Now for the directory controller:
-\figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/directory-msi.png}}{}
-\figcaption{}
-}
-\remark{
-We actually end up adding a second transient state to the directory controller #{M^D}. This is to handle the \code{PutM}, \code{GetM} race described below.
-}
-\paragraph{Weird Races}
-\problem{
-When implementing the \code{PutM} rule to downgrade from modified to invalid. We must \strong{NOT} get rid of the data until we have been acknowledged, so that we can still service forward requests. This is a transition to #{MI^A}. However, we can still receive the \code{PutAck} causing us to transition to #{I} before servicing the \code{Fwd-GetM} request. This is lost data.
-}
-\solution{
-  We must add a #{M^D} state to the directory controller. In this state, if we get a \code{PutM} request from a node that is not our current owner we stall and wait for data to arrive. For #{M^D} to transition to #{M}, we must send the data back to the directory even though we are doing a three-hop, so that the directory knows the data has also been forwarded to the new owner. It is unclear to me the best way to do this without this state.
-}
-\problem{
- \p{The above solution causes a deadlock, where two processors both store miss and one load misses. The "winning processor" of the store will be the second one. The first one will get the data from the directory transitioning from #{IM^{AD} \to IM^{A}}, but the second one will then trigger a \code{Fwd-GetM} overwriting the first.}
-
-\p{
-The load miss transitions to #{IS^D}. However, when it receives an \code{Inv} it stalls according to the above figure. This blocks the \code{Fwd-GetM} from reaching the other winning processor because they are on the same VC. Thus, we have a deadlock where the owner never gets the data.
-}
-}
-\solution{We need to add another transient state not included in the figure. Namely, we add #{II^{A}} that says we were in #{IS^{A}}, but we got invalidated and now we are waiting for our \code{PutAck} before we transition to #{I}.}
-\remark{
-When the home directory is in #{M} and we get a \code{GetS} we cannot clear owner as directed by figure. Otherwise in #{S^D}, we will not be able to tell if the \code{PutM} is from the owner and stall, so we only remove the owner once we have received the data.
-}
-}
-\section{Moving to MESI}{
-Aside from the modifications discussed above, the rest was straightforward and we now are ready to move on to MESI.
-\p{ \paragraph{Cache controller} We will start with MESI cache controller, given by the following table:
-}
-\figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-cache.png}}{}
-}
-\p{\paragraph{Design choice 1} Since we allow immediate upgrade to #{M}, without forwarding, if E upgrades to M, then the value in the directory sent to the next \code{GetS / GetM} would not have updated value. It seems we must either
-\ol{
-  \li{not allow E to silently upgrade to M and then we do not need forwarding, or}
-  \li{allow E to silently upgrade to M and treat E as M basically and forward everything.}
-}
-Notably, neither of these have to write back on \code{PutE}, but we will go with 1 because that is how it is indicated in the figure.
-}
-\p{\paragraph{Design Choice 2} In order to indicate that the directory received the first \code{GetS} we introduce a \code{ExclusiveData} message. Upon receiving, \code{ExclusiveData} in #{IS^D} we transition to #{E}.}
-\remark{
-Once we have sent the \code{PutE}, or the \code{PutM} #{EI^A} and #{MI^A} are functionally the same. I include both for completeness but verified that transitioning directly to #{MI^A} from #{E} works the same.
-}
-\p{\paragraph{Directory controller} We start with the analagous table.}
-\figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-directory.png}}{}
-}
-\p{Similar to the cache controller, we also add a #{E^D} state for completion that can be absorbed into #{M^D} introduced in the MSI protocol.}
-\p{\paragraph{Weird Races}}
-\problem{First processor does \code{GetS} and is in #{IS^D} but the Home directory sends it exclusive data and is now in #{E}. Then second processor does \code{GetM} and Home issues \code{Fwd-GetM} to processor one, which arrives before data.}
-\solution{Need to stall on \code{Fwd-GetM} and \code{Fwd-GetS} in #{IS^D} until data arrives}
-\problem{An even crazier race happens when we get invalidated before the \code{Fwd-GetM} or \code{Fwd-GetS} arrive. Due to our previous design decision, we transition to #{II^A}, where if we receive a \code{PutAck} we transition to invalid. This then loses the needed forward data.}
-\example{
-  The timeline:
-  \ol{
-    \li{\code{Proc_1} performs a load miss → #{IS^D}}
-    \li{\code{Home} receives first \code{GetS} from \code{Proc_1} → #{E} and sends \code{ExclusiveData} to \code{Proc_1}}
-    \li{\code{Proc_2} issues \code{GetM} → #{IM^AD}}
-    \li{\code{Home} sends \code{Inv} to \code{Proc_1}}
-    \li{\code{Home} forwards \code{Fwd-GetM} to \code{Proc_1}}
-    \li{\code{Proc_1} receives \code{Inv} → #{II^D}}
-    \li{\code{Proc_1} receives \code{ExclusiveData} → #{I}}
-  }
-  Data is lost
-}
-\solution{
-  We once again have to use the \code{ExclusiveData} message. We can then see that we got \code{ExclusiveData} in #{II^D} and transition to #{E} instead of #{I}. #{E} will then correctly handle the \code{Fwd-GetM} or \code{Fwd-GetS}.
+  Data,           -- data response
+  InvAck,         -- invalidation acknowledgment
+  PutAck          -- put acknowledgment
+};}
 }
 
-\p{We are left with the following state diagrams for the cache and directory controllers respectively}
-\figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/cache_controller.png}}{}
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/directory_controller.png}}{}
-}
-}
+\transclude{3HOD}
+\transclude{QTSW}
+
