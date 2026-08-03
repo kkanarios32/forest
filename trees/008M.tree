@@ -43,8 +43,29 @@
 }
 
 \execute\datalog{
-   \rel/root/public ?X -: 
+   \rel/root/public ?X -:
    {\rel/root/public-refs ?X}
+}
+
+% My own papers, published on their own account rather than because some tree
+% happens to link them.
+%
+% The rules above admit a reference only when a public tree links to or
+% transcludes it. The home page's Research listing is a \query\datalog, and a
+% query result is neither — so a paper could render on the home page of the
+% local build, where every tree is present, and be absent from the deployed
+% site entirely. That is not hypothetical: commenting out the News block on the
+% home page silently dropped three papers from the public forest, because those
+% News entries were their only inbound links.
+%
+% This makes \tag{research} sufficient for both, so the listing and the deploy
+% cannot drift. Note that split_bib generates refs without any tags, so a new
+% paper still needs \tag{research} added by hand — and therefore also needs
+% "manual" in the first-line JSON array to survive the next split_bib run.
+\execute\datalog{
+   \rel/root/public ?X -:
+   {\rel/is-reference ?X}
+   {\rel/has-tag ?X '{research}}
 }
 
 \syndicate-query-as-json-blob{my-public-forest}{
