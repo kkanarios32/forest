@@ -442,6 +442,41 @@ This renders a live list of all upcoming blog posts. Index pages
 (`0002.tree`, `005G.tree`, `007L.tree`, `0015.tree`) lean heavily on
 this — content is added simply by tagging a new tree with the right tag.
 
+### Negation, and its one-premise limit
+
+A `#` separates positive premises from negated ones, so this is every
+blog post that is *not* upcoming:
+
+```
+\query\datalog{
+  ?X -:
+  {\rel/has-tag ?X '{blog}} #
+  {\rel/has-tag ?X '{upcoming}}
+}
+```
+
+**Only one negated premise works.** Listing two after the `#` makes
+Forester silently drop the negation altogether and return the unfiltered
+set — no error, no warning. Route around it by folding the exclusions
+into one derived relation, since two rules sharing a head are how
+Datalog spells disjunction:
+
+```
+\def\rel/blog/hidden{kellenkanarios.query.blog.hidden}
+\execute\datalog{ \rel/blog/hidden ?X -: {\rel/has-tag ?X '{upcoming}} }
+\execute\datalog{ \rel/blog/hidden ?X -: {\rel/has-tag ?X '{draft}} }
+
+\query\datalog{
+  ?X -:
+  {\rel/has-tag ?X '{blog}} #
+  {\rel/blog/hidden ?X}
+}
+```
+
+`0002.tree` uses exactly this; `008M.tree` uses the same shape for
+`\rel/root/todo-or-private`. When a query returns suspiciously many
+results, count the premises after the `#` first.
+
 Custom relations are declared with `\def\rel/...{namespace.path}` and
 populated with `\execute\datalog{ \rel/... ?X -: ... }`. The canonical
 example is `008M.tree`, which defines `public-trees`, `public-refs`, and
@@ -535,6 +570,7 @@ scripts/has "query"                            # ripgrep across trees
 scripts/hastags public blog                    # trees having ALL listed tags
 scripts/split_bib                              # refs.bib → trees/refs/*.tree
 scripts/fize path/to/file.tree                 # convert LaTeX snippets to Forester
+scripts/newsletter                             # build emails for unsent blog posts
 weekly/init_weekly                             # pull metrics → trees/weeknotes/
 ```
 

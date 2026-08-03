@@ -1,0 +1,37 @@
+{
+  "sent": {
+    "0025": {
+      "sent_at": "2026-08-03T16:23:56+00:00",
+      "subject": "Stack vs. Heap"
+    },
+    "005F": {
+      "sent_at": "2026-08-03T16:23:56+00:00",
+      "subject": "Rebuilding My (Neo)Vim Config From Scratch"
+    },
+    "0082": {
+      "sent_at": "2026-08-03T16:23:56+00:00",
+      "subject": "Evidence Lower Bound"
+    },
+    "0088": {
+      "sent_at": "2026-08-03T16:23:56+00:00",
+      "subject": "Expectation Maximization"
+    },
+    "7BUX": {
+      "sent_at": "2026-08-03T16:23:56+00:00",
+      "subject": "My Notes on Productivity"
+    },
+    "F3T0": {
+      "buttondown_id": "em_45sby8n85n9r6aexqcvknkemxy",
+      "sent_at": "2026-08-03T17:18:15+00:00",
+      "subject": "Forward-backward algorithm"
+    },
+    "HHZO": {
+      "sent_at": "2026-08-03T16:23:56+00:00",
+      "subject": "Implementing Directory-based MESI in Murphi"
+    },
+    "R0PM": {
+      "sent_at": "2026-08-03T16:23:56+00:00",
+      "subject": "Flash Attention (v1)"
+    }
+  }
+}

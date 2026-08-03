@@ -180,6 +180,48 @@
   }
 }
 
+% Buttondown subscribe form. Deliberately script-free: it is a plain POST, so
+% it works with no embed script and nothing to block. Submitting navigates to
+% Buttondown's own confirmation page.
+%
+% `kanarios` is the Buttondown newsletter username; the endpoint 404s if it
+% ever changes. Rendering is guarded in theme/core.xsl so the form appears
+% only on its own page, never in a transclusion or hover-preview.
+\def\subscribe{
+  \<html:form>[class]{embeddable-buttondown-form}[method]{post}[action]{https://buttondown.com/api/emails/embed-subscribe/kanarios}[style]{
+   margin: 1.5em 0;
+   padding: 0.9em 1.1em;
+   border-left: 4px solid rgba(60, 90, 180, 0.8);
+   border-radius: var(--radius);
+   background-color: rgba(60, 90, 180, 0.05);
+  }{
+   \<html:div>[style]{font-weight: 600; margin-bottom: 0.25em;}{Subscribe by email}
+   \<html:div>[style]{
+    font-size: 0.92em;
+    margin-bottom: 0.75em;
+    color: rgba(0, 0, 0, 0.7);
+   }{New posts in full, whenever I publish. Nothing else.}
+   \<html:input>[type]{email}[name]{email}[placeholder]{you@example.com}[required]{required}[style]{
+    padding: 0.4em 0.6em;
+    margin-right: 0.4em;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: var(--radius);
+    font-size: 0.95em;
+    min-width: 15em;
+   }{}
+   \<html:input>[type]{hidden}[name]{embed}[value]{1}{}
+   \<html:input>[type]{submit}[value]{Subscribe}[style]{
+    padding: 0.4em 0.9em;
+    border: 1px solid rgba(60, 90, 180, 0.8);
+    border-radius: var(--radius);
+    background-color: rgba(60, 90, 180, 0.8);
+    color: white;
+    font-size: 0.95em;
+    cursor: pointer;
+   }{}
+  }
+}
+
 \def\stub{
  \<html:div>[class]{stub-notice}[style]{
   margin: 0.5em 0;

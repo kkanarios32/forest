@@ -9,18 +9,40 @@
 
 \p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more, ranging from long-form deep dives to short, self-contained notes. See [upcoming blogs](007M) and feel free to request! This blog also has a corresponding [Atom feed](/0002/atom.xml).}
 
+\subscribe
+
 \put\transclude/toc{false}
 \put\transclude/numbered{false}
 \put\transclude/metadata{true}
 \put\transclude/expanded{false}
 
-\transclude{F3T0}
-\transclude{7BUX}
-\transclude{R0PM}
-\transclude{HHZO}
-\transclude{0088}
-\transclude{0082}
-\transclude{005F}
+% A post is hidden if it is \tag{upcoming} OR \tag{draft}. Datalog has no
+% disjunction, so this is two rules sharing one head — the same idiom
+% 008M.tree uses for \rel/root/todo-or-private.
+%
+% Collapsing both exclusions into a single relation is not just tidiness: the
+% `#` separator (positives # negatives) silently drops the negation entirely
+% when given more than one negated premise, with no warning. One negated
+% premise works; two returns the unfiltered set. Keep exactly one here.
+\def\rel/blog/hidden{kellenkanarios.query.blog.hidden}
+
+\execute\datalog{
+  \rel/blog/hidden ?X -: {\rel/has-tag ?X '{upcoming}}
+}
+\execute\datalog{
+  \rel/blog/hidden ?X -: {\rel/has-tag ?X '{draft}}
+}
+
+% Every finished blog post. Drives both the listing below and the Atom feed:
+% \syndicate-current-tree-as-atom-feed syndicates query results as feed
+% entries (Atom_client's get_embedded_articles unions in
+% Results_of_datalog_query), so a post joins the feed by losing its
+% \tag{upcoming} — no edit to this file.
+\query\datalog{
+  ?X -:
+  {\rel/has-tag ?X '{blog}} #
+  {\rel/blog/hidden ?X}
+}
 
 
 \syndicate-current-tree-as-atom-feed

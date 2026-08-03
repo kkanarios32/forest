@@ -1,5 +1,8 @@
 python-3.12
 *.json
+# Which posts have already gone out as a newsletter. Must be tracked, or a
+# checkout on another machine would re-send the whole archive.
+!data/sent.json
 build
 .venv
 .python-version
@@ -7,3 +10,4 @@ output
 key.env
 inbox.md
 todoist-reading-queue.csv
+**/__pycache__/**

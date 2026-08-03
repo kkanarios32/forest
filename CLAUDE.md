@@ -286,7 +286,54 @@ tables of contents. Prefer Datalog:
 ```
 
 A new tree with the matching tags joins the index automatically. See
-`FORESTER-SYNTAX.md` §10 for the relation vocabulary.
+`FORESTER-SYNTAX.md` §10 for the relation vocabulary — including the
+negation rule, where more than one negated premise silently disables
+filtering.
+
+### Send a newsletter
+
+`0002` (Blog) carries `\syndicate-current-tree-as-atom-feed`, so the
+published set — its Datalog query over `\tag{blog}` minus `upcoming` and
+`draft` — is also the Atom feed at `/0002/atom.xml`. A finished post
+joins the feed by losing its `\tag{upcoming}`; nothing is hand-listed.
+
+Email cannot consume that feed directly. Forester renders math with
+KaTeX in the browser, so feed entries carry raw LaTeX source, and no
+email client runs JavaScript. `scripts/newsletter` bridges the gap:
+
+1. `forester build`, then `scripts/newsletter` — reads the feed, skips
+   anything already in `data/sent.json`, compiles every `<fr:tex>` node
+   to a PNG with `latex` + `dvipng` (cached by content hash in
+   `build/math/`, published from `output/math/`), and writes one
+   standalone email per post to `output/newsletter/<id>.html`.
+2. **Deploy the build before sending.** Formula images are served from
+   `/math/` on the live site, so a mail sent ahead of the deploy arrives
+   with every equation broken.
+3. `--draft` creates each mail as a Buttondown draft to review and send
+   by hand; `--send` queues it for delivery and records it in
+   `data/sent.json`. Both need `$BUTTONDOWN_API_KEY`, or a
+   `BUTTONDOWN_API_KEY` line in `key.env` or `weekly/key.env` (the
+   latter already holds `WAKA_API`; both are gitignored, and the
+   `key.env` ignore rule has no slash so it applies at either depth).
+   `--mark-sent <id>` records a send made some
+   other way. `data/sent.json` is tracked in git — via a `!` exception to
+   the blanket `*.json` ignore — so a fresh checkout does not re-send the
+   archive.
+
+`--all` re-renders everything, `--only <id>` targets one post, and
+`--dry-run` lists the queue without rendering.
+
+Buttondown supplies its own template and unsubscribe footer, so what is
+posted to the API is the bare article, not the standalone preview page.
+Only `post_email` knows about Buttondown; moving to another provider is
+that one function.
+
+Readers subscribe through `\subscribe` (base-macros), a script-free POST
+form currently on `0002`. Like `\comments`, it is guarded in
+`theme/core.xsl` so it renders only on its own page — Forester embeds a
+tree's full content into anything that transcludes or hover-previews it,
+so without the guard the form appears on the home page and every index
+that links the blog.
 
 ### Lint pass
 

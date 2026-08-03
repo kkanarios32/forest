@@ -1,0 +1,781 @@
+#!/usr/bin/env python3
+"""Build newsletter emails from newly-published blog posts.
+
+Steps 1-4 build the mail and are provider-agnostic; step 5 posts it to
+Buttondown and is the only part that knows which provider we use.
+
+    1. Discover  — read the Atom feed at output/0002/atom.xml. The feed is the
+       single source of truth for "what is published": 0002.tree builds it from
+       a Datalog query over \\tag{blog} minus upcoming/draft, so this script
+       never re-implements that predicate.
+    2. Diff      — against data/sent.json, so re-running is a no-op.
+    3. Math      — the reason this script exists. Forester renders math with
+       KaTeX in the browser; email clients run no JS, so a post piped straight
+       from the feed reaches subscribers as raw LaTeX source. Each
+       <fr:tex> node is compiled to a PNG with latex + dvipng and referenced
+       by absolute URL. Inline formulas keep their baseline via dvipng's
+       --depth, so they sit correctly in the line rather than floating.
+    4. Emit      — one standalone HTML file per post under output/newsletter/,
+       plus a manifest.
+
+Rendering reads output/<id>/index.xml rather than the feed's entry bodies:
+Forester's XML tags math as <fr:tex display="inline|block">, whereas by the
+time it reaches the feed it has become an untagged <code> element that is
+indistinguishable from an inline code span.
+
+Usage:
+    scripts/newsletter                 # render posts not yet in data/sent.json
+    scripts/newsletter --draft         # …and create them as Buttondown drafts
+    scripts/newsletter --send          # …and send them, recording the send
+    scripts/newsletter --all           # re-render every published post
+    scripts/newsletter --only F3T0     # render specific posts
+    scripts/newsletter --dry-run       # list what would be rendered
+    scripts/newsletter --mark-sent ID  # record as sent (e.g. sent by hand)
+
+Requires `latex` and `dvipng` on PATH, and a built forest (`forester build`).
+Sending needs $BUTTONDOWN_API_KEY, or a BUTTONDOWN_API_KEY line in either
+key.env or weekly/key.env (both gitignored).
+
+Formulas are served from the live site, so deploy the build before sending —
+otherwise the mail goes out pointing at images that are not there yet.
+"""
+import argparse
+import datetime as dt
+import hashlib
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+import urllib.error
+import urllib.request
+
+from lxml import etree
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUTPUT = os.path.join(ROOT, "output")
+EVERGREEN = os.path.join(ROOT, "trees", "evergreen")
+
+# The blog index tree; its \syndicate-current-tree-as-atom-feed writes the feed.
+BLOG_ID = "0002"
+FEED = os.path.join(OUTPUT, BLOG_ID, "atom.xml")
+
+# Where rendered emails land, and where math PNGs are published from. Both live
+# under output/ so whatever publishes the site carries them; the <img> URLs
+# below are absolute, so they resolve from an inbox.
+MAIL_DIR = os.path.join(OUTPUT, "newsletter")
+MATH_DIR = os.path.join(OUTPUT, "math")
+
+# Rendered formulas are content-addressed and cached here across builds, since
+# output/ is a build artefact. build/ is gitignored.
+CACHE_DIR = os.path.join(ROOT, "build", "math")
+CACHE_INDEX = os.path.join(CACHE_DIR, "index.json")
+
+STATE = os.path.join(ROOT, "data", "sent.json")
+
+ATOM = "{http://www.w3.org/2005/Atom}"
+FR = "{http://www.forester-notes.org}"
+HTML = "{http://www.w3.org/1999/xhtml}"
+
+# Formulas render at 2x and are displayed at half size, so they stay sharp on
+# high-DPI screens. 110dpi ~ matches 12pt body text at 1x.
+BASE_DPI = 110
+DPI = BASE_DPI * 2
+
+# Math environments that are already display-mode; wrapping them in \[ \] would
+# nest math mode and fail to compile.
+SELF_DELIMITING = re.compile(
+    r"^\s*\\begin\s*\{(align|alignat|gather|equation|multline|eqnarray|flalign)\*?\}")
+
+
+def site_url():
+    """Base URL from forest.toml, trailing slash stripped."""
+    path = os.path.join(ROOT, "forest.toml")
+    with open(path, encoding="utf-8") as f:
+        m = re.search(r'^\s*url\s*=\s*"([^"]+)"', f.read(), re.M)
+    return (m.group(1) if m else "https://kellenkanarios.com").rstrip("/")
+
+
+BASE_URL = site_url()
+
+
+def absolutize(href):
+    """Make a Forester route or asset path absolute against the site URL."""
+    if not href:
+        return href
+    if href.startswith(("http://", "https://", "mailto:")):
+        return href
+    return BASE_URL + "/" + href.lstrip("/")
+
+
+# ---------------------------------------------------------------------------
+# 1. Discover
+# ---------------------------------------------------------------------------
+
+def feed_entries():
+    """Published posts, newest first, as read from the Atom feed."""
+    if not os.path.exists(FEED):
+        sys.exit(f"newsletter: {FEED} not found — run `forester build` first")
+    root = etree.parse(FEED).getroot()
+    entries = []
+    for entry in root.findall(f"{ATOM}entry"):
+        uri = entry.findtext(f"{ATOM}id") or ""
+        tid = uri.rstrip("/").rsplit("/", 1)[-1]
+        if not tid:
+            continue
+        entries.append({
+            "id": tid,
+            "title": (entry.findtext(f"{ATOM}title") or tid).strip(),
+            "url": uri,
+            "published": entry.findtext(f"{ATOM}published") or "",
+            "updated": entry.findtext(f"{ATOM}updated") or "",
+        })
+    entries.sort(key=lambda e: e["published"], reverse=True)
+    return entries
+
+
+# ---------------------------------------------------------------------------
+# 2. Diff
+# ---------------------------------------------------------------------------
+
+def load_state():
+    try:
+        with open(STATE, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {"sent": {}}
+
+
+def save_state(state):
+    os.makedirs(os.path.dirname(STATE), exist_ok=True)
+    with open(STATE, "w", encoding="utf-8") as f:
+        json.dump(state, f, indent=2, sort_keys=True)
+        f.write("\n")
+
+
+# ---------------------------------------------------------------------------
+# 3. Math
+# ---------------------------------------------------------------------------
+
+def latex_preamble():
+    """The forest's own preamble, so newsletter math uses the same macros.
+
+    Read from trees/evergreen/latex-preamble.tree (between \\startverb and
+    \\stopverb) rather than duplicated, so adding a package there is picked up
+    here. varwidth and xcolor are appended: the preamble's `algo` environment
+    needs varwidth, which Forester's own LaTeX pipeline supplies separately.
+    """
+    path = os.path.join(EVERGREEN, "latex-preamble.tree")
+    body = ""
+    try:
+        with open(path, encoding="utf-8") as f:
+            m = re.search(r"\\startverb(.*?)\\stopverb", f.read(), re.S)
+        if m:
+            body = m.group(1).strip()
+    except OSError:
+        pass
+    return body + (
+        "\n\\usepackage{varwidth}\n\\usepackage{xcolor}\n"
+        # KaTeX defines these; LaTeX does not, and they turn up throughout the
+        # RL and optimisation posts.
+        "\\DeclareMathOperator*{\\argmax}{arg\\,max}\n"
+        "\\DeclareMathOperator*{\\argmin}{arg\\,min}\n"
+    )
+
+
+def math_key(tex, display):
+    """Content hash over everything that affects the rendered pixels."""
+    h = hashlib.sha256()
+    for part in (latex_preamble(), str(DPI), display, tex):
+        h.update(part.encode("utf-8"))
+        h.update(b"\0")
+    return h.hexdigest()[:32]
+
+
+def load_cache_index():
+    try:
+        with open(CACHE_INDEX, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+
+def save_cache_index(index):
+    os.makedirs(CACHE_DIR, exist_ok=True)
+    with open(CACHE_INDEX, "w", encoding="utf-8") as f:
+        json.dump(index, f, indent=1, sort_keys=True)
+
+
+def wrap_math(tex, display):
+    """Put a formula into the right math mode for a standalone LaTeX page."""
+    tex = tex.strip()
+    if display == "block":
+        if SELF_DELIMITING.match(tex):
+            return tex
+        return "\\[\n" + tex + "\n\\]"
+    return "$" + tex + "$"
+
+
+def run_dvipng(tmp, count):
+    """latex + dvipng over a multi-page job; returns {page_index: depth}.
+
+    dvipng's --depth reports each formula's descent below the baseline, which
+    is what lets an inline formula sit on the text baseline instead of being
+    bottom-aligned like an ordinary image.
+    """
+    subprocess.run(
+        ["latex", "-halt-on-error", "-interaction=nonstopmode", "job.tex"],
+        cwd=tmp, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    # No -q: it suppresses the per-page "[N … depth=M]" records that --depth
+    # emits, leaving only an unlabelled run of depths.
+    proc = subprocess.run(
+        ["dvipng", "-T", "tight", "-D", str(DPI), "-bg", "Transparent",
+         "-z", "9", "--depth", "-o", "page%d.png", "job.dvi"],
+        cwd=tmp, check=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    depths = {}
+    for page, depth in re.findall(r"\[(\d+)[^\]]*?depth=(-?\d+)",
+                                  proc.stdout.decode("utf-8", "replace")):
+        depths[int(page)] = int(depth)
+    return {p: depths.get(p, 0) for p in range(1, count + 1)}
+
+
+def compile_pages(formulas, text_mode=False):
+    """Compile formulas into CACHE_DIR in one LaTeX run; raise if it fails.
+
+    Returns {key: metadata} for the formulas rendered.
+    """
+    os.makedirs(CACHE_DIR, exist_ok=True)
+    # Each formula goes in its own `preview` environment, which becomes its own
+    # page with a tight bounding box. This is what makes --depth meaningful:
+    # on an ordinary article page dvipng has no single baseline to measure
+    # against and reports nonsense (large negative depths). `preview` must be
+    # loaded after everything else, per its documentation.
+    pages = "\n".join(
+        "\\begin{preview}"
+        + (t.strip() if text_mode else wrap_math(t, d))
+        + "\\end{preview}"
+        for _, t, d in formulas)
+    doc = (
+        "\\documentclass[12pt]{article}\n"
+        + latex_preamble() +
+        "\\usepackage[active,tightpage]{preview}\n"
+        "\\begin{document}\n" + pages + "\n\\end{document}\n"
+    )
+    results = {}
+    with tempfile.TemporaryDirectory() as tmp:
+        with open(os.path.join(tmp, "job.tex"), "w", encoding="utf-8") as f:
+            f.write(doc)
+        depths = run_dvipng(tmp, len(formulas))
+        for i, (key, _, display) in enumerate(formulas, start=1):
+            png = os.path.join(tmp, f"page{i}.png")
+            if not os.path.exists(png):
+                raise RuntimeError(f"dvipng produced no page {i}")
+            shutil.copyfile(png, os.path.join(CACHE_DIR, key + ".png"))
+            results[key] = {"depth": depths.get(i, 0), "display": display}
+    return results
+
+
+def render_into(formulas, index):
+    """Render `formulas`, recording outcomes in `index`.
+
+    One LaTeX process handles the whole list, because the archive holds well
+    over a thousand formulas and a process each would be unbearable. A single
+    malformed formula aborts the entire run, though, so a failed batch is
+    bisected rather than retried one-by-one: with a couple of bad formulas
+    among several hundred that costs a few dozen runs instead of several
+    hundred, while still isolating each offender exactly.
+    """
+    if not formulas:
+        return
+    try:
+        index.update(compile_pages(formulas))
+        return
+    except (subprocess.CalledProcessError, RuntimeError):
+        pass
+
+    if len(formulas) > 1:
+        mid = len(formulas) // 2
+        render_into(formulas[:mid], index)
+        render_into(formulas[mid:], index)
+        return
+
+    # A lone formula that will not compile as math. Some \tex nodes are not
+    # really mathematics — \TeX and \LaTeX are text-mode logos — so try once
+    # more outside math mode before giving up.
+    key, tex, _ = formulas[0]
+    try:
+        index.update(compile_pages(formulas, text_mode=True))
+        return
+    except (subprocess.CalledProcessError, RuntimeError):
+        pass
+    print(f"  ! LaTeX failed, falling back to source: {tex.strip()[:60]!r}",
+          file=sys.stderr)
+    index[key] = {"failed": True}
+
+
+def render_batch(formulas):
+    """Compile a list of (key, tex, display) into cached PNGs."""
+    index = load_cache_index()
+    render_into(formulas, index)
+    save_cache_index(index)
+    return index
+
+
+def collect_formulas(tree_ids):
+    """Render every uncached formula across the given posts in one pass."""
+    index = load_cache_index()
+    pending, seen = [], set()
+    for tid in tree_ids:
+        path = os.path.join(OUTPUT, tid, "index.xml")
+        if not os.path.exists(path):
+            continue
+        # Only the mainmatter: the post's own title and its backmatter
+        # reference list also hold math, but neither reaches the email body,
+        # and rendering them would be a few hundred wasted LaTeX pages. Nested
+        # subtree titles are inside mainmatter, so they are still covered.
+        mm = etree.parse(path).getroot().find(f"{FR}mainmatter")
+        if mm is None:
+            continue
+        for el in mm.iter(f"{FR}tex"):
+            tex = el.text or ""
+            display = el.get("display", "inline")
+            key = math_key(tex, display)
+            cached = os.path.exists(os.path.join(CACHE_DIR, key + ".png"))
+            if key in seen or (key in index and (cached or index[key].get("failed"))):
+                continue
+            seen.add(key)
+            pending.append((key, tex, display))
+    if pending:
+        print(f"rendering {len(pending)} new formulas at {DPI}dpi…",
+              file=sys.stderr)
+        index = render_batch(pending)
+    return index
+
+
+def publish_math(key):
+    """Copy a cached PNG into output/math/ and return its absolute URL."""
+    os.makedirs(MATH_DIR, exist_ok=True)
+    dest = os.path.join(MATH_DIR, key + ".png")
+    if not os.path.exists(dest):
+        shutil.copyfile(os.path.join(CACHE_DIR, key + ".png"), dest)
+    return f"{BASE_URL}/math/{key}.png"
+
+
+def png_size(path):
+    """(width, height) straight out of the PNG IHDR chunk."""
+    with open(path, "rb") as f:
+        head = f.read(24)
+    return int.from_bytes(head[16:20], "big"), int.from_bytes(head[20:24], "big")
+
+
+# ---------------------------------------------------------------------------
+# 4. Emit
+# ---------------------------------------------------------------------------
+
+def esc(text):
+    return (text.replace("&", "&amp;").replace("<", "&lt;")
+                .replace(">", "&gt;").replace('"', "&quot;"))
+
+
+# Elements safe to pass through with their tag name intact. Anything not listed
+# has its children rendered but its own tag dropped, so unknown markup degrades
+# to its text rather than vanishing.
+PASSTHROUGH = {
+    "p", "em", "strong", "ul", "ol", "li", "blockquote", "hr", "br",
+    "figure", "figcaption", "sub", "sup", "b", "i", "u", "del",
+    "h1", "h2", "h3", "h4", "h5", "h6", "table", "thead", "tbody", "tr", "td", "th",
+}
+
+# Dropped entirely, contents and all: utterances comment threads are a <script>
+# and have no meaning in an inbox.
+DROP = {"script", "style", "noscript", "iframe"}
+
+STYLE = {
+    "pre": ("margin:1em 0;padding:0.9em 1.1em;background:#f6f6f4;"
+            "border-radius:6px;overflow-x:auto;font-size:0.85em;line-height:1.45;"),
+    "code": ("background:#f2f2ef;padding:0.1em 0.3em;border-radius:3px;"
+             "font-size:0.9em;"),
+    "figcaption": "font-size:0.85em;color:#666;text-align:center;margin-top:0.4em;",
+    "a": "color:#1b5e9c;",
+}
+
+
+class Renderer:
+    """Forester XML -> email-safe HTML."""
+
+    def __init__(self, index):
+        self.index = index
+
+    def render(self, el):
+        out = []
+        for child in el:
+            out.append(self.node(child))
+            if child.tail:
+                out.append(esc(child.tail))
+        return "".join(out)
+
+    def node(self, el):
+        if not isinstance(el.tag, str):
+            return ""
+        tag = el.tag.split("}")[-1]
+
+        if el.tag.startswith(FR):
+            return self.forester(tag, el)
+        if tag in DROP:
+            return ""
+        if tag == "img":
+            src = absolutize(el.get("src"))
+            width = el.get("width")
+            style = "max-width:100%;height:auto;display:block;margin:1em auto;"
+            w = f' width="{esc(width)}"' if width else ""
+            return f'<img src="{esc(src)}"{w} style="{style}" alt="" />'
+        if tag == "a":
+            href = absolutize(el.get("href"))
+            return f'<a href="{esc(href)}" style="{STYLE["a"]}">{self.inner(el)}</a>'
+
+        inner = self.inner(el)
+        if tag not in PASSTHROUGH and tag not in ("div", "span", "pre", "code"):
+            return inner
+
+        # Keep author-authored inline styles: base-macros writes its callouts
+        # and quote blocks as inline style attributes, which is already exactly
+        # what email needs.
+        style = el.get("style", "") or ""
+        if tag in STYLE:
+            style = STYLE[tag] + style
+        attr = f' style="{esc(style)}"' if style else ""
+        if tag in ("hr", "br"):
+            return f"<{tag}{attr} />"
+        return f"<{tag}{attr}>{inner}</{tag}>"
+
+    def inner(self, el):
+        head = esc(el.text) if el.text else ""
+        return head + self.render(el)
+
+    def forester(self, tag, el):
+        if tag == "tex":
+            return self.tex(el)
+        if tag == "link":
+            href = el.get("uri") or absolutize(el.get("href"))
+            return f'<a href="{esc(href)}" style="{STYLE["a"]}">{self.inner(el)}</a>'
+        if tag == "tree":
+            return self.subtree(el)
+        if tag == "mainmatter":
+            return self.render(el)
+        # frontmatter, backmatter, meta, taxon, … carry no body text worth
+        # inlining at this level; subtree() pulls what it needs from them.
+        return ""
+
+    def tex(self, el):
+        tex = el.text or ""
+        display = el.get("display", "inline")
+        key = math_key(tex, display)
+        entry = self.index.get(key)
+        png = os.path.join(CACHE_DIR, key + ".png")
+        if not entry or entry.get("failed") or not os.path.exists(png):
+            # Better a visible formula source than a broken image.
+            return f'<code style="{STYLE["code"]}">{esc(tex.strip())}</code>'
+        url = publish_math(key)
+        w, h = png_size(png)
+        w, h = round(w / 2), round(h / 2)
+        depth = round(entry.get("depth", 0) / 2)
+        if display == "block":
+            return (f'<div style="text-align:center;margin:1.2em 0;">'
+                    f'<img src="{esc(url)}" width="{w}" height="{h}" '
+                    f'style="max-width:100%;height:auto;" alt="{esc(tex.strip())}" />'
+                    f"</div>")
+        return (f'<img src="{esc(url)}" width="{w}" height="{h}" '
+                f'style="vertical-align:-{depth}px;max-width:100%;" '
+                f'alt="{esc(tex.strip())}" />')
+
+    def subtree(self, el):
+        """A nested \\subtree / \\section: heading plus its own mainmatter."""
+        fm = el.find(f"{FR}frontmatter")
+        title = ""
+        if fm is not None:
+            tel = fm.find(f"{FR}title")
+            if tel is not None:
+                title = self.inner(tel).strip()
+            taxon = fm.findtext(f"{FR}taxon")
+            if taxon and title:
+                title = f"{esc(taxon)}. {title}"
+            elif taxon:
+                title = esc(taxon)
+        mm = el.find(f"{FR}mainmatter")
+        body = self.render(mm) if mm is not None else ""
+        head = (f'<h3 style="margin:1.6em 0 0.5em;font-size:1.05em;">{title}</h3>'
+                if title else "")
+        return head + body
+
+
+# Wrapper for the local preview file only. Buttondown supplies its own
+# template and unsubscribe footer, so what gets posted to the API is the bare
+# article (see buttondown_body) — otherwise the mail carries two footers and
+# two copies of the title.
+PAGE = """<div style="background:#ffffff;margin:0;padding:0;">
+<div style="max-width:640px;margin:0 auto;padding:1.5em 1.2em;background:#ffffff;
+color:#1a1a1a;font-family:Georgia,'Iowan Old Style',serif;font-size:17px;
+line-height:1.6;">
+<h1 style="font-size:1.5em;line-height:1.25;margin:0 0 0.15em;">
+<a href="{url}" style="color:#1a1a1a;text-decoration:none;">{title}</a></h1>
+<p style="margin:0 0 1.8em;font-size:0.8em;color:#777;letter-spacing:0.04em;
+text-transform:uppercase;">{date}</p>
+{body}
+<hr style="border:none;border-top:1px solid #e2e2df;margin:2.5em 0 1.2em;" />
+<p style="font-size:0.82em;color:#777;margin:0;">
+You are receiving this because you subscribed at
+<a href="{site}" style="color:#777;">{site_label}</a>.
+<a href="{url}" style="color:#777;">Read this post on the web</a>.
+</p>
+</div>
+</div>
+"""
+
+# Buttondown decides between Markdown and HTML by sniffing the body; this
+# marker settles it explicitly rather than relying on that guess.
+FANCY = "<!-- buttondown-editor-mode: fancy -->"
+
+
+def pretty_date(iso):
+    try:
+        return dt.datetime.fromisoformat(
+            iso.replace("Z", "+00:00")).strftime("%B %-d, %Y")
+    except ValueError:
+        return iso[:10]
+
+
+def build_body(entry, index):
+    """The post itself as email HTML, with no surrounding chrome."""
+    path = os.path.join(OUTPUT, entry["id"], "index.xml")
+    if not os.path.exists(path):
+        return None
+    root = etree.parse(path).getroot()
+    mm = root.find(f"{FR}mainmatter")
+    return Renderer(index).render(mm) if mm is not None else ""
+
+
+def preview_page(entry, body):
+    """Standalone HTML for eyeballing locally before sending."""
+    return PAGE.format(
+        title=esc(entry["title"]),
+        url=esc(entry["url"]),
+        date=esc(pretty_date(entry["published"])),
+        body=body,
+        site=esc(BASE_URL),
+        site_label=esc(BASE_URL.split("//", 1)[-1]),
+    )
+
+
+def buttondown_body(entry, body):
+    """What actually gets posted: the article plus a link back to the web."""
+    return (
+        f"{FANCY}\n"
+        '<div style="color:#1a1a1a;font-family:Georgia,\'Iowan Old Style\',serif;'
+        'font-size:17px;line-height:1.6;">\n'
+        f"{body}\n"
+        '<p style="font-size:0.85em;color:#777;margin-top:2em;">'
+        f'<a href="{esc(entry["url"])}" style="color:#777;">'
+        "Read this post on the web</a>, where the maths is selectable text "
+        "rather than images.</p>\n"
+        "</div>\n"
+    )
+
+
+# ---------------------------------------------------------------------------
+# 5. Send (Buttondown)
+# ---------------------------------------------------------------------------
+#
+# The only provider-specific part of this script. Swapping to listmonk means
+# replacing post_email: POST {base}/api/campaigns with content_type "html",
+# then PUT {base}/api/campaigns/{id}/status {"status": "running"}.
+
+BUTTONDOWN_API = "https://api.buttondown.com/v1/emails"
+
+# Pin the API version. Under this one an email defaults to `draft` instead of
+# going out on creation, which is the behaviour this script relies on.
+BUTTONDOWN_API_VERSION = "2026-04-01"
+
+
+# Secrets files, in the order they are consulted. weekly/key.env is where the
+# forest already keeps an API token (WAKA_API, read by weekly/coding); the repo
+# root is offered too, for a key that is not weekly-specific. The `key.env`
+# line in .gitignore has no slash, so git ignores it at either depth.
+KEY_FILES = (
+    os.path.join(ROOT, "key.env"),
+    os.path.join(ROOT, "weekly", "key.env"),
+)
+
+
+def buttondown_key():
+    """API token from $BUTTONDOWN_API_KEY, falling back to a key.env file."""
+    key = os.environ.get("BUTTONDOWN_API_KEY", "").strip()
+    if key:
+        return key
+    for path in KEY_FILES:
+        try:
+            with open(path, encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("#"):
+                        continue
+                    name, sep, value = line.partition("=")
+                    if sep and name.strip() == "BUTTONDOWN_API_KEY":
+                        return value.strip().strip("'\"")
+        except OSError:
+            continue
+    listed = "\n".join(f"    {os.path.relpath(p, ROOT)}" for p in KEY_FILES)
+    sys.exit(
+        "newsletter: no Buttondown API key.\n\n"
+        "Create one under Settings → Programming in Buttondown, then either\n"
+        "export BUTTONDOWN_API_KEY, or add a line\n\n"
+        "    BUTTONDOWN_API_KEY=…\n\n"
+        "to whichever of these you prefer (both are gitignored; neither has\n"
+        "to exist yet):\n" + listed)
+
+
+def post_email(entry, body, live):
+    """Create the email in Buttondown; return the API's JSON response.
+
+    With live=False it is created as a draft to be reviewed and sent from the
+    Buttondown UI. With live=True it is queued for delivery immediately —
+    Buttondown rejects that unless X-Buttondown-Live-Dangerously is set, so
+    --send supplies it rather than failing the first call and asking again.
+    """
+    payload = {
+        "subject": entry["title"],
+        "body": body,
+        "status": "about_to_send" if live else "draft",
+    }
+    headers = {
+        "Authorization": f"Token {buttondown_key()}",
+        "Content-Type": "application/json",
+        "X-API-Version": BUTTONDOWN_API_VERSION,
+    }
+    if live:
+        headers["X-Buttondown-Live-Dangerously"] = "true"
+    req = urllib.request.Request(
+        BUTTONDOWN_API, data=json.dumps(payload).encode("utf-8"),
+        headers=headers, method="POST")
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as err:
+        detail = err.read().decode("utf-8", "replace")[:500]
+        raise SystemExit(
+            f"newsletter: Buttondown returned {err.code} for {entry['id']}\n{detail}")
+    except urllib.error.URLError as err:
+        raise SystemExit(f"newsletter: could not reach Buttondown — {err.reason}")
+
+
+# ---------------------------------------------------------------------------
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--all", action="store_true",
+                    help="render every published post, ignoring sent state")
+    ap.add_argument("--only", nargs="+", metavar="ID",
+                    help="render just these tree ids")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="list what would be rendered and exit")
+    ap.add_argument("--mark-sent", nargs="+", metavar="ID",
+                    help="record ids as sent without rendering")
+    ap.add_argument("--draft", action="store_true",
+                    help="also create each email as a Buttondown draft")
+    ap.add_argument("--send", action="store_true",
+                    help="also send each email via Buttondown and mark it sent")
+    args = ap.parse_args()
+
+    if args.draft and args.send:
+        ap.error("--draft and --send are mutually exclusive")
+
+    state = load_state()
+
+    if args.mark_sent:
+        now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+        by_id = {e["id"]: e for e in feed_entries()}
+        for tid in args.mark_sent:
+            state["sent"][tid] = {
+                "sent_at": now,
+                "subject": by_id.get(tid, {}).get("title", tid),
+            }
+            print(f"marked sent: {tid}")
+        save_state(state)
+        return
+
+    entries = feed_entries()
+    if args.only:
+        wanted = set(args.only)
+        entries = [e for e in entries if e["id"] in wanted]
+        missing = wanted - {e["id"] for e in entries}
+        for tid in sorted(missing):
+            print(f"newsletter: {tid} is not a published post — skipping",
+                  file=sys.stderr)
+    elif not args.all:
+        entries = [e for e in entries if e["id"] not in state["sent"]]
+
+    if not entries:
+        print("nothing to render — every published post is already sent")
+        return
+
+    if args.dry_run:
+        for e in entries:
+            print(f"{e['id']}  {pretty_date(e['published'])}  {e['title']}")
+        return
+
+    # The maths images are served from the site, so an email sent before the
+    # corresponding build is deployed arrives with broken formulas.
+    if args.send or args.draft:
+        print(f"note: formulas resolve against {BASE_URL}/math/ — deploy the "
+              "current build first, or they will not load\n", file=sys.stderr)
+
+    index = collect_formulas([e["id"] for e in entries])
+    os.makedirs(MAIL_DIR, exist_ok=True)
+    manifest = []
+    now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    for e in entries:
+        body = build_body(e, index)
+        if body is None:
+            print(f"newsletter: no built output for {e['id']} — skipping",
+                  file=sys.stderr)
+            continue
+        html = preview_page(e, body)
+        path = os.path.join(MAIL_DIR, e["id"] + ".html")
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(html)
+        record = {**e, "path": os.path.relpath(path, ROOT),
+                  "bytes": len(html.encode("utf-8"))}
+        print(f"{e['id']}  {len(html) // 1024:>4}K  {e['title']}")
+
+        if args.draft or args.send:
+            resp = post_email(e, buttondown_body(e, body), live=args.send)
+            record["buttondown_id"] = resp.get("id", "")
+            verb = "sent" if args.send else "drafted"
+            print(f"       {verb}: {resp.get('absolute_url') or resp.get('id', '')}")
+            if args.send:
+                state["sent"][e["id"]] = {
+                    "sent_at": now,
+                    "subject": e["title"],
+                    "buttondown_id": resp.get("id", ""),
+                }
+        manifest.append(record)
+
+    if args.send:
+        save_state(state)
+
+    with open(os.path.join(MAIL_DIR, "index.json"), "w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2)
+        f.write("\n")
+    print(f"\n{len(manifest)} email(s) in {os.path.relpath(MAIL_DIR, ROOT)}/")
+    if args.send:
+        print("sent and recorded in data/sent.json — commit it")
+    elif args.draft:
+        print("drafts created — review and send them in Buttondown, "
+              "then run --mark-sent")
+    else:
+        print("preview them, then --draft or --send")
+
+
+if __name__ == "__main__":
+    main()
