@@ -1,0 +1,11 @@
+\date{2026-07-30T15:20:39Z}
+\import{base-macros}
+\title{Swizzling (GPU)}
+\tag{transient}
+
+\p{There are two types of swizzling: \em{xor swizzling} and \em{shift swizzling}.}
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/xor-swizzle.png}}{}
+\figcaption{xor swizzling assuming there are only 4 banks (instead of 32). Orientation expresses logical layout, whereas label / color denote the corresponding physical bank.}
+}
+\p{If each warp is only #{4} threads, then we can see after \em{xor swizzling} there will be zero bank conflicts when a warp tries to read a column.}

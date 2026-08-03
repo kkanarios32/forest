@@ -18,13 +18,23 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EVERGREEN = os.path.join(ROOT, "trees", "evergreen")
+WEEKNOTES = os.path.join(ROOT, "trees", "weeknotes")
 
 # The generated page's own id — excluded from its own listing.
 SELF_ID = "RCNT"
 N = 15
 
-# Not notes: macro libraries / scaffolds.
-SKIP = {"base-macros", "latex-preamble", SELF_ID}
+# Container pages whose direct transclusions are not standalone thinking: the
+# weekly-review sections (Life Maxing / The Quantified Me / Reading Corner /
+# … for a given week) and the book reviews. They live in trees/evergreen/ and
+# are \tag{public}, but they are journal entries about a week, not ideas —
+# without this they flood the listing every Friday. The weeknotes are globbed,
+# so a new week's sections drop out automatically; the book-review index is
+# named because its reviews are reachable only through it.
+BOOK_REVIEWS_ID = "YJ05"
+
+# Not notes: macro libraries / scaffolds, plus the containers themselves.
+SKIP = {"base-macros", "latex-preamble", SELF_ID, BOOK_REVIEWS_ID}
 
 
 def brace_arg(text, macro):
@@ -45,6 +55,28 @@ def brace_arg(text, macro):
         out.append(c)
         i += 1
     return "".join(out).strip()
+
+
+def transcluded_ids(path):
+    """Ids this tree transcludes, or an empty set if it does not exist."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            return set(re.findall(r"\\transclude\{([^}]*)\}", f.read()))
+    except OSError:
+        return set()
+
+
+def container_children():
+    """Ids that belong to a weekly review or the book-review shelf.
+
+    Direct children only — deliberately no transitive walk, so a section that
+    transcludes a genuine note written that week still surfaces here.
+    """
+    out = set()
+    for path in sorted(glob.glob(os.path.join(WEEKNOTES, "*.tree"))):
+        out |= transcluded_ids(path)
+    out |= transcluded_ids(os.path.join(EVERGREEN, f"{BOOK_REVIEWS_ID}.tree"))
+    return out
 
 
 def git_time(path):
@@ -72,10 +104,11 @@ def modified_time(path):
 
 
 def build():
+    skip = SKIP | container_children()
     entries = []
     for path in glob.glob(os.path.join(EVERGREEN, "*.tree")):
         tid = os.path.splitext(os.path.basename(path))[0]
-        if tid in SKIP:
+        if tid in skip:
             continue
         with open(path, encoding="utf-8") as f:
             text = f.read()

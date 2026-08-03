@@ -1,0 +1,7 @@
+\date{2026-07-30T19:05:29Z}
+\import{base-macros}
+\title{Tensorcore math}
+\meta{author}{false}
+\tag{transient}
+
+\p{The main speedup of the \em{tensorcore} is the register reuse.}

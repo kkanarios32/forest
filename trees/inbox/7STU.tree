@@ -5,4 +5,4 @@
 \tag{transient}
 
 \problem{In [[9RLX]], the CPU must spend work copying all data to the device before it can hand control over to the device.}
-\p{The DMA is provided with the address of the desired data to be copied in DRAM, and then is able to manually copy the data from DRAM to device completely asynchronously.}
+\p{The DMA is provided with the address of the desired data to be copied in DRAM, and then is able to manually copy the data from DRAM to device completely asynchronously. When the DMA is done, it raises an interrupt, so that the OS now knows it is complete \citet{36.6}{arpaci2018operating}}

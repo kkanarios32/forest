@@ -2,8 +2,8 @@
 \author{kellenkanarios}
 \meta{author}{false}
 \tag{private}
-\title{Thursday, July 30, 2026}
-\date{2026-07-30T15:10:03Z}
+\title{Wednesday, July 29, 2026}
+\date{2026-07-29T15:33:57Z}
 
 
 
@@ -22,18 +22,5 @@
 }
 }
 
-\p{\strong{11:20 AM}}
+\p{\strong{11:33 AM}}
 \hr
-\scope{
-  \put\transclude/numbered{false}
-  \put\transclude/toc{false}
-  \transclude{EYMR}
-}
-
-\p{\strong{3:05 PM}}
-\hr
-\scope{
-  \put\transclude/numbered{false}
-  \put\transclude/toc{false}
-  \transclude{2HBL}
-}
