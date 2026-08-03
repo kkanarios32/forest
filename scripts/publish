@@ -1,0 +1,182 @@
+#!/usr/bin/bash
+# Build the forest, deploy the site, then mail any newly-published blog posts.
+#
+# This exists to enforce one ordering. scripts/newsletter references each
+# formula as an image on kellenkanarios.com, so the images have to be live
+# before the mail goes out; send first and every equation in a delivered email
+# is a permanent 404. The steps run in the only safe order, and the send is
+# gated on actually fetching one of the images back from the live site.
+#
+#   1. forester build              — regenerate output/, including the feed
+#   2. scripts/newsletter          — render queued posts + their formula PNGs
+#                                    (must precede the deploy: sync_assets
+#                                    copies output/math/ into the site)
+#   3. make -C ../public-forest update
+#                                  — build the public site and push it
+#   4. verify                      — fetch a formula back from the live site
+#   5. scripts/newsletter --send   — only now, and only after confirmation
+#
+# Usage:
+#   scripts/publish              # build, deploy, then send whatever is queued
+#   scripts/publish --draft      # …create Buttondown drafts instead of sending
+#   scripts/publish --only F3T0  # restrict to specific posts
+#   scripts/publish --yes        # skip the confirmation prompt
+#   scripts/publish --dry-run    # show what would happen, change nothing
+#   scripts/publish --no-deploy  # skip the deploy (assumes it is already live)
+set -euo pipefail
+
+ROOT=$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)
+PUBLIC=${PUBLIC_FOREST:-$(cd "$ROOT/.." && pwd)/public-forest}
+
+DRAFT=0 YES=0 DRY=0 DEPLOY=1
+ONLY=()
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --draft)     DRAFT=1 ;;
+    --yes|-y)    YES=1 ;;
+    --dry-run)   DRY=1 ;;
+    --no-deploy) DEPLOY=0 ;;
+    --only)      shift; while [ $# -gt 0 ] && [[ "$1" != --* ]]; do ONLY+=("$1"); shift; done; continue ;;
+    -h|--help)   sed -n '2,26p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    *)           echo "publish: unknown option '$1'" >&2; exit 2 ;;
+  esac
+  shift
+done
+
+say() { printf '\n\033[1m==> %s\033[0m\n' "$1"; }
+die() { printf '\npublish: %s\n' "$1" >&2; exit 1; }
+
+only_args=()
+[ ${#ONLY[@]} -gt 0 ] && only_args=(--only "${ONLY[@]}")
+
+command -v forester >/dev/null 2>&1 || eval "$(opam env --switch=forest 2>/dev/null)" || true
+command -v forester >/dev/null 2>&1 || die "forester not on PATH (opam switch 'forest' not active)"
+[ -d "$PUBLIC" ] || die "public forest not found at $PUBLIC (set \$PUBLIC_FOREST)"
+
+# --- what is queued -------------------------------------------------------
+say "Checking the queue"
+queue=$("$ROOT/scripts/newsletter" --dry-run "${only_args[@]}" 2>/dev/null || true)
+echo "$queue"
+if printf '%s' "$queue" | grep -q "nothing to render"; then
+  queued=0
+else
+  queued=$(printf '%s\n' "$queue" | grep -c . || true)
+fi
+
+if [ "$DRY" = 1 ]; then
+  say "Dry run — nothing changed"
+  echo "would build:  $ROOT"
+  [ "$DEPLOY" = 1 ] && echo "would deploy: make -C $PUBLIC update"
+  if [ "$queued" -gt 0 ]; then
+    echo "would $([ "$DRAFT" = 1 ] && echo draft || echo send): $queued post(s)"
+  else
+    echo "would send:   nothing (queue empty)"
+  fi
+  exit 0
+fi
+
+# --- 1. build -------------------------------------------------------------
+say "Building the forest"
+(cd "$ROOT" && forester build 2>&1 | tail -1)
+
+# --- 2. render ------------------------------------------------------------
+# Before the deploy, so the formula PNGs exist for sync_assets to copy.
+if [ "$queued" -gt 0 ]; then
+  say "Rendering $queued email(s)"
+  "$ROOT/scripts/newsletter" "${only_args[@]}"
+fi
+
+# --- 3. deploy ------------------------------------------------------------
+if [ "$DEPLOY" = 1 ]; then
+  say "Deploying the site"
+  make -C "$PUBLIC" update
+else
+  say "Skipping deploy (--no-deploy)"
+fi
+
+[ "$queued" -gt 0 ] || { say "Site published; no new posts to mail"; exit 0; }
+
+# --- 4. verify ------------------------------------------------------------
+# Fetch one of this run's formulas back from the live site. A post with no
+# maths has nothing to check, which is fine — there is then nothing to break.
+say "Verifying formulas are live"
+sample=$(python3 - "$ROOT" <<'PY'
+import json, os, re, sys
+root = sys.argv[1]
+manifest = os.path.join(root, "output", "newsletter", "index.json")
+try:
+    entries = json.load(open(manifest, encoding="utf-8"))
+except (OSError, ValueError):
+    sys.exit(0)
+for e in entries:
+    try:
+        html = open(os.path.join(root, e["path"]), encoding="utf-8").read()
+    except OSError:
+        continue
+    m = re.search(r"https://\S+?/math/[a-f0-9]+\.png", html)
+    if m:
+        print(m.group(0))
+        break
+PY
+)
+
+if [ -z "$sample" ]; then
+  echo "  no formulas in this batch — nothing to verify"
+else
+  # GitHub Pages usually publishes within seconds, but can lag; wait rather
+  # than fail on the first miss. Overridable so the gate itself is testable.
+  ok=0
+  for attempt in $(seq 1 "${VERIFY_ATTEMPTS:-20}"); do
+    code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 "$sample" || echo 000)
+    printf '  attempt %-2s %s -> HTTP %s\n' "$attempt" "$(basename "$sample")" "$code"
+    [ "$code" = "200" ] && { ok=1; break; }
+    sleep "${VERIFY_SLEEP:-15}"
+  done
+  [ "$ok" = 1 ] || die "formulas are not live at $sample
+The deploy has not propagated (GitHub Pages can lag) or sync_assets did not
+copy output/math/. Nothing was sent. Re-run once the URL returns 200, or use
+--no-deploy to skip straight to sending."
+fi
+
+# --- 5. send --------------------------------------------------------------
+if [ "$DRAFT" = 1 ]; then
+  say "Creating Buttondown draft(s)"
+  "$ROOT/scripts/newsletter" --draft "${only_args[@]}"
+  exit 0
+fi
+
+# --only bypasses the sent-state filter by design, so it can re-mail something
+# subscribers already received. Buttondown's duplicate detection usually
+# catches it, but that is its safety net, not ours — say so plainly.
+resent=$(python3 - "$ROOT" "${ONLY[@]+"${ONLY[@]}"}" <<'PY'
+import json, os, sys
+root, ids = sys.argv[1], sys.argv[2:]
+if ids:
+    try:
+        sent = json.load(open(os.path.join(root, "data", "sent.json")))["sent"]
+    except (OSError, ValueError, KeyError):
+        sent = {}
+    print(" ".join(i for i in ids if i in sent))
+PY
+)
+if [ -n "$resent" ]; then
+  printf '\n\033[1;33mwarning:\033[0m already sent before: %s\n' "$resent"
+  printf '         sending again re-mails them to every subscriber.\n'
+fi
+
+if [ "$YES" != 1 ]; then
+  say "Ready to send"
+  printf '%s\n' "$queue"
+  printf '\nThis mails the above to your subscribers and cannot be undone.\n'
+  read -r -p "Send? [y/N] " reply
+  case "$reply" in
+    [yY]|[yY][eE][sS]) ;;
+    *) die "aborted — nothing sent$([ "$DEPLOY" = 1 ] && echo " (the site is deployed; re-run to send)")" ;;
+  esac
+fi
+
+say "Sending"
+"$ROOT/scripts/newsletter" --send "${only_args[@]}"
+
+say "Done — commit data/sent.json"

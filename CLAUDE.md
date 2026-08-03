@@ -323,6 +323,19 @@ email client runs JavaScript. `scripts/newsletter` bridges the gap:
 `--all` re-renders everything, `--only <id>` targets one post, and
 `--dry-run` lists the queue without rendering.
 
+`scripts/publish` chains the whole thing — build, render, deploy, then
+send — in the only order that works, and refuses to send unless it can
+fetch one of this batch's formulas back from the live site. Prefer it to
+running the steps by hand; the ordering is the part that bites, and a
+mistake there is delivered mail that cannot be recalled. It sends nothing
+without confirmation (`--yes` to skip), `--draft` stops at Buttondown
+drafts, and `--only` warns when a post has gone out before, since that
+flag deliberately ignores `data/sent.json`.
+
+Nothing is scheduled: no hook, cron, or timer sends mail. Publishing stays
+a deliberate act — a post goes out because you dropped its
+`\tag{upcoming}` and ran `scripts/publish`.
+
 Buttondown supplies its own template and unsubscribe footer, so what is
 posted to the API is the bare article, not the standalone preview page.
 Only `post_email` knows about Buttondown; moving to another provider is

@@ -571,6 +571,7 @@ scripts/hastags public blog                    # trees having ALL listed tags
 scripts/split_bib                              # refs.bib → trees/refs/*.tree
 scripts/fize path/to/file.tree                 # convert LaTeX snippets to Forester
 scripts/newsletter                             # build emails for unsent blog posts
+scripts/publish                                # build → deploy → mail new posts
 weekly/init_weekly                             # pull metrics → trees/weeknotes/
 ```
 
