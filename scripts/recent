@@ -143,7 +143,7 @@ def build():
         # of this page as a bare link rather than an expandable block.
         "\\meta{index}{true}",
         "",
-        f"\\p{{Some recently modified trees (by git commit time).}}"
+        f"\\p{{Some recently modified trees (by git commit time).}}",
         "",
         "\\scope{",
         "  \\put\\transclude/toc{false}",

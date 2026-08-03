@@ -7,20 +7,21 @@
 \meta{index}{true}
 
 \p{Some recently modified trees (by git commit time).}
+
 \scope{
   \put\transclude/toc{false}
   \put\transclude/numbered{false}
   \put\transclude/expanded{false}
   \put\transclude/metadata{true}
-  \transclude{Q30B}
-  \transclude{47Y4}
-  \transclude{0025}
-  \transclude{HHZO}
-  \transclude{R0PM}
-  \transclude{OGCRZ}
-  \transclude{4QZE}
-  \transclude{3HOD}
   \transclude{QTSW}
+  \transclude{Q30B}
+  \transclude{OGCRZ}
+  \transclude{HHZO}
+  \transclude{4QZE}
+  \transclude{47Y4}
+  \transclude{3HOD}
+  \transclude{0025}
+  \transclude{R0PM}
   \transclude{ZUAG}
   \transclude{ZAR4}
   \transclude{YV5J}

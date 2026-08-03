@@ -9,8 +9,6 @@
 
 \p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more, ranging from long-form deep dives to short, self-contained notes. See [upcoming blogs](007M) and feel free to request! This blog also has a corresponding [Atom feed](/0002/atom.xml).}
 
-\subscribe
-
 \put\transclude/toc{false}
 \put\transclude/numbered{false}
 \put\transclude/metadata{true}
@@ -44,5 +42,8 @@
   {\rel/blog/hidden ?X}
 }
 
+% Below the listing, as on the home page: the ask lands after the reader has
+% seen what there is to subscribe to, not before.
+\subscribe
 
 \syndicate-current-tree-as-atom-feed

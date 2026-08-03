@@ -66,8 +66,6 @@ Currently, \mark{I am interested in automated kernel generation across accelerat
   }
 }
 
-\hr
-
 % The listings. One rule decides what belongs here rather than in the prose
 % site map above: transclude only what a first-time visitor should see without
 % clicking. That is Research, which is why an academic visitor came, and Blog,
@@ -75,6 +73,10 @@ Currently, \mark{I am interested in automated kernel generation across accelerat
 % notebooks, solution manuals, weeknotes, paper of the week, and the recently
 % edited listing — is linked from `About this website` instead. Both of these
 % are Datalog queries, so the page keeps updating itself as trees are tagged.
+
+% The newsletter ask sits after the listings, not before them, and directly
+% under the Blog listing it is selling: by here the reader has seen that there
+% is a blog and what has gone into it.
 \scope{
   \put\transclude/expanded{false}
   \subtree[bib]{
@@ -92,8 +94,4 @@ Currently, \mark{I am interested in automated kernel generation across accelerat
   }
   \transclude{0002}
 }
-
-% The newsletter ask sits after the listings, not before them, and directly
-% under the Blog listing it is selling: by here the reader has seen that there
-% is a blog and what has gone into it.
 \subscribe

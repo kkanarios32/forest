@@ -188,49 +188,95 @@
 % ever changes. Rendering is guarded in theme/core.xsl so the form appears
 % only on its own page, never in a transclusion or hover-preview.
 %
-% Styled quietly on purpose. An earlier version used a tinted panel, a 4px
-% blue left rule, and a filled blue button, which made it the loudest thing on
-% any page it appeared on — louder than the prose it was asking you to
-% subscribe to, and unmistakably a third-party embed. A hairline border and an
-% outline button let it read as part of the page. The submit button's :hover
-% state cannot be expressed inline, so it lives in theme/style.css against the
-% .embeddable-buttondown-form class.
+% Not a card. Every earlier version enclosed this in a bordered, tinted,
+% rounded panel, and each round of toning that panel down only made it a
+% quieter version of the wrong thing: nothing else on a page here carries a
+% fill or a border, so any box at all reads as an embed. The block sits in the
+% ordinary flow, separated by its heading and the space above it.
+%
+% It carries no rule of its own either. There is already an \hr above the
+% listings, so adding a second one put three horizontal lines within a short
+% stretch of page — four counting the field's own baseline — and the bottom of
+% the page started to read as ruled notepaper. A heading plus whitespace
+% separates perfectly well once the surrounding page has any dividers at all.
+%
+% The field is a fixed 200px and explicitly refuses to grow. Left flexible it
+% filled the column, which put a full-width 1px line a few centimetres below a
+% full-width \hr — the eye reads that as a second divider well before it reads
+% it as an input — and it stranded `Subscribe` against the right margin, far
+% from the field it submits. Proximity is what makes the two read as one
+% control.
+%
+% Everything inherits. There is no font declaration in here at all: the heading
+% is a real <h1>, so the theme's own heading rules style it exactly as they
+% style `About this website` or `Research`, and the prose picks up the body
+% serif. The sole exception is `font: inherit` on the two inputs, which is not
+% a font choice but a repair — form controls do not inherit typography from
+% their ancestors, and without it the browser dresses them in its own UI font.
+% That was how the button ended up in a typeface used nowhere else on the site.
+%
+% The heading follows the section convention rather than imitating it. Emitting
+% <h1> + <a class="slug"> is the same markup tree.xsl generates for a subtree
+% heading, so it inherits `details h1` and `.slug` and cannot drift if that
+% convention changes. The slug doubles as the feed link — [rss] points at the
+% Atom feed, which is the other thing a subscribe block should be offering.
+%
+% Underlines, not enclosures. The page's whole interaction language is
+% underlined text: local links, slugs, the resume link. So the email field is a
+% baseline rule and the submit is an underlined word, both of which read as
+% part of that system where a rounded outlined control does not. :hover and
+% :focus cannot be expressed inline and live in theme/style.css against the
+% .embeddable-buttondown-form class; the hover tint there is the same one
+% a.slug and .link already use.
+%
+% Both underlines are border-bottoms, and the two controls carry identical
+% padding and line-height, on purpose. The submit originally used
+% text-decoration with no padding, which left it sitting visibly high:
+% align-items: baseline matches text baselines, but each rule is offset from
+% its baseline by that control's own padding-bottom, so unequal padding meant
+% unequal rules — and a text-decoration underline rides just under the glyphs
+% while a border sits at the bottom of the box, compounding it. padding-bottom
+% is in px rather than em so the two cannot drift apart if either control's
+% font-size is ever touched, and line-height is pinned because some browsers
+% force `normal` on submit inputs regardless of `font: inherit`. The submit's
+% rule is currentColor against the field's 40% black, so the actionable half
+% still reads as the darker one.
 \def\subscribe{
-  \<html:form>[class]{embeddable-buttondown-form}[method]{post}[action]{https://buttondown.com/api/emails/embed-subscribe/kanarios}[style]{
-   display: flex;
-   flex-wrap: wrap;
-   align-items: baseline;
-   gap: 0.4em;
-   margin: 0.5em 0 1em 0;
-   padding: 0.9em 1.1em;
-   border: 1px solid rgba(60, 90, 180, 0.3);
-   border-radius: var(--radius);
-  }{
-   \<html:div>[style]{flex: 1 0 100\%; font-weight: 600;}{Subscribe by email}
-   \<html:div>[style]{
-    flex: 1 0 100\%;
-    font-size: 0.92em;
-    margin-bottom: 0.4em;
-    color: rgba(0, 0, 0, 0.7);
-   }{New posts in full, whenever I publish. Nothing else.}
-   \<html:input>[type]{email}[name]{email}[placeholder]{you@example.com}[required]{required}[style]{
-    flex: 1 1 15em;
-    padding: 0.4em 0.6em;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    border-radius: var(--radius);
-    font-size: 0.95em;
-   }{}
-   \<html:input>[type]{hidden}[name]{embed}[value]{1}{}
-   \<html:input>[type]{submit}[value]{Subscribe}[style]{
-    flex: 0 0 auto;
-    padding: 0.4em 0.9em;
-    border: 1px solid rgba(60, 90, 180, 0.7);
-    border-radius: var(--radius);
-    background-color: transparent;
-    color: rgb(48, 72, 144);
-    font-size: 0.95em;
-    cursor: pointer;
-   }{}
+  \<html:div>[class]{subscribe-block}[style]{margin: 1.6em 0 1em 0;}{
+    \hr
+   \<html:h1>{Subscribe by email \<html:a>[class]{slug}[href]{/0002/atom.xml}{[rss]}}
+   \<html:p>[style]{margin: 0.4em 0 0.8em 0;}{New posts in full, whenever I publish. Nothing else.}
+   \<html:form>[class]{embeddable-buttondown-form}[method]{post}[action]{https://buttondown.com/api/emails/embed-subscribe/kanarios}[style]{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 18px;
+   }{
+    \<html:input>[type]{email}[name]{email}[placeholder]{you@example.com}[required]{required}[style]{
+     flex: 0 0 auto;
+     width: 200px;
+     padding: 0.15em 0.1em 4px 0.1em;
+     border: none;
+     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+     border-radius: 0;
+     background-color: transparent;
+     font: inherit;
+     line-height: inherit;
+    }{}
+    \<html:input>[type]{hidden}[name]{embed}[value]{1}{}
+    \<html:input>[type]{submit}[value]{Subscribe}[style]{
+     flex: 0 0 auto;
+     padding: 0.15em 0.1em 4px 0.1em;
+     border: none;
+     border-bottom: 1px solid currentColor;
+     border-radius: 0;
+     background-color: transparent;
+     color: inherit;
+     font: inherit;
+     line-height: inherit;
+     cursor: pointer;
+    }{}
+   }
   }
 }
 
