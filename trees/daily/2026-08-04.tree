@@ -1,0 +1,42 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Tuesday, August 4, 2026}
+\date{2026-08-04T12:37:14Z}
+
+\p{
+\em{Use thyself even unto those things that thou doest at first despair of. For the left hand we see, which for the most part lieth idle because not used; yet doth it hold the bridle with more strength than the right, because it hath been used unto it.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 12 §5
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+      \li{Ex 1.1 — int8 matmul roofline}
+      \li{Ex 1.2 — mixed int8 weights / bf16 activations}
+      \li{Ex 1.4 — int8 batched matmul with per-example weights}
+      \li{Ex 1.5 — H100 memory rooflines from the NVIDIA spec sheet}
+      \li{Ex 1.3 — Plot peak FLOPs/s vs B for F=D=4096 and F=D=1024}
+      \li{Read: Network communication rooflines}
+      \li{Get a TPU-backed runtime working (Colab TPU or Cloud TPU VM); run a trivial jnp matmul}
+      \li{Bookmark the two spec tables you will use constantly: TPU specs (Ch2) and GPU specs (Ch12)}
+      \li{Read: Matrix multiplication}
+      \li{Create a scaling-book scratch repo: one notebook per chapter + solutions.md}
+      \li{Read: Visualizing rooflines}
+      \li{Read: Where Does the Time Go? (compute / comms / memory)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Set up easy testing / profiling with skypilot}
+    }
+  }
+}
+}
+
+\p{\strong{8:37 AM}}
+\hr
+
+\p{We are baaaaaaaaaaack. Time to scale my model today. We sleep, eat, breath TPUs.}
