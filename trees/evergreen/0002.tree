@@ -45,5 +45,6 @@
 % Below the listing, as on the home page: the ask lands after the reader has
 % seen what there is to subscribe to, not before.
 \subscribe
+\hr
 
 \syndicate-current-tree-as-atom-feed
