@@ -1,0 +1,43 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Wednesday, August 5, 2026}
+\date{2026-08-05T13:14:19Z}
+
+\p{
+\em{Whether thou speak in the Senate or whether thou speak to any particular, let thy speech In always grave and modest. But thou must not openly and vulgarly observe that sound and exact form of speaking, concerning that which is truly good and truly civil; the vanity of the world, and of worldly men: which otherwise truth and reason doth prescribe.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 8 §28
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Thu: §3.3-3.3.1 Cache implementation & associativity (pp. 17-20)}
+      \li{Ex 1.1 — int8 matmul roofline}
+      \li{Ex 1.2 — mixed int8 weights / bf16 activations}
+      \li{Read: What Is a TPU? (TensorCore, MXU, VPU, memory hierarchy)}
+      \li{Ex 1.4 — int8 batched matmul with per-example weights}
+      \li{Ex 1.5 — H100 memory rooflines from the NVIDIA spec sheet}
+      \li{Ex 1.3 — Plot peak FLOPs/s vs B for F=D=4096 and F=D=1024}
+      \li{Read: Network communication rooflines}
+      \li{Sketch the memory hierarchy from memory: registers -> VMEM -> HBM -> host, bandwidth and capacity on every arrow}
+      \li{Write-up: Ch1 Rooflines — one-pager (the model, the key formula, when it binds)}
+      \li{Read: Appendix A: more on TPU internals (VPU, scalar core)}
+      \li{Read: Appendix B: how does a systolic array work?}
+      \li{Anki: 5-8 cards from Ch1 Rooflines (hardware numbers + roofline conditions)}
+      \li{Read: Matrix multiplication}
+      \li{Read: Visualizing rooflines}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Set up easy testing / profiling with skypilot}
+    }
+  }
+}
+}
+
+\p{\strong{9:14 AM}}
+\hr
+\p{Init daily}
