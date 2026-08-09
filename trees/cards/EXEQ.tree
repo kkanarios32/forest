@@ -1,11 +1,11 @@
 \date{2026-07-16T02:02:07Z}
 \import{base-macros}
 \author{kellenkanarios}
-\title{Do code and data share caches and why or why not?}
+\title{Why instructions get their own cache}
 \taxon{Card}
 \tag{card}
 \meta{anki}{1784508017118}
 
-\prompt{
+\prompt{Do code and data share caches and why or why not?}{
   No there is a separate [instruction cache](3DIC). The reason for this is that the code and data memory regions are completely separate providing no locality. This causes instructions and data to continuously evict eachother if not separated. Furthermore, since decoding instructions is slow, instructions are often cached after being decoded \citet{3.1}{hatWhatEveryProgrammera}.
 }

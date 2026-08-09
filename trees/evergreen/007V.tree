@@ -3,8 +3,6 @@
 \tag{public}
 \author{kellenkanarios}
 \title{TPE Processes Intro}
-\p{[[007U]] (1/66)}
-
 \p{The process abstraction, what the OS has to support to maintain it, and the data structure that holds it together.}
 
 \transclude{FCHM}

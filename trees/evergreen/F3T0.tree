@@ -4,6 +4,7 @@
 \title{Forward-backward algorithm}
 \tag{public}
 \tag{blog}
+\meta{reading-time}{true}
 
 \p{Suppose we have a sequence of latent variable #{\xi = (z_{1}, z_{2}, \ldots, z_{T})} and the corresponding sequence of observations #{\mathcal{H} = (x_{1}, x_{2}, \ldots, x_{T})}}
 

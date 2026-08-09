@@ -3,6 +3,7 @@
 \author{kellenkanarios}
 \import{base-macros}
 \tag{blog}
+\meta{reading-time}{true}
 \tag{llms}
 \tag{upcoming}
 \title{Deepseek v1 through R1: RL is back!}

@@ -1,6 +1,6 @@
 \tag{public}
 \import{base-macros}
-\title{Definitions [FM](lipmanFlowMatchingGenerative2023)}
+\title{[Flow Matching](lipmanFlowMatchingGenerative2023) Definitions}
 \author{kellenkanarios}
 
 \transclude{008B}

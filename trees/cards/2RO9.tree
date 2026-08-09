@@ -2,8 +2,8 @@
 \import{base-macros}
 \author{kellenkanarios}
 \taxon{Card}
-\title{What false dependencies does register renaming eliminate?}
+\title{The false dependencies renaming removes}
 \tag{card}
 \meta{anki}{1784508017023}
 
-\prompt{Write-after-write (#{\mathrm{WAW}}) and write-after-read (#{\mathrm{WAR}}) hazards — the \em{false} dependencies that arise from reusing an architectural register, not from real data flow. Removing them exposes more [[5CT9]] to the scheduler.}
+\prompt{What false dependencies does register renaming eliminate?}{Write-after-write (#{\mathrm{WAW}}) and write-after-read (#{\mathrm{WAR}}) hazards — the \em{false} dependencies that arise from reusing an architectural register, not from real data flow. Removing them exposes more [[5CT9]] to the scheduler.}

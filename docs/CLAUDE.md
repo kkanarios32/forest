@@ -26,8 +26,9 @@ overwrites on the next run.
 site's XSL templates and `style.css`; changes are committed to the submodule).
 Keep visual styling in `trees/evergreen/base-macros.tree` as inline-styled
 macros. Only reach into `theme/style.css` when the styling genuinely cannot
-live in a macro — the canonical case is theming tied to a `\taxon{...}` (e.g.
-the `Card` taxon's blue card). When in doubt, do it in `base-macros`.
+live in a macro — the canonical case is a rule that depends on state no inline
+style can see, such as the open/closed triangle on `\foldout`. When in doubt,
+do it in `base-macros`.
 
 **Read-only:** `output/` (build artifact), `tex/generated/` (intermediate
 JSON from `split_bib`).
@@ -167,6 +168,25 @@ behavioral ones:
   page's Research listing keeps its expandable block while the papers
   under it render as links.
 
+One meta carries no tag beside it, for the same underlying reason — tags
+never reach the XML, so anything the theme must decide has to be said as
+a meta:
+
+- `\meta{reading-time}{true}` — append an estimated reading time to the
+  tree's metadata line, after the date and author. `templates/blog.tree`
+  sets it, so every post from `scripts/new blog` has it; add it by hand
+  to anything else long-form that wants one. The number is derived at
+  render time from the body — inline `\subtree`/`\section` content
+  counts, expanded transclusions count, collapsed ones do not (they are
+  read on their own page), code blocks are skipped, math counts as its
+  LaTeX source at the prose rate, and each display equation adds ten
+  seconds for the stop-and-parse. Those last two are what keep a
+  derivation from scoring like an essay of the same length. Nothing to
+  maintain: edit the post and the estimate follows. It is opt-in rather than automatic
+  because the estimate misleads on the pages that would otherwise get it
+  — a notebook is a reference to dip into, not a 55-minute sitting. See
+  the `reading-time` templates in `theme/metadata.xsl`.
+
 Two role tags mark a note's kind within the evergreen graph, and exist
 mainly so Datalog can index them:
 
@@ -208,23 +228,29 @@ spaced-repetition card](#add-a-spaced-repetition-card)). Card trees live in
 Cards are the forest's Anki integration (Andy Matuschak-style prompts). One
 prompt per tree, the tree's id is the card's stable identity.
 
-1. `scripts/new card <question…>`. Creates `trees/cards/<random-id>.tree` with
-   `\taxon{Card}`, `\tag{card}` (never `public`), the question as its `\title`,
-   and an empty `\prompt{}` to fill. The question lives only in the `\title` —
-   no duplication.
-2. Write the answer inside `\prompt{...}` (the title is the front, so `\prompt`
-   holds only the back). Both are ordinary Forester: `#{...}` / `##{...}` math
-   and `[[ID]]` / `[text](ID)` links work and are converted for Anki on sync.
-   Optionally set a deck with `\meta{anki-deck}{NN}`; otherwise cards go to the
-   `Forest` deck.
+A card is written like an `\exercise`: a name on top, the question as prose,
+the answer folded away.
+
+1. `scripts/new card <name…>`. Creates `trees/cards/<random-id>.tree` with
+   `\taxon{Card}`, `\tag{card}` (never `public`), the name as its `\title`, and
+   an empty `\prompt{}{}` to fill. The name is the idea the card turns on, not
+   the question restated ("The batch size is the intensity", never "Question
+   about matmul intensity") — it is what makes a deck scannable and what lets a
+   concept note link a specific card in prose.
+2. Write the two sides as `\prompt{<question>}{<answer>}`. Both are ordinary
+   Forester: `#{...}` / `##{...}` math and `[[ID]]` / `[text](ID)` links work
+   and are converted for Anki on sync. Optionally set a deck with
+   `\meta{anki-deck}{NN}`; otherwise cards go to the `Forest` deck.
 3. `\transclude{<card-id>}` the card into the concept note it tests to review
-   it in context — the `Card` taxon renders as a self-contained blue card
-   (question + answer) via `theme/style.css`.
+   it in context. It renders as its name, the question in prose beneath, and
+   the answer behind a fold — so a page of cards reads as a self-test rather
+   than a transcript.
 4. Sync with `scripts/anki-sync` (dry run — prints the plan) then
-   `scripts/anki-sync --apply`. First sync creates the Anki note (`\title` →
-   Front, `\prompt` → Back, `Basic` model, tags `forest` + `forest-id-<id>`)
-   and writes the note id back as `\meta{anki}{<id>}`, so later syncs update in
-   place instead of duplicating.
+   `scripts/anki-sync --apply`. First sync creates the Anki note (`\prompt`'s
+   question → Front, its answer → Back, `Basic` model, tags `forest` +
+   `forest-id-<id>`) and writes the note id back as `\meta{anki}{<id>}`, so
+   later syncs update in place instead of duplicating. The `\title` is not
+   synced — a name is useless on a flashcard.
    A card whose Anki note was deleted is re-added; `--apply --prune` deletes
    Anki notes whose source card tree is gone. Never hand-edit `\meta{anki}{…}`.
 
@@ -268,6 +294,45 @@ When prose mentions an atomic concept that does not yet have a tree:
    place** — write the body, drop the `\stub` line, replace `\tag{stub}`
    with a taxon (`\tag{public}` is already there) — whenever the idea is
    ready to write. It never moves; its id and inbound links never change.
+
+### Work an exercise into a solution manual
+
+Solution manuals — one tree per book, all of them listed on `914H` — are
+written as books: one chapter per chapter, one `\exercise` per exercise.
+
+```
+\subtree[sutton-ch2]{
+  \title{Multi-armed Bandits}
+  \meta{number}{2}
+
+  \exercise{2.1}{How often greedy is chosen with two actions}{
+    \p{In #{\epsilon}-greedy selection with two actions, how often is the
+       greedy action selected?}
+  }{
+    \p{Assuming #{Q_*(a_1) > Q_*(a_2)}, with probability #{1 - \epsilon}...}
+  }
+}
+```
+
+1. Find the chapter's `\subtree[<book>-ch<n>]`, or open one. It must have
+   an explicit id — only an id'd subtree can parent the exercises under
+   it, and without one every exercise heading picks up the manual's title
+   and a chevron. Give it `\meta{number}{<n>}`: manuals skip chapters, and
+   auto-numbering would renumber the book.
+2. `\exercise{<number>}{<name>}{<question>}{<solution>}`. The number is the
+   book's, gaps and all. The question is restated in your own words and
+   stays visible; only the solution folds away, so the page still works as
+   a problem set. Use `\exerciseunsolved{<number>}{<name>}{<question>}` for
+   one you have stated but not worked — the gap belongs in the manual.
+3. Name the exercise for the idea it turns on ("Greedy action frequency"),
+   not the task ("Compute the probability"). The name is what makes the
+   manual scannable and what a concept note links to.
+4. Link the concepts. An exercise about scheduling should say [[VJ4F]],
+   not "SJF" — the same prose-linking discipline as anywhere else.
+5. For simulator or code exercises, keep the prediction you made before
+   running anything in a `\prediction{...}` callout, followed by what the
+   tool actually printed. The wrong predictions are the entries worth
+   rereading.
 
 ### Build a notebook / index page
 

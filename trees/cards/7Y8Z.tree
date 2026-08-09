@@ -1,0 +1,13 @@
+\date{2026-08-09T22:55:17Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Ownership can be acquired speculatively}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316438961}
+
+\prompt{When is the [[GA7N]] request for a store actually issued in a real core, and why is that safe?}{
+  Usually at \strong{AGU execute time}, as soon as the physical address is known — a real Upgrade/GetM on the fabric, tens of cycles before retirement. This is why store misses often look free in traces: the latency was paid during [[IIF9]], not at drain.
+
+  It is safe because ownership is \strong{architecturally invisible}. If the store is squashed, or the line is snooped away before the merge, nothing is lost but fabric traffic.
+}

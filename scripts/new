@@ -24,7 +24,7 @@ usage: scripts/new <template> <title...> [@citekey]
   template: def thm prop lemma blog potw experiment  -> trees/evergreen/  (permanent)
             stub                                      -> trees/evergreen/  (concept stub / link target; \tag{stub})
             transient                                 -> trees/inbox/      (transient / literature note)
-            card                                      -> trees/cards/      (spaced-repetition prompt)
+            card                                      -> trees/cards/      (spaced-repetition prompt; title is a NAME, Q&A go in \prompt)
             note                                      -> trees/evergreen/  (plain, no body)
   title:    display title (may contain spaces, no quotes needed)
   @citekey: optional source, seeds \citek{...} — use for transient notes
@@ -33,6 +33,7 @@ examples:
   scripts/new def Warp scheduling divergence
   scripts/new stub Total Store Order
   scripts/new transient Store instruction lifecycle @henn2017
+  scripts/new card The batch size is the intensity
 USAGE
   exit 1
 fi
@@ -82,11 +83,13 @@ if ! grep -q '\\tag{public}' "$FILENAME" \
   echo '\tag{public}' >> "$FILENAME"
 fi
 
-# Cards: the \title is the question (front); \prompt holds only the answer.
-# `new card <question>` leaves an empty \prompt to fill; scripts/anki-sync
-# mirrors \title -> Front and \prompt -> Back to Anki.
+# Cards: the \title is a short name for the card, the way an \exercise is named
+# — the idea it turns on, not the question restated. Both flashcard sides live
+# in \prompt{<question>}{<answer>}, which `new card <name>` leaves empty to
+# fill; scripts/anki-sync mirrors those two to Front and Back and ignores the
+# name, since a name is useless on a flashcard.
 if [ "$TEMPLATE" = "card" ]; then
-  printf '\n\\prompt{\n  \n}\n' >> "$FILENAME"
+  printf '\n\\prompt{\n  \n}{\n  \n}\n' >> "$FILENAME"
 fi
 
 # Log the new note in today's daily journal, if it's open. Each note created

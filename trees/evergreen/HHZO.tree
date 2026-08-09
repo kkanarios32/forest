@@ -4,6 +4,7 @@
 \title{Implementing Directory-based MESI in Murphi}
 \tag{public}
 \tag{blog}
+\meta{reading-time}{true}
 
 \p{[[CMAL]] is an explicit-state model checker: you describe a system as guarded transition rules, state the invariants, and it enumerates every reachable interleaving looking for a violation. That makes it a natural fit for [cache coherence](GA7N), where the steady-state behavior is easy and the races are not. This post builds a [directory-based](KIT8) [[30XT]] in Murphi, starting from MSI and adding state every time the checker finds a way to break it.}
 
@@ -45,4 +46,3 @@
 
 \transclude{3HOD}
 \transclude{QTSW}
-

@@ -1,0 +1,53 @@
+\date{2026-08-05T16:06:20Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[Scaling Book](scaling-book): Exercises}
+\tag{public}
+
+\subtree[scaling-ch1]{
+  \title{All about rooflines}
+\exercise{1.1}{int8 matmul}{
+  \p{Multiplying #{X (B \times D)} and #{Y (D \times F)} in int8.}
+  \ol{
+    \li{How many bytes loaded from memory?}
+    \li{How many total OPs performed?}
+    \li{What is arithmetic intensity?}
+    \li{What is roofline estimate for #{T_{math}} and #{T_{comms}}? What are reasonable upper and lower bounds for runtime of whole operation?}
+  }
+}{
+  \ol{
+    \li{The only difference here from before is that the loaded / written bytes are divided by #{2}. This means we load #{BD} bytes for #{X} and #{DF} bytes for #{Y}, which is a total of #{BD + DF} bytes.}
+    \li{The same number of total ops is performed. Namely, for each element in the output matrix (#{BF} of them) we must perform #{2D} OPs. This leaves a total of #{2DBF} OPs.}
+    \li{The arithmetic intensity is now just #{2 \times } the old arithmetic intensity because we are loading half as many bytes i.e. #{\frac{2DBF}{BD + DF + BF}}.}
+    \remark{
+    After looking at the solution, they also mention that the rule on batch size to saturate arithmetic intensity remains unchanged. Namely, using the heuristic #{B \ll D, F}, we can get that the arithmetic intensity #{\approx \frac{2DBF}{DF} = 2B}. One may think that this means that we can use smaller batch size. However, recall that our in8 peak OPs/s has now doubled to #{3.94e14}. Therefore, the computation is effectively 
+    ##{2B > \frac{2 \cdot \text{Peak OPs / s}}{\text{HBM Bandwidth}} \iff B > \frac{\text{Peak OPs / s}}{\text{HBM Bandwidth}} = 240}
+    \question{So what is the point of int8?}
+    \answer{Within each batch, we are actually performing FLOPs #{2 \times } as fast. Therefore, our computation is actually twice as fast wall clock time!}
+    }
+    \li{From above, we know that we are performing #{2DBF} FLOPs. Assuming our int8 peak OPs/s is #{3.94e14}, this gives #{T_{math} = \frac{2DBF}{3.94e14}}. Similarly, we have that #{T_{comm} = \frac{BD + DF + BF}{8.2e11}}. We know that #{\max \{T_{max}, T_{comm}\}  } is a good lower bound, and that #{T_{max} + T_{comm}} is a good upper bound.}
+  }
+}
+\exercise{1.2}{int8 + bf16 matmul}{
+\p{In practice we often do different weight vs. activation quantization, so we might store our weights in very low precision but keep activations (and compute) in a higher precision. Say we want to quantize our weights in int8 but keep activations (and compute) in bfloat16. At what batch size do we become compute bound? Assume #{1.97e14} bfloat16 FLOPs/s.}
+}{\p{Following the computation in the above remark / from the notes, the only thing that changes is now in the bytes loaded we have #{2BD + DF + 2BF}. Using the approximation, this gives us once again that the computational intensity is #{2B}. However, \strong{unlike} in the previous question, we now remain doing computation at the speed of bf16 which means the previous cancellation no longer occurs. Thus, we have that} ##{2B > \frac{\text{Peak FLOPs / s}}{\text{HBM Bandwidth}} \implies 2B > 240 \implies B > 120.}}
+}
+\exercise{1.3}{Make a roofline plot}{
+\p{Taking the setup from Question 1.2, make a roofline plot of peak FLOPs/s vs. BB for F=D=4096F=D=4096 and F=D=1024F=D=1024 . Use the exact number of bytes loaded, not an approximation.}
+}{
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/scaling_roofline_1.3.png}}{}
+\figcaption{Roofline plot generated. Code available [here](https://github.com/kkanarios32/tpu-playground/tree/7e9b91c9cba82fe4839a2c53fc4b70584265323e/sols/ch1).}
+}
+  }
+\exercise{1.4}{Batched matrices}{
+\p{What if we wanted to perform int8[B,D] #{\cdot } int8[B,D,F] #{\to} int8[B,F] where we imagine having a different matrix for each batch element. What is the arithmetic intensity of this operation?}
+}{\p{This dramatically reduces arithmetic intensity because it requires loading #{B \times } more bytes from memory. In particular, we now have #{BD + BDF + BF} total bytes moved. Even making the same approximation as before, this gives #{\frac{2BDF}{BDF} = 2}. Recall to saturate TPU we need this to be greater than #{240}...}}
+
+\exercise{1.5}{Memory rooflines for GPUs}{
+\p{For the H100 SXM, calculate the batch size at which a bfloat16 matrix multiplication will become compute-bound. Note that the Tensor Core FLOPs numbers are twice the true value since they’re only achievable with structured sparsity.}
+}{\p{We only need to find two quantities in the spec sheet 1. the bf16 peak FLOPs/s and 2. the HBM bandwidth. From the spec sheet, a bf16 tensor core on the H100 sxm can achieve #{1.979e15} FLOPs / s and has a memory bandwidth of #{3.35e12} bytes / s. Using the approximation from above, we will become compute bound when #{B > \frac{1.979e15}{3.35e12} \approx 591}.}
+\remark{
+From the solution, the number we used was \em{with sparsity}. It turns out the true number is #{9.89e14}, which gives #{295} instead of #{590}.
+}
+}

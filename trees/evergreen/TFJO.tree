@@ -1,0 +1,14 @@
+\date{2026-08-09T22:08:55Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[[G944]]: 2026-W32}
+\tag{public}
+
+% Coding: where the week's hours went, focus, notable projects.
+\p{I am finally itching to start actually coding again. Most of my coding time has been spent just taking notes and trying to learn as much as possible about [kernel DSLs](5PSC), [[IR7B]], etc. However, I need to exercise some coding chops.}
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/32/waka.png}}{}
+  \figcaption{Coding hours for week 2026-W32.}
+}
+% Non-coding computer time: work / study / brain rot; what stood out.
+\p{There is no non-coding computer time because arbtt is a very lightweight program with no synchronization across devices. Qualitatively, I am jumping around too much again. I do not know if arbtt can properly capture this, but I need to be more disciplined with the pomodoro method. Specifically, choosing something to work on and not diverging \strong{for anything} until the timer has ended.}

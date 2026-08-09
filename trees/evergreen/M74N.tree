@@ -13,46 +13,9 @@
 \remark{
 As soon as python code is traced into jaxpr it is thrown away. Only HLO is input to XLA compiler.
 }
-\p{\paragraph{Compilation (Pipeline)}}
-\ol{
-  \li{Tracing: Python / JAX -> Jaxpr}
-  \ul{
-    \li{\code{jax.make_jaxpr(fun)(*args)}}
-    \li{Abstract execution. JAX executes python code using abstract tracer objects instead of real arrays.}
-    \li{Recording the FLow. Every operation and its intermediate result is recorded into JAXpr.}
-    \li{Sequence used to construct a grap, which the XLA compiler will later optimize.}
-    \li{Python code is executed once during tracing but excluded from final graph.}
-    \li{Each JAX primitive registers functions for}
-    \ul{
-        \li{Lowering to StableHLO}  
-        \li{How it is transformed under \code{grad} and \code{vmap}.}
-    }
-  }
-  \li{Lowering: Jaxpr -> HLO}
-  \ul{
-    \li{\code{fn_lowered = jax.jit(fun).lower(*args)}}
-    \li{\code{stable_hlo = fn_lowered.as_text()}}
-    \li{\code{hlo = fn_lowered.compiler_ir('hlo')}}
-    \li{Multiple ML frameworks lower to StableHLO.}
-    \ul{
-      \li{Hardware agnostic.}
-      \li{Backwards compatible.}
-    }
-  }
-  \li{Compile: HLO -> Optimized HLO -> LLO IR -> VLIW -> Executables}
-  \ul{
-    \li{\code{compiled = fn_lowered.compile()}}
-    \li{\code{compiled.runtime_executable()} returns a \code{LoadedExecutable}.}
-    \li{Useful(?) \code{compiled.cost_analysis()}.}
-    \li{HLO:}
-    \ul{
-      \li{Input for XLA compiler.}
-      \li{Directed acyclic graph of copmutational operations.}
-      \li{All array dimensions are known at compile time.}
-      \li{Limited opcodes i.e. Add, Multiply, Transpose, Dot, etc.}
-    }
-  }
-}
+
+\transclude{NR79}
+
 \p{\paragraph{XLA Shapes and Memory Layout}}
 \ul{
   \li{Every data type defined by data type and fixed dimensions, determined at compile time.}

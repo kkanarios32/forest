@@ -102,6 +102,66 @@
  }
 }
 
+% A click-to-expand block: a bare <details> with its label as the control.
+%
+% This is deliberately NOT a \subtree, which is the obvious way to fold
+% something in Forester — \collapsed does exactly that, and it is the right
+% tool when the thing being folded is a real section of the document. A proof,
+% a solution, an answer is not. Making it a tree gave each one a title, an
+% author, a date, an entry in the graph, and — the tell — an ancestor path
+% prefix, because Forester prepends the path whenever a subtree's designated
+% parent differs from the enclosing scope, and an anonymous \section leaves its
+% children pointing at the root. So a proof inside a section rendered as
+% "Online Softmax › Proof": the page reintroducing itself, once per proof.
+%
+% None of that is wanted. What is wanted is a disclosure widget, and HTML has
+% one. \<html:...> passes through generically (the html:* template in
+% theme/core.xsl), so this emits a real <details> holding nothing but the
+% label and the body — no id, no metadata, no ancestor path, no participation
+% in backlinks or \query.
+%
+% The theme hides the browser's own disclosure marker site-wide
+% (details>summary::marker), so the triangle has to be built: the class here is
+% what .foldout in theme/style.css hangs it on. That rule cannot move into an
+% inline style, because the glyph depends on whether the <details> is open, and
+% no inline style can see state.
+% \sty styles the label, which is also the click target and the thing the
+% triangle inherits its color from — so a folded callout hands its accent in
+% here and the control comes out looking like the label it replaced, rather
+% than like a piece of UI bolted to the box.
+\def\foldoutas[sty][t][body]{
+  \<html:details>{\<html:summary>{\<html:span>[class]{foldout}[style]{\sty}{\t}}\body}
+}
+
+% The quiet control. Sans, below body size, grey: this is the styling for a
+% fold whose label names no category — "Answer", "Solution" — and so is pure
+% affordance. It has to stay out of the way of the heading above it, which is
+% the thing being answered and the thing worth reading first.
+\def\foldout-control{font-family: var(--sans); font-size: 11pt; font-weight: 500; color: rgba(0, 0, 0, 0.65);}
+
+% A fold-out with nothing around it: the control, unadorned.
+\def\foldout[t][body]{\foldoutas{\foldout-control}{\t}{\body}}
+
+% A callout whose body is withheld behind its own label: the box is drawn from
+% the start, and the label doubles as the control that opens it. This is the
+% shape every "second half" of something takes here — a card's answer, an
+% exercise's solution, a proof — because seeing the frame is what cues the
+% attempt at recall or derivation before the contents are on screen.
+%
+% The label moves into the fold control rather than staying in \callout's own
+% label slot, so nothing is printed twice — and it takes the accent with it,
+% weight and period and all. A folded Proof and an open Remark sitting on the
+% same page should read as the same kind of thing, one of which happens to be
+% closed; the only difference is the triangle, which inherits the accent too.
+%
+% Defined here, immediately after \foldoutas, and not up with \callout: a macro
+% body is expanded against the definitions in scope at that point, so a
+% reference to a fold-out before its definition leaves the literal text in the
+% output. Anything folding a callout must therefore come after both.
+\def\foldcallout[accent][tint][label][body]{
+  \callout{\accent}{\tint}{}{\foldoutas{font-weight: 600; color: \accent;}{\label.}{\body}}
+}
+
 \def\citek[refid]{\let\escape[x]{\x}\<html:span>[class]{link-reference}{[\escape{[\refid]}](\refid)}}
 
 \def\citet[tid][refid]{\let\escape[x]{\x}\<html:span>[class]{link-reference}[tid]{\tid}[refid]{\refid}{[\escape{[\refid, \tid]}](\refid)}}
@@ -151,6 +211,86 @@
 }
 \def\hr{
   \<html:hr>{}
+}
+
+% Dense ruled table for protocol state-transition tables (rows = states,
+% columns = events). Four things a bare \table cannot do:
+%
+%   - Fit. A dozen event columns will not sit inside the 90ex measure on their
+%     own, and a plain <table> sized to its content pushes the whole article
+%     sideways rather than scrolling itself — the failure display math has an
+%     overflow box for in style.css. Two moves make it fit: the table is
+%     width: 100%, so auto layout wraps cells to the measure instead of
+%     growing past it, and the column headers are rotated (\gvth) so a label
+%     like "Data from Owner" no longer sets a floor under its column's width.
+%     Header length and column width are the whole problem — the cells under
+%     those headers say "-/M". The overflow box stays as a fallback for
+%     viewports too narrow for even the wrapped table (i.e. phones).
+%   - Rule every cell. A grid this dense is unreadable without borders, and
+%     borders on \td would land on every other table on the site.
+%   - Say "impossible". \gna shades a cell the way the coherence literature
+%     does, because "this event cannot occur in this state" and "not filled in
+%     yet" are different claims and a blank cell conflates them.
+%   - Distinguish the two header axes. \gvth is the rotated column header;
+%     \gth is a row's leading state label, upright.
+%
+% Colors are rgb() and the percent is escaped: an unescaped # opens math and a
+% bare % opens a comment, so #ccc and 100% silently render as "ccc" and "100".
+%
+% Usage: \gridtable{ \tr{\gth{}\gvth{load}...} \tr{\gth{I}\gtd{...}\gna} ... }
+\def\gridtable[body]{
+  \<html:div>[style]{
+    overflow-x: auto;
+    max-width: 100\%;
+    margin-bottom: 1em;
+  }{
+    \<html:table>[style]{
+      width: 100\%;
+      border-collapse: collapse;
+      font-size: 0.72em;
+      line-height: 1.25;
+      margin-bottom: 0;
+    }{\body}
+  }
+}
+\def\gvth[body]{
+  \<html:th>[style]{
+    border: 1px solid rgb(200, 200, 200);
+    padding: 4px 2px;
+    text-align: left;
+    vertical-align: bottom;
+    font-family: var(--sans);
+    font-weight: 600;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }{\body}
+}
+\def\gth[body]{
+  \<html:th>[style]{
+    border: 1px solid rgb(200, 200, 200);
+    padding: 2px 5px;
+    text-align: left;
+    vertical-align: top;
+    font-family: var(--sans);
+    font-weight: 600;
+    white-space: nowrap;
+  }{\body}
+}
+\def\gtd[body]{
+  \<html:td>[style]{
+    border: 1px solid rgb(200, 200, 200);
+    padding: 2px 5px;
+    vertical-align: top;
+    text-align: left;
+  }{\body}
+}
+\def\gna{
+  \<html:td>[style]{
+    border: 1px solid rgb(200, 200, 200);
+    padding: 2px 5px;
+    background-color: rgba(0, 128, 128, 0.12);
+  }{}
 }
 
 % Syntax-highlighted code block. Wraps a \verb body in <pre><code
@@ -299,15 +439,11 @@
 
 \def\example[body]{\callout{rgba(60, 90, 180, 0.8)}{rgba(60, 90, 180, 0.05)}{Example.}{\body}}
 
-% The answer side of a spaced-repetition card. A card tree (trees/cards/) is
-% \taxon{Card} with \title{<question>} and this \prompt{<answer>} as its body;
-% the theme paints the whole Card-taxon section (question + answer) as one blue
-% card (see style.css). The tree id is the card's stable identity and
-% scripts/anki-sync mirrors \title -> Front and \prompt -> Back to Anki, writing
-% the note id back as \meta{anki}{...}.
-\def\prompt[back]{\p{\back}}
-
-\def\proof[body]{\callout{rgba(0, 0, 0, 0.4)}{rgba(0, 0, 0, 0.03)}{Proof.}{\body}}
+% Folded, like a card's answer and an exercise's solution — a proof is the
+% second half of a statement, and a page of theorems is worth more if you can
+% read the claims and try one before the argument is on screen. The label is
+% the control; the grey frame stays visible so the proof is obviously there.
+\def\proof[body]{\foldcallout{rgba(0, 0, 0, 0.4)}{rgba(0, 0, 0, 0.03)}{Proof}{\body}}
 
 \def\md[body]{\<html:div>[class]{markdownit grace-loading}{\body}}
 
@@ -328,7 +464,10 @@
 
 \def\question[body]{\callout{rgba(200, 130, 0, 0.9)}{rgba(200, 130, 0, 0.06)}{Question.}{\body}}
 
-\def\answer[body]{\callout{rgba(0, 140, 120, 0.9)}{rgba(0, 140, 120, 0.06)}{Answer.}{\body}}
+% Folded for the same reason \proof is: an answer sitting open under its
+% \question answers it for you. The teal is kept so the pair still reads as a
+% question-and-answer rather than as another card.
+\def\answer[body]{\foldcallout{rgba(0, 140, 120, 0.9)}{rgba(0, 140, 120, 0.06)}{Answer}{\body}}
 
 \def\problem[body]{\callout{rgba(200, 55, 45, 0.85)}{rgba(200, 55, 45, 0.06)}{Problem.}{\body}}
 
@@ -352,7 +491,143 @@
 
 \def\card[taxa][name][body]{\subtree{\taxon{\taxa}\note{\name}{\body}}}
 
-\def\solution[body]{\callout{rgba(40, 150, 80, 0.9)}{rgba(40, 150, 80, 0.06)}{Solution.}{\body}}
+% The free-standing solution — a worked problem outside a solution manual,
+% where \exercise's pink \foldbox is not in play. Folded, and green rather than
+% pink, so the two never collide on one page.
+\def\solution[body]{\foldcallout{rgba(40, 150, 80, 0.9)}{rgba(40, 150, 80, 0.06)}{Solution}{\body}}
 
 \def\tdtask[id][body]{\li{\body}}
 \def\tdtaskx[id][body]{\li{\<html:s>{\body}}}
+
+% The pink fold-out: the withheld half of a self-test. A card's
+% \prompt{answer} and an exercise's solution both wear it, and they wear the
+% same pink deliberately, because they are the same gesture — a prompt to
+% attempt the recall or the derivation first. The pink is \goal/\idea's, the
+% one accent in the palette not already spoken for by a callout that can sit
+% next to a solution.
+%
+% Not \foldcallout, though the shape is identical, because the label is doing
+% a different job. \proof, \answer and \solution name a category — the label
+% was already there, bold and colored, before it could be clicked, and taking
+% the color away would demote it. Here the label is only ever "Answer" or
+% "Solution": it names nothing the question above it has not already said, and
+% it is the second thing to read, not the first. Bold pink on a pink box says
+% the opposite, and says it twice. So it stays the quiet control, which is
+% what it was, and the box carries the color on its own.
+\def\foldbox[t][body]{
+  \callout{rgba(190, 50, 130, 0.85)}{rgba(190, 50, 130, 0.06)}{}{\foldoutas{\foldout-control}{\t}{\body}}
+}
+
+% Both sides of a spaced-repetition card. A card tree (trees/cards/) is
+% \taxon{Card} with \title{<name>} and this \prompt{<question>}{<answer>} as
+% its body. A card is only worth rereading if you can attempt the recall before
+% seeing the answer, so a page of cards has to read as a self-test rather than
+% a transcript; folding also lets a concept note transclude the cards that test
+% it without the answers filling the page.
+%
+% Structured exactly like \exercise, and for the same reason. The question used
+% to live in the \title, which read fine as a line in a list and badly as a
+% page: a Forester title is a heading, and a heading is set bold, so a
+% three-line question about arithmetic intensity arrived as three lines of bold
+% — shouting a thing the reader has not been asked to do anything with yet. A
+% question is prose. It wants to be read at prose weight, under a heading that
+% says what the card is about.
+%
+% So the \title is now a name, in the sense \exercise means it: the idea the
+% card turns on, not the task. That is authorial work, and it pays for itself
+% twice — it is what makes a deck scannable, and it is what lets a concept note
+% link a specific card in prose rather than quoting its question.
+%
+% The tree id is the card's stable identity and scripts/anki-sync mirrors
+% \prompt's first argument -> Front and its second -> Back, writing the note id
+% back as \meta{anki}{...}. The \title is deliberately not synced: Anki's front
+% has to be the question, and a name would be useless on a flashcard. Sync
+% reads the \prompt{...}{...} source rather than the rendered output, so
+% presentation here is free to change without touching Anki.
+\def\prompt[front][back]{\p{\front}\foldbox{Answer}{\back}}
+
+% ── Solution manuals ────────────────────────────────────────────────────────
+%
+% A solution manual (914H lists them) is a book, so it is written like one:
+%
+%   \subtree[sutton-ch2]{
+%     \title{Multi-armed Bandits}
+%     \meta{number}{2}
+%     \exercise{2.1}{Greedy action frequency}{
+%       ...the question, restated...
+%     }{
+%       ...the worked solution...
+%     }
+%   }
+%
+% The chapter is a bare \subtree with an explicit id rather than \section, and
+% the id is load-bearing twice over. It gives the chapter a stable URL, so a
+% concept note can link the chapter it was drawn from; and it makes the
+% chapter a real parent, which is what stops every exercise heading from being
+% prefixed with the manual's own title and a chevron. Forester prepends that
+% ancestor path whenever a subtree's designated parent differs from the
+% enclosing scope, and only an id'd subtree can be a designated parent — an
+% anonymous \section leaves its children pointing at the root. The id cannot
+% be wrapped in a macro of its own: \subtree's address is parsed as a literal,
+% so it never sees a macro argument. Use book-scoped ids: sutton-ch2, ostep-ch5.
+%
+% \exercise renders as "Exercise 2.1. Greedy action frequency" with the
+% question visible underneath and the solution folded into a \foldbox — the
+% same pink box a card's answer gets, for the same reason. That split is the
+% whole point: a manual should be readable as a problem set — you can scan
+% every question, and re-derive one before you look — which the old format made
+% impossible, since collapsing an exercise hid its question along with its
+% answer, leaving a page of bare citation keys.
+%
+% The number is passed as \meta{number} rather than baked into the title so
+% the theme sets it in the taxon slot, exactly where "Definition 1.2." puts
+% its number (see tree-taxon-with-number in theme/tree.xsl). Auto-numbering
+% cannot be used, at either level: a manual covers chapters 2, 3, 4, 8, 9 and
+% solves 2.1, 2.2, 2.4, 2.6 — the book's numbering, gaps and all, is the whole
+% identity of an entry, and counting positions would quietly renumber it. So
+% chapters carry \meta{number}{2} by hand too. On the exercise, toc/numbered
+% are off for the same reason — an exercise must not renumber the chapters
+% around it, and forty exercises would bury a chapter list.
+%
+% The name is required and is the one piece of real authorial work here: it
+% is what makes a manual scannable and what makes an exercise worth linking
+% to from a concept note. Name the idea the exercise turns on, not the task
+% ("Greedy action frequency", never "Compute the probability").
+\def\exercise[num][name][question][soln]{
+  \scope{
+    \put\transclude/toc{false}
+    \put\transclude/numbered{false}
+    \put\transclude/expanded{true}
+    \subtree{
+      \taxon{Exercise}
+      \meta{number}{\num}
+      \title{\name}
+      \question
+      \foldbox{Solution}{\soln}
+    }
+  }
+}
+
+% An exercise stated but not yet worked. It keeps its entry rather than being
+% dropped: the gap is part of the worklist, and the book's own numbering
+% advertises it anyway. No disclosure — there is nothing behind it to spoil,
+% and a triangle that opens onto "Not yet worked" wastes a click.
+\def\exerciseunsolved[num][name][question]{
+  \scope{
+    \put\transclude/toc{false}
+    \put\transclude/numbered{false}
+    \put\transclude/expanded{true}
+    \subtree{
+      \taxon{Exercise}
+      \meta{number}{\num}
+      \title{\name}
+      \question
+      \<html:p>[style]{color: rgba(0, 0, 0, 0.5); font-style: italic;}{Not yet worked.}
+    }
+  }
+}
+
+% What I expected before running the code, kept beside what actually happened.
+% Systems exercises are only worth doing this way — the prediction is the
+% experiment, and a wrong one is the part worth rereading later.
+\def\prediction[body]{\callout{rgba(120, 90, 190, 0.85)}{rgba(120, 90, 190, 0.05)}{Prediction.}{\body}}

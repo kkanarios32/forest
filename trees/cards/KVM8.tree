@@ -1,0 +1,20 @@
+\date{2026-08-06T16:31:11Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Arithmetic intensity and the ridge point}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316439261}
+\meta{anki-deck}{MLSys}
+
+\prompt{Define arithmetic intensity and derive the test for whether an op is compute-bound.}{
+  Arithmetic intensity is FLOPs per byte moved:
+
+  ##{\mathrm{Intensity}(\text{algorithm}) = \frac{\text{computation FLOPs}}{\text{communication bytes}}}
+
+  The compute-bound test falls straight out of it:
+
+  ##{T_{\mathrm{math}} > T_{\mathrm{comms}} \iff \frac{\text{FLOPs}}{\text{FLOPs/s}} > \frac{\text{bytes}}{\text{bytes/s}} \iff \frac{\text{FLOPs}}{\text{bytes}} > \frac{\text{FLOPs/s}}{\text{bytes/s}}}
+
+  that is, #{\mathrm{Intensity}(\text{algorithm}) > \mathrm{Intensity}(\text{accelerator})}. The hardware's intensity is its ridge point — peak FLOPs/s divided by bandwidth. For the TPU v5e [[OGCRQ]] MXU that is #{1.97 \times 10^{14} / 8.2 \times 10^{11} \approx 240} FLOPs/byte. Below the ridge you ride the sloped bandwidth roof; above it you sit on the flat peak-FLOPs roof.
+}

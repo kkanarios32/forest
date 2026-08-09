@@ -1,0 +1,25 @@
+\date{2026-08-06T16:27:20Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Notebook: [[scaling-book]]}
+\tag{public}
+\tag{note}
+\tag{top}
+
+\p{Primarily a collection of Anki cards with a few notes. Solutions can be found in the [solution manual](KZR4).}
+
+\section{All about rooflines}{
+  \put\transclude/toc{false}
+  \transclude{6KRX}
+  \transclude{BPS8}
+  \transclude{KVM8}
+  \transclude{UZ6D}
+  \transclude{02R6}
+  \transclude{JVAB}
+  \transclude{S5K4}
+  \transclude{EIZJ}
+}
+
+\section{TPU Architecture}{
+
+}

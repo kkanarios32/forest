@@ -40,3 +40,10 @@
 \hr
 
 \p{We are baaaaaaaaaaack. Time to scale my model today. We sleep, eat, breath TPUs.}
+
+\p{\strong{4:32 PM}}
+\hr
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/systolic-array.png}}{}
+\figcaption{Cycle-by-cycle walk through of #{3 \times 3} matmul.}
+}

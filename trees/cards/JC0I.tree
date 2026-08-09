@@ -1,0 +1,13 @@
+\date{2026-08-09T22:55:19Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The merge under M is the visibility point}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316439211}
+
+\prompt{What is a store's global visibility point, and what does that imply for [[VH8Y]]?}{
+  The instant the data is \strong{merged into the L1D line while holding M}.
+
+  Before that, the value lives only in the [[UNB6]] — forwardable to this core through [[GXCN]], invisible to every other. That asymmetry is exactly why TSO permits \strong{store#{\to}load reordering}.
+}

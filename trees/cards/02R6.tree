@@ -1,0 +1,18 @@
+\date{2026-08-06T16:31:12Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Constant intensity of a dot product}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316438837}
+\meta{anki-deck}{MLSys}
+
+\prompt{Why is a dot product #{x \cdot y} essentially always comms-bound?}{
+  For #{\mathrm{bf16}[N] \times \mathrm{bf16}[N] \to \mathrm{bf16}[1]} the work is #{N} multiplies and #{N - 1} adds while the traffic is #{2N + 2N + 2} bytes, so
+
+  ##{\mathrm{Intensity} = \frac{2N - 1}{4N + 2} \longrightarrow \frac{1}{2}}
+
+  The point is that the intensity is \em{constant in #{N}}: there is no size you can grow into to escape it, unlike a matmul whose intensity rises with the batch. Half a FLOP per byte sits far below any ridge point — even the TPU v5p VPU, at roughly #{7 \times 10^{12}} FLOPs/s per core, wants an intensity near #{3}.
+
+  Reuse is what buys intensity. Every byte loaded into a matmul feeds many FLOPs; in a dot product it feeds one.
+}

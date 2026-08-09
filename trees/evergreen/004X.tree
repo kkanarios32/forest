@@ -2,6 +2,7 @@
 
 \date{2025-02-04}
 \tag{blog}
+\meta{reading-time}{true}
 \tag{upcoming}
 \import{base-macros}
 \title{A Note on Advantage Estimation}

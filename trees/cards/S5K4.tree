@@ -1,0 +1,18 @@
+\date{2026-08-06T16:31:14Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Per-example weights destroy batching}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316439286}
+\meta{anki-deck}{MLSys}
+
+\prompt{What is the arithmetic intensity of #{[B, D] \times [B, D, F] \to [B, F]} — a separate weight matrix per batch element — and what is the lesson?}{
+  In int8, the work is the same #{2BDF} — these are #{B} independent #{[D] \times [D, F]} products — but the traffic is #{BD + BDF + BF}, dominated by the #{BDF} weight term. So
+
+  ##{\mathrm{Intensity} = \frac{2BDF}{BD + BDF + BF} \approx 2}
+
+  constant. Batching bought nothing: #{B} appears in numerator and denominator and cancels, leaving you comms-bound at every batch size.
+
+  The lesson is that a matmul's intensity comes \em{entirely} from amortizing one weight load across many tokens. Give every token its own weights and the amortization disappears — which is why per-example weights, and anything shaped like them, never reach the flat roof.
+}

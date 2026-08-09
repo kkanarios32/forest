@@ -1,0 +1,16 @@
+\date{2026-08-06T16:31:01Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Three hardware bounds and two times}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316438936}
+\meta{anki-deck}{MLSys}
+
+\prompt{What three hardware quantities bound the runtime of any algorithm, and what are the two time formulas?}{
+  Compute (OPs/s), bandwidth (bytes/s), and total memory (bytes). Everything an accelerator can do is rationed by one of the three, and the first two give the only two times worth computing:
+
+  ##{T_{\mathrm{math}} = \frac{\text{computation FLOPs}}{\text{accelerator FLOPs/s}}, \qquad T_{\mathrm{comms}} = \frac{\text{communication bytes}}{\text{bandwidth (bytes/s)}}}
+
+  "Comms" means either HBM #{\leftrightarrow} compute cores within a chip, or chip #{\leftrightarrow} chip over ICI / DCN / PCIe. Same formula either way — only the bandwidth in the denominator changes, which is why the same model covers a [[NZZ7]] memory stall and a [[A7PN]] all-reduce.
+}

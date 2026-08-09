@@ -1,0 +1,16 @@
+\date{2026-08-06T16:31:15Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The sharded-matmul threshold falls on D, not B}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316439111}
+\meta{anki-deck}{MLSys}
+
+\prompt{Two chips split #{X[B, D]} and #{Y[D, F]} along #{D}, each computing a partial sum and exchanging it. When is this compute-bound, and why is the threshold surprising?}{
+  Each chip does half the contraction, #{T_{\mathrm{math}} = BDF / 1.97 \times 10^{14}}, then ships its #{[B, F]} partial sum across the interconnect, #{T_{\mathrm{comms}} = 2BF / 4.5 \times 10^{10}}. Compute-bound means
+
+  ##{\frac{BDF}{2BF} = \frac{D}{2} > \frac{1.97 \times 10^{14}}{4.5 \times 10^{10}} = 4377 \implies D > 8755}
+
+  The surprise is that the threshold depends on #{D}, not #{B}: the batch scales FLOPs and bytes-sent identically and cancels out. Same roofline machinery as a single-chip matmul, but because the relevant bandwidth is now the network, a different dimension decides whether [[A7PN]] pays for itself — the contracted dimension has to be large enough to hide the exchange.
+}

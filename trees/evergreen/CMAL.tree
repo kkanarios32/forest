@@ -29,20 +29,19 @@
     \taxon{Definition}
     \title{Startstates}
   \p{A \em{startstate} is the intial configuration for all our declarations.}
-  \ul{
-    \li{Must assign a value to every global variable}
-  }
   }
   \subtree{
     \taxon{Definition}
     \title{Invariants}
   \p{An \em{invariant} is something that Murphi checks to ensure is true at all possible configurations of the system.}
   }
-\p{\paragraph{Overview straight from the docs} Repeat forever:
-}
+\<html:div>[style]{margin-top: -0.5rem;}{}
+\algorithm{
+\em{Repeat forever:}
 \ol{
   \li{Find all rules whose conditions are true in the current state.
        (i.e. conditional expressions are true, given the current values
        of the global variables).}
     \li{Choose one arbitrarily and execute the action, yielding a new state.}
+}
 }

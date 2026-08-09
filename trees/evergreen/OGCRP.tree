@@ -15,6 +15,6 @@ Can only do 256x256 matrix multiplication, so the order is
 }
 }
 \figure{
-\<html:img>[width]{30\%}[src]{\route-asset{assets/img/mxu.png}}{}
-\figcaption{Note the input are offset so that the result from the first column can be accumulated int the second column. Can compute matmul in #{2n - 1} cycles.}
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/systolic-array.png}}{}
+\figcaption{Note the input are offset so that the result from the first column can be accumulated int the second column. Can compute matmul in #{3n - 1} cycles.}
 }

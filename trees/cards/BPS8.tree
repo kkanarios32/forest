@@ -1,0 +1,16 @@
+\date{2026-08-06T16:31:10Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Why the roofline is right within 2x}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316439061}
+\meta{anki-deck}{MLSys}
+
+\prompt{Given #{T_{math}} and #{T_{comms}}, what are the lower and upper bounds on runtime, and why is the gap at most 2x?}{
+  ##{\max(T_{\mathrm{math}}, T_{\mathrm{comms}}) \le T \le T_{\mathrm{math}} + T_{\mathrm{comms}}}
+
+  The lower bound assumes communication is perfectly overlapped with compute; the upper bound assumes no overlap at all. Since #{T_{\mathrm{math}} + T_{\mathrm{comms}} \le 2 \max(T_{\mathrm{math}}, T_{\mathrm{comms}})}, reasoning only about the max costs you at most #{2\times} — which is what makes the roofline worth trusting before any code exists.
+
+  An op is \strong{compute-bound} when #{T_{\mathrm{math}} > T_{\mathrm{comms}}}: the FLOPs are the ceiling, and full [[99G8]] is the thing to chase. It is \strong{comms-bound} (equivalently memory- or bandwidth-bound) when the reverse holds and the ALUs sit idle waiting on data.
+}

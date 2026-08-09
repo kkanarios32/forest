@@ -1,62 +1,54 @@
 \import{base-macros}
 \date{2024-11-17}
 \author{kellenkanarios}
-\title{Billingsley Probability and Measure: Exercises}
+\title{[[billingsleyProbabilityMeasure1995]]: Exercises}
 \tag{public}
 \tag{prob}
 \tag{note}
 
-\p{Worked exercises accompanying [[0007]], my notebook on [[billingsleyProbabilityMeasure1995]]. The conceptual development — definitions, theorems, proofs — lives in the notebook; solved exercises live here, one section per chapter.}
+\p{Worked exercises accompanying [[0007]], my notebook on [[billingsleyProbabilityMeasure1995]]. The conceptual development — definitions, theorems, proofs — lives in the notebook; solved exercises live here, one chapter per section of the book. Every question is stated in full and every solution is folded away, so the page reads as a problem set until you ask it not to.}
 
-\scope{
-  \put\transclude/expanded{false}
+\subtree[billingsley-s1]{
+\title{Borel's Normal Number Theorem}
+\meta{number}{1}
 
-\section{Borel's Normal Number Theorem}{
-\refcardt{Exercise}{}{1.1}{billingsleyProbabilityMeasure1995}{
+\exercise{1.1}{No infinite fair independent sequence on a discrete space}{
+  \p{Show that a discrete probability space cannot carry an infinite sequence of independent events #{A_1, A_2, \ldots}, each of probability #{1/2}.}
+}{
+  \p{Denote the sample space #{\mathcal{X}}. Independence of #{A_1} and #{A_2} splits it into four cells of probability #{1/4} apiece:}
+  ##{P(A_1 \cap A_2) + P(A_1 \cap A_2^c) + P(A_1^c \cap A_2) + P(A_1^c \cap A_2^c) = 1}
+  \p{Every #{x \in \mathcal{X}} lies in exactly one of the four, so #{\mathbb{P}(\{x\}) \leq 1/4}. Running the same construction on #{A_1, \ldots, A_n} gives #{n} disjoint cells and the bound #{\mathbb{P}(\{x\}) \leq 1/n} for every #{x}; the sequence is infinite, so #{n} is unbounded and #{\mathbb{P}(\{x\}) = 0}.}
+  \p{But the space is discrete, so all of its mass sits on its atoms:}
+  ##{\sum_{x \in \mathcal{X}} \mathbb{P}(\{x\}) = 1}
+  \p{A countable sum of zeros cannot be one, and we have our contradiction.}
+}
+}
+
+\subtree[billingsley-s3]{
+\title{Uniqueness}
+\meta{number}{3}
+
+\exercise{3.2}{Measurability as agreement of inner and outer measure}{
+  \p{Let #{P} be a probability measure on a field #{\mathscr{F}_{0}}, define #{P^{\star}(A)} for every subset #{A} of #{\Omega} by [(3.1)](000T), and denote also by #{P} the extension of #{P} to #{\mathscr{F}=\sigma(\mathscr{F}_{0})}. Show that #{A} is [[000U]] if and only if #{P^*(A) = P_*(A)}.}
+}{
+  \p{Suppose #{P^*(A) = P_*(A)} and fix #{E \subset \Omega}. We must show}
+  ##{P^*(E \cap A) + P^*(E \cap A^c) = P^*(E)}
+  \p{The preceding part of the exercise supplies #{\overline{A}, \underline{A} \in \mathscr{F}} with #{\underline{A} \subset A \subset \overline{A}}, and the hypothesis collapses their measures onto each other:}
+  ##{P(\overline{A}) = P^*(A) = P_*(A) = P(\underline{A})}
+  \p{Approximate #{E} the same way — there is #{B \in \mathscr{F}} with #{E \subset B} and #{P^*(E) = P(B)}. Then}
+  ##{P^*(E \cap A) \leq P^*(B \cap \overline{A}) = P(B \cap \overline{A})}
+  \p{and}
+  ##{P^*(B \cap A) \leq P^*(B \cap \underline{A}^c) = P(B \cap \underline{A}^c)}
+  \p{so that}
+  ##{P^*(E \cap A) + P^*(E \cap A^c) \leq P(B \cap \underline{A}^c) + P(B \cap \overline{A}) = P^*(E)}
+  \p{as desired.}
+
+  \remark{The difficulty is bookkeeping, not measure theory: three objects live on three different domains, and conflating them is what makes the problem look impenetrable.
   \ol{
-    \li{
-      A discrete probability space cannot contain an infinite sequence of independent events #{A_1, A_2, \ldots} each with probability #{1/2}. To see this, denote the event space as #{\mathcal{X}}. Note that
-      ##{P(A_1 \cap A_2) + P(A_1 \cap A_2^c) + P(A_1^c \cap A_2) + P(A_1^c \cap A_2^c) = 1}
-      Therefore, every #{x \in \mathcal{X}} must be in one of those four events and have probability at most #{1/4}. Similarly, we can construct #{n} disjoint sets in the same manner and bound #{\mathbb{P}(\{x\})} by #{1/n}. Taking #{n \to \infty}, we have that #{\mathbb{P}(\{x\}) = 0}. Since #{\mathcal{X}} is a discrete probability space, we must have that
-      ##{\sum_{x \in \mathcal{X}} \mathbb{P}(\{x\}) = 1}
-      However, we have just shown that for each #{x \in \mathcal{X}}, #{\mathbb{P}(\{x\}) = 0}. Thus, we have reached a contradiction.
-    }
+    \li{#{P} is defined on the initial field #{\mathscr{F}_0}, the closure over finite unions and complements of #{\Omega}.}
+    \li{#{P^*} is defined on the whole powerset #{\mathcal{P}(\Omega)}, but is \strong{not} a measure there. In particular #{E} need not lie in #{\mathscr{F}}, which is exactly why the argument has to route through #{B}.}
+    \li{#{P} (abusing notation) is #{P^*} restricted to the [[000U]] subsets of #{\Omega}.}
   }
+  The tempting shortcut — apply finite additivity and conclude everything is [[000U]] — fails because #{P^*} is countably subadditive only on the [[000U]] sets, not on #{\mathcal{P}(\Omega)}.}
 }
-}
-
-\section{Uniqueness}{
-\refcardt{Exercise}{}{3.2}{billingsleyProbabilityMeasure1995}{
-  Let #{P} be a probability measure on a field #{\mathscr{F}_{0}} and for every subset #{A} of #{\Omega} define #{P^{\star}(A)} by [(3.1)](000T). Denote also by #{P} the extension of #{P} to #{\mathscr{F}=\sigma(\mathscr{F}_{0})}.
-  \ol{
-      \li{Show that #{A} is [[000U]] if and only if #{P^*(A) = P_*(A)}.}
-    }
-}
-\solution{
-  \p{First suppose that #{P^*(A) = P_*(A)}. Let #{E \subset \Omega}. We must show that
-##{P^*(E \cap A) + P^*(E \cap A^c) = P^*(E)}
-  From part (1) and our hypothesis, #{\exists \overline{A}, \underline{A} \in \mathscr{F}} such that #{\underline{A} \subset A \subset \overline{A}} and ##{P(\overline{A}) = P^*(A) = P_*(A) = P(\underline{A})}. Additionally, #{\exists B \in \mathscr{F}} such that #{E \subset B} and #{P^*(E) = P(B)}. Then we have that
-##{P^*(E \cap A) \leq P^*(B \cap \overline{A}) = P(B \cap \overline{A})}
-  and
-##{P^*(B \cap A) \leq P^*(B \cap \underline{A}^c) = P(B \cap \underline{A}^c)}
-  Thus,
-##{P^*(E \cap A) + P^*(E \cap A^c) \leq P(B \cap \underline{A}^c) + P(B \cap \overline{A}) = P^*(E)}
-  as desired.
-  }
-}
-
-\remark{I really struggled for a minute on even understanding this problem. The import thing to understand for this problem is what space everything is defined on.
-\ol{
-    \li{#{P} is defined on the initial field #{\mathscr{F}_0}, which is the closure over finite unions and complements of #{\Omega}.}
-    \li{#{P^*} is defined on the powerset #{\mathcal{P}(\Omega)}. #{P^*} is \strong{NOT} necessarily a measure on all of these subsets though.
-    \ul{
-        \li{#{E} is \strong{NOT} necessarily in #{\mathscr{F}} hence the need for #{B}.}
-      }
-    }
-    \li{#{P} (abuse of notation) is #{P^*} restricted to the [[000U]] subsets of #{\Omega}.}
-  }
-  Common question is why we cannot just apply finite additivity and have everything [[000U]]? The answer is that #{P^*} is not countably subadditive on #{\mathcal{P}(\Omega)} but only the [[000U]] sets.
-}
-}
-
 }

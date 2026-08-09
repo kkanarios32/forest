@@ -9,10 +9,35 @@
 \section{The cache controller}{
 \p{The starting point is the primer's MSI cache controller table.}
 \figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/cache-msi.png}}{}
-\figcaption{MSI cache controller. Rows are states, columns are events.}
+\gridtable{
+\tr{\gth{}\gth{load}\gth{store}\gth{replacement}\gth{\code{Fwd-GetS}}\gth{\code{Fwd-GetM}}\gth{\code{Inv}}\gth{\code{Put-Ack}}}
+\tr{\gth{#{I}}\gtd{\code{GetS} → Dir / #{IS^D}}\gtd{\code{GetM} → Dir / #{IM^{AD}}}\gna \gna \gna \gna \gna}
+\tr{\gth{#{IS^D}}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna \gtd{stall}\gna}
+\tr{\gth{#{IM^{AD}}}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna}
+\tr{\gth{#{IM^A}}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna}
+\tr{\gth{#{S}}\gtd{hit}\gtd{\code{GetM} → Dir / #{SM^{AD}}}\gtd{\code{PutS} → Dir / #{SI^A}}\gna \gna \gtd{\code{Inv-Ack} → Req / #{I}}\gna}
+\tr{\gth{#{SM^{AD}}}\gtd{hit}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{\code{Inv-Ack} → Req / #{IM^{AD}}}\gna}
+\tr{\gth{#{SM^A}}\gtd{hit}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna}
+\tr{\gth{#{M}}\gtd{hit}\gtd{hit}\gtd{\code{PutM}+data → Dir / #{MI^A}}\gtd{data → Req + Dir / #{S}}\gtd{data → Req / #{I}}\gna \gna}
+\tr{\gth{#{MI^A}}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{data → Req + Dir / #{SI^A}}\gtd{data → Req / #{II^A}}\gna \gtd{\nowrap{-/#{I}}}}
+\tr{\gth{#{SI^A}}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna \gtd{\code{Inv-Ack} → Req / #{II^A}}\gtd{\nowrap{-/#{I}}}}
+\tr{\gth{#{II^A}}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna \gna \gtd{\nowrap{-/#{I}}}}
 }
-\p{Several table entries are left blank; those are resolved at runtime from the \code{AckCount}, which is why the per-processor record carries an \code{ack} field alongside the state.}
+\figcaption{MSI cache controller, requests and forwards. Rows are states, columns are events, and each cell reads \em{action}/\em{next state}: #{\to} is "send to", a bare is "no action", an absent next state means "stay put", and a shaded cell is one the table leaves empty.}
+}
+\p{The response arrivals split off into their own table, because only a transient state can be waiting on one.}
+\figure{
+\gridtable{
+\tr{\gth{}\gth{Data (ack=0)}\gth{Data (ack>0)}\gth{Data from owner}\gth{\code{Inv-Ack}}\gth{\code{Last-Inv-Ack}}}
+\tr{\gth{#{IS^D}}\gtd{\nowrap{-/#{S}}}\gna \gtd{\nowrap{-/#{S}}}\gna \gna}
+\tr{\gth{#{IM^{AD}}}\gtd{\nowrap{-/#{M}}}\gtd{\nowrap{-/#{IM^A}}}\gtd{\nowrap{-/#{M}}}\gtd{\nowrap{\code{ack--}}}\gna}
+\tr{\gth{#{IM^A}}\gna \gna \gna \gtd{\nowrap{\code{ack--}}}\gtd{\nowrap{-/#{M}}}}
+\tr{\gth{#{SM^{AD}}}\gtd{\nowrap{-/#{M}}}\gtd{\nowrap{-/#{SM^A}}}\gtd{\nowrap{-/#{M}}}\gtd{\nowrap{\code{ack--}}}\gna}
+\tr{\gth{#{SM^A}}\gna \gna \gna \gtd{\nowrap{\code{ack--}}}\gtd{\nowrap{-/#{M}}}}
+}
+\figcaption{MSI cache controller, responses. Data comes from the directory unless the column says otherwise; the stable states are omitted, since none of them can be waiting on a response.}
+}
+\p{Several entries here are left blank; those are resolved at runtime from the \code{AckCount}, which is why the per-processor record carries an \code{ack} field alongside the state.}
 \codeblockf{msi.m}{lua}{ProcState:
   Record
     state: enum {
@@ -30,15 +55,31 @@
     ack: AckCount;  -- tracks InvAck count
   End;}
 \remark{
-\code{load}, \code{store}, and \code{replacement} only move the protocol between stable states. To simulate the system it is therefore enough to implement the rules that \em{initiate} those transitions — evict from modified, load from invalid — and let the model checker drive the transient states from there.
+\code{load}, \code{store}, and \code{replacement} only move the protocol between stable states. To simulate the system it is therefore enough to implement the rules that \em{initiate} those transitions evict from modified, load from invalid, and let the model checker drive the transient states from there.
 }
 }
 
 \section{The directory controller}{
 \p{The directory side starts from the analogous table.}
 \figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/directory-msi.png}}{}
-\figcaption{MSI directory controller.}
+\gridtable{
+\tr{\gth{}\gth{\code{GetS}}\gth{\code{GetM}}}
+\tr{\gth{#{I}}\gtd{data → Req, add Req to Sharers / #{S}}\gtd{data → Req, Owner := Req / #{M}}}
+\tr{\gth{#{S}}\gtd{data → Req, add Req to Sharers}\gtd{data → Req, \code{Inv} → Sharers, clear Sharers, Owner := Req / #{M}}}
+\tr{\gth{#{M}}\gtd{\code{Fwd-GetS} → Owner, add Owner + Req to Sharers, \em{clear Owner} / #{S^D}}\gtd{\code{Fwd-GetM} → Owner, Owner := Req}}
+\tr{\gth{#{S^D}}\gtd{stall}\gtd{stall}}
+}
+\figcaption{MSI directory controller, coherence requests. The italicized \em{clear Owner} in #{M}/\code{GetS} is the table's, and is wrong (see below).}
+}
+\figure{
+\gridtable{
+\tr{\gth{}\gvth{\code{PutS}-NotLast}\gvth{\code{PutS}-Last}\gvth{\code{PutM} from Owner}\gvth{\code{PutM} from Non-Owner}\gvth{Data}}
+\tr{\gth{#{I}}\gtd{\code{Put-Ack} → Req}\gtd{\code{Put-Ack} → Req}\gna \gtd{\code{Put-Ack} → Req}\gna}
+\tr{\gth{#{S}}\gtd{remove Req from Sharers, \code{Put-Ack} → Req}\gtd{remove Req from Sharers, \code{Put-Ack} → Req / #{I}}\gna \gtd{remove Req from Sharers, \code{Put-Ack} → Req}\gna}
+\tr{\gth{#{M}}\gtd{\code{Put-Ack} → Req}\gtd{\code{Put-Ack} → Req}\gtd{data → memory, clear Owner, \code{Put-Ack} → Req / #{I}}\gtd{\code{Put-Ack} → Req}\gna}
+\tr{\gth{#{S^D}}\gtd{remove Req from Sharers, \code{Put-Ack} → Req}\gtd{remove Req from Sharers, \code{Put-Ack} → Req}\gna \gtd{remove Req from Sharers, \code{Put-Ack} → Req}\gtd{data → memory / #{S}}}
+}
+\figcaption{MSI directory controller, evictions and data. A \code{PutM} always carries the line with it; one from a node that is not the current owner is stale and needs only an acknowledgment.}
 }
 \p{This table is where the first real gap shows up. It gives the directory a single transient state, and the races below force a second one, #{M^D}.}
 }

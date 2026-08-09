@@ -1,11 +1,11 @@
 \date{2026-07-16T19:52:32Z}
 \import{base-macros}
 \author{kellenkanarios}
-\title{Why does network diameter of 2d torus scale with square root and 3d torus scale with cube root?}
+\title{Why torus diameter scales as the nth root}
 \taxon{Card}
 \tag{card}
 \meta{anki}{1784508017097}
 
-\prompt{
+\prompt{Why does network diameter of 2d torus scale with square root and 3d torus scale with cube root?}{
  Fix the number of nodes as #{N}. Then, a #{k}-ary #{n}-cube has #{N = k^{n}} nodes, which means that #{k = N^{\frac{1}{n}}}. It then remains to show that diameter is proportional to #{k}. Since each dimension is a ring, in each dimension, the diameter is #{\frac{k}{2}}. It then takes at most #{n} hops to traverse dimensions, meaning the diameter is upper-bounded by #{n \cdot (\frac{k}{2}) = n N^{\frac{1}{n}}}. For a 2d torus with 4096 nodes, this gives #{2 \cdot 32 = 64} and a 3d torus is #{3 \cdot 8 = 24} nodes. 
 }

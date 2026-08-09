@@ -5,7 +5,7 @@
 \taxon{Definition}
 \tag{public}
 
-\p{A FIFO of retired-but-not-yet-globally-visible stores that decouples instruction commit from cache write. When a store reaches the head of the [[BI4H]] and commits, its value has not yet reached L1 — commit only hands the store off to the store buffer. The actual cache write, called \em{drain}, happens asynchronously and may be delayed by cache misses, coherence traffic, or memory-ordering rules.}
+\p{A FIFO of stores that have left the pipeline but are not yet globally visible, decoupling instruction commit from cache write. A store's slot is allocated early — at dispatch/rename, since it must exist before execute for the address and data to be written into — so commit is not a handoff into the buffer but a \em{state transition} within it: when the store reaches the head of the [[BI4H]], its entry stops being speculative and becomes a \em{senior store}, eligible to drain. Nothing reaches L1 at that instant. The actual cache write, called \em{drain}, happens asynchronously and may be delayed by cache misses, coherence traffic, or memory-ordering rules.}
 
 \p{Without this split, the ROB would have to stall on a cache miss for every store. With it, once a store is known to be non-speculative, the front-end moves on while the store buffer absorbs whatever latency the memory hierarchy imposes. \em{Commit} and \em{drain} are therefore two distinct moments in the lifetime of a store:}
 \ul{
@@ -15,4 +15,12 @@
 
 \p{Between these two moments the value lives only in the store buffer. Younger same-core loads can still observe it through [[GXCN]], but other cores cannot — which is the structural reason [[VH8Y]] permits store-load reordering across cores. A [[R03A]] like \code{mfence} forces the buffer to drain so that subsequent operations see a consistent global view.}
 
+\p{Drain is not a single event either, and the two halves are easy to conflate. Acquiring \em{permission} — an Upgrade if the line is already in S, a GetM if it is not — is distinct from \em{performing the write}, merging the data into the line while holding M. Only the second is architecturally required to be post-commit. Ownership is invisible to software, so a core issues the [[GA7N]] request speculatively at AGU execute time, as soon as the physical address is known and often tens of cycles before retirement; if the store is squashed or the line is snooped away before the merge, nothing is lost but fabric traffic. This is why store misses so often look free in a trace — the latency was paid during [[IIF9]], not at the head of the buffer. The merge under M is the store's global visibility point.}
+
 \remark{Retirement bandwidth (ROB commits per cycle) and store bandwidth (drain rate to L1) are separate throughput limits. A workload that retires stores faster than the cache can absorb them eventually backs up the ROB anyway, but the store buffer absorbs short bursts at no cost.}
+
+\put\transclude/toc{false}
+\transclude{W5Z4}
+\transclude{DHK1}
+\transclude{7Y8Z}
+\transclude{ZSZV}

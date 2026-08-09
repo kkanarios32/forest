@@ -12,3 +12,6 @@
 \remark{Under TSO, Dekker's algorithm is still broken without [[R03A]] — the classic example where TSO is too weak for naive software synchronization.}
 
 \remark{The IBM 370 variant is TSO without [[GXCN]] — it preserves global store atomicity at the cost of same-core stall-on-self-read.}
+
+\put\transclude/toc{false}
+\transclude{JC0I}

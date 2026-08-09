@@ -1,0 +1,14 @@
+\date{2026-08-09T22:08:56Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[[5501]]: 2026-W32}
+\tag{public}
+
+% Running: mileage, obstacles, the plan for next week.
+\p{I have been HOOPING in running lately. My body is officially able to handle some substantial miles per week. Expect to see a lot of numbers in the 50s coming soon...}
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/32/running.png}}{}
+  \figcaption{Health stats for week 2026-W32.}
+}
+% Habits: consistency, Anki, to-do adherence.
+\p{It is a humbling reality that my habits fell off a cliff this week. The only thing to do is to try my best to get back on the wagon. There is a silver lining here. Through tracking, I can see that there is too much friction in these habits right now. For example, my stretch routine has gotten to 28min! Obviously, we will be cutting this down until we become consistent again. For Anki, I am already back on the wagon, and I do not think it will be a problem.}

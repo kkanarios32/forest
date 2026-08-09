@@ -25,25 +25,25 @@ It seems how to properly use these (todoist in particular) is the subject of muc
     \paragraph{Work streams} I took this name from my investment banker friends (sounds cool / important). Basically, these are groupings I have made and allocated time for each day. They roughly consist of the following:
   }
     \ul{
-      \li{Research / work (4hrs first thing in the morning):}
+      \li{Research / work (\mark{first thing in the morning}):}
       \ul{
         \li{Active work towards new artifact or paper i.e. coding up ideas.}
         \li{In the absence of ideas, studying existing relevant papers.}
       }
-      \li{Deliberate practice (2hrs after run / lunch):}
+      \li{Deliberate practice:}
       \ul{
         \li{Name taken from [[calnewport]].}
-        \li{As of writing this, a current example is spending ~2hrs a day writing / optimizing known kernels in CuTe / Pallas / NKI.}
-        \li{Basically, something I need to understand or master for research that is not novel.}
+        \li{Basically, something I need to understand or master for research that is not novel i.e. writing or optimizing a known kernel.}
       }
-      \li{Extraneous Study (30min - 1hr):}
+      \li{Extraneous Study:}
       \ul{
         \li{Things not directly related to research, but I am curious about.}
         \li{I try to maintain study of related computer science fields. Primarily, studying a textbook in something like [OS](0084), [computer architecture](P3GB), etc.}
       }
-      \li{Habits / daily upkeep (1hr normally end of day):}
+      \li{Habits / daily upkeep:}
       \ul{
         \li{Mainly consists of reviewing Anki cards daily that come from extraneous study / deliberate practice.}
+        \li{Necessary to stay on top of, but it normally takes #{< 30}min if active.}
       }
     }
   }

@@ -1,0 +1,13 @@
+\date{2026-08-09T22:55:15Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Commit is a state transition, not an allocation}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316439336}
+
+\prompt{A store's lifetime: when is its [[UNB6]] slot allocated, and what changes at [[BI4H]] commit?}{
+  The slot is allocated at \strong{dispatch/rename}, not at commit. It has to exist before the store executes: that is where the address and data get written in, and where younger loads find the value to [[GXCN]].
+
+  Commit is only a \strong{state transition}. The entry stops being speculative — it becomes a \em{senior store}, and is now eligible to drain. Nothing reaches the cache at that instant.
+}

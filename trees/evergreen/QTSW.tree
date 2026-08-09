@@ -4,12 +4,38 @@
 \title{MESI in Murphi}
 \tag{public}
 
-\p{With those states in place the rest of MSI is mechanical, and MESI is a short step from it — modulo two design choices and two more races.}
+\p{With those states in place the rest of MSI is mechanical, and MESI is a short step from it (modulo two design choices and two more races).}
 
 \section{The cache controller}{
 \figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-cache.png}}{}
-\figcaption{MESI cache controller.}
+\gridtable{
+\tr{\gth{}\gth{load}\gth{store}\gth{replacement}\gth{\code{Fwd-GetS}}\gth{\code{Fwd-GetM}}\gth{\code{Inv}}\gth{\code{Put-Ack}}}
+\tr{\gth{#{I}}\gtd{\code{GetS} → Dir / #{IS^D}}\gtd{\code{GetM} → Dir / #{IM^{AD}}}\gna \gna \gna \gna \gna}
+\tr{\gth{#{IS^D}}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna \gtd{stall}\gna}
+\tr{\gth{#{IM^{AD}}}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna}
+\tr{\gth{#{IM^A}}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna}
+\tr{\gth{#{S}}\gtd{hit}\gtd{\code{GetM} → Dir / #{SM^{AD}}}\gtd{\code{PutS} → Dir / #{SI^A}}\gna \gna \gtd{\code{Inv-Ack} → Req / #{I}}\gna}
+\tr{\gth{#{SM^{AD}}}\gtd{hit}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{\code{Inv-Ack} → Req / #{IM^{AD}}}\gna}
+\tr{\gth{#{SM^A}}\gtd{hit}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna}
+\tr{\gth{#{M}}\gtd{hit}\gtd{hit}\gtd{\code{PutM}+data → Dir / #{MI^A}}\gtd{data → Req + Dir / #{S}}\gtd{data → Req / #{I}}\gna \gna}
+\tr{\gth{\strong{#{E}}}\gtd{\strong{hit}}\gtd{\strong{\nowrap{hit / #{M}}}}\gtd{\strong{\code{PutE} (no data) → Dir / #{EI^A}}}\gtd{\strong{data → Req + Dir / #{S}}}\gtd{\strong{data → Req / #{I}}}\gna \gna}
+\tr{\gth{#{MI^A}}\gtd{stall}\gtd{stall}\gtd{stall}\gtd{data → Req + Dir / #{SI^A}}\gtd{data → Req / #{II^A}}\gna \gtd{\nowrap{-/#{I}}}}
+\tr{\gth{\strong{#{EI^A}}}\gtd{\strong{stall}}\gtd{\strong{stall}}\gtd{\strong{stall}}\gtd{\strong{data → Req + Dir / #{SI^A}}}\gtd{\strong{data → Req / #{II^A}}}\gna \gtd{\strong{\nowrap{-/#{I}}}}}
+\tr{\gth{#{SI^A}}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna \gtd{\code{Inv-Ack} → Req / #{II^A}}\gtd{\nowrap{-/#{I}}}}
+\tr{\gth{#{II^A}}\gtd{stall}\gtd{stall}\gtd{stall}\gna \gna \gna \gtd{\nowrap{-/#{I}}}}
+}
+\figcaption{MESI cache controller, requests and forwards. Bold marks what MESI adds to MSI here, the #{E} and #{EI^A} rows.}
+}
+\figure{
+\gridtable{
+\tr{\gth{}\gth{\code{ExclusiveData}}\gth{Data (ack=0)}\gth{Data (ack>0)}\gth{Data from owner}\gth{\code{Inv-Ack}}\gth{\code{Last-Inv-Ack}}}
+\tr{\gth{#{IS^D}}\gtd{\strong{\nowrap{-/#{E}}}}\gtd{\nowrap{-/#{S}}}\gna \gtd{\nowrap{-/#{S}}}\gna \gna}
+\tr{\gth{#{IM^{AD}}}\gna \gtd{\nowrap{-/#{M}}}\gtd{\nowrap{-/#{IM^A}}}\gtd{\nowrap{-/#{M}}}\gtd{\nowrap{\code{ack--}}}\gna}
+\tr{\gth{#{IM^A}}\gna \gna \gna \gna \gtd{\nowrap{\code{ack--}}}\gtd{\nowrap{-/#{M}}}}
+\tr{\gth{#{SM^{AD}}}\gna \gtd{\nowrap{-/#{M}}}\gtd{\nowrap{-/#{SM^A}}}\gtd{\nowrap{-/#{M}}}\gtd{\nowrap{\code{ack--}}}\gna}
+\tr{\gth{#{SM^A}}\gna \gna \gna \gna \gtd{\nowrap{\code{ack--}}}\gtd{\nowrap{-/#{M}}}}
+}
+\figcaption{MESI cache controller, responses, again over the transient states only. The whole of MESI's addition here is one cell: \code{ExclusiveData} landing in #{IS^D} gives #{E} instead of #{S}.}
 }
 \p{\paragraph{Silent upgrades} If a cache in #{E} may upgrade to #{M} silently, the directory never learns the line went dirty, and the value it hands to the next \code{GetS} or \code{GetM} is stale. There are two consistent ways out: forbid the silent upgrade, in which case no forwarding is needed; or allow it and treat #{E} exactly like #{M}, forwarding everything. Neither requires a writeback on \code{PutE}. I take the first, matching the table.}
 \p{\paragraph{Signaling exclusivity} The directory needs a way to tell a requester "you are the first reader, take the line exclusive." That is a new \code{ExclusiveData} message: receiving it in #{IS^D} lands the cache in #{E} rather than #{S}. It turns out to also be the key to the second race below.}
@@ -20,8 +46,26 @@ Once \code{PutE} or \code{PutM} has been sent, #{EI^A} and #{MI^A} are functiona
 
 \section{The directory controller}{
 \figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/mesi-directory.png}}{}
-\figcaption{MESI directory controller.}
+\gridtable{
+\tr{\gth{}\gth{\code{GetS}}\gth{\code{GetM}}}
+\tr{\gth{#{I}}\gtd{\strong{\code{ExclusiveData} → Req, Owner := Req / #{E}}}\gtd{data → Req, Owner := Req / #{M}}}
+\tr{\gth{#{S}}\gtd{data → Req, add Req to Sharers}\gtd{data → Req, \code{Inv} → Sharers, clear Sharers, Owner := Req / #{M}}}
+\tr{\gth{\strong{#{E}}}\gtd{\strong{\code{Fwd-GetS} → Owner, add Owner + Req to Sharers, \em{clear Owner} / #{S^D}}}\gtd{\strong{\code{Fwd-GetM} → Owner, Owner := Req / #{M}}}}
+\tr{\gth{#{M}}\gtd{\code{Fwd-GetS} → Owner, add Owner + Req to Sharers, \em{clear Owner} / #{S^D}}\gtd{\code{Fwd-GetM} → Owner, Owner := Req}}
+\tr{\gth{#{S^D}}\gtd{stall}\gtd{stall}}
+}
+\figcaption{MESI directory controller, coherence requests. Bold marks what MESI adds; the italicized \em{clear Owner} entries inherit the MSI table's error.}
+}
+\figure{
+\gridtable{
+\tr{\gth{}\gvth{\code{PutS}-NotLast}\gvth{\code{PutS}-Last}\gvth{\code{PutM} from Owner}\gvth{\code{PutM} from Non-Owner}\gvth{\code{PutE} from Owner}\gvth{\code{PutE} from Non-Owner}\gvth{Data}}
+\tr{\gth{#{I}}\gtd{\code{Put-Ack} → Req}\gtd{\code{Put-Ack} → Req}\gna \gtd{\code{Put-Ack} → Req}\gna \gtd{\strong{\code{Put-Ack} → Req}}\gna}
+\tr{\gth{#{S}}\gtd{remove Req from Sharers, \code{Put-Ack} → Req}\gtd{remove Req from Sharers, \code{Put-Ack} → Req / #{I}}\gna \gtd{remove Req from Sharers, \code{Put-Ack} → Req}\gna \gtd{\strong{remove Req from Sharers, \code{Put-Ack} → Req}}\gna}
+\tr{\gth{\strong{#{E}}}\gtd{\strong{\code{Put-Ack} → Req}}\gtd{\strong{\code{Put-Ack} → Req}}\gtd{\strong{data → memory, \code{Put-Ack} → Req, clear Owner / #{I}}}\gtd{\strong{\code{Put-Ack} → Req}}\gtd{\strong{\code{Put-Ack} → Req, clear Owner / #{I}}}\gtd{\strong{\code{Put-Ack} → Req}}\gna}
+\tr{\gth{#{M}}\gtd{\code{Put-Ack} → Req}\gtd{\code{Put-Ack} → Req}\gtd{data → memory, \code{Put-Ack} → Req, clear Owner / #{I}}\gtd{\code{Put-Ack} → Req}\gna \gtd{\strong{\code{Put-Ack} → Req}}\gna}
+\tr{\gth{#{S^D}}\gtd{remove Req from Sharers, \code{Put-Ack} → Req}\gtd{remove Req from Sharers, \code{Put-Ack} → Req}\gna \gtd{remove Req from Sharers, \code{Put-Ack} → Req}\gna \gtd{\strong{remove Req from Sharers, \code{Put-Ack} → Req}}\gtd{data → memory / #{S}}}
+}
+\figcaption{MESI directory controller, evictions and data. A \code{PutM} carries the line with it; a \code{PutE} never does, since #{E} is clean, which is why only the \code{PutM} column writes back.}
 }
 \p{Symmetrically, the directory gains an #{E^D} state, which for completeness is kept distinct from #{M^D} but could be folded into it.}
 }
@@ -32,7 +76,7 @@ Once \code{PutE} or \code{PutM} has been sent, #{EI^A} and #{MI^A} are functiona
 }
 
 \section{Losing exclusive data to an invalidation}{
-\p{The nastier version of the same race: the invalidation arrives before the forward. By the #{II^A} rule inherited from MSI, a \code{PutAck} in that state drops the line to #{I} — discarding data a forwarded request is about to ask for.}
+\p{The nastier version of the same race: the invalidation arrives before the forward. By the #{II^A} rule inherited from MSI, a \code{PutAck} in that state drops the line to #{I}. This discards data a forwarded request is about to ask for.}
 \example{
 \ol{
   \li{\code{Proc_1} load-misses → #{IS^D}}
@@ -44,7 +88,7 @@ Once \code{PutE} or \code{PutM} has been sent, #{EI^A} and #{MI^A} are functiona
   \li{\code{Proc_1} receives \code{ExclusiveData} → #{I}, and the data is lost}
 }
 }
-\p{\paragraph{Fix} \code{ExclusiveData} pays for itself a second time. Because the message is distinguishable from ordinary \code{Data}, a cache receiving it in #{II^D} knows it was the first reader and transitions to #{E} instead of #{I} — from which the pending \code{Fwd-GetM} or \code{Fwd-GetS} is handled correctly.}
+\p{\paragraph{Fix} \code{ExclusiveData} pays for itself a second time. Because the message is distinguishable from ordinary \code{Data}, a cache receiving it in #{II^D} knows it was the first reader and transitions to #{E} instead of #{I}. There, the pending \code{Fwd-GetM} or \code{Fwd-GetS} is handled correctly.}
 }
 
 \section{The finished controllers}{

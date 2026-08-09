@@ -1,9 +1,9 @@
 \import{base-macros}
-\tag{stub}
 \tag{public}
 \date{2025-07-01T21:51:12Z}
+\author{kellenkanarios}
 \title{Flow Matching: What, Why, and How?}
-\p{This is a blog cataloging my understanding of [[lipmanFlowMatchingGenerative2023]] prior to my group presentation on [[farebrotherTemporalDifferenceFlows2025]].}
+\p{This is a blog cataloging my understanding of [[lipmanFlowMatchingGenerative2023]] prior to my group presentation on [[farebrotherTemporalDifferenceFlows2025]]. The accompany slides are available [here](FMTD).}
 \p{\paragraph{Disclaimer} I came into this with literally no background. I have never even taken an ODE course. This may prove advantageous for the more general audience.}
 \section{Motivation}{
 To understand flow matching, it is a useful endeavor to understand the problems in prior work it aims to solve.

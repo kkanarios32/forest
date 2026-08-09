@@ -1,0 +1,18 @@
+\date{2026-08-06T16:31:13Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Weight-only int8 halves the compute-bound batch}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316439236}
+\meta{anki-deck}{MLSys}
+
+\prompt{With weights in int8 but activations and compute in bf16, at what batch size does a matmul become compute-bound?}{
+  For #{\mathrm{bf16}[B, D] \times \mathrm{int8}[D, F] \to \mathrm{bf16}[B, F]} the FLOPs are unchanged at #{2BDF} and still run at the bf16 rate of #{1.97 \times 10^{14}}, but the weights now cost #{DF} bytes instead of #{2DF}. With #{B} small the intensity therefore roughly doubles to #{2B}, and
+
+  ##{2B > 240 \implies B > 120}
+
+  Half the usual threshold — weight-only int8 quantization is an easy win even on hardware you are not using in int8.
+
+  Contrast full int8, weights \em{and} OPs: the intensity is again #{\approx 2B}, but the ridge point doubles too, to #{3.94 \times 10^{14} / 8.2 \times 10^{11} = 480}, so #{B > 240} — unchanged. What full int8 buys is wall-clock at a given batch, not a smaller batch.
+}

@@ -327,10 +327,10 @@ contain `"manual"` — `split_bib` overwrites everything else.
 - `\refnote{name}{citekey}{body}` — a titled note whose title carries an
   inline `\citek` link.
 - `\refcard{taxon}{name}{citekey}{body}` — a subtree (card) with the given
-  taxon, title with citation, and body. Useful for exercise solutions
-  scoped to a specific reference.
+  taxon, title with citation, and body. For commentary scoped to a specific
+  reference. (Solution manuals no longer use this — see `\exercise` in §8.)
 - `\refcardt{taxon}{name}{tid}{citekey}{body}` — same, with a tree-page
-  anchor; the canonical form used for `\refcardt{Exercise}{}{3.2}{...}`.
+  anchor, for pointing at a numbered result inside the reference.
 
 ---
 
@@ -360,7 +360,19 @@ Other useful macros from `base-macros.tree`:
   for highlighted callouts (e.g. daily Marcus Aurelius excerpts).
 - `\irow{body}` — minimum-height row inside an `\iblock`.
 - `\collapsed{title}{body}` — a subtree with TOC and expanded both off
-  (a fold-out section).
+  (a fold-out section). Renders its title as an ordinary heading, which
+  suits an index page; use `\foldout` mid-article, where a reader needs to
+  be told the block is closed.
+- `\foldout{title}{body}` — the same fold, with a disclosure triangle that
+  flips when it opens (`.foldout` in `theme/style.css`). What a worked
+  solution hides behind.
+- `\exercise{number}{name}{question}{solution}` — one entry of a solution
+  manual: the heading reads `Exercise 2.1. Name`, the question stays
+  visible, the solution goes in a `\foldout`. `\exerciseunsolved{number}{name}{question}`
+  is the same minus the fold, for an exercise stated but not yet worked.
+  See §13 for how a manual is assembled.
+- `\prediction{body}` — callout for what you expected before running the
+  code, kept beside what actually happened.
 - `\embed{src}` — `<embed>` an external HTML page.
 - `\md{body}`, `\mdblock{title}{body}` — wrap body in a div the
   client-side markdown-it renderer will process (used for content
@@ -541,6 +553,36 @@ These conventions emerge from `CLAUDE.md` and the existing trees:
   re-run `scripts/split_bib`. If you need bespoke commentary on a
   reference, write a separate `\refnote` or `\refcard` in another tree
   rather than editing the auto-generated card.
+- **Solution manuals are books.** One tree per book (they are listed on
+  `914H`), one chapter per chapter, one `\exercise` per exercise:
+
+  ```
+  \subtree[sutton-ch2]{
+    \title{Multi-armed Bandits}
+    \meta{number}{2}
+    \exercise{2.1}{How often greedy is chosen with two actions}{
+      \p{...the question, restated in your own words...}
+    }{
+      \p{...the worked solution...}
+    }
+  }
+  ```
+
+  Three things are load-bearing. The chapter is a `\subtree` with an
+  **explicit id**, not a `\section`: only an id'd subtree can be a
+  designated parent, and without one Forester prefixes every exercise
+  heading with the manual's title and a chevron. The **numbers are given
+  by hand** on both the chapter and the exercise, via `\meta{number}`,
+  because a manual covers chapters 2, 3, 4, 8, 9 and solves 2.1, 2.2, 2.4
+  — position-based auto-numbering would quietly renumber the book. And
+  the **question stays visible while the solution folds away**, so the
+  page is still usable as a problem set; an exercise you cannot read
+  without spoiling is not an exercise.
+
+  Name every exercise. The name is the one piece of real authorial work
+  in the format — it makes the manual scannable and gives concept notes
+  something worth linking to. Name the idea the exercise turns on
+  ("Greedy action frequency"), not the task ("Compute the probability").
 
 ---
 

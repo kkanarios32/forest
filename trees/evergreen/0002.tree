@@ -7,7 +7,12 @@
 \title{Blog}
 \author{kellenkanarios}
 
-\p{This is my blog, in which I write about a variety of topics including computer science, mathematics, and more, ranging from long-form deep dives to short, self-contained notes. See [upcoming blogs](007M) and feel free to request! This blog also has a corresponding [Atom feed](/0002/atom.xml).}
+% One line saying what the listing is, in the register the Research listing on
+% the home page uses — this paragraph is what the reader sees above the entries
+% both here and there. The Atom feed used to be named in a third sentence; the
+% \subscribe block at the foot of this page carries it as [rss], and so does the
+% one on the home page, so it was saying the same thing twice.
+\p{Long-form deep dives and short, self-contained notes, mostly on computer science and mathematics. See what is [in progress](007M), and feel free to request a topic. I also try to maintain two additional weekly posting obligations: a [weeknotes](007S) and a [paper of the week](005G).}
 
 \put\transclude/toc{false}
 \put\transclude/numbered{false}
@@ -45,6 +50,5 @@
 % Below the listing, as on the home page: the ask lands after the reader has
 % seen what there is to subscribe to, not before.
 \subscribe
-\hr
 
 \syndicate-current-tree-as-atom-feed

@@ -1,0 +1,17 @@
+\date{2026-08-09T22:55:18Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{What drain costs in each L1D state}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316439363}
+
+\prompt{At drain, what does the head [[UNB6]] entry do for each L1D [[30XT]] state — M/E, S, or miss?}{
+  \ul{
+    \li{\strong{M or E} — write directly; no fabric transaction at all, since E#{\to}M is a silent upgrade.}
+    \li{\strong{S} — issue the Upgrade/GetM now if the speculative one didn't land, and stall until permission arrives.}
+    \li{\strong{Miss} — issue GetM to fetch the data and invalidate sharers, allocate an [[89LS]], stall.}
+  }
+
+  Drain is decoupled from commit and, under [[VH8Y]], in order — so a stalled head blocks younger senior stores even when their lines are already in M.
+}

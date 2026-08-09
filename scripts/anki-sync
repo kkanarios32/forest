@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Mirror trees/cards/*.tree prompts into Anki via AnkiConnect.
 
-Each card tree holds exactly one `\\prompt{front}{back}`. The tree's Forester id
+Each card tree holds exactly one `\\prompt{question}{answer}`, which supplies
+both Anki fields; the tree's `\\title` is a short name for the card and is not
+synced. The tree's Forester id
 is the card's stable identity; the Anki note id is written back into the tree as
 `\\meta{anki}{<id>}` on first sync, so every later sync is idempotent (update,
 not duplicate). Notes land in the `Forest` deck (override per card with
@@ -61,8 +63,11 @@ def brace_arg(s, i):
 
 
 def parse_prompt(text):
-    """Extract the answer (back) from \\prompt{...}, or None. The question
-    (front) is the tree's \\title, so \\prompt carries only the answer."""
+    """Extract (front, back) from \\prompt{question}{answer}, or None.
+
+    Both sides come from \\prompt. The tree's \\title is a short name for the
+    card — what it is about — and is deliberately not synced: Anki's front has
+    to be the question itself, and a name is useless on a flashcard."""
     m = re.search(r"\\prompt\b", text)
     if not m:
         return None
@@ -71,8 +76,13 @@ def parse_prompt(text):
         i += 1
     if i >= len(text) or text[i] != "{":
         return None
+    front, i = brace_arg(text, i)
+    while i < len(text) and text[i] in " \t\r\n":
+        i += 1
+    if i >= len(text) or text[i] != "{":
+        return None
     back, _ = brace_arg(text, i)
-    return back.strip()
+    return front.strip(), back.strip()
 
 
 def meta(text, key):
@@ -178,15 +188,15 @@ def main():
             continue
         path = os.path.join(CARDS_DIR, fn)
         text = open(path, encoding="utf-8").read()
-        back = parse_prompt(text)
-        if back is None:
-            print(f"  skip   {fn[:-5]}: no \\prompt found")
+        parsed = parse_prompt(text)
+        if parsed is None:
+            print(f"  skip   {fn[:-5]}: no \\prompt{{question}}{{answer}} found")
             continue
-        raw_title = brace_arg_named(text, "title")
-        if not raw_title:
-            print(f"  skip   {fn[:-5]}: no \\title (the card's question)")
+        raw_front, back = parsed
+        if not raw_front:
+            print(f"  skip   {fn[:-5]}: \\prompt has an empty question")
             continue
-        front = " ".join(raw_title.split())
+        front = " ".join(raw_front.split())
         cards.append({
             "id": fn[:-5], "path": path, "text": text,
             "front": to_anki(front, titles), "back": to_anki(back, titles),

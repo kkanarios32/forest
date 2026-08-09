@@ -41,3 +41,19 @@
 \p{\strong{9:14 AM}}
 \hr
 \p{Init daily}
+
+\p{\strong{12:06 PM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{KZR4}
+}
+
+\p{\strong{12:24 PM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{LEM3}
+}

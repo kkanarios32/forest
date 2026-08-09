@@ -1,10 +1,11 @@
 % ["manual"]
-\title{Motion-Planning via Contrastive Reinforcement Learning and Monte-Carlo Tree Search}
-\date{2025}
+\title{Motion-Planning via Contrastive Reinforcement Learning and MCTS}
+\date{2025-07-18}
 \tag{research}
 \author{kellenkanarios}\author/literal{Lei Ying}
 \taxon{Reference}
 \meta{image}{\route-asset{assets/img/mp-crl-graphic.png}}
+\meta{openreview}{https://openreview.net/forum?id=G1xxzh9Q22}
 \meta{poster}{\route-asset{assets/posters/mp-crl-poster.pdf}}
 \meta{slides}{\route-asset{assets/slides/mp-crl-slides.pdf}}
 \meta{bibtex}{\startverb

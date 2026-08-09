@@ -3,8 +3,6 @@
 \date{2025-07-01T10:43:22Z}
 \title{TPE Process Interlude}
 \put\transclude/numbered{false}
-\p{[[007U]] (3/66)}
-
 \p{The Unix [[JJ45]] in concrete form: three syscalls that between them let you spawn, synchronize with, and replace processes, plus the asynchronous-event mechanism that ties them together.}
 
 \transclude{O1S9}

@@ -1,0 +1,18 @@
+\date{2026-08-06T16:31:11Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The batch size is the intensity}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316439311}
+\meta{anki-deck}{MLSys}
+
+\prompt{For a bf16 matmul #{[B, D] \times [D, F] \to [B, F]}, give the FLOPs, bytes, intensity, and the resulting rule of thumb.}{
+  #{\text{FLOPs} = 2BDF} and #{\text{bytes} = 2BD + 2DF + 2BF} — both operands loaded, the output written, two bytes apiece — so
+
+  ##{\mathrm{Intensity} = \frac{BDF}{BD + DF + BF}}
+
+  With #{B \ll D, F} the #{DF} term dominates the denominator and the intensity collapses to #{BDF / DF = B}. The whole rule of thumb is that \em{the batch size is the intensity}: a matmul is compute-bound once the per-replica batch exceeds #{240} tokens on TPU (#{\approx 295} on H100, from #{9.89 \times 10^{14} / 3.35 \times 10^{12}}).
+
+  Three caveats. #{B} counts \em{tokens}, not sequences. The threshold is per replica — sharding scales FLOPs and bandwidth together, so it applies to each copy of the weights ([[QPFO]]). And tiling changes the byte count once the matmul is large enough that the operands no longer fit.
+}

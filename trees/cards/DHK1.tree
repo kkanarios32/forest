@@ -1,0 +1,16 @@
+\date{2026-08-09T22:55:16Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Permission and the write are two separate events}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786316439086}
+
+\prompt{Which two events are conflated in "the store issues a [[GA7N]] request", and which one is required to be post-commit?}{
+  \ol{
+    \li{\strong{Requesting permission} — GetM/BusRdX/RFO, or an Upgrade if the line is already in S.}
+    \li{\strong{Performing the write} — merging the store data into the line, leaving it in M.}
+  }
+
+  Only \strong{(2)} is architecturally constrained to be post-commit. Permission can be acquired speculatively, well before the store is known to be real.
+}
