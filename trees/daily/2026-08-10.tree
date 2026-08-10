@@ -1,0 +1,46 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Monday, August 10, 2026}
+\date{2026-08-10T11:41:56Z}
+
+\p{
+\em{If once round and solid, there is no fear that ever it will change.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 8 §40
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Read: What Is a TPU? (TensorCore, MXU, VPU, memory hierarchy)}
+      \li{Read: TPU Networking (ICI, slices, wraparound links)}
+      \li{Sketch the memory hierarchy from memory: registers -> VMEM -> HBM -> host, bandwidth and capacity on every arrow}
+      \li{Build your own decision table: input shardings -> required collective -> output sharding}
+      \li{Read: Case 1: neither multiplicand has a sharded contracting dim}
+      \li{Read: Case 2: one multiplicand has a sharded contracting dim}
+      \li{Ex 3.4 — Matmul strategies: AllGather Y vs the alternatives}
+      \li{Read: Appendix A: more on TPU internals (VPU, scalar core)}
+      \li{Read: Key Takeaways + the TPU specs table}
+      \li{Ex 3.1 — Replicated sharding semantics}
+      \li{Read: Appendix B: how does a systolic array work?}
+      \li{Read: Case 4: same mesh axis on both non-contracting dims}
+      \li{Ex 3.3 — Latency-bound AllGather (small B)}
+      \li{Read: Case 3: both have sharded contracting dims}
+      \li{Ex 3.2 — AllGather latency on v4p 4x4x4}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Set up easy testing / profiling with skypilot}
+      \li{Read: Axon Paper}
+      \li{Read: Mirage Paper}
+      \li{Play around in codebase for 2hr}
+    }
+  }
+}
+}
+
+\p{\strong{7:41 AM}}
+\hr
+\p{Starting [[scaling-book]] study.}
