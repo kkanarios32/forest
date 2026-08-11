@@ -1,0 +1,42 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Tuesday, August 11, 2026}
+\date{2026-08-11T13:04:05Z}
+
+\p{
+\em{Then hath a man attained to the estate of perfection in his life and conversation, when he so spends every day, as if it were his last day: never hot and vehement in his affections, nor yet so cold and stupid as one that had no sense; and free from all manner of dissimulation.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 7 §40
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Ex 3.7 — Transformer block: best sharding for W_in / W_out}
+      \li{Ex 3.10 — Fun with AllToAll — why it is 4x cheaper}
+      \li{Ex 3.9 — Is there another strategy for sharded matmuls?}
+      \li{Ex 3.5 — Minimum-latency matmul on v4p 4x4x4}
+      \li{Sketch the memory hierarchy from memory: registers -> VMEM -> HBM -> host, bandwidth and capacity on every arrow}
+      \li{Read: AllToAll, ReduceScatter internals, overlapping comms with compute}
+      \li{Read: Key Takeaways + the TPU specs table}
+      \li{Ex 3.6 — A[I_X, J_Y] . B[J_Y, K] on v5e 4x4 — which comms, how long}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Set up easy testing / profiling with skypilot}
+      \li{Read: Axon Paper}
+      \li{Read: Mirage Paper}
+      \li{Play around in codebase for 2hr}
+    }
+  }
+}
+}
+\hr
+\p{\strong{8:04 AM}}
+\p{Finished exercises from chapter 2 of [[scaling-book]] available in [[scaling-ch2]].}
+
+\p{\strong{9:04 AM}}
+\hr
+\p{Wrote up [[IO2I]].}
