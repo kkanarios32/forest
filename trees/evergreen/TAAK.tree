@@ -18,8 +18,24 @@
   \transclude{JVAB}
   \transclude{S5K4}
   \transclude{EIZJ}
+  \transclude{D1X1}
+  \transclude{YK3Y}
 }
 
-\section{TPU Architecture}{
+\section{What is a TPU?}{
+  \put\transclude/toc{false}
+  \transclude{IO2I}
+  \transclude{OGCRQ}
+  \transclude{OGCRP}
+  \transclude{HPSO}
+  \transclude{R3DP}
+  \transclude{OGCRN}
+  \transclude{JFWY}
+  \transclude{MZIY}
+  \transclude{026G}
+  \transclude{590O}
+}
+
+\section{Sharded Matrices and How to Multiply Them}{
 
 }

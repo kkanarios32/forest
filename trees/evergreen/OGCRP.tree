@@ -3,18 +3,15 @@
 \author{kellenkanarios}
 \taxon{Definition}
 \title{Matrix Multiply Unit (MXU)}
-\p{A core component of the [TPU architecture](NZZ7) responsible for performing matrix multiplication via a \em{systolic array}.}
+\p{A core component of the [TPU architecture](NZZ7) responsible for performing matrix multiplication via a weight stationary [[SXP6]].}
 \ul{
-  \li{256x256 totaling 65,536 \em{multiply accumulate} units i.e. each unit can multiply and add in one cycle.}
+  \li{#{128 \times 128} — 16,384 \em{multiply accumulate} units, each multiplying and adding in one cycle. v6e/Trillium widens the array to #{256 \times 256}, i.e. 65,536.}
+  \li{The native op is one \code{bf16[8,128] @ bf16[128,128] -> f32[8,128]} every 8 cycles, or about #{5e13} bf16 FLOPs/s per MXU at 1.5 GHz. A v5e chip has enough MXUs to reach ~#{2e14}.}
 }
 \remark{
-Can only do 256x256 matrix multiplication, so the order is 
+The side length is fixed in hardware, so every dimension has to be tiled down to it and any axis shorter than it is padded up to it, wasting the FLOPs spent on the padding. The order is
 \ol{
-  \li{Tiling the matrix to load from HBM to VMEM}
-  \li{Compiler tiles from VMEM to 256x256 tiles to load into MXU.}
+  \li{Tiling the matrix to load from [HBM](AI2G) to [VMEM](GFK2).}
+  \li{Compiler tiles from VMEM to #{128 \times 128} tiles to load into the MXU.}
 }
-}
-\figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/systolic-array.png}}{}
-\figcaption{Note the input are offset so that the result from the first column can be accumulated int the second column. Can compute matmul in #{3n - 1} cycles.}
 }

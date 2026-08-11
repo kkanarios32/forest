@@ -1,0 +1,16 @@
+\date{2026-08-10T12:40:01Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Why the MXU pads everything to 128}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786395976465}
+\meta{anki-deck}{MLSys}
+
+\prompt{What is the native op of one [[OGCRP]], and why does that force padding to 128?}{
+  One \code{bf16[8,128] @ bf16[128,128] -> f32[8,128]} every 8 cycles, on a #{128 \times 128} systolic array — #{256 \times 256} on v6e/Trillium.
+
+  The array's side length is fixed in hardware, so any matrix axis shorter than 128 (256 on v6e) is \strong{padded} up to it, and the FLOPs spent on the padding are simply wasted. With 2–4 MXUs per core, tiling dimensions want to exceed #{128 \times} the MXU count.
+
+  Scale: roughly #{5e13} bf16 FLOPs/s per MXU at 1.5 GHz, so about #{2e14} per v5e chip. int8 runs ~#{2\times} faster, int4 ~#{4\times}.
+}

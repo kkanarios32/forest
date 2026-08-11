@@ -1,0 +1,20 @@
+% ["refs"]
+\title{When XLA isn’t enough: From Pallas to VLIW with Splash attention on TPU}
+\date{2026-01}
+\author/literal{Patrick C. Toulme}
+\taxon{Reference}
+\meta{external}{https://patricktoulme.substack.com/p/when-xla-isnt-enough-from-pallas}
+
+\meta{bibtex}{\startverb
+@misc{toulme2026xla,
+ title = {When {XLA} Isn't Enough: From {Pallas} to {VLIW} with {Splash}
+Attention on {TPU}},
+ author = {Toulme, Patrick C.},
+ year = {2026},
+ url = {https://patricktoulme.substack.com/p/when-xla-isnt-enough-from-pallas},
+ urldate = {2026-08-10},
+ howpublished = {Blog post, \emph{Just a Byte --- AI Compilers, Silicon, and
+Systems}},
+ month = {January}
+}
+\stopverb}

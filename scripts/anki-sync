@@ -3,7 +3,8 @@
 
 Each card tree holds exactly one `\\prompt{question}{answer}`, which supplies
 both Anki fields; the tree's `\\title` is a short name for the card and is not
-synced. The tree's Forester id
+synced. Both sides are rendered from Forester to Anki's HTML — lists, emphasis,
+code, links and citations become tags, math becomes MathJax. The tree's Forester id
 is the card's stable identity; the Anki note id is written back into the tree as
 `\\meta{anki}{<id>}` on first sync, so every later sync is idempotent (update,
 not duplicate). Notes land in the `Forest` deck (override per card with
@@ -99,31 +100,144 @@ def brace_arg_named(text, macro):
 
 
 # ---- Forester -> Anki (HTML + MathJax) --------------------------------------
+#
+# Anki fields are HTML, so the card text is *rendered*, not string-substituted:
+# a single recursive pass that walks the source, hands math to MathJax verbatim,
+# and turns structural markup into the HTML tags it means. Regex substitution
+# cannot do this — \ul/\ol/\li nest, and a macro argument holding math or a
+# nested macro has braces inside it that `[^}]*` cuts short.
 
-def convert_math(s):
-    out, i = [], 0
-    while i < len(s):
-        if s[i] == "#" and s[i:i + 3] == "##{":
+MACRO = re.compile(r"\\([a-zA-Z][a-zA-Z0-9\-]*)")
+
+INLINE_TAGS = {"strong": "b", "em": "i", "code": "code", "tt": "code"}
+
+
+def esc(s):
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def render_text(run, titles, in_list):
+    """A prose run: resolve links, escape, and turn blank lines into breaks."""
+    run = re.sub(r"\[([^\]\n]+)\]\([^)\s]+\)", r"\1", run)             # [text](ID) -> text
+    run = re.sub(r"\[\[([0-9A-Za-z\-]+)\]\]",
+                 lambda m: titles.get(m.group(1), m.group(1)), run)    # [[ID]] -> title
+    if in_list and not run.strip():
+        return ""                       # whitespace between \li items is layout, not text
+    run = esc(run)
+    run = re.sub(r"[ \t]*\n[ \t]*\n\s*", "<br><br>", run)              # paragraph break
+    run = re.sub(r"\s*\n\s*", " ", run)                                # soft wrap
+    return run
+
+
+def read_args(s, i):
+    """Consecutive brace groups starting at i (no whitespace between them)."""
+    args = []
+    while i < len(s) and s[i] == "{":
+        arg, i = brace_arg(s, i)
+        args.append(arg)
+    return args, i
+
+
+def verbatim(s, i):
+    """`\\verb<<<|...<<<` or `\\startverb...\\stopverb` at i -> (body, index)."""
+    if s.startswith("\\verb<<<|", i):
+        j = s.find("<<<", i + len("\\verb<<<|"))
+        if j < 0:
+            return None
+        return s[i + len("\\verb<<<|"):j].strip("\n"), j + 3
+    if s.startswith("\\startverb", i):
+        j = s.find("\\stopverb", i)
+        if j < 0:
+            return None
+        return s[i + len("\\startverb"):j].strip("\n"), j + len("\\stopverb")
+    return None
+
+
+def expand(name, args, titles):
+    r = lambda a: render(a, titles)
+    if name in INLINE_TAGS and args:
+        tag = INLINE_TAGS[name]
+        return f"<{tag}>{r(args[0])}</{tag}>"
+    if name in ("ul", "ol") and args:
+        return f"<{name}>{render(args[0], titles, in_list=True)}</{name}>"
+    if name == "li" and args:
+        return f"<li>{r(args[0])}</li>"
+    if name == "p" and args:
+        return f"<p>{r(args[0])}</p>"
+    if name == "hr":
+        return "<hr>"
+    if name == "citek" and args:                       # renders as [citekey] on-site
+        return esc(f"[{args[0].strip()}]")
+    if name == "citet" and len(args) >= 2:             # \citet{loc}{citekey}
+        return esc(f"[{args[1].strip()}, {args[0].strip()}]")
+    if name == "transclude" and args:
+        key = args[0].strip()
+        return esc(titles.get(key, key))
+    if args:                                # unknown macro: keep the content, drop the name
+        return " ".join(r(a) for a in args)
+    return esc("\\" + name)
+
+
+def render(s, titles, in_list=False):
+    out, buf, i, n = [], [], 0, len(s)
+
+    def flush():
+        if buf:
+            out.append(render_text("".join(buf), titles, in_list))
+            del buf[:]
+
+    while i < n:
+        c = s[i]
+        if c == "#" and s.startswith("##{", i):
+            flush()
             content, i = brace_arg(s, i + 2)
             out.append("\\[" + content + "\\]")
-        elif s[i] == "#" and s[i:i + 2] == "#{":
+        elif c == "#" and s.startswith("#{", i):
+            flush()
             content, i = brace_arg(s, i + 1)
             out.append("\\(" + content + "\\)")
+        elif c == "\\":
+            v = verbatim(s, i)
+            if v is not None:
+                flush()
+                body, i = v
+                out.append(f"<pre><code>{esc(body)}</code></pre>")
+                continue
+            m = MACRO.match(s, i)
+            if not m:
+                buf.append(c)
+                i += 1
+                continue
+            name, j = m.group(1), m.end()
+            if name == "pre":                          # \pre\verb<<<|...<<<
+                v = verbatim(s, j)
+                if v is not None:
+                    flush()
+                    body, i = v
+                    out.append(f"<pre><code>{esc(body)}</code></pre>")
+                    continue
+            args, i = read_args(s, j)
+            flush()
+            out.append(expand(name, args, titles))
         else:
-            out.append(s[i])
+            buf.append(c)
             i += 1
+    flush()
     return "".join(out)
 
 
+BLOCK = r"(?:ul|ol|li|p|pre|hr)"
+
+
 def to_anki(s, titles):
-    s = convert_math(s)
-    s = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", s)                     # [text](ID) -> text
-    s = re.sub(r"\[\[([0-9A-Za-z\-]+)\]\]",
-               lambda m: titles.get(m.group(1), m.group(1)), s)       # [[ID]] -> title
-    s = re.sub(r"\\strong\{([^}]*)\}", r"<b>\1</b>", s)
-    s = re.sub(r"\\em\{([^}]*)\}", r"<i>\1</i>", s)
-    s = re.sub(r"\\code\{([^}]*)\}", r"<code>\1</code>", s)
-    return s.strip()
+    html = render(s, titles)
+    # A block tag already breaks the line; a <br> against one is double spacing.
+    html = re.sub(r"(?:<br>\s*)+(<" + BLOCK + r"\b[^>]*>)", r"\1", html)
+    html = re.sub(r"(</?" + BLOCK + r">)(?:\s*<br>)+", r"\1", html)
+    # Squeeze runs of spaces, but not inside <pre>, where they are the code's.
+    html = "".join(part if i % 2 else re.sub(r"[ \t]{2,}", " ", part)
+                   for i, part in enumerate(re.split(r"(<pre>.*?</pre>)", html, flags=re.S)))
+    return html.strip()
 
 
 def build_title_index():
@@ -188,18 +302,26 @@ def main():
             continue
         path = os.path.join(CARDS_DIR, fn)
         text = open(path, encoding="utf-8").read()
-        parsed = parse_prompt(text)
+        try:
+            parsed = parse_prompt(text)
+        except ValueError as e:                 # unbalanced braces: skip, don't abort
+            print(f"  skip   {fn[:-5]}: {e}")
+            continue
         if parsed is None:
             print(f"  skip   {fn[:-5]}: no \\prompt{{question}}{{answer}} found")
             continue
-        raw_front, back = parsed
-        if not raw_front:
+        front, back = parsed
+        if not front:
             print(f"  skip   {fn[:-5]}: \\prompt has an empty question")
             continue
-        front = " ".join(raw_front.split())
+        try:
+            rendered = to_anki(front, titles), to_anki(back, titles)
+        except ValueError as e:
+            print(f"  skip   {fn[:-5]}: {e}")
+            continue
         cards.append({
             "id": fn[:-5], "path": path, "text": text,
-            "front": to_anki(front, titles), "back": to_anki(back, titles),
+            "front": rendered[0], "back": rendered[1],
             "deck": meta(text, "anki-deck") or DEFAULT_DECK,
             "note_id": meta(text, "anki"),
         })

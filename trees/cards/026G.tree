@@ -1,0 +1,19 @@
+\date{2026-08-10T12:40:04Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Four communication tiers, four budgets}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786395975691}
+\meta{anki-deck}{MLSys}
+
+\prompt{Name the four communication tiers on a [TPU](NZZ7), fastest to slowest, with per-chip v5p numbers.}{
+  \ol{
+    \li{\strong{HBM #{\leftrightarrow} TensorCore} — #{2.8e12} B/s.}
+    \li{\strong{ICI} ([[O14H]], chip to nearest neighbors) — #{9e10} B/s per axis one-way, across 3 axes on v5p.}
+    \li{\strong{PCIe} (host to its tray of chips) — #{1.6e10} B/s, about #{100\times} slower than HBM.}
+    \li{\strong{DCN} (host to host) — #{6.25e9} B/s.}
+  }
+
+  The design rule that falls out: keep the bytes crossing each channel \strong{proportional to that channel's speed}. Note also that a TPU#{\to}TPU transfer over DCN pays the whole chain — PCIe, NIC egress, NIC ingress, PCIe again.
+}

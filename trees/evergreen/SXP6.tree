@@ -1,0 +1,10 @@
+\date{2026-08-11T12:38:17Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Systolic array}
+\taxon{Definition}
+\tag{public}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/systolic-array.png}}{}
+\figcaption{Output stationary systolic array matmul.}
+}

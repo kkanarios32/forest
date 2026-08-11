@@ -1,5 +1,5 @@
 % ["refs"]
-\title{Linear Layouts: Robust Code Generation of Efficient Tensor Computation Using $\mathbb_2$}
+\title{Linear Layouts: Robust Code Generation of Efficient Tensor Computation Using $\mathbb _2$}
 \date{2026-03}
 \author/literal{Keren Zhou}\author/literal{Mario Lezcano}\author/literal{Adam Goucher}\author/literal{Akhmed Rakhmati}\author/literal{Jeff Niu}\author/literal{Justin Lebar}\author/literal{Pawel Szczerbuk}\author/literal{Peter Bell}\author/literal{Phil Tillet}\author/literal{Thomas Raoux}\author/literal{Zahi Moudallal}
 \taxon{Reference}
@@ -8,18 +8,43 @@
 
 \meta{bibtex}{\startverb
 @misc{zhouLinearLayoutsRobust2026,
- title = {Linear {{Layouts}}: {{Robust Code Generation}} of {{Efficient Tensor Computation Using}} \$\textbackslash mathbb\textbraceleft{{F}}\textbraceright\_2\$},
- author = {Zhou, Keren and Lezcano, Mario and Goucher, Adam and Rakhmati, Akhmed and Niu, Jeff and Lebar, Justin and Szczerbuk, Pawel and Bell, Peter and Tillet, Phil and Raoux, Thomas and Moudallal, Zahi},
+ title = {Linear {{Layouts}}: {{Robust Code Generation}} of {{Efficient Tensor
+Computation Using}} \$\textbackslash mathbb\textbraceleft{{F}}
+\textbraceright\_2\$},
+ author = {Zhou, Keren and Lezcano, Mario and Goucher, Adam and Rakhmati,
+Akhmed and Niu, Jeff and Lebar, Justin and Szczerbuk, Pawel and Bell,
+Peter and Tillet, Phil and Raoux, Thomas and Moudallal, Zahi},
  year = {2026},
  doi = {10.48550/arXiv.2505.23819},
  urldate = {2026-07-11},
  number = {arXiv:2505.23819},
  publisher = {arXiv},
- file = {/home/kellen/Downloads/papers/Linear Layouts Robust Code Generation of Efficient Tensor Computation Using $mathbb F _2$ - Zhou et al..pdf},
- keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Hardware Architecture,Computer Science - Performance,Computer Science - Programming Languages},
+ file = {/home/kellen/Downloads/papers/Linear Layouts Robust Code Generation of
+Efficient Tensor Computation Using $mathbb F _2$ - Zhou et al..pdf},
+ keywords = {Computer Science - Distributed Parallel and Cluster Computing,
+Computer Science - Hardware Architecture,Computer Science -
+Performance,Computer Science - Programming Languages},
  langid = {english},
  archiveprefix = {arXiv},
- abstract = {Efficient tensor computation is a cornerstone of modern deep learning (DL) workloads, yet existing approaches struggle to achieve flexible and performant design and implementation of tensor layouts -- mappings between logical tensors and hardware resources. The increasing complexity of DL algorithms and hardware demands a generic and systematic approach to handling tensor layouts. In this work, we introduce Linear Layouts, a novel approach that models tensor layouts using linear algebra over \$\textbackslash mathbb\textbraceleft F\textbraceright\_2\$. By representing tensor layouts as binary matrices acting on the bits of the hardware representation, our approach enables a generic layout definition -- as opposed to the classical case-by-case approach -- and allows for generic layout-to-layout conversions, eliminating the quadratic explosion that plagues existing solutions. We integrate linear layouts with Triton and demonstrate their effectiveness in optimizing individual Triton operators as well as kernels written in Triton. We also show that linear layouts reduce engineering effort in the compiler backend while fixing several bugs in Triton's legacy layout system.},
+ abstract = {Efficient tensor computation is a cornerstone of modern deep
+learning (DL) workloads, yet existing approaches struggle to
+achieve flexible and performant design and implementation of tensor
+layouts -- mappings between logical tensors and hardware resources.
+The increasing complexity of DL algorithms and hardware demands a
+generic and systematic approach to handling tensor layouts. In this
+work, we introduce Linear Layouts, a novel approach that models
+tensor layouts using linear algebra over \$\textbackslash mathbb
+\textbraceleft F\textbraceright\_2\$. By representing tensor
+layouts as binary matrices acting on the bits of the hardware
+representation, our approach enables a generic layout definition --
+as opposed to the classical case-by-case approach -- and allows for
+generic layout-to-layout conversions, eliminating the quadratic
+explosion that plagues existing solutions. We integrate linear
+layouts with Triton and demonstrate their effectiveness in
+optimizing individual Triton operators as well as kernels written
+in Triton. We also show that linear layouts reduce engineering
+effort in the compiler backend while fixing several bugs in
+Triton's legacy layout system.},
  primaryclass = {cs.PL},
  eprint = {2505.23819},
  month = {March},

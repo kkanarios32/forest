@@ -4,6 +4,7 @@
 \meta{bibtex}{\startverb
 @book{StochasticApproximationAlgorithms,
  title = {Stochastic {{Approximation Algorithms}} and {{Applications}}},
- file = {/home/kellen/Downloads/papers/Stochastic Approximation Algorithms and Applications - .pdf}
+ file = {/home/kellen/Downloads/papers/Stochastic Approximation Algorithms and
+Applications - .pdf}
 }
 \stopverb}

@@ -1,0 +1,20 @@
+\date{2026-08-10T12:40:02Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The systolic array fill bubble}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786395976765}
+\meta{anki-deck}{MLSys}
+
+\prompt{Sketch the dataflow through a #{128 \times 128} systolic array ([[OGCRP]]). Where does the pipeline bubble come from?}{
+  A 2D grid of 16,384 ALUs, each doing one multiply-add per cycle.
+
+  \ul{
+    \li{\strong{Weights} (RHS, #{128 \times 128}) are pushed \strong{down} from the top.}
+    \li{\strong{Activations} (LHS, #{8 \times 128}) stream in from the \strong{left}.}
+    \li{Each cell multiplies its overlapped pair, adds the partial sum arriving from above, and passes the result down.}
+  }
+
+  The \strong{bubble}: both operands are loaded \em{diagonally}, so the array needs a fill period before every cell is busy. Once filled, new LHS/RHS stream in back-to-back with no further bubble — which is why large matrices amortize the fill and small ones do not.
+}

@@ -1,0 +1,45 @@
+\date{2026-08-10T12:27:05Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{TPU specs}
+\tag{public}
+
+\p{Per-chip and per-pod numbers for each generation of [TPU](NZZ7), from the [Scaling Book](scaling-book). \em{Pod size} is the ICI topology of a full slice; \em{host size} is the chips hanging off a single CPU host.}
+
+\scrolltable{
+\tr{
+  \th{Model}
+  \th{Pod size}
+  \th{Host size}
+  \th{HBM/chip}
+  \th{HBM BW/chip (bytes/s)}
+  \th{FLOPs/s/chip (bf16)}
+  \th{FLOPs/s/chip (int8)}
+}
+\tr{\ntd{TPU v3}\ntd{#{32 \times 32}}\ntd{#{4 \times 2}}\ntd{32GB}\ntd{#{9.0e11}}\ntd{#{1.4e14}}\ntd{#{1.4e14}}}
+\tr{\ntd{TPU v4p}\ntd{#{16 \times 16 \times 16}}\ntd{#{2 \times 2 \times 1}}\ntd{32GB}\ntd{#{1.2e12}}\ntd{#{2.75e14}}\ntd{#{2.75e14}}}
+\tr{\ntd{TPU v5p}\ntd{#{16 \times 20 \times 28}}\ntd{#{2 \times 2 \times 1}}\ntd{96GB}\ntd{#{2.8e12}}\ntd{#{4.59e14}}\ntd{#{9.18e14}}}
+\tr{\ntd{TPU v5e}\ntd{#{16 \times 16}}\ntd{#{4 \times 2}}\ntd{16GB}\ntd{#{8.2e11}}\ntd{#{1.97e14}}\ntd{#{3.94e14}}}
+\tr{\ntd{TPU v6e}\ntd{#{16 \times 16}}\ntd{#{4 \times 2}}\ntd{32GB}\ntd{#{1.6e12}}\ntd{#{9.20e14}}\ntd{#{1.84e15}}}
+\tr{\ntd{TPU7x}\ntd{#{4 \times 4 \times 576}}\ntd{#{2 \times 2 \times 1}}\ntd{192GB}\ntd{#{7.4e12}}\ntd{#{2.30e15}}\ntd{#{4.61e15}}}
+}
+
+\remark{The int8 column only doubles from v5p onward — v3 and v4p run int8 through the [MXU](OGCRP) at the same rate as bf16, so quantizing there saves memory traffic but buys no extra OPs/s. The ratio of a FLOPs/s column to the HBM bandwidth column is the [roofline](scaling-ch1) ridge point: on v5e, #{3.94e14 / 8.2e11 \approx 480}, i.e. batch #{240} in the #{2B} arithmetic-intensity approximation.}
+
+\p{Interconnect bandwidth is quoted per \em{link}, not per chip — multiply by the number of neighbors a chip has in the topology above to get its aggregate off-chip bandwidth.}
+
+\scrolltable{
+\tr{
+  \th{Model}
+  \th{ICI BW/link (one-way, bytes/s)}
+  \th{ICI BW/link (bidi, bytes/s)}
+}
+\tr{\ntd{TPU v3}\ntd{#{1.0e11}}\ntd{#{2.0e11}}}
+\tr{\ntd{TPU v4p}\ntd{#{4.5e10}}\ntd{#{9.0e10}}}
+\tr{\ntd{TPU v5p}\ntd{#{9.0e10}}\ntd{#{1.8e11}}}
+\tr{\ntd{TPU v5e}\ntd{#{4.5e10}}\ntd{#{9.0e10}}}
+\tr{\ntd{TPU v6e}\ntd{#{9.0e10}}\ntd{#{1.8e11}}}
+\tr{\ntd{TPU7x}\ntd{#{9.0e10}}\ntd{#{1.8e11}}}
+}
+
+\remark{The bidi column is exactly #{2 \times} the one-way column in every row, so it carries no extra information — it only names whether you are counting both directions of the link. Which one belongs in a cost model depends on the collective: a ring all-reduce drives both directions at once, a one-directional shift does not. Note also that v3 has the highest per-link bandwidth in the table but the smallest neighbor count, since a #{32 \times 32} pod is a 2D torus — four neighbors per chip rather than the six a 3D torus gives.}

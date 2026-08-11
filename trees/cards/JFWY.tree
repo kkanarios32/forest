@@ -1,0 +1,20 @@
+\date{2026-08-10T12:40:07Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The VPU is thirty times smaller than the MXU}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786395976565}
+\meta{anki-deck}{MLSys}
+
+\prompt{[[OGCRN]]: what is its shape and throughput relative to the [[OGCRP]], and which reductions are cheap?}{
+  Shape #{(8\ \text{sublanes}, 128\ \text{lanes})}, with 4 independent ALUs per position and most ops at 1/cycle:
+
+  ##{8 \times 128 \times 4 \times 1.75\mathrm{e}9 \approx 7\mathrm{e}12 \text{ FLOPs/s}}
+
+  on v5p — about #{30\times} less than the ~#{2e14} MXU FLOPs/s per core. VPU work is fp32.
+
+  \strong{Reductions} along the \strong{sublane} axis (the 8) are cheap: an intra-lane shuffle by 4/2/1 plus three pairwise adds. \strong{Cross-lane} reductions need the separate XLU, which is slow and expensive.
+
+  Control is skewed the other way: a single [scalar core](WY6L) fetches and dispatches everything and can issue only \strong{one DMA request per cycle}. Efficient, but it blocks data-dependent vectorization.
+}

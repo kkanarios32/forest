@@ -373,6 +373,17 @@ Other useful macros from `base-macros.tree`:
   See §13 for how a manual is assembled.
 - `\prediction{body}` — callout for what you expected before running the
   code, kept beside what actually happened.
+- `\sidenote{body}` — a numbered marker where you write it and the note
+  itself out in the right margin, beside that line. Numbering is a CSS
+  counter, so notes renumber themselves when a paragraph moves and there is
+  nothing to keep in sync. The margin exists only above 1300px, where the
+  right flank is free (the table of contents lives in the left one, and the
+  two appear and vanish together — there is no width with one gutter and not
+  the other). Below that the note is closed: the marker becomes a click
+  target, and opening it drops the note under that line. Never breaks the
+  sentence it annotates at any width, so it can be written mid-clause. Use a
+  sidenote for a real digression, and a `\remark` for a qualification the next
+  sentence depends on: the margin is read at a glance or not at all.
 - `\embed{src}` — `<embed>` an external HTML page.
 - `\md{body}`, `\mdblock{title}{body}` — wrap body in a div the
   client-side markdown-it renderer will process (used for content

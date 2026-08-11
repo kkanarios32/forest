@@ -48,7 +48,7 @@ It seems how to properly use these (todoist in particular) is the subject of muc
     }
   }
 \p{
-To decide on the next task, I use a priority-based system:
+To decide on the next task, I use a priority-based system\sidenote{This idea is mainly based on the [MLFQ](4WG5), which has been proven effective for balancing response / turnaround time}:
 }
 \ol{
   \li{Things I will be working on today / until they are done. At most \strong{ONE} thing per work stream.}
@@ -61,7 +61,7 @@ To decide on the next task, I use a priority-based system:
   \li{Things I am not working on right now, or have any need to be completed any time soon.}
 }
 \p{
-This idea is mainly based on the [MLFQ](4WG5), which has been proven effective for balancing response / turnaround time. To maintain this system, I have reviews each day and week (tracking with [habitify](habitify.me)) to make sure I stay consistent.
+To maintain this system, I have reviews each day and week (tracking with [habitify](habitify.me)) to make sure I stay consistent.
 }
 \algorithm{
   \em{Weekly review.}

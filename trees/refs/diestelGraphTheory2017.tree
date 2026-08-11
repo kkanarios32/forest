@@ -18,6 +18,8 @@
  address = {Berlin, Heidelberg},
  file = {/home/kellen/Downloads/papers/Graph Theory - Diestel.pdf},
  langid = {english},
- copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining}
+ copyright = {
+https://www.springernature.com/gp/researchers/text-and-data-mining
+}
 }
 \stopverb}

@@ -1,0 +1,19 @@
+\date{2026-08-10T12:40:05Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Which TPU axes actually wrap around}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786395975892}
+\meta{anki-deck}{MLSys}
+
+\prompt{[[O14H]] topology: which generations get which [torus](DDKT), and when do you actually get wraparound links?}{
+  \ul{
+    \li{\strong{2D torus}, 4 neighbors — v2, v3, v5e, v6e. A pod caps at #{16 \times 16}; past that, pods talk over DCN.}
+    \li{\strong{3D torus}, 6 neighbors — v4, v5p. Superpods are #{16 \times 16 \times 16} (v4) and #{16 \times 20 \times 28} (v5p), built from reconfigurable #{4 \times 4 \times 4} cubes joined by optical links.}
+  }
+
+  \strong{Wraparounds} exist only on full-cube multiples (#{4 \times 4 \times 4}, #{4 \times 4 \times 8} — \em{not} #{2 \times 2 \times 4}, since the optical switches only exist on a full cube), or on a v5e/v6e axis of exactly 16, so an #{8 \times 16} slice wraps the long axis only. Losing the wraparound roughly \strong{doubles} comms time.
+
+  Links are nearest-neighbor only and bypass the hosts entirely, so distant chips hop through the chips between them — unlike a GPU's switch hierarchy.
+}

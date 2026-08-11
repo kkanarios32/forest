@@ -15,11 +15,28 @@
  urldate = {2026-02-11},
  number = {arXiv:2510.06714},
  publisher = {arXiv},
- file = {/home/kellen/Downloads/papers/Dual Goal Representations - Park et al..pdf},
- keywords = {Computer Science - Artificial Intelligence,Computer Science - Machine Learning},
+ file = {/home/kellen/Downloads/papers/Dual Goal Representations - Park et
+al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science -
+Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},
- abstract = {In this work, we introduce dual goal representations for goal-conditioned reinforcement learning (GCRL). A dual goal representation characterizes a state by ``the set of temporal distances from all other states''; in other words, it encodes a state through its relations to every other state, measured by temporal distance. This representation provides several appealing theoretical properties. First, it depends only on the intrinsic dynamics of the environment and is invariant to the original state representation. Second, it contains provably sufficient information to recover an optimal goal-reaching policy, while being able to filter out exogenous noise. Based on this concept, we develop a practical goal representation learning method that can be combined with any existing GCRL algorithm. Through diverse experiments on the OGBench task suite, we empirically show that dual goal representations consistently improve offline goal-reaching performance across 20 state- and pixel-based tasks.},
+ abstract = {In this work, we introduce dual goal representations for
+goal-conditioned reinforcement learning (GCRL). A dual goal
+representation characterizes a state by ``the set of temporal
+distances from all other states''; in other words, it encodes a
+state through its relations to every other state, measured by
+temporal distance. This representation provides several appealing
+theoretical properties. First, it depends only on the intrinsic
+dynamics of the environment and is invariant to the original state
+representation. Second, it contains provably sufficient information
+to recover an optimal goal-reaching policy, while being able to
+filter out exogenous noise. Based on this concept, we develop a
+practical goal representation learning method that can be combined
+with any existing GCRL algorithm. Through diverse experiments on
+the OGBench task suite, we empirically show that dual goal
+representations consistently improve offline goal-reaching
+performance across 20 state- and pixel-based tasks.},
  primaryclass = {cs},
  eprint = {2510.06714},
  month = {October}

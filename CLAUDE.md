@@ -27,8 +27,10 @@ site's XSL templates and `style.css`; changes are committed to the submodule).
 Keep visual styling in `trees/evergreen/base-macros.tree` as inline-styled
 macros. Only reach into `theme/style.css` when the styling genuinely cannot
 live in a macro — the canonical case is a rule that depends on state no inline
-style can see, such as the open/closed triangle on `\foldout`. When in doubt,
-do it in `base-macros`.
+style can see, such as the open/closed triangle on `\foldout`. The other case
+is styling keyed to a tree's frontmatter — the slate callout frame on
+`\taxon{Card}` hangs off `[data-taxon="Card"]` because it has to enclose the
+heading, which no body macro can wrap. When in doubt, do it in `base-macros`.
 
 **Read-only:** `output/` (build artifact), `tex/generated/` (intermediate
 JSON from `split_bib`).
@@ -238,8 +240,13 @@ the answer folded away.
    about matmul intensity") — it is what makes a deck scannable and what lets a
    concept note link a specific card in prose.
 2. Write the two sides as `\prompt{<question>}{<answer>}`. Both are ordinary
-   Forester: `#{...}` / `##{...}` math and `[[ID]]` / `[text](ID)` links work
-   and are converted for Anki on sync. Optionally set a deck with
+   Forester: `#{...}` / `##{...}` math, `[[ID]]` / `[text](ID)` links,
+   `\ul`/`\ol`/`\li` lists, `\strong`/`\em`/`\code`, `\citek`/`\citet`, and
+   `\pre\verb<<<|…<<<` blocks are all rendered to Anki's HTML on sync (math to
+   MathJax `\(…\)`, links to their target's title, a blank line to a break).
+   Anything else with a braced argument keeps its content and loses the macro,
+   so an unsupported macro degrades to plain text rather than leaking source.
+   Optionally set a deck with
    `\meta{anki-deck}{NN}`; otherwise cards go to the `Forest` deck.
 3. `\transclude{<card-id>}` the card into the concept note it tests to review
    it in context. It renders as its name, the question in prose beneath, and

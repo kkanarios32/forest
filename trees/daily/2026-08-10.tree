@@ -16,18 +16,8 @@
       \li{Read: What Is a TPU? (TensorCore, MXU, VPU, memory hierarchy)}
       \li{Read: TPU Networking (ICI, slices, wraparound links)}
       \li{Sketch the memory hierarchy from memory: registers -> VMEM -> HBM -> host, bandwidth and capacity on every arrow}
-      \li{Build your own decision table: input shardings -> required collective -> output sharding}
-      \li{Read: Case 1: neither multiplicand has a sharded contracting dim}
-      \li{Read: Case 2: one multiplicand has a sharded contracting dim}
-      \li{Ex 3.4 — Matmul strategies: AllGather Y vs the alternatives}
       \li{Read: Appendix A: more on TPU internals (VPU, scalar core)}
       \li{Read: Key Takeaways + the TPU specs table}
-      \li{Ex 3.1 — Replicated sharding semantics}
-      \li{Read: Appendix B: how does a systolic array work?}
-      \li{Read: Case 4: same mesh axis on both non-contracting dims}
-      \li{Ex 3.3 — Latency-bound AllGather (small B)}
-      \li{Read: Case 3: both have sharded contracting dims}
-      \li{Ex 3.2 — AllGather latency on v4p 4x4x4}
     }
   }
   \li{\strong{Work}
@@ -44,3 +34,26 @@
 \p{\strong{7:41 AM}}
 \hr
 \p{Starting [[scaling-book]] study.}
+\remark{
+TPUs have two cores in TPU v4, v5, v6, v7. In v7, they remove megacore configuration and have high-bandwidth link between two cores.
+}
+
+\p{\strong{8:17 AM}}
+\hr
+\p{The [[WY6L]] is single-threaded and therefore only able to make one DMA request per-cycle.}
+
+\p{\strong{8:27 AM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{676P}
+}
+
+\p{\strong{10:56 AM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{3AIF}
+}

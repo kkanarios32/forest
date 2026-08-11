@@ -37,9 +37,7 @@
 \transclude{3DIC}
 }
 
-\section{Caches}{
 \transclude{M91V}
-}
 
 \section{Power and multicore}{
 \transclude{XQMQ}

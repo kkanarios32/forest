@@ -24,25 +24,28 @@
   }{\body}
 }
 
+% A quotation, in the same clothes as a callout: a hairline in the margin and
+% no fill. Someone else's words are already marked as theirs by the italic and
+% by whatever introduces them, so the rule is there to hold the block together
+% down the left, not to fence it off.
 \def\quote[body]{
  \<html:blockquote>[class]{jms-quote}[style]{
-  margin: 1em 0 1em 0.25em;
-  padding: 0.6em 1.1em 0.6em 1.3em;
-  border-left: 4px solid rgba(0, 0, 0, 0.25);
-  border-radius: var(--radius);
-  background-color: rgba(0, 0, 0, 0.035);
+  margin: 1.1rem 0;
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  border-left: 2px solid rgb(\cal-neutral-rule);
   font-style: italic;
   color: rgba(0, 0, 0, 0.85);
   }{\body}
 }
 
+% The same, attributed. The source line takes the neutral accent rather than a
+% grey of its own — it is the quietest thing in the block and should be the one
+% color the rest of the page already uses for quiet things.
 \def\quotes[body][source]{
  \<html:blockquote>[class]{jms-quote}[style]{
-  margin: 1em 0 1em 0.25em;
-  padding: 0.6em 1.1em 0.6em 1.3em;
-  border-left: 4px solid rgba(0, 0, 0, 0.25);
-  border-radius: var(--radius);
-  background-color: rgba(0, 0, 0, 0.035);
+  margin: 1.1rem 0;
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  border-left: 2px solid rgb(\cal-neutral-rule);
   font-style: italic;
   color: rgba(0, 0, 0, 0.85);
   }{\body\<html:div>[style]{
@@ -50,25 +53,135 @@
    font-style: normal;
    font-size: 0.9em;
    text-align: right;
-   color: rgba(0, 0, 0, 0.55);
+   color: rgb(\cal-neutral);
   }{— \source}}
 }
 
-% Callout asides (Problem./Question./Remark./…). A tinted, left-bordered block
-% in the \quote house style, led by a bold colored label. These render inline
-% wherever they appear (including inside \li) rather than as their own \subtree,
-% so they need no taxon and take no TOC/numbering. \accent tints the border and
-% label; \tint is the (much lighter) background. Pass rgba(...) colors, never
-% #hex — Forester eats a bare #.
-\def\callout[accent][tint][label][body]{
+% ── The palette: vellum ─────────────────────────────────────────────────────
+%
+% Every color on the site, as a bare "r, g, b" triple — spelled rgb(\cal-claim)
+% for a rule or label and rgb(\cal-claim-tint) for the fill behind it. Bare
+% #hex cannot be used anywhere, since Forester reads # as the start of math,
+% which is why these are triples rather than colors.
+%
+% Six roles, not one hue per macro, and the grouping is the design: the label
+% already says whether an aside is a Goal or an Insight, so color is spent on
+% the coarser question of what *kind* of thing is being said. Example, Goal,
+% Idea and Insight are all the author pointing at something and share the
+% green; Claim and Prediction are both assertions and share the plum. Nine
+% hues over fifteen macros made a math page look like a paint chart.
+%
+% Each role carries three values, of which the accent does nearly all the
+% work: it is the rule and the label both, dark enough to be read as text
+% (5.6-7.9 contrast on white — the previous palette ran 2.7-6.0 and the
+% lightest of it was illegible).
+%
+% The tints are the fills, and nothing fills any more — see \callout, where
+% the tint every call site passes is dropped. They are kept because they are
+% still the theme's ground for the one panel that survives (the Card frame in
+% theme/style.css), and because keeping them is what makes the switch back to
+% a filled site a four-line edit in one macro rather than a rewrite of fifteen.
+%
+% The rules are the pale variants, used where a rule should not carry the
+% accent's full weight. Only neutral needs one: Remark and Notation are half of
+% every callout in the forest, so they take a hairline under a readable label,
+% and every other role runs its accent through both.
+\def\cal-neutral{109, 103, 101}          % \remark, \notation, \proof
+\def\cal-neutral-tint{249, 242, 239}
+\def\cal-neutral-rule{219, 216, 215}
+
+\def\cal-example{38, 97, 69}             % \example, \goal, \idea, \insight, \stub
+\def\cal-example-tint{236, 247, 240}
+\def\cal-example-rule{201, 224, 210}
+
+\def\cal-question{115, 73, 35}           % \question, \answer, \foldbox
+\def\cal-question-tint{251, 241, 234}
+\def\cal-question-rule{233, 213, 198}
+
+\def\cal-problem{121, 65, 66}            % \problem, \solution
+\def\cal-problem-tint{253, 240, 239}
+\def\cal-problem-rule{237, 210, 209}
+
+\def\cal-claim{110, 67, 101}             % \claim, \prediction
+\def\cal-claim-tint{250, 240, 247}
+\def\cal-claim-rule{230, 210, 225}
+
+\def\cal-algorithm{63, 83, 127}          % \algorithm, Card + its answer
+\def\cal-algorithm-tint{239, 244, 253}
+\def\cal-algorithm-rule{207, 217, 238}
+
+% Callout asides (Problem./Question./Remark./…), and the whole of what one is:
+% a rule in the margin, a colored label, and the prose. No fill, no box. These
+% render inline wherever they appear (including inside \li) rather than as
+% their own \subtree, so they need no taxon and take no TOC/numbering.
+%
+% \accent colors the label; \rule draws the line. They are separate arguments
+% because the two are not always the same weight of statement — the neutral
+% asides take a pale hairline under a readable label, everything else runs the
+% accent through both. Pass rgb(\cal-...) from the palette above, never #hex.
+%
+% The padding is asymmetric on purpose: with no fill there is nothing to inset
+% from, so the block keeps only the gap between the rule and the text, and the
+% prose inside a callout stays on the same measure as the prose around it.
+\def\calloutbare[accent][rule][label][body]{
  \<html:div>[class]{jms-callout}[style]{
-  margin: 1em 0 1em 0.25em;
-  padding: 0.5em 1.1em 0.5em 1.2em;
-  border-left: 4px solid \accent;
-  border-radius: var(--radius);
-  background-color: \tint;
-  }{\<html:span>[style]{font-weight: 600; color: \accent;}{\label} \body}
+  margin: 1.1rem 0;
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  border-left: 2px solid \rule;
+  }{\<html:span>[style]{font-weight: 500; color: \accent;}{\label} \body}
 }
+
+% The filled form — except that it no longer fills. Every callout on the site
+% is now a rule and a label, and this is where that is decided: \tint is still
+% taken from every call site, and is deliberately dropped on the floor.
+%
+% The reason is what a fill costs at this scale. A tinted box says "this is set
+% apart", which works when one appears; a page carrying six says nothing at
+% all, and a notebook of thirty is a stack of blocks with prose trapped between
+% them. The rule makes the same distinction at a fraction of the volume, and it
+% leaves the page reading as a page.
+%
+% Every call site still passes its tint, so this is the switch: restore the
+% four lines below and the site is filled again, no other edit anywhere.
+%
+%   \def\callout[accent][tint][label][body]{
+%    \<html:div>[class]{jms-callout}[style]{
+%     margin: 1.1rem 0; padding: 0.6rem 0.9rem;
+%     border-left: 3px solid \accent; background-color: \tint;
+%     }{\<html:span>[style]{font-weight: 500; color: \accent;}{\label} \body}}
+%
+% Defined after \calloutbare and not before it: a macro body is expanded
+% against the definitions in scope at that point, so the order here is load
+% bearing — \callout named before \calloutbare exists leaves the literal text
+% in the output.
+\def\callout[accent][tint][label][body]{
+  \calloutbare{\accent}{\accent}{\label}{\body}
+}
+
+% A sidenote: a numbered marker where you are reading, the note itself out in
+% the right margin beside that line. \sidenote{...} in the middle of a sentence
+% and nothing else — the number is a CSS counter, so notes renumber themselves
+% when a paragraph moves and there is no state here to get out of step.
+%
+% A marker followed immediately by its note, and no wrapper around the pair:
+% the marker increments the counter and the note, being its next sibling, reads
+% the value the marker just set. Everything visual — the float into the gutter,
+% the margin that carries it there, the click-to-open on a narrow screen — is
+% in theme/style.css, since a float into a gutter depends on the page grid and
+% no inline style can see it.
+%
+% The marker is a <label> around a hidden checkbox rather than a bare span,
+% which is the whole mechanism for the narrow-screen case: below 1300px there
+% is no margin to float into, so the note stays closed and the marker is what
+% opens it — a click toggles the checkbox, and CSS does the rest. No script, no
+% ids to keep unique. Above 1300px the checkbox is inert and the note is simply
+% in the margin.
+%
+% Prefer a sidenote to a parenthesis when the aside is a real digression, and
+% a \remark to a sidenote when it is a qualification the next sentence depends
+% on: the margin is read at a glance or not at all. A sidenote never breaks the
+% sentence it annotates at any width, so it can be written mid-clause.
+\def\sidenote[body]{\<html:label>[class]{sidenote-ref}{\<html:input>[type]{checkbox}{}}\<html:span>[class]{sidenote}{\body}}
 
 \def\irow[body]{
  \<html:div>[class]{jms-indent-row}[style]{min-height: 1em}{\body}
@@ -81,7 +194,7 @@
 % inline. Replaces the bold-label-with-colon idiom so the label pops in the
 % sans (var(--sans)) against the serif body. Pass the label WITHOUT punctuation;
 % the macro adds the period. The argument may hold links/math (\paragraph{[[ID]]}).
-\def\paragraph[head]{\<html:strong>[style]{font-family: var(--sans); font-weight: 500;}{\head.}}
+\def\paragraph[head]{\<html:strong>[style]{font-family: var(--serif); font-weight: 700; font-style: italic;}{\head.}}
 
 \def\lsquare{\startverb[\stopverb}
 \def\rsquare{\startverb]\stopverb}
@@ -159,7 +272,7 @@
 % reference to a fold-out before its definition leaves the literal text in the
 % output. Anything folding a callout must therefore come after both.
 \def\foldcallout[accent][tint][label][body]{
-  \callout{\accent}{\tint}{}{\foldoutas{font-weight: 600; color: \accent;}{\label.}{\body}}
+  \callout{\accent}{\tint}{}{\foldoutas{font-weight: 500; color: \accent;}{\label.}{\body}}
 }
 
 \def\citek[refid]{\let\escape[x]{\x}\<html:span>[class]{link-reference}{[\escape{[\refid]}](\refid)}}
@@ -209,8 +322,42 @@
 \def\th[body]{
   \<html:th>{\body}
 }
+
+% Spec-table cells that never wrap. A number like "9.0 × 10^11" broken across
+% two lines reads as two numbers, so data cells are pinned while the \th
+% headers are left free to wrap — the long header is what should absorb the
+% narrowness, not the value under it. Pair with \scrolltable: pinning cells can
+% push the table past the 90ex measure, and a plain <table> sized to its
+% content drags the whole article sideways rather than scrolling itself.
+\def\ntd[body]{
+  \<html:td>[style]{white-space: nowrap;}{\body}
+}
+\def\scrolltable[body]{
+  \<html:div>[style]{
+    overflow-x: auto;
+    max-width: 100\%;
+  }{
+    \<html:table>{\body}
+  }
+}
+
+% The section break: a 2px neutral rule — the palette's hairline, the same one
+% a \remark draws — with a lot of air around it. An \hr is the heaviest break
+% a page has short of a new heading, and the space is most of what says so —
+% the line itself stays a hairline so it reads as a pause rather than a border.
+%
+% Styled inline here rather than left to the theme's bare `hr` rule, which is
+% where it used to live, because that rule now exists only to catch an <hr>
+% this macro did not emit (a \md block's markdown can produce one). The two
+% carry the same values; change them together.
 \def\hr{
-  \<html:hr>{}
+  \<html:hr>[style]{
+    margin: 2.5rem 0 2rem;
+    border: 0;
+    border-top: 2px solid rgb(\cal-neutral-rule);
+    height: 0;
+    background: none;
+  }{}
 }
 
 % Dense ruled table for protocol state-transition tables (rows = states,
@@ -420,13 +567,16 @@
   }
 }
 
+% The one notice that predates the palette and used to be spelled in #hex —
+% a bright nursery green on a mint field, which on a page of muted callouts
+% was the loudest thing in the forest. Same sage as \solution now: a stub is
+% the same gesture, something not yet worked out.
 \def\stub{
  \<html:div>[class]{stub-notice}[style]{
-  margin: 0.5em 0;
-  padding: 8px 12px;
-  border-left: 4px solid #7cb342;
-  background-color: #f1f8e9;
-  color: #33691e;
+  margin: 1.1rem 0;
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  border-left: 2px solid rgb(\cal-example);
+  color: rgb(\cal-example);
   font-style: italic;
   }{🌱 Stub — this concept is referenced but not yet written.}
 }
@@ -437,13 +587,13 @@
   \tex{\latex-preamble}{\body}
 }
 
-\def\example[body]{\callout{rgba(60, 90, 180, 0.8)}{rgba(60, 90, 180, 0.05)}{Example.}{\body}}
+\def\example[body]{\callout{rgb(\cal-example)}{rgb(\cal-example-tint)}{Example.}{\body}}
 
 % Folded, like a card's answer and an exercise's solution — a proof is the
 % second half of a statement, and a page of theorems is worth more if you can
 % read the claims and try one before the argument is on screen. The label is
 % the control; the grey frame stays visible so the proof is obviously there.
-\def\proof[body]{\foldcallout{rgba(0, 0, 0, 0.4)}{rgba(0, 0, 0, 0.03)}{Proof}{\body}}
+\def\proof[body]{\foldcallout{rgb(\cal-neutral)}{rgb(\cal-neutral-tint)}{Proof}{\body}}
 
 \def\md[body]{\<html:div>[class]{markdownit grace-loading}{\body}}
 
@@ -456,31 +606,31 @@
 
 \def\mdblock[t][body]{\block{\t}{\md{\body}}}
 
-\def\remark[body]{\callout{rgba(90, 90, 110, 0.7)}{rgba(90, 90, 110, 0.05)}{Remark.}{\body}}
+\def\remark[body]{\calloutbare{rgb(\cal-neutral)}{rgb(\cal-neutral-rule)}{Remark.}{\body}}
 
-\def\notation[body]{\callout{rgba(70, 100, 150, 0.75)}{rgba(70, 100, 150, 0.05)}{Notation.}{\body}}
+\def\notation[body]{\calloutbare{rgb(\cal-neutral)}{rgb(\cal-neutral-rule)}{Notation.}{\body}}
 
-\def\claim[body]{\callout{rgba(140, 60, 170, 0.8)}{rgba(140, 60, 170, 0.05)}{Claim.}{\body}}
+\def\claim[body]{\callout{rgb(\cal-claim)}{rgb(\cal-claim-tint)}{Claim.}{\body}}
 
-\def\question[body]{\callout{rgba(200, 130, 0, 0.9)}{rgba(200, 130, 0, 0.06)}{Question.}{\body}}
+\def\question[body]{\callout{rgb(\cal-question)}{rgb(\cal-question-tint)}{Question.}{\body}}
 
 % Folded for the same reason \proof is: an answer sitting open under its
 % \question answers it for you. The teal is kept so the pair still reads as a
 % question-and-answer rather than as another card.
-\def\answer[body]{\foldcallout{rgba(0, 140, 120, 0.9)}{rgba(0, 140, 120, 0.06)}{Answer}{\body}}
+\def\answer[body]{\foldcallout{rgb(\cal-question)}{rgb(\cal-question-tint)}{Answer}{\body}}
 
-\def\problem[body]{\callout{rgba(200, 55, 45, 0.85)}{rgba(200, 55, 45, 0.06)}{Problem.}{\body}}
+\def\problem[body]{\callout{rgb(\cal-problem)}{rgb(\cal-problem-tint)}{Problem.}{\body}}
 
 % Procedure / pseudocode block. Keeps the old \iblock blue as its identity.
-\def\algorithm[body]{\callout{rgba(0, 100, 255, 0.7)}{rgba(0, 100, 255, 0.05)}{Algorithm.}{\body}}
+\def\algorithm[body]{\callout{rgb(\cal-algorithm)}{rgb(\cal-algorithm-tint)}{Algorithm.}{\body}}
 
 % A stated objective — what we are trying to achieve.
-\def\goal[body]{\callout{rgba(190, 50, 130, 0.85)}{rgba(190, 50, 130, 0.06)}{Goal.}{\body}}
+\def\goal[body]{\callout{rgb(\cal-example)}{rgb(\cal-example-tint)}{Goal.}{\body}}
 
-\def\idea[body]{\callout{rgba(190, 50, 130, 0.85)}{rgba(190, 50, 130, 0.06)}{💡 Idea.}{\body}}
+\def\idea[body]{\callout{rgb(\cal-example)}{rgb(\cal-example-tint)}{Idea.}{\body}}
 
 % A highlighted key takeaway / "aha".
-\def\insight[body]{\callout{rgba(0, 160, 175, 0.9)}{rgba(0, 160, 175, 0.06)}{💡 Insight.}{\body}}
+\def\insight[body]{\callout{rgb(\cal-example)}{rgb(\cal-example-tint)}{Insight.}{\body}}
 
 \def\section[tit][body]{
   \subtree{
@@ -494,28 +644,35 @@
 % The free-standing solution — a worked problem outside a solution manual,
 % where \exercise's pink \foldbox is not in play. Folded, and green rather than
 % pink, so the two never collide on one page.
-\def\solution[body]{\foldcallout{rgba(40, 150, 80, 0.9)}{rgba(40, 150, 80, 0.06)}{Solution}{\body}}
+\def\solution[body]{\foldcallout{rgb(\cal-problem)}{rgb(\cal-problem-tint)}{Solution}{\body}}
 
 \def\tdtask[id][body]{\li{\body}}
 \def\tdtaskx[id][body]{\li{\<html:s>{\body}}}
 
-% The pink fold-out: the withheld half of a self-test. A card's
-% \prompt{answer} and an exercise's solution both wear it, and they wear the
-% same pink deliberately, because they are the same gesture — a prompt to
-% attempt the recall or the derivation first. The pink is \goal/\idea's, the
-% one accent in the palette not already spoken for by a callout that can sit
-% next to a solution.
+% The fold-out box: the withheld half of a self-test. A card's \prompt{answer}
+% and an exercise's solution both wear it, because they are the same gesture —
+% a prompt to attempt the recall or the derivation first.
 %
 % Not \foldcallout, though the shape is identical, because the label is doing
 % a different job. \proof, \answer and \solution name a category — the label
 % was already there, bold and colored, before it could be clicked, and taking
 % the color away would demote it. Here the label is only ever "Answer" or
 % "Solution": it names nothing the question above it has not already said, and
-% it is the second thing to read, not the first. Bold pink on a pink box says
-% the opposite, and says it twice. So it stays the quiet control, which is
-% what it was, and the box carries the color on its own.
+% it is the second thing to read, not the first. A bold colored label on a box
+% of the same color says the opposite, and says it twice. So it stays the
+% quiet control, which is what it was, and the box carries the color alone.
+%
+% Parameterized because the box takes its color from what encloses it, not
+% from what it contains: an answer inside a Card wears the Card's blue so the
+% two read as one object rather than as a warm box sitting inside a cool one.
+% \foldbox is the free-standing default, in clay — an exercise's solution has
+% no frame around it, so it supplies its own warmth.
+\def\foldboxas[accent][tint][t][body]{
+  \callout{\accent}{\tint}{}{\foldoutas{\foldout-control}{\t}{\body}}
+}
+
 \def\foldbox[t][body]{
-  \callout{rgba(190, 50, 130, 0.85)}{rgba(190, 50, 130, 0.06)}{}{\foldoutas{\foldout-control}{\t}{\body}}
+  \foldboxas{rgb(\cal-question)}{rgb(\cal-question-tint)}{\t}{\body}
 }
 
 % Both sides of a spaced-repetition card. A card tree (trees/cards/) is
@@ -544,7 +701,17 @@
 % has to be the question, and a name would be useless on a flashcard. Sync
 % reads the \prompt{...}{...} source rather than the rendered output, so
 % presentation here is free to change without touching Anki.
-\def\prompt[front][back]{\p{\front}\foldbox{Answer}{\back}}
+%
+% The frame around a card is not here but in theme/style.css, keyed on
+% [data-taxon="Card"] — it has to enclose the heading, which is emitted from
+% frontmatter and so is out of reach of anything the body can wrap. The answer
+% takes that same blue, a shade stronger so it still reads as its own box
+% against the frame's tint: the two are one object, and a card whose answer
+% wore a different accent read as a callout that had wandered in.
+\def\prompt[front][back]{
+  \p{\front}
+  \foldboxas{rgb(\cal-algorithm)}{rgb(\cal-algorithm-tint)}{Answer}{\back}
+}
 
 % ── Solution manuals ────────────────────────────────────────────────────────
 %
@@ -630,4 +797,4 @@
 % What I expected before running the code, kept beside what actually happened.
 % Systems exercises are only worth doing this way — the prediction is the
 % experiment, and a wrong one is the part worth rereading later.
-\def\prediction[body]{\callout{rgba(120, 90, 190, 0.85)}{rgba(120, 90, 190, 0.05)}{Prediction.}{\body}}
+\def\prediction[body]{\callout{rgb(\cal-claim)}{rgb(\cal-claim-tint)}{Prediction.}{\body}}

@@ -31,7 +31,6 @@
 \exercise{1.2}{int8 + bf16 matmul}{
 \p{In practice we often do different weight vs. activation quantization, so we might store our weights in very low precision but keep activations (and compute) in a higher precision. Say we want to quantize our weights in int8 but keep activations (and compute) in bfloat16. At what batch size do we become compute bound? Assume #{1.97e14} bfloat16 FLOPs/s.}
 }{\p{Following the computation in the above remark / from the notes, the only thing that changes is now in the bytes loaded we have #{2BD + DF + 2BF}. Using the approximation, this gives us once again that the computational intensity is #{2B}. However, \strong{unlike} in the previous question, we now remain doing computation at the speed of bf16 which means the previous cancellation no longer occurs. Thus, we have that} ##{2B > \frac{\text{Peak FLOPs / s}}{\text{HBM Bandwidth}} \implies 2B > 240 \implies B > 120.}}
-}
 \exercise{1.3}{Make a roofline plot}{
 \p{Taking the setup from Question 1.2, make a roofline plot of peak FLOPs/s vs. BB for F=D=4096F=D=4096 and F=D=1024F=D=1024 . Use the exact number of bytes loaded, not an approximation.}
 }{
@@ -49,5 +48,118 @@
 }{\p{We only need to find two quantities in the spec sheet 1. the bf16 peak FLOPs/s and 2. the HBM bandwidth. From the spec sheet, a bf16 tensor core on the H100 sxm can achieve #{1.979e15} FLOPs / s and has a memory bandwidth of #{3.35e12} bytes / s. Using the approximation from above, we will become compute bound when #{B > \frac{1.979e15}{3.35e12} \approx 591}.}
 \remark{
 From the solution, the number we used was \em{with sparsity}. It turns out the true number is #{9.89e14}, which gives #{295} instead of #{590}.
+}
+}
+}
+
+\subtree[scaling-ch2]{
+  \title{What is a TPU?}
+\exercise{2.1}{bounding LLM latency}{
+Say you want to sample from a 200B parameter model in bf16 that’s split across 32 TPU v4p. How long would it take to load all the parameters from HBM into the systolic array? Hint: use the numbers above.
+}{\p{I am a bit stumped to start. However, since we only care about loading the parameters, the relevant number is HBM BW (1.2e12). Since there is no communication between chips yet (I think). ICI bandwidth is not yet relevant? Since each chip has its own HBM, the effective bandwidth should be #{32 \cdot 1.2e12 = 3.84e13}. Therefore, we should have}
+##{(2e11 \cdot 16) / 3.84e13 = 0.0833\text{s}}
+\remark{
+After looking at solution, this turned out right?
+}
+}
+\exercise{2.2}{TPU details}{
+Consider a full TPU v5e pod. How many total CPU hosts are there? How many TPU TensorCores? What is the total FLOPs/s for the whole pod? What is the total HBM? Do the same exercise for TPU v5p pod.
+}{
+\p{\paragraph{TPU v5e} From the [[676P]], a TPU v5e has a pod size of #{16\times 16} and a host size of #{4\times 2}. Therefore, I believe this means that there are #{8} CPU hosts. The v5e is an inference chip, so it only has one [tensor core](OGCRQ) per chip. Across #{16\times 16} chips this gives #{256} tensor cores. Similarly, from the [[676P]] I think we can just multiply the FLOPS/s per chip and HBM per chip to get #{256\cdot 1.97e14} bf16 FLOPs/s and #{256\cdot 8.2e11} bytes/s.}
+\p{\paragraph{TPU v5p} The only distinction here besides swapping the numbers is that each chip has two [tensor cores](OGCRQ). Combining this with the larger pod size, we get #{2\cdot 16\cdot 20\cdot 28} tensor cores per pod.}
+\remark{
+After looking at solution, it seems I misunderstood what host size meant. The host size is the topology of the subunit connected to a single host. So the number of hosts is actually the pod size / host size. This gives #{(16\cdot 16) / (4\cdot 2)} for the v5e and #{(16\cdot 20\cdot 28) / (2\cdot 2\cdot 1)} for the v5p.}
+}
+\exercise{2.3}{PCIe operational intensity}{
+Imagine we’re forced to store a big weight matrix #{A} of type bf16[D,F], and a batch of activations #{x} of type bf16[B,D] in host DRAM and want to do a matrix multiplication on them. This is running on a single host, and we’re using a single TPU v6e chip attached to it. You can assume B≪DB≪D , and F=4DF=4D.
+}{\p{I assume this is streaming directly from PCIe without any tiling in VMEM / HBM? Relevant number TPU v6e can do #{9.2e14} FLOPs/s. From [previous chapter](scaling-ch1), we know that for bf16 matmul we need}
+##{B = \text{intensity}(\text{computation}) \geq \text{intensity}(\text{accelerator}) = (\text{FLOPs/s}) / (\text{bytes/s})}
+\p{Therefore, we need}
+##{B \geq \frac{9.2e14}{1.6e10}}
+\p{This is a very large batch size compared to HBM we saw in the previous chapter.
+}
+}
+\exercise{2.4}{General matmul latency}{
+Let’s say we want to multiply a weight matrix int8[16384, 4096] by an activation matrix of size int8[B, 4096] where B is some unknown batch size. Let’s say we’re on 1 TPU v5e to start.
+\ol{
+  \li{How long will this multiplication take as a function of B?}
+  \li{What if we wanted to run this operation out of VMEM? How long would it take as a function of B?}
+}
+}{\p{For the first part, we need to load}
+##{16384 \cdot 4096 + 4096B~\text{bytes}}
+\p{and store #{B \cdot 16384} bytes. We need to perform}
+##{2\cdot B\cdot 16384\cdot 4096~\text{FLOPs}}
+\p{Therefore, the communication time is}
+##{T_{comm} = (16384 \cdot 4096 + 4096\cdot B + 16384\cdot B)/8.2e11}
+\p{and the math time is}
+##{T_{math} = (2\cdot B\cdot 16384\cdot 4096)/3.94e14}
+\p{The total computation time will then be #{\max \{T_{math}, T_{comm}\}} and the ridge point is when #{T_{math} = T_{comm}}. This gives us}
+##{
+\begin{align*}
+\frac{2\cdot B\cdot 16384\cdot 4096}{3.94e14} &= \frac{16384 \cdot 4096 + 4096\cdot B + 16384\cdot B}{8.2e11} \\
+&\iff B = 259
+\end{align*}
+}
+\p{For the second part, VMEM is #{10\times} faster than HBM. Therefore, our batch size can be #{10\times} smaller.}
+\remark{
+The solution says that VMEM is #{22\times} faster. So the numbers are adjusted accordingly.
+}
+}
+\exercise{2.5}{ICI Bandwidth}{
+Let’s say we have a TPU v5e 4x4 slice. Let’s say we want to send an array of type bf16[8, 128, 8192] from TPU{0,0} to TPU{3, 3}. Let’s say the per-hop latency for TPU v5e is 1μs.
+\ol{
+  \li{How soon will the first byte arrive at its destination?}
+  \li{How long will total transfer take?}
+}
+}{\p{I believe since we have wrap-around links in the [[DDKT]] we can make it from #{(0,0) \to (3,3)} in #{4} hops. If each hop latency is #{1\mu s} then it should take #{4 \mu s}.}
+\p{From [[676P]], the TPU v5e has ICI bandwidth #{4.5e 10}. We need to transfer #{2\cdot 8\cdot 128\cdot 8192} bytes. Naively, I am going to say that this means it will take}
+##{\frac{2\cdot 8\cdot 128\cdot 8192}{4.5e 10} s,}
+factoring in latency this gives #{372 + 4 \mu s}.
+\remark{
+So the wraparound links are actually only on pods of #{16 \times 16} or larger. This means it is actually #{6} hops from #{(0,0) \to (3,3)}. Also, we can use the bi-directional capabilities of the network to half the time it will take to send the whole array.
+}
+}
+\exercise{2.6}{pulling it all together}{
+Imagine you have a big matrix #{A}: int8[128 * 1024, 128 * 1024] sharded evenly across a TPU v5e 4x4 slice but offloaded to host DRAM on each chip. Let’s say you want to copy the entire array to TPU{0, 0} and multiply it by a vector bf16[8, 128 * 1024]. How long will this take?
+}{
+\p{From the question wording, we are assuming the vector is already on TPU{0,0}.}
+\p{}
+\p{From [[676P]], the host configuration for TPU v5e is #{4 \times 2}. I believe this means in a #{4 \times 4} pod there will be #{2} CPUs. If this is the case, then for the half of chips on the other host, we first have to transfer to our host via DCN which has bandwidth #{3.125e 9} for v5e. Since it is sharded evenly, this would be #{(1/2) \cdot 128 \cdot 128 \cdot 1024 \cdot 1024} bytes we must send over DCN, taking}
+##{\frac{(1/2) \cdot 128 \cdot 128 \cdot 1024 \cdot 1024}{3.125e 9} = 2.75 s}
+\p{However, now looking at the notes again, we only use DCN for chips not connected via ICI (which makes sense because it clearly slow AF).
+\p{}
+\p{Instead, we can first transfer all the bytes to the respective chips over PCIe and then to TPU{0,0} over ICI. To load into HBM, PCIe bandwidth is #{1.6e 10} bytes/second. Since we can divide across all 16 chips, it will take}
+##{\frac{128 \cdot 128 \cdot 1024 \cdot 1024}{16\cdot 1.6e 10} = 67.1ms}
+\p{Now to actually get all of the weights onto a single chip, we can follow the previous part. Using bi-directional bandwidth #{9e 10}, we have}
+##{\frac{128 \cdot 128 \cdot 1024 \cdot 1024}{9e 10} = 190.9ms}
+}
+The remaining time comes from #{\max\{T_{comm}, T_{math}\}}, which are
+##{T_{math} = \frac{2\cdot 128\cdot 1024\cdot 128 \cdot 1024\cdot 8}{1.97e 14} = 1.39ms}
+and
+##{T_{comm} = \frac{128\cdot 1024\cdot 128\cdot 1024 + 2\cdot 8\cdot 128\cdot 1024 + 2\cdot 128\cdot 1024\cdot 8}{8.2e 11} = 20.9ms
+}
+\p{Thus, the total is #{67.1 + 190.9 + 20.9 = 278.9ms}.}
+\remark{
+\p{I think I might be so fucking him it is actually unbelievable. My numbers are all off, but the process seems pretty much the same. I also SNIPED the DCN stuff.}
+\p{However, it seems there is a bit more nuance to the ICI links than I thought. In particular, our number is a lower bound dependent on the amount of utilized inbound links. Since #{(0,0)} is a corner, it only has #{2} links and that is why the denominator is #{2\cdot 4.5e 10} and is not because of bi-directional bandwidth. I imagine if there were wraparound links then we could divide the ICI time by #{2} because there are #{4} total inbound links.}
+}
+}
+\exercise{Pop Quiz}{Calculating VPU throughput}{
+\p{Using the above information, calculate how many vector FLOPs/s a TPU v5p can perform. A TPU v5p has a clock speed of about 1.75GHz.}
+}{\p{From our discussion on [VPU](OGCRN) architecture, each site has 4 ALUs and there are #{8 \times 128} sites. Therefore, we have} ##{4 \cdot 8 \cdot 128 \cdot 1.75e9 = 7.168e12}}
+}
+
+\subtree[scaling-ch3]{
+\title{Sharded Matrices and How to Multiply Them}
+\exercise{Pop Quiz}{2D sharding across 1 axis}{
+Consider an array fp32[1024, 4096] with sharding #{A[I_{XY},J]} and mesh \code{{'X': 8, 'Y': 2}}. How much data is held by each device? How much time would it take to load this array from HBM on H100s (assuming 3.4e12 memory bandwidth per chip)?
+}{
+\p{The notation indicates that we are sharding the first axis #{(1024)} across both #{x} and #{y}? This means we are dividing into fp32[64, 4096] chunks or #{4\cdot 64\cdot 4096} bytes per device, which would then take}
+##{\frac{4\cdot 64\cdot 4096}{3.4e12} = .308 \mu s}
+}
+\exercise{Pop Quiz}{2D sharding across 1 axis of 3D mesh}{
+Let #{A} be an array with shape int8[128, 2048], sharding #{A[I_{XY},J]}, and mesh \code{Mesh({'X': 2, 'Y': 8, 'Z': 2})} (so 32 devices total). How much memory does #{A} use per device? How much total memory does #{A} use across all devices?
+}{
+\p{Since there is no sharding across the Z axis. I assume this means it is replicated. This still gives #{8\cdot 2048} bytes per device but now total memory is still multiplied by #{32} giving #{32\cdot 8\cdot 2048} bytes across all devices.}
 }
 }

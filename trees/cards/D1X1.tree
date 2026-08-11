@@ -1,0 +1,16 @@
+\date{2026-08-10T12:40:03Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{VMEM moves the ridge point}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786395976215}
+\meta{anki-deck}{MLSys}
+
+\prompt{[VMEM](GFK2) vs [HBM](AI2G) bandwidth: what is the ratio, and what does it do to the roofline?}{
+  VMEM#{\to}MXU bandwidth is roughly #{22\times} HBM bandwidth, so the [critical arithmetic intensity](KVM8) for peak FLOPs drops from ~240 to \strong{~10–20}.
+
+  Worked, with \code{int8[16384,4096]} weights on v5e: FLOPs-bound at #{B > 267} out of HBM, but only #{B > 11} out of VMEM — call it 20 in practice, since you cannot spend all of VMEM's bandwidth on weights.
+
+  The consequence is \strong{VMEM prefetch}: load the FFW weights during attention and the load disappears behind compute. The limit is capacity — VMEM is tiny, so a layer's weights have to be small or sharded enough to fit with room to spare.
+}

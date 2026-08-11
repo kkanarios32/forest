@@ -1,0 +1,14 @@
+\date{2026-08-10T12:40:06Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Decode is bounded by the weight read}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786395977016}
+\meta{anki-deck}{MLSys}
+
+\prompt{200B parameters in bf16 across 32 TPU v4p. What is the lower bound on per-step sampling latency?}{
+  ##{2\ \text{bytes} \times 200\mathrm{e}9 = 400\mathrm{e}9 \text{ bytes} \;\longrightarrow\; \frac{12.5\mathrm{e}9 \text{ bytes/chip}}{1.23\mathrm{e}12 \text{ B/s}} \approx 10\ \mathrm{ms}}
+
+  It is a bound because every decode step has to re-read \em{all} the parameters from [HBM](AI2G) into the MXU, so no step can beat the weight-load time. At small batch it is close to achievable, too: decode is HBM-bandwidth-bound, not FLOPs-bound, which is the whole reason [batching pays](UZ6D).
+}

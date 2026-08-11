@@ -1,0 +1,12 @@
+\date{2026-08-11T12:54:04Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{TPU memory hierarchy}
+\taxon{Definition}
+\tag{public}
+\p{The TPU memory hierarchy is entirely software managed with no cache. Memory movement is controlled by the compiler and [[PMIC]].}
+\figure{
+\<html:img>[width]{60\%}[src]{\route-asset{assets/img/tpu-mem-hierarchy.png}}{}
+\figcaption{Datapath through a TPU onto the execution unit [[OGCRP]] or [[OGCRN]].}
+}
+\p{Notably, in [[060Z]], you tile the memory transfer and define the pipeline from HBM to VMEM.}

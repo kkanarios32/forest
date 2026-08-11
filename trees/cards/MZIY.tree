@@ -1,0 +1,18 @@
+\date{2026-08-10T12:40:00Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The three units and the one data path}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786395976741}
+\meta{anki-deck}{MLSys}
+
+\prompt{What are the three units inside a TPU [[OGCRQ]], and what is the data path from [HBM](AI2G) to compute?}{
+  \ul{
+    \li{\strong{[MXU](OGCRP)} — matrix multiply on a systolic array. Nearly all of the FLOPs.}
+    \li{\strong{[VPU](OGCRN)} — elementwise ops (ReLU, add, mul) and reductions.}
+    \li{\strong{[VMEM](GFK2)} — an on-chip scratchpad in the TensorCore, like L1/L2 but far larger (~128 MiB on v5e) and \em{programmer-controlled} rather than a cache.}
+  }
+
+  The path is HBM #{\to} VMEM #{\to} [VREGs](OGCRO) #{\to} MXU/VPU #{\to} VMEM #{\to} HBM. Nothing computes directly out of HBM. All of it is pipelined — the copies overlap with MXU work, so the array never stalls waiting on memory.
+}

@@ -1,0 +1,26 @@
+\date{2026-08-10T14:56:34Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Bringing \em{Speed-of-Light} [FlexAttention](dongFlexAttentionProgramming2024) to TPU}
+\tag{blog}
+\meta{reading-time}{true}
+\tag{upcoming}
+
+\p{This blog will function both as a worklog and a release for my [[060Z]] implementation of [FlexAttention](dongFlexAttentionProgramming2024) on [[NZZ7]]. }
+
+\figure{
+\<html:img>[width]{80\%}[src]{\route-asset{assets/img/flex-tpu-graphic.png}}{}
+\figcaption{ChatGPT realizing my weird brain child.}
+}
+
+\p{As a pre-cursor, I highly recommend reading the original [FlexAttention paper](dongFlexAttentionProgramming2024). Additionally, a big shout out to the people at google for [SplashAttention](splash_attention)\sidenote{For a very deep dive on splash attention, I \strong{highly} recommend [this blog](toulme2026xla).}, which we unfortunately aim to make obsolete as a subset of flex attention. We will cover the key implementation details to accentuate our work here.}
+
+\section{[[060Z]] constraints}{
+
+}
+
+
+\hr
+
+\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+\tag{public}
