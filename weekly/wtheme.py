@@ -49,12 +49,15 @@ def apply():
         "font.family": "sans-serif",
         "font.sans-serif": FONT_STACK,
         "font.size": 11,
-        "figure.facecolor": CREAM,
+        # Transparent grounds: the figures sit on the site's white page, so a
+        # cream fill would read as a tinted box rather than a region of the page.
+        "figure.facecolor": "none",
         "figure.dpi": 150,
-        "savefig.facecolor": CREAM,
+        "savefig.facecolor": "none",
+        "savefig.transparent": True,
         "savefig.bbox": "tight",
 
-        "axes.facecolor": CREAM,
+        "axes.facecolor": "none",
         "axes.edgecolor": AXIS,
         "axes.linewidth": 1.0,
         "axes.spines.top": False,
@@ -89,7 +92,7 @@ def apply():
         "legend.frameon": True,
         "legend.fancybox": True,
         "legend.edgecolor": "#e7e4dc",
-        "legend.facecolor": CREAM,
+        "legend.facecolor": "white",
         "legend.framealpha": 1.0,
         "legend.borderpad": 0.6,
         "legend.handlelength": 1.2,

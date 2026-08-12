@@ -34,7 +34,7 @@ INK = "#2c2a26"          # primary — the outlier day count only
 SECONDARY = "#2c2a26"    # habit labels
 MUTED = "#96938b"        # day labels + counts
 HIT = "#5f6b3c"          # completed cell (olive green, site palette)
-MISS_FILL = "#faf8f2"    # not-completed cell fill (cream — reads as empty)
+MISS_FILL = "#ffffff"    # not-completed cell fill (white — reads as empty on the page)
 HAIRLINE = "#ded9cc"     # warm-gray outline on miss cells
 
 CELL_W = 0.86      # box width (fraction of the unit column pitch)

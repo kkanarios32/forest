@@ -54,13 +54,12 @@ WEEKS = 16          # recent weeks to bucket before trimming leading empties
 WINDOW = 4          # trailing weeks in the rolling average
 
 # --- ink + marks (warm site palette; light-only) -----------------------------
-BG = "#faf8f2"       # cream card ground (site "vellum" palette)
 INK = "#7a5a2b"      # line-endpoint annotation, sharing the brown accent
 MUTED = "#96938b"    # bar values, x labels
-BAR = "#ded9cc"      # recessive bars (warm gray)
+BAR = "#d8d1c1"      # recessive bars (warm gray, a touch deeper to read on white)
 LINE = "#7a5a2b"     # prominent average line (brown accent)
 
-BAR_MAX_PX = 24
+BAR_MAX_PX = 46
 RADIUS_PX = 4
 
 def weekly_series(last_thu):
@@ -137,9 +136,9 @@ def draw_running(ax, weekly, roll):
         if v > 0:
             ax.add_patch(_rounded_top(i - w / 2, 0, w, v, rx, ry, BAR))
             ax.text(i, v + ymax * 0.015, f"{round(v)}", ha="center", va="bottom",
-                    fontsize=11, fontweight=400, color=MUTED, clip_on=False)
+                    fontsize=13, fontweight=400, color=MUTED, clip_on=False)
         ax.text(i, -0.05, weekly.index[i].strftime("%b %d"), ha="center",
-                va="top", fontsize=12, color=MUTED, transform=blended,
+                va="top", fontsize=13.5, color=MUTED, transform=blended,
                 clip_on=False)
 
     ax.plot(range(n), roll.values, color=LINE, linewidth=2, zorder=3)
@@ -149,10 +148,10 @@ def draw_running(ax, weekly, roll):
         xi = list(roll.index).index(valid.index[-1])
         yi = valid.iloc[-1]
         ax.plot(xi, yi, marker="o", markersize=8, markerfacecolor=LINE,
-                markeredgecolor=BG, markeredgewidth=2, zorder=4)
+                markeredgecolor="white", markeredgewidth=2, zorder=4)
         ax.annotate(f"{round(yi)} mi · {WINDOW}-week avg",
                     (xi, yi), xytext=(-2, 34), textcoords="offset points",
-                    ha="right", va="bottom", fontsize=12, fontweight=500,
+                    ha="right", va="bottom", fontsize=13.5, fontweight=500,
                     color=INK, zorder=5)
 
 
@@ -164,7 +163,7 @@ def _empty_running(ax):
 
 def _label(fig, x, y, text):
     """A card section label: uppercase, muted, in the structural sans."""
-    fig.text(x, y, text, ha="left", va="top", fontsize=11, fontweight=500,
+    fig.text(x, y, text, ha="left", va="top", fontsize=12.5, fontweight=500,
              color=MUTED)
 
 
@@ -200,14 +199,13 @@ def main(argv):
     })
 
     fig = plt.figure(figsize=(12, 8.4))
-    fig.patch.set_facecolor(BG)
     # A single column: weekly mileage fills the top, full width; the habit grid
     # sits under it on the bottom-left, its habit names overflowing right into
     # the empty gutter. Each section carries an uppercase card label.
     axr = fig.add_axes([0.05, 0.585, 0.90, 0.34])
     axh = fig.add_axes([0.05, 0.07, 0.29, 0.36])
-    axr.set_facecolor(BG)
-    axh.set_facecolor(BG)
+    axr.set_facecolor("none")
+    axh.set_facecolor("none")
 
     _label(fig, 0.05, 0.965, "WEEKLY MILEAGE")
     _label(fig, 0.05, 0.45, "HABITS")
@@ -219,7 +217,7 @@ def main(argv):
     hgrid.draw(axh, df)
 
     os.makedirs(save_dir, exist_ok=True)
-    fig.savefig(os.path.join(save_dir, "running.png"), dpi=200, facecolor=BG)
+    fig.savefig(os.path.join(save_dir, "running.png"), dpi=200, transparent=True)
     plt.close(fig)
 
 

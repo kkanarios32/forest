@@ -114,7 +114,7 @@ def main(argv):
     bottom = None
     for stage in stack_order:
         ax.bar(pivot.index, pivot[stage], bottom=bottom, label=stage,
-               color=colors[stage], width=0.86, edgecolor=wtheme.CREAM,
+               color=colors[stage], width=0.86, edgecolor="white",
                linewidth=0.4, zorder=3)
         bottom = pivot[stage] if bottom is None else bottom + pivot[stage]
 

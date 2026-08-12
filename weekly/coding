@@ -53,7 +53,6 @@ MIN_DAILY = 0.3
 FOLD = "other"
 SENTINEL = {"other"}
 
-BG = "#faf8f2"           # cream card ground (site "vellum" palette)
 INK = "#2c2a26"          # daily totals + serif legend names
 MUTED = "#96938b"        # day labels, strip hours
 LABEL = "#8c8a83"        # uppercase card-section labels (from the mock)
@@ -65,7 +64,7 @@ RULE = "#e7e4dc"         # hairline separator between sections
 # projects are nominal: the colour says which project, not how much.
 HUES = ["#3f4e6b", "#5f6b3c", "#7a5a2b"]   # [forest, 2nd project, other]
 
-BAR_MAX_PX = 24
+BAR_MAX_PX = 46
 GAP_PX = 2
 RADIUS_PX = 4
 
@@ -175,9 +174,9 @@ def draw_project(ax, pivot, ymax):
                                            edgecolor="none", linewidth=0, zorder=2))
                 y += hh
             ax.text(xi, totals[xi] + ymax * 0.015, f"{totals[xi]:.1f}",
-                    ha="center", va="bottom", fontsize=12, fontweight=500,
+                    ha="center", va="bottom", fontsize=14, fontweight=500,
                     color=INK, clip_on=False, zorder=6)
-        ax.text(xi, -0.05, DOW[xi], ha="center", va="top", fontsize=12,
+        ax.text(xi, -0.05, DOW[xi], ha="center", va="top", fontsize=13.5,
                 color=MUTED, transform=blended, clip_on=False)
 
 
@@ -220,17 +219,17 @@ def draw_strip(ax, lang):
     for i, (name, v) in enumerate(zip(names, vals)):
         sw = ax.annotate("■", (0, 0), xycoords="axes fraction",
                          xytext=(cx, y), textcoords="offset points",
-                         ha="left", va="center", fontsize=9, color=HUES[i],
+                         ha="left", va="center", fontsize=10.5, color=HUES[i],
                          annotation_clip=False)
         cx += wpts(sw) + 5
         nm = ax.annotate(_sc(name), (0, 0), xycoords="axes fraction",
                          xytext=(cx, y), textcoords="offset points",
-                         ha="left", va="center", fontsize=12.5, color=INK,
+                         ha="left", va="center", fontsize=14, color=INK,
                          family="serif", annotation_clip=False)
         cx += wpts(nm) + 6
         hr = ax.annotate(f"{v:.1f}h", (0, 0), xycoords="axes fraction",
                          xytext=(cx, y), textcoords="offset points",
-                         ha="left", va="center", fontsize=11, color=MUTED,
+                         ha="left", va="center", fontsize=12.5, color=MUTED,
                          annotation_clip=False)
         cx += wpts(hr) + 22
 
@@ -253,7 +252,7 @@ def load_data(thursday=None):
 
 def _label(fig, x, y, text):
     """A card section label: uppercase, muted, in the structural sans."""
-    fig.text(x, y, text, ha="left", va="top", fontsize=11, fontweight=500,
+    fig.text(x, y, text, ha="left", va="top", fontsize=12.5, fontweight=500,
              color=LABEL)
 
 
@@ -269,13 +268,12 @@ def render(data, save_dir):
         "font.weight": 400,
     })
 
-    fig = plt.figure(figsize=(14, 6.0))
-    fig.patch.set_facecolor(BG)
+    fig = plt.figure(figsize=(12, 6.0))
 
     _label(fig, 0.03, 0.965, "CODING HOURS")
 
     ax_main = fig.add_axes([0.03, 0.42, 0.94, 0.50])
-    ax_main.set_facecolor(BG)
+    ax_main.set_facecolor("none")
     if proj is not None:
         daily_max = proj.sum(axis=1).max()
         draw_project(ax_main, proj, 1.15 * max(daily_max, 1))
@@ -287,13 +285,13 @@ def render(data, save_dir):
                           color=RULE, linewidth=1.0, zorder=0))
     total = sum(mix.values()) if mix else 0.0
     _label(fig, 0.03, 0.285, f"PROJECT MIX · {total:.1f}h")
-    ax_strip = fig.add_axes([0.03, 0.20, 0.94, 0.022])
-    ax_strip.set_facecolor(BG)
+    ax_strip = fig.add_axes([0.03, 0.20, 0.94, 0.026])
+    ax_strip.set_facecolor("none")
     if mix is not None:
         draw_strip(ax_strip, mix)
 
     os.makedirs(save_dir, exist_ok=True)
-    fig.savefig(os.path.join(save_dir, "waka.png"), dpi=200, facecolor=BG)
+    fig.savefig(os.path.join(save_dir, "waka.png"), dpi=200, transparent=True)
     plt.close(fig)
 
 

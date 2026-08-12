@@ -54,22 +54,24 @@ LABELS = {"Work": "Work", "Study": "Study",
 # arbtt-stats' "(unmatched time)" row is the residual, shown as Other.
 TAG_BUCKET = {"work": "Work", "study": "Study", "brainrot": "Brainrot"}
 
-BG = "#faf8f2"           # cream card ground (site "vellum" palette)
 INK = "#2c2a26"          # daily totals + serif legend names
 MUTED = "#96938b"        # day labels, strip hours
 LABEL = "#8c8a83"        # uppercase card-section labels
 RULE = "#e7e4dc"         # hairline separator between sections
 
-# One warm ramp, a fixed colour per bucket (dark -> light), shared by the day
-# columns and the mix strip so the buckets correspond between them.
+# Four categorical hues (site palette: rust / olive / slate / plum), one fixed
+# colour per bucket, shared by the day columns and the mix strip so the buckets
+# correspond between them. Distinct hues rather than a lightness ramp because the
+# buckets are nominal categories — the colour says which bucket, not how much,
+# and a dark->light ramp read as an ordering that is not in the data.
 PALETTE = {
-    "Work": "#3f2e18",       # deep espresso
-    "Study": "#7a5a2b",      # brown (the site accent)
-    "Brainrot": "#b2926a",   # tan
-    "Other": "#ded9cc",      # warm gray residual
+    "Work": "#7a5a2b",       # rust/brown — the site accent
+    "Study": "#5f6b3c",      # olive
+    "Brainrot": "#3f4e6b",   # slate
+    "Other": "#6e5568",      # muted plum (residual, still legible on white)
 }
 
-BAR_MAX_PX = 24
+BAR_MAX_PX = 46
 GAP_PX = 2
 RADIUS_PX = 4
 
@@ -178,9 +180,9 @@ def draw_columns(ax, pivot, ymax):
                                            edgecolor="none", linewidth=0, zorder=2))
                 y += hh
             ax.text(xi, totals[xi] + ymax * 0.015, f"{totals[xi]:.1f}",
-                    ha="center", va="bottom", fontsize=12, fontweight=500,
+                    ha="center", va="bottom", fontsize=14, fontweight=500,
                     color=INK, clip_on=False, zorder=6)
-        ax.text(xi, -0.05, DOW[xi], ha="center", va="top", fontsize=12,
+        ax.text(xi, -0.05, DOW[xi], ha="center", va="top", fontsize=13.5,
                 color=MUTED, transform=blended, clip_on=False)
 
 
@@ -222,17 +224,17 @@ def draw_strip(ax, mix):
     for name, v in zip(names, vals):
         sw = ax.annotate("■", (0, 0), xycoords="axes fraction",
                          xytext=(cx, y), textcoords="offset points",
-                         ha="left", va="center", fontsize=9, color=PALETTE[name],
+                         ha="left", va="center", fontsize=10.5, color=PALETTE[name],
                          annotation_clip=False)
         cx += wpts(sw) + 5
         nm = ax.annotate(_sc(name), (0, 0), xycoords="axes fraction",
                          xytext=(cx, y), textcoords="offset points",
-                         ha="left", va="center", fontsize=12.5, color=INK,
+                         ha="left", va="center", fontsize=14, color=INK,
                          family="serif", annotation_clip=False)
         cx += wpts(nm) + 6
         hr = ax.annotate(f"{v:.1f}h", (0, 0), xycoords="axes fraction",
                          xytext=(cx, y), textcoords="offset points",
-                         ha="left", va="center", fontsize=11, color=MUTED,
+                         ha="left", va="center", fontsize=12.5, color=MUTED,
                          annotation_clip=False)
         cx += wpts(hr) + 22
 
@@ -244,7 +246,7 @@ def _empty(fig):
 
 def _label(fig, x, y, text):
     """A card section label: uppercase, muted, in the structural sans."""
-    fig.text(x, y, text, ha="left", va="top", fontsize=11, fontweight=500,
+    fig.text(x, y, text, ha="left", va="top", fontsize=12.5, fontweight=500,
              color=LABEL)
 
 
@@ -257,8 +259,7 @@ def render(pivot, save_dir):
         "font.weight": 400,
     })
 
-    fig = plt.figure(figsize=(14, 6.0))
-    fig.patch.set_facecolor(BG)
+    fig = plt.figure(figsize=(12, 6.0))
 
     _label(fig, 0.03, 0.965, "SCREEN TIME")
 
@@ -266,7 +267,7 @@ def render(pivot, save_dir):
         _empty(fig)
     else:
         ax_main = fig.add_axes([0.03, 0.42, 0.94, 0.50])
-        ax_main.set_facecolor(BG)
+        ax_main.set_facecolor("none")
         daily_max = pivot.sum(axis=1).max()
         draw_columns(ax_main, pivot, 1.15 * max(daily_max, 1))
 
@@ -276,12 +277,12 @@ def render(pivot, save_dir):
                               linewidth=1.0, zorder=0))
         total = float(pivot.to_numpy().sum())
         _label(fig, 0.03, 0.285, f"ACTIVITY MIX · {total:.1f}h")
-        ax_strip = fig.add_axes([0.03, 0.20, 0.94, 0.022])
-        ax_strip.set_facecolor(BG)
+        ax_strip = fig.add_axes([0.03, 0.20, 0.94, 0.026])
+        ax_strip.set_facecolor("none")
         draw_strip(ax_strip, pivot.sum(axis=0).to_dict())
 
     os.makedirs(save_dir, exist_ok=True)
-    fig.savefig(os.path.join(save_dir, "arbtt.png"), dpi=200, facecolor=BG)
+    fig.savefig(os.path.join(save_dir, "arbtt.png"), dpi=200, transparent=True)
     plt.close(fig)
 
 
