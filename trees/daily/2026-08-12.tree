@@ -1,0 +1,36 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Wednesday, August 12, 2026}
+\date{2026-08-12T10:36:09Z}
+
+\p{
+\em{Let this be thy only joy, and thy only comfort, from one sociable kind action without intermission to pass unto another, God being ever in thy mind.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 6 §6
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Read: Transformer Accounting (the layer diagram, every matrix)}
+      \li{Ex 3.8 — [challenge] Benchmark all four collectives yourself in JAX}
+      \li{Read: Counting Dots + forward and reverse FLOPs}
+      \li{Write-up: Ch3 Sharding — one-pager (the model, the key formula, when it binds)}
+      \li{Anki: 5-8 cards from Ch3 Sharding (hardware numbers + roofline conditions)}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Set up easy testing / profiling with skypilot}
+      \li{Read: Axon Paper}
+      \li{Read: Mirage Paper}
+      \li{Play around in codebase for 2hr}
+    }
+  }
+}
+}
+
+\p{\strong{6:36 AM}}
+\hr
+\p{Starting [[scaling-book]].}
