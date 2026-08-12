@@ -39,6 +39,7 @@ import pandas as pd
 import requests
 from dotenv import load_dotenv
 from etils import epath
+from matplotlib.lines import Line2D
 from matplotlib.patches import FancyBboxPatch, PathPatch, Rectangle
 from matplotlib.path import Path
 
@@ -52,14 +53,17 @@ MIN_DAILY = 0.3
 FOLD = "other"
 SENTINEL = {"other"}
 
-BG = "#ffffff"
-INK = "#0b0b0b"          # daily totals
-MUTED = "#898781"        # day labels, caption, strip values
-SECONDARY = "#4a4742"    # strip series names
+BG = "#faf8f2"           # cream card ground (site "vellum" palette)
+INK = "#2c2a26"          # daily totals + serif legend names
+MUTED = "#96938b"        # day labels, strip hours
+LABEL = "#8c8a83"        # uppercase card-section labels (from the mock)
+RULE = "#e7e4dc"         # hairline separator between sections
 
-# One coral ramp, shared by the day columns and the mix strip so the project
-# colours correspond between them — the strip doubles as the colour key.
-CORAL = ["#4A1B0C", "#D85A30", "#F5C4B3"]   # [forest, lab, other], dark -> light
+# Three categorical hues (site palette: slate / olive / brown), shared by the
+# day columns and the mix strip so a project keeps one colour across both — the
+# strip doubles as the colour key. Distinct hues rather than a ramp because
+# projects are nominal: the colour says which project, not how much.
+HUES = ["#3f4e6b", "#5f6b3c", "#7a5a2b"]   # [forest, 2nd project, other]
 
 BAR_MAX_PX = 24
 GAP_PX = 2
@@ -165,9 +169,9 @@ def draw_project(ax, pivot, ymax):
                 b = y + (gap_y / 2 if i != bot else 0.0)
                 t = max((y + hh) - (gap_y / 2 if i != top else 0.0), b + 1e-6)
                 if i == top:
-                    ax.add_patch(_rounded_top(x0, b, w, t - b, rx, ry, CORAL[i]))
+                    ax.add_patch(_rounded_top(x0, b, w, t - b, rx, ry, HUES[i]))
                 else:
-                    ax.add_patch(Rectangle((x0, b), w, t - b, facecolor=CORAL[i],
+                    ax.add_patch(Rectangle((x0, b), w, t - b, facecolor=HUES[i],
                                            edgecolor="none", linewidth=0, zorder=2))
                 y += hh
             ax.text(xi, totals[xi] + ymax * 0.015, f"{totals[xi]:.1f}",
@@ -199,29 +203,58 @@ def draw_strip(ax, lang):
         ax.add_patch(FancyBboxPatch(
             (left, 0), max(right - left, 1e-6), 1,
             boxstyle=f"round,pad=0,rounding_size={r}", mutation_aspect=asp,
-            facecolor=CORAL[i], edgecolor="none", linewidth=0, zorder=2))
-        cx = (left + right) / 2
-        ax.annotate(_sc(names[i]), (cx, 0), xytext=(0, -7),
-                    textcoords="offset points", ha="center", va="top",
-                    fontsize=11, color=SECONDARY, annotation_clip=False)
-        ax.annotate(f"{v:.1f}h", (cx, 0), xytext=(0, -21),
-                    textcoords="offset points", ha="center", va="top",
-                    fontsize=11, color=MUTED, annotation_clip=False)
+            facecolor=HUES[i], edgecolor="none", linewidth=0, zorder=2))
         x += v
 
+    # One left-aligned legend beneath the bar, gathered in a single place rather
+    # than spread under the segments: a colour swatch, the project name in the
+    # serif voice, then its hours. The bar shows the proportions; the legend is
+    # the key. Text is measured in points as it is laid so items pack tightly.
+    renderer = ax.figure.canvas.get_renderer()
+    dpi = ax.figure.dpi
 
-def load_data():
+    def wpts(t):                                   # rendered width of a Text, in pt
+        return t.get_window_extent(renderer).width * 72.0 / dpi
+
+    cx, y = 0.0, -13.0
+    for i, (name, v) in enumerate(zip(names, vals)):
+        sw = ax.annotate("■", (0, 0), xycoords="axes fraction",
+                         xytext=(cx, y), textcoords="offset points",
+                         ha="left", va="center", fontsize=9, color=HUES[i],
+                         annotation_clip=False)
+        cx += wpts(sw) + 5
+        nm = ax.annotate(_sc(name), (0, 0), xycoords="axes fraction",
+                         xytext=(cx, y), textcoords="offset points",
+                         ha="left", va="center", fontsize=12.5, color=INK,
+                         family="serif", annotation_clip=False)
+        cx += wpts(nm) + 6
+        hr = ax.annotate(f"{v:.1f}h", (0, 0), xycoords="axes fraction",
+                         xytext=(cx, y), textcoords="offset points",
+                         ha="left", va="center", fontsize=11, color=MUTED,
+                         annotation_clip=False)
+        cx += wpts(hr) + 22
+
+
+def load_data(thursday=None):
     # The review week (Fri -> Thu) ends on the most recent Thursday, so today's
     # own still-accumulating day is never included. A completed week is stable,
     # so a snapshot cached under its Thursday is authoritative — fetch only if
-    # we don't already have it.
-    today = datetime.today().date()
-    thursday = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
+    # we don't already have it. Pass an explicit Thursday to re-render a past
+    # week from its cached snapshot.
+    if thursday is None:
+        today = datetime.today().date()
+        thursday = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
     path = f"data/{thursday.strftime('%Y-%m-%d')}/data.json"
     if os.path.exists(path):
         with epath.Path(path).open("r") as file:
             return json.load(file)
     return fetch(thursday)
+
+
+def _label(fig, x, y, text):
+    """A card section label: uppercase, muted, in the structural sans."""
+    fig.text(x, y, text, ha="left", va="top", fontsize=11, fontweight=500,
+             color=LABEL)
 
 
 def render(data, save_dir):
@@ -231,24 +264,30 @@ def render(data, save_dir):
     plt.rcParams.update({
         "font.family": "sans-serif",
         "font.sans-serif": ["Work Sans", "DejaVu Sans", "Arial"],
+        "font.serif": ["XCharter", "Charter", "DejaVu Serif"],  # the serif voice
         "font.size": 12,
         "font.weight": 400,
     })
 
-    fig = plt.figure(figsize=(14, 5.6))
+    fig = plt.figure(figsize=(14, 6.0))
     fig.patch.set_facecolor(BG)
 
-    ax_main = fig.add_axes([0.03, 0.34, 0.94, 0.60])
+    _label(fig, 0.03, 0.965, "CODING HOURS")
+
+    ax_main = fig.add_axes([0.03, 0.42, 0.94, 0.50])
     ax_main.set_facecolor(BG)
     if proj is not None:
         daily_max = proj.sum(axis=1).max()
         draw_project(ax_main, proj, 1.15 * max(daily_max, 1))
 
-    # Subordinate project-mix strip: an order of magnitude thinner, below. It
-    # carries the project labels, so the columns above need none.
-    fig.text(0.03, 0.245, "Project mix, week total", ha="left", va="top",
-             fontsize=12, color=MUTED)
-    ax_strip = fig.add_axes([0.03, 0.185, 0.94, 0.024])
+    # A hairline rule, then the project-mix section beneath it: title, the thin
+    # proportion bar, and its legend. The bar shows the split; the columns above
+    # need no key of their own.
+    fig.add_artist(Line2D([0.03, 0.97], [0.315, 0.315], transform=fig.transFigure,
+                          color=RULE, linewidth=1.0, zorder=0))
+    total = sum(mix.values()) if mix else 0.0
+    _label(fig, 0.03, 0.285, f"PROJECT MIX · {total:.1f}h")
+    ax_strip = fig.add_axes([0.03, 0.20, 0.94, 0.022])
     ax_strip.set_facecolor(BG)
     if mix is not None:
         draw_strip(ax_strip, mix)
@@ -261,8 +300,12 @@ def render(data, save_dir):
 def main(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument("dir", help="save directory")
+    parser.add_argument("--thursday", metavar="YYYY-MM-DD",
+                        help="review-week end (Thu); defaults to the most recent "
+                             "completed Thursday. Pass to re-render a past week.")
     args = parser.parse_args(argv)
-    render(load_data(), args.dir)
+    thu = datetime.strptime(args.thursday, "%Y-%m-%d").date() if args.thursday else None
+    render(load_data(thu), args.dir)
 
 
 if __name__ == "__main__":

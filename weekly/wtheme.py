@@ -1,9 +1,9 @@
 """Shared visual theme for the weekly-review figures.
 
-One editorial style for the whole report, modelled on a friendly-academic look:
-a soft humanist font (Lato), the seaborn "deep" blue/green/orange palette, bars
-with a darker same-hue outline and rounded corners, dashed horizontal gridlines,
-arrow-tipped axes, and a bordered legend. The five sibling uv scripts (coding,
+One editorial style for the whole report, keyed to the site's warm "vellum"
+palette: a cream ground, brown/olive/tan accents, bars with a darker same-hue
+outline and rounded corners, dashed horizontal gridlines, arrow-tipped axes,
+and a bordered legend. The five sibling uv scripts (coding,
 running, sleep, arbtt-plot, habitify) import this so the figures look like pages
 of one document.
 
@@ -18,25 +18,26 @@ from matplotlib.colors import LinearSegmentedColormap, to_rgba
 from matplotlib.patches import FancyBboxPatch, Rectangle
 import seaborn as sns
 
-# --- palette: soft, light pastels with a friendly feel -----------------------
-INK = "#555a60"          # titles, primary lines (soft charcoal, never black)
-MUTED = "#7c828a"        # axis + tick labels
-FAINT = "#a3a8af"        # captions, value annotations
-GRID = "#e7e9ec"         # dashed gridlines
-AXIS = "#aeb3ba"         # the arrowed axis lines (light)
-ACCENT = "#7da7dd"       # single-series accent (light blue)
-ACCENT_WARM = "#f0a878"  # contrast line (rolling averages) / soft orange
-OTHER = "#cdd1d6"        # the "Other" bucket / de-emphasised series
+# --- palette: warm "vellum" site tones ---------------------------------------
+CREAM = "#faf8f2"        # the card / page ground everything sits on
+INK = "#2c2a26"          # titles, primary lines (warm near-black)
+MUTED = "#96938b"        # axis + tick labels
+FAINT = "#b0aca3"        # captions, value annotations
+GRID = "#e7e4dc"         # dashed gridlines
+AXIS = "#cfc9bd"         # the arrowed axis lines (warm, light)
+ACCENT = "#7a5a2b"       # single-series accent (brown)
+ACCENT_WARM = "#5f6b3c"  # contrast line (rolling averages) / olive
+OTHER = "#ded9cc"        # the "Other" bucket / de-emphasised series (warm gray)
 
 QUAL = [
-    "#7da7dd",  # light blue
-    "#8fcda5",  # light green
-    "#f3b58a",  # light orange
-    "#ed9aa2",  # light rose
-    "#b7abe0",  # light violet
-    "#8fd3e0",  # light cyan
-    "#e8d595",  # light gold
-    "#c2c7cd",  # light gray
+    "#7a5a2b",  # brown
+    "#5f6b3c",  # olive
+    "#b2926a",  # tan
+    "#9c6b4f",  # terracotta
+    "#8a8567",  # sage
+    "#c2a878",  # sand
+    "#6f7d8c",  # slate (a cool note for relief)
+    "#c9c2b4",  # warm gray
 ]
 
 FONT_STACK = ["Work Sans", "DejaVu Sans", "Arial"]
@@ -48,12 +49,12 @@ def apply():
         "font.family": "sans-serif",
         "font.sans-serif": FONT_STACK,
         "font.size": 11,
-        "figure.facecolor": "white",
+        "figure.facecolor": CREAM,
         "figure.dpi": 150,
-        "savefig.facecolor": "white",
+        "savefig.facecolor": CREAM,
         "savefig.bbox": "tight",
 
-        "axes.facecolor": "white",
+        "axes.facecolor": CREAM,
         "axes.edgecolor": AXIS,
         "axes.linewidth": 1.0,
         "axes.spines.top": False,
@@ -87,8 +88,8 @@ def apply():
         "legend.title_fontsize": 10.5,
         "legend.frameon": True,
         "legend.fancybox": True,
-        "legend.edgecolor": "#dcdee1",
-        "legend.facecolor": "white",
+        "legend.edgecolor": "#e7e4dc",
+        "legend.facecolor": CREAM,
         "legend.framealpha": 1.0,
         "legend.borderpad": 0.6,
         "legend.handlelength": 1.2,
@@ -119,11 +120,11 @@ def darker(c, f=0.82):
 def sequential_cmap():
     """Light→medium blue colormap for heatmaps / continuous shading (airy)."""
     return LinearSegmentedColormap.from_list(
-        "wk_seq", ["#f3f7fd", "#c2d8f0", "#93b8e3", "#5f8ecb"]
+        "wk_seq", ["#f4efe4", "#d9c6a3", "#b2926a", "#7a5a2b"]
     )
 
 
-def shades(n, light="#dbe8f7", dark="#6f9ad0"):
+def shades(n, light="#ece3d2", dark="#7a5a2b"):
     """n ordered colors between two endpoints (for ordinal stacks, e.g. sleep)."""
     cmap = LinearSegmentedColormap.from_list("wk_shades", [light, dark])
     if n == 1:

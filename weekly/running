@@ -25,6 +25,7 @@
 #
 # Habits panel lives in hgrid.py so it can be drawn onto a shared axis.
 
+import argparse
 import os
 import sys
 from datetime import date, datetime, timedelta
@@ -52,26 +53,25 @@ distance_units = {"miles": "m"}[unit_strings[fitfile.units.UnitTypes.distance_lo
 WEEKS = 16          # recent weeks to bucket before trimming leading empties
 WINDOW = 4          # trailing weeks in the rolling average
 
-# --- ink + marks (coral ramp; light-only) ------------------------------------
-BG = "#ffffff"
-INK = "#0b0b0b"      # the one primary-ink label (line endpoint)
-MUTED = "#898781"    # bar values, x labels
-BAR = "#F5C4B3"      # recessive bars (100 stop)
-LINE = "#4A1B0C"     # prominent average line (900 stop)
+# --- ink + marks (warm site palette; light-only) -----------------------------
+BG = "#faf8f2"       # cream card ground (site "vellum" palette)
+INK = "#7a5a2b"      # line-endpoint annotation, sharing the brown accent
+MUTED = "#96938b"    # bar values, x labels
+BAR = "#ded9cc"      # recessive bars (warm gray)
+LINE = "#7a5a2b"     # prominent average line (brown accent)
 
 BAR_MAX_PX = 24
 RADIUS_PX = 4
 
-end_ts = datetime.now()
-# Fetch a couple of extra weeks so the oldest Fri->Thu bucket is fully covered.
-start_ts = end_ts - timedelta(weeks=WEEKS + 2)
-activities = Activities.get_for_period(garmin_act_db, start_ts, end_ts)
+def weekly_series(last_thu):
+    """Miles per Friday-anchored week (Fri -> Thu) for the 16 weeks ending at
+    `last_thu`, trimmed to the first week with real running, plus its 4-week
+    trailing average (NaN until a full window)."""
+    end_ts = datetime.combine(last_thu, datetime.max.time())
+    # Fetch a couple of extra weeks so the oldest Fri->Thu bucket is fully covered.
+    start_ts = end_ts - timedelta(weeks=WEEKS + 2)
+    activities = Activities.get_for_period(garmin_act_db, start_ts, end_ts)
 
-
-def weekly_series():
-    """Miles per Friday-anchored week (Fri -> Thu), trimmed to the first week
-    with real running, plus its 4-week trailing average (NaN until a full
-    window). The series ends on the most recently completed week."""
     runs = []
     for activity in activities:
         if activity.name is None or activity.distance is None or activity.moving_time is None:
@@ -89,8 +89,6 @@ def weekly_series():
     df = pd.DataFrame(runs, columns=["week", "miles"])
     weekly = df.groupby("week")["miles"].sum()
 
-    today = end_ts.date()
-    last_thu = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
     last_fri = last_thu - timedelta(days=6)   # Friday starting the last full week
     full = pd.date_range(end=last_fri, periods=WEEKS, freq="7D")
     weekly = weekly.reindex(full.date, fill_value=0)
@@ -164,13 +162,31 @@ def _empty_running(ax):
             color=MUTED, fontsize=13, transform=ax.transAxes)
 
 
+def _label(fig, x, y, text):
+    """A card section label: uppercase, muted, in the structural sans."""
+    fig.text(x, y, text, ha="left", va="top", fontsize=11, fontweight=500,
+             color=MUTED)
+
+
 def main(argv):
-    save_dir = argv[0]
-    weekly, roll = weekly_series()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dir", help="save directory")
+    parser.add_argument("--thursday", metavar="YYYY-MM-DD",
+                        help="review-week end (Thu); defaults to the most recent "
+                             "completed Thursday. Pass to re-render a past week.")
+    args = parser.parse_args(argv)
+    save_dir = args.dir
+    if args.thursday:
+        last_thu = date.fromisoformat(args.thursday)
+    else:
+        today = date.today()
+        last_thu = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
+
+    weekly, roll = weekly_series(last_thu)
     # A Habitify outage must not sink the running chart: fall back to an empty
     # habits panel (hgrid.draw renders a placeholder) rather than aborting.
     try:
-        df = hgrid.fetch()
+        df = hgrid.fetch(last_thu)
     except Exception as e:                       # noqa: BLE001
         print(f"habits unavailable, skipping panel: {e}", file=sys.stderr)
         df = None
@@ -178,24 +194,23 @@ def main(argv):
     plt.rcParams.update({
         "font.family": "sans-serif",
         "font.sans-serif": ["Work Sans", "DejaVu Sans", "Arial"],
+        "font.serif": ["XCharter", "Charter", "DejaVu Serif"],  # the serif voice
         "font.size": 12,
         "font.weight": 400,
     })
 
-    fig = plt.figure(figsize=(16, 5.0))
+    fig = plt.figure(figsize=(12, 8.4))
     fig.patch.set_facecolor(BG)
-    # Wide running panel, a clear gap, then the habits grid with its labels on
-    # the right (they overflow into the reserved margin past `right`).
-    gs = fig.add_gridspec(1, 2, width_ratios=[2.6, 1], wspace=0.18,
-                          left=0.035, right=0.82, top=0.93, bottom=0.12)
-    axr = fig.add_subplot(gs[0])
-    axh = fig.add_subplot(gs[1])
-    # Drop the habits panel down so its grid centres against the bottom-weighted
-    # running bars instead of floating above them.
-    hp = axh.get_position()
-    axh.set_position([hp.x0, 0.05, hp.width, 0.80])
+    # A single column: weekly mileage fills the top, full width; the habit grid
+    # sits under it on the bottom-left, its habit names overflowing right into
+    # the empty gutter. Each section carries an uppercase card label.
+    axr = fig.add_axes([0.05, 0.585, 0.90, 0.34])
+    axh = fig.add_axes([0.05, 0.07, 0.29, 0.36])
     axr.set_facecolor(BG)
     axh.set_facecolor(BG)
+
+    _label(fig, 0.05, 0.965, "WEEKLY MILEAGE")
+    _label(fig, 0.05, 0.45, "HABITS")
 
     if weekly is None:
         _empty_running(axr)

@@ -30,15 +30,17 @@ KEY_FILE = os.path.join(
 )
 DOW = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu"]  # review week: Fri -> Thu
 
-INK = "#0b0b0b"          # primary — the outlier day count only
-SECONDARY = "#4a4742"    # habit labels
-MUTED = "#898781"        # day labels + counts
-HIT = "#C0522C"          # completed cell (solid coral, shares the running palette)
-MISS_FILL = "#F6E7DF"    # not-completed cell fill (light warm tint)
-HAIRLINE = (11 / 255, 11 / 255, 11 / 255, 0.12)  # inset outline on miss cells
+INK = "#2c2a26"          # primary — the outlier day count only
+SECONDARY = "#2c2a26"    # habit labels
+MUTED = "#96938b"        # day labels + counts
+HIT = "#5f6b3c"          # completed cell (olive green, site palette)
+MISS_FILL = "#faf8f2"    # not-completed cell fill (cream — reads as empty)
+HAIRLINE = "#ded9cc"     # warm-gray outline on miss cells
 
-CELL = 0.86
-RADIUS = 0.11
+CELL_W = 0.86      # box width (fraction of the unit column pitch)
+CELL_H = 0.62      # box height — shorter than wide, a squished rectangle
+ROW_PITCH = 0.78   # vertical gap between rows (< 1, so rows sit closer)
+RADIUS = 0.08      # corner radius, in data units
 
 
 def get_key():
@@ -76,13 +78,15 @@ def fetch_journal(key, day, retries=5):
             time.sleep(wait)
 
 
-def fetch():
-    """The current review week's records (one row per scheduled habit-day)."""
-    today = date.today()
+def fetch(thursday=None):
+    """A review week's records (one row per scheduled habit-day). Defaults to the
+    current review week; pass a Thursday to fetch a past week's habits."""
     # The review week runs Friday -> Thursday and ends on the most recent
     # Thursday, so a mid-week run shows the last completed week, never today's
     # partial day.
-    thursday = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
+    if thursday is None:
+        today = date.today()
+        thursday = today - timedelta(days=((today.weekday() - 3) % 7 or 7))
     start = thursday - timedelta(days=6)  # the preceding Friday
     key = get_key()
     records = []
@@ -101,9 +105,9 @@ def _sentence_case(s):
     return s[:1].upper() + s[1:].lower() if s else s
 
 
-def _cell(ax, ci, ri, fc, ec, lw):
+def _cell(ax, ci, yc, fc, ec, lw):
     ax.add_patch(FancyBboxPatch(
-        (ci - CELL / 2, ri - CELL / 2), CELL, CELL,
+        (ci - CELL_W / 2, yc - CELL_H / 2), CELL_W, CELL_H,
         boxstyle=f"round,pad=0,rounding_size={RADIUS}",
         mutation_aspect=1, facecolor=fc, edgecolor=ec, linewidth=lw, zorder=3,
     ))
@@ -112,7 +116,7 @@ def _cell(ax, ci, ri, fc, ec, lw):
 def draw(ax, df, label_fontsize=12):
     """Render the grid onto `ax`. `ax` is left cleared of spines/ticks."""
     ax.set_aspect("equal")
-    ax.set_anchor("C")   # centre the grid vertically so it aligns with running
+    ax.set_anchor("W")   # hug the left — the grid sits bottom-left under the plot
     ax.axis("off")
 
     if df is None or df.empty:
@@ -128,14 +132,16 @@ def draw(ax, df, label_fontsize=12):
     med = statistics.median(col_done)
 
     ncol, nrow = len(DOW), len(order)
+    y_bottom = (nrow - 1) * ROW_PITCH          # y-centre of the last habit row
     ax.set_xlim(-0.5, ncol - 0.5)
-    ax.set_ylim(nrow - 0.5 + 1.5, -1.35)      # inverted; day row above, counts below
+    # inverted y: the day-initial row sits above the grid, the counts below it.
+    ax.set_ylim(y_bottom + 1.15, -1.15)
 
-    y_day = -0.92
-    y_count = nrow - 0.5 + 0.55
+    y_day = -0.72
+    y_count = y_bottom + 0.72
 
     for ci, day in enumerate(DOW):
-        ax.text(ci, y_day, day, ha="center", va="center", fontsize=12,
+        ax.text(ci, y_day, day[0], ha="center", va="center", fontsize=12,
                 color=MUTED)
         outlier = (med - col_done[ci]) > 2
         ax.text(ci, y_count, str(col_done[ci]), ha="center", va="center",
@@ -143,13 +149,15 @@ def draw(ax, df, label_fontsize=12):
                 color=INK if outlier else MUTED)
 
     for ri, habit in enumerate(order):
+        yc = ri * ROW_PITCH
         for ci, day in enumerate(DOW):
             v = hit.loc[habit, day]
             if pd.isna(v):
                 continue
             if v >= 1:
-                _cell(ax, ci, ri, HIT, "none", 0)
+                _cell(ax, ci, yc, HIT, "none", 0)
             else:
-                _cell(ax, ci, ri, MISS_FILL, HAIRLINE, 1.0)
-        ax.text(ncol - 0.5 + 0.35, ri, _sentence_case(habit), ha="left",
-                va="center", fontsize=label_fontsize, color=SECONDARY)
+                _cell(ax, ci, yc, MISS_FILL, HAIRLINE, 1.0)
+        ax.text(ncol - 0.5 + 0.35, yc, _sentence_case(habit), ha="left",
+                va="center", fontsize=label_fontsize, color=SECONDARY,
+                family="serif")
