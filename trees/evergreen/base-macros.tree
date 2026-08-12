@@ -530,15 +530,17 @@
 % baseline`, and partly because some browsers force `normal` on submit inputs
 % regardless of what else is set.
 %
-% The submit is solid slate with the label knocked out to white — the one
-% filled thing on the page, which is the point: it is also the only thing on
-% the page that does something. The fill is a notch darker than the algorithm
-% accent the field's focus state uses, so the button stays the heavier of the
-% two even while the field is active. :hover, :focus, and ::placeholder cannot
-% be expressed inline and live in theme/style.css against the
-% .embeddable-buttondown-form class; hover darkens the fill a further step
-% rather than changing hue, and focus tints the field's border to the accent
-% and adds a soft ring, in place of the platform's focus outline.
+% The submit is an outline at rest and a fill on hover, in a slate a notch
+% darker than the algorithm accent. Nothing on this page is filled until you
+% reach for it, which is the right weight for a footer ask: at rest the button
+% is the same hairline-and-text the field beside it is, and it only takes on
+% ink once the pointer says the reader is considering it. The field is the
+% quieter of the two — its border is a pale grey against the button's slate —
+% so the actionable half still reads as the actionable one standing still.
+% :hover, :focus, and ::placeholder cannot be expressed inline and live in
+% theme/style.css against the .embeddable-buttondown-form class; focus tints
+% the field's border to the accent and adds a soft ring, in place of the
+% platform's focus outline.
 \def\subscribe{
   \<html:div>[class]{subscribe-block}[style]{margin: 2.3em 0 1em 0;}{
    \<html:div>[style]{
@@ -569,9 +571,9 @@
      width: 240px;
      max-width: 100\%;
      padding: 0.53em 0.76em;
-     border: 1px solid rgb(198, 198, 198);
+     border: 1px solid rgb(229, 229, 227);
      border-radius: 3px;
-     background-color: rgb(246, 246, 246);
+     background-color: transparent;
      color: inherit;
      font-family: var(--sans);
      font-size: 0.89em;
@@ -583,13 +585,13 @@
      padding: 0.53em 1.06em;
      border: 1px solid rgb(51, 64, 90);
      border-radius: 3px;
-     background-color: rgb(51, 64, 90);
-     color: rgb(255, 255, 255);
+     background-color: transparent;
+     color: rgb(51, 64, 90);
      font-family: var(--sans);
      font-size: 0.89em;
      line-height: 1.35;
      cursor: pointer;
-     transition: background-color 120ms ease, border-color 120ms ease;
+     transition: background-color 120ms ease, color 120ms ease;
     }{}
    }
   }
