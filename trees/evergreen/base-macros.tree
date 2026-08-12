@@ -24,39 +24,6 @@
   }{\body}
 }
 
-% A quotation, in the same clothes as a callout: a hairline in the margin and
-% no fill. Someone else's words are already marked as theirs by the italic and
-% by whatever introduces them, so the rule is there to hold the block together
-% down the left, not to fence it off.
-\def\quote[body]{
- \<html:blockquote>[class]{jms-quote}[style]{
-  margin: 1.1rem 0;
-  padding: 0.1rem 0 0.1rem 0.9rem;
-  border-left: 2px solid rgb(\cal-neutral-rule);
-  font-style: italic;
-  color: rgba(0, 0, 0, 0.85);
-  }{\body}
-}
-
-% The same, attributed. The source line takes the neutral accent rather than a
-% grey of its own — it is the quietest thing in the block and should be the one
-% color the rest of the page already uses for quiet things.
-\def\quotes[body][source]{
- \<html:blockquote>[class]{jms-quote}[style]{
-  margin: 1.1rem 0;
-  padding: 0.1rem 0 0.1rem 0.9rem;
-  border-left: 2px solid rgb(\cal-neutral-rule);
-  font-style: italic;
-  color: rgba(0, 0, 0, 0.85);
-  }{\body\<html:div>[style]{
-   margin-top: -0.5em;
-   font-style: normal;
-   font-size: 0.9em;
-   text-align: right;
-   color: rgb(\cal-neutral);
-  }{— \source}}
-}
-
 % ── The palette: vellum ─────────────────────────────────────────────────────
 %
 % Every color on the site, as a bare "r, g, b" triple — spelled rgb(\cal-claim)
@@ -109,6 +76,39 @@
 \def\cal-algorithm{63, 83, 127}          % \algorithm, Card + its answer
 \def\cal-algorithm-tint{239, 244, 253}
 \def\cal-algorithm-rule{207, 217, 238}
+
+% A quotation, in the same clothes as a callout: a hairline in the margin and
+% no fill. Someone else's words are already marked as theirs by the italic and
+% by whatever introduces them, so the rule is there to hold the block together
+% down the left, not to fence it off.
+\def\quote[body]{
+ \<html:blockquote>[class]{jms-quote}[style]{
+  margin: 1.1rem 0;
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  border-left: 2px solid rgb(\cal-neutral-rule);
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.85);
+  }{\body}
+}
+
+% The same, attributed. The source line takes the neutral accent rather than a
+% grey of its own — it is the quietest thing in the block and should be the one
+% color the rest of the page already uses for quiet things.
+\def\quotes[body][source]{
+ \<html:blockquote>[class]{jms-quote}[style]{
+  margin: 1.1rem 0;
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  border-left: 2px solid rgb(\cal-neutral-rule);
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.85);
+  }{\body\<html:div>[style]{
+   margin-top: -0.5em;
+   font-style: normal;
+   font-size: 0.9em;
+   text-align: right;
+   color: rgb(\cal-neutral);
+  }{— \source}}
+}
 
 % Callout asides (Problem./Question./Remark./…), and the whole of what one is:
 % a rule in the margin, a colored label, and the prose. No fill, no box. These
@@ -475,93 +475,121 @@
 % ever changes. Rendering is guarded in theme/core.xsl so the form appears
 % only on its own page, never in a transclusion or hover-preview.
 %
-% Not a card. Every earlier version enclosed this in a bordered, tinted,
-% rounded panel, and each round of toning that panel down only made it a
-% quieter version of the wrong thing: nothing else on a page here carries a
-% fill or a border, so any box at all reads as an embed. The block sits in the
-% ordinary flow, separated by its heading and the space above it.
+% Not a card. The block itself carries no fill, no border, and no enclosure of
+% any kind — every earlier version that boxed the whole thing read as an embed,
+% because nothing else in the running text is boxed. What is enclosed is the
+% two controls, which is the opposite case: a field and its submit are the one
+% place on the page where an outline is the honest signal, since it says where
+% you may type and how far the click target extends.
 %
-% It carries no rule of its own either. There is already an \hr above the
-% listings, so adding a second one put three horizontal lines within a short
-% stretch of page — four counting the field's own baseline — and the bottom of
-% the page started to read as ruled notepaper. A heading plus whitespace
-% separates perfectly well once the surrounding page has any dividers at all.
+% The divider is a 7.8em stub, not an \hr. A full-width rule here is a section
+% break, and this is not a new section — it is a footer ask hanging off the end
+% of one. A short rule set at the left margin reads as an ornament: it separates
+% without claiming the page has moved on. That also settles the old complaint
+% that a second full-width rule near the listings turned the bottom of the page
+% into ruled notepaper. It is a div rather than a ::before because this file is
+% where the styling belongs and a pseudo-element cannot be written inline.
 %
-% The field is a fixed 200px and explicitly refuses to grow. Left flexible it
-% filled the column, which put a full-width 1px line a few centimetres below a
-% full-width \hr — the eye reads that as a second divider well before it reads
-% it as an input — and it stranded `Subscribe` against the right margin, far
-% from the field it submits. Proximity is what makes the two read as one
-% control.
+% The field is a fixed 240px and explicitly refuses to grow. Left flexible it
+% filled the column, which puts a full-width box a few centimetres below the
+% page's other rules — the eye reads that as a second divider well before it
+% reads it as an input — and it stranded `Subscribe` against the right margin,
+% far from the field it submits. Proximity is what makes the two read as one
+% control. `max-width: 100%` is the phone case, where 240px can exceed the
+% measure.
 %
-% Everything inherits. There is no font declaration in here at all: the heading
-% is a real <h1>, so the theme's own heading rules style it exactly as they
-% style `About this website` or `Research`, and the prose picks up the body
-% serif. The sole exception is `font: inherit` on the two inputs, which is not
-% a font choice but a repair — form controls do not inherit typography from
-% their ancestors, and without it the browser dresses them in its own UI font.
-% That was how the button ended up in a typeface used nowhere else on the site.
+% The heading is a label, not a title. Sans, small, tracked, uppercase, and in
+% the neutral ink: the same register as the TOC rail and the metadata line, so
+% it reads as apparatus at the foot of the page rather than as another section
+% competing with `Research` and `About this website` above it. It stays a real
+% <h1> carrying <a class="slug">, the same markup tree.xsl emits for a subtree
+% heading, so the slug keeps its own styling; the slug doubles as the feed link
+% — [rss] points at the Atom feed, which is the other thing a subscribe block
+% should be offering. The heading's inline letter-spacing and text-transform
+% inherit into that anchor, so both are switched back off on it.
 %
-% The heading follows the section convention rather than imitating it. Emitting
-% <h1> + <a class="slug"> is the same markup tree.xsl generates for a subtree
-% heading, so it inherits `details h1` and `.slug` and cannot drift if that
-% convention changes. The slug doubles as the feed link — [rss] points at the
-% Atom feed, which is the other thing a subscribe block should be offering.
+% Sizes are in em, never rem. The body font-size is a clamp() that eases from
+% 11.5pt to 10.5pt as the viewport narrows, and rem is measured against the
+% root, which that clamp does not touch — a rem-sized block would sit at a
+% fixed 16px basis while the prose around it shrank. The numbers here are the
+% design's rem values converted at the desktop basis (1rem = 1.043em).
 %
-% Underlines, not enclosures. The page's whole interaction language is
-% underlined text: local links, slugs, the resume link. So the email field is a
-% baseline rule and the submit is an underlined word, both of which read as
-% part of that system where a rounded outlined control does not. :hover and
-% :focus cannot be expressed inline and live in theme/style.css against the
-% .embeddable-buttondown-form class; the hover tint there is the same one
-% a.slug and .link already use.
+% The field is drawn in plain neutral grey rather than in \cal-neutral-rule,
+% and it is the only thing on the site that is. The palette's hairline is warm
+% — it is the same rule a \remark draws, tuned to sit under vellum-toned prose
+% — and at the size of a form field, over a fill, that warmth stops reading as
+% a grey and starts reading as cream. A control is chrome, not content; it
+% wants the neutral.
 %
-% Both underlines are border-bottoms, and the two controls carry identical
-% padding and line-height, on purpose. The submit originally used
-% text-decoration with no padding, which left it sitting visibly high:
-% align-items: baseline matches text baselines, but each rule is offset from
-% its baseline by that control's own padding-bottom, so unequal padding meant
-% unequal rules — and a text-decoration underline rides just under the glyphs
-% while a border sits at the bottom of the box, compounding it. padding-bottom
-% is in px rather than em so the two cannot drift apart if either control's
-% font-size is ever touched, and line-height is pinned because some browsers
-% force `normal` on submit inputs regardless of `font: inherit`. The submit's
-% rule is currentColor against the field's 40% black, so the actionable half
-% still reads as the darker one.
+% Both controls declare their own font. That is not a style choice but a repair:
+% form controls do not inherit typography from their ancestors, and without it
+% the browser dresses them in its own UI font — which is how the button once
+% ended up in a typeface used nowhere else on the site. They are sans rather
+% than the body serif because a control is chrome. line-height is pinned on
+% both, partly so the two boxes come out the same height under `align-items:
+% baseline`, and partly because some browsers force `normal` on submit inputs
+% regardless of what else is set.
+%
+% The submit is solid slate with the label knocked out to white — the one
+% filled thing on the page, which is the point: it is also the only thing on
+% the page that does something. The fill is a notch darker than the algorithm
+% accent the field's focus state uses, so the button stays the heavier of the
+% two even while the field is active. :hover, :focus, and ::placeholder cannot
+% be expressed inline and live in theme/style.css against the
+% .embeddable-buttondown-form class; hover darkens the fill a further step
+% rather than changing hue, and focus tints the field's border to the accent
+% and adds a soft ring, in place of the platform's focus outline.
 \def\subscribe{
-  \<html:div>[class]{subscribe-block}[style]{margin: 1.6em 0 1em 0;}{
-    \hr
-   \<html:h1>{Subscribe by email \<html:a>[class]{slug}[href]{/0002/atom.xml}{[rss]}}
-   \<html:p>[style]{margin: 0.4em 0 0.8em 0;}{New posts in full, whenever I publish. Nothing else.}
+  \<html:div>[class]{subscribe-block}[style]{margin: 2.3em 0 1em 0;}{
+   \<html:div>[style]{
+    width: 7.8em;
+    height: 1px;
+    background-color: rgb(\cal-neutral-rule);
+    margin-bottom: 1.3em;
+   }{}
+   \<html:h1>[style]{
+    display: block;
+    margin: 0 0 0.57em 0;
+    font-family: var(--sans);
+    font-size: 0.71em;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: rgb(\cal-neutral);
+   }{Subscribe by email \<html:a>[class]{slug}[href]{/0002/atom.xml}[style]{letter-spacing: 0; text-transform: none;}{[rss]}}
+   \<html:p>[style]{margin: 0 0 1.04em 0; font-size: 0.96em;}{New posts in full, whenever I publish. Nothing else.}
    \<html:form>[class]{embeddable-buttondown-form}[method]{post}[action]{https://buttondown.com/api/emails/embed-subscribe/kanarios}[style]{
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    gap: 18px;
+    gap: 0.6em;
    }{
     \<html:input>[type]{email}[name]{email}[placeholder]{you@example.com}[required]{required}[style]{
      flex: 0 0 auto;
-     width: 200px;
-     padding: 0.15em 0.1em 4px 0.1em;
-     border: none;
-     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-     border-radius: 0;
-     background-color: transparent;
-     font: inherit;
-     line-height: inherit;
+     width: 240px;
+     max-width: 100\%;
+     padding: 0.53em 0.76em;
+     border: 1px solid rgb(198, 198, 198);
+     border-radius: 3px;
+     background-color: rgb(246, 246, 246);
+     color: inherit;
+     font-family: var(--sans);
+     font-size: 0.89em;
+     line-height: 1.35;
     }{}
     \<html:input>[type]{hidden}[name]{embed}[value]{1}{}
     \<html:input>[type]{submit}[value]{Subscribe}[style]{
      flex: 0 0 auto;
-     padding: 0.15em 0.1em 4px 0.1em;
-     border: none;
-     border-bottom: 1px solid currentColor;
-     border-radius: 0;
-     background-color: transparent;
-     color: inherit;
-     font: inherit;
-     line-height: inherit;
+     padding: 0.53em 1.06em;
+     border: 1px solid rgb(51, 64, 90);
+     border-radius: 3px;
+     background-color: rgb(51, 64, 90);
+     color: rgb(255, 255, 255);
+     font-family: var(--sans);
+     font-size: 0.89em;
+     line-height: 1.35;
      cursor: pointer;
+     transition: background-color 120ms ease, border-color 120ms ease;
     }{}
    }
   }
