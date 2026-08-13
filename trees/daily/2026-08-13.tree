@@ -1,0 +1,40 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Thursday, August 13, 2026}
+\date{2026-08-13T10:28:01Z}
+
+\p{
+\em{Of things that are external, happen what will to that which can suffer by external accidents. Those things that suffer let them complain themselves, if they will; as for me, as long as I conceive no such thing, that that which is happened is evil, I have no hurt; and it is in my power not to conceive any such thing.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 7 §11
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Ex 4.1 — Param count for D=4096, F=4D, V=32k, L=64}
+      \li{Ex 4.2 — FLOPs for a sharded A . W}
+      \li{Read: Sparsity/MoE, gradient checkpointing, KV caching}
+      \li{Derive 6ND from scratch, on paper, without looking}
+      \li{Ex 4.4 — Arithmetic intensity of self-attention}
+      \li{Read: Rule of thumb for Transformer FLOPs + fractional cost of attention}
+      \li{Ex 4.5 — Seq length where attention FLOPs = QKVO FLOPs}
+      \li{Ex 4.3 — FLOPs for a general tensor contraction}
+      \li{Read: Global FLOPs and Params: MLPs, attention, other ops}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Set up easy testing / profiling with skypilot}
+      \li{Read: Axon Paper}
+      \li{Read: Mirage Paper}
+      \li{Play around in codebase for 2hr}
+    }
+  }
+}
+}
+
+\p{\strong{6:28 AM}}
+\hr
+\p{We large and in charge!}
