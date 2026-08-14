@@ -5,7 +5,7 @@
 \tag{public}
 \title{Distributed Shared Memory (GPU)}
 
-\p{Because the [CTAs](W2D5) in a cluster live on neighboring [SMs](OGCS6) connected by a dedicated SM-to-SM network, the shared memory of all CTAs in the cluster is exposed as a single logical address space. A thread in one CTA can read/write/atomic into another CTA's shared memory directly, without round-tripping through global memory (L2/DRAM).}
+\p{Because the [CTAs](W2D5) in a [cluster](695N) live on neighboring [SMs](OGCS6) connected by a dedicated SM-to-SM network, the shared memory of all CTAs in the cluster is exposed as a single logical address space. A thread in one CTA can read/write/atomic into another CTA's shared memory directly, without round-tripping through global memory (L2/DRAM).}
 
 \codeblockf{cooperative_group.cu}{cpp}{\verb<<<|
 #include <cooperative_groups.h>

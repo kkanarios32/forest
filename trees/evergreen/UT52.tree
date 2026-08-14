@@ -1,0 +1,57 @@
+\date{2026-08-14T18:53:48Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{NVIDIA architecture targets}
+\tag{public}
+\tag{note}
+
+\p{An \code{sm_XX} target is the compute capability a [GPU](82U4) kernel is compiled against — \code{nvcc -arch=sm_90a} — and it names an instruction surface, not a performance tier. What follows is the coverage a [tensor-core](EGSP) kernel actually has to care about: which MMA instruction family exists, and which of the asynchronous data-movement features it depends on came with it.}
+
+\scrolltable{
+\tr{
+  \th{Target}
+  \th{SKU}
+  \th{Tensor-core path and notable features}
+}
+\tr{
+  \ntd{\code{sm_80}}
+  \ntd{A100}
+  \td{\code{mma.sync}, \code{ldmatrix}, \code{cp.async}; no [TMA](JHA9), [clusters](695N), or [TMEM](YCAO)}
+}
+\tr{
+  \ntd{\code{sm_89}}
+  \ntd{L40S / RTX 6000 Ada}
+  \td{\code{mma.sync}, \code{ldmatrix}, \code{cp.async}; [FP8](DEQV) tensor cores, no TMA or TMEM}
+}
+\tr{
+  \ntd{\code{sm_90a}}
+  \ntd{H100 / H200}
+  \td{\code{wgmma} + \code{mma.sync}; [TMA](JHA9), [thread-block clusters](695N), async barriers, [DSM](OGCS8)}
+}
+\tr{
+  \ntd{\code{sm_100a}}
+  \ntd{B200}
+  \td{\code{tcgen05.mma} + [TMEM](YCAO); 2-CTA MMA (\code{cta_group::2}), \code{tcgen05.ld} / \code{.cp} / \code{.shift}}
+}
+\tr{
+  \ntd{\code{sm_103a}}
+  \ntd{B300}
+  \td{adds \code{tcgen05.ld.red}, #{K = 96} block-scaled MMA}
+}
+\tr{
+  \ntd{\code{sm_120a}}
+  \ntd{RTX 5090 / RTX PRO 6000}
+  \td{\code{mma.sync} + \code{ldmatrix}, [TMA](JHA9), [clusters](695N), [DSM](OGCS8); no \code{tcgen05} or TMEM}
+}
+\tr{
+  \ntd{\code{sm_121a}}
+  \ntd{DGX Spark (GB10)}
+  \td{same instruction surface as \code{sm_120a}, separate cubin, different SFU rates}
+}
+}
+
+\p{Read down the third column and the datacenter line tells one story: each generation moves the matrix multiply further away from the individual thread. \code{mma.sync} is issued by a [warp](X9VZ) and the operands live in its registers; \code{wgmma} is issued by a warpgroup of four and can read the #{A} operand straight out of [shared memory](8GZN); \code{tcgen05.mma} is issued by a single thread on behalf of a [CTA](W2D5) pair and keeps its accumulator in [[YCAO]], a memory the register file does not see. The data movement follows the same arc — \code{cp.async} is a per-thread copy, [[JHA9]] is a descriptor a single thread hands to a hardware engine.}
+
+\p{The trap in the table is \code{sm_120a}. Consumer Blackwell shares the marketing generation with B200 but not the tensor-core path: it has Hopper-era conveniences (TMA, clusters, [[OGCS8]]) and Ampere-era MMA, with no \code{tcgen05} and no TMEM at all. A kernel written against \code{sm_100a} does not merely run slower on a 5090 — it does not compile. Treat \code{sm_120a} as the branch point in a kernel's dispatch, not as a small delta from \code{sm_100a}.}
+
+\remark{The trailing \code{a} means \em{architecture-specific}: the target enables instructions exclusive to that exact chip and gives up forward compatibility, so the resulting cubin will not PTX-JIT onto a later architecture the way a plain \code{sm_90} binary would. Every generation from Hopper on ships its tensor-core ISA only behind an \code{a} target, which is why a real build matrix has one entry per row above rather than one per generation. \code{sm_121a} is the extreme case — the same instruction surface as \code{sm_120a} and still its own cubin.}

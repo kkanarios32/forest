@@ -9,7 +9,6 @@
 \p{Primarily a collection of Anki cards with a few notes. Solutions can be found in the [solution manual](KZR4).}
 
 \section{All about rooflines}{
-  \put\transclude/toc{false}
   \transclude{6KRX}
   \transclude{BPS8}
   \transclude{KVM8}
@@ -23,19 +22,26 @@
 }
 
 \section{What is a TPU?}{
-  \put\transclude/toc{false}
   \transclude{IO2I}
   \transclude{OGCRQ}
+  \transclude{SXP6}
   \transclude{OGCRP}
-  \transclude{HPSO}
   \transclude{R3DP}
   \transclude{OGCRN}
-  \transclude{JFWY}
   \transclude{MZIY}
   \transclude{026G}
   \transclude{590O}
 }
 
 \section{Sharded Matrices and How to Multiply Them}{
-
+  \figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/img/shard-matmul-1.png}}{}
+  \figcaption{Case 1: No communication needed}
+  }
+  \transclude{QJX1}
+  \transclude{VSDZ}
+  \transclude{U351}
+  \transclude{CAGW}
+  \transclude{T470}
+  \transclude{41OF}
 }

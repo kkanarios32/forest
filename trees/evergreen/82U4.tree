@@ -31,3 +31,7 @@
 \transclude{OGCS7}
 \transclude{OGCS6}
 \transclude{W2D5}
+
+\p{None of the above is one machine. Each generation adds instructions the previous one cannot express — a [[EGSP]] MMA, an asynchronous copy engine, a memory the register file cannot see — and a kernel is compiled against exactly one of them:}
+
+\transclude{UT52}

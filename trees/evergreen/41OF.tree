@@ -1,0 +1,47 @@
+\date{2026-08-14T11:30:40Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Collectives summary}
+\tag{public}
+\tag{note}
+
+\p{The four collectives that [sharded](XGI0) matmuls actually need, in the \citek{scaling-book} notation: a subscript is a mesh axis the array is split along, and #{\{U_X\}} marks an array that is \em{unreduced} along #{X} — every device holds a full-size partial sum. A collective is then a rewrite of that decoration, and its cost is a function of how many bytes have to cross the [ICI](UEA0) to do it.}
+
+\scrolltable{
+\tr{
+  \th{Operation}
+  \th{Description}
+  \th{Syntax}
+  \th{Runtime}
+}
+\tr{
+  \td{[[VSDZ]]}
+  \td{Gathers all the shards of a sharded array along an axis, removing a subscript.}
+  \ntd{#{[A_X, B] \to [A, B]}}
+  \td{#{\text{bytes} / (W_{\mathrm{ici}}^{\text{bidi}} \cdot \text{num\_axes})}}
+}
+\tr{
+  \td{[[CAGW]]}
+  \td{Sums a partially summed array along an axis and shards it along another axis, adding a subscript.}
+  \ntd{#{[A, B]\{U_X\} \to [A_X, B]}}
+  \td{Same as AllGather}
+}
+\tr{
+  \td{[[U351]]}
+  \td{Sums a partially summed array along an axis, removing the #{\{U_X\}}. Combines an AllGather and a ReduceScatter.}
+  \ntd{#{[A_X, B]\{U_Y\} \to [A_X, B]}}
+  \td{#{2 \times} AllGather}
+}
+\tr{
+  \td{[[T470]]}
+  \td{Gathers (replicates) an axis and shards a different dimension along the same axis.}
+  \ntd{#{[A, B_X] \to [A_X, B]}}
+  \td{AllGather / 4 for a bidirectional ring}
+}
+}
+
+\p{Only two of these are primitives. An AllReduce is a ReduceScatter followed by an AllGather, which is exactly why it costs [twice as much](MJ7A), and the practical consequence is that you should stop at the ReduceScatter whenever the consumer can accept a sharded input. AllGather and ReduceScatter are [transposes of each other](HIDN) and hence each other's derivative, so a forward-pass AllGather implies a ReduceScatter on the reverse-mode gradients.}
+
+\remark{The runtime column is written relative to the AllGather because every entry is the same ring pass over the same #{V} bytes — the only thing that changes is how far each byte travels. An AllToAll is #{4\times} cheaper because a shard's destination is on average a quarter of the ring away rather than all the way around, and no byte is broadcast to every device \citet{Ex 3.10}{scaling-book}. The #{\text{num\_axes}} factor in the AllGather row is the trick from \citet{Ex 3.2}{scaling-book}: gathering over two mesh axes at once buys you both axes' bandwidth.}
+
+\remark{Notice what is \em{absent} from the runtime column: the number of devices. A ring collective moves #{V} bytes off each chip [regardless of how big the ring is](RBEJ), so cost depends on the array and the link, not the mesh size, which is what makes these affordable at pod scale and why the [roofline](scaling-ch1) question is comms-vs-FLOPs rather than comms-vs-devices.}
