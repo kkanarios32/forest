@@ -1,0 +1,34 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Monday, August 17, 2026}
+\date{2026-08-17T11:45:08Z}
+
+\p{
+\em{To wipe away fancy, to use deliberation, to quench concupiscence, to keep the mind free to herself.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 9 §6
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Ex 3.7}
+      \li{Ex 3.9}
+      \li{Ex 3.10}
+      \li{Grok AllToAll}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Read: https://arxiv.org/pdf/2608.12629}
+    }
+  }
+}
+}
+
+\p{\strong{7:45 AM}}
+\hr
+
+\question{Does how you shard the inner dimension matter at all?}
+\answer{Yes, #{D_x, D_y} you cannot do anything off-diagonal}
