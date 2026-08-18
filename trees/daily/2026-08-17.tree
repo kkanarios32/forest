@@ -27,8 +27,20 @@
 }
 }
 
-\p{\strong{7:45 AM}}
-\hr
-
-\question{Does how you shard the inner dimension matter at all?}
-\answer{Yes, #{D_x, D_y} you cannot do anything off-diagonal}
+\section{Reflection}{
+\ul{
+  \li{\strong{Study}}
+  \ul{
+    \tdtaskx{}{Grok AllToAll}
+    \tdtaskx{}{Ex 3.10}
+    \tdtaskx{}{Ex 3.9}
+    \tdtaskx{}{Ex 3.7}
+  }
+  \li{\strong{Work}}
+  \ul{
+    \tdtaskx{}{Read: https://arxiv.org/pdf/2608.12629 first pass}
+  }
+}
+\p{\strong{What went well today?} I once again was pretty good about my [[scaling-book]] study. The no technology setup actually worked pretty well as I got through the first pass of [[yeCAKECompilerAgentCoDesign2026]]. The paper is pretty bare bones, so I do not know if I will do another pass.}
+\p{\strong{What went bad today?} As I transition into my peaking block for running, I now know that high-intensity run is an absolute energy zapper for the rest of the day. From now on, any high pace work will be deferred until the end of the day.}
+}
