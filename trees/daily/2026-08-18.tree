@@ -1,0 +1,35 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Tuesday, August 18, 2026}
+\date{2026-08-18T11:38:14Z}
+
+\p{
+\em{Make it not any longer a matter of dispute or discourse, what are the signs and proprieties of a good man, but really and actually to be such.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 10 §18
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Study}
+    \ul{
+      \li{Ex. 3.8}
+      \li{Get minimal distributed matmul directory on TPU working.}
+      \li{Read: https://arxiv.org/pdf/2202.03293 first pass}
+      \li{Read: Counting dots}
+      \li{Read: Transformer accounting}
+      \li{Read: Global FLOPs and Params Calculation}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Write up + get answer to questions on CAKE}
+    }
+  }
+}
+}
+
+\p{\strong{7:38 AM}}
+\hr
+\p{General rule #{2\times } contracting dims + batch dims (only counted once each across matrices) #{\times } other dims.}
+\p{Forward pass matmul is just #{2NPM} FLOPs. However, backward pass we have #{C = A\cdot B} needs #{\frac{\partial L}{\partial A} = \left(\frac{\partial L}{\partial C} \right)B^T } which is #{2NPM} FLOPs and #{\frac{\partial L}{\partial B} = A^T \left(\frac{\partial L}{\partial C} \right) } which is #{2NPM} FLOPs.}
