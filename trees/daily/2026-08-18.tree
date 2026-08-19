@@ -33,3 +33,33 @@
 \hr
 \p{General rule #{2\times } contracting dims + batch dims (only counted once each across matrices) #{\times } other dims.}
 \p{Forward pass matmul is just #{2NPM} FLOPs. However, backward pass we have #{C = A\cdot B} needs #{\frac{\partial L}{\partial A} = \left(\frac{\partial L}{\partial C} \right)B^T } which is #{2NPM} FLOPs and #{\frac{\partial L}{\partial B} = A^T \left(\frac{\partial L}{\partial C} \right) } which is #{2NPM} FLOPs.}
+
+\p{\strong{8:11 AM}}
+\hr
+\p{\paragraph{Counting flops} First, just going over standard attention}
+\ul{
+  \li{Input #{X[B, T, D]}}
+  \li{#{W_K[D, K, H]}, #{W_V[D, K, H]}, #{W_Q[D, N, H]}}
+}
+\notation{We use #{S} for KV sequence length #{T} for #{Q} sequence length. We use #{K} for number of KV heads and #{N} for number of #{Q} heads.}
+\p{This gives us #{6BSDKH} total FLOPs for #{W_K} matmul with output shape #{[B, S, K, H]} and #{6BTDNH} for #{W_Q} matmul with output shape #{[B, T, N, H]}.}
+\p{We then have to do the #{QK^T} dot product. For multi-head attention, heads are a batched axis. Therefore, this is a contraction over #{H}, which are #{[T,H] \times [H, S]} matmuls or #{6BNTHS} FLOPs. For [GQA](XUVV) or [MQA](W4YP), the FLOPs are unchanged and you instead save on memory. This means doing the matmuls for each of the #{N} #{Q} heads but the thing being multiplied is redundant and only needs to be stored once.}
+
+\p{\strong{9:16 AM}}
+\hr
+
+\p{We also have the intermediate #{W_V[D, K, H]} matmul to get #{V}, which is another #{6BSDKH} FLOPs.}
+\p{Ignoring the elementwise [[C00V]] FLOPs, we then have to matmul #{\mathrm{softmax}(QK^T)\cdot V}. The #{QK^T} matrix has shape #{[B, N, T, S]} and #{V} has shape #{[B, S, K, H]}. The contracting dimension here is now #{S}, but we once again have to perform the FLOPs as if #{N = K}. Therefore, it is #{6BNTSH} FLOPs.}
+
+\p{\paragraph{MOE} A \em{mixture-of-experts} model just has #{E} MLPs in a layer, where a \em{gating function} chooses #{k} subset of them for #{k \ll E}. #{\frac{E}{k}} is called the \em{sparsity}. [Deepseek v3](deepseek-aiDeepSeekV3TechnicalReport2025) has #{k = 8} and #{E = 256}.}
+
+\p{\paragraph{Gradient checkpoining} In the backward pass, from chain rule, we need to re-compute all of the activations. As we have spent this whole chapter discussing, these matrix multiplications take substantial FLOPs. To get around this, we can trade FLOPs for memory by saving the activations in the forward pass. If you store nothing, then at each layer #{n} to get the activation output you need to do all the previous #{n - 1} layers forward passes. Thus, you have #{\frac{L(L-1)}{2} = O(L^2)} re-computation.}
+\ul{
+  \li{We can make this linear by just storing the inputs to each layer, which is \em{block rematerialization}. Then we just pay the FLOP cost within a block, which is just another #{2\cdot}num params #{\cdot}num tokens.}
+\li{We can more aggressively store big matrix multiplication outputs within a layer to save on FLOPs but require additional memory.}
+}
+\transclude{TJLA}
+
+\p{\strong{9:43 PM}}
+\hr
+\p{\em{Injection bandwidth} captures the bandwidth of the network \strong{dependent on the traffic} i.e. the bandwidth of a network is lower if the maximum channel load is high because a lot of packets are flowing through the same link.}
