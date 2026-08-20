@@ -3,20 +3,15 @@
 \date{2024}
 \author/literal{JAX Authors}
 \taxon{Reference}
-\meta{external}{
-         https://github.com/jax-ml/jax/blob/main/jax/experimental/pallas/ops/tpu/splash_attention/splash_attention_kernel.py
-         }
+\meta{external}{https://github.com/jax-ml/jax/blob/main/jax/experimental/pallas/ops/tpu/splash_attention/splash_attention_kernel.py}
 
 \meta{bibtex}{\startverb
 @misc{splash_attention,
  title = {Splash Attention: Sparse Flash Attention for {TPU}},
  author = {{JAX Authors}},
  year = {2024},
- url = {
-https://github.com/jax-ml/jax/blob/main/jax/experimental/pallas/ops/tpu/splash_attention/splash_attention_kernel.py
-},
+ url = {https://github.com/jax-ml/jax/blob/main/jax/experimental/pallas/ops/tpu/splash_attention/splash_attention_kernel.py},
  urldate = {2026-08-10},
- note = {Part of {JAX}, \texttt{jax.experimental.pallas.ops.tpu.splash\_
-attention}}
+ note = {Part of {JAX}, \texttt{jax.experimental.pallas.ops.tpu.splash\_attention}}
 }
 \stopverb}

@@ -7,14 +7,12 @@
 
 \meta{bibtex}{\startverb
 @misc{toulme2026xla,
- title = {When {XLA} Isn't Enough: From {Pallas} to {VLIW} with {Splash}
-Attention on {TPU}},
+ title = {When {XLA} Isn't Enough: From {Pallas} to {VLIW} with {Splash} Attention on {TPU}},
  author = {Toulme, Patrick C.},
  year = {2026},
  url = {https://patricktoulme.substack.com/p/when-xla-isnt-enough-from-pallas},
  urldate = {2026-08-10},
- howpublished = {Blog post, \emph{Just a Byte --- AI Compilers, Silicon, and
-Systems}},
+ howpublished = {Blog post, \emph{Just a Byte --- AI Compilers, Silicon, and Systems}},
  month = {January}
 }
 \stopverb}

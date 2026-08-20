@@ -1,0 +1,23 @@
+% ["refs"]
+\title{1.1 Computing’s energy problem (and what we can do about it)}
+\date{2014-02}
+\author/literal{Mark Horowitz}
+\taxon{Reference}
+\meta{doi}{10.1109/ISSCC.2014.6757323}
+\meta{bibtex}{\startverb
+@inproceedings{horowitz11ComputingsEnergy2014,
+ title = {1.1 {{Computing}}'s Energy Problem (and What We Can Do about It)},
+ author = {Horowitz, Mark},
+ year = {2014},
+ isbn = {978-1-4799-0920-9 978-1-4799-0918-6},
+ doi = {10.1109/ISSCC.2014.6757323},
+ urldate = {2026-08-18},
+ booktitle = {2014 {{IEEE International Solid-State Circuits Conference Digest}} of {{Technical Papers}} ({{ISSCC}})},
+ pages = {10--14},
+ publisher = {IEEE},
+ address = {San Francisco, CA, USA},
+ file = {/home/kellen/Downloads/papers/1.1 Computing's energy problem (and what we can do about it) - Horowitz.pdf},
+ langid = {english},
+ month = {February}
+}
+\stopverb}

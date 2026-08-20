@@ -1,0 +1,26 @@
+% ["refs"]
+\title{Ten Lessons From Three Generations Shaped Google’s TPUv4i : Industrial Product}
+\date{2021-06}
+\author/literal{Norman P. Jouppi}\author/literal{Doe Hyun Yoon}\author/literal{Matthew Ashcraft}\author/literal{Mark Gottscho}\author/literal{Thomas B. Jablin}\author/literal{George Kurian}\author/literal{James Laudon}\author/literal{Sheng Li}\author/literal{Peter Ma}\author/literal{Xiaoyu Ma}\author/literal{Thomas Norrie}\author/literal{Nishant Patil}\author/literal{Sushma Prasad}\author/literal{Cliff Young}\author/literal{Zongwei Zhou}\author/literal{David Patterson}
+\taxon{Reference}
+\meta{doi}{10.1109/ISCA52012.2021.00010}
+\meta{bibtex}{\startverb
+@inproceedings{jouppiTenLessonsThree2021,
+ title = {Ten {{Lessons From Three Generations Shaped Google}}'s {{TPUv4i}} : {{Industrial Product}}},
+ author = {Jouppi, Norman P. and Hyun Yoon, Doe and Ashcraft, Matthew and Gottscho, Mark and Jablin, Thomas B. and Kurian, George and Laudon, James and Li, Sheng and Ma, Peter and Ma, Xiaoyu and Norrie, Thomas and Patil, Nishant and Prasad, Sushma and Young, Cliff and Zhou, Zongwei and Patterson, David},
+ year = {2021},
+ isbn = {978-1-6654-3333-4},
+ doi = {10.1109/ISCA52012.2021.00010},
+ urldate = {2026-08-16},
+ booktitle = {2021 {{ACM}}/{{IEEE}} 48th {{Annual International Symposium}} on {{Computer Architecture}} ({{ISCA}})},
+ pages = {1--14},
+ publisher = {IEEE},
+ address = {Valencia, Spain},
+ file = {/home/kellen/Downloads/papers/Ten Lessons From Three Generations Shaped Google’s TPUv4i  Industrial Product - Jouppi et al..pdf},
+ langid = {english},
+ copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html},
+ abstract = {Google deployed several TPU generations since 2015, teaching us lessons that changed our views: semiconductor technology advances unequally; compiler compatibility trumps binary compatibility, especially for VLIW domain-specific architectures (DSA); target total cost of ownership vs initial cost; support multi-tenancy; deep neural networks (DNN) grow 1.5X annually; DNN advances evolve workloads; some inference tasks require floating point; inference DSAs need air-cooling; apps limit latency, not batch size; and backwards ML compatibility helps deploy DNNs quickly. These lessons molded TPUv4i, an inference DSA deployed since 2020.},
+ month = {June},
+ shorttitle = {Ten {{Lessons From Three Generations Shaped Google}}'s {{TPUv4i}}}
+}
+\stopverb}

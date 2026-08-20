@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Triton for MTIA: Bridging the Programming Model Gaps for Custom AI Accelerators}
+\date{2026-08}
+\author/literal{Haishan Zhu}\author/literal{Domi Yan}\author/literal{Michael Levesque-Dion}\author/literal{Changxu Zhang}\author/literal{Mitch Gamburg}\author/literal{Kirsten Lee}\author/literal{Giancarlo Colmenares}\author/literal{Aditya Bhagwat}\author/literal{Arnab De}\author/literal{Markus Le Roux}\author/literal{Victor Perez Carrasco}\author/literal{Xin Tong}\author/literal{Will Cromar}\author/literal{Simran Barnwal}\author/literal{Andrew Uderian}\author/literal{Sridhar Gopinath}\author/literal{Jan Szczepaniec}\author/literal{Daniel Neilson}\author/literal{Blaine Burton Rister}\author/literal{Jordan Fix}\author/literal{Jazlyn Li}\author/literal{Zejun Huang}\author/literal{Lite Ye}\author/literal{Nan Zhang}\author/literal{Xinchen Guo}\author/literal{Andiry Xu}\author/literal{Michael Roberts}\author/literal{Kunming Ho}\author/literal{Site Cao}\author/literal{Suryadev Sahadevan Rajesh}\author/literal{Tristan Trouwen}\author/literal{Mike Tsai}\author/literal{Jake Lee}\author/literal{Wayne Su}\author/literal{Yuhan Chen}\author/literal{Xiaolong Xie}\author/literal{David Eklov}\author/literal{Aaron Barnes}\author/literal{Max Bremer}\author/literal{Adam Belay}\author/literal{Shintaro Iwasaki}\author/literal{Roman Levenstein}\author/literal{Ajit Mathews}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2608.00325}
+\meta{external}{https://arxiv.org/abs/2608.00325}
+
+\meta{bibtex}{\startverb
+@misc{zhuTritonMTIABridging2026,
+ title = {Triton for {{MTIA}}: {{Bridging}} the {{Programming Model Gaps}} for {{Custom AI Accelerators}}},
+ author = {Zhu, Haishan and Yan, Domi and {Levesque-Dion}, Michael and Zhang, Changxu and Gamburg, Mitch and Lee, Kirsten and Colmenares, Giancarlo and Bhagwat, Aditya and De, Arnab and Roux, Markus Le and Carrasco, Victor Perez and Tong, Xin and Cromar, Will and Barnwal, Simran and Uderian, Andrew and Gopinath, Sridhar and Szczepaniec, Jan and Neilson, Daniel and Rister, Blaine Burton and Fix, Jordan and Li, Jazlyn and Huang, Zejun and Ye, Lite and Zhang, Nan and Guo, Xinchen and Xu, Andiry and Roberts, Michael and Ho, Kunming and Cao, Site and Rajesh, Suryadev Sahadevan and Trouwen, Tristan and Tsai, Mike and Lee, Jake and Su, Wayne and Chen, Yuhan and Xie, Xiaolong and Eklov, David and Barnes, Aaron and Bremer, Max and Belay, Adam and Iwasaki, Shintaro and Levenstein, Roman and Mathews, Ajit},
+ year = {2026},
+ doi = {10.48550/arXiv.2608.00325},
+ urldate = {2026-08-19},
+ number = {arXiv:2608.00325},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Triton for MTIA Bridging the Programming Model Gaps for Custom AI Accelerators - Zhu et al..pdf},
+ keywords = {Computer Science - Programming Languages},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {The rapid growth in machine learning workloads has fueled the proliferation of custom accelerator architectures. Designed from the ground up, these accelerators often expose programming models that are distinct from GPUs. While hyperscalers and AI chip startups continue to innovate in this space, achieving broad operator coverage to support diverse models remains a major challenge. Additionally, an easy-to-use, high-level kernel programming language is important for rapid iteration of models and kernels. Triton, together with TorchInductor, addresses these issues on GPUs, but its viability on accelerators with different programming models has yet to be established. In this work, we present the first production-scale application of Triton on a custom ML accelerator, MTIA-2i, developed by Meta. To support MTIA-2i, we develop a new compiler backend that targets it, introduce enhancements to TorchInductor code generation, and propose minimal language extensions that expose MTIA-specific architectural features. We demonstrate that Triton-MTIA kernels achieve performance competitive with expert-tuned C++ implementations. Leveraging these development efficiency gains, we successfully deployed manually written and Inductor-generated Triton kernels in production across approximately 60 different model types, accounting for 50\% of layers and 47\% of non-GEMM execution time for these models. Our results provide compelling evidence that DSLs like Triton can bridge the programming model gaps between ML frameworks, kernels, and custom accelerators, enabling rapid innovation and efficient deployment at scale.},
+ primaryclass = {cs.PL},
+ eprint = {2608.00325},
+ month = {August},
+ shorttitle = {Triton for {{MTIA}}}
+}
+\stopverb}

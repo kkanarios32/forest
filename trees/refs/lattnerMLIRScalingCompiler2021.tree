@@ -1,0 +1,21 @@
+% ["refs"]
+\title{MLIR: Scaling Compiler Infrastructure for Domain Specific Computation}
+\date{2021-02}
+\author/literal{Chris Lattner}\author/literal{Mehdi Amini}\author/literal{Uday Bondhugula}\author/literal{Albert Cohen}\author/literal{Andy Davis}\author/literal{Jacques Pienaar}\author/literal{River Riddle}\author/literal{Tatiana Shpeisman}\author/literal{Nicolas Vasilache}\author/literal{Oleksandr Zinenko}
+\taxon{Reference}
+\meta{doi}{10.1109/CGO51591.2021.9370308}
+\meta{bibtex}{\startverb
+@inproceedings{lattnerMLIRScalingCompiler2021,
+ title = {{{MLIR}}: {{Scaling Compiler Infrastructure}} for {{Domain Specific Computation}}},
+ author = {Lattner, Chris and Amini, Mehdi and Bondhugula, Uday and Cohen, Albert and Davis, Andy and Pienaar, Jacques and Riddle, River and Shpeisman, Tatiana and Vasilache, Nicolas and Zinenko, Oleksandr},
+ year = {2021},
+ doi = {10.1109/CGO51591.2021.9370308},
+ urldate = {2026-08-18},
+ booktitle = {2021 {{IEEE}}/{{ACM International Symposium}} on {{Code Generation}} and {{Optimization}} ({{CGO}})},
+ pages = {2--14},
+ keywords = {Buildings,Generators,Hardware,Optimization,Program processors,Semantics,Software},
+ abstract = {This work presents MLIR, a novel approach to building reusable and extensible compiler infrastructure. MLIR addresses software fragmentation, compilation for heterogeneous hardware, significantly reducing the cost of building domain specific compilers, and connecting existing compilers together. MLIR facilitates the design and implementation of code generators, translators and optimizers at different levels of abstraction and across application domains, hardware targets and execution environments. The contribution of this work includes (1) discussion of MLIR as a research artifact, built for extension and evolution, while identifying the challenges and opportunities posed by this novel design, semantics, optimization specification, system, and engineering. (2) evaluation of MLIR as a generalized infrastructure that reduces the cost of building compilers-describing diverse use-cases to show research and educational opportunities for future programming languages, compilers, execution environments, and computer architecture. The paper also presents the rationale for MLIR, its original design principles, structures and semantics.},
+ month = {February},
+ shorttitle = {{{MLIR}}}
+}
+\stopverb}

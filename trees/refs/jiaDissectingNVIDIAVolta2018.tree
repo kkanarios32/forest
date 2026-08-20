@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Dissecting the NVIDIA Volta GPU Architecture via Microbenchmarking}
+\date{2018-04}
+\author/literal{Zhe Jia}\author/literal{Marco Maggioni}\author/literal{Benjamin Staiger}\author/literal{Daniele P. Scarpazza}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.1804.06826}
+\meta{external}{https://arxiv.org/abs/1804.06826}
+
+\meta{bibtex}{\startverb
+@misc{jiaDissectingNVIDIAVolta2018,
+ title = {Dissecting the {{NVIDIA Volta GPU Architecture}} via {{Microbenchmarking}}},
+ author = {Jia, Zhe and Maggioni, Marco and Staiger, Benjamin and Scarpazza, Daniele P.},
+ year = {2018},
+ doi = {10.48550/arXiv.1804.06826},
+ urldate = {2026-08-16},
+ number = {arXiv:1804.06826},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Dissecting the NVIDIA Volta GPU Architecture via Microbenchmarking - Jia et al..pdf},
+ keywords = {Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Performance},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Every year, novel NVIDIA GPU designs are introduced. This rapid architectural and technological progression, coupled with a reluctance by manufacturers to disclose low-level details, makes it difficult for even the most proficient GPU software designers to remain up-to-date with the technological advances at a microarchitectural level. To address this dearth of public, microarchitectural-level information on the novel NVIDIA GPUs, independent researchers have resorted to microbenchmarks-based dissection and discovery. This has led to a prolific line of publications that shed light on instruction encoding, and memory hierarchy's geometry and features at each level. Namely, research that describes the performance and behavior of the Kepler, Maxwell and Pascal architectures. In this technical report, we continue this line of research by presenting the microarchitectural details of the NVIDIA Volta architecture, discovered through microbenchmarks and instruction set disassembly. Additionally, we compare quantitatively our Volta findings against its predecessors, Kepler, Maxwell and Pascal.},
+ primaryclass = {cs.DC},
+ eprint = {1804.06826},
+ month = {April}
+}
+\stopverb}

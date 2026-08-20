@@ -1,0 +1,25 @@
+% ["refs"]
+\title{TPU v4: An Optically Reconfigurable Supercomputer for Machine Learning with Hardware Support for Embeddings}
+\date{2023-06}
+\author/literal{Norm Jouppi}\author/literal{George Kurian}\author/literal{Sheng Li}\author/literal{Peter Ma}\author/literal{Rahul Nagarajan}\author/literal{Lifeng Nai}\author/literal{Nishant Patil}\author/literal{Suvinay Subramanian}\author/literal{Andy Swing}\author/literal{Brian Towles}\author/literal{Clifford Young}\author/literal{Xiang Zhou}\author/literal{Zongwei Zhou}\author/literal{David A Patterson}
+\taxon{Reference}
+\meta{doi}{10.1145/3579371.3589350}
+\meta{bibtex}{\startverb
+@inproceedings{jouppiTPUV4Optically2023,
+ title = {{{TPU}} v4: {{An Optically Reconfigurable Supercomputer}} for {{Machine Learning}} with {{Hardware Support}} for {{Embeddings}}},
+ author = {Jouppi, Norm and Kurian, George and Li, Sheng and Ma, Peter and Nagarajan, Rahul and Nai, Lifeng and Patil, Nishant and Subramanian, Suvinay and Swing, Andy and Towles, Brian and Young, Clifford and Zhou, Xiang and Zhou, Zongwei and Patterson, David A},
+ year = {2023},
+ isbn = {979-8-4007-0095-8},
+ doi = {10.1145/3579371.3589350},
+ urldate = {2026-08-16},
+ booktitle = {Proceedings of the 50th {{Annual International Symposium}} on {{Computer Architecture}}},
+ pages = {1--14},
+ publisher = {ACM},
+ address = {Orlando FL USA},
+ file = {/home/kellen/Downloads/papers/TPU v4 An Optically Reconfigurable Supercomputer for Machine Learning with Hardware Support for Emb - Jouppi et al..pdf},
+ langid = {english},
+ abstract = {In response to innovations in machine learning (ML) models, production workloads changed radically and rapidly. TPU v4 is the fifth Google domain specific architecture (DSA) and its third supercomputer for such ML models. Optical circuit switches (OCSes) dynamically reconfigure its interconnect topology to improve scale, availability, utilization, modularity, deployment, security, power, and performance; users can pick a twisted 3D torus topology if desired. Much cheaper, lower power, and faster than Infiniband, OCSes and underlying optical components are {$<$}5\% of system cost and {$<$}3\% of system power. Each TPU v4 includes SparseCores, dataflow processors that accelerate models that rely on embeddings by 5x--7x yet use only 5\% of die area and power. Deployed since 2020, TPU v4 outperforms TPU v3 by 2.1x and improves performance/Watt by 2.7x. The TPU v4 supercomputer is 4x larger at 4096 chips and thus nearly 10x faster overall, which along with OCS flexibility and availability allows a large language model to train at an average of \textasciitilde 60\% of peak FLOPS/second. For similar sized systems, it is \textasciitilde 4.3x--4.5x faster than the Graphcore IPU Bow and is 1.2x--1.7x faster and uses 1.3x--1.9x less power than the Nvidia A100. TPU v4s inside the energy-optimized warehouse scale computers of Google Cloud use \textasciitilde 2-6x less energy and produce \textasciitilde 20x less CO2e than contemporary DSAs in typical on-premise data centers.},
+ month = {June},
+ shorttitle = {{{TPU}} V4}
+}
+\stopverb}
