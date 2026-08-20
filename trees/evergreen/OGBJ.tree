@@ -15,11 +15,11 @@
 \p{Finally, we simply allocate space on the stack by subtracting the size of the arguments from \code{esp}. This is the new stack pointer.}
 
 \p{Now we have to return from the function. To do so, we first store the return value in the special register \code{eax}. Then, we must return to where we left off prior to calling the function. Recall that we saved the next instruction address at the top of the stack when we first called the function. There are now other local variables, etc. in the stack so we have to unwind it back. We can do this simply by 
-\pre\verb<<<|
+\codeblock{plaintext}{\verb<<<|
 movl %ebp, %esp
 popl %ebp
 ret
-<<<
+<<<}
 Here, the \code{ret} instruction just pops whatever is on the top of the stack and sets \code{rip} to it.
 }
 \p{We are now back in the calling code with the return value stored in \code{eax}. However, remember that the caller pushed the function parameters onto the stack. Therefore, we must also pop all of these parameters off before continuing execution.}

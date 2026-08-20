@@ -1,0 +1,19 @@
+\date{2026-08-12T14:47:21Z}
+\import{base-macros}
+\author{kellenkanarios}
+\taxon{Definition}
+\title{AllGather}
+\tag{public}
+
+\p{An \em{AllGather} gets resources from all devices onto one device. In [TPU's](NZZ7) [[UEA0]], this is done in #{\frac{N}{2}} hops via each TPU sending its shard to the neighboring chip.}
+\p{
+Assuming we have #{X} shards and the total bytes is #{N}, then each chip must send #{\frac{N}{X}} bytes. If we have an ICI bandwidth of #{W_{\text{ICI}}}, then for each chip to send to its neighbor will be ##{T_{1\text{ hop}} = \frac{N}{X\cdot W_{\text{ICI}}}}
+Now each chip must send across #{X} hops, which gives #{T = X\cdot T_{1\text{ hop}} = \frac{N}{W_{\text{ICI}}}}.\sidenote{This does not change if we use the bi-directional bandwidth because then we have #{2N} bytes but only need to send at most #{\frac{X}{2}} hops!}
+}
+\remark{
+A super fun trick from \citet{Ex 3.2}{scaling-book}: If you have an unused replicated dimension, then you can shard the replicated axis and perform an AllGather over both dimensions to double your bandwidth!
+}
+
+\transclude{RBEJ}
+\transclude{JO4V}
+\transclude{QBBA}

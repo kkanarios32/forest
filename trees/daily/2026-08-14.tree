@@ -1,0 +1,39 @@
+\import{base-macros}
+\author{kellenkanarios}
+\meta{author}{false}
+\tag{private}
+\title{Friday, August 14, 2026}
+\date{2026-08-14T15:37:19Z}
+
+\p{
+\em{Most justly have these things happened unto thee: why dost not thou amend? O but thou hadst rather become good to-morrow, than to be so to-day.} — \strong{Marcus Aurelius}, \em{Meditations}, Book 8 §21
+}
+
+\section{Today's TODOs}{
+\ul{
+  \li{\strong{Tasks}
+    \ul{
+      \li{Weekly review}
+    }
+  }
+  \li{\strong{Work}
+    \ul{
+      \li{Code: Set up easy testing / profiling with skypilot}
+      \li{Read: Axon Paper}
+      \li{Read: Mirage Paper}
+      \li{Play around in codebase for 2hr}
+    }
+  }
+}
+}
+
+\p{\strong{11:37 AM}}
+\hr
+
+\p{\strong{2:53 PM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{UT52}
+}

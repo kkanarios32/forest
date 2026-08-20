@@ -1,0 +1,18 @@
+\date{2026-08-12T15:00:00Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{An unsharded contracting axis needs no comms}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786546736361}
+\meta{anki-deck}{MLSys}
+
+\prompt{[Sharded](XGI0) matmul, case 1: neither multiplicand has a sharded contracting dimension. What communication is required, and what is the output sharding?}{
+  \strong{None at all.} Each device does a local block matmul and the result is already sharded correctly:
+
+  ##{A[I_X, J] \cdot B[J, K_Y] \to C[I_X, K_Y]}
+
+  The contracting axis #{J} is unsharded, so every device holds complete contracting slices and the computation does not depend on the sharding. The output simply inherits the input shardings.
+
+  The one caveat: this holds only if the two inputs' \em{non-contracting} dimensions are not sharded over the same mesh axis — that case is [invalid](QBBA).
+}

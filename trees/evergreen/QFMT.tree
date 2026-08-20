@@ -1,0 +1,16 @@
+\date{2026-08-14T14:07:25Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[[5501]]: 2026-W33}
+\tag{public}
+
+\p{I run. A lot.}
+
+% Running: mileage, obstacles, the plan for next week.
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/33/running.png}}{}
+  \figcaption{Health stats for week 2026-W33.}
+}
+% Habits: consistency, Anki, to-do adherence.
+\p{Yeah I take creatine guys\sidenote{[and you should too](https://pubmed.ncbi.nlm.nih.gov/40395689/).}. Outside of that, I am a bit of a bum. I reduced my stretch routine to a mere 23min and that actually has allowed me to pick my consistency back up. Leetcode is a more of an active choice than laziness. I have grown bearish on the value of the exercise and if I want to throw my name in the DSA rat race. I think my time is better spent on anything [TPU](NZZ7) or [GPU](82U4) related.}
+\p{In addition to my general computer science cards, I have begun to [make a deck](TAAK) for the [scaling book](scaling-book). This is the first time I have been actively reviewing cards as I progress through a book, and it makes \strong{a world of a difference}. Will definitely be doing this for the next book.}

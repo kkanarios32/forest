@@ -1,0 +1,18 @@
+\date{2026-08-12T15:00:02Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Matching contracting shards give partial sums}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786546736136}
+\meta{anki-deck}{MLSys}
+
+\prompt{[Sharded](XGI0) matmul, case 3: both multiplicands are sharded along the contracting dimension on the same mesh axis, #{A[I, J_X] \cdot B[J_X, K]}. What happens, and which primitive fixes it?}{
+  The local shards \em{can} be multiplied — they share contracting indices — but each device ends up with only a \strong{partial sum}, written #{C[I, K]\{U_X\}}, "unreduced along #{X}":
+
+  ##{A \cdot B = \sum_i A[:,i] \otimes B[i,:]}
+
+  Device #{i} owns the #{i}-th column block of #{A} and the #{i}-th row block of #{B}, so it computes exactly the #{i}-th term of that sum.
+
+  \strong{The fix} is [AllReduce](U351) along #{X} for a replicated #{C[I, K]} — or the cheaper #{\mathrm{ReduceScatter}_{X,K} \to C[I, K_X]} if you can leave the output sharded. That is [half the cost](MJ7A), and defers the gather, possibly forever.
+}

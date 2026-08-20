@@ -1,0 +1,27 @@
+% ["refs"]
+\title{Axe: A Simple Unified Layout Abstraction for Machine Learning Compilers}
+\date{2026-01}
+\author/literal{Bohan Hou}\author/literal{Hongyi Jin}\author/literal{Guanjie Wang}\author/literal{Jinqi Chen}\author/literal{Yaxing Cai}\author/literal{Lijie Yang}\author/literal{Zihao Ye}\author/literal{Yaoyao Ding}\author/literal{Ruihang Lai}\author/literal{Tianqi Chen}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2601.19092}
+\meta{external}{https://arxiv.org/abs/2601.19092}
+
+\meta{bibtex}{\startverb
+@misc{houAxeSimpleUnified2026,
+ title = {Axe: {{A Simple Unified Layout Abstraction}} for {{Machine Learning Compilers}}},
+ author = {Hou, Bohan and Jin, Hongyi and Wang, Guanjie and Chen, Jinqi and Cai, Yaxing and Yang, Lijie and Ye, Zihao and Ding, Yaoyao and Lai, Ruihang and Chen, Tianqi},
+ year = {2026},
+ doi = {10.48550/arXiv.2601.19092},
+ urldate = {2026-08-06},
+ number = {arXiv:2601.19092},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/VB3ER9YA/Axe A Simple Unified Layout Abstraction for Machine Learning Compilers - Hou et al..pdf},
+ keywords = {Computer Science - Artificial Intelligence,Computer Science - Distributed Parallel and Cluster Computing,Computer Science - Machine Learning,Computer Science - Programming Languages},
+ archiveprefix = {arXiv},
+ abstract = {Scaling modern deep learning workloads demands coordinated placement of data and compute across device meshes, memory hierarchies, and heterogeneous accelerators. We present Axe Layout, a hardware-aware abstraction that maps logical tensor coordinates to a multi-axis physical space via named axes. Axe unifies tiling, sharding, replication, and offsets across inter-device distribution and on-device layouts, enabling collective primitives to be expressed consistently from device meshes to threads. Building on Axe, we design a multigranularity, distribution-aware DSL and compiler that composes thread-local control with collective operators in a single kernel. Experiments show that our unified approach can bring performance close to hand-tuned kernels on across latest GPU devices and multi-device environments and accelerator backends.},
+ primaryclass = {cs.DC},
+ eprint = {2601.19092},
+ month = {January},
+ shorttitle = {Axe}
+}
+\stopverb}

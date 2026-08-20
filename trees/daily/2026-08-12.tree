@@ -34,3 +34,50 @@
 \p{\strong{6:36 AM}}
 \hr
 \p{Starting [[scaling-book]].}
+
+\p{\strong{7:12 AM}}
+\hr
+\section{AllGather}{
+\p{An \em{AllGather} gets resources from all devices onto one device. In [TPU's](NZZ7) [[UEA0]], this is done in #{\frac{N}{2}} hops via each TPU sending its shard to the neighboring chip.}
+\question{How long does it take to AllGather?}
+\answer{
+Assuming we have #{X} shards and the total bytes is #{N}, then each chip must send #{\frac{N}{X}} bytes. If we have an ICI bandwidth of #{W_{\text{ICI}}}, then for each chip to send to its neighbor will be
+##{T_{1\text{ hop}} = \frac{N}{X\cdot W_{\text{ICI}}}}
+Now each chip must send across #{X} hops, which gives #{T = X\cdot T_{1\text{ hop}} = \frac{N}{W_{\text{ICI}}}}.\sidenote{This does not change if we use the bi-directional bandwidth because then we have #{2N} bytes but only need to send at most #{\frac{X}{2}} hops!}
+}
+}
+
+\p{\strong{7:31 AM}}
+\hr
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/shard-matmul-1.png}}{}
+\figcaption{Case 1: No communication needed.}
+}
+
+\p{\strong{7:40 AM}}
+\hr
+
+\remark{
+There is a \em{hop latency} incurred at each hop of approximately #{1\mu s}. This is negligible for large buffer sizes. However, for small buffers, this latency can be the bottleneck. Namely,
+##{T_{1\text{ hop}} = \max\{T_{\min}, \frac{N}{W_{\text{ICI}\cdot X}}\}}
+and
+##{T = \max\{\frac{X\cdot T_{\min}}{2}, \frac{N}{W_{\text{ICI}}}\}}
+For [ICI bandwidth of TPU v5e](676P) of #{4.5e 10}, we are latency bound when #{10^{-6} > \frac{N}{W_{\text{ICI}}} \implies N \approx 45kb}.
+}
+
+\p{\strong{8:24 AM}}
+\hr
+\remark{
+Case 3 is effectively a distributed split-K matmul. In [tiled matmul](OGCRV), we loop over #{K} axis to perform reduction. Here, each block is computed on different device and then reduction is performed across devices\sidenote{We never want to be in case 3 for pure matmul but end up here due to model sharding strategies discussed later}.
+}
+
+\p{\strong{10:12 AM}}
+\hr
+\scope{
+  \put\transclude/numbered{false}
+  \put\transclude/toc{false}
+  \transclude{SJL3}
+}
+
+\p{\strong{10:54 AM}}
+\hr

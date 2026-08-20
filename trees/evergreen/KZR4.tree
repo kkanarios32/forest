@@ -162,4 +162,202 @@ Let #{A} be an array with shape int8[128, 2048], sharding #{A[I_{XY},J]}, and me
 }{
 \p{Since there is no sharding across the Z axis. I assume this means it is replicated. This still gives #{8\cdot 2048} bytes per device but now total memory is still multiplied by #{32} giving #{32\cdot 8\cdot 2048} bytes across all devices.}
 }
+\exercise{Pop Quiz}{AllGather}{
+How long does it take to perform the AllGatherY([EY, F]) → [E, F] on a TPU v5e with a 2D mesh \code{{'X': 8, 'Y': 4}}, for #{E = 2048}, #{F = 8192} in bf16? What about for #{E = F = 256}?
+}{
+\p{For the large #{E} and #{F}, we will clearly not be latency bound, so we can just perform the ICI cost. We will have #{N = 2\cdot 2048\cdot 8192} bytes and the [TPU v5e uni-directional bandwidth](676P) is #{4.5e 10}. Since we are only gathering over #{1} dimension, we do not get any additional bandwidth. Thus, it will take #{\frac{N}{4.5e10} = 3.72\text{ms}}.}
+\p{For the small #{E} and #{F}, we now need to consider the latency time given by} 
+##{T_{\text{latency}} = \frac{|Y|\cdot T_{\min}}{2} = 2\mu s.}
+\p{Computing the ICI cost, we have #{N = 2\cdot 256\cdot 256} bytes and #{T_{\text{ICI}} = \frac{N}{4.5e 10} = 0.73 \mu s}. Thus, the total time is #{T = \max \{T_{\text{latency}}, T_{\text{ICI}} = 2\mu s}.}
+\remark{
+I divided the latency time by #{2}, when once again the TPU v5e sub-mesh does not support wrap-around links and therefore the hop count is NOT upperbounded by #{|Y|}. Also the hop count is actually #{|Y| - 1} not #{|Y|}, so the correct answer was just #{T_{\text{min}}\cdot (|Y| - 1) = 3\mu s}.
+}
+}
+\exercise{3.1}{replicated sharding}{
+An array is sharded #{A[I_X,J,K,…]} (i.e., only sharded across #{X} ), with a mesh \code{Mesh({'X': 4, 'Y': 8, 'Z': 2})}. What is the ratio of the total number of bytes taken up by #{A} across all chips to the size of one copy of the array?
+}{
+It is sharded across #{X}, so that on each chip there is only #{1/4} of #{A}. However, it must be replicated across #{Y} and #{Z} which are #{8\cdot 2 = 16} copies. This leaves us with #{16 \times} the total number of bytes across all copies.
+}
+\exercise{3.2}{[[VSDZ]] latency}{
+How long should #{\text{AllGather}_{X}([B_X,D_Y])} take on a TPU v4p 4x4x4 slice with mesh \code{Mesh({'X': 4, 'Y': 4, 'Z': 4})} if #{B=1024} and #{D=4096} in bfloat16? How about #{\text{AllGather}_{XY}([B_X,D_Y])} How about #{\text{AllReduce}_{Z}([B_X,D_Y]\{U_Z\})}?
+}{
+\ol{
+  \li{
+\p{We cannot use bi-directional because we are on a non-16 dim axes on TPU v4p. Therefore, the ICI bandwidth is #{W_{\text{ICI}} = 4.5e10}. From [[VSDZ]], we know that the communication time is independent of #{|X|} and is #{\frac{N}{W_{\text{ICI}}}}. For this problem, we have #{N = 1024\cdot 4096\cdot 2}. Thus, it will take #{.186\text{ms}}.}
+\remark{
+I do not understand wrap-around rules at all\sidenote{or maybe they are just highly unintuitive}, but we actually do have bi-directional bandwidth. I also needed to take into consideration that #{|X|} cancels out but we only have #{N/|Y|} bytes. Correct answer is 
+##{\frac{1024\cdot 4096\cdot 2}{9e10\cdot |Y|}}
+}
+\li{
+\p{In this case, we now have double the bandwidth because we are reducing across both dimensions. However, the total number of bytes is now #{4\times}, which means this will be double the previous part.}
+}
+\li{
+An [[U351]] requires each device to send the full #{A} across #{Z}. This should be #{\frac{2BD}{W_{\text{ICI}}}} or #{2 \times } the previous part.
+\remark{
+Completely misunderstood this question. For starters, when reducing along the #{Z} axis, we still \strong{stay sharded} across #{x} and #{y} and therefore do not make hops across those links. Therefore, we must divide by #{|X| \cdot |Y|}. Also, I guess the heuristic that [[U351]] is roughly #{2 \times } [[VSDZ]] is used in calculations, which gives final answer
+##{\frac{4BD}{|X|\cdot |Y|\cdot W_{\text{ICI}}}}
+}
+}
+}
+}
+}
+\exercise{3.3}{latency-bound [[VSDZ]]}{
+Let’s say we’re performing an #{\text{AllGather}_X([B_X])} but #{B} is very small (say 128). How long should this take on a TPU v4p 4x4x4 slice with mesh \code{Mesh({'X': 4, 'Y': 4, 'Z': 4})} in bfloat16?
+}{
+\p{Since #{|X| = 4}, the hop latency time is #{\approx 4 \mu}s. We have #{N = 2\cdot 128 = 256}bytes and #{W_{\text{ICI}} = 9e10}. This gives #{.0028 \mu}s. So we are severely latency bound.}
+\remark{
+Only need to do #{2} hops in bi-directional case, so true answer is #{\approx 2\mu s}: still latency bound.
+}
+}
+\exercise{3.4}{matmul strategies}{
+To perform #{X[B,D]\cdot_D Y[D_X,F] \to Z[B,F]}, in this section we tell you to perform #{\text{AllGather}_X(Y[D_X,F])} and multiply the fully replicated matrices (Case 2, Strategy 1). Instead, you could multiply the local shards like #{X[B,D_X]\cdot_D Y[D_X,F] \to Z[B,F]\{U_X\}} (Case 3, Strategy 2), and then #{\text{AllReduce}_X(Z[B,F]\{U_X\})}. How many FLOPs and comms does each of these perform? Which is better and why?
+}{
+\p{\em{Case 2, strategy 1}. In this case, the [[VSDZ]] will take #{\frac{DF}{W_{\text{ICI}}}} for communication over #{ICI} and #{BD + DF + BF} over HBM with #{2BDF} FLOPs.}
+\p{\em{Case 3, strategy 2}. For local shards, each will only need to do #{\frac{2BDF}{X}} FLOPs and #{BD + D_X F + BF} HBM cost. However, the ICI cost would then be the whole matrix which is #{X \times } as much over ICI.}
+\remark{
+\p{I was roughly correct. However, an important distinction (and gap in my understanding I gues) is that we have been ignoring HBM cost when communicating over ICI because these transfers are done concurrently and are therefore bottlenecked by the slower one (ICI).}
+}
+}
+\exercise{3.5}{minimum latency}{
+Let’s say I want to do a matmul #{A[I,J]\cdot JB[J,K]\to C[I,K]} on a TPU v4p 4x4x4 with the lowest possible latency. Assume the inputs can be sharded arbitrarily but the result should be fully replicated. How should my inputs be sharded? What is the total FLOPs and comms time?
+}{
+\p{My initial intuition is we \strong{do not} want to shard along the contracting dimension. If we have a large enough matrix, then I think the best sharding strategy would be to shard #{A[I_{XYZ}, J], B[J, K]}. The multiplication then requires no communication, and the only communication is an [[VSDZ]] across all #{3} axis, which should triple bandwidth. Since we shard over every axis of our mesh, we do not have any additional replicated bytes. This gives us #{N = 2IK}bytes in bf16. Since we are on a #{4\times 4\times 4} cube, we have bi-directional bandwidth availability. Therefore, the communication time on TPU v4p is #{\frac{2IK}{3\cdot 9e10}}. The total flops is still just #{2IJK}.}
+}
+\exercise{3.6}{comparing shardings}{
+Let’s say we want to perform #{A[I_X,J_Y]\cdot_J B[J_Y,K]\to C[I_X,K]} on TPU v5e 4x4. What communication do we perform? How much time is spent on communication vs. computation?
+\ul{
+  \li{What about #{A[I_X,J]\cdot_J B[J_X,K_Y]\to C[I_X,K_Y]}? This is the most standard setting for training where we combine data, tensor, and ZeRO sharding.}
+\li{What about #{A[I_X,J]\cdot_J B[J,K_Y]\to C[I_X,K_Y]}? This is standard for inference, where we do pure tensor parallelism.}
+}
+}{
+\ol{
+  \li{
+\p{Since this is a matmul over the sharded axis, we need to perform a reduction at some point. After performing the matmul, we should have #{C[I_X, K]\{U_Y\}}. Therefore, we need to do an [[U351]] over #{Y}. This is then a [[CAGW]] and an [[VSDZ]]. For computation, each chip does the partial sum, which takes #{\frac{2IJK}{|X||Y|}} FLOPs. For communication, the [[U351]] is #{2 \times } an [[VSDZ]]. We are still sharded over #{X}, so the total bytes is #{N = \frac{2IK}{|X|}}. We do not have bi-directional because the v5e is a 2d topology and #{4 \times 4} is not full in either axis. Thus, the communication is}
+##{\frac{2\cdot N}{W_{\text{ICI}}} = \frac{4IK}{4.5e10\cdot |X|}}
+\p{To see where we are bound, the v5e can do #{1.97e 14} bf16 FLOPs/s. Therefore, we are compute bound when}
+##{
+  \begin{align*}
+  \frac{2IJK}{|X|\cdot |Y|\cdot 1.97e 14} > \frac{4IK}{4.5e10\cdot |X|}
+\iff 
+  J > \frac{8 \cdot 1.97e 14}{4.5e10}
+  .\end{align*}
+}
+\p{Thus, we are almost surely communication bound because it is determined by the contracting dimension, which is [#{d_{\text{model}}}](9VZH) in practice.}
+\remark{
+No solutions available. Prayers up this right...
+}
+}
+\li{\p{This is Case 1 with an additional sharding over the contracting dim in #{B}. I believe this means when we do the matmul, we are gonna end up with scattered partial sums i.e. unlike in the [[CAGW]] case, where we have partial sums the same dimension as #{C}, the partial sums will now be #{\frac{I}{|X|} \times \frac{K}{|Y|}}. Another [[CAGW]] would cause this smaller matrix to be further divided and scattered, so it is not what we want.}
+\p{Instead, we should just perform #{\text{AllGather}_X(B[J_X, K_Y])}. Then, this will directly reduce to Case 1 and [we will need no further communication](QJX1). We only need to send #{N = \frac{2JK}{|Y|}} bytes. Once again, we do not have bi-directional bandwidth. Thus, the communication is}
+##{\frac{N}{W_{\text{ICI}}} = \frac{4JK}{4.5e10\cdot |Y|}}
+\p{The FLOPs per-device are still #{\frac{2IJK}{|X|\cdot |Y|}}. To see where we are bound, the v5e can do #{1.97e 14} bf16 FLOPs/s. Therefore, we are compute bound when}
+##{
+  \begin{align*}
+  \frac{2IJK}{|X|\cdot |Y|\cdot 1.97e 14} > \frac{2JK}{4.5e10\cdot |Y|}
+\iff 
+  I > \frac{4 \cdot 1.97e 14}{4.5e10}
+  .\end{align*}
+}
+\p{Thus, we have a smaller bound than the previous part but are now dependent on #{I} instead of #{J}. This is likely in practice because #{I} corresponds to sequence length, which can get very large.}
+}
+\li{This is pure case 1 with [no communication](QJX1), so we instead need to worry about memory instead of communication overhead.}
+}
+}
+\exercise{3.7}{transformer block}{
+A typical Transformer block has two matrices #{W_{in}[D,F]} and #{W_{out}[F,D]} where #{F \gg DF \gg D} . Say we have a batch size B. Then the full block is #{In[B,D]\cdot W_{in}[D,F]\cdot W_{out}[F,D]}. Let’s pick D=8192 , F=32768, and B=128 and assume everything is in bfloat16. Assume we’re running on a TPU v5e 2x2 slice but let’s pretend each TPU only has 300MB of free memory. How should In, #{W_{in}}, #{W_{out}}, and Out be sharded to stay below the memory limit while minimizing overall time? How much time is spent on comms and FLOPs? Hint: the final output doesn’t need to be fully replicated, but it should be sharded the same as the input so the “layer” can be repeated.
+}{\p{To start, lets compute how big everything is.}
+##{
+\begin{align*}
+In &= 2\cdot B\cdot D \\ 
+&= 2\cdot 8192\cdot 128 = 2^{21} \\
+W_{in} &= 2\cdot D\cdot F \\ 
+&= 2\cdot 8192\cdot 32768 = 2^{29} \\
+W_{out} &= 2\cdot D\cdot F \\ 
+&= 2\cdot 8192\cdot 32768 = 2^{29}
+\end{align*}
+}
+\p{and each TPU has #{300}MB #{\approx 300 \cdot 2^{20} \approx 2^{28}} in this example. Therefore, each TPU can fit just over one half of #{W_{in}} and #{W_{out}}, which leads us to have to fully shard both across #{X} and #{Y}. The remaining #{11 \cdot 2^{22}} can fit #{\text{In}}. However, we need to satisfy the constraint that #{\text{Out}} is sharded in the same way as #{\text{In}}. We adopt the following strategy:}
+\ol{
+  \li{Shard #{\text{In}[B_{XY}, D]}, #{W_{in}[D,F_{XY}]}}
+  \ul{
+    \li{First, we need to [[VSDZ]] #{\text{In}} along #{B}.}
+    \li{Then, we have #{\text{In}[B, D]\cdot W_{in}[D, F_{XY}]\to \text{Tmp}[B, F_{XY}]}}
+  }
+  \li{Shard #{W_{out}[F_{XY}, D]}}
+\ul{
+  \li{Now we have #{\text{Tmp}[B, F_{XY}]\cdot W_{out}[F_{XY}, D] \to \text{Out}[B, D]\{U_{XY}\}  }}
+  \li{Then we need to do a [[CAGW]] over #{XY} in the #{B} axis to get back to our input shape.}
+}
+}
+\p{Now lets count up the communication cost.}
+\ol{
+  \li{First, we have an [[VSDZ]] over #{XY} of #{\text{In}}. This is #{N = 2\cdot B\cdot D} bytes. We only have unidirectional bandwidth. However, we are gathering over 2 axes, which doubles our bandwidth. Thus, this will take
+##{\frac{2\cdot 128\cdot 8192}{2\cdot 4.5e 10} = 23.3\mu s}
+\li{Then we have a [[CAGW]] of #{\text{Out}[B, D]\{U_{XY}\}}, which takes the same time as [[VSDZ]] and is another #{23.3 \mu s}.}
+}
+}
+\p{Thus, the whole communication cost is only #{46.6 \mu s}.}
+\remark{
+In the solution, they instead propose to shard #{\text{In}[B, D_{XY}]}, which is equivalent in communication cost. According to \em{Claude}, there is a subtle distinction.
+\ol{
+  \li{If you are in decoding (i.e. #{B = 1}), then you cannot even shard along #{B} but can still shard along #{D}.}
+  \li{However, it seems preferable to shard over #{B} if you can. This way, for activations / reductions over #{D} you do not need any communication.}
+}
+}
+}
+
+\exercise{3.9}{another strategy for sharded matmuls}{
+Above we claimed that when only one input to a matmul is sharded along its contracting dimension, we should AllGather the sharded matrix and perform the resulting contraction locally. Another strategy you might think of is to perform the sharded matmul and then AllReduce the result (as if both inputs were sharded along the contracting dimension), i.e. #{A[I,J_X]\cdot_J B[J,K]\to C[I,K]} by way of
+\ol{
+  \li{#{C[I, K]\{U_{X}\} = A[I, J_{X}]\cdot B[J_{x}, K] }}
+  \li{#{C[I, K]\{U_{X}\} = \text{AllReduce}(C[I,K]\{U_{X}\})}}
+}
+Answer the following
+\ol{
+  \li{Explicitly write out this algorithm for matrices #{A[N,M]} and #{B[M,K]}, using indices to show exactly what computation is done on what device. Assume #{A} is sharded as #{A[I,J_X]} across ND devices, and you want your output to be replicated across all devices.}
+\li{Now suppose you are ok with the final result not being replicated on each device, but instead sharded (across either the N or K dimension). How would the algorithm above change?}
+\li{Looking purely at the communication cost of the strategy above (in part 2, not 1), how does this communication cost compare to the communication cost of the algorithm in which we first AllGather A and then do the matmul?}
+}
+}{
+\ol{
+\li{On the device, we can only make use of the #{J_{X}} rows of #{B} and compute the corresponding partial sums. This corresponds to the outer product
+##{C'[i] = \sum_{n=i\cdot \frac{J}{ND}}^{i(\frac{J}{ND} + 1)} A_{:,n} \oplus B_{n,:}}
+}
+  \li{The above algorithm would change by replacing the [[U351]] with a [[CAGW]]. This is better communication wise because [[MJ7A]].}
+\li{The communication cost is the same because [[CAGW]]  has the same communication cost as [[VSDZ]], but it is likely preferable if you are compute bound because you can distribute computation across devices.
+\remark{
+In the solutions, they make the (excellent) point that in the [[CAGW]] case we are sending the output #{N\times K} matrix, whereas in the [[VSDZ]] case we are sending the #{N\times M} matrix. Therefore, if we have a large contraction dim, then the second case might also be preferable.
+}
+}
+}
+}
+\exercise{3.10}{Fun with [[T470]]}{
+In the table above, it was noted that the time to perform an AllToAll is a factor of 4 lower than the time to perform an AllGather or ReduceScatter (in the regime where we are throughput-bound). In this problem we will see where that factor of 4 comes from, and also see how this factor would change if we only had single-direction ICI links, rather than bidirectional ICI links.
+\ol{
+  \li{Let’s start with the single-direction case first. Imagine we have D devices in a ring topology and want to do either an AllGather or a ReduceScatter on an N x N matrix #{A[I_X,J]} (say D divides N for simplicity). Describe the comms involved in these two collectives, and calculate the total number of scalars (floats or ints) which are transferred across a single ICI link during the entirety of this algorithm.}
+\li{Now let’s think about an AllToAll, still in the single-directional ICI case. How is the algorithm different in this case than the all-gather case? Calculate the number of scalars that are transferred across a single ICI link in this algorithm.}
+\li{You should have found that the ratio between your answers to part (a) and part (b) is a nice number. Explain where this factor comes from in simple terms.}
+\li{Now let’s add bidirectional communication. How does this affect the total time needed in the all-gather case?}
+\li{How does adding bidirectional communication affect the total time needed in the AllToAll case?}
+\li{Now simply explain the ratio between AllGather time and AllToAll time in a bidirectional ring.}
+}}{
+\ol{
+\li{The communication involved in either of these collectives is each chip in the ring sending a chunk of #{A} of size #{\frac{N^2}{D}} to the right neighbor. A single ICI link sees every chunk and therefore #{N^2(D-1)} scalars must cross a single ICI link. The #{D - 1} comes from the fact that each device already owns one #{\frac{N^2}{D}} chunk.
+}
+\li{[[T470]] differs than [[VSDZ]] because each subsequent forwarding is #{\frac{N^2}{D^2}} less bytes. Namely, each device has an #{\frac{N^2}{D}} shard of #{A}. Then in [[T470]], you forward to a neighbor who takes a #{\frac{1}{D}} of this chunk and forwards the remaining. Therefore, a single ICI link only sees the following bytes of ICI traffic
+##{\frac{N^2}{D} \sum_{i=1}^{D} (D - i) = \frac{N^2\cdot D(D-1)}{2D} = \frac{N^2(D-1)}{2}}
+}
+\li{From the previous 2 parts, we see that the ratio is exactly #{\frac{1}{2}}. This comes from the fact that, for farther devices, a link needs to transfer a much smaller number of bytes in [[T470]]. Whereas, in [[VSDZ]], you must see all bytes of a chunk for every device uniformly.}
+\li{In the [[VSDZ]] case, bidirectional communication still requires each link to see every byte. Therefore, only the ICI bandiwdth changes and not the total bytes seen per-link.}
+\li{In the [[T470]] case, each chip only needs its sub-chunk of each chunk. Therefore, we can divide the chunk into the front and back half and send in each direction. This halves the total bytes seen per link, reducing to #{\frac{N^2(D-1)}{4}}.}
+\li{In the bidirectional case, we can effectively reduce our [[T470]] to 2 unidirectional [[T470]]'s of half the size. This then halves the bytes-per-link, which was already half of an [[VSDZ]]. Since every device needs every byte of each chunk in the [[VSDZ]] case, it gets no reduction in the bidirectional case.}
+}
+}
+}
+
+\subtree[scaling-ch4]{
+  \title{All the Transformer Math You Need to Know}
+  \exercise{4.1}{parameter counting}{
+How many parameters does a model with D=4096 , F=4⋅D, V=32,000, and L=64 have? What fraction of these are attention parameters? How large are our KV caches per token? You can assume N⋅H=D and multi-head attention with int8 KVs.}{
+  }
 }

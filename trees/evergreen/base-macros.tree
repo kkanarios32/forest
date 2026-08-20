@@ -194,7 +194,7 @@
 % inline. Replaces the bold-label-with-colon idiom so the label pops in the
 % sans (var(--sans)) against the serif body. Pass the label WITHOUT punctuation;
 % the macro adds the period. The argument may hold links/math (\paragraph{[[ID]]}).
-\def\paragraph[head]{\<html:strong>[style]{font-family: var(--serif); font-weight: 700; font-style: italic;}{\head.}}
+\def\paragraph[head]{\<html:strong>[style]{font-family: var(--serif); font-weight: 400; font-style: italic;}{\head.}}
 
 \def\lsquare{\startverb[\stopverb}
 \def\rsquare{\startverb]\stopverb}
@@ -455,17 +455,72 @@
 %   \codeblockf{flash_attention.py}{python}{ ...code... }
 \def\codeblockf[file][lang][body]{\<html:div>[class]{code-figure}{\<html:div>[class]{code-filename}{\file}\<html:pre>{\<html:code>[class]{language-\lang}{\body}}}}
 
-% Utterances comment thread for a blog post. Wrapped in a .comments div so the
-% theme can suppress it whenever the post is transcluded (expanded on an index
-% or the home page) and render it only on the post's own page — see the
-% html:div[@class='comments'] rule in theme/core.xsl. The argument is the
-% utterances issue-term (usually \comments{pathname}; a fixed slug otherwise).
-\def\comments[term]{
+% giscus comment thread, backed by GitHub Discussions on
+% kkanarios32/website-comments. Wrapped in a .comments div so the theme can
+% suppress it whenever the post is transcluded (expanded on an index or the
+% home page) and render it only on the post's own page — see the
+% html:div[@class='comments'] rule in theme/core.xsl.
+%
+% This replaced utterances, and the reason was styling, not speed: the thread
+% renders in a cross-origin iframe either way, but utterances resolves its
+% theme against a closed set of names on utteranc.es, so the comment box could
+% never be made to look like the rest of the site. giscus takes a URL instead
+% and appends it as a <link> inside the iframe. That URL is theme/giscus.css,
+% and it is why the box below is set in the site's own faces and palette.
+%
+% Two forms, because a thread is identified in one of two ways:
+%
+%   \comments              — one thread per page, keyed by the page's
+%                            og:title, which theme/tree.xsl emits from the
+%                            tree's own \title. The default, and what a blog
+%                            post wants: the discussion is named
+%                            `Forward-backward algorithm`, and a reader
+%                            scanning the repo can tell what each thread is
+%                            about. Keyed by pathname instead, it would be
+%                            `F3T0/index` — /F3T0/ redirects to
+%                            /F3T0/index.xml, and giscus reads the path it
+%                            lands on. Retitling a published post orphans its
+%                            thread and starts a new one, so once a post is
+%                            out, treat its title as fixed like its id.
+%   \comments-named{slug}  — a standing thread named explicitly, for pages
+%                            that collect requests rather than replies
+%                            (`blog-requests`, `poaw-requests`, `nvim`, …).
+%                            Keyed by discussion title, so the slug must match
+%                            the discussion's title exactly.
+%
+% Both carry data-loading="lazy", so the iframe is not fetched until it nears
+% the viewport. Worth knowing that this is the only deferral available and it
+% is already the default: client.js itself still loads with the page, and the
+% chain behind the iframe — giscus.app, its bundle, then the GitHub GraphQL
+% call that finds the discussion and reads it — is what a comment section
+% costs. There is no arrangement of a third-party embed that costs nothing.
+%
+% data-repo-id and data-category-id are opaque GitHub node ids, not names, and
+% giscus refuses to render without the right ones. Re-read them any time with
+%
+%   curl -s 'https://giscus.app/api/discussions/categories?repo=kkanarios32/website-comments'
+%
+% which needs no token but does need the giscus app installed on the repo.
+% Announcements is the category on purpose: only maintainers can open a
+% discussion there by hand, so every thread in it was created by giscus for a
+% page, and the category cannot fill up with unrelated posts.
+%
+% data-strict is 0, which is giscus's default and has to stay that way here.
+% Strict matching does not search discussion titles at all — it hashes the term
+% with SHA-1 and looks for that hash in the discussion body, so a discussion
+% that giscus did not itself create is invisible to it. The threads carried
+% over from utterances were converted from issues by hand and carry no hash,
+% and \comments-named exists precisely to address a discussion by the title a
+% person wrote on it. Turning strict on would silently orphan both.
+\def\giscus-embed[mapping][term]{
   \<html:div>[class]{comments}{
     \hr
-    \<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{\term}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+    \<html:script>[src]{https://giscus.app/client.js}[data-repo]{kkanarios32/website-comments}[data-repo-id]{R_kgDON4lIRA}[data-category]{Announcements}[data-category-id]{DIC_kwDON4lIRM4DDdwI}[data-mapping]{\mapping}[data-term]{\term}[data-strict]{0}[data-reactions-enabled]{1}[data-emit-metadata]{0}[data-input-position]{bottom}[data-theme]{https://kellenkanarios.com/giscus.css}[data-lang]{en}[data-loading]{lazy}[crossorigin]{anonymous}[async]{}{}
   }
 }
+
+\def\comments{\giscus-embed{og:title}{}}
+\def\comments-named[term]{\giscus-embed{specific}{\term}}
 
 % Buttondown subscribe form. Deliberately script-free: it is a plain POST, so
 % it works with no embed script and nothing to block. Submitting navigates to

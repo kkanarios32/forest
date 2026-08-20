@@ -23,9 +23,9 @@
 \p{These are the \code{argv} array in C.}
 
 \p{
-\pre\verb<<<|
+\codeblock{plaintext}{\verb<<<|
 fd (int) → fd table → struct file → struct inode
    per-process         "open file        the actual file
                        description"      (one per file)
-<<<
+<<<}
 }

@@ -1,0 +1,16 @@
+\date{2026-08-14T13:04:13Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[[G944]]: 2026-W33}
+\tag{public}
+
+% Coding: where the week's hours went, focus, notable projects.
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/33/waka.png}}{}
+  \figcaption{Coding hours for week 2026-W33.}
+}
+% Non-coding computer time: work / study / brain rot; what stood out.
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/33/arbtt.png}}{}
+  \figcaption{Non-coding computer time for week 2026-W33.}
+}

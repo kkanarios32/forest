@@ -1,0 +1,18 @@
+\date{2026-08-12T15:00:07Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{AllToAll is a quarter of an AllGather}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786546735861}
+\meta{anki-deck}{MLSys}
+
+\prompt{[AllToAll](T470): signature, when it shows up, and why is it cheaper than an [AllGather](VSDZ)?}{
+  \strong{Signature} #{[A, B_X] \to [A_X, B]} — a sharded transposition, which \em{moves} a subscript from one logical axis to another.
+
+  \strong{When}: never out of a sharded matmul. It is for resharding between regions of a computation with incompatible layouts — classically MoE routing.
+
+  \strong{Cost} #{V \cdot \max(A, B, C, \ldots) / (4 N W_{\mathrm{ici}})}; on a 1D mesh that is #{V / (4 W_{\mathrm{ici}})}, a \strong{quarter} of an AllGather, and it scales down further in 2D+ with the shortest axis.
+
+  \strong{Why cheaper}, as #{2 \times 2}: each device need not send its \em{whole} shard everywhere, so the sum becomes #{D + (D-1) + \cdots + 1} instead of #{D} repeated #{D} times — a factor of 2. And bidirectionality buys #{4\times} here rather than the #{2\times} it buys an AllGather, since blocks travel at most #{D/2} hops in either direction. Equivalently: two random nodes on a [ring](UEA0) are about #{N/4} hops apart.
+}

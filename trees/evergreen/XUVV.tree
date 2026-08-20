@@ -1,3 +1,4 @@
+\import{base-macros}
 \date{2025-07-14T17:56:18Z}
 \author{kellenkanarios}
 \tag{public}
@@ -8,3 +9,5 @@
 \<html:img>[width]{80\%}[src]{\route-asset{assets/img/gqa.png}}{}
 \figcaption{Grouped query uses subset of #{K} and #{V} matrices.}
 }
+
+\transclude{59OV}

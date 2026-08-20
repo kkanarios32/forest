@@ -1,0 +1,33 @@
+\import{base-macros}
+\author{kellenkanarios}
+\tag{public}
+\date{2026-08-14}
+\title{Weekly Review 2026-W33}
+% Intro: a sentence or two orienting the week.
+\p{Another week another weekly review! One of the few things I am at least doing consistently now. For all those that I am missing, I refer you to this weeks entry of [life maxing](QFMT). On another note, I am one with the TPU. My heart rate is no longer 48bpm but instead 6 \code{bf16[8,128] @ bf16[128,128] -> f32[8,128]} matmuls per minute\sidenote{This is an [MXU](OGCRP) reference. Also running is not good for my clock speed...}.
+}
+
+\transclude{L0Y3}
+\transclude{QFMT}
+
+\section{Goals for Next Week}{
+% Goals: what you want to accomplish next week.
+\p{I am but a humble nomad in my long journey toward TPU sensei-ship. Unfortunately (or fortunately?), I am still firmly on the left end of the [Dunning-Kruger](https://en.wikipedia.org/wiki/Dunning–Kruger_effect) curve. I am progressing slowly but very dilligently through the [[scaling-book]]. I want to be on chapter 5 by end of next week. The remaining chapter 3 exercises seem like they may take awhile and chapter 4 is equally important as it is dense, so I want to make sure I give it a proper treatment. An additional mini reading / todo list:}
+\ul{
+  \li{[[yeCAKECompilerAgentCoDesign2026]] - seems interesting but the paper is kind of bare bones on first pass.}
+   \li{Want to be able to read the whole TPU pipeline. This primarily means setting up the TPU infrastructure but also a good set of blogs [here](https://patricktoulme.substack.com/p/when-xla-isnt-enough-from-pallas), [here](https://considerthebulldog.com/tte-tpu/#ref-32), and [here](https://considerthebulldog.com/pallas-sharded-matmuls/).}
+\li{Need to come up with definitive proposal for project.}
+\ul{
+   \li{Limitations / survey of existing approaches.}
+\ul{
+  \li{Importantly, why non-agentic approaches cannot compete in [JaxBench](tschandJAXBenchBenchmarkingAutonomous2026)-regime.}
+   \li{Maybe walk through how each method does GQA?}
+}
+   \li{Clear benchmarks to test.}
+   \li{Be able to defend choice of TPU.}
+}
+}
+\p{As a bit of a [productivity](7BUX) aside, I have noticed that I am wasting a lot of my prime deep work bandwidth in the morning on the transfer / organization of notes into this forest during reading. Additionally, my post-lunch block is very ineffective. I had the genius idea of eliminating the cognitive overhead of organizing and transferring notes by deferring until the afternoon block. In the morning block, I will just dump everything I might care about later. Then, in the later block, I will do the menial, low cognitive demand task of choosing what stays and where it goes. This can also serve as a form of review.}
+\p{Furthermore, I have officially setup a technology free desk to take this to the extreme. This will hopefully serve as my paper reading station or when I am rich enough to get physical textbooks. I have an accompanying notebook to write down any questions I need to ask Claude after the pomo block ends, or write down relevant notes to transfer later. I have consistently avoided doing this because I believe quickly asking Claude is a necessity. However, I hope to find that writing down and thinking about questions independently first will not be that bad and may even be useful.}
+\p{Until next week!}
+}

@@ -4,7 +4,7 @@
 \title{Decode is bounded by the weight read}
 \taxon{Card}
 \tag{card}
-\meta{anki}{1786395977016}
+\meta{anki}{1786546736765}
 \meta{anki-deck}{MLSys}
 
 \prompt{200B parameters in bf16 across 32 TPU v4p. What is the lower bound on per-step sampling latency?}{

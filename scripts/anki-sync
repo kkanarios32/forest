@@ -48,11 +48,36 @@ def anki(action, **params):
 
 # ---- Forester parsing -------------------------------------------------------
 
+def verbatim(s, i):
+    """`\\verb<<<|...<<<` or `\\startverb...\\stopverb` at i -> (body, index)."""
+    if s.startswith("\\verb<<<|", i):
+        j = s.find("<<<", i + len("\\verb<<<|"))
+        if j < 0:
+            return None
+        return s[i + len("\\verb<<<|"):j].strip("\n"), j + 3
+    if s.startswith("\\startverb", i):
+        j = s.find("\\stopverb", i)
+        if j < 0:
+            return None
+        return s[i + len("\\startverb"):j].strip("\n"), j + len("\\stopverb")
+    return None
+
+
 def brace_arg(s, i):
-    """s[i] must be '{'. Return (content, index just past the matching '}')."""
+    """s[i] must be '{'. Return (content, index just past the matching '}').
+
+    A verbatim span is stepped over whole: braces inside \\verb<<<|...<<< are
+    the code's, not the markup's, and counting them ends the argument early —
+    which is exactly what a \\codeblock body, or a card whose \\prompt holds
+    one, is full of."""
     depth, start = 0, i
     while i < len(s):
         c = s[i]
+        if c == "\\":
+            v = verbatim(s, i)
+            if v is not None:
+                i = v[1]
+                continue
         if c == "{":
             depth += 1
         elif c == "}":
@@ -138,21 +163,6 @@ def read_args(s, i):
     return args, i
 
 
-def verbatim(s, i):
-    """`\\verb<<<|...<<<` or `\\startverb...\\stopverb` at i -> (body, index)."""
-    if s.startswith("\\verb<<<|", i):
-        j = s.find("<<<", i + len("\\verb<<<|"))
-        if j < 0:
-            return None
-        return s[i + len("\\verb<<<|"):j].strip("\n"), j + 3
-    if s.startswith("\\startverb", i):
-        j = s.find("\\stopverb", i)
-        if j < 0:
-            return None
-        return s[i + len("\\startverb"):j].strip("\n"), j + len("\\stopverb")
-    return None
-
-
 def expand(name, args, titles):
     r = lambda a: render(a, titles)
     if name in INLINE_TAGS and args:
@@ -166,6 +176,17 @@ def expand(name, args, titles):
         return f"<p>{r(args[0])}</p>"
     if name == "hr":
         return "<hr>"
+    if name in ("codeblock", "codeblockf") and args:
+        # \codeblock{lang}{\verb<<<|...<<<}, \codeblockf{file}{lang}{...}. The
+        # language drives highlight.js on the site and has nothing to colour on
+        # a card, so it is dropped rather than printed; a filename is a caption
+        # and is kept. Only the last argument is the code.
+        body = args[-1].strip()
+        v = verbatim(body, 0)
+        code = f"<pre><code>{esc(v[0] if v else body)}</code></pre>"
+        if name == "codeblockf" and len(args) >= 3:
+            return f"<b>{esc(args[0].strip())}</b>{code}"
+        return code
     if name == "citek" and args:                       # renders as [citekey] on-site
         return esc(f"[{args[0].strip()}]")
     if name == "citet" and len(args) >= 2:             # \citet{loc}{citekey}

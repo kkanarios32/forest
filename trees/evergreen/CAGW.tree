@@ -1,0 +1,39 @@
+\date{2026-08-12T14:47:22Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{ReduceScatter}
+\taxon{Definition}
+\tag{public}
+\tag{note}
+
+\p{The collective that resolves partial sums along a mesh axis and leaves the result [sharded](XGI0) rather than replicated: #{[A, B]\{U_X\} \to [A_X, B]}. It is the reduction half of an [[U351]], and the transpose of an [[VSDZ]]. Same [ring](UEA0) pass, same cost #{V / W_{\mathrm{ici}}}, except each device sums the shard arriving from its left neighbour into its own copy instead of merely keeping it.}
+
+\notation{Because it \em{introduces} a subscript, you have to say where it goes: #{\mathrm{ReduceScatter}_{X,K}} reduces along mesh axis #{X} and shards the result along #{K}. That freedom is the whole argument for preferring it. Namely, whenever the consumer can accept a sharded input, stopping at the ReduceScatter costs [half what an AllReduce does](MJ7A) and defers the gather, possibly forever.}
+
+\p{The mechanism is easiest to see as a schedule. Each device starts holding a full-size buffer that is only a partial sum, and on every step forwards one chunk rightward and folds in the chunk arriving from its left. After #{N-1} steps device #{b} holds chunk #{b} summed over all #{N} partials and has forwarded the rest away, which is also why the resident memory falls by #{N}.}
+
+\question{How do we know what chunk to send to who?}
+\answer{It is actually remarkably easy. If there are #{N} devices, then you just compute which device is #{N - 1} hops away from you. You send that chunk to your right neighbor. Each chunk then propagates through the ring and will end up with the completed chunked sum on the correct device}
+
+% The ring reduce-scatter step-through figure. An empty mount point plus the
+% script that fills it — the markup, the schedule, and the styling all live in
+% assets/files/ring-reduce-scatter.js, which is the exception to "styling lives
+% in base-macros": the figure's colors key off per-cell state (in flight, fully
+% reduced, forwarded away) that changes on every click, so no inline style can
+% reach them.
+%
+% Note this is NOT \embed. An <embed> is a nested browsing context and would not
+% inherit --sans, the palette, or the body measure, so the figure would arrive
+% dressed in browser defaults inside a box of its own. The script mounts into
+% the page instead, and the figure is set in the site's own type.
+%
+% Safe to place in a tree that gets transcluded: the script mounts every
+% .rs-fig on the page independently and binds its listener once, so the several
+% copies Forester makes step on their own. Loading the file twice is a no-op.
+\<html:div>[class]{rs-fig}{}
+\<html:script>[src]{\route-asset{assets/files/ring-reduce-scatter.js}}[defer]{}{}
+
+\p{Note that the steps are not #{N-1} rounds of moving a whole buffer: every link carries \strong{one chunk} in the same direction at the same time, so the cost is #{N-1} chunk-times, and the #{N} in the chunk size cancels the #{N-1} in the step count. Nothing is ever broadcast, which is the sense in which the ring is optimal and the reason a ReduceScatter is not merely an [[U351]] with a slice at the end.}
+
+\transclude{HIDN}
+\transclude{MJ7A}

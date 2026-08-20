@@ -14,3 +14,5 @@ where #{\mathrm{ReLU}} is the [ReLU](BEA2) activation and #{\mathrm{Swish}} is t
 \remark{
 The matrix #{\mathbf{V}} introduces additional learnable parameters. Therefore, an architecture that uses gating typically reduces their other parameters by a factor of #{\frac{2}{3}}.
 }
+
+\transclude{Y4Y8}

@@ -1,0 +1,20 @@
+\date{2026-08-18T14:22:53Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Every axis label appears once in the FLOP count}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1787063265272}
+\meta{anki-deck}{MLSys}
+
+\prompt{An [einsum](7Y0G) contracts #{C[GHIJKL]} with #{D[GHMNKL]}, where #{GH} are batching axes and #{KL} are contracting axes. How many FLOPs?}{
+  Two times the product of every \em{distinct} label, each counted once:
+
+  ##{2 \cdot GH \cdot IJ \cdot MN \cdot KL}
+
+  \strong{Why.} Every output element is a dot product over the contracted axes, and a dot product spends one multiply and one add per term — that is the factor of two. The batch axes index independent subproblems, so they multiply the total work but appear only once in the product, exactly as the contracted axes do.
+
+  \strong{The vocabulary is what makes the rule mechanical.} A \em{contracting} label appears in both inputs and is absent from the output; a \em{batching} label appears in both inputs \em{and} the output. Everything else is a free axis of one input. Once the labels are sorted that way, the count is read off the einsum string without thinking about the shape of the loop nest.
+
+  \strong{Caveat.} With no contracting axes there is no dot product — the operation is an elementwise product, and the factor of two goes away.
+}

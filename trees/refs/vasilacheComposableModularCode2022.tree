@@ -1,0 +1,28 @@
+% ["refs"]
+\title{Composable and Modular Code Generation in MLIR: A Structured and Retargetable Approach to Tensor Compiler Construction}
+\date{2022-02}
+\author/literal{Nicolas Vasilache}\author/literal{Oleksandr Zinenko}\author/literal{Aart J. C. Bik}\author/literal{Mahesh Ravishankar}\author/literal{Thomas Raoux}\author/literal{Alexander Belyaev}\author/literal{Matthias Springer}\author/literal{Tobias Gysi}\author/literal{Diego Caballero}\author/literal{Stephan Herhut}\author/literal{Stella Laurenzo}\author/literal{Albert Cohen}
+\taxon{Reference}
+\meta{doi}{10.48550/arXiv.2202.03293}
+\meta{external}{https://arxiv.org/abs/2202.03293}
+
+\meta{bibtex}{\startverb
+@misc{vasilacheComposableModularCode2022,
+ title = {Composable and {{Modular Code Generation}} in {{MLIR}}: {{A Structured}} and {{Retargetable Approach}} to {{Tensor Compiler Construction}}},
+ author = {Vasilache, Nicolas and Zinenko, Oleksandr and Bik, Aart J. C. and Ravishankar, Mahesh and Raoux, Thomas and Belyaev, Alexander and Springer, Matthias and Gysi, Tobias and Caballero, Diego and Herhut, Stephan and Laurenzo, Stella and Cohen, Albert},
+ year = {2022},
+ doi = {10.48550/arXiv.2202.03293},
+ urldate = {2026-08-13},
+ number = {arXiv:2202.03293},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/papers/Composable and Modular Code Generation in MLIR A Structured and Retargetable Approach to Tensor Com - Vasilache et al..pdf},
+ keywords = {Computer Science - Programming Languages},
+ langid = {english},
+ archiveprefix = {arXiv},
+ abstract = {Despite significant investment in software infrastructure, machine learning systems, runtimes and compilers do not compose properly. We propose a new design aiming at providing unprecedented degrees of modularity, composability and genericity. This paper discusses a structured approach to the construction of domain-specific code generators for tensor compilers, with the stated goal of improving the productivity of both compiler engineers and end-users. The approach leverages the natural structure of tensor algebra. It has been the main driver for the design of progressive lowering paths in \textbackslash MLIR. The proposed abstractions and transformations span data structures and control flow with both functional (SSA form) and imperative (side-effecting) semantics. We discuss the implications of this infrastructure on compiler construction and present preliminary experimental results.},
+ primaryclass = {cs.PL},
+ eprint = {2202.03293},
+ month = {February},
+ shorttitle = {Composable and {{Modular Code Generation}} in {{MLIR}}}
+}
+\stopverb}

@@ -6,8 +6,7 @@
 
 \p{A scalable, list-based queue lock. The lock variable is a pointer to the tail of a linked list of per-thread nodes. Each thread enqueues its own node and spins on a flag in its own cache line. The releaser wakes only its direct successor, so coherence traffic per handoff is constant and memory cost is proportional only to threads currently waiting, not to the lock's fanout.}
 
-\pre\verb<<<|
-acquire(lock):
+\codeblock{}{acquire(lock):
   I->next = null
   predecessor = fetch_and_store(lock, I)
   if predecessor != nil:                   // some node holds the lock
@@ -21,4 +20,4 @@ release(lock):
       return                               // CAS succeeded; lock freed
     repeat while I->next == nil            // spin to learn successor
   I->next->must_wait = false               // wake successor
-<<<
+}

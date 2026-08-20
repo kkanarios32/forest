@@ -10,14 +10,14 @@
 
 \p{The virtual table is created by the compiler and is stored in the object's memory.}
 
-\pre\verb<<<|
+\codeblock{plaintext}{\verb<<<|
 vtable layout:
   [ offset-to-top  ]   // slot -2
   [ type_info*     ]   // slot -1  ← RTTI
   [ &virtual_fn_0  ]   // slot  0
   [ &virtual_fn_1  ]   // slot  1
   ...
-<<<
+<<<}
 
 \remark{
 The \code{type_info} pointer is needed to support runtime type-checking / [dynamic casting](OGCSI) .
@@ -42,11 +42,11 @@ struct D : A, B {
     int d;
 };
 <<<}
-\pre\verb<<<|
+\codeblock{plaintext}{\verb<<<|
 offset 0:   [ vptr_A ]   ← D's primary vtable (A subobject)
 offset 8:   [ a      ]
 offset 16:  [ vptr_B ]   ← D's secondary vtable (B subobject)
 offset 24:  [ b      ]
 offset 32:  [ d      ]
-<<<
+<<<}
 }

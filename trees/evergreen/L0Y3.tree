@@ -1,0 +1,24 @@
+\date{2026-08-14T14:07:24Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[[G944]]: 2026-W33}
+\tag{public}
+
+\p{I have spent SO much time on my computer this week. My eyes are in a perpetual state of bloodshot\sidenote{If somehow someone reading this has good eyedrops or some other remedy PLEASE reach out}. This ultrawide monitor seemed like a good idea until one actually spends ~10hrs a day staring at it.}
+
+% Coding: where the week's hours went, focus, notable projects.
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/33/waka.png}}{}
+  \figcaption{Coding hours for week 2026-W33.}
+}
+
+\p{An eternity was spent on this forest. A good portion of this has been toward finally sitting down and getting a grip on TPUs via [[scaling-book]]. I have actually made decent progress on [the exercises](KZR4) and the corresponding [notebook](TAAK).}
+\p{Unfortunately, the accompanying \strong{beautiful} animations found in [[CAGW]] and [[SXP6]] were a less productive but equally tracked usage of my time.}
+\p{The tokamax time is a bit of a hint to what I am cooking up. Due to the likely scenario no one is reading this, there will be an accompanying blog I am also working on [[3AIF]]. If {people working on this} #{\cap} {people reading this} #{\neq \emptyset}. Then email me and we can combine forces!}
+% Non-coding computer time: work / study / brain rot; what stood out.
+\figure{
+  \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/33/arbtt.png}}{}
+  \figcaption{Non-coding computer time for week 2026-W33.}
+}
+
+\p{I mean these numbers speak for themselves. #{50}hrs actively on a computer are enough to make the terminators' eye blood vessels detonate. Luckily only my eyes and not my brain are rotting.}

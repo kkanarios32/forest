@@ -21,7 +21,7 @@
 
 \p{To do so, I want to start with simple matrix multiplication.}
 
-\p{Below are the flags taken from [this incredible blog](https://patricktoulme.substack.com/p/when-xla-isnt-enough-from-pallas). You should definitely check it out after reading this (it is a bit more involved and goes through splash attention, which is a real production kernel).}
+\p{Below are some needed flags\sidenote{taken from [this incredible blog](https://patricktoulme.substack.com/p/when-xla-isnt-enough-from-pallas). You should definitely check it out after reading this (it is a bit more involved and goes through splash attention, which is a real production kernel)}.}
 
 \codeblock{python}{import os
 HLO_PATH, MOSAIC_PATH, LLO_PATH = "/tmp/hlo", "/tmp/mosaic", "/tmp/llo"
@@ -48,7 +48,5 @@ os.environ["LIBTPU_INIT_ARGS"] = (
 
 \transclude{M74N}
 
-\hr
-
-\<html:script>[src]{https://utteranc.es/client.js}[repo]{kkanarios32/website-comments}[issue-term]{pathname}[theme]{boxy-light}[crossorigin]{anonymous}[async]{}{}
+\comments
 \tag{public}

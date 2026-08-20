@@ -107,4 +107,4 @@ Both passes are #{O(TK^2)} because at each timestep, it requires computing #{\ma
   \p{Since #{z} is discrete, this sum is only #{O(K)} and therefore easily computable.}
 }
 
-\comments{pathname}
+\comments

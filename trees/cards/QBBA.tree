@@ -1,0 +1,21 @@
+\date{2026-08-12T15:00:03Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{A mesh axis may appear only once}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786546736336}
+\meta{anki-deck}{MLSys}
+
+\prompt{[Sharded](XGI0) matmul, case 4: both multiplicands have a \em{non-contracting} dimension sharded along the same mesh axis, #{A[I_X, J] \cdot B[J, K_X]}. Why is this invalid, and how do you resolve it?}{
+  A mesh axis may appear \strong{at most once} in a sharding. Writing #{C[I_X, K_X]} would give shard #{i} only the #{(i,i)} block — the block diagonal. The off-diagonal blocks of #{C} exist nowhere, so the result is unrecoverable.
+
+  \strong{The fix} is to [AllGather](VSDZ) one of the two inputs along #{X} first, so that #{X} appears once in the output:
+
+  \ul{
+    \li{#{\mathrm{AllGather}_X(A) \to A[I, J]}, giving #{C[I, K_X]}.}
+    \li{#{\mathrm{AllGather}_X(B) \to B[J, K]}, giving #{C[I_X, K]}.}
+  }
+
+  Which one you pick is decided by the sharding the downstream ops want.
+}

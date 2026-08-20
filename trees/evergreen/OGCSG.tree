@@ -26,10 +26,10 @@ struct Derived : Base {
 };
 <<<}
 This yields the following components for each type of object:
-\pre\verb<<<|
+\codeblock{plaintext}{\verb<<<|
 Base object:        Derived object:
 [ vptr ]            [ vptr ]      → points to Derived's vtable
 [ x    ]            [ x    ]
                     [ y    ]
-<<<
+<<<}
 }

@@ -125,6 +125,13 @@ acquire(lock_ptr):
 <<<
 ```
 
+In practice, wrap the body in `\codeblock{<lang>}{...}` (base-macros) rather
+than using `\pre` directly — it emits `<pre><code class="language-…">`, which
+is what the vendored highlight.js tokenizes. Use `plaintext` for anything that
+is not a real language (diagrams, traces, assembly listings); a blank language
+falls through to auto-detection and mis-colors them. `\codeblockf{<file>}{<lang>}{...}`
+is the same with a filename bar above. See §8 for both.
+
 `\verb<<<|...<<<` is a custom verbatim delimiter (so the body can contain
 arbitrary backslashes, braces, etc.) — `<<<|` opens, `<<<` closes. `\pre`
 wraps the result in a `<pre>` block. For very short verbatim snippets,
@@ -356,6 +363,18 @@ the body produce raw HTML. Example from `base-macros.tree`:
 
 Other useful macros from `base-macros.tree`:
 
+- `\codeblock{lang}{\verb<<<|...<<<}` — a syntax-highlighted code block.
+  Emits `<pre><code class="language-<lang>">`, which the vendored
+  highlight.js tokenizes on load; token colors live in `theme/style.css`.
+  The body must stay `\verb<<<|...<<<` so backslashes and braces pass
+  through raw. Languages are the hljs core bundle (bash, c, cpp, python,
+  lua, rust, js, ts, json, yaml, sql, go, java, ...) — notably *no*
+  assembler. Anything that is not a real language — a diagram, a program
+  trace, an assembly listing — takes `plaintext`, which turns highlighting
+  off; leaving the language blank instead hands the block to
+  auto-detection, which colors it as whatever it happens to resemble.
+- `\codeblockf{file}{lang}{body}` — the same with a filename bar above,
+  for a snippet that is a named source file.
 - `\iblock{body}` — like `\colblock` but tagged `jms-indent-block`; used
   for highlighted callouts (e.g. daily Marcus Aurelius excerpts).
 - `\irow{body}` — minimum-height row inside an `\iblock`.
@@ -648,7 +667,8 @@ theme change (most page-level tweaks belong in `base-macros.tree`).
 | Display math | `##{...}` |
 | Bold / italic / code | `\strong{}` / `\em{}` / `\code{}` |
 | Bullet / numbered list | `\ul{ \li{...} }` / `\ol{ \li{...} }` |
-| Verbatim block | `\pre\verb<<<|  ...  <<<` |
+| Code block | `\codeblock{python}{\verb<<<|  ...  <<<}` |
+| Diagram / trace block | `\codeblock{plaintext}{\verb<<<|  ...  <<<}` |
 | Image | `\<html:img>[src]{\route-asset{assets/img/foo.png}}{}` |
 | Section | `\section{Title}{ body }` |
 | Aside / remark | `\remark{...}` |

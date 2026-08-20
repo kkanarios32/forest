@@ -88,7 +88,12 @@ Every authored tree under `trees/evergreen/` looks roughly like this:
 orientation. Use `\section{Title}{...}` for outlineable structure,
 `\remark{...}` / `\example{...}` / `\question{...}` for asides that
 should not clutter the TOC. Math is `#{...}` inline and `##{...}`
-display. Code blocks are `\pre\verb<<<|...<<<`. See `FORESTER-SYNTAX.md`
+display. Code blocks are `\codeblock{<lang>}{\verb<<<|...<<<}` — the
+language feeds highlight.js, and `plaintext` is the right answer for a
+diagram, a trace, or an assembly listing (the vendored bundle has no
+assembler, and a blank language hands the block to auto-detection, which
+guesses wrong). `\codeblockf{<file>}{<lang>}{...}` adds a filename bar.
+Bare `\pre\verb` still works but renders unstyled. See `FORESTER-SYNTAX.md`
 §2-§4 for the full inventory.
 
 ## Linking
@@ -242,8 +247,11 @@ the answer folded away.
 2. Write the two sides as `\prompt{<question>}{<answer>}`. Both are ordinary
    Forester: `#{...}` / `##{...}` math, `[[ID]]` / `[text](ID)` links,
    `\ul`/`\ol`/`\li` lists, `\strong`/`\em`/`\code`, `\citek`/`\citet`, and
-   `\pre\verb<<<|…<<<` blocks are all rendered to Anki's HTML on sync (math to
-   MathJax `\(…\)`, links to their target's title, a blank line to a break).
+   `\codeblock`/`\codeblockf`/`\pre` verbatim blocks are all rendered to Anki's
+   HTML on sync (math to MathJax `\(…\)`, links to their target's title, a
+   blank line to a break; a code block's language is dropped, since there is
+   no highlighter on the card, and a `\codeblockf` filename is kept as a
+   caption).
    Anything else with a braced argument keeps its content and loses the macro,
    so an unsupported macro degrades to plain text rather than leaking source.
    Optionally set a deck with
@@ -361,6 +369,43 @@ A new tree with the matching tags joins the index automatically. See
 `FORESTER-SYNTAX.md` §10 for the relation vocabulary — including the
 negation rule, where more than one negated premise silently disables
 filtering.
+
+### Port an interactive figure
+
+A generated `.html` widget — a step-through animation, an interactive
+diagram — becomes a self-contained script under `assets/files/`, rethemed
+to the `\cal-*` palette, mounted from a tree that emits only an empty div
+and a `\route-asset` script tag. The full procedure is the
+`interactive-figure` skill in `skills/`; the short version is that
+four things about this site break a straight paste:
+
+1. The figure renders more than once per page (transclusion and hover
+   preview), so it may use **no document-unique ids**.
+2. Hover previews are DOM clones carrying no listeners or timers, so state
+   lives in `data-*` attributes on the mount root and controls run off one
+   delegated document listener.
+3. The page is XML with client-side XSLT — `createElementNS`, no
+   `classList`/`dataset`/`closest`, and **no HTML entity names**.
+4. The script tag is not parser-inserted, so `defer` guarantees nothing and
+   mounting must be idempotent.
+
+Styling stays in the script rather than `base-macros`, the same exception
+`\foldout` gets: the colors key off per-frame state no inline style can see.
+Never `\embed` — a nested browsing context inherits none of the site's type
+or palette.
+
+`assets/files/ring-reduce-scatter.js` (`CAGW`),
+`assets/files/mxu-systolic-array.js` (`SXP6`), and
+`assets/files/kv-cache.js` (`TJLA`) are the worked precedents; their file
+headers explain the decisions. Check the plumbing with
+
+```
+node skills/interactive-figure/verify.mjs assets/files/<fig>.js <root-class>
+```
+
+which covers mounting, idempotence, XML-safety, and id collisions — but
+not the figure's own arithmetic, which you assert yourself against the
+pure functions in the source.
 
 ### Send a newsletter
 

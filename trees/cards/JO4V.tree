@@ -1,0 +1,16 @@
+\date{2026-08-12T15:00:01Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Gather before, or reduce after}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786546736036}
+\meta{anki-deck}{MLSys}
+
+\prompt{[Sharded](XGI0) matmul, case 2: one multiplicand has a sharded contracting dimension, #{A[I, J_X] \cdot B[J, K] \to C[I, K]}. Which primitive, and what is the alternative?}{
+  \strong{[AllGather](VSDZ) the sharded input first, then matmul locally}: #{\mathrm{AllGather}_X(A[I, J_X]) \to A[I, J]}, then #{A[I, J] \cdot B[J, K] \to C[I, K]}. You cannot just multiply the local shards, because the sum over #{J} is split across #{X} and each device holds only a partial sum.
+
+  \strong{The alternative} is to treat it like [case 3](KIRV): do the local partial matmul and [AllReduce](U351) or [ReduceScatter](CAGW) the result. That shards the FLOPs but usually costs more comms. For #{X[B,D] \cdot Y[D_X,F]}, the gather moves #{2DF} bytes and the reduce moves #{2 \cdot 2BF}, so the reduce path wins roughly when #{D > 2B}.
+
+  Rare in practice, though — the other input is usually sharded along the same axis anyway, as under FSDP.
+}

@@ -4,7 +4,7 @@
 \title{The sharded-matmul threshold falls on D, not B}
 \taxon{Card}
 \tag{card}
-\meta{anki}{1786316439111}
+\meta{anki}{1786546735641}
 \meta{anki-deck}{MLSys}
 
 \prompt{Two chips split #{X[B, D]} and #{Y[D, F]} along #{D}, each computing a partial sum and exchanging it. When is this compute-bound, and why is the threshold surprising?}{

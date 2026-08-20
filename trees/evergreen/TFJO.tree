@@ -11,7 +11,7 @@
   \figcaption{Coding hours for week 2026-W32.}
 }
 % Non-coding computer time: work / study / brain rot; what stood out.
-\p{Non-coding computer time is back: the arbtt capture log had silently corrupted and I have since recovered it. The breakdown confirms the worry — of the 25.8 hours tracked, nearly half fall into \strong{Other}, the unclassifiable residual, which is exactly what jumping around too much looks like once a title-only tracker tries to sort it into buckets. I need to be more disciplined with the pomodoro method: choosing something to work on and not diverging \strong{for anything} until the timer has ended.}
+\p{Non-coding computer time is back: the arbtt capture log had silently corrupted and I have since recovered it. The week turned out research-heavy — of the 25.8 hours tracked, most is \strong{Work}: papers and ML-systems reading, roughly 18 hours of it. A title-only tracker had been mis-filing that reading as the unclassifiable residual, so the honest \strong{Other} is about a quarter (5.9h), and it is mostly personal browsing — shopping, recipes, the odd job application — not work I bounced off. Still worth clawing back. The pomodoro method is the fix: pick one thing and do not diverge \strong{for anything} until the timer ends.}
 \figure{
   \<html:img>[width]{100\%}[src]{\route-asset{assets/weekly/2026/32/arbtt.png}}{}
   \figcaption{Non-coding computer time for week 2026-W32.}

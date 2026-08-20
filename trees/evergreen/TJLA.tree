@@ -1,10 +1,39 @@
 \date{2025-07-14T17:40:06Z}
-\title{KV-cache}
 \import{base-macros}
 \author{kellenkanarios}
+\title{KV-cache}
+\taxon{Definition}
 \tag{public}
+\tag{note}
 
-\figure{
-\<html:img>[width]{80\%}[src]{\route-asset{assets/img/kv-cache.gif}}{}
-\figcaption{Great animation from [here](https://medium.com/@joaolages/kv-caching-explained-276520203249)}
-}
+\p{The keys and values of every token seen so far, held in memory across decoding steps so that each is projected once rather than once per step. [Attention](004G) at step #{t} needs #{k_j} and #{v_j} for every #{j \le t}, and each of those is a function of token #{j} and the weights alone — nothing about it depends on #{t}. So it is computable once and never again, and the only real question is whether you will spend memory to avoid recomputing it.}
+
+\p{The cost of not spending it is quadratic, which is easy to miss because per step it looks merely linear: admitting token #{t} means rebuilding #{t+1} key–value pairs, so a sequence of #{S} tokens costs #{\sum_{t=1}^{S} t = S(S+1)/2} projections rather than #{S}. The query is the asymmetry that makes the trade available at all — only the newest position needs one, so #{q_t} is a single row either way, and decoding is a matrix–vector product against a #{K} and #{V} that grow by one row a step.}
+
+% The decoding step-through. An empty mount point plus the script that fills
+% it — the markup, the phase machine, and the styling all live in
+% assets/files/kv-cache.js, for the same reason the ring reduce-scatter and
+% MXU figures do: the colors key off per-phase state (held, recomputed, being
+% read) that no inline style can see.
+%
+% Safe to transclude. The script mounts every .kv-fig on the page
+% independently, derives the whole picture from data attributes on the root,
+% and drives every copy from one delegated listener and one interval, so
+% several copies — including the clones forester.js makes for hover previews —
+% run on their own.
+\<html:div>[class]{kv-fig}{}
+\<html:script>[src]{\route-asset{assets/files/kv-cache.js}}[defer]{}{}
+
+\notation{Following the [scaling book](scaling-book): #{S} is the KV sequence length, #{K} the number of key/value heads, #{H} the head dimension, #{L} the layers, #{B} the batch. The clash between #{K} as a matrix and #{K} as a head count is unfortunate and universal.}
+
+\p{What the cache costs is memory, and the shape of that cost is the reason it governs inference planning. Each token contributes a key and a value in every layer, so a batch holds}
+
+##{2 \cdot B \cdot S \cdot L \cdot K \cdot H \cdot \mathrm{bytes}}
+
+\p{which is linear in the sequence length and — unlike the weights — \em{per sequence}, so it cannot be amortised over the batch. Context length and batch size are therefore drawn from the same [[AI2G]] budget, and past a certain context the cache dominates residency outright, which is [[2BGU]]'s framing of the memory wall.}
+
+\p{It also decides what decoding is bound by. At step #{t} the model streams the entire cache through the [[OGCRP]] to do #{O(S)} multiply-accumulates against a single query row, so the [[YBQD]] is roughly one FLOP per byte read — far below the ridge point of any accelerator, and flat in #{S}. Decoding is bandwidth-bound, and the cache is what it is bound by.}
+
+\p{Every fix for that attacks a factor in the expression above rather than the idea of caching. [MQA](W4YP) sets #{K = 1} and shares one key/value head across all query heads; [[XUVV]] sets it to a group count and interpolates; [[WM3M]] bounds #{S} instead by refusing to attend past a window. The FLOPs are unchanged in all three — what changes is how many bytes have to move to supply them.}
+
+\transclude{J65M}

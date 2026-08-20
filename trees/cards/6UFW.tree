@@ -1,0 +1,20 @@
+\date{2026-08-18T14:23:00Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The running max makes the chunk merge exact}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1787063263978}
+\meta{anki-deck}{MLSys}
+
+\prompt{In [flash attention](R0PM), what running statistics travel between KV chunks, and how are two chunks merged?}{
+  Each query block carries three: #{M}, the running maximum of #{q \cdot k}; #{L}, the running [softmax](C00V) denominator; and #{O}, the running output.
+
+  Merging chunks with local maxima #{M^1, M^2} and sums #{L^1, L^2} rescales each to the shared maximum:
+
+  ##{L = e^{M^1 - \max(M^1, M^2)}L^1 + e^{M^2 - \max(M^1, M^2)}L^2}
+
+  \strong{This is exact, not an approximation.} It is only #{\sum_i e^{a_i + b} = e^b \sum_i e^{a_i}}: pulling a constant out of a sum of exponentials. The maximum is subtracted for [numerical stability](7TMH) and put back by the same identity — see [[PI7N]] for the one-pass version of the argument.
+
+  \strong{The payoff is memory, not FLOPs.} The #{[B,T,S,N]} attention matrix is never materialised, so memory is #{O(1)} in the number of chunks while the FLOP count stays quadratic. The query block sits in [VMEM](GFK2) and only the KV chunks stream in, which is also what raises the [arithmetic intensity](YBQD).
+}

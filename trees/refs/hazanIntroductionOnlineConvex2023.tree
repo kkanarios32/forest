@@ -15,22 +15,11 @@
  urldate = {2025-02-16},
  number = {arXiv:1909.05207},
  publisher = {arXiv},
- file = {/home/kellen/Downloads/papers/Introduction to Online Convex
-Optimization - Hazan.pdf},
- keywords = {Computer Science - Machine Learning,Mathematics - Optimization and
-Control,Statistics - Machine Learning},
+ file = {/home/kellen/Downloads/papers/Introduction to Online Convex Optimization - Hazan.pdf},
+ keywords = {Computer Science - Machine Learning,Mathematics - Optimization and Control,Statistics - Machine Learning},
  langid = {english},
  archiveprefix = {arXiv},
- abstract = {This manuscript portrays optimization as a process. In many
-practical applications the environment is so complex that it is
-infeasible to lay out a comprehensive theoretical model and use
-classical algorithmic theory and mathematical optimization. It is
-necessary as well as beneficial to take a robust approach, by
-applying an optimization method that learns as one goes along,
-learning from experience as more aspects of the problem are
-observed. This view of optimization as a process has become
-prominent in varied fields and has led to some spectacular success
-in modeling and systems that are now part of our daily lives.},
+ abstract = {This manuscript portrays optimization as a process. In many practical applications the environment is so complex that it is infeasible to lay out a comprehensive theoretical model and use classical algorithmic theory and mathematical optimization. It is necessary as well as beneficial to take a robust approach, by applying an optimization method that learns as one goes along, learning from experience as more aspects of the problem are observed. This view of optimization as a process has become prominent in varied fields and has led to some spectacular success in modeling and systems that are now part of our daily lives.},
  primaryclass = {cs},
  eprint = {1909.05207},
  month = {August}

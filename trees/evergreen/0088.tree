@@ -77,4 +77,4 @@ Now this is all cool theoretically but how TF do we actually maximize this thing
 Alternating between these steps yields the \em{expectation-maximization} algorithm the ML oldheads mythologize.
 }
 }
-\comments{pathname}
+\comments

@@ -9,35 +9,17 @@
 \meta{bibtex}{\startverb
 @misc{kothariAxonSynthesizingSuperoptimizer2026,
  title = {Axon: {{A Synthesizing Superoptimizer}} for {{Tensor Programs}}},
- author = {Kothari, Akash and Zhu, Shaowei and Kroening, Daniel and Sung,
-Chungha},
+ author = {Kothari, Akash and Zhu, Shaowei and Kroening, Daniel and Sung, Chungha},
  year = {2026},
  doi = {10.48550/arXiv.2606.26344},
  urldate = {2026-07-13},
  number = {arXiv:2606.26344},
  publisher = {arXiv},
- file = {/home/kellen/Downloads/papers/Axon A Synthesizing Superoptimizer for
-Tensor Programs - Kothari et al..pdf},
- keywords = {Computer Science - Computation and Language,Computer Science -
-Performance,Computer Science - Programming Languages},
+ file = {/home/kellen/Downloads/papers/Axon A Synthesizing Superoptimizer for Tensor Programs - Kothari et al..pdf},
+ keywords = {Computer Science - Computation and Language,Computer Science - Performance,Computer Science - Programming Languages},
  langid = {english},
  archiveprefix = {arXiv},
- abstract = {Writing high performance kernels for AI accelerators requires deep
-expertise in tiling, instruction selection, data layout, and
-operator fusion placing a significant burden on programmers. In
-this paper, we focus on tile based AI accelerator programs and
-present Axon, a synthesizing superoptimizer for tensor programs: it
-uses program synthesis to automatically generate target
-instructions from semantics specifications, and explores
-semantically equivalent program variants to select the best
-performing kernel empirically. Axon discovers algebraic
-transformations by propagating operators through computation graphs
-and uses SMT over unbounded tensors to guarantee that all
-transformations preserve semantics without requiring hand crafted
-rewrite rules. It then lowers tensor operations to target ISA
-instructions, explores tiling configurations constrained by
-hardware descriptions, and fuses operators and instructions to
-minimize memory traffic.},
+ abstract = {Writing high performance kernels for AI accelerators requires deep expertise in tiling, instruction selection, data layout, and operator fusion placing a significant burden on programmers. In this paper, we focus on tile based AI accelerator programs and present Axon, a synthesizing superoptimizer for tensor programs: it uses program synthesis to automatically generate target instructions from semantics specifications, and explores semantically equivalent program variants to select the best performing kernel empirically. Axon discovers algebraic transformations by propagating operators through computation graphs and uses SMT over unbounded tensors to guarantee that all transformations preserve semantics without requiring hand crafted rewrite rules. It then lowers tensor operations to target ISA instructions, explores tiling configurations constrained by hardware descriptions, and fuses operators and instructions to minimize memory traffic.},
  primaryclass = {cs.PL},
  eprint = {2606.26344},
  month = {June},

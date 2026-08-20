@@ -7,8 +7,7 @@
 \meta{bibtex}{\startverb
 @article{momennejadSuccessorRepresentationHuman2017,
  title = {The Successor Representation in Human Reinforcement Learning},
- author = {Momennejad, I. and Russek, E. M. and Cheong, J. H. and Botvinick, M.
-M. and Daw, N. D. and Gershman, S. J.},
+ author = {Momennejad, I. and Russek, E. M. and Cheong, J. H. and Botvinick, M. M. and Daw, N. D. and Gershman, S. J.},
  year = {2017},
  doi = {10.1038/s41562-017-0180-8},
  urldate = {2025-07-24},
@@ -17,12 +16,9 @@ M. and Daw, N. D. and Gershman, S. J.},
  number = {9},
  pages = {680--692},
  publisher = {{Springer Science and Business Media LLC}},
- file = {/home/kellen/Downloads/papers/The successor representation in human
-reinforcement learning - Momennejad et al..pdf},
+ file = {/home/kellen/Downloads/papers/The successor representation in human reinforcement learning - Momennejad et al..pdf},
  langid = {english},
- copyright = {
-https://www.springernature.com/gp/researchers/text-and-data-mining
-},
+ copyright = {https://www.springernature.com/gp/researchers/text-and-data-mining},
  issn = {2397-3374},
  month = {August}
 }

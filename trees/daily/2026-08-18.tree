@@ -63,3 +63,17 @@
 \p{\strong{9:43 PM}}
 \hr
 \p{\em{Injection bandwidth} captures the bandwidth of the network \strong{dependent on the traffic} i.e. the bandwidth of a network is lower if the maximum channel load is high because a lot of packets are flowing through the same link.}
+
+\section{Reflection}{
+\ul{
+  \li{\strong{Study}}
+  \ul{
+    \tdtaskx{}{Get minimal distributed matmul directory on TPU working.}
+    \tdtaskx{}{Read: Global FLOPs and Params Calculation}
+    \tdtaskx{}{Read: Transformer accounting}
+    \tdtaskx{}{Read: Counting dots}
+  }
+}
+\p{\strong{What went well today?} }
+\p{\strong{What went bad today?} }
+}

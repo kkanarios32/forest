@@ -1,0 +1,18 @@
+\date{2026-08-18T14:22:56Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{GQA saves cache, not projection FLOPs}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1787063263870}
+\meta{anki-deck}{MLSys}
+
+\prompt{Per layer, what do the QKVO projections cost in parameters and training FLOPs under [[XUVV]] with #{N} query heads, #{K} key/value heads, and head dimension #{H}?}{
+  \strong{Parameters:} #{2D(N+K)H}, from #{W_Q[D,N,H]} and #{W_O[N,H,D]} at #{DNH} each, plus #{W_K, W_V[D,K,H]} at #{DKH} each.
+
+  \strong{Training FLOPs:} #{12BTD(N+K)H} — each projection is #{6BTD \cdot (\text{heads}) \cdot H}.
+
+  \strong{The variants are one knob.} #{K = N} is plain multi-head attention; #{K = 1} is [MQA](W4YP); #{1 < K < N} with #{K \mid N} is grouped-query, with group size #{G = N/K}.
+
+  \strong{Read the formula for what shrinking #{K} actually buys.} It touches only the #{K} term, so the projection cost falls from #{2N} to #{N + K} — at most a factor of two, and usually far less. That is not why anyone uses GQA. The payoff is the [[TJLA]], which scales with #{K} alone and is the binding constraint at generation time.
+}

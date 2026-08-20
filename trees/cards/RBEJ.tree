@@ -1,0 +1,26 @@
+\date{2026-08-12T15:00:04Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{AllGather costs the same at any device count}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786546736461}
+\meta{anki-deck}{MLSys}
+
+\prompt{[AllGather](VSDZ): signature, mechanism, and cost?}{
+\p{
+  \em{Signature} #{[A_X, B] \to [A, B]} — it removes a subscript, reassembling shards so every device on that axis holds a full copy. It can drop just one of several axes: #{A[I_{XY}, J] \to A[I_Y, J]}.
+}
+
+\p{
+  \em{Mechanism}: pass each shard around the [ring](UEA0), #{N-1} hops in one direction or about #{N/2} bidirectionally.
+}
+
+\p{
+  \em{Cost}, when bandwidth-bound: #{T = V / W_{\mathrm{ici}}} on bidirectional bandwidth, or #{V / (W_{\mathrm{ici}} \cdot N_{\mathrm{axes}})} across several mesh axes. The takeaway is that this is \strong{independent of the device count #{X}} — each hop sends #{V/X} bytes but you make #{X/2} hops. Only array size and link bandwidth matter.
+}
+
+\p{
+  \em{Latency-bound regime}: about #{1\mu\mathrm{s}} intrinsic cost per hop, so #{T = \max(T_{\min} \cdot \sum_i |X_i| / 2,\; V / (W \cdot N_{\mathrm{axes}}))}. On v5e (#{4.5e10} unidirectional) anything under ~45 kB is latency-bound.
+}
+}

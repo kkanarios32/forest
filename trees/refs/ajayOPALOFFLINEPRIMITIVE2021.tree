@@ -5,13 +5,10 @@
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @article{ajayOPALOFFLINEPRIMITIVE2021,
- title = {{{OPAL}}: {{OFFLINE PRIMITIVE DISCOVERY FOR ACCEL- ERATING OFFLINE
-REINFORCEMENT LEARNING}}},
- author = {Ajay, Anurag and Kumar, Aviral and Agrawal, Pulkit and Levine,
-Sergey and Nachum, Ofir},
+ title = {{{OPAL}}: {{OFFLINE PRIMITIVE DISCOVERY FOR ACCEL- ERATING OFFLINE REINFORCEMENT LEARNING}}},
+ author = {Ajay, Anurag and Kumar, Aviral and Agrawal, Pulkit and Levine, Sergey and Nachum, Ofir},
  year = {2021},
- file = {/home/kellen/Downloads/papers/OPAL OFFLINE PRIMITIVE DISCOVERY FOR
-ACCEL- ERATING OFFLINE REINFORCEMENT LEARNING - Ajay et al..pdf},
+ file = {/home/kellen/Downloads/papers/OPAL OFFLINE PRIMITIVE DISCOVERY FOR ACCEL- ERATING OFFLINE REINFORCEMENT LEARNING - Ajay et al..pdf},
  langid = {english}
 }
 \stopverb}

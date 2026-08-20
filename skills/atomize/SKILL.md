@@ -1,6 +1,6 @@
 ---
 name: atomize
-description: Decide how to split a long-form note into atomic concept trees for the forest. Use when ingesting a fleet note, processing a paper, or refactoring an existing tree that has grown to cover multiple concepts. Provides rules, heuristics, anti-patterns, and worked examples for identifying the right atom boundary.
+description: Split long-form prose into atomic concept trees and wire them into the forest. Use when promoting a transient note out of trees/inbox/, processing a paper or lecture notes, or refactoring an existing tree that has grown to cover multiple concepts. Covers where the atom boundary falls, plus the mechanics of creating, stubbing, transcluding, and retiring the source note.
 ---
 
 # Atomize: break notes into concept trees
@@ -14,12 +14,13 @@ description: Decide how to split a long-form note into atomic concept trees for 
 The forest's organizing principle is that every named concept lives in
 its own tree, and composition happens via `\transclude` and `[[ID]]`
 links. Atomization is the act of finding those concept boundaries
-inside long-form prose (a fleet note, a paper summary, an oversized
-existing tree) and splitting accordingly.
+inside long-form prose (a transient note in `trees/inbox/`, a paper
+summary, an oversized existing tree) and splitting accordingly.
 
-Read this before the `atomize` step of any ingest, or whenever an
-existing tree starts feeling crowded. Pair with `CLAUDE.md` for syntax
-and conventions.
+Read this before promoting anything out of the inbox, or whenever an
+existing tree starts feeling crowded. Pair with `CLAUDE.md` for syntax,
+tag vocabulary, and the note pipeline. Spaced-repetition cards are a
+different job — see the `cards` skill.
 
 ## What an atom is
 
@@ -41,7 +42,7 @@ these hold:
    inside that parent, not its own tree.
 4. **It has more than a sentence to say.** A tree with one
    declarative sentence and nothing else is a stub at best
-   (`\tag{todo}`) and an over-atomization at worst. If you cannot
+   (`\tag{stub}`) and an over-atomization at worst. If you cannot
    imagine ever writing a second paragraph, fold it into the parent.
 
 ## Heuristics for spotting atom boundaries
@@ -66,7 +67,7 @@ the dimensions along which variants differ, and the tradeoff. The
 children carry the actual definitions and analyses.
 
 **The "motivation → mechanism → consequence" arc.** Most well-written
-fleet notes follow this shape for a *single* concept:
+transient notes follow this shape for a *single* concept:
 
 ```
 Motivation: what problem does this solve?
@@ -83,7 +84,7 @@ Forester links resolve at the tree level — sub-paragraph anchors do
 not feel idiomatic in this forest.
 
 **The repeat-mention test.** If a concept gets mentioned in two or
-more existing public trees, it deserves its own tree (so those
+more existing evergreen trees, it deserves its own tree (so those
 mentions can become links).
 
 ## Anti-patterns
@@ -143,10 +144,13 @@ atoms. Keep them as a single `\tag{blog}` tree; atomize only the
 technical concepts that appear inside if they don't already have
 trees.
 
-**Open questions / half-formed intuitions.** Leave in the fleet note,
-or promote to a `\tag{todo}` stub with the question as the
-`\title{...}` and the intuition in the body. Do not atomize prose
-that does not yet have a clear claim.
+**Open questions / half-formed intuitions.** Do not atomize prose that
+does not yet have a clear claim. Either leave it in the transient note,
+or — if the question is one the graph genuinely raises and should carry
+— give it its own tree with `scripts/new question <title>`
+(`\taxon{Question}`, `\tag{question}`), which lands it on the
+[[OUTSTANDING]] index. It graduates by being answered: rewrite it as
+the resulting claim and drop the tag.
 
 **Lecture notes.** If you see splits by lecture number or some other arbitrary ordering discard it and instead compose into conceptual parent notes and atoms.
 
@@ -162,14 +166,135 @@ When given a long-form note to atomize, follow this order:
    a `\section`, `\remark`, or `\example` belonging inside another
    atom? Is any candidate a comparison that should be split into its
    two halves?
-4. **Search for existing trees** with `scripts/has "<concept>"` for
-   each candidate. Classify EXTEND vs NEW.
+4. **Search for existing trees.** For each candidate:
+   ```bash
+   scripts/has "<concept>"        # ripgrep across trees
+   scripts/hastags public note    # narrow by tag combination
+   scripts/fb                     # fzf over every title, opens in nvim
+   ```
+   Classify each as:
+   - **EXTEND** — a tree already covers this exact concept; the new
+     prose adds depth, nuance, or a correction.
+   - **NEW** — nothing covers it; the prose seeds a new atomic tree.
+   - **DROP** — duplicates existing content with no new signal. Say so
+     explicitly in the plan; never drop silently.
 5. **Identify the parent notebook(s)** each new atom will be
    transcluded from. If no fitting notebook exists, that itself is a
    signal — either create one or transclude into an adjacent
    notebook's appropriate section.
-6. **Present the plan** before writing (see the `ingest` skill's
-   step 4 for the format).
+6. **Present the plan** before writing:
+   ```
+   inbox/NWRG (GPU Register Scoreboard)
+     ├─ NEW: "GPU register scoreboard" — \taxon{Definition},
+     │       links [[Q2DT]], transcluded from N7GP
+     ├─ EXTEND: 8C2H "CPU issue queue" — add CAM/wakeup-select,
+     │       link the new scoreboard tree
+     └─ DROP: the ILP/TLP paragraph — already in [[XXXX]]
+
+   Stubs to create: Total Store Order, Store-to-load forwarding
+   ```
+   Wait for approval, redirection, or amendment. Do not write until the
+   plan is acknowledged.
+
+## Execute
+
+### Extend an existing tree
+
+Read the target end-to-end, then **rewrite, do not append.** Per
+CLAUDE.md's Evolution principle: no "update" sections, no disclaimers,
+no trailing addenda — the tree reads as a coherent whole reflecting the
+current best understanding. Bump `\date{...}` if the change is
+substantive.
+
+### Create a new atom
+
+```bash
+scripts/new def <Title>     # or thm, prop, lemma, blog, potw, question
+```
+
+Writes `trees/evergreen/<id>.tree` with `\import{base-macros}`,
+`\author`, `\title`, `\taxon`, and `\tag{public}` already in place.
+Open with one orienting sentence in `\p{...}`, then port the prose. Use
+`\section{...}{...}` only if the tree genuinely has sub-structure;
+`\remark{...}` / `\example{...}` for asides that shouldn't clutter the
+TOC. Add topical tags that an existing Datalog query relies on — reuse
+before inventing.
+
+### Weave the links
+
+For every tree touched, sweep the prose: each named concept, theorem,
+or pattern that has — or should have — a tree gets a link, inline,
+where it is mentioned. `[[ID]]` renders the target's title; use
+`[text](ID)` when the title doesn't fit the sentence. **Never
+`[[ID|alias]]`.** Trailing "see also" lists are a smell.
+
+For a concept with no tree yet, stub it *before* linking:
+
+```bash
+scripts/new stub <Concept Name>
+```
+
+`\tag{stub}` + `\tag{public}`, title only, no body — the concept name
+ships to the site as a live link target, lands in `inbox.md` ranked by
+inbound links, and is promoted **in place** later (write the body, drop
+`\tag{stub}` and the `\stub` line, add a taxon). Never leave a dangling
+`[[??]]`:
+
+```bash
+grep -rn '\[\[??' trees/
+```
+
+### Wire atoms into notebooks
+
+An atom no tree transcludes is an orphan. Add `\transclude{<new-id>}`
+under the right `\section{...}` of the notebook. For `\remark`-style
+asides, hide them from the TOC:
+
+```
+\scope{
+  \put\transclude/toc{false}
+  \transclude{<new-id>}
+}
+```
+
+Re-read the notebook immediately before editing — these get
+restructured by hand between sessions, and the job is to fill the
+section that is there, not re-impose an earlier layout.
+
+### Retire the source
+
+If the transient note's content is now fully distributed, delete it:
+
+```bash
+rm trees/inbox/<id>.tree
+```
+
+If some prose is still genuinely unformed (open questions, half-formed
+intuitions), leave the note in place and strip only what was promoted —
+a transient note should always reflect what is *still* transient.
+`scripts/promote` does the mechanical half (flip `\tag{transient}` to
+`\tag{public}`, move to `trees/evergreen/`) when the note is one atom
+that just needs rewriting in place.
+
+### Build and report
+
+```bash
+opam exec -- forester build forest.toml 2>&1 | tail -40
+```
+
+Then, terse and structured:
+
+```
+Atomized: inbox/NWRG, inbox/SKBY
+Created:  <id1> "GPU register scoreboard", <id2> "Store buffer drain"
+Extended: 8C2H, ABCD
+Stubbed:  <id3> Total Store Order, <id4> Store-to-load forwarding
+Notebooks: N7GP (+2), 0007 (+1)
+Removed:  trees/inbox/NWRG.tree
+```
+
+Surface the judgment calls — a concept that could plausibly extend
+either of two trees, a DROP you were unsure about.
 
 ## Quick checklist
 
@@ -183,3 +308,5 @@ Before promoting a candidate to its own tree, confirm:
       or a section of something that already has a tree.
 - [ ] If splitting a comparison: each side passes the checklist on its
       own.
+- [ ] It is transcluded from at least one notebook, and every concept it
+      names is linked or stubbed.

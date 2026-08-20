@@ -1,0 +1,16 @@
+\date{2026-08-18T14:22:58Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The KV cache scales with K, and is per-sequence}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1787063264798}
+\meta{anki-deck}{MLSys}
+
+\prompt{How large is a [[TJLA]], and which dimension actually drives it?}{
+  The cache has shape #{[2, S, L, K, H]} per sequence — the leading 2 is keys and values — so in int8 it is #{2SLKH} bytes.
+
+  \strong{Worked:} #{S = 8\mathrm{k}}, #{L = 64}, #{KH = D = 8192} gives #{2 \cdot 8192 \cdot 64 \cdot 8192 \approx 8} GiB for a \em{single} sequence.
+
+  \strong{Two things in that expression decide inference planning.} It scales with #{K}, the number of key/value heads, and not with the #{N} query heads — which is the whole argument for [[XUVV]] and [MQA](W4YP) at #{K \ll N}. And it is per sequence, so unlike the weights it cannot be amortised over the batch: it competes with batch size for the same [[AI2G]] budget, and generation is bandwidth-bound on streaming it.
+}

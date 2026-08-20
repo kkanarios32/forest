@@ -9,3 +9,5 @@
   \li{Each site contains 4 ALUs, enabling 4096 FLOPs.}
   \li{Fed a 8x128 [Vector Register](OGCRO) in one cycle.}
 }
+
+\transclude{JFWY}

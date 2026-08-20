@@ -13,7 +13,7 @@
   \p{Run \code{process-run.py} with the flags \code{-l 5:100,5:100}. What should the CPU utilization be?}
 }{
   \prediction{Two processes of #{5} instructions each, every instruction using the CPU with probability one, so nothing ever blocks:
-  \pre\verb<<<|
+  \codeblock{plaintext}{\verb<<<|
 Process 0
   cpu
   cpu
@@ -27,7 +27,7 @@ Process 1
   cpu
   cpu
   cpu
-<<<
+<<<}
   Utilization should be 100\%. The first process runs to completion, then the second. Were both waiting on I/O this would not hold.}
   \p{Confirmed with \code{-c -p}: 100\% utilization.}
 }
@@ -36,7 +36,7 @@ Process 1
   \p{Run \code{process-run.py} with the flags \code{-l 4:100,1:0}. How long does it take to complete both processes?}
 }{
   \prediction{One process of #{4} CPU instructions and one of a single I/O instruction:
-  \pre\verb<<<|
+  \codeblock{plaintext}{\verb<<<|
 Process 0
   cpu
   cpu
@@ -46,7 +46,7 @@ Process 0
 Process 1
   io
   io_done
-<<<
+<<<}
   It should take #{4 + \text{time of IO}}: the compute-bound process runs its four instructions first, and only then does the second process start and sit out the whole I/O.}
   \p{With \code{-c -p} it takes #{11} timesteps, which is indeed #{\approx 4 + \text{time of IO}}.}
 }
@@ -55,7 +55,7 @@ Process 1
   \p{Switch the order: \code{./process-run.py -l 1:0,4:100}. What happens now? Does switching the order matter, and why?}
 }{
   \prediction{Now the trace is
-  \pre\verb<<<|
+  \codeblock{plaintext}{\verb<<<|
 Process 0
   io
   io_done
@@ -65,7 +65,7 @@ Process 1
   cpu
   cpu
   cpu
-<<<
+<<<}
   which should take #{\max(5, 1 + \text{time IO})} depending on the \code{-L} flag. Order matters, because the CPU instructions can run while the non-blocking I/O is outstanding — which is the argument for scheduling at all.}
   \p{It takes #{7} timesteps: the I/O overlaps with the compute as expected.}
 }
@@ -74,7 +74,7 @@ Process 1
   \p{The \code{-S} flag decides how the system reacts when a process issues I/O. Under \code{SWITCH_ON_END} the system does \em{not} switch away while a process is doing I/O; it waits until that process finishes entirely. What happens with one I/O-bound and one CPU-bound process — \code{-l 1:0,4:100 -c -S SWITCH_ON_END}?}
 }{
   \p{The whole CPU-bound process is held hostage by the I/O:}
-  \pre\verb<<<|
+  \codeblock{plaintext}{\verb<<<|
 Time        PID: 0        PID: 1           CPU           IOs
   1         RUN:io         READY             1
   2        BLOCKED         READY                           1
@@ -87,7 +87,7 @@ Time        PID: 0        PID: 1           CPU           IOs
   9           DONE       RUN:cpu             1
  10           DONE       RUN:cpu             1
  11           DONE       RUN:cpu             1
-<<<
+<<<}
 }
 
 \exercise{5}{SWITCH_ON_IO overlaps the two}{
@@ -95,7 +95,7 @@ Time        PID: 0        PID: 1           CPU           IOs
 }{
   \prediction{Timestep #{1} still runs \code{RUN:io}, but then \code{PID: 1} should occupy the next #{4} timesteps until it completes. After one more \code{BLOCKED} step we run \code{RUN:io_done} and both finish.}
   \p{Exactly that:}
-  \pre\verb<<<|
+  \codeblock{plaintext}{\verb<<<|
 Time        PID: 0        PID: 1           CPU           IOs
   1         RUN:io         READY             1
   2        BLOCKED       RUN:cpu             1             1
@@ -104,7 +104,7 @@ Time        PID: 0        PID: 1           CPU           IOs
   5        BLOCKED       RUN:cpu             1             1
   6        BLOCKED          DONE                           1
   7*   RUN:io_done          DONE             1
-<<<
+<<<}
 }
 
 \exercise{6}{IO_RUN_LATER wastes the overlap it just bought}{
@@ -112,11 +112,11 @@ Time        PID: 0        PID: 1           CPU           IOs
 }{
   \prediction{They are not. All three CPU-bound processes finish before we return to the I/O-bound one, which then issues its next \code{io} with nothing left to overlap it against — the concurrency benefit evaporates.}
   \p{The trace is long, but the totals say it:}
-  \pre\verb<<<|
+  \codeblock{plaintext}{\verb<<<|
 Stats: Total Time 31
 Stats: CPU Busy 21 (67.74%)
 Stats: IO Busy  15 (48.39%)
-<<<
+<<<}
 }
 
 \exercise{7}{IO_RUN_IMMEDIATE and why recent I/O predicts more I/O}{
@@ -124,11 +124,11 @@ Stats: IO Busy  15 (48.39%)
 }{
   \prediction{Returning to the I/O-bound process lets it issue its next \code{io} before handing the CPU back, so the requests stay in flight alongside the compute. As a heuristic it is a bet that a process which just did I/O will do more of it.}
   \p{The bet pays:}
-  \pre\verb<<<|
+  \codeblock{plaintext}{\verb<<<|
 Stats: Total Time 21
 Stats: CPU Busy 21 (100.00%)
 Stats: IO Busy  15 (71.43%)
-<<<
+<<<}
 }
 
 \exercise{8}{Which flag matters under randomly generated workloads}{

@@ -1,0 +1,20 @@
+\date{2026-08-18T14:23:00Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Sparsity sets the batch an MoE needs}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1787063263693}
+\meta{anki-deck}{MLSys}
+
+\prompt{A [[ZUVW]] has #{E} experts and top-#{k} routing, int8 weights on a TPU v5e (ridge point around 240 FLOPs/byte). What batch size does it need to be compute-bound, and what is that for DeepSeek v3?}{
+  \strong{#{B > 120E/k} tokens.} For DeepSeek v3, with #{E = 256} routed experts and #{k = 8}, that is \strong{#{B > 3840} tokens} — a startlingly large batch to require at generation time.
+
+  \strong{Per weight matrix:} a full batch touches every expert, so all #{E} copies get loaded — #{EDF} bytes — while only #{k} experts fire per token, so the work is #{2kBDF} FLOPs. The [arithmetic intensity](YBQD) is therefore
+
+  ##{\frac{2kBDF}{EDF} = \frac{2kB}{E}}
+
+  and int8 weights against bf16 arithmetic need that above roughly 240, giving #{kB/E > 120}.
+
+  \strong{The framing that makes this obvious:} an MoE is a dense model with #{E} MLP blocks per layer. Total parameters scale with #{E}; parameters activated per token scale with #{k}. The sparsity #{E/k} — typically 8 to 64, and 32 for DeepSeek v3 — is exactly the factor by which the required batch inflates. The other cost is routing: two [AllToAlls](T470) per MoE block, out to the experts and back.
+}

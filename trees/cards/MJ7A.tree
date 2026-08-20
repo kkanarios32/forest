@@ -1,0 +1,18 @@
+\date{2026-08-12T15:00:06Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{AllReduce is two collectives, not one}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786546736236}
+\meta{anki-deck}{MLSys}
+
+\prompt{[AllReduce](U351): signature, decomposition, and cost relative to an [AllGather](VSDZ)?}{
+  \strong{Signature} #{[A_X, B]\{U_Y\} \to [A_X, B]} — it removes the "unreduced" suffix, leaving every device on the axis holding the same fully-summed value, unsharded along #{Y}.
+
+  \strong{It is not really a primitive}: an AllReduce is a [ReduceScatter](CAGW) followed by an AllGather.
+
+  ##{A[I_X, J]\{U_Y\} \xrightarrow{\ \mathrm{ReduceScatter}_{Y,J}\ } A[I_X, J_Y] \xrightarrow{\ \mathrm{AllGather}_Y\ } A[I_X, J]}
+
+  \strong{Cost} #{2V / W_{\mathrm{ici}}}, exactly #{2\times} an AllGather — which is the practical argument for stopping at the ReduceScatter whenever the consumer can accept a sharded output. The AllGather can then be deferred, or skipped entirely.
+}

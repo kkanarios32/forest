@@ -49,4 +49,4 @@ Thus, to tighten the lower bound we can optimize #{q_{\phi}(z)} to try to match 
 .\end{align*}}
 You may be wondering how we use this algorithmically to find #{\theta^*}? This will be the main idea of [expectation maximization](0088). Feel free to check it out!
 }
-\comments{pathname}
+\comments

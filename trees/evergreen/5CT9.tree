@@ -7,10 +7,10 @@
 \p{Register renaming is the [data hazard](ITFA) mitigation that makes out-of-order execution viable: the hardware dynamically remaps each architectural-register \em{write} to a fresh physical register from a larger pool, so two instructions that reuse the same architectural name for \em{independent} values never collide. The false data dependency — same architectural register, unrelated values — simply disappears, because each write lands in a different physical register.}
 
 \example{Consider:
-\pre\verb<<<|
+\codeblock{plaintext}{\verb<<<|
 add r1, r2, r3      // r2 := r1 + r3
 add r4, r5, r2      // r2 := r4 + r5   (reuses r2 for an independent value)
-<<<
+<<<}
 The second \code{add} only depends on \code{r2} as a \em{destination}, not as a source. Without renaming, it would have to wait for the first instruction's writeback to avoid clobbering. With renaming, the second write goes to a fresh physical register, and the two instructions can proceed in parallel.}
 
 \p{The programming model exposes only the architecturally-named registers; the [[ETWN]] hides a larger pool of rename registers underneath. This is one of the central tricks that makes out-of-order execution viable.}

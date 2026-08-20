@@ -1,0 +1,18 @@
+\date{2026-08-18T14:22:57Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Attention dominates only past 8D tokens}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1787063264246}
+\meta{anki-deck}{MLSys}
+
+\prompt{Dot-product attention costs #{12BT^2NH} FLOPs in training. At what sequence length does it start to dominate the matmul FLOPs, and why that number?}{
+  \strong{Past #{T > 8D}.} With the usual proportions #{F = 4D}, #{D = NH}, #{N = K}, the ratio of attention to everything else is
+
+  ##{\frac{12BT^2NH}{18BTDF + 24BTDNH} = \frac{12BT^2D}{72BTD^2 + 24BTD^2} = \frac{T}{8D}}
+
+  \strong{What that means in practice.} At #{D \approx 8\mathrm{k}} attention only takes over past roughly 64k tokens; Gemma-27B, with #{D = 4608}, crosses at about 37k. Larger models push the crossover \em{further out}, so the quadratic term is not what stops large models training on long context — the [[TJLA]] at inference is a much earlier wall.
+
+  The #{12BT^2NH} is two matmuls, #{QK^{\top}} and #{SV}, each #{6BTSNH} and each batched over #{B} and the head axis.
+}

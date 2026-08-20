@@ -1,0 +1,18 @@
+\date{2026-08-18T14:22:55Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Gating splits the up-projection in two}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1787063265996}
+\meta{anki-deck}{MLSys}
+
+\prompt{For one [[YB7M]] layer with a gated MLP, what are the parameter count and training FLOPs — and why is the coefficient three rather than two?}{
+  \strong{Parameters:} #{3DF}, from #{W_{in1}[D,F]}, #{W_{in2}[D,F]}, #{W_{out}[F,D]}.
+
+  \strong{Training FLOPs:} #{18BTDF} — three matmuls at #{6BTDF} each, by the [#{6NPM}](92HA) rule.
+
+  \strong{Where the third matrix comes from.} A [[K2N7]] splits the up-projection into two matrices whose outputs are multiplied elementwise, #{\sigma(AW_{in1}) \odot (AW_{in2})}, so one of them acts as a gate on the other. LLaMA, DeepSeek and most current models do this. A non-gated MLP has a single #{W_{in}} and so #{2DF} params — and typically scales #{D} and #{F} up to compensate, which is why the two families cost about the same at equal quality.
+
+  The gate itself is #{O(BTF)} — elementwise, no contraction, and negligible against #{BTDF}.
+}

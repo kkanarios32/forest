@@ -1,0 +1,42 @@
+\date{2026-08-19T14:26:59Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{[POTW](005G): 🎂 [[yeCAKECompilerAgentCoDesign2026]]}
+\tag{potw}
+\tag{public}
+
+\section{TLDR}{
+\p{\paragraph{Problem} In this paper, they aim to address the problem of \em{agentic kernel generation} or as we refer to it: [\em{vibe compilation}](AV36). Specifically, they target [CUDA](OGCS4) and raw PTX as a backend.}
+\figure{
+\<html:img>[width]{90\%}[src]{\route-asset{assets/img/cake-problem.png}}{}
+}
+\p{\paragraph{Technical challenges} The main issue that arises in [vibe compilation](AV36) is ensuring correctness. A non-exhaustive list of challenges is as follows:}
+\ul{
+  \li{\em{[[FN71]]}:}
+  \li{\em{Synchronization errors}: Even given a list of input output examples to check against, we cannot possibly determine whether there is an underlying race condition that appears rarely enough to pass the checks.}
+}
+}
+
+\section{Contributions}{
+\p{\paragraph{Core contribution} They develop \em{CAKE IR}, which is an intermediate representation for writing CUDA kernels. More importantly, they have the \strong{agent} \em{co-design} the IR while trying to generate kernels. This is an iterative process, where the agent must implement existing kernels in its own designed IR. To do so, requires adding necessary features to the IR like [[JKNL]] along with the corresponding lowering passes.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/CAKEv2.png}}{}
+\figcaption{Starting bare IR. The agent is then given a warp-specialized kernel and sees that it needs to add support for warp specialization via \code{lm.role}}
+}
+\p{They can then iteratively build on this pipeline adding architecture specific features. For example, the IR example they give shows that they have an \code{lm.tmem} API for [TMEM](YCAO). This can be thought of as a v3 given below.}
+\figure{
+\<html:img>[width]{100\%}[src]{\route-asset{assets/img/CAKEv3.png}}{}
+\figcaption{Building on the IR with [[JKNL]]. Add support for architecture specific features like [TMEM](YCAO) as the candles on top of the IR}
+}
+\p{How this is actually implemented is a trade secret\sidenote{I suspect one reason that a lot of this is not publicly available is that it is only understood by GPT 5.6}.}
+\p{\paragraph{Evaluation}}
+}
+
+\section{Limitations}{
+\p{\paragraph{Assumptions}}
+\p{\paragraph{Where they might struggle} It is unclear how well this would work for ASICs like [TPUs](NZZ7) or [[V5KP]]. I suspect that in order to "converge" to a good IR, you need to reduce the degrees of freedom through a large number of kernel examples. The kernel ecosystem of these accelerators is far less mature, making it much harder to extract useful abstractions. }
+}
+
+\section{Outstanding Questions}{
+\p{Most of the work in this paper is not publicly available, so I have a lot of outstanding questions.}
+}

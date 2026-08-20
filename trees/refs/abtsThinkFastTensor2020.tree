@@ -1,59 +1,25 @@
 % ["refs"]
-\title{Think Fast: A Tensor Streaming Processor (TSP) for  Accelerating Deep Learning Workloads}
+\title{Think Fast: A Tensor Streaming Processor (TSP) for Accelerating Deep Learning Workloads}
 \date{2020-05}
-\author/literal{Dennis Abts}\author/literal{Jonathan Ross}\author/literal{Jonathan Sparling}\author/literal{Mark  Wong-VanHaren}\author/literal{Max Baker}\author/literal{Tom Hawkins}\author/literal{Andrew Bell}\author/literal{John Thompson}\author/literal{Temesghen Kahsai}\author/literal{Garrin Kimmell}\author/literal{Jennifer Hwang}\author/literal{Rebekah Leslie-Hurd}\author/literal{Michael Bye}\author/literal{E. R. Creswick}\author/literal{Matthew Boyd}\author/literal{Mahitha Venigalla}\author/literal{Evan Laforge}\author/literal{Jon Purdy}\author/literal{Purushotham Kamath}\author/literal{Dinesh Maheshwari}\author/literal{Michael Beidler}\author/literal{Geert Rosseel}\author/literal{Omar Ahmad}\author/literal{Gleb Gagarin}\author/literal{Richard Czekalski}\author/literal{Ashay Rane}\author/literal{Sahil Parmar}\author/literal{Jeff Werner}\author/literal{Jim Sproch}\author/literal{Adrian Macias}\author/literal{Brian Kurtz}
+\author/literal{Dennis Abts}\author/literal{Jonathan Ross}\author/literal{Jonathan Sparling}\author/literal{Mark Wong-VanHaren}\author/literal{Max Baker}\author/literal{Tom Hawkins}\author/literal{Andrew Bell}\author/literal{John Thompson}\author/literal{Temesghen Kahsai}\author/literal{Garrin Kimmell}\author/literal{Jennifer Hwang}\author/literal{Rebekah Leslie-Hurd}\author/literal{Michael Bye}\author/literal{E. R. Creswick}\author/literal{Matthew Boyd}\author/literal{Mahitha Venigalla}\author/literal{Evan Laforge}\author/literal{Jon Purdy}\author/literal{Purushotham Kamath}\author/literal{Dinesh Maheshwari}\author/literal{Michael Beidler}\author/literal{Geert Rosseel}\author/literal{Omar Ahmad}\author/literal{Gleb Gagarin}\author/literal{Richard Czekalski}\author/literal{Ashay Rane}\author/literal{Sahil Parmar}\author/literal{Jeff Werner}\author/literal{Jim Sproch}\author/literal{Adrian Macias}\author/literal{Brian Kurtz}
 \taxon{Reference}
 \meta{doi}{10.1109/ISCA45697.2020.00023}
 \meta{bibtex}{\startverb
 @inproceedings{abtsThinkFastTensor2020,
- title = {Think {{Fast}}: {{A Tensor Streaming Processor}} ({{TSP}}) for {{
-Accelerating Deep Learning Workloads}}},
- author = {Abts, Dennis and Ross, Jonathan and Sparling, Jonathan and {
-Wong-VanHaren}, Mark and Baker, Max and Hawkins, Tom and Bell, Andrew
-and Thompson, John and Kahsai, Temesghen and Kimmell, Garrin and
-Hwang, Jennifer and {Leslie-Hurd}, Rebekah and Bye, Michael and
-Creswick, E.R. and Boyd, Matthew and Venigalla, Mahitha and Laforge,
-Evan and Purdy, Jon and Kamath, Purushotham and Maheshwari, Dinesh
-and Beidler, Michael and Rosseel, Geert and Ahmad, Omar and Gagarin,
-Gleb and Czekalski, Richard and Rane, Ashay and Parmar, Sahil and
-Werner, Jeff and Sproch, Jim and Macias, Adrian and Kurtz, Brian},
+ title = {Think {{Fast}}: {{A Tensor Streaming Processor}} ({{TSP}}) for {{Accelerating Deep Learning Workloads}}},
+ author = {Abts, Dennis and Ross, Jonathan and Sparling, Jonathan and {Wong-VanHaren}, Mark and Baker, Max and Hawkins, Tom and Bell, Andrew and Thompson, John and Kahsai, Temesghen and Kimmell, Garrin and Hwang, Jennifer and {Leslie-Hurd}, Rebekah and Bye, Michael and Creswick, E.R. and Boyd, Matthew and Venigalla, Mahitha and Laforge, Evan and Purdy, Jon and Kamath, Purushotham and Maheshwari, Dinesh and Beidler, Michael and Rosseel, Geert and Ahmad, Omar and Gagarin, Gleb and Czekalski, Richard and Rane, Ashay and Parmar, Sahil and Werner, Jeff and Sproch, Jim and Macias, Adrian and Kurtz, Brian},
  year = {2020},
  isbn = {978-1-7281-4661-4},
  doi = {10.1109/ISCA45697.2020.00023},
  urldate = {2026-07-13},
- booktitle = {2020 {{ACM}}/{{IEEE}} 47th {{Annual International Symposium}} on
-{{Computer Architecture}} ({{ISCA}})},
+ booktitle = {2020 {{ACM}}/{{IEEE}} 47th {{Annual International Symposium}} on {{Computer Architecture}} ({{ISCA}})},
  pages = {145--158},
  publisher = {IEEE},
  address = {Valencia, Spain},
- file = {/home/kellen/Downloads/papers/Think Fast A Tensor Streaming Processor
-(TSP) for Accelerating Deep Learning Workloads - Abts et al..pdf},
+ file = {/home/kellen/Downloads/papers/Think Fast A Tensor Streaming Processor (TSP) for Accelerating Deep Learning Workloads - Abts et al..pdf},
  langid = {english},
  copyright = {https://doi.org/10.15223/policy-029},
- abstract = {In this paper, we introduce the Tensor Streaming Processor (TSP)
-architecture, a functionally-sliced microarchitecture with memory
-units interleaved with vector and matrix deep learning functional
-units in order to take advantage of dataflow locality of deep
-learning operations. The TSP is built based on two key
-observations: (1) machine learning workloads exhibit abundant data
-parallelism, which can be readily mapped to tensors in hardware,
-and (2) a simple and deterministic processor with producer-consumer
-stream programming model enables precise reasoning and control of
-hardware components, achieving good performance and power
-efficiency. The TSP is designed to exploit parallelism inherent in
-machine-learning workloads including instruction-level, memory
-concurrency, data and model parallelism, while guaranteeing
-determinism by eliminating all reactive elements in the hardware
-(e.g. arbiters, and caches). Early ResNet50 image classification
-results demonstrate 20.4K processed images per second (IPS) with a
-batch-size of one---a 4\texttimes{} improvement compared to other
-modern GPUs and accelerators [44]. Our first ASIC implementation of
-the TSP architecture yields a computational density of more than 1
-TeraOp/s per square mm of silicon for its 25\texttimes 29 mm 14nm
-chip operating at a nominal clock frequency of 900 MHz. The TSP
-demonstrates a novel hardware-software approach to achieve fast,
-yet predictable, performance on machine-learning workloads within a
-desired power envelope.},
+ abstract = {In this paper, we introduce the Tensor Streaming Processor (TSP) architecture, a functionally-sliced microarchitecture with memory units interleaved with vector and matrix deep learning functional units in order to take advantage of dataflow locality of deep learning operations. The TSP is built based on two key observations: (1) machine learning workloads exhibit abundant data parallelism, which can be readily mapped to tensors in hardware, and (2) a simple and deterministic processor with producer-consumer stream programming model enables precise reasoning and control of hardware components, achieving good performance and power efficiency. The TSP is designed to exploit parallelism inherent in machine-learning workloads including instruction-level, memory concurrency, data and model parallelism, while guaranteeing determinism by eliminating all reactive elements in the hardware (e.g. arbiters, and caches). Early ResNet50 image classification results demonstrate 20.4K processed images per second (IPS) with a batch-size of one---a 4\texttimes{} improvement compared to other modern GPUs and accelerators [44]. Our first ASIC implementation of the TSP architecture yields a computational density of more than 1 TeraOp/s per square mm of silicon for its 25\texttimes 29 mm 14nm chip operating at a nominal clock frequency of 900 MHz. The TSP demonstrates a novel hardware-software approach to achieve fast, yet predictable, performance on machine-learning workloads within a desired power envelope.},
  month = {May},
  shorttitle = {Think {{Fast}}}
 }

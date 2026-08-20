@@ -1,0 +1,22 @@
+% ["refs"]
+\title{CAKE: Compiler-Agent Co-Design for Frontier Kernel Evolution}
+\date{2026-08}
+\author/literal{Zihao Ye}\author/literal{Yingyi Huang}\author/literal{Hongyi Jin}\author/literal{Bohan Hou}\author/literal{Junru Shao}\author/literal{Zhongming Yu}\author/literal{Jinqi Chen}\author/literal{Meghan Cowan}\author/literal{Shiyi Cao}\author/literal{Shanli Xing}\author/literal{Hanfeng Chen}\author/literal{Vinod Grover}\author/literal{Tianqi Chen}\author/literal{Luis Ceze}
+\taxon{Reference}
+\meta{doi}{10.48550/ARXIV.2608.12629}
+\meta{bibtex}{\startverb
+@misc{yeCAKECompilerAgentCoDesign2026,
+ title = {{{CAKE}}: {{Compiler-Agent Co-Design}} for {{Frontier Kernel Evolution}}},
+ author = {Ye, Zihao and Huang, Yingyi and Jin, Hongyi and Hou, Bohan and Shao, Junru and Yu, Zhongming and Chen, Jinqi and Cowan, Meghan and Cao, Shiyi and Xing, Shanli and Chen, Hanfeng and Grover, Vinod and Chen, Tianqi and Ceze, Luis},
+ year = {2026},
+ doi = {10.48550/ARXIV.2608.12629},
+ urldate = {2026-08-15},
+ publisher = {arXiv},
+ file = {/home/kellen/Downloads/pdfs/storage/BTH6S6PA/CAKE Compiler-Agent Co-Design for Frontier Kernel Evolution - Ye et al..pdf},
+ keywords = {FOS: Computer and information sciences,Machine Learning (cs.LG)},
+ copyright = {arXiv.org perpetual, non-exclusive license},
+ abstract = {Work on GPU kernel agents and work on GPU programming languages have advanced separately, and the gap between them is where expert kernels are lost. Kernel agents treat the compiler as a fixed black box: they improve proposal, mutation, and ranking, but the environment returns only compiler errors, correctness outcomes, and end-to-end timing---signals that never say which program decision caused a synchronization failure, a hardware-contract violation, or a pipeline stall, and that cannot grow when a frontier workload exposes a missing capability. Meanwhile the languages an agent might write are not built for one. Tile-level DSLs hide the warp specialization, barrier choreography, and memory-tier placement that separate expert kernels from merely correct ones; low-level DSLs expose that control but demand a layout calculus that makes agent errors both likely and hard to localize. We present Cake, which codesigns the two. Agents author Cake IR, a typed, hardware-explicit schedule representation that gives fine-grained control without a layout algebra and carries enough information for a verifier and cost model to reason about a program before it is compiled; the harness answers with localized correctness and performance diagnostics and is itself a target of evolution, so recurring failures become new verifier rules, IR primitives, cost-model calibrations, and reusable tactics rather than one-off workarounds. Across matched implementation-hidden Flash-KMeans clean starts on B200 (three runs per representation), the best candidate at an 80-million-token budget reaches a median 1.144\texttimes{} the tuned FlashML baseline with Cake IR, versus 0.928\texttimes{} for direct CUDA/PTX. Beyond the clean-start benchmark, agent-generated Kimi Delta Attention reaches a 2.05\texttimes{} geometric-mean speedup over official FlashKDA and is validated in end-to-end serving. Dispatcher-backed KNN and KMeans families improve performance by 1.42\texttimes --2.12\texttimes{} across more than 400 shapes, and four kernel changes are available as upstream PRs. Cake targets NVIDIA GPUs from Ampere through Blackwell and separates single-shape evolution from the generalization and dispatch stage required for library integration.},
+ month = {August},
+ shorttitle = {{{CAKE}}}
+}
+\stopverb}

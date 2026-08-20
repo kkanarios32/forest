@@ -1,0 +1,16 @@
+\date{2026-08-12T15:00:05Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{ReduceScatter is AllGather transposed}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1786546735759}
+\meta{anki-deck}{MLSys}
+
+\prompt{[ReduceScatter](CAGW): signature, relationship to [AllGather](VSDZ), and cost?}{
+  \strong{Signature} #{[A, B]\{U_X\} \to [A_X, B]} — it resolves partial sums along #{X} and leaves the result \em{sharded} along a dimension of your choosing. It \em{introduces} a subscript, which is why you have to say where: #{\mathrm{ReduceScatter}_{X,K}}.
+
+  \strong{Mechanism}: the same ring pass as an AllGather, except you sum the incoming shards instead of keeping them. \strong{Cost} is therefore identical, #{V / W_{\mathrm{ici}}}.
+
+  \strong{Duality}: AllGather and ReduceScatter are transposes of each other, hence each other's derivative — an AllGather in the forward pass means a ReduceScatter on the reverse-mode gradients, and vice versa. (Broadcast is #{u \otimes I}, reduce is #{u^\top \otimes I}.)
+}

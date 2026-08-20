@@ -54,4 +54,4 @@
 \section{Anki}{
 \p{I originally built a whole in-editor Anki workflow on top of [AnkiConnect](https://git.sr.ht/~foosoft/anki-connect#deck-actions) and a vendored \code{anki.nvim}. That has since moved out of the editor and into the forest itself: cards are just \code{\startverb\taxon{Card}\stopverb} trees, and \code{scripts/anki-sync} mirrors them into Anki, creating the note on first sync and updating in place thereafter. Writing a card is now the same as writing any other tree, snippets and all, and the sync is one command away. This is [an example of a card](2RO9).}
 }
-\comments{nvim}
+\comments-named{nvim}

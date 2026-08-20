@@ -1,0 +1,18 @@
+\date{2026-08-18T14:22:59Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{Remat buys memory with a third more FLOPs}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1787063265971}
+\meta{anki-deck}{MLSys}
+
+\prompt{What does block-level [gradient checkpointing](WQAM) cost, and what does it save?}{
+  \strong{Saves:} only the input to each layer is kept — one checkpoint per layer instead of the roughly twenty intermediate nodes a layer produces. In the book's setting (#{BT = 4}M, #{L = 64}, #{D = 8192}, bf16) that is 84 TB of activations down to 4.2 TB.
+
+  \strong{Costs:} the forward pass is run a second time inside the backward pass, so training goes from about #{6 \cdot \mathrm{params} \cdot \mathrm{tokens}} to about #{8} — a third more FLOPs for a twentyfold cut in activation memory.
+
+  \strong{Why twenty nodes.} [[SGKK]] needs whatever the derivative mentions. For #{f(x) = \exp(g(x))} we have #{df/dx = \exp(g(x)) \cdot dg/dx}, so \em{both} #{g(x)} and #{\exp(g(x))} have to survive to the backward pass. Counting every such intermediate across a layer lands around twenty.
+
+  \strong{The middle setting is usually the right one:} save just the outputs of the big matmuls — about seven per layer — and no large matmul is ever recomputed, only the cheap elementwise work between them.
+}

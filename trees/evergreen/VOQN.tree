@@ -5,11 +5,11 @@
 \title{Race condition}
 
 \p{When the correctness of a program depends on the order in which concurrent [[63U3]]s schedule, you have a race condition. The classic example: two threads each execute}
-\pre\verb<<<|
+\codeblock{plaintext}{\verb<<<|
 mov addr reg     // load
 add 1 reg        // increment
 mov reg addr     // store
-<<<
+<<<}
 \p{intending to increment a shared variable twice. If the OS interleaves the threads at the wrong instruction boundary:}
 \ol{
   \li{Thread 1 stores its incremented value.}

@@ -1,0 +1,25 @@
+% ["refs"]
+\title{Efficient Processing of Deep Neural Networks: A Tutorial and Survey}
+\date{2017-12}
+\author/literal{Vivienne Sze}\author/literal{Yu-Hsin Chen}\author/literal{Tien-Ju Yang}\author/literal{Joel S. Emer}
+\taxon{Reference}
+\meta{doi}{10.1109/JPROC.2017.2761740}
+\meta{bibtex}{\startverb
+@article{szeEfficientProcessingDeep2017,
+ title = {Efficient {{Processing}} of {{Deep Neural Networks}}: {{A Tutorial}} and {{Survey}}},
+ author = {Sze, Vivienne and Chen, Yu-Hsin and Yang, Tien-Ju and Emer, Joel S.},
+ year = {2017},
+ doi = {10.1109/JPROC.2017.2761740},
+ urldate = {2026-08-14},
+ journal = {Proceedings of the IEEE},
+ volume = {105},
+ number = {12},
+ pages = {2295--2329},
+ file = {/home/kellen/Downloads/papers/Efficient Processing of Deep Neural Networks A Tutorial and Survey - Sze et al..pdf},
+ langid = {english},
+ copyright = {https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html},
+ issn = {0018-9219, 1558-2256},
+ month = {December},
+ shorttitle = {Efficient {{Processing}} of {{Deep Neural Networks}}}
+}
+\stopverb}

@@ -4,7 +4,27 @@
 \title{Systolic array}
 \taxon{Definition}
 \tag{public}
-\figure{
-\<html:img>[width]{100\%}[src]{\route-asset{assets/img/systolic-array.png}}{}
-\figcaption{Output stationary systolic array matmul.}
-}
+\tag{note}
+
+\p{A grid of processing elements in which every operand moves by one hop per cycle to a fixed neighbour, and nothing is addressed. A PE multiplies what arrives at it, adds what arrived from above, and passes the result on. There is no register file to name, no arbitration, and no scheduler: the dataflow \em{is} the wiring, and the only freedom in the design is which of the three operands you decide to hold still.}
+
+\p{Hold the output still and each PE owns one entry of the result, accumulating in place while both inputs stream past. Hold the weights still — the choice the [[OGCRP]] makes — and each PE pins one #{w_{ij}} for the whole tile while activations stream in from the left and partial sums fall downward. The second is the one worth being able to draw from memory, because the staggering it requires is where every systolic-array bubble comes from:}
+
+% The weight-stationary step-through. An empty mount point plus the script that
+% fills it — the SVG, the schedule, and the styling all live in
+% assets/files/mxu-systolic-array.js, for the same reason the ring
+% reduce-scatter figure does: the colors key off per-cycle state (firing, spent)
+% that no inline style can see.
+%
+% Safe to transclude. The script mounts every .mxu-fig on the page independently
+% and binds its listener once, so several copies step on their own.
+\<html:div>[class]{mxu-fig}{}
+\<html:script>[src]{\route-asset{assets/files/mxu-systolic-array.js}}[defer]{}{}
+
+\p{The stagger is the whole trick. Row #{i} of the activation tape is held back #{i} cycles, so that #{x_k} arrives at PE(#{k}, #{j}) on precisely the cycle the running sum for column #{j} reaches that row. The set of PEs firing on cycle #{t} is therefore the anti-diagonal #{i + j = t}, and a finished dot product falls out of the bottom of column #{j} having been accumulated on the way down — never written to memory, never read back.}
+
+\p{What you pay for that is the fill and the drain. An #{N \times N} array streaming #{M} samples is busy for #{M + 2N - 2} cycles but does only #{M N^2} useful multiply-accumulates, so utilisation is}
+
+##{\frac{MN^2}{(M + 2N - 2)N^2} = \frac{M}{M + 2N - 2}.}
+
+\p{For the four-by-four array above, four samples give 40\%. On a real #{128 \times 128} MXU the fill is #{2N - 2 = 254} cycles, so one isolated #{8 \times 128} tile — the shape of the native op — would run at #{8/262}, near three per cent. That number is not what the hardware achieves, and the gap is the point: consecutive tiles stream in back-to-back with no bubble between them, so the fill is paid \em{once} per run of matmuls rather than once per tile. This is the [fill bubble](R3DP), and it is why the cost of a small matmul is dominated by a fixed charge that a large one amortises away.}

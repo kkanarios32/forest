@@ -15,3 +15,5 @@ The side length is fixed in hardware, so every dimension has to be tiled down to
   \li{Compiler tiles from VMEM to #{128 \times 128} tiles to load into the MXU.}
 }
 }
+
+\transclude{HPSO}

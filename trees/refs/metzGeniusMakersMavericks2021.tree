@@ -1,55 +1,19 @@
 % ["refs"]
-\title{Genius Makers: The Mavericks Who Brought A. I. To  Google, Facebook, and the World}
+\title{Genius Makers: The Mavericks Who Brought A. I. To Google, Facebook, and the World}
 \date{2021}
 \author/literal{Cade Metz}
 \taxon{Reference}
 \meta{bibtex}{\startverb
 @book{metzGeniusMakersMavericks2021,
- title = {Genius {{Makers}}: {{The Mavericks Who Brought A}}. {{I}}. to {{
-Google}}, {{Facebook}}, and the {{World}}},
+ title = {Genius {{Makers}}: {{The Mavericks Who Brought A}}. {{I}}. to {{Google}}, {{Facebook}}, and the {{World}}},
  author = {Metz, Cade},
  year = {2021},
  isbn = {978-1-84794-213-5},
  publisher = {Random House Business},
- keywords = {Biography & Autobiography / Science & Technology,Business &
-Economics / Entrepreneurship,Business & Economics / General,
-Business & Economics / Industries / Computers & Information
-Technology,Computers / Artificial Intelligence / General,Computers
-/ Hardware / Mainframes & Minicomputers,Computers / Internet /
-Search Engines,Computers / Internet / Social Media,Computers /
-Social Aspects},
+ keywords = {Biography & Autobiography / Science & Technology,Business & Economics / Entrepreneurship,Business & Economics / General,Business & Economics / Industries / Computers & Information Technology,Computers / Artificial Intelligence / General,Computers / Hardware / Mainframes & Minicomputers,Computers / Internet / Search Engines,Computers / Internet / Social Media,Computers / Social Aspects},
  langid = {english},
  googlebooks = {G6QouAEACAAJ},
- abstract = {The definitive account of the race to create artificial
-intelligence 'This colourful page-turner puts artificial
-intelligence into a human perspective . . . Metz explains this
-transformative technology and makes the quest thrilling.' Walter
-Isaacson, author of Steve Jobs \_\_\_ Long dismissed as a
-technology of the distant future, artificial intelligence was a
-project once consigned to the fringes of the scientific community.
-Then two researchers changed everything. One was a 64-year-old
-computer science professor with a back problem so severe he could
-not drive or fly. The other was a 36-year-old neuroscientist and
-chess prodigy. Though they took very different paths, together they
-helped catapult AI to the forefront of our daily lives and, in the
-process, created a business worth billions. This is the story of
-that technological revolution and of the arms race it has sparked
-among companies that range from Google to Facebook to OpenAI. It's
-the story of growing international rivalry to achieve major new
-breakthroughs. And it's a story that shows both the inventive best
-of humankind and its darker side, as advances have been
-counter-balanced by issues of prejudice, bias and the invasion of
-privacy. New York Times Silicon Valley journalist Cade Metz draws
-on unparalleled access to all the major players to create an
-extraordinarily vivid account of a revolution over five decades in
-the making. And he poses the questions that will dominate the next
-half-century- where will AI take us next? Are systems with truly
-human intelligence on the horizon? And, if so, where does that
-leave us? \_\_\_ 'One day soon, when computers are safely driving
-our roads and speaking to us in complete sentences, we'll look back
-at Cade Metz's elegant, sweeping Genius Makers as their birth story
-- the Genesis for an age of sentient machines.' Brad Stone, author
-of The Everything Store and The Upstarts},
+ abstract = {The definitive account of the race to create artificial intelligence 'This colourful page-turner puts artificial intelligence into a human perspective . . . Metz explains this transformative technology and makes the quest thrilling.' Walter Isaacson, author of Steve Jobs \_\_\_  Long dismissed as a technology of the distant future, artificial intelligence was a project once consigned to the fringes of the scientific community. Then two researchers changed everything. One was a 64-year-old computer science professor with a back problem so severe he could not drive or fly. The other was a 36-year-old neuroscientist and chess prodigy. Though they took very different paths, together they helped catapult AI to the forefront of our daily lives and, in the process, created a business worth billions.  This is the story of that technological revolution and of the arms race it has sparked among companies that range from Google to Facebook to OpenAI. It's the story of growing international rivalry to achieve major new breakthroughs. And it's a story that shows both the inventive best of humankind and its darker side, as advances have been counter-balanced by issues of prejudice, bias and the invasion of privacy.  New York Times Silicon Valley journalist Cade Metz draws on unparalleled access to all the major players to create an extraordinarily vivid account of a revolution over five decades in the making. And he poses the questions that will dominate the next half-century- where will AI take us next? Are systems with truly human intelligence on the horizon? And, if so, where does that leave us?  \_\_\_ 'One day soon, when computers are safely driving our roads and speaking to us in complete sentences, we'll look back at Cade Metz's elegant, sweeping Genius Makers as their birth story - the Genesis for an age of sentient machines.' Brad Stone, author of The Everything Store and The Upstarts},
  shorttitle = {Genius {{Makers}}}
 }
 \stopverb}

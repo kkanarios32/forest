@@ -1,0 +1,21 @@
+\date{2026-08-18T14:22:54Z}
+\import{base-macros}
+\author{kellenkanarios}
+\title{The backward pass is two matmuls, not one}
+\taxon{Card}
+\tag{card}
+\meta{anki}{1787063264071}
+\meta{anki-deck}{MLSys}
+
+\prompt{One matmul #{C = AB} with #{A[N,P]}, #{B[P,M]} costs #{2NPM} FLOPs at inference but #{6NPM} in training. Where do the other two thirds come from?}{
+  The forward pass contracts over #{P} and costs #{2NPM}. [[SGKK]] then needs \em{two} matmuls of exactly that size, not one:
+
+  \ul{
+    \li{#{\partial L/\partial B = A^{\top}(\partial L/\partial C)}, contracting over #{N} — the parameter gradient;}
+    \li{#{\partial L/\partial A = (\partial L/\partial C)B^{\top}}, contracting over #{M} — not a parameter gradient at all, but the signal handed to earlier layers.}
+  }
+
+  Each of the three contracts a different axis of the same #{N \times P \times M} box, so each costs #{2NPM} and the total is #{6NPM}, three times the forward pass. It is easy to remember only the first backward matmul and land on #{4NPM}; the activation gradient is the one that goes missing.
+
+  \strong{Why the constant is worth memorising.} #{PM} is the parameter count of that matrix and #{N} is the token count, so #{6NPM} is precisely the #{6 \cdot \mathrm{params} \cdot \mathrm{tokens}} rule of thumb — the whole training cost of a [[YB7M]] is a sum of such terms.
+}
